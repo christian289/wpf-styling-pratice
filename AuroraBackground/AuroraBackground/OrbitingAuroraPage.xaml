@@ -6,60 +6,92 @@
       KeyDown="Page_KeyDown">
 
     <Page.Resources>
-        <!-- Circular Orbit Animations -->
+        <!-- Circular Orbit Animations - CSS rotate + translate + rotate pattern -->
 
-        <!-- Orb 1: Fast circular motion -->
+        <!-- Orb 1: Container rotates, orb counter-rotates to stay upright -->
         <Storyboard x:Key="OrbitAnimation1" RepeatBehavior="Forever">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Orb1"
-                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)">
-                <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
-                <LinearDoubleKeyFrame KeyTime="0:0:12" Value="360"/>
-            </DoubleAnimationUsingKeyFrames>
+            <!-- Rotate the container (creates circular orbit) -->
+            <DoubleAnimation Storyboard.TargetName="OrbContainer1"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                           From="0" To="360"
+                           Duration="0:0:12"
+                           RepeatBehavior="Forever"/>
+            <!-- Counter-rotate the orb (keeps it upright) -->
+            <DoubleAnimation Storyboard.TargetName="Orb1"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                           From="0" To="-360"
+                           Duration="0:0:12"
+                           RepeatBehavior="Forever"/>
         </Storyboard>
 
-        <!-- Orb 2: Medium circular motion (reverse) -->
+        <!-- Orb 2: Reverse direction -->
         <Storyboard x:Key="OrbitAnimation2" RepeatBehavior="Forever">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Orb2"
-                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)">
-                <LinearDoubleKeyFrame KeyTime="0:0:0" Value="360"/>
-                <LinearDoubleKeyFrame KeyTime="0:0:15" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetName="OrbContainer2"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                           From="360" To="0"
+                           Duration="0:0:15"
+                           RepeatBehavior="Forever"/>
+            <DoubleAnimation Storyboard.TargetName="Orb2"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                           From="-360" To="0"
+                           Duration="0:0:15"
+                           RepeatBehavior="Forever"/>
         </Storyboard>
 
-        <!-- Orb 3: Slow circular motion -->
+        <!-- Orb 3 -->
         <Storyboard x:Key="OrbitAnimation3" RepeatBehavior="Forever">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Orb3"
-                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)">
-                <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
-                <LinearDoubleKeyFrame KeyTime="0:0:18" Value="360"/>
-            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetName="OrbContainer3"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                           From="0" To="360"
+                           Duration="0:0:18"
+                           RepeatBehavior="Forever"/>
+            <DoubleAnimation Storyboard.TargetName="Orb3"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                           From="0" To="-360"
+                           Duration="0:0:18"
+                           RepeatBehavior="Forever"/>
         </Storyboard>
 
         <!-- Orb 4: Fast reverse -->
         <Storyboard x:Key="OrbitAnimation4" RepeatBehavior="Forever">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Orb4"
-                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)">
-                <LinearDoubleKeyFrame KeyTime="0:0:0" Value="360"/>
-                <LinearDoubleKeyFrame KeyTime="0:0:10" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetName="OrbContainer4"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                           From="360" To="0"
+                           Duration="0:0:10"
+                           RepeatBehavior="Forever"/>
+            <DoubleAnimation Storyboard.TargetName="Orb4"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                           From="-360" To="0"
+                           Duration="0:0:10"
+                           RepeatBehavior="Forever"/>
         </Storyboard>
 
-        <!-- Orb 5: Medium slow -->
+        <!-- Orb 5 -->
         <Storyboard x:Key="OrbitAnimation5" RepeatBehavior="Forever">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Orb5"
-                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)">
-                <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
-                <LinearDoubleKeyFrame KeyTime="0:0:14" Value="360"/>
-            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetName="OrbContainer5"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                           From="0" To="360"
+                           Duration="0:0:14"
+                           RepeatBehavior="Forever"/>
+            <DoubleAnimation Storyboard.TargetName="Orb5"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                           From="0" To="-360"
+                           Duration="0:0:14"
+                           RepeatBehavior="Forever"/>
         </Storyboard>
 
         <!-- Orb 6: Very slow reverse -->
         <Storyboard x:Key="OrbitAnimation6" RepeatBehavior="Forever">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Orb6"
-                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)">
-                <LinearDoubleKeyFrame KeyTime="0:0:0" Value="360"/>
-                <LinearDoubleKeyFrame KeyTime="0:0:20" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetName="OrbContainer6"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                           From="360" To="0"
+                           Duration="0:0:20"
+                           RepeatBehavior="Forever"/>
+            <DoubleAnimation Storyboard.TargetName="Orb6"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                           From="-360" To="0"
+                           Duration="0:0:20"
+                           RepeatBehavior="Forever"/>
         </Storyboard>
     </Page.Resources>
 
@@ -75,157 +107,169 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <!-- Orbiting blurred orbs -->
+        <!-- Orbiting blurred orbs using container rotation pattern -->
 
-        <!-- Orb 1: Pink/Magenta -->
-        <Ellipse x:Name="Orb1"
-                Width="600"
-                Height="600"
-                RenderTransformOrigin="0.5,0.5"
-                Opacity="0.7">
-            <Ellipse.RenderTransform>
-                <TransformGroup>
+        <!-- Orb 1: Pink/Magenta - Container rotates to create orbit -->
+        <Canvas x:Name="OrbContainer1" Width="0" Height="0" RenderTransformOrigin="0.5,0.5">
+            <Canvas.RenderTransform>
+                <RotateTransform Angle="0"/>
+            </Canvas.RenderTransform>
+            <Ellipse x:Name="Orb1"
+                    Canvas.Left="250" Canvas.Top="-300"
+                    Width="600" Height="600"
+                    RenderTransformOrigin="0.5,0.5"
+                    Opacity="0.7">
+                <Ellipse.RenderTransform>
                     <RotateTransform Angle="0"/>
-                    <TranslateTransform X="200" Y="0"/>
-                </TransformGroup>
-            </Ellipse.RenderTransform>
-            <Ellipse.Fill>
-                <RadialGradientBrush>
-                    <GradientStop Color="#FFFF1493" Offset="0"/>
-                    <GradientStop Color="#FFFF69B4" Offset="0.3"/>
-                    <GradientStop Color="#80FF1493" Offset="0.6"/>
-                    <GradientStop Color="#00FF1493" Offset="1"/>
-                </RadialGradientBrush>
-            </Ellipse.Fill>
-            <Ellipse.Effect>
-                <BlurEffect Radius="60"/>
-            </Ellipse.Effect>
-        </Ellipse>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FFFF1493" Offset="0"/>
+                        <GradientStop Color="#FFFF69B4" Offset="0.3"/>
+                        <GradientStop Color="#80FF1493" Offset="0.6"/>
+                        <GradientStop Color="#00FF1493" Offset="1"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.Effect>
+                    <BlurEffect Radius="60"/>
+                </Ellipse.Effect>
+            </Ellipse>
+        </Canvas>
 
         <!-- Orb 2: Purple/Violet -->
-        <Ellipse x:Name="Orb2"
-                Width="700"
-                Height="700"
-                RenderTransformOrigin="0.5,0.5"
-                Opacity="0.65">
-            <Ellipse.RenderTransform>
-                <TransformGroup>
-                    <RotateTransform Angle="360"/>
-                    <TranslateTransform X="-180" Y="0"/>
-                </TransformGroup>
-            </Ellipse.RenderTransform>
-            <Ellipse.Fill>
-                <RadialGradientBrush>
-                    <GradientStop Color="#FF9C27B0" Offset="0"/>
-                    <GradientStop Color="#FFBA68C8" Offset="0.3"/>
-                    <GradientStop Color="#809C27B0" Offset="0.6"/>
-                    <GradientStop Color="#009C27B0" Offset="1"/>
-                </RadialGradientBrush>
-            </Ellipse.Fill>
-            <Ellipse.Effect>
-                <BlurEffect Radius="70"/>
-            </Ellipse.Effect>
-        </Ellipse>
+        <Canvas x:Name="OrbContainer2" Width="0" Height="0" RenderTransformOrigin="0.5,0.5">
+            <Canvas.RenderTransform>
+                <RotateTransform Angle="360"/>
+            </Canvas.RenderTransform>
+            <Ellipse x:Name="Orb2"
+                    Canvas.Left="-350" Canvas.Top="150"
+                    Width="700" Height="700"
+                    RenderTransformOrigin="0.5,0.5"
+                    Opacity="0.65">
+                <Ellipse.RenderTransform>
+                    <RotateTransform Angle="-360"/>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF9C27B0" Offset="0"/>
+                        <GradientStop Color="#FFBA68C8" Offset="0.3"/>
+                        <GradientStop Color="#809C27B0" Offset="0.6"/>
+                        <GradientStop Color="#009C27B0" Offset="1"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.Effect>
+                    <BlurEffect Radius="70"/>
+                </Ellipse.Effect>
+            </Ellipse>
+        </Canvas>
 
         <!-- Orb 3: Cyan/Blue -->
-        <Ellipse x:Name="Orb3"
-                Width="550"
-                Height="550"
-                RenderTransformOrigin="0.5,0.5"
-                Opacity="0.75">
-            <Ellipse.RenderTransform>
-                <TransformGroup>
+        <Canvas x:Name="OrbContainer3" Width="0" Height="0" RenderTransformOrigin="0.5,0.5">
+            <Canvas.RenderTransform>
+                <RotateTransform Angle="0"/>
+            </Canvas.RenderTransform>
+            <Ellipse x:Name="Orb3"
+                    Canvas.Left="300" Canvas.Top="200"
+                    Width="550" Height="550"
+                    RenderTransformOrigin="0.5,0.5"
+                    Opacity="0.75">
+                <Ellipse.RenderTransform>
                     <RotateTransform Angle="0"/>
-                    <TranslateTransform X="150" Y="0"/>
-                </TransformGroup>
-            </Ellipse.RenderTransform>
-            <Ellipse.Fill>
-                <RadialGradientBrush>
-                    <GradientStop Color="#FF00BCD4" Offset="0"/>
-                    <GradientStop Color="#FF4DD0E1" Offset="0.3"/>
-                    <GradientStop Color="#8000BCD4" Offset="0.6"/>
-                    <GradientStop Color="#0000BCD4" Offset="1"/>
-                </RadialGradientBrush>
-            </Ellipse.Fill>
-            <Ellipse.Effect>
-                <BlurEffect Radius="65"/>
-            </Ellipse.Effect>
-        </Ellipse>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF00BCD4" Offset="0"/>
+                        <GradientStop Color="#FF4DD0E1" Offset="0.3"/>
+                        <GradientStop Color="#8000BCD4" Offset="0.6"/>
+                        <GradientStop Color="#0000BCD4" Offset="1"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.Effect>
+                    <BlurEffect Radius="65"/>
+                </Ellipse.Effect>
+            </Ellipse>
+        </Canvas>
 
         <!-- Orb 4: Orange/Coral -->
-        <Ellipse x:Name="Orb4"
-                Width="650"
-                Height="650"
-                RenderTransformOrigin="0.5,0.5"
-                Opacity="0.6">
-            <Ellipse.RenderTransform>
-                <TransformGroup>
-                    <RotateTransform Angle="360"/>
-                    <TranslateTransform X="-150" Y="0"/>
-                </TransformGroup>
-            </Ellipse.RenderTransform>
-            <Ellipse.Fill>
-                <RadialGradientBrush>
-                    <GradientStop Color="#FFFF6B35" Offset="0"/>
-                    <GradientStop Color="#FFFFAB91" Offset="0.3"/>
-                    <GradientStop Color="#80FF6B35" Offset="0.6"/>
-                    <GradientStop Color="#00FF6B35" Offset="1"/>
-                </RadialGradientBrush>
-            </Ellipse.Fill>
-            <Ellipse.Effect>
-                <BlurEffect Radius="75"/>
-            </Ellipse.Effect>
-        </Ellipse>
+        <Canvas x:Name="OrbContainer4" Width="0" Height="0" RenderTransformOrigin="0.5,0.5">
+            <Canvas.RenderTransform>
+                <RotateTransform Angle="360"/>
+            </Canvas.RenderTransform>
+            <Ellipse x:Name="Orb4"
+                    Canvas.Left="-325" Canvas.Top="-250"
+                    Width="650" Height="650"
+                    RenderTransformOrigin="0.5,0.5"
+                    Opacity="0.6">
+                <Ellipse.RenderTransform>
+                    <RotateTransform Angle="-360"/>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FFFF6B35" Offset="0"/>
+                        <GradientStop Color="#FFFFAB91" Offset="0.3"/>
+                        <GradientStop Color="#80FF6B35" Offset="0.6"/>
+                        <GradientStop Color="#00FF6B35" Offset="1"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.Effect>
+                    <BlurEffect Radius="75"/>
+                </Ellipse.Effect>
+            </Ellipse>
+        </Canvas>
 
         <!-- Orb 5: Green/Emerald -->
-        <Ellipse x:Name="Orb5"
-                Width="580"
-                Height="580"
-                RenderTransformOrigin="0.5,0.5"
-                Opacity="0.7">
-            <Ellipse.RenderTransform>
-                <TransformGroup>
+        <Canvas x:Name="OrbContainer5" Width="0" Height="0" RenderTransformOrigin="0.5,0.5">
+            <Canvas.RenderTransform>
+                <RotateTransform Angle="0"/>
+            </Canvas.RenderTransform>
+            <Ellipse x:Name="Orb5"
+                    Canvas.Left="-290" Canvas.Top="-100"
+                    Width="580" Height="580"
+                    RenderTransformOrigin="0.5,0.5"
+                    Opacity="0.7">
+                <Ellipse.RenderTransform>
                     <RotateTransform Angle="0"/>
-                    <TranslateTransform X="170" Y="0"/>
-                </TransformGroup>
-            </Ellipse.RenderTransform>
-            <Ellipse.Fill>
-                <RadialGradientBrush>
-                    <GradientStop Color="#FF00E676" Offset="0"/>
-                    <GradientStop Color="#FF69F0AE" Offset="0.3"/>
-                    <GradientStop Color="#8000E676" Offset="0.6"/>
-                    <GradientStop Color="#0000E676" Offset="1"/>
-                </RadialGradientBrush>
-            </Ellipse.Fill>
-            <Ellipse.Effect>
-                <BlurEffect Radius="68"/>
-            </Ellipse.Effect>
-        </Ellipse>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF00E676" Offset="0"/>
+                        <GradientStop Color="#FF69F0AE" Offset="0.3"/>
+                        <GradientStop Color="#8000E676" Offset="0.6"/>
+                        <GradientStop Color="#0000E676" Offset="1"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.Effect>
+                    <BlurEffect Radius="68"/>
+                </Ellipse.Effect>
+            </Ellipse>
+        </Canvas>
 
         <!-- Orb 6: Blue/Indigo -->
-        <Ellipse x:Name="Orb6"
-                Width="620"
-                Height="620"
-                RenderTransformOrigin="0.5,0.5"
-                Opacity="0.65">
-            <Ellipse.RenderTransform>
-                <TransformGroup>
-                    <RotateTransform Angle="360"/>
-                    <TranslateTransform X="-160" Y="0"/>
-                </TransformGroup>
-            </Ellipse.RenderTransform>
-            <Ellipse.Fill>
-                <RadialGradientBrush>
-                    <GradientStop Color="#FF3F51B5" Offset="0"/>
-                    <GradientStop Color="#FF7986CB" Offset="0.3"/>
-                    <GradientStop Color="#803F51B5" Offset="0.6"/>
-                    <GradientStop Color="#003F51B5" Offset="1"/>
-                </RadialGradientBrush>
-            </Ellipse.Fill>
-            <Ellipse.Effect>
-                <BlurEffect Radius="72"/>
-            </Ellipse.Effect>
-        </Ellipse>
+        <Canvas x:Name="OrbContainer6" Width="0" Height="0" RenderTransformOrigin="0.5,0.5">
+            <Canvas.RenderTransform>
+                <RotateTransform Angle="360"/>
+            </Canvas.RenderTransform>
+            <Ellipse x:Name="Orb6"
+                    Canvas.Left="180" Canvas.Top="-200"
+                    Width="620" Height="620"
+                    RenderTransformOrigin="0.5,0.5"
+                    Opacity="0.65">
+                <Ellipse.RenderTransform>
+                    <RotateTransform Angle="-360"/>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF3F51B5" Offset="0"/>
+                        <GradientStop Color="#FF7986CB" Offset="0.3"/>
+                        <GradientStop Color="#803F51B5" Offset="0.6"/>
+                        <GradientStop Color="#003F51B5" Offset="1"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.Effect>
+                    <BlurEffect Radius="72"/>
+                </Ellipse.Effect>
+            </Ellipse>
+        </Canvas>
 
         <!-- Content overlay with higher z-index -->
         <Grid>
