@@ -18,10 +18,10 @@ public partial class VibrantAuroraPage : Page
         // Focus the page so it can receive keyboard input
         Focus();
 
-        // Start all orbital animations
-        for (int i = 1; i <= 12; i++)
+        // Start all gradient rotation animations
+        for (int i = 1; i <= 6; i++)
         {
-            var storyboard = (Storyboard)FindResource($"Orbit{i}");
+            var storyboard = (Storyboard)FindResource($"RotateGradient{i}");
             storyboard.Begin();
         }
     }
