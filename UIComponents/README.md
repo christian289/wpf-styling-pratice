@@ -7,15 +7,17 @@ A modern, customizable WPF custom control library with beautiful styling and smo
 ```
 UIComponents/
 ├── UIComponents.slnx                    # Solution file
-├── UIComponentsControls/                # Custom control library
+├── UIComponentsLibrary/                 # Custom control library
 │   ├── ModernButton.cs
 │   ├── ModernTextBox.cs
 │   ├── ModernToggleSwitch.cs
 │   ├── ModernCard.cs
 │   ├── ModernProgressBar.cs
+│   ├── Converters/
+│   │   └── ValueConverters.cs
 │   ├── Themes/
 │   │   └── Generic.xaml
-│   └── UIComponentsControls.csproj
+│   └── UIComponentsLibrary.csproj
 ├── UIComponentsGallery/                 # Gallery application
 │   ├── App.xaml
 │   ├── MainWindow.xaml
