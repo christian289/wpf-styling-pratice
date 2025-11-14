@@ -2,18 +2,18 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace UIComponentsLibrary;
+namespace UIComponentsBySwetaShahWithBehanceLibrary;
 
-public class ModernCard : ContentControl
+public class UIComponentsBySwetaShahWithBehanceCard : ContentControl
 {
     static ModernCard()
     {
-        DefaultStyleKeyProperty.OverrideMetadata(typeof(ModernCard),
-            new FrameworkPropertyMetadata(typeof(ModernCard)));
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(UIComponentsBySwetaShahWithBehanceCard),
+            new FrameworkPropertyMetadata(typeof(UIComponentsBySwetaShahWithBehanceCard)));
     }
 
     public static readonly DependencyProperty CornerRadiusProperty =
-        DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ModernCard),
+        DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(UIComponentsBySwetaShahWithBehanceCard),
             new PropertyMetadata(new CornerRadius(12)));
 
     public CornerRadius CornerRadius
@@ -23,7 +23,7 @@ public class ModernCard : ContentControl
     }
 
     public static readonly DependencyProperty ElevationProperty =
-        DependencyProperty.Register(nameof(Elevation), typeof(double), typeof(ModernCard),
+        DependencyProperty.Register(nameof(Elevation), typeof(double), typeof(UIComponentsBySwetaShahWithBehanceCard),
             new PropertyMetadata(4.0));
 
     public double Elevation
@@ -33,7 +33,7 @@ public class ModernCard : ContentControl
     }
 
     public static readonly DependencyProperty HeaderProperty =
-        DependencyProperty.Register(nameof(Header), typeof(object), typeof(ModernCard),
+        DependencyProperty.Register(nameof(Header), typeof(object), typeof(UIComponentsBySwetaShahWithBehanceCard),
             new PropertyMetadata(null));
 
     public object Header
@@ -43,7 +43,7 @@ public class ModernCard : ContentControl
     }
 
     public static readonly DependencyProperty IsHoverableProperty =
-        DependencyProperty.Register(nameof(IsHoverable), typeof(bool), typeof(ModernCard),
+        DependencyProperty.Register(nameof(IsHoverable), typeof(bool), typeof(UIComponentsBySwetaShahWithBehanceCard),
             new PropertyMetadata(true));
 
     public bool IsHoverable

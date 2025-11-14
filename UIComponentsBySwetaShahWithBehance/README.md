@@ -1,27 +1,27 @@
-# UI Components
+# UI Components by Sweta Shah (Behance)
 
 A modern, customizable WPF custom control library with beautiful styling and smooth animations.
 
 ## Solution Structure
 
 ```
-UIComponents/
-├── UIComponents.slnx                    # Solution file
-├── UIComponentsLibrary/                 # Custom control library
-│   ├── ModernButton.cs
-│   ├── ModernTextBox.cs
-│   ├── ModernToggleSwitch.cs
-│   ├── ModernCard.cs
-│   ├── ModernProgressBar.cs
+UIComponentsBySwetaShahWithBehance/
+├── UIComponentsBySwetaShahWithBehance.slnx                    # Solution file
+├── UIComponentsBySwetaShahWithBehanceLibrary/                 # Custom control library
+│   ├── UIComponentsBySwetaShahWithBehanceButton.cs
+│   ├── UIComponentsBySwetaShahWithBehanceTextBox.cs
+│   ├── UIComponentsBySwetaShahWithBehanceToggleSwitch.cs
+│   ├── UIComponentsBySwetaShahWithBehanceCard.cs
+│   ├── UIComponentsBySwetaShahWithBehanceProgressBar.cs
 │   ├── Converters/
 │   │   └── ValueConverters.cs
 │   ├── Themes/
 │   │   └── Generic.xaml
-│   └── UIComponentsLibrary.csproj
-├── UIComponentsGallery/                 # Gallery application
+│   └── UIComponentsBySwetaShahWithBehanceLibrary.csproj
+├── UIComponentsBySwetaShahWithBehanceGallery/                 # Gallery application
 │   ├── App.xaml
 │   ├── MainWindow.xaml
-│   └── UIComponentsGallery.csproj
+│   └── UIComponentsBySwetaShahWithBehanceGallery.csproj
 └── README.md
 ```
 
@@ -34,7 +34,7 @@ UIComponents/
 
 ### 🎯 Available Controls
 
-#### ModernButton
+#### UIComponentsBySwetaShahWithBehanceButton
 - Multiple styles: Primary, Success, Warning, Danger, Outline
 - Icon support
 - Hover and press animations
@@ -46,7 +46,7 @@ UIComponents/
 - `CornerRadius`: Custom corner radius (default: 8)
 - `Icon`: Icon text/emoji
 
-#### ModernTextBox
+#### UIComponentsBySwetaShahWithBehanceTextBox
 - Placeholder text support
 - Icon support
 - Focus animations
@@ -58,7 +58,7 @@ UIComponents/
 - `Icon`: Icon text/emoji
 - `CornerRadius`: Custom corner radius (default: 8)
 
-#### ModernToggleSwitch
+#### UIComponentsBySwetaShahWithBehanceToggleSwitch
 - Smooth slide animation
 - Custom ON/OFF text
 - Hover effects
@@ -68,7 +68,7 @@ UIComponents/
 - `OnText`: Text when checked (default: "ON")
 - `OffText`: Text when unchecked (default: "OFF")
 
-#### ModernCard
+#### UIComponentsBySwetaShahWithBehanceCard
 - Elevation/shadow effects
 - Hover animations
 - Optional header
@@ -80,7 +80,7 @@ UIComponents/
 - `Elevation`: Shadow blur radius (default: 4)
 - `IsHoverable`: Enable hover effect (default: true)
 
-#### ModernProgressBar
+#### UIComponentsBySwetaShahWithBehanceProgressBar
 - Gradient fill
 - Percentage display option
 - Smooth animations
@@ -94,7 +94,7 @@ UIComponents/
 
 ## Installation
 
-1. Build the UIComponentsControls project
+1. Build the UIComponentsBySwetaShahWithBehanceControls project
 2. Reference the library in your WPF application
 3. Add the resource dictionary to your App.xaml
 
@@ -102,7 +102,7 @@ UIComponents/
 <Application.Resources>
     <ResourceDictionary>
         <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="pack://application:,,,/UIComponentsControls;component/Themes/Generic.xaml"/>
+            <ResourceDictionary Source="pack://application:,,,/UIComponentsBySwetaShahWithBehanceControls;component/Themes/Generic.xaml"/>
         </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
 </Application.Resources>
@@ -112,44 +112,44 @@ UIComponents/
 
 ### XAML Namespace
 ```xml
-xmlns:ui="clr-namespace:UIComponentsControls;assembly=UIComponentsControls"
+xmlns:ui="clr-namespace:UIComponentsBySwetaShahWithBehanceControls;assembly=UIComponentsBySwetaShahWithBehanceControls"
 ```
 
 ### Examples
 
 #### Button
 ```xml
-<ui:ModernButton Content="Click Me"
+<ui:UIComponentsBySwetaShahWithBehanceButton Content="Click Me"
                  ButtonStyle="Primary"
                  Click="Button_Click"/>
 ```
 
 #### TextBox
 ```xml
-<ui:ModernTextBox Placeholder="Enter your name..."
+<ui:UIComponentsBySwetaShahWithBehanceTextBox Placeholder="Enter your name..."
                   Width="300"/>
 ```
 
 #### Toggle Switch
 ```xml
-<ui:ModernToggleSwitch IsChecked="True"
+<ui:UIComponentsBySwetaShahWithBehanceToggleSwitch IsChecked="True"
                        OnText="ON"
                        OffText="OFF"/>
 ```
 
 #### Card
 ```xml
-<ui:ModernCard Elevation="8">
+<ui:UIComponentsBySwetaShahWithBehanceCard Elevation="8">
     <StackPanel>
         <TextBlock Text="Card Title" FontSize="18" FontWeight="SemiBold"/>
         <TextBlock Text="Card content goes here..." />
     </StackPanel>
-</ui:ModernCard>
+</ui:UIComponentsBySwetaShahWithBehanceCard>
 ```
 
 #### Progress Bar
 ```xml
-<ui:ModernProgressBar Value="75"
+<ui:UIComponentsBySwetaShahWithBehanceProgressBar Value="75"
                       Maximum="100"
                       ShowPercentage="True"
                       Height="24"/>
@@ -171,33 +171,33 @@ xmlns:ui="clr-namespace:UIComponentsControls;assembly=UIComponentsControls"
 
 ### Build the entire solution
 ```bash
-cd UIComponents
-dotnet build UIComponents.slnx
+cd UIComponentsBySwetaShahWithBehance
+dotnet build UIComponentsBySwetaShahWithBehance.slnx
 ```
 
 ### Build individual projects
 ```bash
 # Build controls library
-cd UIComponents/UIComponentsControls
+cd UIComponentsBySwetaShahWithBehance/UIComponentsBySwetaShahWithBehanceControls
 dotnet build
 
 # Build gallery application
-cd UIComponents/UIComponentsGallery
+cd UIComponentsBySwetaShahWithBehance/UIComponentsBySwetaShahWithBehanceGallery
 dotnet build
 ```
 
 ## Gallery Application
 
-The UIComponentsGallery project provides a comprehensive showcase of all available controls with various configurations and examples. Run the gallery to see all controls in action.
+The UIComponentsBySwetaShahWithBehanceGallery project provides a comprehensive showcase of all available controls with various configurations and examples. Run the gallery to see all controls in action.
 
 ```bash
-cd UIComponents/UIComponentsGallery
+cd UIComponentsBySwetaShahWithBehance/UIComponentsBySwetaShahWithBehanceGallery
 dotnet run
 ```
 
 ## Opening in Visual Studio
 
-Open `UIComponents.slnx` in Visual Studio 2022 or later to work with both projects in a single solution.
+Open `UIComponentsBySwetaShahWithBehance.slnx` in Visual Studio 2022 or later to work with both projects in a single solution.
 
 ## Requirements
 

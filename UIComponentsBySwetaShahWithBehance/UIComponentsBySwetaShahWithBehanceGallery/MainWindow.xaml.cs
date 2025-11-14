@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace UIComponentsGallery;
+namespace UIComponentsBySwetaShahWithBehanceGallery;
 
 public partial class MainWindow : Window
 {

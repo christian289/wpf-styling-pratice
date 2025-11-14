@@ -1,18 +1,18 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace UIComponentsLibrary;
+namespace UIComponentsBySwetaShahWithBehanceLibrary;
 
-public class ModernProgressBar : ProgressBar
+public class UIComponentsBySwetaShahWithBehanceProgressBar : ProgressBar
 {
     static ModernProgressBar()
     {
-        DefaultStyleKeyProperty.OverrideMetadata(typeof(ModernProgressBar),
-            new FrameworkPropertyMetadata(typeof(ModernProgressBar)));
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(UIComponentsBySwetaShahWithBehanceProgressBar),
+            new FrameworkPropertyMetadata(typeof(UIComponentsBySwetaShahWithBehanceProgressBar)));
     }
 
     public static readonly DependencyProperty CornerRadiusProperty =
-        DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ModernProgressBar),
+        DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(UIComponentsBySwetaShahWithBehanceProgressBar),
             new PropertyMetadata(new CornerRadius(10)));
 
     public CornerRadius CornerRadius
@@ -22,7 +22,7 @@ public class ModernProgressBar : ProgressBar
     }
 
     public static readonly DependencyProperty ProgressColorProperty =
-        DependencyProperty.Register(nameof(ProgressColor), typeof(System.Windows.Media.Brush), typeof(ModernProgressBar),
+        DependencyProperty.Register(nameof(ProgressColor), typeof(System.Windows.Media.Brush), typeof(UIComponentsBySwetaShahWithBehanceProgressBar),
             new PropertyMetadata(null));
 
     public System.Windows.Media.Brush ProgressColor
@@ -32,7 +32,7 @@ public class ModernProgressBar : ProgressBar
     }
 
     public static readonly DependencyProperty ShowPercentageProperty =
-        DependencyProperty.Register(nameof(ShowPercentage), typeof(bool), typeof(ModernProgressBar),
+        DependencyProperty.Register(nameof(ShowPercentage), typeof(bool), typeof(UIComponentsBySwetaShahWithBehanceProgressBar),
             new PropertyMetadata(false));
 
     public bool ShowPercentage

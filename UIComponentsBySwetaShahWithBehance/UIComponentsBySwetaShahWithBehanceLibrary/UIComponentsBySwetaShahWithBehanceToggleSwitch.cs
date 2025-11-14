@@ -1,18 +1,18 @@
 using System.Windows;
 using System.Windows.Controls.Primitives;
 
-namespace UIComponentsLibrary;
+namespace UIComponentsBySwetaShahWithBehanceLibrary;
 
-public class ModernToggleSwitch : ToggleButton
+public class UIComponentsBySwetaShahWithBehanceToggleSwitch : ToggleButton
 {
     static ModernToggleSwitch()
     {
-        DefaultStyleKeyProperty.OverrideMetadata(typeof(ModernToggleSwitch),
-            new FrameworkPropertyMetadata(typeof(ModernToggleSwitch)));
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(UIComponentsBySwetaShahWithBehanceToggleSwitch),
+            new FrameworkPropertyMetadata(typeof(UIComponentsBySwetaShahWithBehanceToggleSwitch)));
     }
 
     public static readonly DependencyProperty OnTextProperty =
-        DependencyProperty.Register(nameof(OnText), typeof(string), typeof(ModernToggleSwitch),
+        DependencyProperty.Register(nameof(OnText), typeof(string), typeof(UIComponentsBySwetaShahWithBehanceToggleSwitch),
             new PropertyMetadata("ON"));
 
     public string OnText
@@ -22,7 +22,7 @@ public class ModernToggleSwitch : ToggleButton
     }
 
     public static readonly DependencyProperty OffTextProperty =
-        DependencyProperty.Register(nameof(OffText), typeof(string), typeof(ModernToggleSwitch),
+        DependencyProperty.Register(nameof(OffText), typeof(string), typeof(UIComponentsBySwetaShahWithBehanceToggleSwitch),
             new PropertyMetadata("OFF"));
 
     public string OffText

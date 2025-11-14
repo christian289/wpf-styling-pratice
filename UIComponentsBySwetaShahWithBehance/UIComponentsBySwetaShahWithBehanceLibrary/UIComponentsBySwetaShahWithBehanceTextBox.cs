@@ -2,18 +2,18 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace UIComponentsLibrary;
+namespace UIComponentsBySwetaShahWithBehanceLibrary;
 
-public class ModernTextBox : TextBox
+public class UIComponentsBySwetaShahWithBehanceTextBox : TextBox
 {
     static ModernTextBox()
     {
-        DefaultStyleKeyProperty.OverrideMetadata(typeof(ModernTextBox),
-            new FrameworkPropertyMetadata(typeof(ModernTextBox)));
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(UIComponentsBySwetaShahWithBehanceTextBox),
+            new FrameworkPropertyMetadata(typeof(UIComponentsBySwetaShahWithBehanceTextBox)));
     }
 
     public static readonly DependencyProperty CornerRadiusProperty =
-        DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ModernTextBox),
+        DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(UIComponentsBySwetaShahWithBehanceTextBox),
             new PropertyMetadata(new CornerRadius(8)));
 
     public CornerRadius CornerRadius
@@ -23,7 +23,7 @@ public class ModernTextBox : TextBox
     }
 
     public static readonly DependencyProperty PlaceholderProperty =
-        DependencyProperty.Register(nameof(Placeholder), typeof(string), typeof(ModernTextBox),
+        DependencyProperty.Register(nameof(Placeholder), typeof(string), typeof(UIComponentsBySwetaShahWithBehanceTextBox),
             new PropertyMetadata(string.Empty));
 
     public string Placeholder
@@ -33,7 +33,7 @@ public class ModernTextBox : TextBox
     }
 
     public static readonly DependencyProperty IconProperty =
-        DependencyProperty.Register(nameof(Icon), typeof(string), typeof(ModernTextBox),
+        DependencyProperty.Register(nameof(Icon), typeof(string), typeof(UIComponentsBySwetaShahWithBehanceTextBox),
             new PropertyMetadata(string.Empty));
 
     public string Icon

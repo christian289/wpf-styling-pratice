@@ -5,8 +5,8 @@
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>UIComponentsLibrary</AssemblyName>
-    <RootNamespace>UIComponentsLibrary</RootNamespace>
+    <AssemblyName>UIComponentsBySwetaShahWithBehanceLibrary</AssemblyName>
+    <RootNamespace>UIComponentsBySwetaShahWithBehanceLibrary</RootNamespace>
   </PropertyGroup>
 
 </Project>

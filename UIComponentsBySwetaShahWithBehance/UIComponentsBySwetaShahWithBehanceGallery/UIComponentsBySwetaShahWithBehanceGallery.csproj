@@ -6,12 +6,12 @@
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>UIComponentsGallery</AssemblyName>
-    <RootNamespace>UIComponentsGallery</RootNamespace>
+    <AssemblyName>UIComponentsBySwetaShahWithBehanceGallery</AssemblyName>
+    <RootNamespace>UIComponentsBySwetaShahWithBehanceGallery</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UIComponentsLibrary\UIComponentsLibrary.csproj" />
+    <ProjectReference Include="..\UIComponentsBySwetaShahWithBehanceLibrary\UIComponentsBySwetaShahWithBehanceLibrary.csproj" />
   </ItemGroup>
 
 </Project>
