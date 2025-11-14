@@ -1,0 +1,252 @@
+<Page x:Class="AuroraBackground.DeepAuroraPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Deep Aurora"
+      KeyDown="Page_KeyDown"
+      Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <!--  Rotation Animations for Gradients  -->
+        <Storyboard x:Key="RotateGradient1"
+                    RepeatBehavior="Forever">
+            <DoubleAnimation Storyboard.TargetName="GradientLayer1"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                             From="0"
+                             To="360"
+                             Duration="0:0:45" />
+        </Storyboard>
+
+        <Storyboard x:Key="RotateGradient2"
+                    RepeatBehavior="Forever">
+            <DoubleAnimation Storyboard.TargetName="GradientLayer2"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                             From="360"
+                             To="0"
+                             Duration="0:0:38" />
+        </Storyboard>
+
+        <Storyboard x:Key="RotateGradient3"
+                    RepeatBehavior="Forever">
+            <DoubleAnimation Storyboard.TargetName="GradientLayer3"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                             From="0"
+                             To="360"
+                             Duration="0:0:52" />
+        </Storyboard>
+
+        <Storyboard x:Key="RotateGradient4"
+                    RepeatBehavior="Forever">
+            <DoubleAnimation Storyboard.TargetName="GradientLayer4"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                             From="360"
+                             To="0"
+                             Duration="0:0:41" />
+        </Storyboard>
+
+        <Storyboard x:Key="RotateGradient5"
+                    RepeatBehavior="Forever">
+            <DoubleAnimation Storyboard.TargetName="GradientLayer5"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                             From="0"
+                             To="360"
+                             Duration="0:0:48" />
+        </Storyboard>
+
+        <Storyboard x:Key="RotateGradient6"
+                    RepeatBehavior="Forever">
+            <DoubleAnimation Storyboard.TargetName="GradientLayer6"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                             From="360"
+                             To="0"
+                             Duration="0:0:35" />
+        </Storyboard>
+    </Page.Resources>
+
+    <Grid>
+        <!--  Base solid color to prevent any white gaps  -->
+        <Rectangle Fill="#FFE8D5F5" />
+
+        <!--  Gradient Layer 1: Deep Pink to Light Pink  -->
+        <Rectangle x:Name="GradientLayer1"
+                   Opacity="0.85"
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <RotateTransform Angle="0" />
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Offset="0" Color="#FFFF1493" />
+                    <GradientStop Offset="0.3" Color="#FFFFB3E6" />
+                    <GradientStop Offset="0.5" Color="#FFFF69B4" />
+                    <GradientStop Offset="0.7" Color="#FFFFC9DE" />
+                    <GradientStop Offset="1" Color="#FFFF1493" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!--  Gradient Layer 2: Deep Purple to Lavender  -->
+        <Rectangle x:Name="GradientLayer2"
+                   Opacity="0.75"
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <RotateTransform Angle="60" />
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Offset="0" Color="#FF9C27B0" />
+                    <GradientStop Offset="0.25" Color="#FFE1BEE7" />
+                    <GradientStop Offset="0.5" Color="#FFBA68C8" />
+                    <GradientStop Offset="0.75" Color="#FFF3E5F5" />
+                    <GradientStop Offset="1" Color="#FF9C27B0" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!--  Gradient Layer 3: Deep Blue to Light Sky  -->
+        <Rectangle x:Name="GradientLayer3"
+                   Opacity="0.7"
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <RotateTransform Angle="120" />
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Offset="0" Color="#FF2196F3" />
+                    <GradientStop Offset="0.3" Color="#FFB3E5FC" />
+                    <GradientStop Offset="0.5" Color="#FF64B5F6" />
+                    <GradientStop Offset="0.7" Color="#FFE1F5FE" />
+                    <GradientStop Offset="1" Color="#FF2196F3" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!--  Gradient Layer 4: Deep Cyan to Light Aqua  -->
+        <Rectangle x:Name="GradientLayer4"
+                   Opacity="0.65"
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <RotateTransform Angle="180" />
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Offset="0" Color="#FF00BCD4" />
+                    <GradientStop Offset="0.25" Color="#FFB2EBF2" />
+                    <GradientStop Offset="0.5" Color="#FF26C6DA" />
+                    <GradientStop Offset="0.75" Color="#FFE0F7FA" />
+                    <GradientStop Offset="1" Color="#FF00BCD4" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!--  Gradient Layer 5: Deep Green to Light Mint  -->
+        <Rectangle x:Name="GradientLayer5"
+                   Opacity="0.6"
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <RotateTransform Angle="240" />
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Offset="0" Color="#FF00E676" />
+                    <GradientStop Offset="0.3" Color="#FFC8E6C9" />
+                    <GradientStop Offset="0.5" Color="#FF69F0AE" />
+                    <GradientStop Offset="0.7" Color="#FFE8F5E9" />
+                    <GradientStop Offset="1" Color="#FF00E676" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!--  Gradient Layer 6: Deep Orange to Light Peach  -->
+        <Rectangle x:Name="GradientLayer6"
+                   Opacity="0.55"
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <RotateTransform Angle="300" />
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Offset="0" Color="#FFFF9800" />
+                    <GradientStop Offset="0.25" Color="#FFFFCCBC" />
+                    <GradientStop Offset="0.5" Color="#FFFFB74D" />
+                    <GradientStop Offset="0.75" Color="#FFFFF3E0" />
+                    <GradientStop Offset="1" Color="#FFFF9800" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!--  Content overlay  -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBlock Margin="0,0,0,20"
+                           HorizontalAlignment="Center"
+                           FontSize="72"
+                           FontWeight="Black"
+                           Foreground="White"
+                           Text="DEEP AURORA">
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="40"
+                                          Opacity="0.9"
+                                          ShadowDepth="0"
+                                          Color="#9C27B0" />
+                    </TextBlock.Effect>
+                </TextBlock>
+
+                <TextBlock Margin="0,0,0,30"
+                           HorizontalAlignment="Center"
+                           FontSize="28"
+                           FontWeight="Light"
+                           Foreground="White"
+                           Text="Rotating linear gradients">
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="20"
+                                          Opacity="0.8"
+                                          ShadowDepth="0"
+                                          Color="#FF1493" />
+                    </TextBlock.Effect>
+                </TextBlock>
+
+                <Border Padding="40,15"
+                        HorizontalAlignment="Center"
+                        Background="#50FFFFFF"
+                        BorderBrush="#90FFFFFF"
+                        BorderThickness="2"
+                        CornerRadius="25">
+                    <TextBlock FontSize="18"
+                               FontWeight="SemiBold"
+                               Foreground="White"
+                               Text="🌈 6 Gradient Layers  •  💫 Smooth Rotation  •  🎨 No Empty Spaces"
+                               TextAlignment="Center">
+                        <TextBlock.Effect>
+                            <DropShadowEffect BlurRadius="15"
+                                              Opacity="0.7"
+                                              ShadowDepth="0"
+                                              Color="#2196F3" />
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </Border>
+
+                <TextBlock Margin="0,30,0,0"
+                           HorizontalAlignment="Center"
+                           FontSize="16"
+                           Foreground="White"
+                           Opacity="0.9"
+                           Text="Press ESC to return to menu">
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="10"
+                                          Opacity="0.6"
+                                          ShadowDepth="0"
+                                          Color="#00BCD4" />
+                    </TextBlock.Effect>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
