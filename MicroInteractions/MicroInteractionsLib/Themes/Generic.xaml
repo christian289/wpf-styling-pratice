@@ -1020,4 +1020,248 @@
         </Setter>
     </Style>
 
+    <!-- ========================================
+         2020 MicroInteractions 추가 예시
+         (Aaron Iker 스타일 - 확장 효과)
+         ======================================== -->
+
+    <!-- ExpandingIconButton - 클릭 시 원형 배경이 확장되는 버튼 -->
+    <Style x:Key="ExpandingIconButton" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Height" Value="120"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <!-- 확장되는 원형 배경 -->
+                        <Ellipse x:Name="expandingCircle"
+                                 Fill="{StaticResource PrimaryBrush}"
+                                 Width="0"
+                                 Height="0"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Opacity="0"/>
+
+                        <!-- 테두리 원 -->
+                        <Ellipse Stroke="{StaticResource PrimaryBrush}"
+                                 StrokeThickness="2"
+                                 Width="80"
+                                 Height="80"/>
+
+                        <!-- 아이콘/텍스트 -->
+                        <ContentPresenter x:Name="content"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextElement.Foreground="{TemplateBinding Foreground}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- 원형 배경 확장 -->
+                                        <DoubleAnimation Storyboard.TargetName="expandingCircle"
+                                                         Storyboard.TargetProperty="Width"
+                                                         From="0"
+                                                         To="150"
+                                                         Duration="0:0:0.6">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="expandingCircle"
+                                                         Storyboard.TargetProperty="Height"
+                                                         From="0"
+                                                         To="150"
+                                                         Duration="0:0:0.6">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="expandingCircle"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="0.3"
+                                                         To="0"
+                                                         Duration="0:0:0.6"/>
+                                        <!-- 콘텐츠 색상 변경 -->
+                                        <ColorAnimation Storyboard.TargetName="content"
+                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                        To="White"
+                                                        Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="content"
+                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                        To="{StaticResource PrimaryColor}"
+                                                        Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- AnimatedMenuButton - 햄버거 메뉴 ↔ X 전환 애니메이션 -->
+    <Style x:Key="AnimatedMenuButton" TargetType="ToggleButton">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Canvas Width="30" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <!-- Top Line -->
+                            <Rectangle x:Name="topLine"
+                                       Width="30" Height="3"
+                                       Fill="{StaticResource DarkBrush}"
+                                       Canvas.Top="0"
+                                       RenderTransformOrigin="0.5,0.5">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <RotateTransform x:Name="topRotate" Angle="0"/>
+                                        <TranslateTransform x:Name="topTranslate" Y="0"/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+
+                            <!-- Middle Line -->
+                            <Rectangle x:Name="middleLine"
+                                       Width="30" Height="3"
+                                       Fill="{StaticResource DarkBrush}"
+                                       Canvas.Top="10.5"
+                                       Opacity="1"/>
+
+                            <!-- Bottom Line -->
+                            <Rectangle x:Name="bottomLine"
+                                       Width="30" Height="3"
+                                       Fill="{StaticResource DarkBrush}"
+                                       Canvas.Top="21"
+                                       RenderTransformOrigin="0.5,0.5">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <RotateTransform x:Name="bottomRotate" Angle="0"/>
+                                        <TranslateTransform x:Name="bottomTranslate" Y="0"/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                        </Canvas>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Top Line: 회전 + 이동 -->
+                                        <DoubleAnimation Storyboard.TargetName="topRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="45"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="topTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="10.5"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <!-- Middle Line: 사라짐 -->
+                                        <DoubleAnimation Storyboard.TargetName="middleLine"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.2"/>
+
+                                        <!-- Bottom Line: 회전 + 이동 -->
+                                        <DoubleAnimation Storyboard.TargetName="bottomRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="-45"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="bottomTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-10.5"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="topRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="0"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="topTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <DoubleAnimation Storyboard.TargetName="middleLine"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.2"
+                                                         BeginTime="0:0:0.1"/>
+
+                                        <DoubleAnimation Storyboard.TargetName="bottomRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="0"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="bottomTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#F3F4F6"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

@@ -27,6 +27,7 @@ public partial class MainWindow : Window
         SelectionSection.Visibility = Visibility.Collapsed;
         NavigationSection.Visibility = Visibility.Collapsed;
         ProgressSection.Visibility = Visibility.Collapsed;
+        AaronIkerSection.Visibility = Visibility.Collapsed;
         AllSection.Visibility = Visibility.Collapsed;
 
         // Show selected section based on Tag
@@ -46,6 +47,9 @@ public partial class MainWindow : Window
                 break;
             case "Progress":
                 ProgressSection.Visibility = Visibility.Visible;
+                break;
+            case "AaronIker":
+                AaronIkerSection.Visibility = Visibility.Visible;
                 break;
             case "All":
                 AllSection.Visibility = Visibility.Visible;
