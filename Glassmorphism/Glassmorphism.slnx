@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="GlassmorphismLib\GlassmorphismLib.csproj" Type="C#" />
+  <Project Path="GlassmorphismGallery\GlassmorphismGallery.csproj" Type="C#" />
+</Solution>
