@@ -6,7 +6,7 @@ namespace UIComponentsBySwetaShahWithBehanceLibrary;
 
 public class UIComponentsBySwetaShahWithBehanceTextBox : TextBox
 {
-    static ModernTextBox()
+    static UIComponentsBySwetaShahWithBehanceTextBox()
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(UIComponentsBySwetaShahWithBehanceTextBox),
             new FrameworkPropertyMetadata(typeof(UIComponentsBySwetaShahWithBehanceTextBox)));

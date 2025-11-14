@@ -6,7 +6,7 @@ namespace UIComponentsBySwetaShahWithBehanceLibrary;
 
 public class UIComponentsBySwetaShahWithBehanceCard : ContentControl
 {
-    static ModernCard()
+    static UIComponentsBySwetaShahWithBehanceCard()
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(UIComponentsBySwetaShahWithBehanceCard),
             new FrameworkPropertyMetadata(typeof(UIComponentsBySwetaShahWithBehanceCard)));

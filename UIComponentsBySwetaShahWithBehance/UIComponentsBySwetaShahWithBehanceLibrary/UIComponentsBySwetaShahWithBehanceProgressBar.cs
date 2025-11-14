@@ -5,7 +5,7 @@ namespace UIComponentsBySwetaShahWithBehanceLibrary;
 
 public class UIComponentsBySwetaShahWithBehanceProgressBar : ProgressBar
 {
-    static ModernProgressBar()
+    static UIComponentsBySwetaShahWithBehanceProgressBar()
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(UIComponentsBySwetaShahWithBehanceProgressBar),
             new FrameworkPropertyMetadata(typeof(UIComponentsBySwetaShahWithBehanceProgressBar)));

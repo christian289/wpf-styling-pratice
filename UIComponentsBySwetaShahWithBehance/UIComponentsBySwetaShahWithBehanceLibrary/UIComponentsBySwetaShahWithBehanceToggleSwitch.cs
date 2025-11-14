@@ -5,7 +5,7 @@ namespace UIComponentsBySwetaShahWithBehanceLibrary;
 
 public class UIComponentsBySwetaShahWithBehanceToggleSwitch : ToggleButton
 {
-    static ModernToggleSwitch()
+    static UIComponentsBySwetaShahWithBehanceToggleSwitch()
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(UIComponentsBySwetaShahWithBehanceToggleSwitch),
             new FrameworkPropertyMetadata(typeof(UIComponentsBySwetaShahWithBehanceToggleSwitch)));
