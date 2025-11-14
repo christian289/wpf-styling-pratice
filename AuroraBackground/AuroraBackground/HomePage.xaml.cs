@@ -19,4 +19,9 @@ public partial class HomePage : Page
     {
         NavigationService?.Navigate(new FullScreenAuroraPage());
     }
+
+    private void NavigateToVibrantAurora(object sender, RoutedEventArgs e)
+    {
+        NavigationService?.Navigate(new VibrantAuroraPage());
+    }
 }
