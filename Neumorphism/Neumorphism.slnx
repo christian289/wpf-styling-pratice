@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="NeumorphismLib\NeumorphismLib.csproj" Type="C#" />
+  <Project Path="NeumorphismGallery\NeumorphismGallery.csproj" Type="C#" />
+</Solution>

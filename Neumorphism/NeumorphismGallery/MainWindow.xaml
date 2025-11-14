@@ -1,0 +1,416 @@
+<Window x:Class="NeumorphismGallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Neumorphism Gallery - Soft UI (2021 Trend)"
+        Height="900" Width="1400"
+        Background="#E0E5EC"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Navigation Sidebar with Neumorphism -->
+        <Border Grid.Column="0"
+                Background="#E0E5EC"
+                CornerRadius="0,20,20,0"
+                Margin="0,20,10,20">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0"
+                                  Direction="135"
+                                  Color="#A3B1C6"
+                                  BlurRadius="20"
+                                  Opacity="0.5"/>
+            </Border.Effect>
+            <Grid>
+                <Border CornerRadius="0,20,20,0">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0"
+                                          Direction="315"
+                                          Color="#FFFFFF"
+                                          BlurRadius="20"
+                                          Opacity="0.8"/>
+                    </Border.Effect>
+                </Border>
+                <StackPanel Margin="30,40,20,40">
+                    <TextBlock Text="Neumorphism"
+                              FontSize="28"
+                              FontWeight="Bold"
+                              Foreground="#4A5568"
+                              Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Soft UI Gallery"
+                              FontSize="14"
+                              Foreground="#718096"
+                              Margin="0,0,0,40"/>
+
+                    <TextBlock Text="CONTROLS"
+                              FontSize="11"
+                              Foreground="#A0AEC0"
+                              FontWeight="SemiBold"
+                              Margin="0,0,0,15"/>
+
+                    <ListBox x:Name="NavigationList"
+                             Background="Transparent"
+                             BorderThickness="0">
+                        <ListBoxItem Content="Buttons" Tag="Buttons"/>
+                        <ListBoxItem Content="Input Controls" Tag="Inputs"/>
+                        <ListBoxItem Content="Selection Controls" Tag="Selection"/>
+                        <ListBoxItem Content="Navigation" Tag="Navigation"/>
+                        <ListBoxItem Content="Progress &amp; Sliders" Tag="Progress"/>
+                        <ListBoxItem Content="All Controls" Tag="All"/>
+                    </ListBox>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Main Content Area -->
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="40">
+                <!-- Header -->
+                <TextBlock Text="Neumorphism Design System"
+                          FontSize="36"
+                          FontWeight="Bold"
+                          Foreground="#4A5568"
+                          Margin="0,0,0,10"/>
+
+                <TextBlock Text="2021 트렌드 - 입체적인 Soft UI 효과로 깊이감과 부드러움을 표현"
+                          FontSize="14"
+                          Foreground="#718096"
+                          Margin="0,0,0,50"/>
+
+                <!-- Buttons Section -->
+                <StackPanel x:Name="ButtonsSection" Visibility="Visible">
+                    <TextBlock Text="Buttons"
+                              FontSize="28"
+                              FontWeight="SemiBold"
+                              Foreground="#4A5568"
+                              Margin="0,0,0,20"/>
+
+                    <TextBlock Text="Dual shadow effect - 밝은 그림자 (왼쪽 위) + 어두운 그림자 (오른쪽 아래)"
+                              FontSize="12"
+                              Foreground="#718096"
+                              Margin="0,0,0,15"/>
+
+                    <WrapPanel Margin="0,0,0,30">
+                        <Button Content="Primary" Margin="0,0,15,15" Padding="30,14"/>
+                        <Button Content="Action" Margin="0,0,15,15" Padding="30,14"/>
+                        <Button Content="Submit" Margin="0,0,15,15" Padding="30,14"/>
+                        <Button Content="Cancel" Margin="0,0,15,15" Padding="30,14"/>
+                    </WrapPanel>
+
+                    <TextBlock Text="Toggle Buttons - Pressed 상태에서 inner shadow 효과"
+                              FontSize="16"
+                              FontWeight="SemiBold"
+                              Foreground="#4A5568"
+                              Margin="0,20,0,15"/>
+
+                    <WrapPanel Margin="0,0,0,50">
+                        <ToggleButton Content="Option 1" Margin="0,0,15,15" Padding="28,12"/>
+                        <ToggleButton Content="Option 2" IsChecked="True" Margin="0,0,15,15" Padding="28,12"/>
+                        <ToggleButton Content="Option 3" Margin="0,0,15,15" Padding="28,12"/>
+                    </WrapPanel>
+                </StackPanel>
+
+                <!-- Input Controls Section -->
+                <StackPanel x:Name="InputsSection" Visibility="Collapsed">
+                    <TextBlock Text="Input Controls"
+                              FontSize="28"
+                              FontWeight="SemiBold"
+                              Foreground="#4A5568"
+                              Margin="0,0,0,20"/>
+
+                    <TextBlock Text="TextBox - Inset shadow 효과로 눌린 느낌"
+                              FontSize="16"
+                              FontWeight="SemiBold"
+                              Foreground="#4A5568"
+                              Margin="0,0,0,15"/>
+
+                    <TextBox Text="Sample text input" Margin="0,0,0,15" Width="400" HorizontalAlignment="Left"/>
+                    <TextBox Text="Focus me to see accent color" Margin="0,0,0,15" Width="400" HorizontalAlignment="Left"/>
+                    <TextBox IsEnabled="False" Text="Disabled input" Margin="0,0,0,50" Width="400" HorizontalAlignment="Left"/>
+                </StackPanel>
+
+                <!-- Selection Controls Section -->
+                <StackPanel x:Name="SelectionSection" Visibility="Collapsed">
+                    <TextBlock Text="Selection Controls"
+                              FontSize="28"
+                              FontWeight="SemiBold"
+                              Foreground="#4A5568"
+                              Margin="0,0,0,20"/>
+
+                    <TextBlock Text="CheckBox - Soft UI 스타일"
+                              FontSize="16"
+                              FontWeight="SemiBold"
+                              Foreground="#4A5568"
+                              Margin="0,0,0,15"/>
+
+                    <StackPanel Margin="0,0,0,35">
+                        <CheckBox Content="Enable notifications" Margin="0,0,0,12"/>
+                        <CheckBox Content="Auto-save documents" IsChecked="True" Margin="0,0,0,12"/>
+                        <CheckBox Content="Dark mode preference" Margin="0,0,0,12"/>
+                        <CheckBox Content="Disabled option" IsEnabled="False" Margin="0,0,0,12"/>
+                    </StackPanel>
+
+                    <TextBlock Text="RadioButton - 부드러운 원형 디자인"
+                              FontSize="16"
+                              FontWeight="SemiBold"
+                              Foreground="#4A5568"
+                              Margin="0,0,0,15"/>
+
+                    <StackPanel Margin="0,0,0,35">
+                        <RadioButton Content="Small size" GroupName="Size" IsChecked="True" Margin="0,0,0,12"/>
+                        <RadioButton Content="Medium size" GroupName="Size" Margin="0,0,0,12"/>
+                        <RadioButton Content="Large size" GroupName="Size" Margin="0,0,0,12"/>
+                        <RadioButton Content="Disabled size" GroupName="Size" IsEnabled="False" Margin="0,0,0,12"/>
+                    </StackPanel>
+
+                    <TextBlock Text="ComboBox - Elevated dropdown"
+                              FontSize="16"
+                              FontWeight="SemiBold"
+                              Foreground="#4A5568"
+                              Margin="0,0,0,15"/>
+
+                    <ComboBox Width="350" HorizontalAlignment="Left" Margin="0,0,0,20">
+                        <ComboBoxItem Content="Neumorphism Design" IsSelected="True"/>
+                        <ComboBoxItem Content="Soft UI Components"/>
+                        <ComboBoxItem Content="3D Shadow Effects"/>
+                        <ComboBoxItem Content="Elevated Elements"/>
+                        <ComboBoxItem Content="Pressed State"/>
+                    </ComboBox>
+
+                    <TextBlock Text="ListBox - Soft container"
+                              FontSize="16"
+                              FontWeight="SemiBold"
+                              Foreground="#4A5568"
+                              Margin="0,20,0,15"/>
+
+                    <ListBox Width="350" Height="200" HorizontalAlignment="Left" Margin="0,0,0,50">
+                        <ListBoxItem Content="Item with hover effect"/>
+                        <ListBoxItem Content="Selectable list item"/>
+                        <ListBoxItem Content="Neumorphism styling"/>
+                        <ListBoxItem Content="Soft UI design"/>
+                        <ListBoxItem Content="3D appearance"/>
+                        <ListBoxItem Content="Shadow depth"/>
+                    </ListBox>
+                </StackPanel>
+
+                <!-- Navigation Section -->
+                <StackPanel x:Name="NavigationSection" Visibility="Collapsed">
+                    <TextBlock Text="Navigation Controls"
+                              FontSize="28"
+                              FontWeight="SemiBold"
+                              Foreground="#4A5568"
+                              Margin="0,0,0,20"/>
+
+                    <TextBlock Text="TabControl - Selected 탭은 pressed 효과 (inner shadow)"
+                              FontSize="12"
+                              Foreground="#718096"
+                              Margin="0,0,0,15"/>
+
+                    <TabControl Height="400" Margin="0,0,0,50">
+                        <TabItem Header="Home">
+                            <StackPanel Padding="20">
+                                <TextBlock Text="Home Tab Content"
+                                          FontSize="20"
+                                          FontWeight="SemiBold"
+                                          Foreground="#4A5568"
+                                          Margin="0,0,0,15"/>
+                                <TextBlock Text="Neumorphism (뉴모피즘)은 2021년에 인기를 얻은 UI 디자인 트렌드입니다."
+                                          Foreground="#718096"
+                                          TextWrapping="Wrap"
+                                          Margin="0,0,0,10"/>
+                                <TextBlock Text="밝은 그림자와 어두운 그림자를 동시에 사용하여 입체적인 효과를 만듭니다."
+                                          Foreground="#718096"
+                                          TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Design">
+                            <StackPanel Padding="20">
+                                <TextBlock Text="Design Principles"
+                                          FontSize="20"
+                                          FontWeight="SemiBold"
+                                          Foreground="#4A5568"
+                                          Margin="0,0,0,15"/>
+                                <TextBlock Text="• Soft shadows for depth perception"
+                                          Foreground="#718096"
+                                          Margin="0,0,0,8"/>
+                                <TextBlock Text="• Light background colors (#E0E5EC)"
+                                          Foreground="#718096"
+                                          Margin="0,0,0,8"/>
+                                <TextBlock Text="• Dual shadow system (light + dark)"
+                                          Foreground="#718096"
+                                          Margin="0,0,0,8"/>
+                                <TextBlock Text="• Smooth rounded corners"
+                                          Foreground="#718096"/>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Effects">
+                            <StackPanel Padding="20">
+                                <TextBlock Text="3D Effects"
+                                          FontSize="20"
+                                          FontWeight="SemiBold"
+                                          Foreground="#4A5568"
+                                          Margin="0,0,0,15"/>
+                                <TextBlock Text="Raised elements: Light shadow (top-left) + Dark shadow (bottom-right)"
+                                          Foreground="#718096"
+                                          TextWrapping="Wrap"
+                                          Margin="0,0,0,10"/>
+                                <TextBlock Text="Pressed elements: Reverse shadow directions for inset effect"
+                                          Foreground="#718096"
+                                          TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="About">
+                            <StackPanel Padding="20">
+                                <TextBlock Text="About Neumorphism"
+                                          FontSize="20"
+                                          FontWeight="SemiBold"
+                                          Foreground="#4A5568"
+                                          Margin="0,0,0,15"/>
+                                <TextBlock Text="Also known as 'Soft UI', this design trend creates a subtle, extruded plastic look."
+                                          Foreground="#718096"
+                                          TextWrapping="Wrap"
+                                          Margin="0,0,0,10"/>
+                                <TextBlock Text="Best used on light backgrounds with careful attention to accessibility."
+                                          Foreground="#718096"
+                                          TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </TabItem>
+                    </TabControl>
+
+                    <TextBlock Text="GroupBox - Container with depth"
+                              FontSize="16"
+                              FontWeight="SemiBold"
+                              Foreground="#4A5568"
+                              Margin="0,0,0,15"/>
+
+                    <GroupBox Header="Neumorphism Settings" Width="450" HorizontalAlignment="Left" Margin="0,0,0,50">
+                        <StackPanel Margin="10">
+                            <CheckBox Content="Enable 3D effects" IsChecked="True" Margin="0,0,0,10"/>
+                            <CheckBox Content="Soft shadows" IsChecked="True" Margin="0,0,0,10"/>
+                            <CheckBox Content="Smooth transitions" Margin="0,0,0,10"/>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+
+                <!-- Progress & Sliders Section -->
+                <StackPanel x:Name="ProgressSection" Visibility="Collapsed">
+                    <TextBlock Text="Progress &amp; Sliders"
+                              FontSize="28"
+                              FontWeight="SemiBold"
+                              Foreground="#4A5568"
+                              Margin="0,0,0,20"/>
+
+                    <TextBlock Text="ProgressBar - Inset track with elevated indicator"
+                              FontSize="16"
+                              FontWeight="SemiBold"
+                              Foreground="#4A5568"
+                              Margin="0,0,0,15"/>
+
+                    <ProgressBar Value="25" Height="14" Width="450" HorizontalAlignment="Left" Margin="0,0,0,15"/>
+                    <ProgressBar Value="50" Height="14" Width="450" HorizontalAlignment="Left" Margin="0,0,0,15"/>
+                    <ProgressBar Value="75" Height="14" Width="450" HorizontalAlignment="Left" Margin="0,0,0,35"/>
+
+                    <TextBlock Text="Slider - Soft UI thumb"
+                              FontSize="16"
+                              FontWeight="SemiBold"
+                              Foreground="#4A5568"
+                              Margin="0,0,0,15"/>
+
+                    <Slider Value="40" Minimum="0" Maximum="100" Width="450" HorizontalAlignment="Left" Margin="0,0,0,15"/>
+                    <Slider Value="70" Minimum="0" Maximum="100" Width="450" HorizontalAlignment="Left" Margin="0,0,0,50"/>
+                </StackPanel>
+
+                <!-- All Controls Section -->
+                <StackPanel x:Name="AllSection" Visibility="Collapsed">
+                    <TextBlock Text="All Controls Overview"
+                              FontSize="28"
+                              FontWeight="SemiBold"
+                              Foreground="#4A5568"
+                              Margin="0,0,0,20"/>
+
+                    <!-- Buttons -->
+                    <TextBlock Text="Buttons &amp; Toggles" FontSize="18" FontWeight="SemiBold" Foreground="#4A5568" Margin="0,0,0,10"/>
+                    <WrapPanel Margin="0,0,0,30">
+                        <Button Content="Button 1" Margin="0,0,10,10" Padding="20,10"/>
+                        <Button Content="Button 2" Margin="0,0,10,10" Padding="20,10"/>
+                        <ToggleButton Content="Toggle" Margin="0,0,10,10" Padding="20,10"/>
+                        <ToggleButton Content="Checked" IsChecked="True" Margin="0,0,10,10" Padding="20,10"/>
+                    </WrapPanel>
+
+                    <!-- Input -->
+                    <TextBlock Text="Text Input" FontSize="18" FontWeight="SemiBold" Foreground="#4A5568" Margin="0,0,0,10"/>
+                    <TextBox Text="Sample input text" Width="350" HorizontalAlignment="Left" Margin="0,0,0,30"/>
+
+                    <!-- Selection -->
+                    <TextBlock Text="Selection Controls" FontSize="18" FontWeight="SemiBold" Foreground="#4A5568" Margin="0,0,0,10"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,30">
+                        <StackPanel Margin="0,0,40,0">
+                            <CheckBox Content="Checkbox 1" Margin="0,0,0,10"/>
+                            <CheckBox Content="Checkbox 2" IsChecked="True" Margin="0,0,0,10"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <RadioButton Content="Radio 1" GroupName="All" IsChecked="True" Margin="0,0,0,10"/>
+                            <RadioButton Content="Radio 2" GroupName="All" Margin="0,0,0,10"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Dropdown & List -->
+                    <TextBlock Text="ComboBox &amp; ListBox" FontSize="18" FontWeight="SemiBold" Foreground="#4A5568" Margin="0,0,0,10"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,30">
+                        <ComboBox Width="200" Margin="0,0,20,0">
+                            <ComboBoxItem Content="Option 1" IsSelected="True"/>
+                            <ComboBoxItem Content="Option 2"/>
+                            <ComboBoxItem Content="Option 3"/>
+                        </ComboBox>
+                        <ListBox Width="200" Height="100">
+                            <ListBoxItem Content="List Item 1"/>
+                            <ListBoxItem Content="List Item 2"/>
+                            <ListBoxItem Content="List Item 3"/>
+                        </ListBox>
+                    </StackPanel>
+
+                    <!-- Progress & Slider -->
+                    <TextBlock Text="Progress &amp; Slider" FontSize="18" FontWeight="SemiBold" Foreground="#4A5568" Margin="0,0,0,10"/>
+                    <ProgressBar Value="60" Height="12" Width="350" HorizontalAlignment="Left" Margin="0,0,0,15"/>
+                    <Slider Value="60" Minimum="0" Maximum="100" Width="350" HorizontalAlignment="Left" Margin="0,0,0,30"/>
+
+                    <!-- Tabs -->
+                    <TextBlock Text="Tab Navigation" FontSize="18" FontWeight="SemiBold" Foreground="#4A5568" Margin="0,0,0,10"/>
+                    <TabControl Height="200" Margin="0,0,0,30">
+                        <TabItem Header="Tab 1">
+                            <TextBlock Text="Tab 1 Content" Padding="20" Foreground="#4A5568"/>
+                        </TabItem>
+                        <TabItem Header="Tab 2">
+                            <TextBlock Text="Tab 2 Content" Padding="20" Foreground="#4A5568"/>
+                        </TabItem>
+                        <TabItem Header="Tab 3">
+                            <TextBlock Text="Tab 3 Content" Padding="20" Foreground="#4A5568"/>
+                        </TabItem>
+                    </TabControl>
+
+                    <!-- Info Box -->
+                    <GroupBox Header="💡 Neumorphism Key Features" Margin="0,20,0,0">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="• Dual shadow system creates 3D depth"
+                                      Foreground="#718096"
+                                      Margin="0,0,0,8"/>
+                            <TextBlock Text="• Light background with subtle contrast"
+                                      Foreground="#718096"
+                                      Margin="0,0,0,8"/>
+                            <TextBlock Text="• Pressed state reverses shadow direction"
+                                      Foreground="#718096"
+                                      Margin="0,0,0,8"/>
+                            <TextBlock Text="• Soft, rounded corners enhance the effect"
+                                      Foreground="#718096"/>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
