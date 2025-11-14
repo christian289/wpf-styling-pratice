@@ -1,21 +1,24 @@
 # 🎨 WPF 애니메이션 캐러셀 UI - 무인사진관
 
-MOODIT 스타일의 화려한 애니메이션과 캐러셀 효과를 갖춘 무인사진관용 WPF UI입니다.
+애니메이션과 캐러셀 효과를 갖춘 무인사진관용 WPF UI입니다.
 
 ## ✨ 주요 기능
 
 ### 🎬 풍부한 애니메이션
+
 - **무한 반복 배경 애니메이션**: 대기 화면에서 계속 재생되는 부드러운 Floating 애니메이션
 - **캐러셀 효과**: 3개의 카드가 자동으로 회전하며 포커스되는 효과
 - **파티클 애니메이션**: 떠다니는 파티클로 생동감 있는 배경 연출
 - **Glow & Shimmer**: 빛나는 효과와 반짝임으로 현대적인 느낌 구현
 
 ### 🖐️ 터치 인터페이스
+
 - **스와이프 제스처**: 좌우 스와이프로 카드 네비게이션
 - **드래그 피드백**: 실시간 드래그 반응
 - **터치 최적화**: 큰 버튼과 명확한 인터랙션 영역
 
 ### 🎨 현대적인 디자인
+
 - **다크 테마**: MOODIT 스타일의 다크 모던 UI (#101010 기반)
 - **그라데이션**: 화려한 색상 조합 (Pink, Blue, Yellow)
 - **블러 효과**: 부드러운 그림자와 블러로 깊이감 표현
@@ -37,6 +40,7 @@ PhotoBoothCarousel/
 ## 🚀 실행 방법
 
 ### 요구사항
+
 - **.NET 9 SDK** 이상
 - **Windows 10/11** (WPF는 Windows 전용)
 - **Visual Studio 2022** 또는 **Visual Studio Code** (선택사항)
@@ -57,6 +61,7 @@ dotnet run
 ### 두 가지 버전
 
 #### 📱 **기본 버전** (MainWindow)
+
 - 자동 캐러셀 애니메이션
 - 3장의 카드가 4초마다 자동 회전
 - 마우스/터치 기본 지원
@@ -64,6 +69,7 @@ dotnet run
 **실행 방법**: `App.xaml`에서 기본 설정된 버전입니다.
 
 #### 🎯 **터치 강화 버전** (TouchEnhancedWindow)
+
 - 스와이프 제스처 지원
 - 드래그 앤 드롭으로 카드 이동
 - 더 많은 파티클 및 애니메이션 효과
@@ -82,6 +88,7 @@ dotnet run
 ## 🎨 디자인 특징
 
 ### 색상 팔레트
+
 ```
 배경: #101010 (다크 블랙)
 강조1: #FF6B9E (핑크)
@@ -91,12 +98,14 @@ dotnet run
 ```
 
 ### 애니메이션 이징
+
 - **CubicEase**: 부드러운 캐러셀 전환
 - **SineEase**: 자연스러운 파동 효과
 - **ElasticEase**: 탄성있는 진입 애니메이션
 - **BackEase**: 살짝 튀는 듯한 효과
 
 ### 카드 레이아웃
+
 - **클래식 컷**: 4장의 사진 촬영 (₩8,000)
 - **비디오 부스**: 15초 동영상 촬영 (₩10,000)
 - **프리미엄 패키지**: 사진 + 영상 + 프레임 (₩15,000)
@@ -104,6 +113,7 @@ dotnet run
 ## 🔧 커스터마이징
 
 ### 색상 변경
+
 `App.xaml`의 리소스 딕셔너리에서 색상을 변경할 수 있습니다:
 
 ```xml
@@ -111,6 +121,7 @@ dotnet run
 ```
 
 ### 애니메이션 속도 조정
+
 각 Window의 코드비하인드에서 타이머 간격을 조정:
 
 ```csharp
@@ -119,11 +130,13 @@ _carouselTimer.Interval = TimeSpan.FromSeconds(4); // 원하는 초로 변경
 ```
 
 ### 카드 개수 변경
+
 XAML에 카드를 추가하고, 코드비하인드에서 `_cards` 리스트에 등록하면 됩니다.
 
 ## 📝 주요 코드 설명
 
 ### 캐러셀 회전 로직
+
 ```csharp
 private void AnimateCarouselRotation()
 {
@@ -137,6 +150,7 @@ private void AnimateCarouselRotation()
 ```
 
 ### 터치 제스처 처리
+
 ```csharp
 private void Grid_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
 {
@@ -158,16 +172,19 @@ private void Grid_ManipulationCompleted(object sender, ManipulationCompletedEven
 ## 🎯 무인사진관 최적화
 
 ### 터치스크린 환경
+
 - 큰 터치 영역 (버튼 최소 80x40px)
 - 명확한 시각적 피드백
 - 직관적인 제스처 (좌우 스와이프)
 
 ### 대기 화면 애니메이션
+
 - **무한 반복**: 모든 배경 애니메이션은 RepeatBehavior.Forever
 - **부드러운 전환**: Easing 함수로 자연스러운 움직임
 - **저사양 최적화**: 하드웨어 가속 활용 (WPF의 자동 최적화)
 
 ### 실제 배포 시 고려사항
+
 1. **전체화면 모드**: `WindowState="Maximized"` 및 `WindowStyle="None"`
 2. **화면 해상도**: 기본 1920x1080, 필요시 Viewbox로 자동 조정
 3. **터치 스크린 캘리브레이션**: Windows 터치 설정 확인
@@ -185,11 +202,13 @@ private void Grid_ManipulationCompleted(object sender, ManipulationCompletedEven
 ## 📱 스크린샷 설명
 
 ### 기본 버전 (MainWindow)
+
 - 3개의 카드가 자동으로 회전
 - 중앙 카드 확대 및 포커스 효과
 - 부드러운 배경 애니메이션
 
 ### 터치 강화 버전 (TouchEnhancedWindow)
+
 - 스와이프로 카드 전환
 - 파티클 효과
 - 페이지 인디케이터
@@ -211,7 +230,7 @@ private void Grid_ManipulationCompleted(object sender, ManipulationCompletedEven
 
 ## 🙏 참고
 
-디자인 영감: [MOODIT 무인사진관](https://moodit.co.kr/)
+디자인 영감: -
 
 ---
 
