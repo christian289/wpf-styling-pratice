@@ -1,0 +1,16 @@
+<Window x:Class="AuroraBackground.NavigationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Aurora Background - Navigation"
+        Height="1080"
+        Width="1920"
+        WindowState="Maximized"
+        WindowStyle="None"
+        Background="#0A0A0F">
+
+    <Grid>
+        <Frame x:Name="MainFrame"
+               NavigationUIVisibility="Hidden"
+               Navigated="MainFrame_Navigated"/>
+    </Grid>
+</Window>
