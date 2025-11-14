@@ -293,6 +293,96 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
+
+                <!-- Deep Aurora Button -->
+                <Button Content="Deep Aurora&#x0a;(rotating gradient layers)"
+                       Click="NavigateToDeepAurora"
+                       Width="320"
+                       Height="180"
+                       Margin="15"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border"
+                                   CornerRadius="20"
+                                   RenderTransformOrigin="0.5,0.5">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#40FF1493" Offset="0"/>
+                                        <GradientStop Color="#409C27B0" Offset="0.25"/>
+                                        <GradientStop Color="#402196F3" Offset="0.5"/>
+                                        <GradientStop Color="#4000E676" Offset="0.75"/>
+                                        <GradientStop Color="#40FFEB3B" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.BorderBrush>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#A0FF1493" Offset="0"/>
+                                        <GradientStop Color="#A09C27B0" Offset="0.25"/>
+                                        <GradientStop Color="#A02196F3" Offset="0.5"/>
+                                        <GradientStop Color="#A000E676" Offset="0.75"/>
+                                        <GradientStop Color="#A0FFEB3B" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.BorderBrush>
+                                <Border.BorderThickness>2</Border.BorderThickness>
+                                <Border.RenderTransform>
+                                    <ScaleTransform x:Name="scaleTransform" ScaleX="1" ScaleY="1"/>
+                                </Border.RenderTransform>
+                                <Border.Effect>
+                                    <DropShadowEffect Color="#9C27B0"
+                                                    BlurRadius="25"
+                                                    ShadowDepth="0"
+                                                    Opacity="0.6"/>
+                                </Border.Effect>
+                                <StackPanel VerticalAlignment="Center"
+                                           Margin="20">
+                                    <TextBlock Text="🌀"
+                                              FontSize="48"
+                                              HorizontalAlignment="Center"
+                                              Margin="0,0,0,15"/>
+                                    <TextBlock Text="{TemplateBinding Content}"
+                                              FontSize="18"
+                                              FontWeight="SemiBold"
+                                              Foreground="White"
+                                              TextAlignment="Center"
+                                              TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="scaleTransform"
+                                                           Storyboard.TargetProperty="ScaleX"
+                                                           To="1.05"
+                                                           Duration="0:0:0.2"/>
+                                            <DoubleAnimation Storyboard.TargetName="scaleTransform"
+                                                           Storyboard.TargetProperty="ScaleY"
+                                                           To="1.05"
+                                                           Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="scaleTransform"
+                                                           Storyboard.TargetProperty="ScaleX"
+                                                           To="1.0"
+                                                           Duration="0:0:0.2"/>
+                                            <DoubleAnimation Storyboard.TargetName="scaleTransform"
+                                                           Storyboard.TargetProperty="ScaleY"
+                                                           To="1.0"
+                                                           Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
             </StackPanel>
 
             <!-- Instructions -->

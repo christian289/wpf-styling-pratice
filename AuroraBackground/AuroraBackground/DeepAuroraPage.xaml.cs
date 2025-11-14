@@ -5,9 +5,9 @@ using System.Windows.Media.Animation;
 
 namespace AuroraBackground;
 
-public partial class VibrantAuroraPage : Page
+public partial class DeepAuroraPage : Page
 {
-    public VibrantAuroraPage()
+    public DeepAuroraPage()
     {
         InitializeComponent();
         Focusable = true;
@@ -18,10 +18,10 @@ public partial class VibrantAuroraPage : Page
         // Focus the page so it can receive keyboard input
         Focus();
 
-        // Start all cosmic wave animations
-        for (int i = 1; i <= 4; i++)
+        // Start all gradient rotation animations
+        for (int i = 1; i <= 6; i++)
         {
-            var storyboard = (Storyboard)FindResource($"CosmicWave{i}");
+            var storyboard = (Storyboard)FindResource($"RotateGradient{i}");
             storyboard.Begin();
         }
     }

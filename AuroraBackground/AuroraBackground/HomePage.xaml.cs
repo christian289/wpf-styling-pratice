@@ -24,4 +24,9 @@ public partial class HomePage : Page
     {
         NavigationService?.Navigate(new VibrantAuroraPage());
     }
+
+    private void NavigateToDeepAurora(object sender, RoutedEventArgs e)
+    {
+        NavigationService?.Navigate(new DeepAuroraPage());
+    }
 }

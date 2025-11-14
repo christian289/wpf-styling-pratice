@@ -6,153 +6,410 @@
       KeyDown="Page_KeyDown">
 
     <Page.Resources>
-        <!-- Rotation Animations for Gradients -->
-        <Storyboard x:Key="RotateGradient1" RepeatBehavior="Forever">
-            <DoubleAnimation Storyboard.TargetName="GradientLayer1"
-                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
-                           From="0" To="360" Duration="0:0:45"/>
+        <!-- Complex Cosmic Animations -->
+
+        <!-- Wave 1: Scale + Translate + Opacity -->
+        <Storyboard x:Key="CosmicWave1" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave1"
+                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="1.3">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:20" Value="1.0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave1"
+                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="1.2">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:20" Value="1.0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave1"
+                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="100">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:14" Value="-100">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:20" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave1"
+                                          Storyboard.TargetProperty="Opacity">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.9"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="0.6">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:20" Value="0.9">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
 
-        <Storyboard x:Key="RotateGradient2" RepeatBehavior="Forever">
-            <DoubleAnimation Storyboard.TargetName="GradientLayer2"
-                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
-                           From="360" To="0" Duration="0:0:38"/>
+        <!-- Wave 2 -->
+        <Storyboard x:Key="CosmicWave2" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave2"
+                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:12" Value="1.4">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:24" Value="1.0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave2"
+                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:12" Value="1.3">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:24" Value="1.0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave2"
+                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.Y)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="-120">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:16" Value="120">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:24" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave2"
+                                          Storyboard.TargetProperty="Opacity">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.85"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:12" Value="0.5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:24" Value="0.85">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
 
-        <Storyboard x:Key="RotateGradient3" RepeatBehavior="Forever">
-            <DoubleAnimation Storyboard.TargetName="GradientLayer3"
-                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
-                           From="0" To="360" Duration="0:0:52"/>
+        <!-- Wave 3 -->
+        <Storyboard x:Key="CosmicWave3" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave3"
+                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:15" Value="1.5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:30" Value="1.0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave3"
+                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:15" Value="1.4">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:30" Value="1.0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave3"
+                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="-150">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:20" Value="150">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:30" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave3"
+                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.Y)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="80">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:20" Value="-80">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:30" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave3"
+                                          Storyboard.TargetProperty="Opacity">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:15" Value="0.4">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:30" Value="0.8">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
 
-        <Storyboard x:Key="RotateGradient4" RepeatBehavior="Forever">
-            <DoubleAnimation Storyboard.TargetName="GradientLayer4"
-                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
-                           From="360" To="0" Duration="0:0:41"/>
-        </Storyboard>
+        <!-- Wave 4 -->
+        <Storyboard x:Key="CosmicWave4" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave4"
+                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:18" Value="1.6">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:36" Value="1.0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
 
-        <Storyboard x:Key="RotateGradient5" RepeatBehavior="Forever">
-            <DoubleAnimation Storyboard.TargetName="GradientLayer5"
-                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
-                           From="0" To="360" Duration="0:0:48"/>
-        </Storyboard>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave4"
+                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1.0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:18" Value="1.5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:36" Value="1.0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
 
-        <Storyboard x:Key="RotateGradient6" RepeatBehavior="Forever">
-            <DoubleAnimation Storyboard.TargetName="GradientLayer6"
-                           Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
-                           From="360" To="0" Duration="0:0:35"/>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave4"
+                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.Y)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:12" Value="150">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:24" Value="-150">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:36" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave4"
+                                          Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:12" Value="100">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:24" Value="-100">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:36" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Wave4"
+                                          Storyboard.TargetProperty="Opacity">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:18" Value="0.35">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:36" Value="0.75">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Page.Resources>
 
     <Grid>
-        <!-- Base solid color to prevent any white gaps -->
-        <Rectangle Fill="#FFE8D5F5"/>
+        <!-- Base layer - prevent any gaps -->
+        <Rectangle>
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FFFFE5F0" Offset="0"/>
+                    <GradientStop Color="#FFF0E5FF" Offset="0.5"/>
+                    <GradientStop Color="#FFE5F0FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
 
-        <!-- Gradient Layer 1: Deep Pink to Light Pink -->
-        <Rectangle x:Name="GradientLayer1"
+        <!-- Wave 1: Pink to Blue -->
+        <Rectangle x:Name="Wave1"
+                  RenderTransformOrigin="0.5,0.5"
+                  Opacity="0.9">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <RadialGradientBrush GradientOrigin="0.3,0.3" Center="0.3,0.3" RadiusX="1.2" RadiusY="1.2">
+                    <GradientStop Color="#FFFF1493" Offset="0"/>
+                    <GradientStop Color="#FFBA68C8" Offset="0.4"/>
+                    <GradientStop Color="#FF2196F3" Offset="0.7"/>
+                    <GradientStop Color="#FFB3E5FC" Offset="1"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!-- Wave 2: Purple to Cyan -->
+        <Rectangle x:Name="Wave2"
                   RenderTransformOrigin="0.5,0.5"
                   Opacity="0.85">
             <Rectangle.RenderTransform>
-                <RotateTransform Angle="0"/>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
             </Rectangle.RenderTransform>
             <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FFFF1493" Offset="0"/>
-                    <GradientStop Color="#FFFFB3E6" Offset="0.3"/>
-                    <GradientStop Color="#FFFF69B4" Offset="0.5"/>
-                    <GradientStop Color="#FFFFC9DE" Offset="0.7"/>
-                    <GradientStop Color="#FFFF1493" Offset="1"/>
-                </LinearGradientBrush>
+                <RadialGradientBrush GradientOrigin="0.7,0.7" Center="0.7,0.7" RadiusX="1.3" RadiusY="1.3">
+                    <GradientStop Color="#FF9C27B0" Offset="0"/>
+                    <GradientStop Color="#FFE1BEE7" Offset="0.4"/>
+                    <GradientStop Color="#FF00BCD4" Offset="0.7"/>
+                    <GradientStop Color="#FFE0F7FA" Offset="1"/>
+                </RadialGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
 
-        <!-- Gradient Layer 2: Deep Purple to Lavender -->
-        <Rectangle x:Name="GradientLayer2"
+        <!-- Wave 3: Orange to Green -->
+        <Rectangle x:Name="Wave3"
+                  RenderTransformOrigin="0.5,0.5"
+                  Opacity="0.8">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <RadialGradientBrush GradientOrigin="0.5,0.2" Center="0.5,0.2" RadiusX="1.4" RadiusY="1.4">
+                    <GradientStop Color="#FFFF9800" Offset="0"/>
+                    <GradientStop Color="#FFFFCCBC" Offset="0.3"/>
+                    <GradientStop Color="#FF00E676" Offset="0.6"/>
+                    <GradientStop Color="#FFC8E6C9" Offset="1"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!-- Wave 4: Blue to Pink -->
+        <Rectangle x:Name="Wave4"
                   RenderTransformOrigin="0.5,0.5"
                   Opacity="0.75">
             <Rectangle.RenderTransform>
-                <RotateTransform Angle="60"/>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
             </Rectangle.RenderTransform>
             <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FF9C27B0" Offset="0"/>
-                    <GradientStop Color="#FFE1BEE7" Offset="0.25"/>
-                    <GradientStop Color="#FFBA68C8" Offset="0.5"/>
-                    <GradientStop Color="#FFF3E5F5" Offset="0.75"/>
-                    <GradientStop Color="#FF9C27B0" Offset="1"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-
-        <!-- Gradient Layer 3: Deep Blue to Light Sky -->
-        <Rectangle x:Name="GradientLayer3"
-                  RenderTransformOrigin="0.5,0.5"
-                  Opacity="0.7">
-            <Rectangle.RenderTransform>
-                <RotateTransform Angle="120"/>
-            </Rectangle.RenderTransform>
-            <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <RadialGradientBrush GradientOrigin="0.8,0.5" Center="0.8,0.5" RadiusX="1.5" RadiusY="1.5">
                     <GradientStop Color="#FF2196F3" Offset="0"/>
-                    <GradientStop Color="#FFB3E5FC" Offset="0.3"/>
-                    <GradientStop Color="#FF64B5F6" Offset="0.5"/>
-                    <GradientStop Color="#FFE1F5FE" Offset="0.7"/>
-                    <GradientStop Color="#FF2196F3" Offset="1"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-
-        <!-- Gradient Layer 4: Deep Cyan to Light Aqua -->
-        <Rectangle x:Name="GradientLayer4"
-                  RenderTransformOrigin="0.5,0.5"
-                  Opacity="0.65">
-            <Rectangle.RenderTransform>
-                <RotateTransform Angle="180"/>
-            </Rectangle.RenderTransform>
-            <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FF00BCD4" Offset="0"/>
-                    <GradientStop Color="#FFB2EBF2" Offset="0.25"/>
-                    <GradientStop Color="#FF26C6DA" Offset="0.5"/>
-                    <GradientStop Color="#FFE0F7FA" Offset="0.75"/>
-                    <GradientStop Color="#FF00BCD4" Offset="1"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-
-        <!-- Gradient Layer 5: Deep Green to Light Mint -->
-        <Rectangle x:Name="GradientLayer5"
-                  RenderTransformOrigin="0.5,0.5"
-                  Opacity="0.6">
-            <Rectangle.RenderTransform>
-                <RotateTransform Angle="240"/>
-            </Rectangle.RenderTransform>
-            <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FF00E676" Offset="0"/>
-                    <GradientStop Color="#FFC8E6C9" Offset="0.3"/>
-                    <GradientStop Color="#FF69F0AE" Offset="0.5"/>
-                    <GradientStop Color="#FFE8F5E9" Offset="0.7"/>
-                    <GradientStop Color="#FF00E676" Offset="1"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-
-        <!-- Gradient Layer 6: Deep Orange to Light Peach -->
-        <Rectangle x:Name="GradientLayer6"
-                  RenderTransformOrigin="0.5,0.5"
-                  Opacity="0.55">
-            <Rectangle.RenderTransform>
-                <RotateTransform Angle="300"/>
-            </Rectangle.RenderTransform>
-            <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FFFF9800" Offset="0"/>
-                    <GradientStop Color="#FFFFCCBC" Offset="0.25"/>
-                    <GradientStop Color="#FFFFB74D" Offset="0.5"/>
-                    <GradientStop Color="#FFFFF3E0" Offset="0.75"/>
-                    <GradientStop Color="#FFFF9800" Offset="1"/>
-                </LinearGradientBrush>
+                    <GradientStop Color="#FFB3E5FC" Offset="0.35"/>
+                    <GradientStop Color="#FFE91E63" Offset="0.65"/>
+                    <GradientStop Color="#FFFFC9DE" Offset="1"/>
+                </RadialGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
 
@@ -181,7 +438,7 @@
                     </TextBlock.Effect>
                 </TextBlock>
 
-                <TextBlock Text="Deep and light colors in harmony"
+                <TextBlock Text="Cosmic fluid animation"
                           FontSize="28"
                           FontWeight="Light"
                           Foreground="White"
@@ -201,7 +458,7 @@
                        CornerRadius="25"
                        Padding="40,15"
                        HorizontalAlignment="Center">
-                    <TextBlock Text="🌈 6 Gradient Layers  •  💫 Smooth Rotation  •  🎨 No Empty Spaces"
+                    <TextBlock Text="🌊 4 Wave Layers  •  ⚡ Scale + Move + Fade  •  ✨ Cosmic Flow"
                               FontSize="18"
                               FontWeight="SemiBold"
                               Foreground="White"
