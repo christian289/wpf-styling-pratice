@@ -204,7 +204,7 @@
                            FontSize="28"
                            FontWeight="Light"
                            Foreground="White"
-                           Text="Deep and light colors in harmony">
+                           Text="Rotating linear gradients">
                     <TextBlock.Effect>
                         <DropShadowEffect BlurRadius="20"
                                           Opacity="0.8"
