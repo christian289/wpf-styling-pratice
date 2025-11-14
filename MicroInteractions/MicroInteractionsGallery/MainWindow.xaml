@@ -36,9 +36,7 @@
 
                 <ListBox x:Name="NavigationList"
                          Background="Transparent"
-                         BorderThickness="0"
-                         SelectedIndex="0"
-                         SelectionChanged="NavigationList_SelectionChanged">
+                         BorderThickness="0">
                     <ListBoxItem Content="Buttons" Tag="Buttons"/>
                     <ListBoxItem Content="Input Controls" Tag="Inputs"/>
                     <ListBoxItem Content="Selection Controls" Tag="Selection"/>

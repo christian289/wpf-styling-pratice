@@ -8,6 +8,12 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+
+        // InitializeComponent 완료 후 이벤트 핸들러 추가
+        NavigationList.SelectionChanged += NavigationList_SelectionChanged;
+
+        // 초기 선택 설정
+        NavigationList.SelectedIndex = 0;
     }
 
     private void NavigationList_SelectionChanged(object sender, SelectionChangedEventArgs e)
