@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ModernUIControls\ModernUIControls.csproj" Type="C#" />
+  <Project Path="ModernUIGallery\ModernUIGallery.csproj" Type="C#" />
+</Solution>

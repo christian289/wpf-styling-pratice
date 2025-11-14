@@ -2,6 +2,27 @@
 
 A modern, customizable WPF custom control library with beautiful styling and smooth animations.
 
+## Solution Structure
+
+```
+ModernUI/
+├── ModernUI.slnx                    # Solution file
+├── ModernUIControls/                # Custom control library
+│   ├── ModernButton.cs
+│   ├── ModernTextBox.cs
+│   ├── ModernToggleSwitch.cs
+│   ├── ModernCard.cs
+│   ├── ModernProgressBar.cs
+│   ├── Themes/
+│   │   └── Generic.xaml
+│   └── ModernUIControls.csproj
+├── ModernUIGallery/                 # Gallery application
+│   ├── App.xaml
+│   ├── MainWindow.xaml
+│   └── ModernUIGallery.csproj
+└── README.md
+```
+
 ## Features
 
 ### 🎨 Modern Color Palette
@@ -146,8 +167,20 @@ xmlns:ui="clr-namespace:ModernUIControls;assembly=ModernUIControls"
 
 ## Building
 
+### Build the entire solution
 ```bash
-cd ModernUIControls/ModernUIControls
+cd ModernUI
+dotnet build ModernUI.slnx
+```
+
+### Build individual projects
+```bash
+# Build controls library
+cd ModernUI/ModernUIControls
+dotnet build
+
+# Build gallery application
+cd ModernUI/ModernUIGallery
 dotnet build
 ```
 
@@ -156,9 +189,13 @@ dotnet build
 The ModernUIGallery project provides a comprehensive showcase of all available controls with various configurations and examples. Run the gallery to see all controls in action.
 
 ```bash
-cd ModernUIGallery/ModernUIGallery
+cd ModernUI/ModernUIGallery
 dotnet run
 ```
+
+## Opening in Visual Studio
+
+Open `ModernUI.slnx` in Visual Studio 2022 or later to work with both projects in a single solution.
 
 ## Requirements
 

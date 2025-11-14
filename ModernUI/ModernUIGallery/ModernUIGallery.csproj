@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ModernUIControls\ModernUIControls\ModernUIControls.csproj" />
+    <ProjectReference Include="..\ModernUIControls\ModernUIControls.csproj" />
   </ItemGroup>
 
 </Project>
