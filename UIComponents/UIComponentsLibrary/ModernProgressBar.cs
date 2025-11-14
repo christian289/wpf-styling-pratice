@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ModernUIControls;
+namespace UIComponentsLibrary;
 
 public class ModernProgressBar : ProgressBar
 {

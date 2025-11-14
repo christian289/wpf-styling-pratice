@@ -6,12 +6,12 @@
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>ModernUIGallery</AssemblyName>
-    <RootNamespace>ModernUIGallery</RootNamespace>
+    <AssemblyName>UIComponentsGallery</AssemblyName>
+    <RootNamespace>UIComponentsGallery</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ModernUIControls\ModernUIControls.csproj" />
+    <ProjectReference Include="..\UIComponentsLibrary\UIComponentsLibrary.csproj" />
   </ItemGroup>
 
 </Project>

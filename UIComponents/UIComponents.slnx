@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="UIComponentsLibrary\UIComponentsLibrary.csproj" Type="C#" />
+  <Project Path="UIComponentsGallery\UIComponentsGallery.csproj" Type="C#" />
+</Solution>

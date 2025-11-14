@@ -1,13 +1,13 @@
-# Modern UI Controls
+# UI Components
 
 A modern, customizable WPF custom control library with beautiful styling and smooth animations.
 
 ## Solution Structure
 
 ```
-ModernUI/
-├── ModernUI.slnx                    # Solution file
-├── ModernUIControls/                # Custom control library
+UIComponents/
+├── UIComponents.slnx                    # Solution file
+├── UIComponentsControls/                # Custom control library
 │   ├── ModernButton.cs
 │   ├── ModernTextBox.cs
 │   ├── ModernToggleSwitch.cs
@@ -15,11 +15,11 @@ ModernUI/
 │   ├── ModernProgressBar.cs
 │   ├── Themes/
 │   │   └── Generic.xaml
-│   └── ModernUIControls.csproj
-├── ModernUIGallery/                 # Gallery application
+│   └── UIComponentsControls.csproj
+├── UIComponentsGallery/                 # Gallery application
 │   ├── App.xaml
 │   ├── MainWindow.xaml
-│   └── ModernUIGallery.csproj
+│   └── UIComponentsGallery.csproj
 └── README.md
 ```
 
@@ -92,7 +92,7 @@ ModernUI/
 
 ## Installation
 
-1. Build the ModernUIControls project
+1. Build the UIComponentsControls project
 2. Reference the library in your WPF application
 3. Add the resource dictionary to your App.xaml
 
@@ -100,7 +100,7 @@ ModernUI/
 <Application.Resources>
     <ResourceDictionary>
         <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="pack://application:,,,/ModernUIControls;component/Themes/Generic.xaml"/>
+            <ResourceDictionary Source="pack://application:,,,/UIComponentsControls;component/Themes/Generic.xaml"/>
         </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
 </Application.Resources>
@@ -110,7 +110,7 @@ ModernUI/
 
 ### XAML Namespace
 ```xml
-xmlns:ui="clr-namespace:ModernUIControls;assembly=ModernUIControls"
+xmlns:ui="clr-namespace:UIComponentsControls;assembly=UIComponentsControls"
 ```
 
 ### Examples
@@ -169,33 +169,33 @@ xmlns:ui="clr-namespace:ModernUIControls;assembly=ModernUIControls"
 
 ### Build the entire solution
 ```bash
-cd ModernUI
-dotnet build ModernUI.slnx
+cd UIComponents
+dotnet build UIComponents.slnx
 ```
 
 ### Build individual projects
 ```bash
 # Build controls library
-cd ModernUI/ModernUIControls
+cd UIComponents/UIComponentsControls
 dotnet build
 
 # Build gallery application
-cd ModernUI/ModernUIGallery
+cd UIComponents/UIComponentsGallery
 dotnet build
 ```
 
 ## Gallery Application
 
-The ModernUIGallery project provides a comprehensive showcase of all available controls with various configurations and examples. Run the gallery to see all controls in action.
+The UIComponentsGallery project provides a comprehensive showcase of all available controls with various configurations and examples. Run the gallery to see all controls in action.
 
 ```bash
-cd ModernUI/ModernUIGallery
+cd UIComponents/UIComponentsGallery
 dotnet run
 ```
 
 ## Opening in Visual Studio
 
-Open `ModernUI.slnx` in Visual Studio 2022 or later to work with both projects in a single solution.
+Open `UIComponents.slnx` in Visual Studio 2022 or later to work with both projects in a single solution.
 
 ## Requirements
 

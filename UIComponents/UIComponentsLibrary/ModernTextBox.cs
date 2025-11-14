@@ -2,7 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace ModernUIControls;
+namespace UIComponentsLibrary;
 
 public class ModernTextBox : TextBox
 {

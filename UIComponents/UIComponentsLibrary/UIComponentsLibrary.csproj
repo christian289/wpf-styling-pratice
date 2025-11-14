@@ -5,8 +5,8 @@
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>ModernUIControls</AssemblyName>
-    <RootNamespace>ModernUIControls</RootNamespace>
+    <AssemblyName>UIComponentsLibrary</AssemblyName>
+    <RootNamespace>UIComponentsLibrary</RootNamespace>
   </PropertyGroup>
 
 </Project>

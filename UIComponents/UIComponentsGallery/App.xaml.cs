@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace ModernUIGallery;
+namespace UIComponentsGallery;
 
 public partial class App : Application
 {

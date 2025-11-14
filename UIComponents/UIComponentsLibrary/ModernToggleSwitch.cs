@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Controls.Primitives;
 
-namespace ModernUIControls;
+namespace UIComponentsLibrary;
 
 public class ModernToggleSwitch : ToggleButton
 {
