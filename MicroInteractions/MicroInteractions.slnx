@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="MicroInteractionsLib\MicroInteractionsLib.csproj" Type="C#" />
+  <Project Path="MicroInteractionsGallery\MicroInteractionsGallery.csproj" Type="C#" />
+</Solution>
