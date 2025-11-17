@@ -25,45 +25,68 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            CornerRadius="15"
-                            Padding="{TemplateBinding Padding}">
-                        <Border.Effect>
-                            <DropShadowEffect x:Name="lightShadow"
-                                              ShadowDepth="0"
-                                              Direction="315"
-                                              Color="{StaticResource LightShadowColor}"
-                                              BlurRadius="15"
-                                              Opacity="1"/>
-                        </Border.Effect>
-                        <Grid>
-                            <Border CornerRadius="15">
-                                <Border.Effect>
-                                    <DropShadowEffect x:Name="darkShadow"
-                                                      ShadowDepth="0"
-                                                      Direction="135"
-                                                      Color="{StaticResource DarkShadowColor}"
-                                                      BlurRadius="15"
-                                                      Opacity="0.8"/>
-                                </Border.Effect>
-                            </Border>
+                    <Grid>
+                        <!-- Light Shadow Border -->
+                        <Border x:Name="lightShadowBorder"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="15">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0"
+                                                  Direction="315"
+                                                  Color="{StaticResource LightShadowColor}"
+                                                  BlurRadius="15"
+                                                  Opacity="1"/>
+                            </Border.Effect>
+                        </Border>
+
+                        <!-- Dark Shadow Border -->
+                        <Border x:Name="darkShadowBorder"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="15"
+                                Padding="{TemplateBinding Padding}">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0"
+                                                  Direction="135"
+                                                  Color="{StaticResource DarkShadowColor}"
+                                                  BlurRadius="15"
+                                                  Opacity="0.8"/>
+                            </Border.Effect>
                             <ContentPresenter HorizontalAlignment="Center"
                                               VerticalAlignment="Center"/>
-                        </Grid>
-                    </Border>
+                        </Border>
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="lightShadow" Property="BlurRadius" Value="20"/>
-                            <Setter TargetName="darkShadow" Property="BlurRadius" Value="20"/>
+                            <Setter TargetName="lightShadowBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                      Color="{StaticResource LightShadowColor}"
+                                                      BlurRadius="20" Opacity="1"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="darkShadowBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                      Color="{StaticResource DarkShadowColor}"
+                                                      BlurRadius="20" Opacity="0.8"/>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="lightShadow" Property="Direction" Value="135"/>
-                            <Setter TargetName="darkShadow" Property="Direction" Value="315"/>
-                            <Setter TargetName="lightShadow" Property="BlurRadius" Value="10"/>
-                            <Setter TargetName="darkShadow" Property="BlurRadius" Value="10"/>
-                            <Setter TargetName="lightShadow" Property="Opacity" Value="0.5"/>
-                            <Setter TargetName="darkShadow" Property="Opacity" Value="0.5"/>
+                            <Setter TargetName="lightShadowBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                      Color="{StaticResource LightShadowColor}"
+                                                      BlurRadius="10" Opacity="0.5"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="darkShadowBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                      Color="{StaticResource DarkShadowColor}"
+                                                      BlurRadius="10" Opacity="0.5"/>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
@@ -84,35 +107,44 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Border Background="{TemplateBinding Background}"
-                            CornerRadius="12"
-                            Padding="{TemplateBinding Padding}">
-                        <Border.Effect>
-                            <DropShadowEffect x:Name="innerLight"
-                                              ShadowDepth="0"
-                                              Direction="135"
-                                              Color="{StaticResource DarkShadowColor}"
-                                              BlurRadius="10"
-                                              Opacity="0.7"/>
-                        </Border.Effect>
-                        <Grid>
-                            <Border CornerRadius="12">
-                                <Border.Effect>
-                                    <DropShadowEffect ShadowDepth="0"
-                                                      Direction="315"
-                                                      Color="{StaticResource LightShadowColor}"
-                                                      BlurRadius="8"
-                                                      Opacity="0.3"/>
-                                </Border.Effect>
-                            </Border>
+                    <Grid>
+                        <!-- Dark inset shadow -->
+                        <Border x:Name="innerDarkBorder"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="12">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0"
+                                                  Direction="135"
+                                                  Color="{StaticResource DarkShadowColor}"
+                                                  BlurRadius="10"
+                                                  Opacity="0.7"/>
+                            </Border.Effect>
+                        </Border>
+
+                        <!-- Light inset shadow -->
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="12"
+                                Padding="{TemplateBinding Padding}">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0"
+                                                  Direction="315"
+                                                  Color="{StaticResource LightShadowColor}"
+                                                  BlurRadius="8"
+                                                  Opacity="0.3"/>
+                            </Border.Effect>
                             <ScrollViewer x:Name="PART_ContentHost"
                                           VerticalAlignment="Center"/>
-                        </Grid>
-                    </Border>
+                        </Border>
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter TargetName="innerLight" Property="Color" Value="{StaticResource AccentColor}"/>
-                            <Setter TargetName="innerLight" Property="Opacity" Value="0.4"/>
+                            <Setter TargetName="innerDarkBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                      Color="{StaticResource AccentColor}"
+                                                      BlurRadius="10" Opacity="0.4"/>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
@@ -132,29 +164,25 @@
             <Setter.Value>
                 <ControlTemplate TargetType="CheckBox">
                     <StackPanel Orientation="Horizontal">
-                        <Border x:Name="checkBorder"
-                                Width="24"
-                                Height="24"
-                                Background="{StaticResource BackgroundBrush}"
-                                CornerRadius="8"
-                                Margin="0,0,10,0">
-                            <Border.Effect>
-                                <DropShadowEffect ShadowDepth="0"
-                                                  Direction="135"
-                                                  Color="{StaticResource DarkShadowColor}"
-                                                  BlurRadius="8"
-                                                  Opacity="0.7"/>
-                            </Border.Effect>
-                            <Grid>
-                                <Border CornerRadius="8">
-                                    <Border.Effect>
-                                        <DropShadowEffect ShadowDepth="0"
-                                                          Direction="315"
-                                                          Color="{StaticResource LightShadowColor}"
-                                                          BlurRadius="8"
-                                                          Opacity="0.5"/>
-                                    </Border.Effect>
-                                </Border>
+                        <Grid Width="24" Height="24" Margin="0,0,10,0">
+                            <!-- Dark shadow -->
+                            <Border Background="{StaticResource BackgroundBrush}"
+                                    CornerRadius="8">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                      Color="{StaticResource DarkShadowColor}"
+                                                      BlurRadius="8" Opacity="0.7"/>
+                                </Border.Effect>
+                            </Border>
+
+                            <!-- Light shadow -->
+                            <Border Background="{StaticResource BackgroundBrush}"
+                                    CornerRadius="8">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                      Color="{StaticResource LightShadowColor}"
+                                                      BlurRadius="8" Opacity="0.5"/>
+                                </Border.Effect>
                                 <Path x:Name="checkMark"
                                       Data="M 4 11 L 9 16 L 20 5"
                                       Stroke="{StaticResource AccentBrush}"
@@ -162,8 +190,8 @@
                                       StrokeLineJoin="Round"
                                       Opacity="0"
                                       Margin="2"/>
-                            </Grid>
-                        </Border>
+                            </Border>
+                        </Grid>
                         <ContentPresenter VerticalAlignment="Center"/>
                     </StackPanel>
                     <ControlTemplate.Triggers>
@@ -188,36 +216,31 @@
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
                     <StackPanel Orientation="Horizontal">
-                        <Border x:Name="radioBorder"
-                                Width="24"
-                                Height="24"
-                                Background="{StaticResource BackgroundBrush}"
-                                CornerRadius="12"
-                                Margin="0,0,10,0">
-                            <Border.Effect>
-                                <DropShadowEffect ShadowDepth="0"
-                                                  Direction="135"
-                                                  Color="{StaticResource DarkShadowColor}"
-                                                  BlurRadius="8"
-                                                  Opacity="0.7"/>
-                            </Border.Effect>
-                            <Grid>
-                                <Border CornerRadius="12">
-                                    <Border.Effect>
-                                        <DropShadowEffect ShadowDepth="0"
-                                                          Direction="315"
-                                                          Color="{StaticResource LightShadowColor}"
-                                                          BlurRadius="8"
-                                                          Opacity="0.5"/>
-                                    </Border.Effect>
-                                </Border>
+                        <Grid Width="24" Height="24" Margin="0,0,10,0">
+                            <!-- Dark shadow -->
+                            <Border Background="{StaticResource BackgroundBrush}"
+                                    CornerRadius="12">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                      Color="{StaticResource DarkShadowColor}"
+                                                      BlurRadius="8" Opacity="0.7"/>
+                                </Border.Effect>
+                            </Border>
+
+                            <!-- Light shadow -->
+                            <Border Background="{StaticResource BackgroundBrush}"
+                                    CornerRadius="12">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                      Color="{StaticResource LightShadowColor}"
+                                                      BlurRadius="8" Opacity="0.5"/>
+                                </Border.Effect>
                                 <Ellipse x:Name="radioCheck"
-                                         Width="10"
-                                         Height="10"
+                                         Width="10" Height="10"
                                          Fill="{StaticResource AccentBrush}"
                                          Opacity="0"/>
-                            </Grid>
-                        </Border>
+                            </Border>
+                        </Grid>
                         <ContentPresenter VerticalAlignment="Center"/>
                     </StackPanel>
                     <ControlTemplate.Triggers>
@@ -241,40 +264,40 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ProgressBar">
-                    <Border Background="{TemplateBinding Background}"
-                            CornerRadius="6">
-                        <Border.Effect>
-                            <DropShadowEffect ShadowDepth="0"
-                                              Direction="135"
-                                              Color="{StaticResource DarkShadowColor}"
-                                              BlurRadius="6"
-                                              Opacity="0.6"/>
-                        </Border.Effect>
-                        <Grid>
-                            <Border CornerRadius="6">
-                                <Border.Effect>
-                                    <DropShadowEffect ShadowDepth="0"
-                                                      Direction="315"
-                                                      Color="{StaticResource LightShadowColor}"
-                                                      BlurRadius="6"
-                                                      Opacity="0.3"/>
-                                </Border.Effect>
-                            </Border>
-                            <Border x:Name="PART_Track"/>
-                            <Border x:Name="PART_Indicator"
-                                    HorizontalAlignment="Left"
-                                    Background="{TemplateBinding Foreground}"
-                                    CornerRadius="6"
-                                    Margin="2">
-                                <Border.Effect>
-                                    <DropShadowEffect ShadowDepth="0"
-                                                      BlurRadius="8"
-                                                      Color="{StaticResource AccentColor}"
-                                                      Opacity="0.5"/>
-                                </Border.Effect>
-                            </Border>
-                        </Grid>
-                    </Border>
+                    <Grid>
+                        <!-- Inset track dark shadow -->
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="6">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                  Color="{StaticResource DarkShadowColor}"
+                                                  BlurRadius="6" Opacity="0.6"/>
+                            </Border.Effect>
+                        </Border>
+
+                        <!-- Inset track light shadow -->
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="6">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                  Color="{StaticResource LightShadowColor}"
+                                                  BlurRadius="6" Opacity="0.3"/>
+                            </Border.Effect>
+                            <Grid Margin="2">
+                                <Border x:Name="PART_Track"/>
+                                <Border x:Name="PART_Indicator"
+                                        HorizontalAlignment="Left"
+                                        Background="{TemplateBinding Foreground}"
+                                        CornerRadius="4">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" BlurRadius="8"
+                                                          Color="{StaticResource AccentColor}"
+                                                          Opacity="0.5"/>
+                                    </Border.Effect>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -288,27 +311,28 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Slider">
                     <Grid>
+                        <!-- Inset track dark shadow -->
                         <Border Background="{TemplateBinding Background}"
-                                Height="8"
-                                CornerRadius="4"
+                                Height="8" CornerRadius="4"
                                 VerticalAlignment="Center">
                             <Border.Effect>
-                                <DropShadowEffect ShadowDepth="0"
-                                                  Direction="135"
+                                <DropShadowEffect ShadowDepth="0" Direction="135"
                                                   Color="{StaticResource DarkShadowColor}"
-                                                  BlurRadius="6"
-                                                  Opacity="0.6"/>
+                                                  BlurRadius="6" Opacity="0.6"/>
                             </Border.Effect>
-                            <Border CornerRadius="4">
-                                <Border.Effect>
-                                    <DropShadowEffect ShadowDepth="0"
-                                                      Direction="315"
-                                                      Color="{StaticResource LightShadowColor}"
-                                                      BlurRadius="6"
-                                                      Opacity="0.3"/>
-                                </Border.Effect>
-                            </Border>
                         </Border>
+
+                        <!-- Inset track light shadow -->
+                        <Border Background="{TemplateBinding Background}"
+                                Height="8" CornerRadius="4"
+                                VerticalAlignment="Center">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                  Color="{StaticResource LightShadowColor}"
+                                                  BlurRadius="6" Opacity="0.3"/>
+                            </Border.Effect>
+                        </Border>
+
                         <Track x:Name="PART_Track">
                             <Track.DecreaseRepeatButton>
                                 <RepeatButton Command="Slider.DecreaseLarge" Opacity="0"/>
@@ -317,27 +341,29 @@
                                 <Thumb>
                                     <Thumb.Template>
                                         <ControlTemplate>
-                                            <Border Width="24"
-                                                    Height="24"
-                                                    Background="{StaticResource BackgroundBrush}"
-                                                    CornerRadius="12">
-                                                <Border.Effect>
-                                                    <DropShadowEffect ShadowDepth="0"
-                                                                      Direction="315"
-                                                                      Color="{StaticResource LightShadowColor}"
-                                                                      BlurRadius="10"
-                                                                      Opacity="1"/>
-                                                </Border.Effect>
-                                                <Border CornerRadius="12">
+                                            <Grid>
+                                                <!-- Thumb light shadow -->
+                                                <Border Width="24" Height="24"
+                                                        Background="{StaticResource BackgroundBrush}"
+                                                        CornerRadius="12">
                                                     <Border.Effect>
-                                                        <DropShadowEffect ShadowDepth="0"
-                                                                          Direction="135"
-                                                                          Color="{StaticResource DarkShadowColor}"
-                                                                          BlurRadius="10"
-                                                                          Opacity="0.8"/>
+                                                        <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                                          Color="{StaticResource LightShadowColor}"
+                                                                          BlurRadius="10" Opacity="1"/>
                                                     </Border.Effect>
                                                 </Border>
-                                            </Border>
+
+                                                <!-- Thumb dark shadow -->
+                                                <Border Width="24" Height="24"
+                                                        Background="{StaticResource BackgroundBrush}"
+                                                        CornerRadius="12">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                                          Color="{StaticResource DarkShadowColor}"
+                                                                          BlurRadius="10" Opacity="0.8"/>
+                                                    </Border.Effect>
+                                                </Border>
+                                            </Grid>
                                         </ControlTemplate>
                                     </Thumb.Template>
                                 </Thumb>
@@ -370,26 +396,25 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
                     <Grid>
-                        <Border x:Name="border"
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="12">
-                            <Border.Effect>
-                                <DropShadowEffect ShadowDepth="0"
-                                                  Direction="315"
-                                                  Color="{StaticResource LightShadowColor}"
-                                                  BlurRadius="12"
-                                                  Opacity="1"/>
-                            </Border.Effect>
-                            <Grid>
-                                <Border CornerRadius="12">
-                                    <Border.Effect>
-                                        <DropShadowEffect ShadowDepth="0"
-                                                          Direction="135"
-                                                          Color="{StaticResource DarkShadowColor}"
-                                                          BlurRadius="12"
-                                                          Opacity="0.8"/>
-                                    </Border.Effect>
-                                </Border>
+                        <Grid>
+                            <!-- Light shadow -->
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="12">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                      Color="{StaticResource LightShadowColor}"
+                                                      BlurRadius="12" Opacity="1"/>
+                                </Border.Effect>
+                            </Border>
+
+                            <!-- Dark shadow with content -->
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="12">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                      Color="{StaticResource DarkShadowColor}"
+                                                      BlurRadius="12" Opacity="0.8"/>
+                                </Border.Effect>
                                 <Grid Margin="{TemplateBinding Padding}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -405,38 +430,41 @@
                                           Margin="10,0,0,0"
                                           VerticalAlignment="Center"/>
                                 </Grid>
-                            </Grid>
-                        </Border>
+                            </Border>
+                        </Grid>
+
                         <Popup x:Name="PART_Popup"
                                IsOpen="{TemplateBinding IsDropDownOpen}"
                                Placement="Bottom"
                                AllowsTransparency="True">
-                            <Border Background="{StaticResource BackgroundBrush}"
-                                    CornerRadius="12"
-                                    Margin="0,5,0,0"
-                                    MinWidth="{TemplateBinding ActualWidth}">
-                                <Border.Effect>
-                                    <DropShadowEffect ShadowDepth="0"
-                                                      Direction="315"
-                                                      Color="{StaticResource LightShadowColor}"
-                                                      BlurRadius="15"
-                                                      Opacity="1"/>
-                                </Border.Effect>
-                                <Grid>
-                                    <Border CornerRadius="12">
-                                        <Border.Effect>
-                                            <DropShadowEffect ShadowDepth="0"
-                                                              Direction="135"
-                                                              Color="{StaticResource DarkShadowColor}"
-                                                              BlurRadius="15"
-                                                              Opacity="0.8"/>
-                                        </Border.Effect>
-                                    </Border>
+                            <Grid>
+                                <!-- Popup light shadow -->
+                                <Border Background="{StaticResource BackgroundBrush}"
+                                        CornerRadius="12"
+                                        Margin="0,5,0,0"
+                                        MinWidth="{TemplateBinding ActualWidth}">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                          Color="{StaticResource LightShadowColor}"
+                                                          BlurRadius="15" Opacity="1"/>
+                                    </Border.Effect>
+                                </Border>
+
+                                <!-- Popup dark shadow with content -->
+                                <Border Background="{StaticResource BackgroundBrush}"
+                                        CornerRadius="12"
+                                        Margin="0,5,0,0"
+                                        MinWidth="{TemplateBinding ActualWidth}">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                          Color="{StaticResource DarkShadowColor}"
+                                                          BlurRadius="15" Opacity="0.8"/>
+                                    </Border.Effect>
                                     <ScrollViewer MaxHeight="300" Margin="8">
                                         <ItemsPresenter/>
                                     </ScrollViewer>
-                                </Grid>
-                            </Border>
+                                </Border>
+                            </Grid>
                         </Popup>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -486,30 +514,30 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBox">
-                    <Border Background="{TemplateBinding Background}"
-                            CornerRadius="15">
-                        <Border.Effect>
-                            <DropShadowEffect ShadowDepth="0"
-                                              Direction="135"
-                                              Color="{StaticResource DarkShadowColor}"
-                                              BlurRadius="10"
-                                              Opacity="0.7"/>
-                        </Border.Effect>
-                        <Grid>
-                            <Border CornerRadius="15">
-                                <Border.Effect>
-                                    <DropShadowEffect ShadowDepth="0"
-                                                      Direction="315"
-                                                      Color="{StaticResource LightShadowColor}"
-                                                      BlurRadius="8"
-                                                      Opacity="0.3"/>
-                                </Border.Effect>
-                            </Border>
+                    <Grid>
+                        <!-- Dark inset shadow -->
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="15">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                  Color="{StaticResource DarkShadowColor}"
+                                                  BlurRadius="10" Opacity="0.7"/>
+                            </Border.Effect>
+                        </Border>
+
+                        <!-- Light inset shadow with content -->
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="15">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                  Color="{StaticResource LightShadowColor}"
+                                                  BlurRadius="8" Opacity="0.3"/>
+                            </Border.Effect>
                             <ScrollViewer Padding="{TemplateBinding Padding}">
                                 <ItemsPresenter/>
                             </ScrollViewer>
-                        </Grid>
-                    </Border>
+                        </Border>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -560,31 +588,30 @@
                                   Grid.Row="0"
                                   IsItemsHost="True"
                                   Margin="0,0,0,15"/>
-                        <Border Grid.Row="1"
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="20"
-                                Padding="{TemplateBinding Padding}">
-                            <Border.Effect>
-                                <DropShadowEffect ShadowDepth="0"
-                                                  Direction="135"
-                                                  Color="{StaticResource DarkShadowColor}"
-                                                  BlurRadius="15"
-                                                  Opacity="0.7"/>
-                            </Border.Effect>
-                            <Grid>
-                                <Border CornerRadius="20">
-                                    <Border.Effect>
-                                        <DropShadowEffect ShadowDepth="0"
-                                                          Direction="315"
-                                                          Color="{StaticResource LightShadowColor}"
-                                                          BlurRadius="12"
-                                                          Opacity="0.5"/>
-                                    </Border.Effect>
-                                </Border>
+                        <Grid Grid.Row="1">
+                            <!-- Dark inset shadow -->
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="20">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                      Color="{StaticResource DarkShadowColor}"
+                                                      BlurRadius="15" Opacity="0.7"/>
+                                </Border.Effect>
+                            </Border>
+
+                            <!-- Light inset shadow with content -->
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="20"
+                                    Padding="{TemplateBinding Padding}">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                      Color="{StaticResource LightShadowColor}"
+                                                      BlurRadius="12" Opacity="0.5"/>
+                                </Border.Effect>
                                 <ContentPresenter x:Name="PART_SelectedContentHost"
                                                   ContentSource="SelectedContent"/>
-                            </Grid>
-                        </Border>
+                            </Border>
+                        </Grid>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -600,42 +627,52 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
-                    <Border x:Name="border"
-                            Background="{StaticResource BackgroundBrush}"
-                            CornerRadius="12"
-                            Padding="20,10"
-                            Margin="4,0">
-                        <Border.Effect>
-                            <DropShadowEffect x:Name="lightShadow"
-                                              ShadowDepth="0"
-                                              Direction="315"
-                                              Color="{StaticResource LightShadowColor}"
-                                              BlurRadius="10"
-                                              Opacity="1"/>
-                        </Border.Effect>
-                        <Grid>
-                            <Border CornerRadius="12">
-                                <Border.Effect>
-                                    <DropShadowEffect x:Name="darkShadow"
-                                                      ShadowDepth="0"
-                                                      Direction="135"
-                                                      Color="{StaticResource DarkShadowColor}"
-                                                      BlurRadius="10"
-                                                      Opacity="0.8"/>
-                                </Border.Effect>
-                            </Border>
+                    <Grid>
+                        <!-- Light shadow -->
+                        <Border x:Name="lightBorder"
+                                Background="{StaticResource BackgroundBrush}"
+                                CornerRadius="12"
+                                Margin="4,0">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                  Color="{StaticResource LightShadowColor}"
+                                                  BlurRadius="10" Opacity="1"/>
+                            </Border.Effect>
+                        </Border>
+
+                        <!-- Dark shadow with content -->
+                        <Border x:Name="darkBorder"
+                                Background="{StaticResource BackgroundBrush}"
+                                CornerRadius="12"
+                                Padding="20,10"
+                                Margin="4,0">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                  Color="{StaticResource DarkShadowColor}"
+                                                  BlurRadius="10" Opacity="0.8"/>
+                            </Border.Effect>
                             <ContentPresenter x:Name="ContentSite"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center"
                                               ContentSource="Header"/>
-                        </Grid>
-                    </Border>
+                        </Border>
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="lightShadow" Property="Direction" Value="135"/>
-                            <Setter TargetName="darkShadow" Property="Direction" Value="315"/>
-                            <Setter TargetName="lightShadow" Property="BlurRadius" Value="8"/>
-                            <Setter TargetName="darkShadow" Property="BlurRadius" Value="8"/>
+                            <Setter TargetName="lightBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                      Color="{StaticResource LightShadowColor}"
+                                                      BlurRadius="8" Opacity="1"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="darkBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                      Color="{StaticResource DarkShadowColor}"
+                                                      BlurRadius="8" Opacity="0.8"/>
+                                </Setter.Value>
+                            </Setter>
                             <Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -656,36 +693,34 @@
             <Setter.Value>
                 <ControlTemplate TargetType="GroupBox">
                     <Grid>
+                        <!-- Dark shadow -->
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="18">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                  Color="{StaticResource DarkShadowColor}"
+                                                  BlurRadius="12" Opacity="0.7"/>
+                            </Border.Effect>
+                        </Border>
+
+                        <!-- Light shadow with content -->
                         <Border Background="{TemplateBinding Background}"
                                 CornerRadius="18"
                                 Padding="{TemplateBinding Padding}">
                             <Border.Effect>
-                                <DropShadowEffect ShadowDepth="0"
-                                                  Direction="135"
-                                                  Color="{StaticResource DarkShadowColor}"
-                                                  BlurRadius="12"
-                                                  Opacity="0.7"/>
+                                <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                  Color="{StaticResource LightShadowColor}"
+                                                  BlurRadius="10" Opacity="0.5"/>
                             </Border.Effect>
                             <Grid>
-                                <Border CornerRadius="18">
-                                    <Border.Effect>
-                                        <DropShadowEffect ShadowDepth="0"
-                                                          Direction="315"
-                                                          Color="{StaticResource LightShadowColor}"
-                                                          BlurRadius="10"
-                                                          Opacity="0.5"/>
-                                    </Border.Effect>
-                                </Border>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <ContentPresenter Grid.Row="0"
-                                                      ContentSource="Header"
-                                                      Margin="5,0,0,12"/>
-                                    <ContentPresenter Grid.Row="1"/>
-                                </Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <ContentPresenter Grid.Row="0"
+                                                  ContentSource="Header"
+                                                  Margin="5,0,0,12"/>
+                                <ContentPresenter Grid.Row="1"/>
                             </Grid>
                         </Border>
                     </Grid>
@@ -706,44 +741,65 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
-                    <Border x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            CornerRadius="15"
-                            Padding="{TemplateBinding Padding}">
-                        <Border.Effect>
-                            <DropShadowEffect x:Name="lightShadow"
-                                              ShadowDepth="0"
-                                              Direction="315"
-                                              Color="{StaticResource LightShadowColor}"
-                                              BlurRadius="15"
-                                              Opacity="1"/>
-                        </Border.Effect>
-                        <Grid>
-                            <Border CornerRadius="15">
-                                <Border.Effect>
-                                    <DropShadowEffect x:Name="darkShadow"
-                                                      ShadowDepth="0"
-                                                      Direction="135"
-                                                      Color="{StaticResource DarkShadowColor}"
-                                                      BlurRadius="15"
-                                                      Opacity="0.8"/>
-                                </Border.Effect>
-                            </Border>
+                    <Grid>
+                        <!-- Light shadow -->
+                        <Border x:Name="lightBorder"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="15">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                  Color="{StaticResource LightShadowColor}"
+                                                  BlurRadius="15" Opacity="1"/>
+                            </Border.Effect>
+                        </Border>
+
+                        <!-- Dark shadow with content -->
+                        <Border x:Name="darkBorder"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="15"
+                                Padding="{TemplateBinding Padding}">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                  Color="{StaticResource DarkShadowColor}"
+                                                  BlurRadius="15" Opacity="0.8"/>
+                            </Border.Effect>
                             <ContentPresenter HorizontalAlignment="Center"
                                               VerticalAlignment="Center"/>
-                        </Grid>
-                    </Border>
+                        </Border>
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="lightShadow" Property="Direction" Value="135"/>
-                            <Setter TargetName="darkShadow" Property="Direction" Value="315"/>
-                            <Setter TargetName="lightShadow" Property="BlurRadius" Value="10"/>
-                            <Setter TargetName="darkShadow" Property="BlurRadius" Value="10"/>
+                            <Setter TargetName="lightBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                      Color="{StaticResource LightShadowColor}"
+                                                      BlurRadius="10" Opacity="1"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="darkBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                      Color="{StaticResource DarkShadowColor}"
+                                                      BlurRadius="10" Opacity="0.8"/>
+                                </Setter.Value>
+                            </Setter>
                             <Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="lightShadow" Property="BlurRadius" Value="18"/>
-                            <Setter TargetName="darkShadow" Property="BlurRadius" Value="18"/>
+                            <Setter TargetName="lightBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" Direction="315"
+                                                      Color="{StaticResource LightShadowColor}"
+                                                      BlurRadius="18" Opacity="1"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="darkBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" Direction="135"
+                                                      Color="{StaticResource DarkShadowColor}"
+                                                      BlurRadius="18" Opacity="0.8"/>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
