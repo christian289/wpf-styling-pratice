@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="StreamingTextGallery/StreamingTextGallery.csproj" />
+  <Project Path="StreamingTextLib/StreamingTextLib.csproj" />
+</Solution>
