@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ThemeSwitch.Avalonia.Gallery/ThemeSwitch.Avalonia.Gallery.csproj" />
+  <Project Path="ThemeSwitch.Avalonia.Lib/ThemeSwitch.Avalonia.Lib.csproj" />
+</Solution>

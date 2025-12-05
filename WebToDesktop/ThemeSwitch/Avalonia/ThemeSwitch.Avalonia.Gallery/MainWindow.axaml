@@ -25,12 +25,6 @@
             <!-- Default (Day mode) -->
             <controls:ThemeSwitchToggle Margin="0,0,0,30"/>
 
-            <!-- Pre-checked (Night mode) -->
-            <controls:ThemeSwitchToggle IsChecked="True" Margin="0,0,0,30"/>
-
-            <!-- Disabled state -->
-            <controls:ThemeSwitchToggle IsEnabled="False"/>
-
         </StackPanel>
     </Grid>
 </Window>
