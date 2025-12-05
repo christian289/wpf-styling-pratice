@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:ThemeSwitch.Avalonia.Lib.Controls"
         x:Class="ThemeSwitch.Avalonia.Gallery.MainWindow"
-        Title="ThemeSwitch Toggle Gallery"
+        Title="ThemeSwitch Toggle Gallery - AvaloniaUI"
         Width="600"
         Height="400"
         WindowStartupLocation="CenterScreen">

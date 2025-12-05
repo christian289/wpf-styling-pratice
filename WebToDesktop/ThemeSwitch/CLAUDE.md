@@ -26,7 +26,7 @@ ThemeSwitch/
 │       ├── App.xaml / App.xaml.cs
 │       └── MainWindow.xaml / MainWindow.xaml.cs
 └── Avalonia/
-    ├── ThemeSwitch.Avalonia.sln
+    ├── ThemeSwitch.Avalonia.slnx
     ├── ThemeSwitch.Avalonia.Lib/
     │   ├── Controls/
     │   │   └── ThemeSwitchToggle.cs
@@ -114,3 +114,14 @@ cd Avalonia && dotnet run --project ThemeSwitch.Avalonia.Gallery
 - **3D 그라데이션**: `RadialGradientBrush`로 해/달에 입체감 표현
 - **구름 그라데이션**: 구름 Ellipse에 `RadialGradientBrush` 적용
 - **DropShadowEffect**: 해/달에 드롭 섀도우 효과
+
+## 알려진 제한 사항
+
+### Avalonia RadialGradientBrush 렌더링 차이
+
+Avalonia는 Skia 렌더링 엔진을 사용하고 WPF는 DirectX를 사용하기 때문에, RadialGradientBrush 렌더링 품질에 차이가 있습니다.
+
+- **WPF**: 하드웨어 가속 그라데이션으로 부드러운 색상 전환
+- **Avalonia**: 색상 밴딩(color banding)이 발생할 수 있음
+
+이는 프레임워크의 근본적인 렌더링 아키텍처 차이로, 코드 수준에서 완전히 해결하기 어렵습니다.
