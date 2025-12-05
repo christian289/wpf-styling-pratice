@@ -210,7 +210,10 @@
                                 <Canvas x:Name="CircleCanvas"
                                         Panel.ZIndex="4">
                                     <Canvas.RenderTransform>
-                                        <TranslateTransform x:Name="CircleTranslate" X="-13" />
+                                        <TransformGroup>
+                                            <TranslateTransform x:Name="CircleTranslate" X="-13" />
+                                            <TranslateTransform x:Name="CircleHoverTranslate" X="0" />
+                                        </TransformGroup>
                                     </Canvas.RenderTransform>
 
                                     <!--  바깥 링 3 (1.25em = 37.5px spread)  -->
@@ -241,7 +244,10 @@
                                 <Canvas x:Name="SunMoonCanvas"
                                         Panel.ZIndex="5">
                                     <Canvas.RenderTransform>
-                                        <TranslateTransform x:Name="SunMoonTranslate" X="-13" />
+                                        <TransformGroup>
+                                            <TranslateTransform x:Name="SunMoonTranslate" X="-13" />
+                                            <TranslateTransform x:Name="SunMoonHoverTranslate" X="0" />
+                                        </TransformGroup>
                                     </Canvas.RenderTransform>
 
                                     <!--  해 (Sun) with strong 3D effect  -->
@@ -600,6 +606,131 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5" />
                         </Trigger>
+
+                        <!--  낮 상태에서 마우스 오버 시 해가 오른쪽으로 5px 이동  -->
+                        <!--  HoverTranslate를 사용하여 IsChecked 애니메이션과 분리  -->
+                        <!--  RemoveStoryboard로 애니메이션 완전 제거하여 속성을 기본값으로 복원  -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <RemoveStoryboard BeginStoryboardName="DayHoverExitStoryboard" />
+                                <RemoveStoryboard BeginStoryboardName="NightHoverExitStoryboard" />
+                                <BeginStoryboard x:Name="DayHoverStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="CircleHoverTranslate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="5"
+                                                         Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="SunMoonHoverTranslate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="5"
+                                                         Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="DayHoverStoryboard" />
+                                <BeginStoryboard x:Name="DayHoverExitStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="CircleHoverTranslate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="0"
+                                                         Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="SunMoonHoverTranslate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="0"
+                                                         Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+
+                        <!--  밤 상태에서 마우스 오버 시 달이 왼쪽으로 5px 이동  -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <RemoveStoryboard BeginStoryboardName="DayHoverExitStoryboard" />
+                                <RemoveStoryboard BeginStoryboardName="NightHoverExitStoryboard" />
+                                <BeginStoryboard x:Name="NightHoverStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="CircleHoverTranslate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="-5"
+                                                         Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="SunMoonHoverTranslate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="-5"
+                                                         Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="NightHoverStoryboard" />
+                                <BeginStoryboard x:Name="NightHoverExitStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="CircleHoverTranslate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="0"
+                                                         Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="SunMoonHoverTranslate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="0"
+                                                         Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+
+                        <!--  IsChecked 변경 시 호버 Storyboard 완전 제거하여 HoverTranslate를 기본값(0)으로 복원  -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <RemoveStoryboard BeginStoryboardName="DayHoverStoryboard" />
+                                <RemoveStoryboard BeginStoryboardName="DayHoverExitStoryboard" />
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="NightHoverStoryboard" />
+                                <RemoveStoryboard BeginStoryboardName="NightHoverExitStoryboard" />
+                            </Trigger.ExitActions>
+                        </Trigger>
+
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
