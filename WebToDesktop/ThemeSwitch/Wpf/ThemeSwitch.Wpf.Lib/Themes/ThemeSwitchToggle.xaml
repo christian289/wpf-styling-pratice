@@ -14,7 +14,6 @@
                 <ControlTemplate TargetType="{x:Type controls:ThemeSwitchToggle}">
                     <Grid Width="{TemplateBinding Width}"
                           Height="{TemplateBinding Height}">
-
                         <!--  ═══════════════════════════════════════════════════════════════  -->
                         <!--  외부 입체감 (버튼이 살짝 튀어나온 느낌)  -->
                         <!--  CSS: box-shadow: 0em -0.062em 0.062em rgba(0,0,0,0.25),  -->
@@ -35,7 +34,6 @@
                         <!--  메인 컨테이너  -->
                         <!--  ═══════════════════════════════════════════════════════════════  -->
                         <Border x:Name="Container"
-                                ClipToBounds="True"
                                 CornerRadius="37.5">
                             <Border.Background>
                                 <SolidColorBrush x:Name="ContainerBg"
@@ -43,6 +41,11 @@
                             </Border.Background>
 
                             <Grid>
+                                <Grid.Clip>
+                                    <RectangleGeometry Rect="0,0,169,75"
+                                                       RadiusX="37.5"
+                                                       RadiusY="37.5" />
+                                </Grid.Clip>
                                 <!--  내부 inset 그림자 (오목하게 파인 효과)  -->
                                 <!--  CSS: box-shadow: 0em 0.05em 0.187em rgba(0,0,0,0.25) inset  -->
                                 <Border Panel.ZIndex="100"
@@ -55,14 +58,15 @@
                                             <GradientStop Offset="1" Color="Transparent" />
                                         </LinearGradientBrush>
                                     </Border.Background>
+
+                                    <Grid />
                                 </Border>
 
                                 <!--  ═══════════════════════════════════════════════════════  -->
                                 <!--  뒤쪽 구름 (#AACADF) - CSS box-shadow 정밀 변환  -->
                                 <!--  ═══════════════════════════════════════════════════════  -->
                                 <Canvas x:Name="BackCloudsCanvas"
-                                        Panel.ZIndex="1"
-                                        ClipToBounds="False">
+                                        Panel.ZIndex="1">
                                     <Canvas.RenderTransform>
                                         <TranslateTransform x:Name="BackCloudsTranslate" Y="0" />
                                     </Canvas.RenderTransform>
@@ -120,8 +124,7 @@
                                 <!--  앞쪽 구름 (#F3FDFF) - CSS box-shadow 정밀 변환  -->
                                 <!--  ═══════════════════════════════════════════════════════  -->
                                 <Canvas x:Name="FrontCloudsCanvas"
-                                        Panel.ZIndex="2"
-                                        ClipToBounds="False">
+                                        Panel.ZIndex="2">
                                     <Canvas.RenderTransform>
                                         <TranslateTransform x:Name="FrontCloudsTranslate" Y="0" />
                                     </Canvas.RenderTransform>

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ThemeSwitch.Wpf.Gallery/ThemeSwitch.Wpf.Gallery.csproj" />
+  <Project Path="ThemeSwitch.Wpf.Lib/ThemeSwitch.Wpf.Lib.csproj" />
+</Solution>

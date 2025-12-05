@@ -8,29 +8,22 @@
         WindowStartupLocation="CenterScreen">
 
     <Window.Background>
-        <SolidColorBrush Color="#E8E8E8"/>
+        <SolidColorBrush Color="#E8E8E8" />
     </Window.Background>
 
     <Grid>
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center">
 
-            <TextBlock Text="Day/Night Theme Switch"
+            <TextBlock Margin="0,0,0,40"
+                       HorizontalAlignment="Center"
                        FontSize="28"
                        FontWeight="Bold"
                        Foreground="#333333"
-                       HorizontalAlignment="Center"
-                       Margin="0,0,0,40"/>
+                       Text="Day/Night Theme Switch" />
 
-            <!-- Default (Day mode) -->
-            <controls:ThemeSwitchToggle Margin="0,0,0,30"/>
-
-            <!-- Pre-checked (Night mode) -->
-            <controls:ThemeSwitchToggle IsChecked="True" Margin="0,0,0,30"/>
-
-            <!-- Disabled state -->
-            <controls:ThemeSwitchToggle IsEnabled="False"/>
-
+            <!--  Default (Day mode)  -->
+            <controls:ThemeSwitchToggle Margin="0,0,0,30" />
         </StackPanel>
     </Grid>
 </Window>
