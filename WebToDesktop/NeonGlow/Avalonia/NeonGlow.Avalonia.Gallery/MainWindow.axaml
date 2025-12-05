@@ -1,0 +1,42 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:NeonGlow.Avalonia.Lib.Controls"
+        x:Class="NeonGlow.Avalonia.Gallery.MainWindow"
+        Title="NeonGlow Button Gallery"
+        Width="800"
+        Height="600"
+        WindowStartupLocation="CenterScreen">
+
+    <!-- 다크 배경 -->
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+            <GradientStop Color="#0A0A0A" Offset="0"/>
+            <GradientStop Color="#1A1A2E" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="30">
+
+        <!-- 타이틀 -->
+        <TextBlock Text="NeonGlow Button (Avalonia)"
+                   FontSize="32"
+                   FontWeight="Bold"
+                   Foreground="#FFFFFF"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+
+        <!-- 기본 버튼 -->
+        <controls:NeonGlowButton Content="Realism"/>
+
+        <!-- 다양한 콘텐츠 -->
+        <controls:NeonGlowButton Content="Click Me"/>
+
+        <controls:NeonGlowButton Content="Hover Effect"/>
+
+        <!-- 비활성화 상태 -->
+        <controls:NeonGlowButton Content="Disabled" IsEnabled="False"/>
+
+    </StackPanel>
+</Window>

@@ -1,0 +1,108 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:NeonGlow.Avalonia.Lib.Controls">
+
+    <ControlTheme x:Key="{x:Type controls:NeonGlowButton}" TargetType="controls:NeonGlowButton">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="#FFFFFF"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!-- 최외곽 컨테이너: .button -->
+                <Border x:Name="OuterBorder"
+                        CornerRadius="16"
+                        Padding="2">
+                    <!-- .button 배경: radial-gradient(circle 80px at 80% -10%, #ffffff, #181b1b) -->
+                    <Border.Background>
+                        <RadialGradientBrush GradientOrigin="80%,-10%" Center="80%,-10%" RadiusX="0.5" RadiusY="0.8">
+                            <GradientStop Color="#FFFFFF" Offset="0"/>
+                            <GradientStop Color="#181B1B" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Border.Background>
+
+                    <Panel>
+                        <!-- .button::after: 우상단 글로우 효과 -->
+                        <Border x:Name="GlowEffect"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                MinWidth="50"
+                                MinHeight="30"
+                                CornerRadius="60"
+                                Background="Transparent"
+                                BoxShadow="0 0 20 0 #38FFFFFF"/>
+
+                        <!-- .blob1: 좌하단 시안/블루 블롭 -->
+                        <Border x:Name="Blob1"
+                                Width="70"
+                                HorizontalAlignment="Left"
+                                CornerRadius="16"
+                                BoxShadow="-10 10 30 0 #2D0051FF">
+                            <!-- radial-gradient(circle 60px at 0% 100%, #3fe9ff, #0000ff80, transparent) -->
+                            <Border.Background>
+                                <RadialGradientBrush GradientOrigin="0%,100%" Center="0%,100%" RadiusX="0.8" RadiusY="1.2">
+                                    <GradientStop Color="#3FE9FF" Offset="0"/>
+                                    <GradientStop Color="#800000FF" Offset="0.5"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                        </Border>
+
+                        <!-- .inner: 내부 콘텐츠 영역 -->
+                        <Border x:Name="InnerBorder"
+                                CornerRadius="14"
+                                Padding="25,14">
+                            <!-- radial-gradient(circle 80px at 80% -50%, #777777, #0f1111) -->
+                            <Border.Background>
+                                <RadialGradientBrush GradientOrigin="80%,-50%" Center="80%,-50%" RadiusX="0.5" RadiusY="0.8">
+                                    <GradientStop Color="#777777" Offset="0"/>
+                                    <GradientStop Color="#0F1111" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+
+                            <Panel>
+                                <!-- .inner::before: 시안 오버레이 -->
+                                <Border x:Name="InnerOverlay"
+                                        CornerRadius="14"
+                                        Margin="-25,-14">
+                                    <!-- radial-gradient(circle 60px at 0% 100%, #00e1ff1a, #0000ff11, transparent) -->
+                                    <Border.Background>
+                                        <RadialGradientBrush GradientOrigin="0%,100%" Center="0%,100%" RadiusX="0.6" RadiusY="1">
+                                            <GradientStop Color="#1A00E1FF" Offset="0"/>
+                                            <GradientStop Color="#110000FF" Offset="0.5"/>
+                                            <GradientStop Color="Transparent" Offset="1"/>
+                                        </RadialGradientBrush>
+                                    </Border.Background>
+                                </Border>
+
+                                <!-- 콘텐츠 -->
+                                <ContentPresenter x:Name="PART_ContentPresenter"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Panel>
+                        </Border>
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- 마우스 오버 효과 -->
+        <Style Selector="^:pointerover /template/ Border#OuterBorder">
+            <Setter Property="Opacity" Value="0.95"/>
+        </Style>
+
+        <!-- 클릭 효과 -->
+        <Style Selector="^:pressed /template/ Border#OuterBorder">
+            <Setter Property="RenderTransform" Value="scale(0.98)"/>
+        </Style>
+
+        <!-- 비활성화 -->
+        <Style Selector="^:disabled /template/ Border#OuterBorder">
+            <Setter Property="Opacity" Value="0.5"/>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

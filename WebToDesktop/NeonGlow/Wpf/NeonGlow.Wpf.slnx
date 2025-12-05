@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="NeonGlow.Wpf.Gallery/NeonGlow.Wpf.Gallery.csproj" />
+  <Project Path="NeonGlow.Wpf.Lib/NeonGlow.Wpf.Lib.csproj" />
+</Solution>

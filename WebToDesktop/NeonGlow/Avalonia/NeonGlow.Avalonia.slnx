@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="NeonGlow.Avalonia.Gallery/NeonGlow.Avalonia.Gallery.csproj" />
+  <Project Path="NeonGlow.Avalonia.Lib/NeonGlow.Avalonia.Lib.csproj" />
+</Solution>
