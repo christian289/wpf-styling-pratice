@@ -3,209 +3,426 @@
                     xmlns:controls="clr-namespace:ThemeSwitch.Wpf.Lib.Controls">
 
     <Style TargetType="{x:Type controls:ThemeSwitchToggle}">
-        <Setter Property="Width" Value="169"/>
-        <Setter Property="Height" Value="75"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        <!--  CSS: 1em = 30px  -->
+        <!--  container-width: 5.625em = 168.75px ≈ 169px  -->
+        <!--  container-height: 2.5em = 75px  -->
+        <Setter Property="Width" Value="169" />
+        <Setter Property="Height" Value="75" />
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:ThemeSwitchToggle}">
-                    <!-- Outer wrapper for recessed effect (움푹 들어간 효과) -->
-                    <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
-                        <!-- Outer shadow: top dark, bottom light = recessed look -->
-                        <Border CornerRadius="37.5"
-                                BorderThickness="0"
-                                Margin="0,-2,0,0">
-                            <Border.Effect>
-                                <DropShadowEffect ShadowDepth="1.9" Direction="270" Color="#000000" Opacity="0.25" BlurRadius="1.9"/>
-                            </Border.Effect>
-                        </Border>
-                        <Border CornerRadius="37.5"
-                                BorderThickness="0"
-                                Margin="0,0,0,-2">
-                            <Border.Effect>
-                                <DropShadowEffect ShadowDepth="1.9" Direction="90" Color="#FFFFFF" Opacity="0.94" BlurRadius="3.75"/>
-                            </Border.Effect>
-                        </Border>
+                    <Grid Width="{TemplateBinding Width}"
+                          Height="{TemplateBinding Height}">
 
-                        <!-- Main container -->
+                        <!--  ═══════════════════════════════════════════════════════════════  -->
+                        <!--  외부 입체감 (버튼이 살짝 튀어나온 느낌)  -->
+                        <!--  CSS: box-shadow: 0em -0.062em 0.062em rgba(0,0,0,0.25),  -->
+                        <!--  0em 0.062em 0.125em rgba(255,255,255,0.94)  -->
+                        <!--  ═══════════════════════════════════════════════════════════════  -->
+
+                        <!--  상단 어두운 그림자  -->
+                        <Border Margin="0,-1,0,1"
+                                Background="#18000000"
+                                CornerRadius="37.5" />
+
+                        <!--  하단 밝은 그림자  -->
+                        <Border Margin="0,1,0,-1"
+                                Background="#F0FFFFFF"
+                                CornerRadius="37.5" />
+
+                        <!--  ═══════════════════════════════════════════════════════════════  -->
+                        <!--  메인 컨테이너  -->
+                        <!--  ═══════════════════════════════════════════════════════════════  -->
                         <Border x:Name="Container"
-                                CornerRadius="37.5"
-                                ClipToBounds="True">
+                                ClipToBounds="True"
+                                CornerRadius="37.5">
                             <Border.Background>
-                                <SolidColorBrush x:Name="ContainerBg" Color="#3D7EAE"/>
+                                <SolidColorBrush x:Name="ContainerBg"
+                                                 Color="#3D7EAE" />
                             </Border.Background>
 
-                            <Grid ClipToBounds="True">
-                                <!-- Inset shadow for container (내부 그림자) -->
-                                <Border CornerRadius="37.5" Panel.ZIndex="100">
-                                    <Border.Effect>
-                                        <DropShadowEffect ShadowDepth="1.5" Direction="90" Color="#000000" Opacity="0.25" BlurRadius="5.6"/>
-                                    </Border.Effect>
+                            <Grid>
+                                <!--  내부 inset 그림자 (오목하게 파인 효과)  -->
+                                <!--  CSS: box-shadow: 0em 0.05em 0.187em rgba(0,0,0,0.25) inset  -->
+                                <Border Panel.ZIndex="100"
+                                        CornerRadius="37.5"
+                                        IsHitTestVisible="False">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Offset="0" Color="#40000000" />
+                                            <GradientStop Offset="0.15" Color="Transparent" />
+                                            <GradientStop Offset="1" Color="Transparent" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
                                 </Border>
 
-                                <!-- Back clouds layer (회색 - 뒤쪽) -->
-                                <Canvas x:Name="BackCloudsCanvas" ClipToBounds="True" Panel.ZIndex="1">
-                                    <Ellipse Canvas.Left="-9" Canvas.Bottom="-9" Width="38" Height="38" Fill="#AACADF"/>
-                                    <Ellipse Canvas.Left="15" Canvas.Bottom="-4" Width="38" Height="38" Fill="#AACADF"/>
-                                    <Ellipse Canvas.Left="37" Canvas.Bottom="-9" Width="38" Height="38" Fill="#AACADF"/>
-                                    <Ellipse Canvas.Left="60" Canvas.Bottom="-2" Width="38" Height="38" Fill="#AACADF"/>
-                                    <Ellipse Canvas.Left="79" Canvas.Bottom="-9" Width="38" Height="38" Fill="#AACADF"/>
-                                    <Ellipse Canvas.Left="101" Canvas.Bottom="-13" Width="38" Height="38" Fill="#AACADF"/>
-                                    <Ellipse Canvas.Left="120" Canvas.Bottom="-19" Width="38" Height="38" Fill="#AACADF"/>
-                                    <Ellipse Canvas.Left="124" Canvas.Bottom="26" Width="50" Height="50" Fill="#AACADF"/>
-
+                                <!--  ═══════════════════════════════════════════════════════  -->
+                                <!--  뒤쪽 구름 (#AACADF) - CSS box-shadow 정밀 변환  -->
+                                <!--  ═══════════════════════════════════════════════════════  -->
+                                <Canvas x:Name="BackCloudsCanvas"
+                                        Panel.ZIndex="1"
+                                        ClipToBounds="False">
                                     <Canvas.RenderTransform>
-                                        <TranslateTransform x:Name="BackCloudsTranslate" Y="0"/>
+                                        <TranslateTransform x:Name="BackCloudsTranslate" Y="0" />
                                     </Canvas.RenderTransform>
+
+                                    <!--  약간 blur로 뒤쪽 느낌  -->
+                                    <Canvas.Effect>
+                                        <BlurEffect Radius="0.5" />
+                                    </Canvas.Effect>
+
+                                    <!--  CSS box-shadow 순서대로 변환  -->
+                                    <Ellipse Canvas.Left="0"
+                                             Canvas.Top="47"
+                                             Width="37"
+                                             Height="37"
+                                             Fill="#AACADF" />
+                                    <Ellipse Canvas.Left="24"
+                                             Canvas.Top="52"
+                                             Width="37"
+                                             Height="37"
+                                             Fill="#AACADF" />
+                                    <Ellipse Canvas.Left="47"
+                                             Canvas.Top="54"
+                                             Width="37"
+                                             Height="37"
+                                             Fill="#AACADF" />
+                                    <Ellipse Canvas.Left="69"
+                                             Canvas.Top="47"
+                                             Width="37"
+                                             Height="37"
+                                             Fill="#AACADF" />
+                                    <Ellipse Canvas.Left="88"
+                                             Canvas.Top="56"
+                                             Width="37"
+                                             Height="37"
+                                             Fill="#AACADF" />
+                                    <Ellipse Canvas.Left="110"
+                                             Canvas.Top="43"
+                                             Width="37"
+                                             Height="37"
+                                             Fill="#AACADF" />
+                                    <Ellipse Canvas.Left="129"
+                                             Canvas.Top="37"
+                                             Width="37"
+                                             Height="37"
+                                             Fill="#AACADF" />
+                                    <!--  큰 구름 (spread 포함)  -->
+                                    <Ellipse Canvas.Left="123"
+                                             Canvas.Top="-7"
+                                             Width="51"
+                                             Height="51"
+                                             Fill="#AACADF" />
                                 </Canvas>
 
-                                <!-- Front clouds layer (흰색 - 앞쪽) -->
-                                <Canvas x:Name="FrontCloudsCanvas" ClipToBounds="True" Panel.ZIndex="2">
-                                    <Ellipse Canvas.Left="9" Canvas.Bottom="-19" Width="38" Height="38" Fill="#F3FDFF"/>
-                                    <Ellipse Canvas.Left="28" Canvas.Bottom="9" Width="38" Height="38" Fill="#F3FDFF"/>
-                                    <Ellipse Canvas.Left="43" Canvas.Bottom="11" Width="38" Height="38" Fill="#F3FDFF"/>
-                                    <Ellipse Canvas.Left="66" Canvas.Bottom="0" Width="38" Height="38" Fill="#F3FDFF"/>
-                                    <Ellipse Canvas.Left="88" Canvas.Bottom="-2" Width="38" Height="38" Fill="#F3FDFF"/>
-                                    <Ellipse Canvas.Left="109" Canvas.Bottom="9" Width="38" Height="38" Fill="#F3FDFF"/>
-                                    <Ellipse Canvas.Left="135" Canvas.Bottom="-2" Width="38" Height="38" Fill="#F3FDFF"/>
-                                    <Ellipse Canvas.Left="139" Canvas.Bottom="52" Width="50" Height="50" Fill="#F3FDFF"/>
-
+                                <!--  ═══════════════════════════════════════════════════════  -->
+                                <!--  앞쪽 구름 (#F3FDFF) - CSS box-shadow 정밀 변환  -->
+                                <!--  ═══════════════════════════════════════════════════════  -->
+                                <Canvas x:Name="FrontCloudsCanvas"
+                                        Panel.ZIndex="2"
+                                        ClipToBounds="False">
                                     <Canvas.RenderTransform>
-                                        <TranslateTransform x:Name="FrontCloudsTranslate" Y="0"/>
+                                        <TranslateTransform x:Name="FrontCloudsTranslate" Y="0" />
                                     </Canvas.RenderTransform>
+
+                                    <!--  CSS box-shadow 순서대로 변환  -->
+                                    <Ellipse Canvas.Left="9"
+                                             Canvas.Top="56"
+                                             Width="37"
+                                             Height="37"
+                                             Fill="#F3FDFF" />
+                                    <Ellipse Canvas.Left="37"
+                                             Canvas.Top="66"
+                                             Width="37"
+                                             Height="37"
+                                             Fill="#F3FDFF" />
+                                    <Ellipse Canvas.Left="52"
+                                             Canvas.Top="67"
+                                             Width="37"
+                                             Height="37"
+                                             Fill="#F3FDFF" />
+                                    <Ellipse Canvas.Left="75"
+                                             Canvas.Top="56"
+                                             Width="37"
+                                             Height="37"
+                                             Fill="#F3FDFF" />
+                                    <Ellipse Canvas.Left="97"
+                                             Canvas.Top="66"
+                                             Width="37"
+                                             Height="37"
+                                             Fill="#F3FDFF" />
+                                    <Ellipse Canvas.Left="118"
+                                             Canvas.Top="54"
+                                             Width="37"
+                                             Height="37"
+                                             Fill="#F3FDFF" />
+                                    <Ellipse Canvas.Left="144"
+                                             Canvas.Top="47"
+                                             Width="37"
+                                             Height="37"
+                                             Fill="#F3FDFF" />
+                                    <!--  큰 구름 (spread 포함)  -->
+                                    <Ellipse Canvas.Left="139"
+                                             Canvas.Top="4"
+                                             Width="51"
+                                             Height="51"
+                                             Fill="#F3FDFF" />
                                 </Canvas>
 
-                                <!-- Stars layer -->
-                                <Canvas x:Name="StarsCanvas" Opacity="0" Panel.ZIndex="3">
+                                <!--  ═══════════════════════════════════════════════════════  -->
+                                <!--  별 레이어  -->
+                                <!--  ═══════════════════════════════════════════════════════  -->
+                                <Canvas x:Name="StarsCanvas"
+                                        Width="82"
+                                        Height="55"
+                                        Margin="9,0,0,0"
+                                        VerticalAlignment="Center"
+                                        Panel.ZIndex="3"
+                                        Opacity="0">
                                     <Canvas.RenderTransform>
-                                        <TransformGroup>
-                                            <TranslateTransform x:Name="StarsTranslate" Y="-75"/>
-                                        </TransformGroup>
+                                        <TranslateTransform x:Name="StarsTranslate" Y="-75" />
                                     </Canvas.RenderTransform>
-                                    <Path Canvas.Left="135" Canvas.Top="3" Fill="White" Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"/>
-                                    <Path Canvas.Left="31" Canvas.Top="23" Fill="White" Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"/>
-                                    <Path Canvas.Left="0" Canvas.Top="36" Fill="White" Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"/>
-                                    <Path Canvas.Left="54" Canvas.Top="24" Fill="White" Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"/>
-                                    <Path Canvas.Left="81" Canvas.Top="25" Fill="White" Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"/>
-                                    <Path Canvas.Left="136" Canvas.Top="36" Fill="White" Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"/>
-                                    <Path Canvas.Left="99" Canvas.Top="50" Fill="White" Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"/>
+
+                                    <!--  SVG 별 패턴을 WPF Path로 변환 (크기 스케일: 0.6)  -->
+                                    <Path Canvas.Left="0"
+                                          Canvas.Top="14"
+                                          Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"
+                                          Fill="White"
+                                          RenderTransformOrigin="0.5,0.5">
+                                        <Path.RenderTransform>
+                                            <ScaleTransform ScaleX="0.9" ScaleY="0.9" />
+                                        </Path.RenderTransform>
+                                    </Path>
+                                    <Path Canvas.Left="19"
+                                          Canvas.Top="22"
+                                          Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"
+                                          Fill="White"
+                                          RenderTransformOrigin="0.5,0.5">
+                                        <Path.RenderTransform>
+                                            <ScaleTransform ScaleX="0.7" ScaleY="0.7" />
+                                        </Path.RenderTransform>
+                                    </Path>
+                                    <Path Canvas.Left="32"
+                                          Canvas.Top="15"
+                                          Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"
+                                          Fill="White"
+                                          RenderTransformOrigin="0.5,0.5">
+                                        <Path.RenderTransform>
+                                            <ScaleTransform ScaleX="0.6" ScaleY="0.6" />
+                                        </Path.RenderTransform>
+                                    </Path>
+                                    <Path Canvas.Left="49"
+                                          Canvas.Top="15"
+                                          Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"
+                                          Fill="White"
+                                          RenderTransformOrigin="0.5,0.5">
+                                        <Path.RenderTransform>
+                                            <ScaleTransform ScaleX="0.7" ScaleY="0.7" />
+                                        </Path.RenderTransform>
+                                    </Path>
+                                    <Path Canvas.Left="60"
+                                          Canvas.Top="30"
+                                          Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"
+                                          Fill="White"
+                                          RenderTransformOrigin="0.5,0.5">
+                                        <Path.RenderTransform>
+                                            <ScaleTransform ScaleX="0.6" ScaleY="0.6" />
+                                        </Path.RenderTransform>
+                                    </Path>
                                 </Canvas>
 
-                                <!-- Circle container with glow rings -->
-                                <!-- circle-container-offset = (101 - 75) / 2 * -1 = -13 -->
-                                <Canvas x:Name="CircleCanvas" Panel.ZIndex="4">
+                                <!--  ═══════════════════════════════════════════════════════  -->
+                                <!--  Glow Ring (circle-container)  -->
+                                <!--  CSS: diameter=101px, offset=-13px  -->
+                                <!--  CSS: box-shadow: inset 0 0 0 3.375em rgba(255,255,255,0.1),  -->
+                                <!--  0 0 0 0.625em rgba(255,255,255,0.1),  -->
+                                <!--  0 0 0 1.25em rgba(255,255,255,0.1)  -->
+                                <!--  ═══════════════════════════════════════════════════════  -->
+                                <Canvas x:Name="CircleCanvas"
+                                        Panel.ZIndex="4">
                                     <Canvas.RenderTransform>
-                                        <TranslateTransform x:Name="CircleTranslate" X="-13"/>
+                                        <TranslateTransform x:Name="CircleTranslate" X="-13" />
                                     </Canvas.RenderTransform>
-                                    <!-- Outer glow ring 2 (101x101) -->
-                                    <Ellipse Canvas.Left="-13" Canvas.Top="-13" Width="101" Height="101"
-                                             Fill="#1AFFFFFF" Opacity="0.6"/>
-                                    <!-- Outer glow ring 1 -->
-                                    <Ellipse Canvas.Left="6" Canvas.Top="6" Width="63" Height="63"
-                                             Fill="#1AFFFFFF" Opacity="0.8"/>
-                                    <!-- Inner glow -->
-                                    <Ellipse Canvas.Left="19" Canvas.Top="19" Width="37" Height="37"
-                                             Fill="#1AFFFFFF"/>
+
+                                    <!--  바깥 링 3 (1.25em = 37.5px spread)  -->
+                                    <Ellipse Canvas.Left="-50.5"
+                                             Canvas.Top="-50.5"
+                                             Width="176"
+                                             Height="176"
+                                             Fill="#19FFFFFF" />
+                                    <!--  바깥 링 2 (0.625em = 18.75px spread)  -->
+                                    <Ellipse Canvas.Left="-31.75"
+                                             Canvas.Top="-31.75"
+                                             Width="138.5"
+                                             Height="138.5"
+                                             Fill="#19FFFFFF" />
+                                    <!--  바깥 링 1  -->
+                                    <Ellipse Canvas.Left="-13"
+                                             Canvas.Top="-13"
+                                             Width="101"
+                                             Height="101"
+                                             Fill="#19FFFFFF" />
                                 </Canvas>
 
-                                <!-- Sun/Moon container -->
-                                <!-- sun-moon centered in circle-container: (101-64)/2 = 18.5 -->
-                                <Canvas x:Name="SunMoonCanvas" Panel.ZIndex="5">
+                                <!--  ═══════════════════════════════════════════════════════  -->
+                                <!--  해/달 컨테이너  -->
+                                <!--  CSS: sun-moon-diameter: 2.125em = 63.75px ≈ 64px  -->
+                                <!--  중심 위치: (101-64)/2 - 13 = 5.5  -->
+                                <!--  ═══════════════════════════════════════════════════════  -->
+                                <Canvas x:Name="SunMoonCanvas"
+                                        Panel.ZIndex="5">
                                     <Canvas.RenderTransform>
-                                        <TranslateTransform x:Name="SunMoonTranslate" X="-13"/>
+                                        <TranslateTransform x:Name="SunMoonTranslate" X="-13" />
                                     </Canvas.RenderTransform>
 
-                                    <!-- Sun with 3D effect (64x64, centered at 18.5, 5.5) -->
-                                    <Grid Canvas.Left="5.5" Canvas.Top="5.5" Width="64" Height="64">
-                                        <!-- Sun base -->
+                                    <!--  해 (Sun) with strong 3D effect  -->
+                                    <Grid Canvas.Left="5.5"
+                                          Canvas.Top="5.5"
+                                          Width="64"
+                                          Height="64">
+                                        <!--  외부 그림자 (drop-shadow)  -->
+                                        <!--  CSS: filter: drop-shadow(0.062em 0.125em 0.125em rgba(0,0,0,0.25))  -->
+                                        <!--  drop-shadow(0em 0.062em 0.125em rgba(0,0,0,0.25))  -->
                                         <Ellipse Fill="#ECCA2F">
                                             <Ellipse.Effect>
-                                                <DropShadowEffect ShadowDepth="2" Direction="315" Color="#000000" Opacity="0.25" BlurRadius="4"/>
+                                                <DropShadowEffect BlurRadius="4"
+                                                                  Direction="300"
+                                                                  Opacity="0.35"
+                                                                  ShadowDepth="4"
+                                                                  Color="#000000" />
                                             </Ellipse.Effect>
                                         </Ellipse>
-                                        <!-- Sun highlight (top-left inset) -->
-                                        <Ellipse Margin="2">
+
+                                        <!--  상단-좌측 하이라이트 (inset light)  -->
+                                        <!--  CSS: box-shadow: 0.062em 0.062em 0.062em 0em rgba(254,255,239,0.61) inset  -->
+                                        <Ellipse>
                                             <Ellipse.Fill>
-                                                <RadialGradientBrush GradientOrigin="0.3,0.3" Center="0.3,0.3" RadiusX="0.7" RadiusY="0.7">
-                                                    <GradientStop Color="#61FEFFEF" Offset="0"/>
-                                                    <GradientStop Color="Transparent" Offset="1"/>
+                                                <RadialGradientBrush Center="0.3,0.3" GradientOrigin="0.3,0.3" RadiusX="0.7" RadiusY="0.7">
+                                                    <GradientStop Offset="0" Color="#9CFEFFEF" />
+                                                    <GradientStop Offset="0.3" Color="#40FEFFEF" />
+                                                    <GradientStop Offset="0.7" Color="Transparent" />
                                                 </RadialGradientBrush>
                                             </Ellipse.Fill>
                                         </Ellipse>
-                                        <!-- Sun shadow (bottom inset) -->
-                                        <Ellipse Margin="2">
+
+                                        <!--  하단 그림자 (inset dark)  -->
+                                        <!--  CSS: box-shadow: 0em -0.062em 0.062em 0em #a1872a inset  -->
+                                        <Ellipse>
                                             <Ellipse.Fill>
                                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                    <GradientStop Color="Transparent" Offset="0.6"/>
-                                                    <GradientStop Color="#30A1872A" Offset="1"/>
+                                                    <GradientStop Offset="0" Color="Transparent" />
+                                                    <GradientStop Offset="0.6" Color="Transparent" />
+                                                    <GradientStop Offset="1" Color="#70A1872A" />
                                                 </LinearGradientBrush>
                                             </Ellipse.Fill>
                                         </Ellipse>
+
+                                        <!--  테두리 하이라이트  -->
+                                        <Ellipse Margin="1"
+                                                 Stroke="#30FFFFFF"
+                                                 StrokeThickness="1" />
                                     </Grid>
 
-                                    <!-- Moon container (slides in from right) -->
-                                    <Canvas Canvas.Left="5.5" Canvas.Top="5.5" ClipToBounds="True" Width="64" Height="64">
-                                        <!-- Moon with 3D effect -->
-                                        <Grid x:Name="MoonGrid" Canvas.Left="64" Width="64" Height="64">
-                                            <!-- Moon base -->
+                                    <!--  달 (Moon) 컨테이너  -->
+                                    <Canvas Canvas.Left="5.5"
+                                            Canvas.Top="5.5"
+                                            Width="64"
+                                            Height="64"
+                                            ClipToBounds="True">
+
+                                        <!--  달 본체  -->
+                                        <Grid x:Name="MoonGrid"
+                                              Canvas.Left="64"
+                                              Width="64"
+                                              Height="64">
+                                            <!--  외부 그림자  -->
                                             <Ellipse Fill="#C4C9D1">
                                                 <Ellipse.Effect>
-                                                    <DropShadowEffect ShadowDepth="2" Direction="315" Color="#000000" Opacity="0.25" BlurRadius="4"/>
+                                                    <DropShadowEffect BlurRadius="4"
+                                                                      Direction="300"
+                                                                      Opacity="0.35"
+                                                                      ShadowDepth="4"
+                                                                      Color="#000000" />
                                                 </Ellipse.Effect>
                                             </Ellipse>
-                                            <!-- Moon highlight (top-left inset) -->
-                                            <Ellipse Margin="2">
+
+                                            <!--  상단-좌측 하이라이트  -->
+                                            <Ellipse>
                                                 <Ellipse.Fill>
-                                                    <RadialGradientBrush GradientOrigin="0.3,0.3" Center="0.3,0.3" RadiusX="0.7" RadiusY="0.7">
-                                                        <GradientStop Color="#61FEFFEF" Offset="0"/>
-                                                        <GradientStop Color="Transparent" Offset="1"/>
+                                                    <RadialGradientBrush Center="0.3,0.3" GradientOrigin="0.3,0.3" RadiusX="0.7" RadiusY="0.7">
+                                                        <GradientStop Offset="0" Color="#9CFEFFEF" />
+                                                        <GradientStop Offset="0.3" Color="#40FEFFEF" />
+                                                        <GradientStop Offset="0.7" Color="Transparent" />
                                                     </RadialGradientBrush>
                                                 </Ellipse.Fill>
                                             </Ellipse>
-                                            <!-- Moon shadow (bottom inset) -->
-                                            <Ellipse Margin="2">
+
+                                            <!--  하단 그림자 (#969696)  -->
+                                            <Ellipse>
                                                 <Ellipse.Fill>
                                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                        <GradientStop Color="Transparent" Offset="0.6"/>
-                                                        <GradientStop Color="#30969696" Offset="1"/>
+                                                        <GradientStop Offset="0" Color="Transparent" />
+                                                        <GradientStop Offset="0.6" Color="Transparent" />
+                                                        <GradientStop Offset="1" Color="#70969696" />
+                                                    </LinearGradientBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+
+                                            <!--  테두리  -->
+                                            <Ellipse Margin="1"
+                                                     Stroke="#20FFFFFF"
+                                                     StrokeThickness="1" />
+                                        </Grid>
+
+                                        <!--  달 크레이터 (spots) with inset shadow  -->
+                                        <!--  CSS: spot1: top=22.5px, left=9.4px, size=22.5px  -->
+                                        <Grid x:Name="Spot1Grid"
+                                              Canvas.Left="73"
+                                              Canvas.Top="22"
+                                              Width="22"
+                                              Height="22">
+                                            <Ellipse Fill="#959DB1" />
+                                            <!--  inset shadow  -->
+                                            <Ellipse>
+                                                <Ellipse.Fill>
+                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                        <GradientStop Offset="0" Color="#50000000" />
+                                                        <GradientStop Offset="0.5" Color="Transparent" />
                                                     </LinearGradientBrush>
                                                 </Ellipse.Fill>
                                             </Ellipse>
                                         </Grid>
 
-                                        <!-- Moon spots with inset shadow effect -->
-                                        <!-- spot1: top=0.75em=22.5, left=0.312em=9.4, size=0.75em=22.5 -->
-                                        <Grid x:Name="Spot1Grid" Canvas.Left="73" Canvas.Top="22" Width="22" Height="22">
-                                            <Ellipse Fill="#959DB1"/>
-                                            <Ellipse Margin="1">
+                                        <!--  CSS: spot2: size=11.25px  -->
+                                        <Grid x:Name="Spot2Grid"
+                                              Canvas.Left="105"
+                                              Canvas.Top="28"
+                                              Width="11"
+                                              Height="11">
+                                            <Ellipse Fill="#959DB1" />
+                                            <Ellipse>
                                                 <Ellipse.Fill>
                                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                        <GradientStop Color="#30000000" Offset="0"/>
-                                                        <GradientStop Color="Transparent" Offset="0.5"/>
+                                                        <GradientStop Offset="0" Color="#50000000" />
+                                                        <GradientStop Offset="0.5" Color="Transparent" />
                                                     </LinearGradientBrush>
                                                 </Ellipse.Fill>
                                             </Ellipse>
                                         </Grid>
-                                        <!-- spot2: size=0.375em=11.25 -->
-                                        <Grid x:Name="Spot2Grid" Canvas.Left="105" Canvas.Top="28" Width="11" Height="11">
-                                            <Ellipse Fill="#959DB1"/>
-                                            <Ellipse Margin="0.5">
+
+                                        <!--  CSS: spot3: size=7.5px  -->
+                                        <Grid x:Name="Spot3Grid"
+                                              Canvas.Left="88"
+                                              Canvas.Top="9"
+                                              Width="7"
+                                              Height="7">
+                                            <Ellipse Fill="#959DB1" />
+                                            <Ellipse>
                                                 <Ellipse.Fill>
                                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                        <GradientStop Color="#30000000" Offset="0"/>
-                                                        <GradientStop Color="Transparent" Offset="0.5"/>
-                                                    </LinearGradientBrush>
-                                                </Ellipse.Fill>
-                                            </Ellipse>
-                                        </Grid>
-                                        <!-- spot3: size=0.25em=7.5 -->
-                                        <Grid x:Name="Spot3Grid" Canvas.Left="88" Canvas.Top="9" Width="7" Height="7">
-                                            <Ellipse Fill="#959DB1"/>
-                                            <Ellipse Margin="0.3">
-                                                <Ellipse.Fill>
-                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                        <GradientStop Color="#30000000" Offset="0"/>
-                                                        <GradientStop Color="Transparent" Offset="0.5"/>
+                                                        <GradientStop Offset="0" Color="#50000000" />
+                                                        <GradientStop Offset="0.5" Color="Transparent" />
                                                     </LinearGradientBrush>
                                                 </Ellipse.Fill>
                                             </Ellipse>
@@ -217,98 +434,104 @@
                     </Grid>
 
                     <ControlTemplate.Triggers>
-                        <!-- Checked state (Night mode) -->
+                        <!--  Checked state (Night mode)  -->
                         <Trigger Property="IsChecked" Value="True">
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <!-- Background color transition -->
+                                        <!--  배경색 전환  -->
                                         <ColorAnimation Storyboard.TargetName="ContainerBg"
                                                         Storyboard.TargetProperty="Color"
-                                                        To="#1D1F2C" Duration="0:0:0.5">
+                                                        To="#1D1F2C"
+                                                        Duration="0:0:0.5">
                                             <ColorAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </ColorAnimation.EasingFunction>
                                         </ColorAnimation>
 
-                                        <!-- Circle container moves right -->
-                                        <!-- Move from -13 to (169 - 101 + 13) = 81 -->
+                                        <!--  Circle/SunMoon 이동: -13 → 81  -->
                                         <DoubleAnimation Storyboard.TargetName="CircleTranslate"
                                                          Storyboard.TargetProperty="X"
-                                                         To="81" Duration="0:0:0.3">
+                                                         To="81"
+                                                         Duration="0:0:0.3">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-
-                                        <!-- Sun/Moon container moves right -->
                                         <DoubleAnimation Storyboard.TargetName="SunMoonTranslate"
                                                          Storyboard.TargetProperty="X"
-                                                         To="81" Duration="0:0:0.3">
+                                                         To="81"
+                                                         Duration="0:0:0.3">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
 
-                                        <!-- Moon slides in -->
+                                        <!--  달 슬라이드 인  -->
                                         <DoubleAnimation Storyboard.TargetName="MoonGrid"
                                                          Storyboard.TargetProperty="(Canvas.Left)"
-                                                         To="0" Duration="0:0:0.5">
+                                                         To="0"
+                                                         Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
 
-                                        <!-- Moon spots slide in -->
+                                        <!--  크레이터 이동  -->
                                         <DoubleAnimation Storyboard.TargetName="Spot1Grid"
                                                          Storyboard.TargetProperty="(Canvas.Left)"
-                                                         To="9" Duration="0:0:0.5">
+                                                         To="9"
+                                                         Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
                                         <DoubleAnimation Storyboard.TargetName="Spot2Grid"
                                                          Storyboard.TargetProperty="(Canvas.Left)"
-                                                         To="41" Duration="0:0:0.5">
+                                                         To="41"
+                                                         Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
                                         <DoubleAnimation Storyboard.TargetName="Spot3Grid"
                                                          Storyboard.TargetProperty="(Canvas.Left)"
-                                                         To="24" Duration="0:0:0.5">
+                                                         To="24"
+                                                         Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
 
-                                        <!-- Back clouds move down -->
+                                        <!--  구름 하강: 0 → 122 (CSS: bottom: -4.062em = -122px)  -->
                                         <DoubleAnimation Storyboard.TargetName="BackCloudsTranslate"
                                                          Storyboard.TargetProperty="Y"
-                                                         To="122" Duration="0:0:0.5">
+                                                         To="122"
+                                                         Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-
-                                        <!-- Front clouds move down -->
                                         <DoubleAnimation Storyboard.TargetName="FrontCloudsTranslate"
                                                          Storyboard.TargetProperty="Y"
-                                                         To="122" Duration="0:0:0.5">
+                                                         To="122"
+                                                         Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
 
-                                        <!-- Stars appear -->
+                                        <!--  별 등장  -->
                                         <DoubleAnimation Storyboard.TargetName="StarsCanvas"
                                                          Storyboard.TargetProperty="Opacity"
-                                                         To="1" Duration="0:0:0.5"/>
+                                                         To="1"
+                                                         Duration="0:0:0.5" />
                                         <DoubleAnimation Storyboard.TargetName="StarsTranslate"
                                                          Storyboard.TargetProperty="Y"
-                                                         To="0" Duration="0:0:0.5">
+                                                         To="0"
+                                                         Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
                                     </Storyboard>
@@ -317,92 +540,88 @@
                             <Trigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <!-- Background color transition back -->
                                         <ColorAnimation Storyboard.TargetName="ContainerBg"
                                                         Storyboard.TargetProperty="Color"
-                                                        To="#3D7EAE" Duration="0:0:0.5">
+                                                        To="#3D7EAE"
+                                                        Duration="0:0:0.5">
                                             <ColorAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </ColorAnimation.EasingFunction>
                                         </ColorAnimation>
-
-                                        <!-- Circle container moves left -->
                                         <DoubleAnimation Storyboard.TargetName="CircleTranslate"
                                                          Storyboard.TargetProperty="X"
-                                                         To="-13" Duration="0:0:0.3">
+                                                         To="-13"
+                                                         Duration="0:0:0.3">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-
-                                        <!-- Sun/Moon container moves left -->
                                         <DoubleAnimation Storyboard.TargetName="SunMoonTranslate"
                                                          Storyboard.TargetProperty="X"
-                                                         To="-13" Duration="0:0:0.3">
+                                                         To="-13"
+                                                         Duration="0:0:0.3">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-
-                                        <!-- Moon slides out -->
                                         <DoubleAnimation Storyboard.TargetName="MoonGrid"
                                                          Storyboard.TargetProperty="(Canvas.Left)"
-                                                         To="64" Duration="0:0:0.5">
+                                                         To="64"
+                                                         Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-
-                                        <!-- Moon spots slide out -->
                                         <DoubleAnimation Storyboard.TargetName="Spot1Grid"
                                                          Storyboard.TargetProperty="(Canvas.Left)"
-                                                         To="73" Duration="0:0:0.5">
+                                                         To="73"
+                                                         Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
                                         <DoubleAnimation Storyboard.TargetName="Spot2Grid"
                                                          Storyboard.TargetProperty="(Canvas.Left)"
-                                                         To="105" Duration="0:0:0.5">
+                                                         To="105"
+                                                         Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
                                         <DoubleAnimation Storyboard.TargetName="Spot3Grid"
                                                          Storyboard.TargetProperty="(Canvas.Left)"
-                                                         To="88" Duration="0:0:0.5">
+                                                         To="88"
+                                                         Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-
-                                        <!-- Back clouds move up -->
                                         <DoubleAnimation Storyboard.TargetName="BackCloudsTranslate"
                                                          Storyboard.TargetProperty="Y"
-                                                         To="0" Duration="0:0:0.5">
+                                                         To="0"
+                                                         Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-
-                                        <!-- Front clouds move up -->
                                         <DoubleAnimation Storyboard.TargetName="FrontCloudsTranslate"
                                                          Storyboard.TargetProperty="Y"
-                                                         To="0" Duration="0:0:0.5">
+                                                         To="0"
+                                                         Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-
-                                        <!-- Stars disappear -->
                                         <DoubleAnimation Storyboard.TargetName="StarsCanvas"
                                                          Storyboard.TargetProperty="Opacity"
-                                                         To="0" Duration="0:0:0.5"/>
+                                                         To="0"
+                                                         Duration="0:0:0.5" />
                                         <DoubleAnimation Storyboard.TargetName="StarsTranslate"
                                                          Storyboard.TargetProperty="Y"
-                                                         To="-75" Duration="0:0:0.5">
+                                                         To="-75"
+                                                         Duration="0:0:0.5">
                                             <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseOut"/>
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
                                     </Storyboard>
@@ -410,9 +629,8 @@
                             </Trigger.ExitActions>
                         </Trigger>
 
-                        <!-- Disabled state -->
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.5"/>
+                            <Setter Property="Opacity" Value="0.5" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
