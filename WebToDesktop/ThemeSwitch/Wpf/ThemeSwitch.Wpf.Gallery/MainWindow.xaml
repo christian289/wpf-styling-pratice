@@ -1,0 +1,36 @@
+<Window x:Class="ThemeSwitch.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:ThemeSwitch.Wpf.Lib.Controls;assembly=ThemeSwitch.Wpf.Lib"
+        Title="ThemeSwitch Toggle Gallery"
+        Width="600"
+        Height="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Background>
+        <SolidColorBrush Color="#E8E8E8"/>
+    </Window.Background>
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+            <TextBlock Text="Day/Night Theme Switch"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Foreground="#333333"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,40"/>
+
+            <!-- Default (Day mode) -->
+            <controls:ThemeSwitchToggle Margin="0,0,0,30"/>
+
+            <!-- Pre-checked (Night mode) -->
+            <controls:ThemeSwitchToggle IsChecked="True" Margin="0,0,0,30"/>
+
+            <!-- Disabled state -->
+            <controls:ThemeSwitchToggle IsEnabled="False"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

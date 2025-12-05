@@ -1,0 +1,313 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:ThemeSwitch.Avalonia.Lib.Controls">
+
+    <ControlTheme x:Key="{x:Type controls:ThemeSwitchToggle}" TargetType="controls:ThemeSwitchToggle">
+        <Setter Property="Width" Value="169"/>
+        <Setter Property="Height" Value="75"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!-- Outer wrapper for recessed effect (움푹 들어간 효과) -->
+                <Panel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                    <!-- Outer shadow: top dark = recessed look -->
+                    <Border CornerRadius="37.5" Margin="0,-2,0,0"
+                            BoxShadow="0 1.9 1.9 0 #40000000"/>
+                    <!-- Outer shadow: bottom light = recessed look -->
+                    <Border CornerRadius="37.5" Margin="0,0,0,-2"
+                            BoxShadow="0 -1.9 3.75 0 #F0FFFFFF"/>
+
+                    <!-- Main container -->
+                    <Border x:Name="Container"
+                            CornerRadius="37.5"
+                            ClipToBounds="True"
+                            Background="#3D7EAE">
+
+                        <Panel ClipToBounds="True">
+                        <!-- Inset shadow overlay for container (입체감) -->
+                        <Border CornerRadius="37.5" ZIndex="100"
+                                BoxShadow="inset 0 1.5 5.6 0 #40000000"/>
+
+                        <!-- Back clouds layer (회색 - 뒤쪽) -->
+                        <Canvas x:Name="BackCloudsCanvas" ClipToBounds="True" ZIndex="1"
+                                RenderTransform="translate(0, 0)">
+                            <Ellipse Canvas.Left="-9" Canvas.Bottom="-9" Width="37" Height="37" Fill="#AACADF"/>
+                            <Ellipse Canvas.Left="15" Canvas.Bottom="-4" Width="37" Height="37" Fill="#AACADF"/>
+                            <Ellipse Canvas.Left="37" Canvas.Bottom="-2" Width="37" Height="37" Fill="#AACADF"/>
+                            <Ellipse Canvas.Left="60" Canvas.Bottom="-9" Width="37" Height="37" Fill="#AACADF"/>
+                            <Ellipse Canvas.Left="79" Canvas.Bottom="0" Width="37" Height="37" Fill="#AACADF"/>
+                            <Ellipse Canvas.Left="101" Canvas.Bottom="-13" Width="37" Height="37" Fill="#AACADF"/>
+                            <Ellipse Canvas.Left="120" Canvas.Bottom="-19" Width="37" Height="37" Fill="#AACADF"/>
+                            <Ellipse Canvas.Left="124" Canvas.Bottom="26" Width="50" Height="50" Fill="#AACADF"/>
+
+                            <Canvas.Transitions>
+                                <Transitions>
+                                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.5">
+                                        <TransformOperationsTransition.Easing>
+                                            <CubicEaseOut/>
+                                        </TransformOperationsTransition.Easing>
+                                    </TransformOperationsTransition>
+                                </Transitions>
+                            </Canvas.Transitions>
+                        </Canvas>
+
+                        <!-- Front clouds layer (흰색 - 앞쪽) -->
+                        <Canvas x:Name="FrontCloudsCanvas" ClipToBounds="True" ZIndex="2"
+                                RenderTransform="translate(0, 0)">
+                            <Ellipse Canvas.Left="9" Canvas.Bottom="-19" Width="37" Height="37" Fill="#F3FDFF"/>
+                            <Ellipse Canvas.Left="28" Canvas.Bottom="-9" Width="37" Height="37" Fill="#F3FDFF"/>
+                            <Ellipse Canvas.Left="43" Canvas.Bottom="-7" Width="37" Height="37" Fill="#F3FDFF"/>
+                            <Ellipse Canvas.Left="66" Canvas.Bottom="0" Width="37" Height="37" Fill="#F3FDFF"/>
+                            <Ellipse Canvas.Left="88" Canvas.Bottom="-9" Width="37" Height="37" Fill="#F3FDFF"/>
+                            <Ellipse Canvas.Left="109" Canvas.Bottom="-2" Width="37" Height="37" Fill="#F3FDFF"/>
+                            <Ellipse Canvas.Left="135" Canvas.Bottom="-9" Width="37" Height="37" Fill="#F3FDFF"/>
+                            <Ellipse Canvas.Left="139" Canvas.Bottom="39" Width="50" Height="50" Fill="#F3FDFF"/>
+
+                            <Canvas.Transitions>
+                                <Transitions>
+                                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.5">
+                                        <TransformOperationsTransition.Easing>
+                                            <CubicEaseOut/>
+                                        </TransformOperationsTransition.Easing>
+                                    </TransformOperationsTransition>
+                                </Transitions>
+                            </Canvas.Transitions>
+                        </Canvas>
+
+                        <!-- Stars layer -->
+                        <Canvas x:Name="StarsCanvas" Opacity="0" ZIndex="3"
+                                RenderTransform="translate(0, -75)">
+                            <Canvas.Transitions>
+                                <Transitions>
+                                    <DoubleTransition Property="Opacity" Duration="0:0:0.5"/>
+                                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.5">
+                                        <TransformOperationsTransition.Easing>
+                                            <CubicEaseOut/>
+                                        </TransformOperationsTransition.Easing>
+                                    </TransformOperationsTransition>
+                                </Transitions>
+                            </Canvas.Transitions>
+                            <Path Canvas.Left="135" Canvas.Top="3" Fill="White" Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"/>
+                            <Path Canvas.Left="31" Canvas.Top="23" Fill="White" Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"/>
+                            <Path Canvas.Left="0" Canvas.Top="36" Fill="White" Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"/>
+                            <Path Canvas.Left="54" Canvas.Top="24" Fill="White" Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"/>
+                            <Path Canvas.Left="81" Canvas.Top="25" Fill="White" Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"/>
+                            <Path Canvas.Left="136" Canvas.Top="36" Fill="White" Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"/>
+                            <Path Canvas.Left="99" Canvas.Top="50" Fill="White" Data="M 2.831 3.007 C 2.055 3.85 1.111 4.299 0 4.354 C 1.111 4.409 2.055 4.859 2.831 5.711 C 3.607 6.555 3.996 7.563 3.996 8.727 C 3.996 7.957 4.172 7.251 4.525 6.591 C 4.886 5.931 5.372 5.4 5.98 5.005 C 6.598 4.602 7.268 4.391 8 4.354 C 6.88 4.29 5.936 3.85 5.16 3.007 C 4.384 2.163 3.996 1.164 3.996 0 C 3.996 1.164 3.607 2.163 2.831 3.007 Z"/>
+                        </Canvas>
+
+                        <!-- Circle container with glow rings -->
+                        <!-- circle-container-offset = (101 - 75) / 2 * -1 = -13 -->
+                        <Canvas x:Name="CircleCanvas" ZIndex="4"
+                                RenderTransform="translate(-13, 0)">
+                            <Canvas.Transitions>
+                                <Transitions>
+                                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.3">
+                                        <TransformOperationsTransition.Easing>
+                                            <CubicEaseOut/>
+                                        </TransformOperationsTransition.Easing>
+                                    </TransformOperationsTransition>
+                                </Transitions>
+                            </Canvas.Transitions>
+                            <!-- Outer glow ring (101x101, centered at 0,0 in circle-container) -->
+                            <Ellipse Canvas.Left="0" Canvas.Top="-13" Width="101" Height="101"
+                                     Fill="#1AFFFFFF" Opacity="0.6"/>
+                            <!-- Middle glow ring (63x63, centered) -->
+                            <Ellipse Canvas.Left="19" Canvas.Top="6" Width="63" Height="63"
+                                     Fill="#1AFFFFFF" Opacity="0.8"/>
+                            <!-- Inner circle background (37x37, centered) -->
+                            <Ellipse Canvas.Left="32" Canvas.Top="19" Width="37" Height="37"
+                                     Fill="#1AFFFFFF"/>
+                        </Canvas>
+
+                        <!-- Sun/Moon container -->
+                        <Canvas x:Name="SunMoonCanvas" ZIndex="5"
+                                RenderTransform="translate(-13, 0)">
+                            <Canvas.Transitions>
+                                <Transitions>
+                                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.3">
+                                        <TransformOperationsTransition.Easing>
+                                            <CubicEaseOut/>
+                                        </TransformOperationsTransition.Easing>
+                                    </TransformOperationsTransition>
+                                </Transitions>
+                            </Canvas.Transitions>
+
+                            <!-- Sun with 3D effect (64x64, centered at 5.5, 5.5) -->
+                            <Panel Canvas.Left="5.5" Canvas.Top="5.5" Width="64" Height="64">
+                                <!-- Sun base with shadow -->
+                                <Border CornerRadius="32" Background="#ECCA2F"
+                                        BoxShadow="2 2 4 0 #40000000"/>
+                                <!-- Sun highlight (top-left) -->
+                                <Border CornerRadius="32" Margin="2,2,4,4">
+                                    <Border.Background>
+                                        <RadialGradientBrush GradientOrigin="30%,30%" Center="30%,30%" RadiusX="70%" RadiusY="70%">
+                                            <GradientStop Color="#33FEFFEF" Offset="0"/>
+                                            <GradientStop Color="Transparent" Offset="1"/>
+                                        </RadialGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <!-- Sun shadow (bottom) -->
+                                <Border CornerRadius="32" Margin="2,4,2,2">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                            <GradientStop Color="Transparent" Offset="0.5"/>
+                                            <GradientStop Color="#20A1872A" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                            </Panel>
+
+                            <!-- Moon container (slides in from right) -->
+                            <Canvas Canvas.Left="5.5" Canvas.Top="5.5" ClipToBounds="True" Width="64" Height="64">
+                                <!-- Moon with 3D effect -->
+                                <Panel x:Name="MoonPanel" Canvas.Left="64" Width="64" Height="64">
+                                    <Panel.Transitions>
+                                        <Transitions>
+                                            <DoubleTransition Property="Canvas.Left" Duration="0:0:0.5">
+                                                <DoubleTransition.Easing>
+                                                    <CubicEaseOut/>
+                                                </DoubleTransition.Easing>
+                                            </DoubleTransition>
+                                        </Transitions>
+                                    </Panel.Transitions>
+                                    <!-- Moon base with shadow -->
+                                    <Border CornerRadius="32" Background="#C4C9D1"
+                                            BoxShadow="2 2 4 0 #40000000"/>
+                                    <!-- Moon highlight (top-left) -->
+                                    <Border CornerRadius="32" Margin="2,2,4,4">
+                                        <Border.Background>
+                                            <RadialGradientBrush GradientOrigin="30%,30%" Center="30%,30%" RadiusX="70%" RadiusY="70%">
+                                                <GradientStop Color="#33FEFFEF" Offset="0"/>
+                                                <GradientStop Color="Transparent" Offset="1"/>
+                                            </RadialGradientBrush>
+                                        </Border.Background>
+                                    </Border>
+                                    <!-- Moon shadow (bottom) -->
+                                    <Border CornerRadius="32" Margin="2,4,2,2">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                                <GradientStop Color="Transparent" Offset="0.5"/>
+                                                <GradientStop Color="#20969696" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                    </Border>
+                                </Panel>
+
+                                <!-- Moon spots with inset shadow effect -->
+                                <Panel x:Name="Spot1Panel" Canvas.Left="73" Canvas.Top="22" Width="22" Height="22">
+                                    <Panel.Transitions>
+                                        <Transitions>
+                                            <DoubleTransition Property="Canvas.Left" Duration="0:0:0.5">
+                                                <DoubleTransition.Easing>
+                                                    <CubicEaseOut/>
+                                                </DoubleTransition.Easing>
+                                            </DoubleTransition>
+                                        </Transitions>
+                                    </Panel.Transitions>
+                                    <Border CornerRadius="11" Background="#959DB1"/>
+                                    <Border CornerRadius="11" Margin="1">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                                <GradientStop Color="#20000000" Offset="0"/>
+                                                <GradientStop Color="Transparent" Offset="0.5"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                    </Border>
+                                </Panel>
+                                <Panel x:Name="Spot2Panel" Canvas.Left="105" Canvas.Top="28" Width="11" Height="11">
+                                    <Panel.Transitions>
+                                        <Transitions>
+                                            <DoubleTransition Property="Canvas.Left" Duration="0:0:0.5">
+                                                <DoubleTransition.Easing>
+                                                    <CubicEaseOut/>
+                                                </DoubleTransition.Easing>
+                                            </DoubleTransition>
+                                        </Transitions>
+                                    </Panel.Transitions>
+                                    <Border CornerRadius="5.5" Background="#959DB1"/>
+                                    <Border CornerRadius="5.5" Margin="0.5">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                                <GradientStop Color="#20000000" Offset="0"/>
+                                                <GradientStop Color="Transparent" Offset="0.5"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                    </Border>
+                                </Panel>
+                                <Panel x:Name="Spot3Panel" Canvas.Left="88" Canvas.Top="9" Width="7" Height="7">
+                                    <Panel.Transitions>
+                                        <Transitions>
+                                            <DoubleTransition Property="Canvas.Left" Duration="0:0:0.5">
+                                                <DoubleTransition.Easing>
+                                                    <CubicEaseOut/>
+                                                </DoubleTransition.Easing>
+                                            </DoubleTransition>
+                                        </Transitions>
+                                    </Panel.Transitions>
+                                    <Border CornerRadius="3.5" Background="#959DB1"/>
+                                    <Border CornerRadius="3.5" Margin="0.3">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                                <GradientStop Color="#20000000" Offset="0"/>
+                                                <GradientStop Color="Transparent" Offset="0.5"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                    </Border>
+                                </Panel>
+                            </Canvas>
+                        </Canvas>
+                    </Panel>
+
+                    <Border.Transitions>
+                        <Transitions>
+                            <BrushTransition Property="Background" Duration="0:0:0.5"/>
+                        </Transitions>
+                    </Border.Transitions>
+                </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Checked state (Night mode) -->
+        <Style Selector="^:checked">
+            <Style Selector="^ /template/ Border#Container">
+                <Setter Property="Background" Value="#1D1F2C"/>
+            </Style>
+            <Style Selector="^ /template/ Canvas#BackCloudsCanvas">
+                <Setter Property="RenderTransform" Value="translate(0, 122)"/>
+            </Style>
+            <Style Selector="^ /template/ Canvas#FrontCloudsCanvas">
+                <Setter Property="RenderTransform" Value="translate(0, 122)"/>
+            </Style>
+            <Style Selector="^ /template/ Canvas#StarsCanvas">
+                <Setter Property="Opacity" Value="1"/>
+                <Setter Property="RenderTransform" Value="translate(0, 0)"/>
+            </Style>
+            <Style Selector="^ /template/ Canvas#CircleCanvas">
+                <Setter Property="RenderTransform" Value="translate(81, 0)"/>
+            </Style>
+            <Style Selector="^ /template/ Canvas#SunMoonCanvas">
+                <Setter Property="RenderTransform" Value="translate(81, 0)"/>
+            </Style>
+            <Style Selector="^ /template/ Panel#MoonPanel">
+                <Setter Property="Canvas.Left" Value="0"/>
+            </Style>
+            <Style Selector="^ /template/ Panel#Spot1Panel">
+                <Setter Property="Canvas.Left" Value="9"/>
+            </Style>
+            <Style Selector="^ /template/ Panel#Spot2Panel">
+                <Setter Property="Canvas.Left" Value="41"/>
+            </Style>
+            <Style Selector="^ /template/ Panel#Spot3Panel">
+                <Setter Property="Canvas.Left" Value="24"/>
+            </Style>
+        </Style>
+
+        <!-- Disabled state -->
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.5"/>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

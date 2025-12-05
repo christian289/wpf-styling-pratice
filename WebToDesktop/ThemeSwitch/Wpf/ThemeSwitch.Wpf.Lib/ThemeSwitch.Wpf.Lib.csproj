@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>ThemeSwitch.Wpf.Lib</AssemblyName>
+    <RootNamespace>ThemeSwitch.Wpf.Lib</RootNamespace>
+  </PropertyGroup>
+
+</Project>
