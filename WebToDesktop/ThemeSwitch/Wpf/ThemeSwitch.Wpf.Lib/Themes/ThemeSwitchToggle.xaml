@@ -217,19 +217,27 @@
                                     </Canvas.RenderTransform>
 
                                     <!--  바깥 링 3 (1.25em = 37.5px spread)  -->
-                                    <Ellipse Canvas.Left="-50.5"
+                                    <!--  해 중심: 18.5 + 32 = 50.5 (X), 5.5 + 32 = 37.5 (Y)  -->
+                                    <!--  링 중심 = Canvas.Left + Width/2 = 50.5  -->
+                                    <!--  Canvas.Left = 50.5 - 88 = -37.5  -->
+                                    <!--  Canvas.Top = 37.5 - 88 = -50.5  -->
+                                    <Ellipse Canvas.Left="-37.5"
                                              Canvas.Top="-50.5"
                                              Width="176"
                                              Height="176"
                                              Fill="#19FFFFFF" />
                                     <!--  바깥 링 2 (0.625em = 18.75px spread)  -->
-                                    <Ellipse Canvas.Left="-31.75"
+                                    <!--  Canvas.Left = 50.5 - 69.25 = -18.75  -->
+                                    <!--  Canvas.Top = 37.5 - 69.25 = -31.75  -->
+                                    <Ellipse Canvas.Left="-18.75"
                                              Canvas.Top="-31.75"
                                              Width="138.5"
                                              Height="138.5"
                                              Fill="#19FFFFFF" />
-                                    <!--  바깥 링 1  -->
-                                    <Ellipse Canvas.Left="-13"
+                                    <!--  바깥 링 1 (101x101)  -->
+                                    <!--  Canvas.Left = 50.5 - 50.5 = 0  -->
+                                    <!--  Canvas.Top = 37.5 - 50.5 = -13  -->
+                                    <Ellipse Canvas.Left="0"
                                              Canvas.Top="-13"
                                              Width="101"
                                              Height="101"
