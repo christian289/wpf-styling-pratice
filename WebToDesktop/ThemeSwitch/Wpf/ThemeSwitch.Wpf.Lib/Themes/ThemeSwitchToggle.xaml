@@ -15,20 +15,40 @@
                     <Grid Width="{TemplateBinding Width}"
                           Height="{TemplateBinding Height}">
                         <!--  ═══════════════════════════════════════════════════════════════  -->
-                        <!--  외부 입체감 (버튼이 살짝 튀어나온 느낌)  -->
+                        <!--  외부 입체감 (뉴모피즘 스타일 - 버튼이 튀어나온 느낌)  -->
                         <!--  CSS: box-shadow: 0em -0.062em 0.062em rgba(0,0,0,0.25),  -->
                         <!--  0em 0.062em 0.125em rgba(255,255,255,0.94)  -->
                         <!--  ═══════════════════════════════════════════════════════════════  -->
 
-                        <!--  상단 어두운 그림자  -->
-                        <Border Margin="0,-1,0,1"
-                                Background="#18000000"
-                                CornerRadius="37.5" />
+                        <!--  하단-우측 밝은 하이라이트 (광원이 좌상단에 있다고 가정)  -->
+                        <Border Margin="0,2,0,-2"
+                                CornerRadius="37.5">
+                            <Border.Effect>
+                                <BlurEffect Radius="3" />
+                            </Border.Effect>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Offset="0" Color="Transparent" />
+                                    <GradientStop Offset="0.5" Color="#E0FFFFFF" />
+                                    <GradientStop Offset="1" Color="#F0FFFFFF" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
 
-                        <!--  하단 밝은 그림자  -->
-                        <Border Margin="0,1,0,-1"
-                                Background="#F0FFFFFF"
-                                CornerRadius="37.5" />
+                        <!--  상단-좌측 어두운 그림자  -->
+                        <Border Margin="0,-2,0,2"
+                                CornerRadius="37.5">
+                            <Border.Effect>
+                                <BlurEffect Radius="2" />
+                            </Border.Effect>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Offset="0" Color="#40000000" />
+                                    <GradientStop Offset="0.5" Color="#20000000" />
+                                    <GradientStop Offset="1" Color="Transparent" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
 
                         <!--  ═══════════════════════════════════════════════════════════════  -->
                         <!--  메인 컨테이너  -->
@@ -48,22 +68,41 @@
                                 </Grid.Clip>
                                 <!--  내부 inset 그림자 (오목하게 파인 효과)  -->
                                 <!--  CSS: box-shadow: 0em 0.05em 0.187em rgba(0,0,0,0.25) inset  -->
+                                <!--  상단에서 내려오는 그림자 + 하단 밝은 반사광  -->
                                 <Border Panel.ZIndex="100"
                                         CornerRadius="37.5"
                                         IsHitTestVisible="False">
                                     <Border.Background>
+                                        <!--  상단 inset shadow  -->
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                            <GradientStop Offset="0" Color="#40000000" />
-                                            <GradientStop Offset="0.15" Color="Transparent" />
-                                            <GradientStop Offset="1" Color="Transparent" />
+                                            <GradientStop Offset="0" Color="#45000000" />
+                                            <GradientStop Offset="0.08" Color="#30000000" />
+                                            <GradientStop Offset="0.2" Color="#10000000" />
+                                            <GradientStop Offset="0.4" Color="Transparent" />
+                                            <GradientStop Offset="0.85" Color="Transparent" />
+                                            <GradientStop Offset="1" Color="#15FFFFFF" />
                                         </LinearGradientBrush>
                                     </Border.Background>
+                                </Border>
 
-                                    <Grid />
+                                <!--  좌우 테두리 inset 효과  -->
+                                <Border Panel.ZIndex="101"
+                                        CornerRadius="37.5"
+                                        IsHitTestVisible="False">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                            <GradientStop Offset="0" Color="#20000000" />
+                                            <GradientStop Offset="0.05" Color="#08000000" />
+                                            <GradientStop Offset="0.15" Color="Transparent" />
+                                            <GradientStop Offset="0.85" Color="Transparent" />
+                                            <GradientStop Offset="0.95" Color="#05000000" />
+                                            <GradientStop Offset="1" Color="#15000000" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
                                 </Border>
 
                                 <!--  ═══════════════════════════════════════════════════════  -->
-                                <!--  뒤쪽 구름 (#AACADF) - CSS box-shadow 정밀 변환  -->
+                                <!--  뒤쪽 구름 (#AACADF) - 입체감 있는 구름  -->
                                 <!--  ═══════════════════════════════════════════════════════  -->
                                 <Canvas x:Name="BackCloudsCanvas"
                                         Panel.ZIndex="1">
@@ -73,55 +112,69 @@
 
                                     <!--  약간 blur로 뒤쪽 느낌  -->
                                     <Canvas.Effect>
-                                        <BlurEffect Radius="0.5" />
+                                        <BlurEffect Radius="0.8" />
                                     </Canvas.Effect>
+
+                                    <!--  뒤쪽 구름용 공통 그라데이션 브러시  -->
+                                    <Canvas.Resources>
+                                        <RadialGradientBrush x:Key="BackCloudBrush"
+                                                             Center="0.4,0.35"
+                                                             GradientOrigin="0.3,0.25"
+                                                             RadiusX="0.7"
+                                                             RadiusY="0.7">
+                                            <GradientStop Offset="0" Color="#FFC5DAE8" />
+                                            <GradientStop Offset="0.5" Color="#FFAACADF" />
+                                            <GradientStop Offset="0.85" Color="#FF95B8CC" />
+                                            <GradientStop Offset="1" Color="#FF85A8BC" />
+                                        </RadialGradientBrush>
+                                    </Canvas.Resources>
 
                                     <!--  CSS box-shadow 순서대로 변환  -->
                                     <Ellipse Canvas.Left="0"
                                              Canvas.Top="47"
                                              Width="37"
                                              Height="37"
-                                             Fill="#AACADF" />
+                                             Fill="{StaticResource BackCloudBrush}" />
                                     <Ellipse Canvas.Left="24"
                                              Canvas.Top="52"
                                              Width="37"
                                              Height="37"
-                                             Fill="#AACADF" />
+                                             Fill="{StaticResource BackCloudBrush}" />
                                     <Ellipse Canvas.Left="47"
                                              Canvas.Top="54"
                                              Width="37"
                                              Height="37"
-                                             Fill="#AACADF" />
+                                             Fill="{StaticResource BackCloudBrush}" />
                                     <Ellipse Canvas.Left="69"
                                              Canvas.Top="47"
                                              Width="37"
                                              Height="37"
-                                             Fill="#AACADF" />
+                                             Fill="{StaticResource BackCloudBrush}" />
                                     <Ellipse Canvas.Left="88"
                                              Canvas.Top="56"
                                              Width="37"
                                              Height="37"
-                                             Fill="#AACADF" />
+                                             Fill="{StaticResource BackCloudBrush}" />
                                     <Ellipse Canvas.Left="110"
                                              Canvas.Top="43"
                                              Width="37"
                                              Height="37"
-                                             Fill="#AACADF" />
+                                             Fill="{StaticResource BackCloudBrush}" />
                                     <Ellipse Canvas.Left="129"
                                              Canvas.Top="37"
                                              Width="37"
                                              Height="37"
-                                             Fill="#AACADF" />
+                                             Fill="{StaticResource BackCloudBrush}" />
                                     <!--  큰 구름 (spread 포함)  -->
                                     <Ellipse Canvas.Left="123"
                                              Canvas.Top="-7"
                                              Width="51"
                                              Height="51"
-                                             Fill="#AACADF" />
+                                             Fill="{StaticResource BackCloudBrush}" />
                                 </Canvas>
 
                                 <!--  ═══════════════════════════════════════════════════════  -->
-                                <!--  앞쪽 구름 (#F3FDFF) - CSS box-shadow 정밀 변환  -->
+                                <!--  앞쪽 구름 (#F3FDFF) - 입체감 있는 구름  -->
                                 <!--  ═══════════════════════════════════════════════════════  -->
                                 <Canvas x:Name="FrontCloudsCanvas"
                                         Panel.ZIndex="2">
@@ -129,48 +182,62 @@
                                         <TranslateTransform x:Name="FrontCloudsTranslate" Y="0" />
                                     </Canvas.RenderTransform>
 
+                                    <!--  앞쪽 구름용 공통 그라데이션 브러시  -->
+                                    <Canvas.Resources>
+                                        <RadialGradientBrush x:Key="FrontCloudBrush"
+                                                             Center="0.4,0.3"
+                                                             GradientOrigin="0.3,0.2"
+                                                             RadiusX="0.7"
+                                                             RadiusY="0.7">
+                                            <GradientStop Offset="0" Color="#FFFFFFFF" />
+                                            <GradientStop Offset="0.4" Color="#FFF3FDFF" />
+                                            <GradientStop Offset="0.75" Color="#FFE5F5FA" />
+                                            <GradientStop Offset="1" Color="#FFD5EBF5" />
+                                        </RadialGradientBrush>
+                                    </Canvas.Resources>
+
                                     <!--  CSS box-shadow 순서대로 변환  -->
                                     <Ellipse Canvas.Left="9"
                                              Canvas.Top="56"
                                              Width="37"
                                              Height="37"
-                                             Fill="#F3FDFF" />
+                                             Fill="{StaticResource FrontCloudBrush}" />
                                     <Ellipse Canvas.Left="37"
                                              Canvas.Top="66"
                                              Width="37"
                                              Height="37"
-                                             Fill="#F3FDFF" />
+                                             Fill="{StaticResource FrontCloudBrush}" />
                                     <Ellipse Canvas.Left="52"
                                              Canvas.Top="67"
                                              Width="37"
                                              Height="37"
-                                             Fill="#F3FDFF" />
+                                             Fill="{StaticResource FrontCloudBrush}" />
                                     <Ellipse Canvas.Left="75"
                                              Canvas.Top="56"
                                              Width="37"
                                              Height="37"
-                                             Fill="#F3FDFF" />
+                                             Fill="{StaticResource FrontCloudBrush}" />
                                     <Ellipse Canvas.Left="97"
                                              Canvas.Top="66"
                                              Width="37"
                                              Height="37"
-                                             Fill="#F3FDFF" />
+                                             Fill="{StaticResource FrontCloudBrush}" />
                                     <Ellipse Canvas.Left="118"
                                              Canvas.Top="54"
                                              Width="37"
                                              Height="37"
-                                             Fill="#F3FDFF" />
+                                             Fill="{StaticResource FrontCloudBrush}" />
                                     <Ellipse Canvas.Left="144"
                                              Canvas.Top="47"
                                              Width="37"
                                              Height="37"
-                                             Fill="#F3FDFF" />
+                                             Fill="{StaticResource FrontCloudBrush}" />
                                     <!--  큰 구름 (spread 포함)  -->
                                     <Ellipse Canvas.Left="139"
                                              Canvas.Top="4"
                                              Width="51"
                                              Height="51"
-                                             Fill="#F3FDFF" />
+                                             Fill="{StaticResource FrontCloudBrush}" />
                                 </Canvas>
 
                                 <!--  ═══════════════════════════════════════════════════════  -->
@@ -263,47 +330,65 @@
                                           Canvas.Top="5.5"
                                           Width="64"
                                           Height="64">
-                                        <!--  외부 그림자 (drop-shadow)  -->
+                                        <!--  외부 그림자 (drop-shadow) - 더 깊은 그림자  -->
                                         <!--  CSS: filter: drop-shadow(0.062em 0.125em 0.125em rgba(0,0,0,0.25))  -->
-                                        <!--  drop-shadow(0em 0.062em 0.125em rgba(0,0,0,0.25))  -->
                                         <Ellipse Fill="#ECCA2F">
                                             <Ellipse.Effect>
-                                                <DropShadowEffect BlurRadius="4"
-                                                                  Direction="300"
-                                                                  Opacity="0.35"
-                                                                  ShadowDepth="5"
+                                                <DropShadowEffect BlurRadius="6"
+                                                                  Direction="290"
+                                                                  Opacity="0.45"
+                                                                  ShadowDepth="6"
                                                                   Color="#000000" />
                                             </Ellipse.Effect>
                                         </Ellipse>
 
-                                        <!--  상단-좌측 하이라이트 (inset light)  -->
-                                        <!--  CSS: box-shadow: 0.062em 0.062em 0.062em 0em rgba(254,255,239,0.61) inset  -->
+                                        <!--  기본 구체 그라데이션 (3D 볼륨감)  -->
                                         <Ellipse>
                                             <Ellipse.Fill>
-                                                <RadialGradientBrush Center="0.3,0.3" GradientOrigin="0.3,0.3" RadiusX="0.7" RadiusY="0.7">
-                                                    <GradientStop Offset="0" Color="#9CFEFFEF" />
-                                                    <GradientStop Offset="0.3" Color="#40FEFFEF" />
-                                                    <GradientStop Offset="0.7" Color="Transparent" />
+                                                <RadialGradientBrush Center="0.35,0.35" GradientOrigin="0.25,0.25" RadiusX="0.75" RadiusY="0.75">
+                                                    <GradientStop Offset="0" Color="#FFF5D670" />
+                                                    <GradientStop Offset="0.4" Color="#FFECCA2F" />
+                                                    <GradientStop Offset="0.85" Color="#FFD4AA1C" />
+                                                    <GradientStop Offset="1" Color="#FFC49515" />
                                                 </RadialGradientBrush>
                                             </Ellipse.Fill>
                                         </Ellipse>
 
-                                        <!--  하단 그림자 (inset dark)  -->
-                                        <!--  CSS: box-shadow: 0em -0.062em 0.062em 0em #a1872a inset  -->
+                                        <!--  상단-좌측 하이라이트 (inset light) - 더 강한 반사  -->
+                                        <!--  CSS: box-shadow: 0.062em 0.062em 0.062em 0em rgba(254,255,239,0.61) inset  -->
                                         <Ellipse>
                                             <Ellipse.Fill>
-                                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                    <GradientStop Offset="0" Color="Transparent" />
-                                                    <GradientStop Offset="0.6" Color="Transparent" />
-                                                    <GradientStop Offset="1" Color="#70A1872A" />
-                                                </LinearGradientBrush>
+                                                <RadialGradientBrush Center="0.28,0.28" GradientOrigin="0.2,0.2" RadiusX="0.5" RadiusY="0.5">
+                                                    <GradientStop Offset="0" Color="#B0FFFEF0" />
+                                                    <GradientStop Offset="0.4" Color="#60FEFFEF" />
+                                                    <GradientStop Offset="0.8" Color="Transparent" />
+                                                </RadialGradientBrush>
                                             </Ellipse.Fill>
                                         </Ellipse>
 
-                                        <!--  테두리 하이라이트  -->
-                                        <Ellipse Margin="1"
-                                                 Stroke="#30FFFFFF"
-                                                 StrokeThickness="1" />
+                                        <!--  하단-우측 그림자 (inset dark) - 더 깊은 음영  -->
+                                        <!--  CSS: box-shadow: 0em -0.062em 0.062em 0em #a1872a inset  -->
+                                        <Ellipse>
+                                            <Ellipse.Fill>
+                                                <RadialGradientBrush Center="0.7,0.7" GradientOrigin="0.8,0.8" RadiusX="0.6" RadiusY="0.6">
+                                                    <GradientStop Offset="0" Color="#60A1872A" />
+                                                    <GradientStop Offset="0.5" Color="#30A1872A" />
+                                                    <GradientStop Offset="1" Color="Transparent" />
+                                                </RadialGradientBrush>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+
+                                        <!--  테두리 하이라이트 - 상단만 강조  -->
+                                        <Ellipse Margin="1">
+                                            <Ellipse.Stroke>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                    <GradientStop Offset="0" Color="#50FFFFFF" />
+                                                    <GradientStop Offset="0.4" Color="#20FFFFFF" />
+                                                    <GradientStop Offset="0.6" Color="Transparent" />
+                                                </LinearGradientBrush>
+                                            </Ellipse.Stroke>
+                                            <Ellipse.StrokeThickness>1.5</Ellipse.StrokeThickness>
+                                        </Ellipse>
                                     </Grid>
 
                                     <!--  달 (Moon) 컨테이너  -->
@@ -318,43 +403,62 @@
                                               Canvas.Left="64"
                                               Width="64"
                                               Height="64">
-                                            <!--  외부 그림자  -->
+                                            <!--  외부 그림자 - 더 깊은 그림자  -->
                                             <Ellipse Fill="#C4C9D1">
                                                 <Ellipse.Effect>
-                                                    <DropShadowEffect BlurRadius="4"
-                                                                      Direction="300"
-                                                                      Opacity="0.35"
-                                                                      ShadowDepth="4"
+                                                    <DropShadowEffect BlurRadius="6"
+                                                                      Direction="290"
+                                                                      Opacity="0.50"
+                                                                      ShadowDepth="5"
                                                                       Color="#000000" />
                                                 </Ellipse.Effect>
                                             </Ellipse>
 
-                                            <!--  상단-좌측 하이라이트  -->
+                                            <!--  기본 구체 그라데이션 (3D 볼륨감)  -->
                                             <Ellipse>
                                                 <Ellipse.Fill>
-                                                    <RadialGradientBrush Center="0.3,0.3" GradientOrigin="0.3,0.3" RadiusX="0.7" RadiusY="0.7">
-                                                        <GradientStop Offset="0" Color="#9CFEFFEF" />
-                                                        <GradientStop Offset="0.3" Color="#40FEFFEF" />
-                                                        <GradientStop Offset="0.7" Color="Transparent" />
+                                                    <RadialGradientBrush Center="0.35,0.35" GradientOrigin="0.25,0.25" RadiusX="0.75" RadiusY="0.75">
+                                                        <GradientStop Offset="0" Color="#FFE0E4EA" />
+                                                        <GradientStop Offset="0.4" Color="#FFC4C9D1" />
+                                                        <GradientStop Offset="0.85" Color="#FFA8ADB8" />
+                                                        <GradientStop Offset="1" Color="#FF9299A5" />
                                                     </RadialGradientBrush>
                                                 </Ellipse.Fill>
                                             </Ellipse>
 
-                                            <!--  하단 그림자 (#969696)  -->
+                                            <!--  상단-좌측 하이라이트 - 더 강한 반사  -->
                                             <Ellipse>
                                                 <Ellipse.Fill>
-                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                        <GradientStop Offset="0" Color="Transparent" />
-                                                        <GradientStop Offset="0.6" Color="Transparent" />
-                                                        <GradientStop Offset="1" Color="#70969696" />
-                                                    </LinearGradientBrush>
+                                                    <RadialGradientBrush Center="0.28,0.28" GradientOrigin="0.2,0.2" RadiusX="0.5" RadiusY="0.5">
+                                                        <GradientStop Offset="0" Color="#A0FFFFFF" />
+                                                        <GradientStop Offset="0.4" Color="#50F8F8F8" />
+                                                        <GradientStop Offset="0.8" Color="Transparent" />
+                                                    </RadialGradientBrush>
                                                 </Ellipse.Fill>
                                             </Ellipse>
 
-                                            <!--  테두리  -->
-                                            <Ellipse Margin="1"
-                                                     Stroke="#20FFFFFF"
-                                                     StrokeThickness="1" />
+                                            <!--  하단-우측 그림자 - 더 깊은 음영  -->
+                                            <Ellipse>
+                                                <Ellipse.Fill>
+                                                    <RadialGradientBrush Center="0.7,0.7" GradientOrigin="0.8,0.8" RadiusX="0.6" RadiusY="0.6">
+                                                        <GradientStop Offset="0" Color="#50707580" />
+                                                        <GradientStop Offset="0.5" Color="#25707580" />
+                                                        <GradientStop Offset="1" Color="Transparent" />
+                                                    </RadialGradientBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+
+                                            <!--  테두리 하이라이트 - 상단만 강조  -->
+                                            <Ellipse Margin="1">
+                                                <Ellipse.Stroke>
+                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                        <GradientStop Offset="0" Color="#40FFFFFF" />
+                                                        <GradientStop Offset="0.4" Color="#18FFFFFF" />
+                                                        <GradientStop Offset="0.6" Color="Transparent" />
+                                                    </LinearGradientBrush>
+                                                </Ellipse.Stroke>
+                                                <Ellipse.StrokeThickness>1.5</Ellipse.StrokeThickness>
+                                            </Ellipse>
                                         </Grid>
 
                                         <!--  달 크레이터 (spots) with inset shadow  -->
