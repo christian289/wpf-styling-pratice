@@ -199,7 +199,7 @@
                                     <!-- 해 베이스 그라데이션 -->
                                     <Border CornerRadius="32">
                                         <Border.Background>
-                                            <RadialGradientBrush GradientOrigin="25%,25%" Center="35%,35%" RadiusX="75%" RadiusY="75%">
+                                            <RadialGradientBrush GradientOrigin="25%,25%" Center="25%,25%" RadiusX="75%" RadiusY="75%">
                                                 <GradientStop Offset="0" Color="#FFF5D670"/>
                                                 <GradientStop Offset="0.4" Color="#FFECCA2F"/>
                                                 <GradientStop Offset="0.85" Color="#FFD4AA1C"/>
@@ -210,7 +210,7 @@
                                     <!-- 해 하이라이트 (좌상단) -->
                                     <Border CornerRadius="32">
                                         <Border.Background>
-                                            <RadialGradientBrush GradientOrigin="20%,20%" Center="28%,28%" RadiusX="50%" RadiusY="50%">
+                                            <RadialGradientBrush GradientOrigin="20%,20%" Center="20%,20%" RadiusX="50%" RadiusY="50%">
                                                 <GradientStop Offset="0" Color="#B0FFFEF0"/>
                                                 <GradientStop Offset="0.4" Color="#60FEFFEF"/>
                                                 <GradientStop Offset="0.8" Color="Transparent"/>
@@ -220,7 +220,7 @@
                                     <!-- 해 그림자 (우하단) -->
                                     <Border CornerRadius="32">
                                         <Border.Background>
-                                            <RadialGradientBrush GradientOrigin="80%,80%" Center="70%,70%" RadiusX="60%" RadiusY="60%">
+                                            <RadialGradientBrush GradientOrigin="70%,70%" Center="70%,70%" RadiusX="60%" RadiusY="60%">
                                                 <GradientStop Offset="0" Color="#60A1872A"/>
                                                 <GradientStop Offset="0.5" Color="#30A1872A"/>
                                                 <GradientStop Offset="1" Color="Transparent"/>
