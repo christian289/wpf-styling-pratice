@@ -1,0 +1,150 @@
+name: Web to WPF Converter
+
+on:
+  schedule:
+    # Run 5 times per day at KST: 03:00, 07:00, 11:00, 15:00, 19:00
+    # 하루 5번 KST 기준 실행: 03:00, 07:00, 11:00, 15:00, 19:00
+    # UTC: 18:00, 22:00, 02:00, 06:00, 10:00
+    - cron: '0 18 * * *'
+    - cron: '0 22 * * *'
+    - cron: '0 2 * * *'
+    - cron: '0 6 * * *'
+    - cron: '0 10 * * *'
+  workflow_dispatch:
+    # Allow manual trigger
+    # 수동 실행 허용
+    inputs:
+      skip_download:
+        description: 'Skip download step (use existing source)'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install script dependencies
+        working-directory: scripts
+        run: npm install
+
+      - name: Download random UI component from uiverse.io
+        if: ${{ github.event.inputs.skip_download != 'true' }}
+        working-directory: scripts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node download-component.js
+
+      - name: Extract HTML and CSS
+        working-directory: scripts
+        run: node extract-html-css.js
+
+      - name: Read component info
+        id: component
+        run: |
+          CONTROL_NAME=$(jq -r '.controlName' WebToDesktop/source/latest-download.json)
+          HTML_PATH=$(jq -r '.htmlPath' WebToDesktop/source/latest-download.json)
+          CSS_PATH=$(jq -r '.cssPath' WebToDesktop/source/latest-download.json)
+          CATEGORY=$(jq -r '.category' WebToDesktop/source/latest-download.json)
+          echo "control_name=$CONTROL_NAME" >> $GITHUB_OUTPUT
+          echo "html_path=$HTML_PATH" >> $GITHUB_OUTPUT
+          echo "css_path=$CSS_PATH" >> $GITHUB_OUTPUT
+          echo "category=$CATEGORY" >> $GITHUB_OUTPUT
+
+      - name: Change to WebToDesktop directory
+        run: cd WebToDesktop
+
+      - name: Convert to WPF using Claude Code
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            현재 디렉토리를 WebToDesktop으로 변경한 후 작업을 수행해주세요.
+
+            ## 작업 내용
+            /wpf-custom-control ${{ steps.component.outputs.control_name }} "${{ steps.component.outputs.html_path }}" "${{ steps.component.outputs.css_path }}"
+
+            ## 변환 후 작업
+            1. `dotnet build` 명령으로 빌드 확인
+            2. 컴파일 에러가 있으면 수정
+            3. 에러 수정 내용을 WebToDesktop/Log/${{ steps.component.outputs.control_name }}_$(date +%Y%m%d).md 파일에 기록
+               - 에러 내용
+               - 수정 방법
+               - runtime error 가능성 (직접 확인 필요)
+
+            ## 중요
+            - compile error만 해결하고, runtime error는 잠재적 오류로 기록만 합니다
+            - 변환 과정에서 html-css-to-wpf-xaml skill의 가이드를 참고하세요
+          claude_args: |
+            --max-turns 50
+            --permission-mode acceptEdits
+            --dangerously-skip-permissions
+          allowed_tools: |
+            Bash
+            Read
+            Write
+            Edit
+            Glob
+            Grep
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add -A
+          if git diff --staged --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and Push
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          TIMESTAMP=$(date +%Y-%m-%d_%H%M)
+          CONTROL_NAME="${{ steps.component.outputs.control_name }}"
+          CATEGORY="${{ steps.component.outputs.category }}"
+
+          git commit -m "$(cat <<'EOF'
+          Auto: Convert $CONTROL_NAME from uiverse.io ($CATEGORY)
+
+          - Source: uiverse-io/galaxy
+          - Category: $CATEGORY
+          - Control: $CONTROL_NAME
+          - Converted at: $TIMESTAMP
+
+          🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+          Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
+          EOF
+          )"
+
+          git push
+
+      - name: Summary
+        run: |
+          echo "## Conversion Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Control Name**: ${{ steps.component.outputs.control_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Category**: ${{ steps.component.outputs.category }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Source**: uiverse-io/galaxy" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ${{ steps.changes.outputs.has_changes == 'true' && 'Converted and committed' || 'No changes' }}" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,17 @@
+{
+  "name": "uiverse-to-wpf-automation",
+  "version": "1.0.0",
+  "description": "Automation scripts for downloading uiverse.io components and converting to WPF",
+  "type": "module",
+  "scripts": {
+    "download": "node download-component.js",
+    "extract": "node extract-html-css.js",
+    "full": "node download-component.js && node extract-html-css.js"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
