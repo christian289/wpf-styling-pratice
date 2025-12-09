@@ -1,0 +1,46 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--  크기  -->
+    <!--  Sizes  -->
+    <sys:Double x:Key="DangerousQuail58.Width">190</sys:Double>
+    <sys:Double x:Key="DangerousQuail58.Height">254</sys:Double>
+    <sys:Double x:Key="DangerousQuail58.GradientBar.Width">100</sys:Double>
+    <sys:Double x:Key="DangerousQuail58.GradientBar.Left">45</sys:Double>
+    <CornerRadius x:Key="DangerousQuail58.CornerRadius">20</CornerRadius>
+    <sys:Double x:Key="DangerousQuail58.CornerRadius.Value">20</sys:Double>
+    <CornerRadius x:Key="DangerousQuail58.Inner.CornerRadius">15</CornerRadius>
+    <Thickness x:Key="DangerousQuail58.Inner.Margin">5</Thickness>
+    <sys:Double x:Key="DangerousQuail58.Inner.Margin.Value">5</sys:Double>
+    <sys:Double x:Key="DangerousQuail58.Inner.Width">180</sys:Double>
+    <sys:Double x:Key="DangerousQuail58.Inner.Height">244</sys:Double>
+
+    <!--  그라데이션 바 높이 배율 (대각선 커버용)  -->
+    <!--  Gradient bar height multiplier (to cover diagonal)  -->
+    <sys:String x:Key="DangerousQuail58.GradientBar.HeightMultiplier">2.0</sys:String>
+
+    <!--  색상  -->
+    <!--  Colors  -->
+    <Color x:Key="DangerousQuail58.Background.Color">#07182E</Color>
+    <Color x:Key="DangerousQuail58.Gradient.Cyan.Color">#00B7FF</Color>
+    <Color x:Key="DangerousQuail58.Gradient.Magenta.Color">#FF30FF</Color>
+    <Color x:Key="DangerousQuail58.Foreground.Color">#FFFFFF</Color>
+
+    <SolidColorBrush x:Key="DangerousQuail58.Background"
+                     Color="{StaticResource DangerousQuail58.Background.Color}" />
+    <SolidColorBrush x:Key="DangerousQuail58.Foreground"
+                     Color="{StaticResource DangerousQuail58.Foreground.Color}" />
+
+    <!--  그라데이션 (위→아래: 하늘색→분홍색→하늘색) - 중앙 대칭  -->
+    <!--  Gradient (top→bottom: cyan→magenta→cyan) - center symmetric  -->
+    <LinearGradientBrush x:Key="DangerousQuail58.GradientBar.Fill" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Offset="0" Color="{StaticResource DangerousQuail58.Gradient.Cyan.Color}" />
+        <GradientStop Offset="1" Color="{StaticResource DangerousQuail58.Gradient.Magenta.Color}" />
+    </LinearGradientBrush>
+
+    <!--  폰트 크기  -->
+    <!--  Font Size  -->
+    <sys:Double x:Key="DangerousQuail58.FontSize">24</sys:Double>
+
+</ResourceDictionary>
