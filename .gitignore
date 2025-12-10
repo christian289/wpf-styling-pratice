@@ -416,3 +416,19 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Node.js (scripts folder)
+scripts/node_modules/
+scripts/package-lock.json
+
+
+# WebToDesktop automation files
+WebToDesktop/source/latest-download.json
+WebToDesktop/source/.processed.log
+
+# Keep WebToDesktop Log and source directories (override [Ll]og/ pattern)
+!WebToDesktop/Log/
+WebToDesktop/Log/*
+!WebToDesktop/Log/.gitkeep
+!WebToDesktop/Log/*.md
+!WebToDesktop/source/.gitkeep
