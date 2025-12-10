@@ -33,7 +33,7 @@ jobs:
 
     defaults:
       run:
-        shell: bash
+        shell: pwsh
 
     steps:
       - name: Checkout repository
@@ -43,14 +43,14 @@ jobs:
 
       - name: Verify Node.js installation
         run: |
-          echo "Node.js version:"
+          Write-Host "Node.js version:"
           node --version
-          echo "npm version:"
+          Write-Host "npm version:"
           npm --version
 
       - name: Verify Claude Code installation
         run: |
-          echo "Claude Code version:"
+          Write-Host "Claude Code version:"
           claude --version
 
       - name: Install script dependencies
@@ -71,31 +71,29 @@ jobs:
       - name: Read component info
         id: component
         run: |
-          CONTROL_NAME=$(cat WebToDesktop/source/latest-download.json | node -pe "JSON.parse(require('fs').readFileSync('/dev/stdin').toString()).controlName")
-          HTML_PATH=$(cat WebToDesktop/source/latest-download.json | node -pe "JSON.parse(require('fs').readFileSync('/dev/stdin').toString()).htmlPath")
-          CSS_PATH=$(cat WebToDesktop/source/latest-download.json | node -pe "JSON.parse(require('fs').readFileSync('/dev/stdin').toString()).cssPath")
-          CATEGORY=$(cat WebToDesktop/source/latest-download.json | node -pe "JSON.parse(require('fs').readFileSync('/dev/stdin').toString()).category")
-          echo "control_name=$CONTROL_NAME" >> $GITHUB_OUTPUT
-          echo "html_path=$HTML_PATH" >> $GITHUB_OUTPUT
-          echo "css_path=$CSS_PATH" >> $GITHUB_OUTPUT
-          echo "category=$CATEGORY" >> $GITHUB_OUTPUT
+          $json = Get-Content "WebToDesktop/source/latest-download.json" | ConvertFrom-Json
+          "control_name=$($json.controlName)" >> $env:GITHUB_OUTPUT
+          "html_path=$($json.htmlPath)" >> $env:GITHUB_OUTPUT
+          "css_path=$($json.cssPath)" >> $env:GITHUB_OUTPUT
+          "category=$($json.category)" >> $env:GITHUB_OUTPUT
 
       - name: Convert to WPF using Claude Code CLI
         working-directory: WebToDesktop
         run: |
-          CONTROL_NAME="${{ steps.component.outputs.control_name }}"
-          HTML_PATH="${{ steps.component.outputs.html_path }}"
-          CSS_PATH="${{ steps.component.outputs.css_path }}"
-          TODAY=$(date +%Y%m%d)
+          $CONTROL_NAME = "${{ steps.component.outputs.control_name }}"
+          $HTML_PATH = "${{ steps.component.outputs.html_path }}"
+          $CSS_PATH = "${{ steps.component.outputs.css_path }}"
+          $TODAY = Get-Date -Format "yyyyMMdd"
 
-          echo "=== Starting WPF Conversion ==="
-          echo "Control: $CONTROL_NAME"
-          echo "HTML: $HTML_PATH"
-          echo "CSS: $CSS_PATH"
+          Write-Host "=== Starting WPF Conversion ==="
+          Write-Host "Control: $CONTROL_NAME"
+          Write-Host "HTML: $HTML_PATH"
+          Write-Host "CSS: $CSS_PATH"
 
           # Run Claude Code CLI with the wpf-custom-control command
           # Claude Code CLI로 wpf-custom-control 커맨드 실행
-          claude -p "/wpf-custom-control $CONTROL_NAME \"$HTML_PATH\" \"$CSS_PATH\"
+          $prompt = @"
+          /wpf-custom-control $CONTROL_NAME "$HTML_PATH" "$CSS_PATH"
 
           변환 후 작업:
           1. dotnet build 명령으로 빌드 확인
@@ -107,20 +105,21 @@ jobs:
 
           중요:
           - compile error만 해결하고, runtime error는 잠재적 오류로 기록만 합니다
-          - 변환 과정에서 html-css-to-wpf-xaml skill의 가이드를 참고하세요" \
-            --allowedTools "Bash,Read,Write,Edit,Glob,Grep" \
-            --max-turns 50 \
-            --dangerously-skip-permissions
+          - 변환 과정에서 html-css-to-wpf-xaml skill의 가이드를 참고하세요
+          "@
+
+          claude -p $prompt --allowedTools "Bash,Read,Write,Edit,Glob,Grep" --max-turns 50 --dangerously-skip-permissions
 
       - name: Check for changes
         id: changes
         run: |
           git add -A
-          if git diff --staged --quiet; then
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-          else
-            echo "has_changes=true" >> $GITHUB_OUTPUT
-          fi
+          $diff = git diff --staged --quiet; $hasChanges = -not $?
+          if ($hasChanges) {
+            "has_changes=true" >> $env:GITHUB_OUTPUT
+          } else {
+            "has_changes=false" >> $env:GITHUB_OUTPUT
+          }
 
       - name: Commit and Push
         if: steps.changes.outputs.has_changes == 'true'
@@ -129,11 +128,12 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
 
-          TIMESTAMP=$(date +%Y-%m-%d_%H%M)
-          CONTROL_NAME="${{ steps.component.outputs.control_name }}"
-          CATEGORY="${{ steps.component.outputs.category }}"
+          $TIMESTAMP = Get-Date -Format "yyyy-MM-dd_HHmm"
+          $CONTROL_NAME = "${{ steps.component.outputs.control_name }}"
+          $CATEGORY = "${{ steps.component.outputs.category }}"
 
-          git commit -m "Auto: Convert $CONTROL_NAME from uiverse.io ($CATEGORY)
+          $commitMessage = @"
+          Auto: Convert $CONTROL_NAME from uiverse.io ($CATEGORY)
 
           - Source: uiverse-io/galaxy
           - Category: $CATEGORY
@@ -142,15 +142,18 @@ jobs:
 
           🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
-          Co-Authored-By: Claude <noreply@anthropic.com>"
+          Co-Authored-By: Claude <noreply@anthropic.com>
+          "@
 
+          git commit -m $commitMessage
           git push
 
       - name: Summary
         run: |
-          echo "## Conversion Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Control Name**: ${{ steps.component.outputs.control_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Category**: ${{ steps.component.outputs.category }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Source**: uiverse-io/galaxy" >> $GITHUB_STEP_SUMMARY
-          echo "- **Status**: ${{ steps.changes.outputs.has_changes == 'true' && 'Converted and committed' || 'No changes' }}" >> $GITHUB_STEP_SUMMARY
+          "## Conversion Summary" >> $env:GITHUB_STEP_SUMMARY
+          "" >> $env:GITHUB_STEP_SUMMARY
+          "- **Control Name**: ${{ steps.component.outputs.control_name }}" >> $env:GITHUB_STEP_SUMMARY
+          "- **Category**: ${{ steps.component.outputs.category }}" >> $env:GITHUB_STEP_SUMMARY
+          "- **Source**: uiverse-io/galaxy" >> $env:GITHUB_STEP_SUMMARY
+          $status = if ("${{ steps.changes.outputs.has_changes }}" -eq "true") { "Converted and committed" } else { "No changes" }
+          "- **Status**: $status" >> $env:GITHUB_STEP_SUMMARY
