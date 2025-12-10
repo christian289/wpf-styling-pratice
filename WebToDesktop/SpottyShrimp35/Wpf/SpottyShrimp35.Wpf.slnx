@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SpottyShrimp35.Wpf.Gallery/SpottyShrimp35.Wpf.Gallery.csproj" />
+  <Project Path="SpottyShrimp35.Wpf.UI/SpottyShrimp35.Wpf.UI.csproj" />
+</Solution>

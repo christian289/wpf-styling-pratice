@@ -1,0 +1,27 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+    CSS Original:
+    background: repeating-linear-gradient(45deg, #0050fc, #0050fc 20px, #0684fade 20px, #0684fade 40px);
+
+    WPF Conversion:
+    - #0050fc → Primary Blue
+    - #0684fade → Secondary Blue (with alpha)
+    - 45deg rotation → RotateTransform on DrawingBrush
+    - 20px stripe width → Viewport size calculation
+    -->
+
+    <!-- Stripe Colors -->
+    <SolidColorBrush x:Key="SpottyShrimp35.Stripe.Primary" Color="#0050fc"/>
+    <SolidColorBrush x:Key="SpottyShrimp35.Stripe.Secondary" Color="#0684fade"/>
+
+    <!-- Stripe Width (CSS: 20px per stripe, 40px total pattern) -->
+    <sys:Double x:Key="SpottyShrimp35.Stripe.Width">20</sys:Double>
+    <sys:Double x:Key="SpottyShrimp35.Pattern.Width">40</sys:Double>
+
+    <!-- Rotation Angle (CSS: 45deg) -->
+    <sys:Double x:Key="SpottyShrimp35.Rotation.Angle">45</sys:Double>
+
+</ResourceDictionary>
