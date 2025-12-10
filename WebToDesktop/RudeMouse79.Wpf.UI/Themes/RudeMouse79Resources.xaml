@@ -1,0 +1,51 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+    RudeMouse79 Theme Resources
+    CSS에서 추출한 색상, 크기, 스타일 값
+    Colors, sizes, and style values extracted from CSS
+    -->
+
+    <!-- Container Colors -->
+    <!-- background-color: #EEE -->
+    <SolidColorBrush x:Key="RudeMouse79.Container.Background" Color="#EEEEEE" />
+    <!-- box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06) -->
+    <SolidColorBrush x:Key="RudeMouse79.Container.Border" Color="#0F000000" />
+
+    <!-- Item Colors -->
+    <!-- color: rgba(51, 65, 85, 1) -->
+    <SolidColorBrush x:Key="RudeMouse79.Item.Foreground" Color="#334155" />
+    <!-- background-color: #fff (selected) -->
+    <SolidColorBrush x:Key="RudeMouse79.Item.Background.Selected" Color="#FFFFFF" />
+    <!-- background: transparent (normal) -->
+    <SolidColorBrush x:Key="RudeMouse79.Item.Background.Normal" Color="Transparent" />
+
+    <!-- Container Sizes -->
+    <!-- width: 300px -->
+    <sys:Double x:Key="RudeMouse79.Container.Width">300</sys:Double>
+    <!-- padding: 0.25rem = 4px -->
+    <Thickness x:Key="RudeMouse79.Container.Padding">4</Thickness>
+    <!-- border-radius: 0.5rem = 8px -->
+    <CornerRadius x:Key="RudeMouse79.Container.CornerRadius">8</CornerRadius>
+
+    <!-- Item Sizes -->
+    <!-- padding: .5rem 0 = 8px 0 -->
+    <Thickness x:Key="RudeMouse79.Item.Padding">0,8,0,8</Thickness>
+    <!-- border-radius: 0.5rem = 8px -->
+    <CornerRadius x:Key="RudeMouse79.Item.CornerRadius">8</CornerRadius>
+
+    <!-- Typography -->
+    <!-- font-size: 14px -->
+    <sys:Double x:Key="RudeMouse79.FontSize">14</sys:Double>
+    <!-- font-weight: 600 (selected) -->
+    <FontWeight x:Key="RudeMouse79.FontWeight.Selected">SemiBold</FontWeight>
+    <!-- font-weight: normal -->
+    <FontWeight x:Key="RudeMouse79.FontWeight.Normal">Normal</FontWeight>
+
+    <!-- Animation -->
+    <!-- transition: all .15s ease-in-out -->
+    <Duration x:Key="RudeMouse79.Animation.Duration">0:0:0.15</Duration>
+
+</ResourceDictionary>

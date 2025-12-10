@@ -1,0 +1,119 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:RudeMouse79.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/RudeMouse79.Wpf.UI;component/Themes/RudeMouse79Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--
+    RudeMouse79Item Style
+    개별 탭 아이템 스타일 (CSS .radio .name 대응)
+    Individual tab item style (corresponds to CSS .radio .name)
+    -->
+    <Style TargetType="{x:Type controls:RudeMouse79Item}">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Padding" Value="{StaticResource RudeMouse79.Item.Padding}" />
+        <Setter Property="Foreground" Value="{StaticResource RudeMouse79.Item.Foreground}" />
+        <Setter Property="FontSize" Value="{StaticResource RudeMouse79.FontSize}" />
+        <Setter Property="FontWeight" Value="{StaticResource RudeMouse79.FontWeight.Normal}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:RudeMouse79Item}">
+                    <Border x:Name="ItemBorder"
+                            Background="{StaticResource RudeMouse79.Item.Background.Normal}"
+                            CornerRadius="{StaticResource RudeMouse79.Item.CornerRadius}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter x:Name="ContentPresenter"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!--
+                        CSS: .radio input:checked + .name { background-color: #fff; font-weight: 600; }
+                        transition: all .15s ease-in-out
+                        -->
+                        <Trigger Property="IsSelected" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="ItemBorder"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        To="#FFFFFF"
+                                                        Duration="0:0:0.15">
+                                            <ColorAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut" />
+                                            </ColorAnimation.EasingFunction>
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="ItemBorder"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        To="Transparent"
+                                                        Duration="0:0:0.15">
+                                            <ColorAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut" />
+                                            </ColorAnimation.EasingFunction>
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                            <Setter Property="FontWeight" Value="{StaticResource RudeMouse79.FontWeight.Selected}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--
+    RudeMouse79 Style
+    컨테이너 스타일 (CSS .radio-inputs 대응)
+    Container style (corresponds to CSS .radio-inputs)
+    -->
+    <Style TargetType="{x:Type controls:RudeMouse79}">
+        <Setter Property="Width" Value="{StaticResource RudeMouse79.Container.Width}" />
+        <Setter Property="Padding" Value="{StaticResource RudeMouse79.Container.Padding}" />
+        <Setter Property="Background" Value="{StaticResource RudeMouse79.Container.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource RudeMouse79.Container.Border}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontSize" Value="{StaticResource RudeMouse79.FontSize}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:RudeMouse79}">
+                    <!--
+                    CSS: border-radius: 0.5rem; background-color: #EEE;
+                    box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+                    -->
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{StaticResource RudeMouse79.Container.CornerRadius}"
+                            Padding="{TemplateBinding Padding}">
+                        <!--
+                        CSS: display: flex; flex-wrap: wrap; flex: 1 1 auto;
+                        UniformGrid로 flex 동작 구현
+                        Using UniformGrid to implement flex behavior
+                        -->
+                        <ItemsPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <!-- flex: 1 1 auto 동작을 위한 UniformGrid (균등 분할) -->
+                    <UniformGrid Rows="1" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
