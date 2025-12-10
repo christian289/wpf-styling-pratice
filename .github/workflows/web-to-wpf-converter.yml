@@ -24,6 +24,11 @@ permissions:
   contents: write
   pull-requests: write
 
+env:
+  # Add paths for Node.js, npm global, dotnet, git
+  # Node.js, npm 전역, dotnet, git 경로 추가
+  PATH_ADDITIONS: C:\Program Files\nodejs;C:\Users\vincent\AppData\Roaming\npm;C:\Program Files\dotnet;C:\Program Files\Git\cmd
+
 jobs:
   convert:
     # Self-hosted runner on your local Windows PC
@@ -36,6 +41,12 @@ jobs:
         shell: pwsh
 
     steps:
+      - name: Setup PATH environment
+        run: |
+          $newPath = "${{ env.PATH_ADDITIONS }};$env:PATH"
+          echo "PATH=$newPath" >> $env:GITHUB_ENV
+          Write-Host "PATH updated with required tools"
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -140,7 +151,7 @@ jobs:
           - Control: $CONTROL_NAME
           - Converted at: $TIMESTAMP
 
-          🤖 Generated with [Claude Code](https://claude.com/claude-code)
+          Generated with Claude Code (https://claude.com/claude-code)
 
           Co-Authored-By: Claude <noreply@anthropic.com>
           "@
