@@ -1,0 +1,31 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+    CSS 색상 매핑 (CSS Color Mapping):
+    - #dc9d37 → OldHound37.Color.Gold.Dark
+    - #fed450 → OldHound37.Color.Gold.Light
+    - #125c65 → OldHound37.Color.Teal
+    - #bc4a33 → OldHound37.Color.Red
+    - #fff     → OldHound37.Color.Line
+    -->
+
+    <!-- Colors -->
+    <Color x:Key="OldHound37.Color.Gold.Dark">#dc9d37</Color>
+    <Color x:Key="OldHound37.Color.Gold.Light">#fed450</Color>
+    <Color x:Key="OldHound37.Color.Teal">#125c65</Color>
+    <Color x:Key="OldHound37.Color.Red">#bc4a33</Color>
+    <Color x:Key="OldHound37.Color.Line">#FFFFFF</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="OldHound37.Brush.Gold.Dark" Color="{StaticResource OldHound37.Color.Gold.Dark}"/>
+    <SolidColorBrush x:Key="OldHound37.Brush.Gold.Light" Color="{StaticResource OldHound37.Color.Gold.Light}"/>
+    <SolidColorBrush x:Key="OldHound37.Brush.Teal" Color="{StaticResource OldHound37.Color.Teal}"/>
+    <SolidColorBrush x:Key="OldHound37.Brush.Red" Color="{StaticResource OldHound37.Color.Red}"/>
+    <SolidColorBrush x:Key="OldHound37.Brush.Line" Color="{StaticResource OldHound37.Color.Line}"/>
+
+    <!-- Default Tile Size (CSS variable s: 200px) -->
+    <sys:Double x:Key="OldHound37.TileSize.Default">200</sys:Double>
+
+</ResourceDictionary>
