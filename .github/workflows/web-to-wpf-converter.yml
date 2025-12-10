@@ -125,12 +125,15 @@ jobs:
         id: changes
         run: |
           git add -A
-          $diff = git diff --staged --quiet; $hasChanges = -not $?
-          if ($hasChanges) {
+          git diff --staged --quiet
+          if ($LASTEXITCODE -ne 0) {
             "has_changes=true" >> $env:GITHUB_OUTPUT
+            Write-Host "Changes detected"
           } else {
             "has_changes=false" >> $env:GITHUB_OUTPUT
+            Write-Host "No changes"
           }
+          exit 0
 
       - name: Commit and Push
         if: steps.changes.outputs.has_changes == 'true'
