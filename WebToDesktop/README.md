@@ -37,6 +37,14 @@ wpf-styling-pratice/
 │   ├── download-component.js       # 컴포넌트 다운로드 스크립트
 │   ├── extract-html-css.js         # HTML/CSS 분리 스크립트
 │   └── package.json                # Node.js 의존성
+├── Manual/                         # 수동 연습 프로젝트 (uiverse.io 외)
+│   ├── AuroraBackground/
+│   ├── Glassmorphism/
+│   ├── MicroInteractions/
+│   ├── Neumorphism/
+│   ├── PhotoBoothCarousel/
+│   ├── StreamingText/
+│   └── UIComponentsBySwetaShahWithBehance/
 └── WebToDesktop/
     ├── README.md                   # 이 문서
     ├── CLAUDE.md                   # Claude Code 변환 가이드
@@ -47,12 +55,13 @@ wpf-styling-pratice/
     │       └── metadata.json
     ├── Log/                        # 변환 오류 해결 로그
     │   └── {컴포넌트명}_{날짜}.md
-    └── {컴포넌트명}/               # 변환된 컨트롤 폴더
-        ├── Readme.md               # 컨트롤 설명 (원본 정보, 빌드 방법)
-        └── Wpf/                    # WPF 프로젝트
-            ├── {컴포넌트명}.Wpf.slnx
-            ├── {컴포넌트명}.Wpf.UI/
-            └── {컴포넌트명}.Wpf.Gallery/
+    └── Output/                     # WPF 변환 결과물
+        └── {컴포넌트명}/           # 변환된 컨트롤 폴더
+            ├── Readme.md           # 컨트롤 설명 (원본 정보, 빌드 방법)
+            └── Wpf/                # WPF 프로젝트
+                ├── {컴포넌트명}.Wpf.slnx
+                ├── {컴포넌트명}.Wpf.UI/
+                └── {컴포넌트명}.Wpf.Gallery/
 ```
 
 ## 스크립트 설명
@@ -140,7 +149,7 @@ Register-ScheduledTask -TaskName "GitHub Actions Runner" -Action $action -Trigge
          │
          │ (1) download-component.js가 랜덤 HTML 다운로드
          ▼
-[WebToDesktop/source/20241210_BigApe36/BigApe36.html]
+[WebToDesktop/source/20251210_BigApe36/BigApe36.html]
          │
          │ (2) extract-html-css.js가 CSS 분리
          ▼
@@ -149,13 +158,14 @@ Register-ScheduledTask -TaskName "GitHub Actions Runner" -Action $action -Trigge
          │ (3) Claude Code CLI 실행
          │     /wpf-custom-control BigApe36 "BigApe36.html" "BigApe36.css"
          ▼
-[WebToDesktop/BigApe36.Wpf.UI/]  ← WPF 프로젝트 생성됨
+[WebToDesktop/Output/BigApe36/Wpf/BigApe36.Wpf.UI/]  ← WPF 프로젝트 생성됨
 ├── Controls/BigApe36.cs
 ├── Themes/BigApe36.xaml
 ├── Themes/BigApe36Resources.xaml
 └── Themes/Generic.xaml
 
-[WebToDesktop/Log/BigApe36_20241210.md]  ← 오류 해결 로그
+[WebToDesktop/Output/BigApe36/Readme.md]  ← 컨트롤 설명
+[WebToDesktop/Log/BigApe36_20251210.md]   ← 오류 해결 로그
          │
          │ (4) Git commit & push
          ▼
@@ -411,3 +421,4 @@ Claude Code는 슬래시 커맨드를 먼저 확장(expand)한 후 전체 컨텍
 |------|----------|
 | 2025-12-10 | 초기 자동화 시스템 구축 |
 | 2025-12-10 | 폴더 구조 개선: `{컨트롤명}/Wpf/` 구조, Readme.md 자동 생성 |
+| 2025-12-10 | 폴더 구조 재정리: Output 폴더 분리, Manual 폴더로 수동 프로젝트 이동 |
