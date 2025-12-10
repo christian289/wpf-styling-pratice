@@ -1,0 +1,34 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--  크기 / Sizes  -->
+    <sys:Double x:Key="DangerousQuail58.Width">190</sys:Double>
+    <sys:Double x:Key="DangerousQuail58.Height">254</sys:Double>
+    <sys:Double x:Key="DangerousQuail58.GradientBar.Width">100</sys:Double>
+    <sys:Double x:Key="DangerousQuail58.GradientBar.Left">45</sys:Double>
+    <CornerRadius x:Key="DangerousQuail58.CornerRadius">20</CornerRadius>
+    <sys:Double x:Key="DangerousQuail58.CornerRadius.Value">20</sys:Double>
+    <CornerRadius x:Key="DangerousQuail58.Inner.CornerRadius">15</CornerRadius>
+    <sys:Double x:Key="DangerousQuail58.Inner.Margin.Value">5</sys:Double>
+    <sys:Double x:Key="DangerousQuail58.Inner.Width">180</sys:Double>
+    <sys:Double x:Key="DangerousQuail58.Inner.Height">244</sys:Double>
+
+    <!--  그라데이션 바 높이 (고정값) / Gradient bar height (fixed)  -->
+    <sys:Double x:Key="DangerousQuail58.GradientBar.Height">508</sys:Double>
+    <sys:Double x:Key="DangerousQuail58.GradientBar.Top">-127</sys:Double>
+
+    <!--  색상 / Colors  -->
+    <SolidColorBrush x:Key="DangerousQuail58.Background" Color="#07182E"/>
+    <SolidColorBrush x:Key="DangerousQuail58.Foreground" Color="#FFFFFF"/>
+
+    <!--  그라데이션 / Gradient  -->
+    <LinearGradientBrush x:Key="DangerousQuail58.GradientBar.Fill" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Offset="0" Color="#00B7FF"/>
+        <GradientStop Offset="1" Color="#FF30FF"/>
+    </LinearGradientBrush>
+
+    <!--  폰트 크기 / Font Size  -->
+    <sys:Double x:Key="DangerousQuail58.FontSize">24</sys:Double>
+
+</ResourceDictionary>
