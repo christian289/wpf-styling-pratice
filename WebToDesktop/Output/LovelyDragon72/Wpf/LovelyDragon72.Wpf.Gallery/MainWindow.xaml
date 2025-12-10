@@ -1,0 +1,30 @@
+<Window x:Class="LovelyDragon72.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:LovelyDragon72.Wpf.UI.Controls;assembly=LovelyDragon72.Wpf.UI"
+        mc:Ignorable="d"
+        Title="LovelyDragon72 Gallery - Profile Card"
+        Height="450" Width="800"
+        Background="#2D2D2D">
+    <Grid>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="20">
+            <!-- 기본 프로필 카드 -->
+            <controls:LovelyDragon72 Margin="20"/>
+
+            <!-- 커스텀 이름 프로필 카드 -->
+            <controls:LovelyDragon72 FirstName="Jane"
+                                     LastName="Smith"
+                                     Margin="20"/>
+
+            <!-- 또 다른 커스텀 카드 -->
+            <controls:LovelyDragon72 FirstName="Alex"
+                                     LastName="Kim"
+                                     Margin="20"/>
+        </StackPanel>
+    </Grid>
+</Window>
