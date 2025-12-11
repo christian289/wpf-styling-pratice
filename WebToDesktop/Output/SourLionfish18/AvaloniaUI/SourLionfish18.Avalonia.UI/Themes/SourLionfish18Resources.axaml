@@ -1,0 +1,28 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+    SourLionfish18 체크박스 리소스
+    SourLionfish18 checkbox resources
+    From Uiverse.io by mobinkakei
+    -->
+
+    <!-- 크기 / Size -->
+    <x:Double x:Key="SourLionfish18.Size">30</x:Double>
+    <CornerRadius x:Key="SourLionfish18.CornerRadius">10</CornerRadius>
+
+    <!-- 색상 / Colors -->
+    <SolidColorBrush x:Key="SourLionfish18.Background.Unchecked" Color="#DDDDDD"/>
+    <SolidColorBrush x:Key="SourLionfish18.Background.Checked" Color="#08BB68"/>
+    <SolidColorBrush x:Key="SourLionfish18.Checkmark.Stroke" Color="#FFFFFF"/>
+
+    <!-- 체크마크 크기 / Checkmark size -->
+    <x:Double x:Key="SourLionfish18.Checkmark.Width">5</x:Double>
+    <x:Double x:Key="SourLionfish18.Checkmark.Height">10</x:Double>
+    <x:Double x:Key="SourLionfish18.Checkmark.StrokeThickness">3</x:Double>
+
+    <!-- 애니메이션 시간 (Duration은 인라인으로 사용) -->
+    <!-- Animation duration (Duration must be used inline) -->
+
+</ResourceDictionary>

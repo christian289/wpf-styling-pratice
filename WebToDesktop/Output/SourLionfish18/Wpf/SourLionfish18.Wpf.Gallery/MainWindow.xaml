@@ -1,0 +1,46 @@
+<Window x:Class="SourLionfish18.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:SourLionfish18.Wpf.UI.Controls;assembly=SourLionfish18.Wpf.UI"
+        mc:Ignorable="d"
+        Title="SourLionfish18 Checkbox Gallery" Height="450" Width="800"
+        Background="#2D2D30">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="SourLionfish18 Checkbox"
+                       Foreground="White"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <!-- 기본 상태 (미체크) / Default state (unchecked) -->
+                <StackPanel Margin="0,0,30,0">
+                    <controls:SourLionfish18 IsChecked="False"/>
+                    <TextBlock Text="Unchecked" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                </StackPanel>
+
+                <!-- 체크 상태 / Checked state -->
+                <StackPanel Margin="0,0,30,0">
+                    <controls:SourLionfish18 IsChecked="True"/>
+                    <TextBlock Text="Checked" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                </StackPanel>
+
+                <!-- 인터랙티브 체크박스 / Interactive checkbox -->
+                <StackPanel>
+                    <controls:SourLionfish18 x:Name="InteractiveCheckbox"/>
+                    <TextBlock Text="Click me!" Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock Text="Click the checkboxes to see the animation"
+                       Foreground="#888888"
+                       FontSize="12"
+                       HorizontalAlignment="Center"
+                       Margin="0,30,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

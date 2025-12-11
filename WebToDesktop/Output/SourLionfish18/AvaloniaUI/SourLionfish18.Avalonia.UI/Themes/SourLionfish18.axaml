@@ -1,0 +1,114 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SourLionfish18.Avalonia.UI.Controls">
+
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://SourLionfish18.Avalonia.UI/Themes/SourLionfish18Resources.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--
+            SourLionfish18 체크박스 스타일
+            SourLionfish18 checkbox style
+            From Uiverse.io by mobinkakei
+
+            CSS → Avalonia 변환:
+            - ::after pseudo-element → Border (L자 체크마크, border-right + border-bottom)
+            - transform: rotateZ(40deg) → RotateTransform Angle="40"
+            - transform: scale(10) → ScaleTransform (애니메이션으로 10→1)
+            - transition: 0.4s → Duration="0:0:0.4"
+            -->
+
+            <ControlTheme x:Key="{x:Type controls:SourLionfish18}" TargetType="controls:SourLionfish18">
+                <Setter Property="Width" Value="{StaticResource SourLionfish18.Size}"/>
+                <Setter Property="Height" Value="{StaticResource SourLionfish18.Size}"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <ControlTemplate TargetType="controls:SourLionfish18">
+                        <!--
+                        배경 Border + 체크마크
+                        Background Border + Checkmark
+                        -->
+                        <Border x:Name="BackgroundBorder"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                Background="{StaticResource SourLionfish18.Background.Unchecked}"
+                                CornerRadius="{StaticResource SourLionfish18.CornerRadius}">
+
+                            <!--
+                            체크마크: CSS ::after를 Border로 구현
+                            - border-right: 3px solid #fff → BorderThickness="0,0,3,3"의 오른쪽
+                            - border-bottom: 3px solid #fff → BorderThickness="0,0,3,3"의 아래쪽
+                            - transform: rotateZ(40deg) → RotateTransform Angle="40"
+
+                            Checkmark: CSS ::after implemented as Border
+                            - border-right: 3px solid #fff → right side of BorderThickness="0,0,3,3"
+                            - border-bottom: 3px solid #fff → bottom side of BorderThickness="0,0,3,3"
+                            - transform: rotateZ(40deg) → RotateTransform Angle="40"
+                            -->
+                            <Border x:Name="Checkmark"
+                                    Width="{StaticResource SourLionfish18.Checkmark.Width}"
+                                    Height="{StaticResource SourLionfish18.Checkmark.Height}"
+                                    BorderBrush="{StaticResource SourLionfish18.Checkmark.Stroke}"
+                                    BorderThickness="0,0,3,3"
+                                    Opacity="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Margin="0,-2,0,0"
+                                    RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="40"/>
+                                        <ScaleTransform ScaleX="10" ScaleY="10"/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                            </Border>
+                        </Border>
+                    </ControlTemplate>
+                </Setter>
+
+                <!-- 체크 상태 스타일 / Checked state style -->
+                <Style Selector="^:checked">
+                    <Style Selector="^ /template/ Border#BackgroundBorder">
+                        <Setter Property="Background" Value="{StaticResource SourLionfish18.Background.Checked}"/>
+                    </Style>
+                    <Style Selector="^ /template/ Border#Checkmark">
+                        <Setter Property="Opacity" Value="1"/>
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <RotateTransform Angle="40"/>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </TransformGroup>
+                        </Setter>
+                    </Style>
+                </Style>
+
+                <!-- 미체크 상태 스타일 / Unchecked state style -->
+                <Style Selector="^:unchecked">
+                    <Style Selector="^ /template/ Border#BackgroundBorder">
+                        <Setter Property="Background" Value="{StaticResource SourLionfish18.Background.Unchecked}"/>
+                    </Style>
+                    <Style Selector="^ /template/ Border#Checkmark">
+                        <Setter Property="Opacity" Value="0"/>
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <RotateTransform Angle="40"/>
+                                <ScaleTransform ScaleX="10" ScaleY="10"/>
+                            </TransformGroup>
+                        </Setter>
+                    </Style>
+                </Style>
+
+                <!-- 애니메이션 트랜지션 / Animation transitions -->
+                <Setter Property="Transitions">
+                    <Transitions>
+                        <BrushTransition Property="Background" Duration="0:0:0.4"/>
+                    </Transitions>
+                </Setter>
+
+            </ControlTheme>
+        </ResourceDictionary>
+    </Styles.Resources>
+
+</Styles>
