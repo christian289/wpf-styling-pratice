@@ -1,0 +1,223 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:LazyChicken4.Avalonia.Lib.Controls">
+
+    <!-- Colors (Tailwind CSS 색상 기반) -->
+    <!-- Colors (Based on Tailwind CSS colors) -->
+    <Color x:Key="LoginCard.Background">#FFFFFF</Color>
+    <Color x:Key="LoginCard.Title.Foreground">#334155</Color>
+    <Color x:Key="LoginCard.Subtitle.Foreground">#64748B</Color>
+    <Color x:Key="LoginCard.Input.Border">#E2E8F0</Color>
+    <Color x:Key="LoginCard.Input.Border.Focus">#93C5FD</Color>
+    <Color x:Key="LoginCard.Input.Foreground">#64748B</Color>
+    <Color x:Key="LoginCard.Button.Background">#3B82F6</Color>
+    <Color x:Key="LoginCard.Button.Background.Hover">#2563EB</Color>
+    <Color x:Key="LoginCard.Button.Background.Pressed">#1D4ED8</Color>
+    <Color x:Key="LoginCard.Link.Foreground">#3B82F6</Color>
+    <Color x:Key="LoginCard.Text.Foreground">#334155</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="LoginCard.Background.Brush" Color="{StaticResource LoginCard.Background}" />
+    <SolidColorBrush x:Key="LoginCard.Title.Foreground.Brush" Color="{StaticResource LoginCard.Title.Foreground}" />
+    <SolidColorBrush x:Key="LoginCard.Subtitle.Foreground.Brush" Color="{StaticResource LoginCard.Subtitle.Foreground}" />
+    <SolidColorBrush x:Key="LoginCard.Input.Border.Brush" Color="{StaticResource LoginCard.Input.Border}" />
+    <SolidColorBrush x:Key="LoginCard.Input.Border.Focus.Brush" Color="{StaticResource LoginCard.Input.Border.Focus}" />
+    <SolidColorBrush x:Key="LoginCard.Input.Foreground.Brush" Color="{StaticResource LoginCard.Input.Foreground}" />
+    <SolidColorBrush x:Key="LoginCard.Button.Background.Brush" Color="{StaticResource LoginCard.Button.Background}" />
+    <SolidColorBrush x:Key="LoginCard.Button.Background.Hover.Brush" Color="{StaticResource LoginCard.Button.Background.Hover}" />
+    <SolidColorBrush x:Key="LoginCard.Button.Background.Pressed.Brush" Color="{StaticResource LoginCard.Button.Background.Pressed}" />
+    <SolidColorBrush x:Key="LoginCard.Link.Foreground.Brush" Color="{StaticResource LoginCard.Link.Foreground}" />
+    <SolidColorBrush x:Key="LoginCard.Text.Foreground.Brush" Color="{StaticResource LoginCard.Text.Foreground}" />
+
+    <!-- TextBox Style for Login Input -->
+    <ControlTheme x:Key="LoginCardTextBoxTheme" TargetType="TextBox">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource LoginCard.Input.Foreground.Brush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource LoginCard.Input.Border.Brush}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <DockPanel>
+                        <TextBlock Name="PART_FloatingWatermark"
+                                   DockPanel.Dock="Top"
+                                   IsVisible="False" />
+                        <DataValidationErrors>
+                            <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden">
+                                <Panel>
+                                    <TextBlock Name="PART_Watermark"
+                                               Text="{TemplateBinding Watermark}"
+                                               Foreground="{StaticResource LoginCard.Input.Foreground.Brush}"
+                                               Opacity="0.5"
+                                               IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}"
+                                               VerticalAlignment="Center"
+                                               Margin="{TemplateBinding Padding}" />
+                                    <TextPresenter Name="PART_TextPresenter"
+                                                   Text="{TemplateBinding Text, Mode=TwoWay}"
+                                                   CaretBrush="{TemplateBinding CaretBrush}"
+                                                   CaretIndex="{TemplateBinding CaretIndex}"
+                                                   SelectionStart="{TemplateBinding SelectionStart}"
+                                                   SelectionEnd="{TemplateBinding SelectionEnd}"
+                                                   TextAlignment="{TemplateBinding TextAlignment}"
+                                                   TextWrapping="{TemplateBinding TextWrapping}"
+                                                   PasswordChar="{TemplateBinding PasswordChar}"
+                                                   RevealPassword="{TemplateBinding RevealPassword}"
+                                                   SelectionBrush="{TemplateBinding SelectionBrush}"
+                                                   SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                                   Margin="{TemplateBinding Padding}"
+                                                   VerticalAlignment="Center" />
+                                </Panel>
+                            </ScrollViewer>
+                        </DataValidationErrors>
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:focus /template/ Border">
+            <Setter Property="BorderBrush" Value="{StaticResource LoginCard.Input.Border.Focus.Brush}" />
+        </Style>
+    </ControlTheme>
+
+    <!-- Login Button Style -->
+    <ControlTheme x:Key="LoginCardButtonTheme" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource LoginCard.Button.Background.Brush}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderBrush" Value="{StaticResource LoginCard.Button.Background.Brush}" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Padding" Value="16,4" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Padding="{TemplateBinding Padding}">
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{StaticResource LoginCard.Button.Background.Hover.Brush}" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{StaticResource LoginCard.Button.Background.Pressed.Brush}" />
+        </Style>
+    </ControlTheme>
+
+    <!-- Link Button Style -->
+    <ControlTheme x:Key="LoginCardLinkButtonTheme" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource LoginCard.Link.Foreground.Brush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        Padding="{TemplateBinding Padding}">
+                    <TextBlock Name="LinkText"
+                               Text="{TemplateBinding Content}"
+                               Foreground="{TemplateBinding Foreground}"
+                               FontWeight="{TemplateBinding FontWeight}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover /template/ TextBlock#LinkText">
+            <Setter Property="TextDecorations" Value="Underline" />
+        </Style>
+    </ControlTheme>
+
+    <!-- CheckBox Style -->
+    <ControlTheme x:Key="LoginCardCheckBoxTheme" TargetType="CheckBox">
+        <Setter Property="Foreground" Value="{StaticResource LoginCard.Subtitle.Foreground.Brush}" />
+        <Setter Property="Padding" Value="8,0,0,0" />
+    </ControlTheme>
+
+    <!-- LoginCard ControlTheme -->
+    <ControlTheme x:Key="{x:Type controls:LoginCard}" TargetType="controls:LoginCard">
+        <Setter Property="Width" Value="320" />
+        <Setter Property="Background" Value="{StaticResource LoginCard.Background.Brush}" />
+        <Setter Property="ClipToBounds" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        CornerRadius="8"
+                        Padding="24"
+                        BoxShadow="0 4 6 -1 #1A000000, 0 2 4 -2 #1A000000">
+                    <StackPanel Spacing="16">
+                        <!-- Header -->
+                        <StackPanel HorizontalAlignment="Center" Spacing="8">
+                            <TextBlock Text="{TemplateBinding Title}"
+                                       FontSize="24"
+                                       FontWeight="Medium"
+                                       Foreground="{StaticResource LoginCard.Title.Foreground.Brush}"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Text="{TemplateBinding Subtitle}"
+                                       Foreground="{StaticResource LoginCard.Subtitle.Foreground.Brush}"
+                                       HorizontalAlignment="Center" />
+                        </StackPanel>
+
+                        <!-- Form -->
+                        <StackPanel Spacing="12">
+                            <!-- Username Input -->
+                            <TextBox Theme="{StaticResource LoginCardTextBoxTheme}"
+                                     Watermark="{TemplateBinding UsernamePlaceholder}"
+                                     Text="{TemplateBinding Username, Mode=TwoWay}" />
+
+                            <!-- Password Input -->
+                            <TextBox Theme="{StaticResource LoginCardTextBoxTheme}"
+                                     Watermark="{TemplateBinding PasswordPlaceholder}"
+                                     Text="{TemplateBinding Password, Mode=TwoWay}"
+                                     PasswordChar="*" />
+
+                            <!-- Remember Me & Forgot Password -->
+                            <DockPanel>
+                                <Button DockPanel.Dock="Right"
+                                        Theme="{StaticResource LoginCardLinkButtonTheme}"
+                                        Content="{TemplateBinding ForgotPasswordText}"
+                                        FontWeight="Medium" />
+                                <CheckBox Theme="{StaticResource LoginCardCheckBoxTheme}"
+                                          IsChecked="{TemplateBinding RememberMe, Mode=TwoWay}"
+                                          Content="Remember me" />
+                            </DockPanel>
+
+                            <!-- Login Button -->
+                            <Button Theme="{StaticResource LoginCardButtonTheme}"
+                                    Content="{TemplateBinding LoginButtonText}"
+                                    HorizontalAlignment="Stretch" />
+
+                            <!-- Sign Up Link -->
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        Spacing="4">
+                                <TextBlock Text="{TemplateBinding AccountQuestionText}"
+                                           Foreground="{StaticResource LoginCard.Text.Foreground.Brush}" />
+                                <Button Theme="{StaticResource LoginCardLinkButtonTheme}"
+                                        Content="{TemplateBinding SignUpText}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

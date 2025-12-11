@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="LazyChicken4.Wpf.Gallery/LazyChicken4.Wpf.Gallery.csproj" />
+  <Project Path="LazyChicken4.Wpf.UI/LazyChicken4.Wpf.UI.csproj" />
+</Solution>

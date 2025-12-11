@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="LazyChicken4.Avalonia.Lib\LazyChicken4.Avalonia.Lib.csproj" />
+  <Project Path="LazyChicken4.Avalonia.Gallery\LazyChicken4.Avalonia.Gallery.csproj" />
+</Solution>

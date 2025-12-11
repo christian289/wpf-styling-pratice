@@ -1,0 +1,15 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:LazyChicken4.Avalonia.Lib.Controls"
+        x:Class="LazyChicken4.Avalonia.Gallery.MainWindow"
+        Title="LazyChicken4 - Login Card Demo"
+        Width="500"
+        Height="500"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#F1F5F9">
+        <controls:LoginCard HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+    </Grid>
+
+</Window>

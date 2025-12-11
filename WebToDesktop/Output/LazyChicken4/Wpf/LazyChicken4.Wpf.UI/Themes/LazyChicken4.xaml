@@ -1,0 +1,278 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:LazyChicken4.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/LazyChicken4.Wpf.UI;component/Themes/LazyChicken4Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- TextBox Style for Input Fields -->
+    <Style x:Key="LazyChicken4TextBoxStyle" TargetType="{x:Type TextBox}">
+        <Setter Property="Height" Value="{StaticResource LazyChicken4.Input.Height}"/>
+        <Setter Property="Padding" Value="{StaticResource LazyChicken4.Input.Padding}"/>
+        <Setter Property="FontSize" Value="{StaticResource LazyChicken4.Default.FontSize}"/>
+        <Setter Property="Foreground" Value="{StaticResource LazyChicken4.Input.Foreground}"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LazyChicken4.Input.Border}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{StaticResource LazyChicken4.Input.CornerRadius}"
+                            SnapsToDevicePixels="True">
+                        <Grid>
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="False"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden"/>
+                            <TextBlock x:Name="placeholder"
+                                       Text="{TemplateBinding Tag}"
+                                       Foreground="#94A3B8"
+                                       Padding="{TemplateBinding Padding}"
+                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                       IsHitTestVisible="False"
+                                       Visibility="Collapsed"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Text" Value="">
+                            <Setter TargetName="placeholder" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter TargetName="placeholder" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource LazyChicken4.Input.Border.Focus}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- PasswordBox Style -->
+    <Style x:Key="LazyChicken4PasswordBoxStyle" TargetType="{x:Type PasswordBox}">
+        <Setter Property="Height" Value="{StaticResource LazyChicken4.Input.Height}"/>
+        <Setter Property="Padding" Value="{StaticResource LazyChicken4.Input.Padding}"/>
+        <Setter Property="FontSize" Value="{StaticResource LazyChicken4.Default.FontSize}"/>
+        <Setter Property="Foreground" Value="{StaticResource LazyChicken4.Input.Foreground}"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LazyChicken4.Input.Border}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{StaticResource LazyChicken4.Input.CornerRadius}"
+                            SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                      Focusable="False"
+                                      HorizontalScrollBarVisibility="Hidden"
+                                      VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource LazyChicken4.Input.Border.Focus}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- CheckBox Style -->
+    <Style x:Key="LazyChicken4CheckBoxStyle" TargetType="{x:Type CheckBox}">
+        <Setter Property="Width" Value="{StaticResource LazyChicken4.Checkbox.Size}"/>
+        <Setter Property="Height" Value="{StaticResource LazyChicken4.Checkbox.Size}"/>
+        <Setter Property="Margin" Value="{StaticResource LazyChicken4.Checkbox.Margin}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Border x:Name="border"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            Background="White"
+                            BorderBrush="{StaticResource LazyChicken4.Input.Border}"
+                            BorderThickness="2"
+                            CornerRadius="3">
+                        <Path x:Name="checkMark"
+                              Data="M 2,5 L 5,8 L 10,2"
+                              Stroke="{StaticResource LazyChicken4.Button.Background}"
+                              StrokeThickness="2"
+                              Visibility="Collapsed"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="checkMark" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource LazyChicken4.Input.Border.Focus}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Link Button Style -->
+    <Style x:Key="LazyChicken4LinkButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource LazyChicken4.Link.Foreground}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="{StaticResource LazyChicken4.Default.FontSize}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <TextBlock x:Name="content"
+                               Text="{TemplateBinding Content}"
+                               Foreground="{TemplateBinding Foreground}"
+                               FontWeight="{TemplateBinding FontWeight}"/>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="content" Property="TextDecorations" Value="Underline"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Login Button Style -->
+    <Style x:Key="LazyChicken4ButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource LazyChicken4.Button.Background}"/>
+        <Setter Property="Foreground" Value="{StaticResource LazyChicken4.Button.Foreground}"/>
+        <Setter Property="Padding" Value="{StaticResource LazyChicken4.Button.Padding}"/>
+        <Setter Property="FontSize" Value="{StaticResource LazyChicken4.Default.FontSize}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{StaticResource LazyChicken4.Input.CornerRadius}"
+                            BorderBrush="{StaticResource LazyChicken4.Button.Ring}"
+                            BorderThickness="2"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource LazyChicken4.Button.Background.Hover}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource LazyChicken4.Button.Background.Pressed}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Main LazyChicken4 Control Style -->
+    <Style TargetType="{x:Type controls:LazyChicken4}">
+        <Setter Property="Width" Value="{StaticResource LazyChicken4.Width}"/>
+        <Setter Property="Background" Value="{StaticResource LazyChicken4.Background}"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:LazyChicken4}">
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="{StaticResource LazyChicken4.CornerRadius}"
+                            Padding="{StaticResource LazyChicken4.Padding}"
+                            Effect="{StaticResource LazyChicken4.Shadow}">
+                        <StackPanel>
+                            <!-- Header Section -->
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="{TemplateBinding Title}"
+                                           FontSize="{StaticResource LazyChicken4.Title.FontSize}"
+                                           FontWeight="Medium"
+                                           Foreground="{StaticResource LazyChicken4.Title.Foreground}"
+                                           HorizontalAlignment="Center"
+                                           Margin="{StaticResource LazyChicken4.Header.Spacing}"/>
+                                <TextBlock Text="{TemplateBinding Subtitle}"
+                                           FontSize="{StaticResource LazyChicken4.Default.FontSize}"
+                                           Foreground="{StaticResource LazyChicken4.Subtitle.Foreground}"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                            <!-- Form Section -->
+                            <StackPanel Margin="{StaticResource LazyChicken4.Form.Margin}">
+                                <!-- Username Input -->
+                                <TextBox x:Name="PART_UsernameTextBox"
+                                         Style="{StaticResource LazyChicken4TextBoxStyle}"
+                                         Text="{Binding Username, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Tag="Username"
+                                         Margin="{StaticResource LazyChicken4.Input.Margin}"/>
+
+                                <!-- Password Input -->
+                                <PasswordBox x:Name="PART_PasswordBox"
+                                             Style="{StaticResource LazyChicken4PasswordBoxStyle}"
+                                             Margin="{StaticResource LazyChicken4.Input.Margin}"/>
+
+                                <!-- Remember Me and Forgot Password Row -->
+                                <Grid Margin="{StaticResource LazyChicken4.Input.Margin}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Orientation="Horizontal"
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center">
+                                        <CheckBox x:Name="PART_RememberMeCheckBox"
+                                                  Style="{StaticResource LazyChicken4CheckBoxStyle}"
+                                                  IsChecked="{Binding RememberMe, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
+                                        <TextBlock Text="Remember me"
+                                                   FontSize="{StaticResource LazyChicken4.Default.FontSize}"
+                                                   Foreground="{StaticResource LazyChicken4.RememberMe.Foreground}"
+                                                   VerticalAlignment="Center"/>
+                                    </StackPanel>
+
+                                    <Button x:Name="PART_ForgotPasswordLink"
+                                            Grid.Column="1"
+                                            Style="{StaticResource LazyChicken4LinkButtonStyle}"
+                                            Content="Forgot Password"
+                                            FontWeight="Medium"/>
+                                </Grid>
+
+                                <!-- Login Button -->
+                                <Button x:Name="PART_LoginButton"
+                                        Style="{StaticResource LazyChicken4ButtonStyle}"
+                                        Content="login"
+                                        Margin="{StaticResource LazyChicken4.Input.Margin}"/>
+
+                                <!-- Sign Up Row -->
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Center">
+                                    <TextBlock Text="Have an account?"
+                                               FontSize="{StaticResource LazyChicken4.Default.FontSize}"
+                                               Foreground="{StaticResource LazyChicken4.Title.Foreground}"
+                                               VerticalAlignment="Center"/>
+                                    <Button x:Name="PART_SignUpLink"
+                                            Style="{StaticResource LazyChicken4LinkButtonStyle}"
+                                            Content="Sign Up"
+                                            Margin="{StaticResource LazyChicken4.SignUp.Spacing}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
