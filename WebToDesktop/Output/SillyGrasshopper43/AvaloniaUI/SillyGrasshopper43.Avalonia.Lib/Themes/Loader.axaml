@@ -1,0 +1,175 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:SillyGrasshopper43.Avalonia.Lib.Controls">
+
+    <!--
+    From Uiverse.io by JulioCodesSM - Tags: loader
+    두 개의 원이 서로 교차하며 회전하는 로더 애니메이션
+    Two circles crossing each other with rotation animation
+    -->
+
+    <Design.PreviewWith>
+        <Border Padding="40" Background="#222222">
+            <controls:Loader Width="50" Height="50" />
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type controls:Loader}" TargetType="controls:Loader">
+        <Setter Property="Width" Value="50" />
+        <Setter Property="Height" Value="50" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!--
+                    전체 컨테이너: transform: translateX(-25px) 보정
+                    Container with translateX(-25px) compensation
+                -->
+                <Canvas Width="100" Height="50"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                    <!-- 첫 번째 원 (::before) - #fc3f9e -->
+                    <Ellipse x:Name="PART_Circle1"
+                             Width="50" Height="50"
+                             Canvas.Left="50" Canvas.Top="0"
+                             RenderTransformOrigin="0.5,0.5">
+                        <Ellipse.Fill>
+                            <SolidColorBrush Color="{TemplateBinding ForegroundColor}" />
+                        </Ellipse.Fill>
+                        <Ellipse.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <!-- 두 번째 원 (::after) - #50e8f3 -->
+                    <Ellipse x:Name="PART_Circle2"
+                             Width="50" Height="50"
+                             Canvas.Left="50" Canvas.Top="0"
+                             Opacity="0.7"
+                             RenderTransformOrigin="0.5,0.5">
+                        <Ellipse.Fill>
+                            <SolidColorBrush Color="{TemplateBinding BackgroundColor}" />
+                        </Ellipse.Fill>
+                        <Ellipse.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+                </Canvas>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- 첫 번째 원 애니메이션 -->
+        <Style Selector="^/template/ Ellipse#PART_Circle1">
+            <Style.Animations>
+                <!-- 위치 애니메이션: left 50px -> 0px -> 50px -->
+                <Animation Duration="0:0:1"
+                           IterationCount="Infinite"
+                           Easing="CubicEaseInOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Canvas.Left" Value="50" />
+                    </KeyFrame>
+                    <KeyFrame Cue="25%">
+                        <Setter Property="Canvas.Left" Value="25" />
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="Canvas.Left" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="75%">
+                        <Setter Property="Canvas.Left" Value="25" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Canvas.Left" Value="50" />
+                    </KeyFrame>
+                </Animation>
+                <!-- 크기 애니메이션: scale 1 -> 0.3 -> 1 -->
+                <Animation Duration="0:0:1"
+                           IterationCount="Infinite"
+                           Easing="CubicEaseInOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="25%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="0.3" ScaleY="0.3" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="0.65" ScaleY="0.65" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="75%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- 두 번째 원 애니메이션 (0.5초 딜레이 = 위상 반전) -->
+        <Style Selector="^/template/ Ellipse#PART_Circle2">
+            <Style.Animations>
+                <!-- 위치 애니메이션 (50% 위상 차이) -->
+                <Animation Duration="0:0:1"
+                           IterationCount="Infinite"
+                           Delay="0:0:0.5"
+                           Easing="CubicEaseInOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Canvas.Left" Value="50" />
+                    </KeyFrame>
+                    <KeyFrame Cue="25%">
+                        <Setter Property="Canvas.Left" Value="25" />
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="Canvas.Left" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="75%">
+                        <Setter Property="Canvas.Left" Value="25" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Canvas.Left" Value="50" />
+                    </KeyFrame>
+                </Animation>
+                <!-- 크기 애니메이션 (50% 위상 차이) -->
+                <Animation Duration="0:0:1"
+                           IterationCount="Infinite"
+                           Delay="0:0:0.5"
+                           Easing="CubicEaseInOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="25%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="0.3" ScaleY="0.3" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="0.65" ScaleY="0.65" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="75%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

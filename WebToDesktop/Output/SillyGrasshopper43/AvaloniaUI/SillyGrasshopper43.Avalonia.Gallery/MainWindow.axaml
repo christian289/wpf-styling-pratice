@@ -1,0 +1,48 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SillyGrasshopper43.Avalonia.Lib.Controls"
+        x:Class="SillyGrasshopper43.Avalonia.Gallery.MainWindow"
+        Title="SillyGrasshopper43 Loader - AvaloniaUI Gallery"
+        Width="400" Height="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#222222">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Spacing="40">
+
+            <!-- 기본 로더 -->
+            <StackPanel Spacing="10" HorizontalAlignment="Center">
+                <TextBlock Text="Default Loader"
+                           Foreground="White"
+                           FontSize="14"
+                           HorizontalAlignment="Center" />
+                <controls:Loader Width="50" Height="50" />
+            </StackPanel>
+
+            <!-- 커스텀 색상 로더 -->
+            <StackPanel Spacing="10" HorizontalAlignment="Center">
+                <TextBlock Text="Custom Colors"
+                           Foreground="White"
+                           FontSize="14"
+                           HorizontalAlignment="Center" />
+                <controls:Loader Width="50" Height="50"
+                                 ForegroundColor="#FF6B6B"
+                                 BackgroundColor="#4ECDC4" />
+            </StackPanel>
+
+            <!-- 큰 크기 로더 -->
+            <StackPanel Spacing="10" HorizontalAlignment="Center">
+                <TextBlock Text="Large Size"
+                           Foreground="White"
+                           FontSize="14"
+                           HorizontalAlignment="Center" />
+                <controls:Loader Width="80" Height="80"
+                                 ForegroundColor="#9B59B6"
+                                 BackgroundColor="#3498DB" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+
+</Window>

@@ -1,0 +1,23 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors from CSS -->
+    <!-- ::before background-color: #fc3f9e (Pink) -->
+    <SolidColorBrush x:Key="SillyGrasshopper43.Circle.Before.Background" Color="#fc3f9e" />
+
+    <!-- ::after background-color: #50e8f3 (Cyan) -->
+    <SolidColorBrush x:Key="SillyGrasshopper43.Circle.After.Background" Color="#50e8f3" />
+
+    <!-- Sizes from CSS -->
+    <!-- width: 50px, height: 50px -->
+    <sys:Double x:Key="SillyGrasshopper43.Size">50</sys:Double>
+
+    <!-- Animation left offset: 50px -->
+    <sys:Double x:Key="SillyGrasshopper43.Animation.LeftOffset">50</sys:Double>
+
+    <!-- Scale min/max from keyframes: scale(.3) ~ scale(1) -->
+    <sys:Double x:Key="SillyGrasshopper43.Animation.ScaleMin">0.3</sys:Double>
+    <sys:Double x:Key="SillyGrasshopper43.Animation.ScaleMax">1.0</sys:Double>
+
+</ResourceDictionary>

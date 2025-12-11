@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SillyGrasshopper43.Wpf.Gallery/SillyGrasshopper43.Wpf.Gallery.csproj" />
+  <Project Path="SillyGrasshopper43.Wpf.UI/SillyGrasshopper43.Wpf.UI.csproj" />
+</Solution>
