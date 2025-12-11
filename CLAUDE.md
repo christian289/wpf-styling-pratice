@@ -20,15 +20,19 @@ dotnet run --project <Gallery프로젝트폴더>
 
 예시:
 ```bash
-# Glassmorphism 갤러리 빌드 및 실행
-cd Glassmorphism
+# Manual 프로젝트 - Glassmorphism 갤러리 빌드 및 실행
+cd Manual/Glassmorphism
 dotnet build Glassmorphism.slnx
 dotnet run --project GlassmorphismGallery
 
-# Neumorphism 갤러리 빌드 및 실행
-cd Neumorphism
+# Manual 프로젝트 - Neumorphism 갤러리 빌드 및 실행
+cd Manual/Neumorphism
 dotnet build Neumorphism.slnx
 dotnet run --project NeumorphismGallery
+
+# WebToDesktop 변환 프로젝트 빌드
+cd WebToDesktop/source/<프로젝트명>
+dotnet build
 ```
 
 ## 프로젝트 아키텍처
@@ -44,7 +48,26 @@ dotnet run --project NeumorphismGallery
    - `App.xaml` - 라이브러리의 리소스 딕셔너리 병합
    - `MainWindow.xaml` - 대화형 컨트롤 쇼케이스
 
-### 저장소 내 프로젝트
+### 디렉터리 구조
+
+```
+wpf-styling-pratice/
+├── Manual/                    # 수동으로 작성한 WPF 스타일링 프로젝트
+│   ├── Glassmorphism/         # 반투명 프로스티드 글래스 효과 (Lib + Gallery)
+│   ├── Neumorphism/           # 듀얼 섀도우 시스템의 소프트 UI (Lib + Gallery)
+│   ├── MicroInteractions/     # 2020년대 애니메이션 패턴 (Lib + Gallery)
+│   ├── UIComponentsBySwetaShahWithBehance/  # 모던 커스텀 컨트롤 (Library + Gallery)
+│   ├── StreamingText/         # AI 챗봇 스타일 타이핑 효과 컨트롤 (Lib + Gallery)
+│   ├── AuroraBackground/      # 오로라 그라데이션 배경 애니메이션 (단일 앱)
+│   └── PhotoBoothCarousel/    # 캐러셀 애니메이션이 있는 포토부스 UI (단일 앱)
+├── WebToDesktop/              # 웹 UI를 WPF로 변환한 프로젝트
+│   ├── source/                # 변환된 WPF CustomControl 프로젝트들
+│   ├── Output/                # 빌드 결과물
+│   └── Log/                   # 변환 로그
+└── scripts/                   # 자동화 스크립트
+```
+
+### Manual 프로젝트 목록
 
 | 프로젝트 | 설명 | 구조 |
 |---------|------|------|

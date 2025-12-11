@@ -19,7 +19,7 @@ WebToDesktop/
     │   │       ├── Generic.xaml        # ResourceDictionary 병합만
     │   │       └── {컨트롤명}.xaml     # 실제 스타일 정의
     │   └── {테마명}.Wpf.Gallery/       # 데모 앱
-    └── Avalonia/
+    └── AvaloniaUI/
         ├── {테마명}.Avalonia.slnx
         ├── {테마명}.Avalonia.Lib/      # 커스텀 컨트롤 라이브러리
         │   ├── Controls/               # 커스텀 컨트롤 클래스
