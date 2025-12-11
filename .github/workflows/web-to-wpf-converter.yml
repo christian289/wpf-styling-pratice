@@ -1,4 +1,4 @@
-name: Web to WPF Converter
+name: Web to Desktop Converter
 
 on:
   schedule:
@@ -87,22 +87,47 @@ jobs:
           "html_path=$($json.htmlPath)" >> $env:GITHUB_OUTPUT
           "css_path=$($json.cssPath)" >> $env:GITHUB_OUTPUT
           "category=$($json.category)" >> $env:GITHUB_OUTPUT
+          "component_dir=$($json.componentDir)" >> $env:GITHUB_OUTPUT
+
+          # Read metadata.json to get originalFilename for uiverse.io URL
+          # uiverse.io URL 생성을 위해 metadata.json에서 originalFilename 읽기
+          $metadataPath = Join-Path $json.componentDir "metadata.json"
+          $metadata = Get-Content $metadataPath | ConvertFrom-Json
+          $originalFilename = $metadata.originalFilename
+
+          # Parse originalFilename: "username_element-id.html" -> username, element-id
+          # originalFilename 파싱: "username_element-id.html" -> username, element-id
+          $baseName = [System.IO.Path]::GetFileNameWithoutExtension($originalFilename)
+          $parts = $baseName -split '_', 2
+          $username = $parts[0]
+          $elementId = $parts[1]
+          $uiverseUrl = "https://uiverse.io/$username/$elementId"
+
+          "original_filename=$originalFilename" >> $env:GITHUB_OUTPUT
+          "author=$username" >> $env:GITHUB_OUTPUT
+          "uiverse_url=$uiverseUrl" >> $env:GITHUB_OUTPUT
+
+          Write-Host "Uiverse URL: $uiverseUrl"
 
       - name: Create control folder structure
         run: |
           $CONTROL_NAME = "${{ steps.component.outputs.control_name }}"
           $CONTROL_DIR = "WebToDesktop/Output/$CONTROL_NAME"
           $WPF_DIR = "$CONTROL_DIR/Wpf"
+          $AVALONIA_DIR = "$CONTROL_DIR/AvaloniaUI"
 
-          # Create folder structure: WebToDesktop/Output/{ControlName}/Wpf/
-          # 폴더 구조 생성: WebToDesktop/Output/{ControlName}/Wpf/
+          # Create folder structure: WebToDesktop/Output/{ControlName}/Wpf/ and AvaloniaUI/
+          # 폴더 구조 생성: WebToDesktop/Output/{ControlName}/Wpf/ 및 AvaloniaUI/
           New-Item -ItemType Directory -Force -Path $WPF_DIR
+          New-Item -ItemType Directory -Force -Path $AVALONIA_DIR
           Write-Host "Created folder structure: $WPF_DIR"
+          Write-Host "Created folder structure: $AVALONIA_DIR"
 
           # Save paths for later steps
           # 이후 단계를 위해 경로 저장
           "control_dir=$CONTROL_DIR" >> $env:GITHUB_OUTPUT
           "wpf_dir=$WPF_DIR" >> $env:GITHUB_OUTPUT
+          "avalonia_dir=$AVALONIA_DIR" >> $env:GITHUB_OUTPUT
         id: folders
 
       - name: Convert to WPF using Claude Code CLI
@@ -112,6 +137,8 @@ jobs:
           $HTML_PATH = "${{ steps.component.outputs.html_path }}"
           $CSS_PATH = "${{ steps.component.outputs.css_path }}"
           $CATEGORY = "${{ steps.component.outputs.category }}"
+          $AUTHOR = "${{ steps.component.outputs.author }}"
+          $UIVERSE_URL = "${{ steps.component.outputs.uiverse_url }}"
           $TODAY = Get-Date -Format "yyyyMMdd"
           $CONTROL_DIR = "${{ steps.folders.outputs.control_dir }}"
 
@@ -119,6 +146,8 @@ jobs:
           Write-Host "Control: $CONTROL_NAME"
           Write-Host "HTML: $HTML_PATH"
           Write-Host "CSS: $CSS_PATH"
+          Write-Host "Author: $AUTHOR"
+          Write-Host "Uiverse URL: $UIVERSE_URL"
           Write-Host "Output Dir: $CONTROL_DIR"
 
           # Run Claude Code CLI with the wpf-custom-control command
@@ -142,13 +171,71 @@ jobs:
           4. 변환 완료 후 상위 폴더에 Readme.md 생성 (../Readme.md):
              - 제목: # $CONTROL_NAME
              - 설명: $CATEGORY 스타일 컨트롤
-             - 원본 정보: uiverse.io, 원작자명
-             - 빌드 명령: cd Wpf && dotnet run --project ${CONTROL_NAME}.Wpf.Gallery
+             - 원본 정보:
+               - 원작자: $AUTHOR
+               - 원본 링크: [$UIVERSE_URL]($UIVERSE_URL) (클릭 시 원본 CSS/HTML 확인 가능)
+             - 빌드 명령 (WPF): cd Wpf && dotnet run --project ${CONTROL_NAME}.Wpf.Gallery
+             - 빌드 명령 (AvaloniaUI): cd AvaloniaUI && dotnet run --project ${CONTROL_NAME}.Avalonia.Gallery
              - CSS → WPF 변환 매핑 테이블
 
           중요:
           - compile error만 해결하고, runtime error는 잠재적 오류로 기록만 합니다
           - 변환 과정에서 html-css-to-wpf-xaml skill의 가이드를 참고하세요
+          "@
+
+          claude -p $prompt --allowedTools "Bash,Read,Write,Edit,Glob,Grep" --max-turns 50 --dangerously-skip-permissions
+
+      - name: Convert to AvaloniaUI using Claude Code CLI
+        working-directory: ${{ steps.folders.outputs.avalonia_dir }}
+        run: |
+          $CONTROL_NAME = "${{ steps.component.outputs.control_name }}"
+          $CATEGORY = "${{ steps.component.outputs.category }}"
+          $TODAY = Get-Date -Format "yyyyMMdd"
+          $WPF_DIR = "${{ steps.folders.outputs.wpf_dir }}"
+          $CONTROL_DIR = "${{ steps.folders.outputs.control_dir }}"
+
+          Write-Host "=== Starting AvaloniaUI Conversion ==="
+          Write-Host "Control: $CONTROL_NAME"
+          Write-Host "Reference WPF Project: $WPF_DIR"
+          Write-Host "Output Dir: $CONTROL_DIR/AvaloniaUI"
+
+          # Run Claude Code CLI to create AvaloniaUI project based on WPF project
+          # Claude Code CLI로 WPF 프로젝트를 참고하여 AvaloniaUI 프로젝트 생성
+          $prompt = @"
+          WPF 프로젝트를 참고하여 동일한 구조의 AvaloniaUI 프로젝트를 생성해주세요.
+
+          참고할 WPF 프로젝트 경로: $WPF_DIR
+
+          생성할 AvaloniaUI 프로젝트 구조:
+          - 현재 작업 디렉토리: WebToDesktop/Output/$CONTROL_NAME/AvaloniaUI/
+          - ${CONTROL_NAME}.Avalonia.slnx (솔루션 파일)
+          - ${CONTROL_NAME}.Avalonia.UI/ (커스텀 컨트롤 라이브러리)
+            - Controls/${CONTROL_NAME}.cs
+            - Themes/Generic.axaml (ResourceDictionary 병합)
+            - Themes/${CONTROL_NAME}.axaml (실제 스타일)
+          - ${CONTROL_NAME}.Avalonia.Gallery/ (데모 애플리케이션)
+            - App.axaml
+            - MainWindow.axaml
+
+          변환 시 주의사항:
+          1. WPF의 .xaml 파일은 AvaloniaUI의 .axaml로 변환
+          2. WPF의 pack:// URI는 avares:// URI로 변환
+          3. ResourceDictionary.MergedDictionaries의 Source 형식 변환:
+             - WPF: Source="/라이브러리;component/Themes/파일.xaml"
+             - Avalonia: Source="avares://라이브러리/Themes/파일.axaml"
+          4. DropShadowEffect → BoxShadow 변환
+          5. WPF 전용 속성(UseLayoutRounding 등) 제거 또는 대체
+          6. xmlns 네임스페이스 변환
+          7. TargetFramework는 net9.0 사용 (net9.0-windows 아님)
+          8. wpf-to-avaloniaui-radialgradientbrush skill을 참고하여 RadialGradientBrush 변환 시 주의
+
+          변환 후 작업:
+          1. dotnet build 명령으로 빌드 확인
+          2. 컴파일 에러가 있으면 수정
+          3. 에러 수정 내용을 ../../../Log/${CONTROL_NAME}_Avalonia_${TODAY}.md 파일에 기록
+
+          중요:
+          - compile error만 해결하고, runtime error는 잠재적 오류로 기록만 합니다
           "@
 
           claude -p $prompt --allowedTools "Bash,Read,Write,Edit,Glob,Grep" --max-turns 50 --dangerously-skip-permissions
@@ -178,12 +265,17 @@ jobs:
           $CONTROL_NAME = "${{ steps.component.outputs.control_name }}"
           $CATEGORY = "${{ steps.component.outputs.category }}"
 
+          $AUTHOR = "${{ steps.component.outputs.author }}"
+          $UIVERSE_URL = "${{ steps.component.outputs.uiverse_url }}"
+
           $commitMessage = @"
           Auto: Convert $CONTROL_NAME from uiverse.io ($CATEGORY)
 
-          - Source: uiverse-io/galaxy
+          - Source: $UIVERSE_URL
+          - Author: $AUTHOR
           - Category: $CATEGORY
           - Control: $CONTROL_NAME
+          - Targets: WPF, AvaloniaUI
           - Converted at: $TIMESTAMP
 
           Generated with Claude Code (https://claude.com/claude-code)
@@ -200,6 +292,8 @@ jobs:
           "" >> $env:GITHUB_STEP_SUMMARY
           "- **Control Name**: ${{ steps.component.outputs.control_name }}" >> $env:GITHUB_STEP_SUMMARY
           "- **Category**: ${{ steps.component.outputs.category }}" >> $env:GITHUB_STEP_SUMMARY
-          "- **Source**: uiverse-io/galaxy" >> $env:GITHUB_STEP_SUMMARY
+          "- **Author**: ${{ steps.component.outputs.author }}" >> $env:GITHUB_STEP_SUMMARY
+          "- **Source**: [${{ steps.component.outputs.uiverse_url }}](${{ steps.component.outputs.uiverse_url }})" >> $env:GITHUB_STEP_SUMMARY
+          "- **Targets**: WPF, AvaloniaUI" >> $env:GITHUB_STEP_SUMMARY
           $status = if ("${{ steps.changes.outputs.has_changes }}" -eq "true") { "Converted and committed" } else { "No changes" }
           "- **Status**: $status" >> $env:GITHUB_STEP_SUMMARY

@@ -1,5 +1,0 @@
-<Solution>
-  <Project Path="Gallery.OpenSilver.Browser/Gallery.OpenSilver.Browser.csproj" />
-  <Project Path="Gallery.OpenSilver.Simulator/Gallery.OpenSilver.Simulator.csproj" />
-  <Project Path="Gallery.OpenSilver/Gallery.OpenSilver.csproj" />
-</Solution>
