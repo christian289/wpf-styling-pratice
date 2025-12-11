@@ -1,0 +1,23 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:GrumpyOwl55.Avalonia.Lib.Controls">
+
+    <!--
+    GrumpyOwl55 Pattern Control Theme
+    원본: Uiverse.io by vikas7754 - Tags: simple, clean, pattern
+    Original: Uiverse.io by vikas7754 - Tags: simple, clean, pattern
+    -->
+
+    <!-- 색상 리소스 / Color Resources -->
+    <Color x:Key="GrumpyOwl55.PrimaryColor">#000000</Color>
+    <Color x:Key="GrumpyOwl55.SecondaryColor">#c71175</Color>
+
+    <!-- 기본 스타일 / Default Style -->
+    <ControlTheme x:Key="{x:Type controls:GrumpyOwl55Pattern}" TargetType="controls:GrumpyOwl55Pattern">
+        <Setter Property="PatternSize" Value="15"/>
+        <Setter Property="PrimaryColor" Value="{StaticResource GrumpyOwl55.PrimaryColor}"/>
+        <Setter Property="SecondaryColor" Value="{StaticResource GrumpyOwl55.SecondaryColor}"/>
+        <Setter Property="ClipToBounds" Value="True"/>
+    </ControlTheme>
+
+</ResourceDictionary>

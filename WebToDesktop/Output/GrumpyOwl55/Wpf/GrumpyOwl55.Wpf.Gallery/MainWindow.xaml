@@ -1,0 +1,12 @@
+<Window x:Class="GrumpyOwl55.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:GrumpyOwl55.Wpf.UI.Controls;assembly=GrumpyOwl55.Wpf.UI"
+        mc:Ignorable="d"
+        Title="GrumpyOwl55 Pattern Gallery" Height="600" Width="800">
+    <Grid>
+        <controls:GrumpyOwl55 />
+    </Grid>
+</Window>

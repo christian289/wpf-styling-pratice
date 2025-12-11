@@ -1,0 +1,29 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- CSS 변수 매핑:
+         sz: 15px (기본 단위 크기)
+         c0: #000 (검정)
+         c1: #c71175 (마젠타/핑크)
+         타일 크기: calc(sz * 8) x calc(sz * 16) = 120 x 240 -->
+
+    <!-- 기본 색상 / Primary colors -->
+    <Color x:Key="GrumpyOwl55.Color.Primary">#000000</Color>
+    <Color x:Key="GrumpyOwl55.Color.Secondary">#C71175</Color>
+    <Color x:Key="GrumpyOwl55.Color.Transparent">#00FFFFFF</Color>
+
+    <SolidColorBrush x:Key="GrumpyOwl55.Brush.Primary" Color="{StaticResource GrumpyOwl55.Color.Primary}" />
+    <SolidColorBrush x:Key="GrumpyOwl55.Brush.Secondary" Color="{StaticResource GrumpyOwl55.Color.Secondary}" />
+
+    <!-- 타일 크기 (CSS: calc(sz * 8) = 15 * 8 = 120, calc(sz * 16) = 15 * 16 = 240) / Tile size -->
+    <sys:Double x:Key="GrumpyOwl55.TileWidth">120</sys:Double>
+    <sys:Double x:Key="GrumpyOwl55.TileHeight">240</sys:Double>
+
+    <!-- 기본 단위 크기 (CSS: sz: 15px) / Base unit size -->
+    <sys:Double x:Key="GrumpyOwl55.UnitSize">15</sys:Double>
+
+    <!-- 도트 반경 (CSS: calc(sz * 0.78) = 15 * 0.78 = 11.7) / Dot radius -->
+    <sys:Double x:Key="GrumpyOwl55.DotRadius">11.7</sys:Double>
+
+</ResourceDictionary>

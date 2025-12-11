@@ -1,0 +1,268 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:GrumpyOwl55.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/GrumpyOwl55.Wpf.UI;component/Themes/GrumpyOwl55Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- CSS 원본 패턴 분석:
+         타일 크기: 120px x 240px (calc(sz * 8) x calc(sz * 16))
+         conic gradient: 90도 섹터를 사용한 계단식 패턴
+         radial gradient: 도트 패턴
+         linear gradient: 대각선 그라데이션 오버레이
+         repeating linear gradient: 수직 스트라이프 베이스
+
+         WPF 변환:
+         conic gradient를 90도 Polygon으로 근사
+         radial gradient를 Ellipse로 변환
+         DrawingBrush로 타일링 -->
+
+    <Style TargetType="{x:Type controls:GrumpyOwl55}">
+        <Setter Property="ClipToBounds" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:GrumpyOwl55}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <!-- 패턴 배경 / Pattern background -->
+                        <Border>
+                            <Border.Background>
+                                <DrawingBrush TileMode="Tile"
+                                              Viewport="0,0,120,240"
+                                              ViewportUnits="Absolute"
+                                              Viewbox="0,0,120,240"
+                                              ViewboxUnits="Absolute">
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <!-- 레이어 1: 베이스 스트라이프 (repeating linear gradient) -->
+                                            <!-- Layer 1: Base stripes / 25% = 30px 단위로 반복, 5% = 6px는 검정 -->
+                                            <GeometryDrawing>
+                                                <GeometryDrawing.Geometry>
+                                                    <RectangleGeometry Rect="0,0,120,240" />
+                                                </GeometryDrawing.Geometry>
+                                                <GeometryDrawing.Brush>
+                                                    <DrawingBrush TileMode="Tile"
+                                                                  Viewport="0,0,30,240"
+                                                                  ViewportUnits="Absolute"
+                                                                  Viewbox="0,0,30,240"
+                                                                  ViewboxUnits="Absolute">
+                                                        <DrawingBrush.Drawing>
+                                                            <DrawingGroup>
+                                                                <!-- 마젠타 배경 (20px) -->
+                                                                <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                                    <GeometryDrawing.Geometry>
+                                                                        <RectangleGeometry Rect="0,0,30,240" />
+                                                                    </GeometryDrawing.Geometry>
+                                                                </GeometryDrawing>
+                                                                <!-- 검정 스트라이프 (6px) -->
+                                                                <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Primary}">
+                                                                    <GeometryDrawing.Geometry>
+                                                                        <RectangleGeometry Rect="0,0,6,240" />
+                                                                    </GeometryDrawing.Geometry>
+                                                                </GeometryDrawing>
+                                                            </DrawingGroup>
+                                                        </DrawingBrush.Drawing>
+                                                    </DrawingBrush>
+                                                </GeometryDrawing.Brush>
+                                            </GeometryDrawing>
+
+                                            <!-- 레이어 2: 대각선 그라데이션 (linear gradient 45deg) -->
+                                            <!-- Layer 2: Diagonal gradient -->
+                                            <GeometryDrawing>
+                                                <GeometryDrawing.Geometry>
+                                                    <RectangleGeometry Rect="0,0,120,240" />
+                                                </GeometryDrawing.Geometry>
+                                                <GeometryDrawing.Brush>
+                                                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                                                        <GradientStop Color="Transparent" Offset="0" />
+                                                        <GradientStop Color="Transparent" Offset="0.3225" />
+                                                        <GradientStop Color="#000000" Offset="0.6" />
+                                                    </LinearGradientBrush>
+                                                </GeometryDrawing.Brush>
+                                            </GeometryDrawing>
+
+                                            <!-- 레이어 3: 계단 패턴 (conic gradient 시뮬레이션) -->
+                                            <!-- Layer 3: Stair pattern / cg1: 5%, 51% 검정 -->
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Primary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry>
+                                                        <PathFigure StartPoint="6,122.4" IsClosed="True">
+                                                            <LineSegment Point="6,240" />
+                                                            <LineSegment Point="0,240" />
+                                                            <LineSegment Point="0,122.4" />
+                                                        </PathFigure>
+                                                    </PathGeometry>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!-- cg2: 25%, 50% 마젠타 -->
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry>
+                                                        <PathFigure StartPoint="30,120" IsClosed="True">
+                                                            <LineSegment Point="30,240" />
+                                                            <LineSegment Point="6,240" />
+                                                            <LineSegment Point="6,120" />
+                                                        </PathFigure>
+                                                    </PathGeometry>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!-- cg3: 30%, 38.5% 검정 -->
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Primary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry>
+                                                        <PathFigure StartPoint="36,92.4" IsClosed="True">
+                                                            <LineSegment Point="36,240" />
+                                                            <LineSegment Point="30,240" />
+                                                            <LineSegment Point="30,92.4" />
+                                                        </PathFigure>
+                                                    </PathGeometry>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!-- cg4: 50%, 37.5% 마젠타 -->
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry>
+                                                        <PathFigure StartPoint="60,90" IsClosed="True">
+                                                            <LineSegment Point="60,240" />
+                                                            <LineSegment Point="36,240" />
+                                                            <LineSegment Point="36,90" />
+                                                        </PathFigure>
+                                                    </PathGeometry>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!-- cg5: 55%, 26% 검정 -->
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Primary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry>
+                                                        <PathFigure StartPoint="66,62.4" IsClosed="True">
+                                                            <LineSegment Point="66,240" />
+                                                            <LineSegment Point="60,240" />
+                                                            <LineSegment Point="60,62.4" />
+                                                        </PathFigure>
+                                                    </PathGeometry>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!-- cg6: 75%, 25% 마젠타 -->
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry>
+                                                        <PathFigure StartPoint="90,60" IsClosed="True">
+                                                            <LineSegment Point="90,240" />
+                                                            <LineSegment Point="66,240" />
+                                                            <LineSegment Point="66,60" />
+                                                        </PathFigure>
+                                                    </PathGeometry>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!-- cg7: 80%, 13.5% 검정 -->
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Primary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry>
+                                                        <PathFigure StartPoint="96,32.4" IsClosed="True">
+                                                            <LineSegment Point="96,240" />
+                                                            <LineSegment Point="90,240" />
+                                                            <LineSegment Point="90,32.4" />
+                                                        </PathFigure>
+                                                    </PathGeometry>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!-- cg8: 100%, 12.5% 마젠타 -->
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry>
+                                                        <PathFigure StartPoint="120,30" IsClosed="True">
+                                                            <LineSegment Point="120,240" />
+                                                            <LineSegment Point="96,240" />
+                                                            <LineSegment Point="96,30" />
+                                                        </PathFigure>
+                                                    </PathGeometry>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!-- 레이어 4: 도트 패턴 (radial gradient) -->
+                                            <!-- Layer 4: Dot pattern / 상단 도트: 90%, 65%, 40%, 15% at 0% -->
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="108,0" RadiusX="11.7" RadiusY="11.7" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="78,0" RadiusX="11.7" RadiusY="11.7" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="48,0" RadiusX="11.7" RadiusY="11.7" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="18,0" RadiusX="11.7" RadiusY="11.7" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!-- 하단 도트: 90%, 65%, 40%, 15% at 100% -->
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="108,240" RadiusX="11.7" RadiusY="11.7" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="78,240" RadiusX="11.7" RadiusY="11.7" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="48,240" RadiusX="11.7" RadiusY="11.7" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="18,240" RadiusX="11.7" RadiusY="11.7" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!-- 계단 위 도트: 90%@12.5%, 65%@25%, 40%@37.5%, 15%@50% -->
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="108,30" RadiusX="11.7" RadiusY="11.7" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="78,60" RadiusX="11.7" RadiusY="11.7" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="48,90" RadiusX="11.7" RadiusY="11.7" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <GeometryDrawing Brush="{StaticResource GrumpyOwl55.Brush.Secondary}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="18,120" RadiusX="11.7" RadiusY="11.7" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Border.Background>
+                        </Border>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

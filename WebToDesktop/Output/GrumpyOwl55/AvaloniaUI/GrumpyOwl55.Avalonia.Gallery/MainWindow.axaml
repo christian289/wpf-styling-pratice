@@ -1,0 +1,42 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:GrumpyOwl55.Avalonia.Lib.Controls"
+        x:Class="GrumpyOwl55.Avalonia.Gallery.MainWindow"
+        Title="GrumpyOwl55 Pattern Gallery"
+        Width="800" Height="600">
+
+    <!--
+    GrumpyOwl55 Pattern Gallery
+    원본: Uiverse.io by vikas7754 - Tags: simple, clean, pattern
+    Original: Uiverse.io by vikas7754 - Tags: simple, clean, pattern
+    -->
+
+    <Grid>
+        <!-- 패턴 배경 / Pattern Background -->
+        <controls:GrumpyOwl55Pattern/>
+
+        <!-- 오버레이 컨텐츠 / Overlay Content -->
+        <Border Background="#80000000"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                CornerRadius="12"
+                Padding="32">
+            <StackPanel Spacing="16">
+                <TextBlock Text="GrumpyOwl55 Pattern"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="Geometric Pattern Background"
+                           FontSize="16"
+                           Foreground="#CCCCCC"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="From Uiverse.io by vikas7754"
+                           FontSize="12"
+                           Foreground="#999999"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</Window>
