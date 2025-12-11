@@ -1,0 +1,33 @@
+<Window x:Class="SpottyZebra83.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:SpottyZebra83.Wpf.UI.Controls;assembly=SpottyZebra83.Wpf.UI"
+        mc:Ignorable="d"
+        Title="SpottyZebra83 - Tooltip Control Gallery"
+        Height="450"
+        Width="800"
+        Background="#1a1a2e">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <!-- 기본 사용 예시 (Default Usage) -->
+            <controls:SpottyZebra83 Content="Tooltip 👆"
+                                    TooltipText="Uiverse.io"
+                                    HoverText="Hello! 👋"
+                                    Margin="0,0,0,40" />
+
+            <!-- 커스텀 텍스트 예시 (Custom Text) -->
+            <controls:SpottyZebra83 Content="Hover Me"
+                                    TooltipText="Custom Tip"
+                                    HoverText="Welcome! 🎉"
+                                    Margin="0,0,0,40" />
+
+            <!-- 또 다른 예시 (Another Example) -->
+            <controls:SpottyZebra83 Content="Click 👇"
+                                    TooltipText="Info"
+                                    HoverText="Thanks! 💖" />
+        </StackPanel>
+    </Grid>
+</Window>

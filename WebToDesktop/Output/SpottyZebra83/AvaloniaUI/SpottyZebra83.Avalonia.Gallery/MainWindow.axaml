@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SpottyZebra83.Avalonia.Lib.Controls"
+        x:Class="SpottyZebra83.Avalonia.Gallery.MainWindow"
+        Title="SpottyZebra83 - TooltipButton Gallery"
+        Width="600"
+        Height="400"
+        Background="#1a1a2e">
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="40">
+
+        <TextBlock Text="TooltipButton Control Demo"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="#e8e8e8"
+                   HorizontalAlignment="Center" />
+
+        <StackPanel Orientation="Horizontal" Spacing="30">
+            <controls:TooltipButton Text="TOOLTIP"
+                                    TooltipText="Uiverse.io"
+                                    HoverText="Hello!" />
+
+            <controls:TooltipButton Text="HOVER ME"
+                                    TooltipText="Custom Tip"
+                                    HoverText="Welcome!" />
+
+            <controls:TooltipButton Text="CLICK"
+                                    TooltipText="Info"
+                                    HoverText="Hi there!" />
+        </StackPanel>
+
+    </StackPanel>
+
+</Window>

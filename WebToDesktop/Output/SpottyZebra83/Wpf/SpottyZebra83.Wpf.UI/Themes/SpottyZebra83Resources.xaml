@@ -1,0 +1,53 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <!-- 배경색 (Background) -->
+    <Color x:Key="SpottyZebra83.Background.Color">#333333</Color>
+    <!-- 텍스트 색상 (Text Color) -->
+    <Color x:Key="SpottyZebra83.Foreground.Color">#E8E8E8</Color>
+    <!-- 호버 텍스트 색상 (Hover Text Color) -->
+    <Color x:Key="SpottyZebra83.Foreground.Hover.Color">#FFFFFF</Color>
+    <!-- 그림자 색상 (Shadow Color) -->
+    <Color x:Key="SpottyZebra83.Shadow.Color">#40000000</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="SpottyZebra83.Background" Color="{StaticResource SpottyZebra83.Background.Color}" />
+    <SolidColorBrush x:Key="SpottyZebra83.Foreground" Color="{StaticResource SpottyZebra83.Foreground.Color}" />
+    <SolidColorBrush x:Key="SpottyZebra83.Foreground.Hover" Color="{StaticResource SpottyZebra83.Foreground.Hover.Color}" />
+    <SolidColorBrush x:Key="SpottyZebra83.Border" Color="{StaticResource SpottyZebra83.Foreground.Color}" />
+    <SolidColorBrush x:Key="SpottyZebra83.Border.Transparent" Color="Transparent" />
+
+    <!-- Sizes -->
+    <!-- 컨트롤 크기 (Control Size) -->
+    <sys:Double x:Key="SpottyZebra83.Width">180</sys:Double>
+    <sys:Double x:Key="SpottyZebra83.Height">60</sys:Double>
+
+    <!-- 테두리 두께 (Border Thickness) -->
+    <Thickness x:Key="SpottyZebra83.BorderThickness">2</Thickness>
+
+    <!-- 모서리 반경 (Corner Radius) -->
+    <CornerRadius x:Key="SpottyZebra83.CornerRadius">8</CornerRadius>
+
+    <!-- 패딩 (Padding) -->
+    <Thickness x:Key="SpottyZebra83.Padding">32,12,32,12</Thickness>
+
+    <!-- 툴팁 패딩 (Tooltip Padding) -->
+    <Thickness x:Key="SpottyZebra83.Tooltip.Padding">10,5,10,5</Thickness>
+
+    <!-- 폰트 크기 (Font Size) -->
+    <sys:Double x:Key="SpottyZebra83.FontSize">18</sys:Double>
+    <sys:Double x:Key="SpottyZebra83.Tooltip.FontSize">16</sys:Double>
+
+    <!-- 툴팁 화살표 크기 (Tooltip Arrow Size) -->
+    <sys:Double x:Key="SpottyZebra83.Tooltip.Arrow.Size">10</sys:Double>
+
+    <!-- 애니메이션 지속 시간 (Animation Duration) - Duration은 StaticResource로 바인딩 불가하므로 참조용 -->
+    <!-- Animation durations - Cannot be bound via StaticResource, for reference only -->
+    <sys:String x:Key="SpottyZebra83.Animation.Duration">0:0:0.4</sys:String>
+
+    <!-- 이징 함수 (Easing Function) -->
+    <CubicEase x:Key="SpottyZebra83.EaseOut" EasingMode="EaseOut" />
+
+</ResourceDictionary>
