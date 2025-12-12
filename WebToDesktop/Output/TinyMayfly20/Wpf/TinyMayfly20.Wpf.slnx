@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="TinyMayfly20.Wpf.Gallery/TinyMayfly20.Wpf.Gallery.csproj" />
+  <Project Path="TinyMayfly20.Wpf.UI/TinyMayfly20.Wpf.UI.csproj" />
+</Solution>

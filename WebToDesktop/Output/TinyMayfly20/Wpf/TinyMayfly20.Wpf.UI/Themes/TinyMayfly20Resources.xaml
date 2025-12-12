@@ -1,0 +1,49 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- 알림 카드 배경색 (Notification card background) -->
+    <SolidColorBrush x:Key="TinyMayfly20.Notification.Background" Color="#18532C" />
+
+    <!-- 파치먼트(양피지) 배경색 (Parchment background) -->
+    <SolidColorBrush x:Key="TinyMayfly20.Parchment.Background" Color="#FFFCD3" />
+
+    <!-- 파치먼트 테두리색 (Parchment border) -->
+    <SolidColorBrush x:Key="TinyMayfly20.Parchment.Border" Color="#E99C54" />
+
+    <!-- 텍스트 색상 (Text colors) -->
+    <SolidColorBrush x:Key="TinyMayfly20.Text.Foreground" Color="#000000" />
+    <SolidColorBrush x:Key="TinyMayfly20.Title.Hover" Color="#FFBB00" />
+    <SolidColorBrush x:Key="TinyMayfly20.Power.Hover" Color="#FF7700" />
+
+    <!-- 그림자 색상 (Shadow color) -->
+    <SolidColorBrush x:Key="TinyMayfly20.Shadow.Color" Color="#005E2F" />
+
+    <!-- 캐릭터 컬러 팔레트 (Character color palette) -->
+    <SolidColorBrush x:Key="TinyMayfly20.Pixel.Black" Color="#000000" />
+    <SolidColorBrush x:Key="TinyMayfly20.Pixel.Skin" Color="#FFBB80" />
+    <SolidColorBrush x:Key="TinyMayfly20.Pixel.SkinDark" Color="#C66B49" />
+    <SolidColorBrush x:Key="TinyMayfly20.Pixel.Orange" Color="#FF7700" />
+    <SolidColorBrush x:Key="TinyMayfly20.Pixel.OrangeDark" Color="#AA5500" />
+    <SolidColorBrush x:Key="TinyMayfly20.Pixel.Blue" Color="#0080FF" />
+    <SolidColorBrush x:Key="TinyMayfly20.Pixel.BlueDark" Color="#0055AA" />
+
+    <!-- 크기 값 (Size values) -->
+    <sys:Double x:Key="TinyMayfly20.Notification.Width">250</sys:Double>
+    <sys:Double x:Key="TinyMayfly20.Notification.Height">60</sys:Double>
+    <sys:Double x:Key="TinyMayfly20.Parchment.Width">100</sys:Double>
+    <sys:Double x:Key="TinyMayfly20.Parchment.Height">100</sys:Double>
+
+    <!-- 코너 반경 (Corner radius) -->
+    <CornerRadius x:Key="TinyMayfly20.Notification.CornerRadius">14</CornerRadius>
+    <CornerRadius x:Key="TinyMayfly20.Parchment.CornerRadius">5</CornerRadius>
+
+    <!-- 애니메이션 이동 거리 (Animation translate distance) -->
+    <sys:Double x:Key="TinyMayfly20.Hover.TranslateY">-8</sys:Double>
+
+    <!-- 폰트 크기 (Font sizes) -->
+    <sys:Double x:Key="TinyMayfly20.Title.FontSize">16</sys:Double>
+    <sys:Double x:Key="TinyMayfly20.Subtitle.FontSize">10</sys:Double>
+    <sys:Double x:Key="TinyMayfly20.Power.FontSize">22</sys:Double>
+
+</ResourceDictionary>

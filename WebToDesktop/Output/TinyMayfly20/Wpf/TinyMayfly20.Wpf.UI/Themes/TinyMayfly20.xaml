@@ -1,0 +1,362 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:TinyMayfly20.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/TinyMayfly20.Wpf.UI;component/Themes/TinyMayfly20Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:TinyMayfly20}">
+        <Setter Property="Width" Value="{StaticResource TinyMayfly20.Notification.Width}" />
+        <Setter Property="Height" Value="160" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontFamily" Value="Consolas, Courier New, monospace" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:TinyMayfly20}">
+                    <Grid x:Name="RootGrid" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TranslateTransform x:Name="RootTranslate" Y="0" />
+                        </Grid.RenderTransform>
+
+                        <!-- 메인 알림 카드 (Main notification card) -->
+                        <Border x:Name="NotificationBorder"
+                                Width="{StaticResource TinyMayfly20.Notification.Width}"
+                                Height="{StaticResource TinyMayfly20.Notification.Height}"
+                                Background="{StaticResource TinyMayfly20.Notification.Background}"
+                                CornerRadius="{StaticResource TinyMayfly20.Notification.CornerRadius}"
+                                VerticalAlignment="Bottom" />
+
+                        <!-- 파치먼트(양피지) 배경 (Parchment background) -->
+                        <Border x:Name="ParchmentBorder"
+                                Width="{StaticResource TinyMayfly20.Parchment.Width}"
+                                Height="{StaticResource TinyMayfly20.Parchment.Height}"
+                                Background="{StaticResource TinyMayfly20.Parchment.Background}"
+                                BorderBrush="{StaticResource TinyMayfly20.Parchment.Border}"
+                                BorderThickness="1"
+                                CornerRadius="{StaticResource TinyMayfly20.Parchment.CornerRadius}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Margin="0,10,5,0">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#005E2F" BlurRadius="8" ShadowDepth="2" Opacity="0.3" />
+                            </Border.Effect>
+                        </Border>
+
+                        <!-- 텍스트 영역 (Text area) -->
+                        <StackPanel HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Margin="0,18,15,0"
+                                    Width="80">
+
+                            <!-- 타이틀 (Title) -->
+                            <TextBlock x:Name="TitleText"
+                                       Text="{TemplateBinding Title}"
+                                       FontSize="{StaticResource TinyMayfly20.Title.FontSize}"
+                                       FontWeight="Bold"
+                                       Foreground="{StaticResource TinyMayfly20.Text.Foreground}"
+                                       TextAlignment="Center"
+                                       Margin="0,0,0,5"
+                                       RenderTransformOrigin="0.5,0.5">
+                                <TextBlock.RenderTransform>
+                                    <TranslateTransform x:Name="TitleTranslate" Y="0" />
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+
+                            <!-- 서브타이틀 (Subtitle) -->
+                            <TextBlock x:Name="SubtitleText"
+                                       Text="{TemplateBinding Subtitle}"
+                                       FontSize="{StaticResource TinyMayfly20.Subtitle.FontSize}"
+                                       Foreground="{StaticResource TinyMayfly20.Text.Foreground}"
+                                       TextAlignment="Center"
+                                       Margin="0,0,0,2"
+                                       RenderTransformOrigin="0.5,0.5">
+                                <TextBlock.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                                        <TranslateTransform x:Name="SubtitleTranslate" Y="0" />
+                                    </TransformGroup>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+
+                            <!-- 파워 값 (Power value) -->
+                            <TextBlock x:Name="PowerText"
+                                       Text="{TemplateBinding PowerValue}"
+                                       FontSize="{StaticResource TinyMayfly20.Power.FontSize}"
+                                       FontWeight="Black"
+                                       Foreground="{StaticResource TinyMayfly20.Text.Foreground}"
+                                       TextAlignment="Center"
+                                       RenderTransformOrigin="0.5,0.5">
+                                <TextBlock.RenderTransform>
+                                    <TranslateTransform x:Name="PowerTranslate" Y="0" />
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <!-- 캐릭터 영역 - 간단한 픽셀 아트 표현 (Character area - simplified pixel art) -->
+                        <Canvas x:Name="CharacterCanvas"
+                                Width="70"
+                                Height="120"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Margin="-10,-5,0,0"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Canvas.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+                                </TransformGroup>
+                            </Canvas.RenderTransform>
+
+                            <!-- 머리 실루엣 (Head silhouette) -->
+                            <Ellipse x:Name="HeadShape"
+                                     Canvas.Left="20"
+                                     Canvas.Top="0"
+                                     Width="50"
+                                     Height="55"
+                                     Fill="{StaticResource TinyMayfly20.Pixel.Black}">
+                                <Ellipse.RenderTransform>
+                                    <TranslateTransform x:Name="HeadTranslate" Y="0" />
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <!-- 머리카락 스파이크 (Hair spikes) -->
+                            <Polygon Canvas.Left="10" Canvas.Top="-20"
+                                     Points="30,50 15,0 35,35"
+                                     Fill="{StaticResource TinyMayfly20.Pixel.Black}">
+                                <Polygon.RenderTransform>
+                                    <TranslateTransform x:Name="Hair1Translate" Y="0" />
+                                </Polygon.RenderTransform>
+                            </Polygon>
+                            <Polygon Canvas.Left="25" Canvas.Top="-25"
+                                     Points="25,55 20,0 35,40"
+                                     Fill="{StaticResource TinyMayfly20.Pixel.Black}">
+                                <Polygon.RenderTransform>
+                                    <TranslateTransform x:Name="Hair2Translate" Y="0" />
+                                </Polygon.RenderTransform>
+                            </Polygon>
+                            <Polygon Canvas.Left="40" Canvas.Top="-20"
+                                     Points="20,50 25,0 40,35"
+                                     Fill="{StaticResource TinyMayfly20.Pixel.Black}">
+                                <Polygon.RenderTransform>
+                                    <TranslateTransform x:Name="Hair3Translate" Y="0" />
+                                </Polygon.RenderTransform>
+                            </Polygon>
+
+                            <!-- 몸체 (Body) -->
+                            <Rectangle x:Name="BodyShape"
+                                       Canvas.Left="25"
+                                       Canvas.Top="50"
+                                       Width="40"
+                                       Height="45"
+                                       RadiusX="5"
+                                       RadiusY="5"
+                                       Fill="{StaticResource TinyMayfly20.Pixel.Orange}">
+                                <Rectangle.RenderTransform>
+                                    <TranslateTransform x:Name="BodyTranslate" Y="0" />
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+
+                            <!-- 벨트 (Belt) -->
+                            <Rectangle Canvas.Left="25"
+                                       Canvas.Top="80"
+                                       Width="40"
+                                       Height="8"
+                                       Fill="{StaticResource TinyMayfly20.Pixel.Blue}">
+                                <Rectangle.RenderTransform>
+                                    <TranslateTransform Y="0" />
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+
+                            <!-- 다리 (Legs) -->
+                            <Rectangle x:Name="LegLeft"
+                                       Canvas.Left="27"
+                                       Canvas.Top="90"
+                                       Width="15"
+                                       Height="30"
+                                       RadiusX="3"
+                                       RadiusY="3"
+                                       Fill="{StaticResource TinyMayfly20.Pixel.BlueDark}" />
+                            <Rectangle x:Name="LegRight"
+                                       Canvas.Left="48"
+                                       Canvas.Top="90"
+                                       Width="15"
+                                       Height="30"
+                                       RadiusX="3"
+                                       RadiusY="3"
+                                       Fill="{StaticResource TinyMayfly20.Pixel.BlueDark}" />
+
+                            <!-- 신발 (Boots) -->
+                            <Rectangle Canvas.Left="25"
+                                       Canvas.Top="115"
+                                       Width="18"
+                                       Height="8"
+                                       RadiusX="2"
+                                       RadiusY="2"
+                                       Fill="{StaticResource TinyMayfly20.Pixel.OrangeDark}" />
+                            <Rectangle Canvas.Left="47"
+                                       Canvas.Top="115"
+                                       Width="18"
+                                       Height="8"
+                                       RadiusX="2"
+                                       RadiusY="2"
+                                       Fill="{StaticResource TinyMayfly20.Pixel.OrangeDark}" />
+                        </Canvas>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <!-- 기본 바운스 애니메이션 (Default bounce animation) -->
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="HeadTranslate"
+                                                                        Storyboard.TargetProperty="Y"
+                                                                        RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="6" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Hair1Translate"
+                                                                        Storyboard.TargetProperty="Y"
+                                                                        RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="6" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Hair2Translate"
+                                                                        Storyboard.TargetProperty="Y"
+                                                                        RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="6" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Hair3Translate"
+                                                                        Storyboard.TargetProperty="Y"
+                                                                        RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="6" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="BodyTranslate"
+                                                                        Storyboard.TargetProperty="Y"
+                                                                        RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="3" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <!-- 호버 시 상승 애니메이션 (Hover lift animation) -->
+                                        <DoubleAnimation Storyboard.TargetName="RootTranslate"
+                                                        Storyboard.TargetProperty="Y"
+                                                        To="{StaticResource TinyMayfly20.Hover.TranslateY}"
+                                                        Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <!-- 타이틀 호버 (Title hover) -->
+                                        <DoubleAnimation Storyboard.TargetName="TitleTranslate"
+                                                        Storyboard.TargetProperty="Y"
+                                                        To="-3"
+                                                        Duration="0:0:0.3" />
+                                        <ColorAnimation Storyboard.TargetName="TitleText"
+                                                        Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                        To="#FFBB00"
+                                                        Duration="0:0:0.3" />
+
+                                        <!-- 서브타이틀 호버 (Subtitle hover) -->
+                                        <DoubleAnimation Storyboard.TargetName="SubtitleTranslate"
+                                                        Storyboard.TargetProperty="Y"
+                                                        To="-3"
+                                                        Duration="0:0:0.3" />
+
+                                        <!-- 파워 호버 (Power hover) -->
+                                        <DoubleAnimation Storyboard.TargetName="PowerTranslate"
+                                                        Storyboard.TargetProperty="Y"
+                                                        To="-3"
+                                                        Duration="0:0:0.3" />
+                                        <ColorAnimation Storyboard.TargetName="PowerText"
+                                                        Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                        To="#FF7700"
+                                                        Duration="0:0:0.3" />
+
+                                        <!-- 캐릭터 바운스 유지 (Keep character bounce) -->
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="HeadTranslate"
+                                                                        Storyboard.TargetProperty="Y"
+                                                                        RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="6" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Hair1Translate"
+                                                                        Storyboard.TargetProperty="Y"
+                                                                        RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="6" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Hair2Translate"
+                                                                        Storyboard.TargetProperty="Y"
+                                                                        RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="6" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Hair3Translate"
+                                                                        Storyboard.TargetProperty="Y"
+                                                                        RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="6" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="BodyTranslate"
+                                                                        Storyboard.TargetProperty="Y"
+                                                                        RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="3" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="RootTranslate"
+                                                    Storyboard.TargetProperty="Y"
+                                                    To="-8"
+                                                    Duration="0:0:0.3">
+                                        <DoubleAnimation.EasingFunction>
+                                            <QuadraticEase EasingMode="EaseOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="RootTranslate"
+                                                    Storyboard.TargetProperty="Y"
+                                                    To="0"
+                                                    Duration="0:0:0.3">
+                                        <DoubleAnimation.EasingFunction>
+                                            <QuadraticEase EasingMode="EaseOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

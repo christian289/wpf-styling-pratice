@@ -1,0 +1,62 @@
+<Window x:Class="TinyMayfly20.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:TinyMayfly20.Wpf.UI.Controls;assembly=TinyMayfly20.Wpf.UI"
+        mc:Ignorable="d"
+        Title="TinyMayfly20 - Game Notification Control"
+        Height="500"
+        Width="800"
+        Background="#1a1a2e">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- 헤더 (Header) -->
+        <StackPanel Grid.Row="0" Margin="20">
+            <TextBlock Text="TinyMayfly20"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Foreground="#FFBB00"
+                       FontFamily="Consolas" />
+            <TextBlock Text="Game-style Pixel Art Notification Control"
+                       FontSize="14"
+                       Foreground="#888888"
+                       Margin="0,5,0,0"
+                       FontFamily="Consolas" />
+            <TextBlock Text="Original by M4NT from uiverse.io"
+                       FontSize="12"
+                       Foreground="#666666"
+                       Margin="0,3,0,0"
+                       FontFamily="Consolas" />
+        </StackPanel>
+
+        <!-- 컨트롤 데모 영역 (Control demo area) -->
+        <WrapPanel Grid.Row="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Margin="20">
+
+            <!-- 기본 컨트롤 (Default control) -->
+            <controls:TinyMayfly20 Margin="30" />
+
+            <!-- 커스텀 텍스트 컨트롤 (Custom text control) -->
+            <controls:TinyMayfly20
+                Title="Victory!"
+                Subtitle="Experience gained:"
+                PowerValue="+1500 XP"
+                Margin="30" />
+
+            <!-- 다른 커스텀 예제 (Another custom example) -->
+            <controls:TinyMayfly20
+                Title="Quest Complete!"
+                Subtitle="Reward:"
+                PowerValue="100 Gold"
+                Margin="30" />
+
+        </WrapPanel>
+    </Grid>
+</Window>

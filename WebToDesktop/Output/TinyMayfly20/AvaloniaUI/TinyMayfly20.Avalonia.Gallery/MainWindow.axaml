@@ -1,0 +1,17 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:TinyMayfly20.Avalonia.Lib.Controls"
+        x:Class="TinyMayfly20.Avalonia.Gallery.MainWindow"
+        Title="TinyMayfly20 - Goku Notification"
+        Width="400"
+        Height="400"
+        Background="#2d2d2d">
+
+    <Grid HorizontalAlignment="Center"
+          VerticalAlignment="Center">
+        <controls:TinyMayfly20 Title="Level up!"
+                               Subtitle="Your power:"
+                               PowerText="+8000!"/>
+    </Grid>
+
+</Window>

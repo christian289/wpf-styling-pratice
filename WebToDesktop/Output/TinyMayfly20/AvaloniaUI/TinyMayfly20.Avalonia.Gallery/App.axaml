@@ -1,0 +1,9 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="TinyMayfly20.Avalonia.Gallery.App"
+             RequestedThemeVariant="Light">
+    <Application.Styles>
+        <FluentTheme/>
+        <StyleInclude Source="avares://TinyMayfly20.Avalonia.Lib/Themes/Generic.axaml"/>
+    </Application.Styles>
+</Application>
