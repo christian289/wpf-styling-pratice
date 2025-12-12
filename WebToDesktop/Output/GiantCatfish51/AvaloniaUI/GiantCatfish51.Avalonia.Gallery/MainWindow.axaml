@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:GiantCatfish51.Avalonia.Lib.Controls"
+        x:Class="GiantCatfish51.Avalonia.Gallery.MainWindow"
+        Title="GiantCatfish51 - TooltipButton Gallery"
+        Width="600"
+        Height="400"
+        Background="#1a1a2e">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- 헤더 -->
+        <!-- Header -->
+        <TextBlock Grid.Row="0"
+                   Text="TooltipButton Demo"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,0"/>
+
+        <!-- 컨트롤 데모 영역 -->
+        <!-- Control demo area -->
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="40">
+
+            <controls:TooltipButton Text="Tooltip"
+                                    TooltipText="Uiverse.io"/>
+
+            <controls:TooltipButton Text="Hover Me"
+                                    TooltipText="Hello World!"/>
+
+            <controls:TooltipButton Text="AvaloniaUI"
+                                    TooltipText="Cross-platform UI"/>
+
+        </StackPanel>
+    </Grid>
+
+</Window>

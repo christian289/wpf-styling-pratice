@@ -1,0 +1,55 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+        GiantCatfish51 Theme Resources
+        CSS Variable 기반 색상 및 크기 정의
+    -->
+
+    <!-- Button Background: linear-gradient(135deg, #a940fd, #5b46e8) -->
+    <LinearGradientBrush x:Key="GiantCatfish51.Button.Background" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#a940fd" Offset="0"/>
+        <GradientStop Color="#5b46e8" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- Button Foreground: #fff -->
+    <SolidColorBrush x:Key="GiantCatfish51.Button.Foreground" Color="#FFFFFF"/>
+
+    <!-- Tooltip Background: #303030 -->
+    <SolidColorBrush x:Key="GiantCatfish51.Tooltip.Background" Color="#303030"/>
+
+    <!-- Tooltip Foreground: #fff -->
+    <SolidColorBrush x:Key="GiantCatfish51.Tooltip.Foreground" Color="#FFFFFF"/>
+
+    <!-- Box Shadow: 0 4px 16px 4px rgba(0, 0, 0, 0.15) -->
+    <DropShadowEffect x:Key="GiantCatfish51.Button.Shadow"
+                      ShadowDepth="4"
+                      Direction="270"
+                      BlurRadius="16"
+                      Color="#000000"
+                      Opacity="0.15"/>
+
+    <!-- Sizes -->
+    <sys:Double x:Key="GiantCatfish51.FontSize">17</sys:Double>
+    <FontWeight x:Key="GiantCatfish51.FontWeight">SemiBold</FontWeight>
+
+    <!-- Button Padding: 0.7em 1.8em (약 12px 30px at 17px font) -->
+    <Thickness x:Key="GiantCatfish51.Button.Padding">30,12,30,12</Thickness>
+
+    <!-- Button CornerRadius: 0.75rem (약 12px) -->
+    <CornerRadius x:Key="GiantCatfish51.Button.CornerRadius">12</CornerRadius>
+
+    <!-- Tooltip Padding: 0.3em 0.6em (약 5px 10px) -->
+    <Thickness x:Key="GiantCatfish51.Tooltip.Padding">10,5,10,5</Thickness>
+
+    <!-- Tooltip CornerRadius: 0.5rem (약 8px) -->
+    <CornerRadius x:Key="GiantCatfish51.Tooltip.CornerRadius">8</CornerRadius>
+
+    <!-- Tooltip Arrow Size: 0.6em (약 10px) -->
+    <sys:Double x:Key="GiantCatfish51.Tooltip.ArrowSize">10</sys:Double>
+
+    <!-- Animation Duration: 0.2s -->
+    <!-- Duration은 XAML에서 인라인으로 사용 (StaticResource 바인딩 불가) -->
+
+</ResourceDictionary>

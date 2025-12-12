@@ -1,0 +1,6 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/GiantCatfish51.Wpf.UI;component/Themes/GiantCatfish51.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

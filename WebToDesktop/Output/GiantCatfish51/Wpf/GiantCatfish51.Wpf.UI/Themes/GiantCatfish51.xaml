@@ -1,0 +1,150 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:GiantCatfish51.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/GiantCatfish51.Wpf.UI;component/Themes/GiantCatfish51Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--
+        GiantCatfish51 Style
+        Tooltip 스타일 버튼 - Hover 시 상단에 말풍선 툴팁 표시
+
+        CSS 구조:
+        - .tooltip-container: 컨테이너 (상대 위치)
+        - .text: 그라데이션 배경 버튼
+        - .tooltip: 툴팁 (scale 0 → 1 애니메이션)
+        - .tooltip::before: 화살표 (45도 회전 사각형)
+    -->
+
+    <Style TargetType="{x:Type controls:GiantCatfish51}">
+        <Setter Property="FontSize" Value="{StaticResource GiantCatfish51.FontSize}"/>
+        <Setter Property="FontWeight" Value="{StaticResource GiantCatfish51.FontWeight}"/>
+        <Setter Property="Foreground" Value="{StaticResource GiantCatfish51.Button.Foreground}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:GiantCatfish51}">
+                    <Grid>
+                        <!-- Tooltip Container: position relative -->
+                        <Grid x:Name="Container" Margin="0,30,0,0">
+
+                            <!-- Tooltip: 상단에 위치, 초기 상태 숨김 -->
+                            <Grid x:Name="TooltipPanel"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Top"
+                                  Margin="0,-30,0,0"
+                                  Opacity="0"
+                                  RenderTransformOrigin="0.5,1">
+                                <Grid.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="TooltipScale" ScaleX="0" ScaleY="0"/>
+                                        <TranslateTransform x:Name="TooltipTranslate" Y="0"/>
+                                    </TransformGroup>
+                                </Grid.RenderTransform>
+
+                                <!-- Tooltip Arrow (::before pseudo-element) -->
+                                <Border x:Name="TooltipArrow"
+                                        Width="{StaticResource GiantCatfish51.Tooltip.ArrowSize}"
+                                        Height="{StaticResource GiantCatfish51.Tooltip.ArrowSize}"
+                                        Background="{StaticResource GiantCatfish51.Tooltip.Background}"
+                                        CornerRadius="0,0,2,0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Margin="0,0,0,-5"
+                                        RenderTransformOrigin="0.5,0.5">
+                                    <Border.RenderTransform>
+                                        <RotateTransform Angle="45"/>
+                                    </Border.RenderTransform>
+                                </Border>
+
+                                <!-- Tooltip Body -->
+                                <Border x:Name="TooltipBody"
+                                        Background="{StaticResource GiantCatfish51.Tooltip.Background}"
+                                        CornerRadius="{StaticResource GiantCatfish51.Tooltip.CornerRadius}"
+                                        Padding="{StaticResource GiantCatfish51.Tooltip.Padding}"
+                                        VerticalAlignment="Top">
+                                    <TextBlock Text="{TemplateBinding TooltipText}"
+                                               Foreground="{StaticResource GiantCatfish51.Tooltip.Foreground}"
+                                               FontSize="14"
+                                               FontWeight="Normal"/>
+                                </Border>
+                            </Grid>
+
+                            <!-- Button (.text): 그라데이션 배경 -->
+                            <Border x:Name="ButtonBorder"
+                                    Background="{StaticResource GiantCatfish51.Button.Background}"
+                                    CornerRadius="{StaticResource GiantCatfish51.Button.CornerRadius}"
+                                    Padding="{StaticResource GiantCatfish51.Button.Padding}"
+                                    Effect="{StaticResource GiantCatfish51.Button.Shadow}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </Grid>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover Trigger: 툴팁 표시 애니메이션 -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Opacity: 0 → 1 -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipPanel"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.2"/>
+                                        <!-- Scale: 0 → 1 -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipScale"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="1"
+                                                         Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="TooltipScale"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         To="1"
+                                                         Duration="0:0:0.2"/>
+                                        <!-- TranslateY: 0 → -8 (약간 위로 이동) -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-8"
+                                                         Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Opacity: 1 → 0 -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipPanel"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.2"/>
+                                        <!-- Scale: 1 → 0 -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipScale"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="0"
+                                                         Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="TooltipScale"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         To="0"
+                                                         Duration="0:0:0.2"/>
+                                        <!-- TranslateY: -8 → 0 -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0"
+                                                         Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
