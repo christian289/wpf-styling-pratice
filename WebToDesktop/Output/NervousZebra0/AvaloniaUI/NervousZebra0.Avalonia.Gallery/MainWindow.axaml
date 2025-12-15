@@ -1,0 +1,32 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:NervousZebra0.Avalonia.Lib.Controls"
+        x:Class="NervousZebra0.Avalonia.Gallery.MainWindow"
+        Title="NervousZebra0 - Level Up Notification"
+        Width="500"
+        Height="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#2D3748">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="30">
+
+            <TextBlock Text="Level Up Notification Demo"
+                       Foreground="White"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+
+            <controls:LevelUpNotification TopText="Level Up!"
+                                          LevelText="Level 5"
+                                          ButtonText="Next Level"/>
+
+            <controls:LevelUpNotification TopText="Achievement!"
+                                          LevelText="Level 10"
+                                          ButtonText="Continue"/>
+
+        </StackPanel>
+    </Grid>
+
+</Window>

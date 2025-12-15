@@ -1,0 +1,226 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:NervousZebra0.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/NervousZebra0.Wpf.UI;component/Themes/NervousZebra0Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:NervousZebra0}">
+        <Setter Property="Width" Value="{StaticResource NervousZebra0.Width}"/>
+        <Setter Property="Height" Value="{StaticResource NervousZebra0.Height}"/>
+        <Setter Property="Background" Value="{StaticResource NervousZebra0.Background}"/>
+        <Setter Property="Foreground" Value="{StaticResource NervousZebra0.Foreground}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:NervousZebra0}">
+                    <Border x:Name="PART_Root"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{StaticResource NervousZebra0.CornerRadius}"
+                            ClipToBounds="True">
+                        <Border.Effect>
+                            <DropShadowEffect Color="{StaticResource NervousZebra0.Shadow.Color}"
+                                              BlurRadius="24"
+                                              ShadowDepth="8"
+                                              Direction="270"
+                                              Opacity="0.2"/>
+                        </Border.Effect>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Top Section (Highlight Area with Slide-Down Animation) -->
+                            <Border x:Name="PART_TopSection"
+                                    Grid.Row="0"
+                                    Background="{StaticResource NervousZebra0.Highlight}"
+                                    RenderTransformOrigin="0.5,0">
+                                <Border.RenderTransform>
+                                    <TranslateTransform x:Name="TopSectionTranslate" Y="-50"/>
+                                </Border.RenderTransform>
+                                <TextBlock x:Name="PART_TitleText"
+                                           Text="{TemplateBinding Title}"
+                                           Foreground="{TemplateBinding Foreground}"
+                                           FontSize="{StaticResource NervousZebra0.Title.FontSize}"
+                                           FontWeight="{StaticResource NervousZebra0.FontWeight.Bold}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           RenderTransformOrigin="0.5,0.5">
+                                    <TextBlock.RenderTransform>
+                                        <ScaleTransform x:Name="TitleScale" ScaleX="1" ScaleY="0"/>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                            </Border>
+
+                            <!-- Bottom Section (Level Info and Button) -->
+                            <Border Grid.Row="1"
+                                    Background="{TemplateBinding Background}"
+                                    Padding="{StaticResource NervousZebra0.Bottom.Padding}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock x:Name="PART_LevelText"
+                                               Grid.Column="0"
+                                               Text="{TemplateBinding LevelText}"
+                                               Foreground="{TemplateBinding Foreground}"
+                                               FontSize="{StaticResource NervousZebra0.Level.FontSize}"
+                                               FontWeight="{StaticResource NervousZebra0.FontWeight.Bold}"
+                                               VerticalAlignment="Center"/>
+
+                                    <Button x:Name="PART_NextLevelButton"
+                                            Grid.Column="1"
+                                            Content="{TemplateBinding ButtonText}"
+                                            Padding="{StaticResource NervousZebra0.Button.Padding}"
+                                            FontSize="{StaticResource NervousZebra0.Button.FontSize}"
+                                            FontWeight="{StaticResource NervousZebra0.Button.FontWeight}"
+                                            Cursor="Hand"
+                                            RenderTransformOrigin="0.5,0.5">
+                                        <Button.RenderTransform>
+                                            <ScaleTransform x:Name="ButtonScale" ScaleX="1" ScaleY="1"/>
+                                        </Button.RenderTransform>
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border x:Name="ButtonBorder"
+                                                        Background="{StaticResource NervousZebra0.Button.Background}"
+                                                        CornerRadius="{StaticResource NervousZebra0.Button.CornerRadius}"
+                                                        Padding="{TemplateBinding Padding}">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect x:Name="ButtonShadow"
+                                                                          Color="#888888"
+                                                                          BlurRadius="10"
+                                                                          ShadowDepth="0"
+                                                                          Direction="0"/>
+                                                    </Border.Effect>
+                                                    <ContentPresenter HorizontalAlignment="Center"
+                                                                      VerticalAlignment="Center"/>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource NervousZebra0.Button.Background.Hover}"/>
+                                                        <Setter TargetName="ButtonBorder" Property="Effect">
+                                                            <Setter.Value>
+                                                                <DropShadowEffect Color="#888888"
+                                                                                  BlurRadius="15"
+                                                                                  ShadowDepth="0"
+                                                                                  Direction="0"/>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Loaded Animation Trigger -->
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <!-- Slide-down animation for top section -->
+                                    <DoubleAnimation Storyboard.TargetName="TopSectionTranslate"
+                                                     Storyboard.TargetProperty="Y"
+                                                     From="-50" To="0"
+                                                     Duration="0:0:1">
+                                        <DoubleAnimation.EasingFunction>
+                                            <QuadraticEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <!-- Rotate/Scale animation for title text (simulating rotateX) -->
+                                    <DoubleAnimation Storyboard.TargetName="TitleScale"
+                                                     Storyboard.TargetProperty="ScaleY"
+                                                     From="0" To="1"
+                                                     Duration="0:0:1">
+                                        <DoubleAnimation.EasingFunction>
+                                            <QuadraticEase EasingMode="EaseInOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <!-- Hover Animation -->
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="PART_Root"
+                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="#1e2b3c"
+                                                    Duration="0:0:0.3"/>
+                                    <ColorAnimation Storyboard.TargetName="PART_TitleText"
+                                                    Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                    To="#c3daf6"
+                                                    Duration="0:0:0.3"/>
+                                    <ColorAnimation Storyboard.TargetName="PART_LevelText"
+                                                    Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                    To="#c3daf6"
+                                                    Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="PART_Root"
+                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="#c3daf6"
+                                                    Duration="0:0:0.3"/>
+                                    <ColorAnimation Storyboard.TargetName="PART_TitleText"
+                                                    Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                    To="#1e2b3c"
+                                                    Duration="0:0:0.3"/>
+                                    <ColorAnimation Storyboard.TargetName="PART_LevelText"
+                                                    Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                    To="#1e2b3c"
+                                                    Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <!-- Button Hover Scale -->
+                        <Trigger SourceName="PART_NextLevelButton" Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ButtonScale"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="1.1"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="ButtonScale"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         To="1.1"
+                                                         Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ButtonScale"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="1"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="ButtonScale"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         To="1"
+                                                         Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

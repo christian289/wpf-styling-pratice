@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="NervousZebra0.Avalonia.Gallery/NervousZebra0.Avalonia.Gallery.csproj" />
+  <Project Path="NervousZebra0.Avalonia.Lib/NervousZebra0.Avalonia.Lib.csproj" />
+</Solution>
