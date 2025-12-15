@@ -1,0 +1,460 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:HungryMoth59.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/HungryMoth59.Wpf.UI;component/Themes/HungryMoth59Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:HungryMoth59}">
+        <Setter Property="Width" Value="235"/>
+        <Setter Property="Height" Value="235"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:HungryMoth59}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <!-- Main Container (CSS .main) -->
+                        <Grid Width="235" Height="235">
+                            <!-- Dog Container (CSS .dog) -->
+                            <Canvas x:Name="DogCanvas"
+                                    Width="225" Height="82.5"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+
+                                <!-- Shadow (CSS .dog::before) -->
+                                <Ellipse x:Name="Shadow"
+                                         Canvas.Left="-1.5" Canvas.Top="82.5"
+                                         Width="223" Height="15"
+                                         Fill="{StaticResource HungryMoth59.Brush.Shadow}"/>
+
+                                <!-- Body (CSS .dog__body) - z-index: -2 -->
+                                <Border x:Name="Body"
+                                        Canvas.Left="37.5" Canvas.Top="7.5"
+                                        Width="187.5" Height="72"
+                                        CornerRadius="{StaticResource HungryMoth59.CornerRadius.Body}"
+                                        Background="{StaticResource HungryMoth59.Brush.Body}"
+                                        Panel.ZIndex="-2">
+                                    <!-- Tail (CSS .dog__tail) -->
+                                    <Border x:Name="Tail"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom"
+                                            Margin="0,0,-30,0"
+                                            Width="45" Height="15"
+                                            CornerRadius="{StaticResource HungryMoth59.CornerRadius.Tail}"
+                                            Background="{StaticResource HungryMoth59.Brush.Tail}"/>
+                                </Border>
+
+                                <!-- Head Container (CSS .dog__head-c) for ears - z-index: -1 -->
+                                <Canvas x:Name="HeadContainerForEars"
+                                        Canvas.Left="15" Canvas.Top="0"
+                                        Width="97.5" Height="82.5"
+                                        Panel.ZIndex="-1">
+                                    <!-- Left Ear (CSS .dog__ear-l) - z-index: -1 -->
+                                    <Border x:Name="EarLeft"
+                                            Canvas.Left="60" Canvas.Top="15"
+                                            Width="105" Height="33.75"
+                                            CornerRadius="{StaticResource HungryMoth59.CornerRadius.Ear}"
+                                            Background="{StaticResource HungryMoth59.Brush.Ear}"
+                                            RenderTransformOrigin="0,1">
+                                        <Border.RenderTransform>
+                                            <RotateTransform x:Name="EarLeftRotate" Angle="-50"/>
+                                        </Border.RenderTransform>
+                                    </Border>
+                                    <!-- Right Ear (CSS .dog__ear-r) - z-index: -2 -->
+                                    <Border x:Name="EarRight"
+                                            Canvas.Left="-27.5" Canvas.Top="15"
+                                            Width="105" Height="33.75"
+                                            CornerRadius="{StaticResource HungryMoth59.CornerRadius.Ear}"
+                                            Background="{StaticResource HungryMoth59.Brush.Ear}"
+                                            RenderTransformOrigin="1,1"
+                                            Panel.ZIndex="-1">
+                                        <Border.RenderTransform>
+                                            <RotateTransform x:Name="EarRightRotate" Angle="20"/>
+                                        </Border.RenderTransform>
+                                    </Border>
+                                </Canvas>
+
+                                <!-- Paws Container (CSS .dog__paws) -->
+                                <Canvas Canvas.Left="75" Canvas.Top="52.5"
+                                        Width="120" Height="30">
+
+                                    <!-- Back Left Leg (CSS .dog__bl-leg) - z-index: -10 -->
+                                    <Canvas Canvas.Left="-30" Canvas.Top="8.75"
+                                            Width="20" Height="21.25"
+                                            Panel.ZIndex="-10">
+                                        <!-- Paw circle -->
+                                        <Ellipse Canvas.Left="-9" Canvas.Top="2.5"
+                                                 Width="37.5" Height="37.5"
+                                                 Fill="{StaticResource HungryMoth59.Brush.PawLight}"/>
+                                        <!-- Leg Top -->
+                                        <Border Canvas.Left="7.5" Canvas.Top="-24"
+                                                Width="26.25" Height="45"
+                                                CornerRadius="{StaticResource HungryMoth59.CornerRadius.LegTop}"
+                                                RenderTransformOrigin="1,1"
+                                                Panel.ZIndex="-1">
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                    <GradientStop Color="Transparent" Offset="0.2"/>
+                                                    <GradientStop Color="{StaticResource HungryMoth59.Color.TailOrange}" Offset="0.2"/>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                            <Border.RenderTransform>
+                                                <TransformGroup>
+                                                    <RotateTransform Angle="90"/>
+                                                    <TranslateTransform X="-15" Y="-1"/>
+                                                </TransformGroup>
+                                            </Border.RenderTransform>
+                                        </Border>
+                                    </Canvas>
+
+                                    <!-- Front Left Leg (CSS .dog__fl-leg) - z-index: 10 -->
+                                    <Canvas Canvas.Left="0" Canvas.Top="8.75"
+                                            Width="20" Height="21.25"
+                                            Panel.ZIndex="10">
+                                        <!-- Paw circle -->
+                                        <Ellipse Canvas.Left="-9" Canvas.Top="2.5"
+                                                 Width="37.5" Height="37.5"
+                                                 Fill="{StaticResource HungryMoth59.Brush.Snout}"/>
+                                        <!-- Leg Top -->
+                                        <Border Canvas.Left="7.5" Canvas.Top="-24"
+                                                Width="26.25" Height="45"
+                                                CornerRadius="{StaticResource HungryMoth59.CornerRadius.LegTop}"
+                                                RenderTransformOrigin="1,1"
+                                                Panel.ZIndex="-1">
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                    <GradientStop Color="Transparent" Offset="0.2"/>
+                                                    <GradientStop Color="{StaticResource HungryMoth59.Color.LegOrange}" Offset="0.2"/>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                            <Border.RenderTransform>
+                                                <TransformGroup>
+                                                    <RotateTransform Angle="90"/>
+                                                    <TranslateTransform X="-15" Y="-1"/>
+                                                </TransformGroup>
+                                            </Border.RenderTransform>
+                                        </Border>
+                                    </Canvas>
+
+                                    <!-- Front Right Leg (CSS .dog__fr-leg) -->
+                                    <Canvas Canvas.Left="100" Canvas.Top="8.75"
+                                            Width="20" Height="21.25">
+                                        <!-- Paw circle -->
+                                        <Ellipse Canvas.Left="-9" Canvas.Top="2.5"
+                                                 Width="37.5" Height="37.5"
+                                                 Fill="{StaticResource HungryMoth59.Brush.Snout}"/>
+                                        <!-- Leg Top -->
+                                        <Border Canvas.Left="7.5" Canvas.Top="-24"
+                                                Width="26.25" Height="45"
+                                                CornerRadius="{StaticResource HungryMoth59.CornerRadius.LegTop}"
+                                                RenderTransformOrigin="1,1"
+                                                Panel.ZIndex="-1">
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                    <GradientStop Color="Transparent" Offset="0.2"/>
+                                                    <GradientStop Color="{StaticResource HungryMoth59.Color.LegOrange}" Offset="0.2"/>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                            <Border.RenderTransform>
+                                                <TransformGroup>
+                                                    <RotateTransform Angle="90"/>
+                                                    <TranslateTransform X="-15" Y="-1"/>
+                                                </TransformGroup>
+                                            </Border.RenderTransform>
+                                        </Border>
+                                    </Canvas>
+                                </Canvas>
+
+                                <!-- Head (CSS .dog__head) -->
+                                <Border x:Name="Head"
+                                        Canvas.Left="45" Canvas.Top="0"
+                                        Width="97.5" Height="82.5"
+                                        CornerRadius="{StaticResource HungryMoth59.CornerRadius.Head}"
+                                        Background="{StaticResource HungryMoth59.Brush.Head}"
+                                        RenderTransformOrigin="1,1">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <TranslateTransform x:Name="HeadTranslate" Y="0"/>
+                                            <RotateTransform x:Name="HeadRotate" Angle="0"/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+
+                                    <!-- Snout (CSS .dog__snout) -->
+                                    <Canvas>
+                                        <Border x:Name="Snout"
+                                                Canvas.Left="-15" Canvas.Top="45"
+                                                Width="75" Height="37.5"
+                                                CornerRadius="{StaticResource HungryMoth59.CornerRadius.Snout}"
+                                                Background="{StaticResource HungryMoth59.Brush.Snout}">
+
+                                            <!-- Snout dark part (CSS .dog__snout::before) -->
+                                            <Canvas>
+                                                <Border x:Name="SnoutDark"
+                                                        Canvas.Left="-1" Canvas.Top="-1.5"
+                                                        Width="18.75" Height="11.25"
+                                                        CornerRadius="0,30,45,30"
+                                                        Background="{StaticResource HungryMoth59.Brush.Dark}"/>
+                                            </Canvas>
+                                        </Border>
+
+                                        <!-- Nose (CSS .dog__nose) -->
+                                        <Border Canvas.Left="15" Canvas.Top="25.5"
+                                                Width="7.5" Height="24"
+                                                CornerRadius="5.25"
+                                                Background="{StaticResource HungryMoth59.Brush.Snout}"
+                                                RenderTransformOrigin="0.5,1">
+                                            <Border.RenderTransform>
+                                                <RotateTransform Angle="10"/>
+                                            </Border.RenderTransform>
+                                        </Border>
+
+                                        <!-- Eyes Container (CSS .dog__eyes) -->
+                                        <!-- Left Eye -->
+                                        <Ellipse x:Name="EyeLeft"
+                                                 Canvas.Left="5.25" Canvas.Top="36"
+                                                 Width="6.75" Height="3.75"
+                                                 Fill="{StaticResource HungryMoth59.Brush.Dark}">
+                                            <Ellipse.RenderTransform>
+                                                <TranslateTransform x:Name="EyeLeftTranslate" Y="0"/>
+                                            </Ellipse.RenderTransform>
+                                        </Ellipse>
+                                        <!-- Right Eye -->
+                                        <Ellipse x:Name="EyeRight"
+                                                 Canvas.Left="33.75" Canvas.Top="36"
+                                                 Width="6.75" Height="3.75"
+                                                 Fill="{StaticResource HungryMoth59.Brush.Dark}">
+                                            <Ellipse.RenderTransform>
+                                                <TranslateTransform x:Name="EyeRightTranslate" Y="0"/>
+                                            </Ellipse.RenderTransform>
+                                        </Ellipse>
+                                    </Canvas>
+                                </Border>
+
+                            </Canvas>
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever">
+
+                                    <!-- Shadow Animation (CSS @keyframes shadow) - 10s -->
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Shadow"
+                                                                   Storyboard.TargetProperty="Width"
+                                                                   Duration="0:0:10">
+                                        <LinearDoubleKeyFrame KeyTime="0%" Value="222"/>
+                                        <LinearDoubleKeyFrame KeyTime="5%" Value="226"/>
+                                        <LinearDoubleKeyFrame KeyTime="10%" Value="222"/>
+                                        <LinearDoubleKeyFrame KeyTime="15%" Value="226"/>
+                                        <LinearDoubleKeyFrame KeyTime="20%" Value="222"/>
+                                        <LinearDoubleKeyFrame KeyTime="22%" Value="226"/>
+                                        <LinearDoubleKeyFrame KeyTime="24%" Value="226"/>
+                                        <LinearDoubleKeyFrame KeyTime="26%" Value="222"/>
+                                        <LinearDoubleKeyFrame KeyTime="28%" Value="222"/>
+                                        <LinearDoubleKeyFrame KeyTime="30%" Value="222"/>
+                                        <LinearDoubleKeyFrame KeyTime="34%" Value="215"/>
+                                        <LinearDoubleKeyFrame KeyTime="81%" Value="215"/>
+                                        <LinearDoubleKeyFrame KeyTime="84%" Value="222"/>
+                                        <LinearDoubleKeyFrame KeyTime="100%" Value="222"/>
+                                    </DoubleAnimationUsingKeyFrames>
+
+                                    <!-- Head Translate Y Animation (part of CSS @keyframes head) - 10s -->
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="HeadTranslate"
+                                                                   Storyboard.TargetProperty="Y"
+                                                                   Duration="0:0:10">
+                                        <LinearDoubleKeyFrame KeyTime="0%" Value="0"/>
+                                        <LinearDoubleKeyFrame KeyTime="50%" Value="0"/>
+                                        <LinearDoubleKeyFrame KeyTime="55%" Value="-7.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="60%" Value="-7.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="70%" Value="-7.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="80%" Value="-7.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="90%" Value="0"/>
+                                        <LinearDoubleKeyFrame KeyTime="100%" Value="0"/>
+                                    </DoubleAnimationUsingKeyFrames>
+
+                                    <!-- Head Rotate Animation (part of CSS @keyframes head) - 10s -->
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="HeadRotate"
+                                                                   Storyboard.TargetProperty="Angle"
+                                                                   Duration="0:0:10">
+                                        <LinearDoubleKeyFrame KeyTime="0%" Value="0"/>
+                                        <LinearDoubleKeyFrame KeyTime="60%" Value="0"/>
+                                        <LinearDoubleKeyFrame KeyTime="70%" Value="10"/>
+                                        <LinearDoubleKeyFrame KeyTime="80%" Value="10"/>
+                                        <LinearDoubleKeyFrame KeyTime="90%" Value="0"/>
+                                        <LinearDoubleKeyFrame KeyTime="100%" Value="0"/>
+                                    </DoubleAnimationUsingKeyFrames>
+
+                                    <!-- Body Height Animation (CSS @keyframes body) - 10s -->
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Body"
+                                                                   Storyboard.TargetProperty="Height"
+                                                                   Duration="0:0:10">
+                                        <LinearDoubleKeyFrame KeyTime="0%" Value="72"/>
+                                        <LinearDoubleKeyFrame KeyTime="5%" Value="70.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="10%" Value="72"/>
+                                        <LinearDoubleKeyFrame KeyTime="15%" Value="70.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="20%" Value="72"/>
+                                        <LinearDoubleKeyFrame KeyTime="22%" Value="70.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="24%" Value="70.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="26%" Value="72"/>
+                                        <LinearDoubleKeyFrame KeyTime="28%" Value="72"/>
+                                        <LinearDoubleKeyFrame KeyTime="30%" Value="70.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="32%" Value="72"/>
+                                        <LinearDoubleKeyFrame KeyTime="100%" Value="72"/>
+                                    </DoubleAnimationUsingKeyFrames>
+
+                                    <!-- Ear Left Rotate Animation (CSS @keyframes ear-l) - 10s -->
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EarLeftRotate"
+                                                                   Storyboard.TargetProperty="Angle"
+                                                                   Duration="0:0:10">
+                                        <LinearDoubleKeyFrame KeyTime="0%" Value="-50"/>
+                                        <LinearDoubleKeyFrame KeyTime="5%" Value="-48"/>
+                                        <LinearDoubleKeyFrame KeyTime="10%" Value="-50"/>
+                                        <LinearDoubleKeyFrame KeyTime="15%" Value="-48"/>
+                                        <LinearDoubleKeyFrame KeyTime="20%" Value="-50"/>
+                                        <LinearDoubleKeyFrame KeyTime="22%" Value="-48"/>
+                                        <LinearDoubleKeyFrame KeyTime="24%" Value="-48"/>
+                                        <LinearDoubleKeyFrame KeyTime="26%" Value="-50"/>
+                                        <LinearDoubleKeyFrame KeyTime="28%" Value="-50"/>
+                                        <LinearDoubleKeyFrame KeyTime="30%" Value="-30"/>
+                                        <LinearDoubleKeyFrame KeyTime="31%" Value="-30"/>
+                                        <LinearDoubleKeyFrame KeyTime="32%" Value="-60"/>
+                                        <LinearDoubleKeyFrame KeyTime="80%" Value="-60"/>
+                                        <LinearDoubleKeyFrame KeyTime="82%" Value="-50"/>
+                                        <LinearDoubleKeyFrame KeyTime="100%" Value="-50"/>
+                                    </DoubleAnimationUsingKeyFrames>
+
+                                    <!-- Ear Right Rotate Animation (CSS @keyframes ear-r) - 10s -->
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EarRightRotate"
+                                                                   Storyboard.TargetProperty="Angle"
+                                                                   Duration="0:0:10">
+                                        <LinearDoubleKeyFrame KeyTime="0%" Value="20"/>
+                                        <LinearDoubleKeyFrame KeyTime="5%" Value="18"/>
+                                        <LinearDoubleKeyFrame KeyTime="10%" Value="20"/>
+                                        <LinearDoubleKeyFrame KeyTime="15%" Value="18"/>
+                                        <LinearDoubleKeyFrame KeyTime="20%" Value="20"/>
+                                        <LinearDoubleKeyFrame KeyTime="22%" Value="18"/>
+                                        <LinearDoubleKeyFrame KeyTime="24%" Value="18"/>
+                                        <LinearDoubleKeyFrame KeyTime="26%" Value="20"/>
+                                        <LinearDoubleKeyFrame KeyTime="28%" Value="20"/>
+                                        <LinearDoubleKeyFrame KeyTime="30%" Value="10"/>
+                                        <LinearDoubleKeyFrame KeyTime="31%" Value="10"/>
+                                        <LinearDoubleKeyFrame KeyTime="32%" Value="25"/>
+                                        <LinearDoubleKeyFrame KeyTime="100%" Value="25"/>
+                                    </DoubleAnimationUsingKeyFrames>
+
+                                    <!-- Snout Height Animation (CSS @keyframes snout) - 10s -->
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Snout"
+                                                                   Storyboard.TargetProperty="Height"
+                                                                   Duration="0:0:10">
+                                        <LinearDoubleKeyFrame KeyTime="0%" Value="37.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="5%" Value="34.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="10%" Value="37.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="15%" Value="34.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="20%" Value="37.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="22%" Value="34.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="24%" Value="34.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="26%" Value="37.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="28%" Value="37.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="82%" Value="37.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="100%" Value="37.5"/>
+                                    </DoubleAnimationUsingKeyFrames>
+
+                                    <!-- Snout Dark Width Animation (CSS @keyframes snout-b) - 10s -->
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="SnoutDark"
+                                                                   Storyboard.TargetProperty="Width"
+                                                                   Duration="0:0:10">
+                                        <LinearDoubleKeyFrame KeyTime="0%" Value="18.75"/>
+                                        <LinearDoubleKeyFrame KeyTime="5%" Value="18"/>
+                                        <LinearDoubleKeyFrame KeyTime="10%" Value="18.75"/>
+                                        <LinearDoubleKeyFrame KeyTime="15%" Value="18"/>
+                                        <LinearDoubleKeyFrame KeyTime="20%" Value="18.75"/>
+                                        <LinearDoubleKeyFrame KeyTime="22%" Value="18"/>
+                                        <LinearDoubleKeyFrame KeyTime="24%" Value="18"/>
+                                        <LinearDoubleKeyFrame KeyTime="26%" Value="18.75"/>
+                                        <LinearDoubleKeyFrame KeyTime="28%" Value="18.75"/>
+                                        <LinearDoubleKeyFrame KeyTime="34%" Value="12.75"/>
+                                        <LinearDoubleKeyFrame KeyTime="98%" Value="12.75"/>
+                                        <LinearDoubleKeyFrame KeyTime="100%" Value="18.75"/>
+                                    </DoubleAnimationUsingKeyFrames>
+
+                                    <!-- Eye Left Size Width Animation (CSS @keyframes eye) - 10s -->
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EyeLeft"
+                                                                   Storyboard.TargetProperty="Width"
+                                                                   Duration="0:0:10">
+                                        <LinearDoubleKeyFrame KeyTime="0%" Value="6.75"/>
+                                        <LinearDoubleKeyFrame KeyTime="30%" Value="6.75"/>
+                                        <LinearDoubleKeyFrame KeyTime="32%" Value="5.25"/>
+                                        <LinearDoubleKeyFrame KeyTime="59%" Value="5.25"/>
+                                        <LinearDoubleKeyFrame KeyTime="90%" Value="5.25"/>
+                                        <LinearDoubleKeyFrame KeyTime="100%" Value="5.25"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EyeLeft"
+                                                                   Storyboard.TargetProperty="Height"
+                                                                   Duration="0:0:10">
+                                        <LinearDoubleKeyFrame KeyTime="0%" Value="3"/>
+                                        <LinearDoubleKeyFrame KeyTime="30%" Value="3"/>
+                                        <LinearDoubleKeyFrame KeyTime="32%" Value="5.25"/>
+                                        <LinearDoubleKeyFrame KeyTime="59%" Value="5.25"/>
+                                        <LinearDoubleKeyFrame KeyTime="90%" Value="5.25"/>
+                                        <LinearDoubleKeyFrame KeyTime="100%" Value="5.25"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EyeLeftTranslate"
+                                                                   Storyboard.TargetProperty="Y"
+                                                                   Duration="0:0:10">
+                                        <LinearDoubleKeyFrame KeyTime="0%" Value="0"/>
+                                        <LinearDoubleKeyFrame KeyTime="59%" Value="0"/>
+                                        <LinearDoubleKeyFrame KeyTime="60%" Value="-3"/>
+                                        <LinearDoubleKeyFrame KeyTime="75%" Value="-3"/>
+                                        <LinearDoubleKeyFrame KeyTime="80%" Value="1.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="85%" Value="1.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="90%" Value="0"/>
+                                        <LinearDoubleKeyFrame KeyTime="100%" Value="0"/>
+                                    </DoubleAnimationUsingKeyFrames>
+
+                                    <!-- Eye Right Size Width Animation - 10s -->
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EyeRight"
+                                                                   Storyboard.TargetProperty="Width"
+                                                                   Duration="0:0:10">
+                                        <LinearDoubleKeyFrame KeyTime="0%" Value="6.75"/>
+                                        <LinearDoubleKeyFrame KeyTime="30%" Value="6.75"/>
+                                        <LinearDoubleKeyFrame KeyTime="32%" Value="5.25"/>
+                                        <LinearDoubleKeyFrame KeyTime="59%" Value="5.25"/>
+                                        <LinearDoubleKeyFrame KeyTime="90%" Value="5.25"/>
+                                        <LinearDoubleKeyFrame KeyTime="100%" Value="5.25"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EyeRight"
+                                                                   Storyboard.TargetProperty="Height"
+                                                                   Duration="0:0:10">
+                                        <LinearDoubleKeyFrame KeyTime="0%" Value="3"/>
+                                        <LinearDoubleKeyFrame KeyTime="30%" Value="3"/>
+                                        <LinearDoubleKeyFrame KeyTime="32%" Value="5.25"/>
+                                        <LinearDoubleKeyFrame KeyTime="59%" Value="5.25"/>
+                                        <LinearDoubleKeyFrame KeyTime="90%" Value="5.25"/>
+                                        <LinearDoubleKeyFrame KeyTime="100%" Value="5.25"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EyeRightTranslate"
+                                                                   Storyboard.TargetProperty="Y"
+                                                                   Duration="0:0:10">
+                                        <LinearDoubleKeyFrame KeyTime="0%" Value="0"/>
+                                        <LinearDoubleKeyFrame KeyTime="59%" Value="0"/>
+                                        <LinearDoubleKeyFrame KeyTime="60%" Value="-3"/>
+                                        <LinearDoubleKeyFrame KeyTime="75%" Value="-3"/>
+                                        <LinearDoubleKeyFrame KeyTime="80%" Value="1.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="85%" Value="1.5"/>
+                                        <LinearDoubleKeyFrame KeyTime="90%" Value="0"/>
+                                        <LinearDoubleKeyFrame KeyTime="100%" Value="0"/>
+                                    </DoubleAnimationUsingKeyFrames>
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

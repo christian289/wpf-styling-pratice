@@ -1,0 +1,85 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors (CSS vmax to fixed px: 1vmax ≈ 10px base) -->
+    <!-- 색상 정의 -->
+    <Color x:Key="HungryMoth59.Color.HeadOrange">#FF8147</Color>
+    <Color x:Key="HungryMoth59.Color.BodyOrange">#FF702E</Color>
+    <Color x:Key="HungryMoth59.Color.EarOrange">#E26538</Color>
+    <Color x:Key="HungryMoth59.Color.TailOrange">#E96839</Color>
+    <Color x:Key="HungryMoth59.Color.LegOrange">#FF8B56</Color>
+    <Color x:Key="HungryMoth59.Color.Snout">#D7DBD2</Color>
+    <Color x:Key="HungryMoth59.Color.PawLight">#BEC4B6</Color>
+    <Color x:Key="HungryMoth59.Color.Dark">#1C3130</Color>
+    <Color x:Key="HungryMoth59.Color.Shadow">#1A1C3130</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="HungryMoth59.Brush.Head" Color="{StaticResource HungryMoth59.Color.HeadOrange}"/>
+    <SolidColorBrush x:Key="HungryMoth59.Brush.Body" Color="{StaticResource HungryMoth59.Color.BodyOrange}"/>
+    <SolidColorBrush x:Key="HungryMoth59.Brush.Ear" Color="{StaticResource HungryMoth59.Color.EarOrange}"/>
+    <SolidColorBrush x:Key="HungryMoth59.Brush.Tail" Color="{StaticResource HungryMoth59.Color.TailOrange}"/>
+    <SolidColorBrush x:Key="HungryMoth59.Brush.Leg" Color="{StaticResource HungryMoth59.Color.LegOrange}"/>
+    <SolidColorBrush x:Key="HungryMoth59.Brush.Snout" Color="{StaticResource HungryMoth59.Color.Snout}"/>
+    <SolidColorBrush x:Key="HungryMoth59.Brush.PawLight" Color="{StaticResource HungryMoth59.Color.PawLight}"/>
+    <SolidColorBrush x:Key="HungryMoth59.Brush.Dark" Color="{StaticResource HungryMoth59.Color.Dark}"/>
+    <SolidColorBrush x:Key="HungryMoth59.Brush.Shadow" Color="{StaticResource HungryMoth59.Color.Shadow}"/>
+
+    <!-- Sizes (CSS vmax to px: 1vmax ≈ 10px) -->
+    <!-- 컨테이너 크기 -->
+    <sys:Double x:Key="HungryMoth59.Size.Container">235</sys:Double>
+    <sys:Double x:Key="HungryMoth59.Size.DogWidth">225</sys:Double>
+    <sys:Double x:Key="HungryMoth59.Size.DogHeight">82.5</sys:Double>
+
+    <!-- Head 크기 -->
+    <sys:Double x:Key="HungryMoth59.Size.HeadWidth">97.5</sys:Double>
+    <sys:Double x:Key="HungryMoth59.Size.HeadHeight">82.5</sys:Double>
+    <sys:Double x:Key="HungryMoth59.Size.HeadLeft">45</sys:Double>
+
+    <!-- Body 크기 -->
+    <sys:Double x:Key="HungryMoth59.Size.BodyWidth">187.5</sys:Double>
+    <sys:Double x:Key="HungryMoth59.Size.BodyHeight">72</sys:Double>
+    <sys:Double x:Key="HungryMoth59.Size.BodyLeft">37.5</sys:Double>
+    <sys:Double x:Key="HungryMoth59.Size.BodyBottom">3</sys:Double>
+
+    <!-- Snout 크기 -->
+    <sys:Double x:Key="HungryMoth59.Size.SnoutWidth">75</sys:Double>
+    <sys:Double x:Key="HungryMoth59.Size.SnoutHeight">37.5</sys:Double>
+
+    <!-- Ear 크기 -->
+    <sys:Double x:Key="HungryMoth59.Size.EarWidth">105</sys:Double>
+    <sys:Double x:Key="HungryMoth59.Size.EarHeight">33.75</sys:Double>
+
+    <!-- Tail 크기 -->
+    <sys:Double x:Key="HungryMoth59.Size.TailWidth">45</sys:Double>
+    <sys:Double x:Key="HungryMoth59.Size.TailHeight">15</sys:Double>
+
+    <!-- Eye 크기 -->
+    <sys:Double x:Key="HungryMoth59.Size.EyeWidth">6.75</sys:Double>
+    <sys:Double x:Key="HungryMoth59.Size.EyeHeight">3.75</sys:Double>
+
+    <!-- Nose 크기 -->
+    <sys:Double x:Key="HungryMoth59.Size.NoseWidth">7.5</sys:Double>
+    <sys:Double x:Key="HungryMoth59.Size.NoseHeight">24</sys:Double>
+
+    <!-- Paw 크기 -->
+    <sys:Double x:Key="HungryMoth59.Size.PawWidth">19.5</sys:Double>
+    <sys:Double x:Key="HungryMoth59.Size.PawHeight">18.75</sys:Double>
+    <sys:Double x:Key="HungryMoth59.Size.PawCircle">37.5</sys:Double>
+
+    <!-- Leg Top 크기 -->
+    <sys:Double x:Key="HungryMoth59.Size.LegTopWidth">26.25</sys:Double>
+    <sys:Double x:Key="HungryMoth59.Size.LegTopHeight">45</sys:Double>
+
+    <!-- Shadow 크기 -->
+    <sys:Double x:Key="HungryMoth59.Size.ShadowHeight">15</sys:Double>
+
+    <!-- CornerRadius -->
+    <CornerRadius x:Key="HungryMoth59.CornerRadius.Head">40.5,40.5,33,33</CornerRadius>
+    <CornerRadius x:Key="HungryMoth59.CornerRadius.Body">30,60,15,60</CornerRadius>
+    <CornerRadius x:Key="HungryMoth59.CornerRadius.Snout">0,30,45,30</CornerRadius>
+    <CornerRadius x:Key="HungryMoth59.CornerRadius.Ear">0,0,33,33</CornerRadius>
+    <CornerRadius x:Key="HungryMoth59.CornerRadius.Tail">15</CornerRadius>
+    <CornerRadius x:Key="HungryMoth59.CornerRadius.LegTop">14.25,14.25,0,0</CornerRadius>
+
+</ResourceDictionary>

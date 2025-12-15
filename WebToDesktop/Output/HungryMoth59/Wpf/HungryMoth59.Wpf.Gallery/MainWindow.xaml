@@ -1,0 +1,21 @@
+<Window x:Class="HungryMoth59.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:HungryMoth59.Wpf.UI.Controls;assembly=HungryMoth59.Wpf.UI"
+        mc:Ignorable="d"
+        Title="HungryMoth59 - Dog Loading Animation"
+        Height="450" Width="800"
+        Background="#1a1a2e">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <controls:HungryMoth59/>
+            <TextBlock Text="Loading..."
+                       Foreground="#D7DBD2"
+                       FontSize="18"
+                       HorizontalAlignment="Center"
+                       Margin="0,20,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

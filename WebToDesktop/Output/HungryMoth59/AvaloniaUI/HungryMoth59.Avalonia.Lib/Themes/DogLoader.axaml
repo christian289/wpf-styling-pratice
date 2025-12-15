@@ -1,0 +1,444 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:HungryMoth59.Avalonia.Lib.Controls">
+
+    <!--
+    From Uiverse.io by elijahgummer
+    Website: https://codepen.io/ruijadom/pen/jObpqNb
+    Name: ruijadom
+    Tags: loading, loader, animated, svg, dog
+
+    CSS vmax 단위를 픽셀로 변환 (1vmax ≈ 8px 기준)
+    CSS vmax units converted to pixels (1vmax ≈ 8px baseline)
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="DogLoader.Head.Color">#FF8147</Color>
+    <Color x:Key="DogLoader.Body.Color">#FF702E</Color>
+    <Color x:Key="DogLoader.Ear.Color">#E26538</Color>
+    <Color x:Key="DogLoader.Tail.Color">#E96839</Color>
+    <Color x:Key="DogLoader.LegTop.Color">#FF8B56</Color>
+    <Color x:Key="DogLoader.LegTopBack.Color">#E96839</Color>
+    <Color x:Key="DogLoader.Snout.Color">#D7DBD2</Color>
+    <Color x:Key="DogLoader.PawBack.Color">#BEC4B6</Color>
+    <Color x:Key="DogLoader.Eye.Color">#1C3130</Color>
+    <Color x:Key="DogLoader.Shadow.Color">#1A1C3130</Color>
+
+    <SolidColorBrush x:Key="DogLoader.Head.Brush" Color="{StaticResource DogLoader.Head.Color}" />
+    <SolidColorBrush x:Key="DogLoader.Body.Brush" Color="{StaticResource DogLoader.Body.Color}" />
+    <SolidColorBrush x:Key="DogLoader.Ear.Brush" Color="{StaticResource DogLoader.Ear.Color}" />
+    <SolidColorBrush x:Key="DogLoader.Tail.Brush" Color="{StaticResource DogLoader.Tail.Color}" />
+    <SolidColorBrush x:Key="DogLoader.Snout.Brush" Color="{StaticResource DogLoader.Snout.Color}" />
+    <SolidColorBrush x:Key="DogLoader.PawFront.Brush" Color="{StaticResource DogLoader.Snout.Color}" />
+    <SolidColorBrush x:Key="DogLoader.PawBack.Brush" Color="{StaticResource DogLoader.PawBack.Color}" />
+    <SolidColorBrush x:Key="DogLoader.Eye.Brush" Color="{StaticResource DogLoader.Eye.Color}" />
+    <SolidColorBrush x:Key="DogLoader.Shadow.Brush" Color="{StaticResource DogLoader.Shadow.Color}" />
+
+    <!-- Size Constants (1vmax = 8px) -->
+    <!-- Main container: 23.5vmax = 188px -->
+    <!-- Dog: 22.5vmax x 8.25vmax = 180px x 66px -->
+
+    <ControlTheme x:Key="{x:Type controls:DogLoader}" TargetType="controls:DogLoader">
+        <Setter Property="Width" Value="188" />
+        <Setter Property="Height" Value="188" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Viewbox Stretch="Uniform">
+                    <!-- Main Container (23.5vmax = 188px) -->
+                    <Canvas Width="188" Height="188">
+                        <!-- Dog Container positioned in center -->
+                        <Canvas x:Name="DogContainer" Width="180" Height="66" Canvas.Left="4" Canvas.Top="61">
+
+                            <!-- Shadow (dog::before) -->
+                            <Ellipse x:Name="Shadow"
+                                     Width="178"
+                                     Height="12"
+                                     Canvas.Left="1"
+                                     Canvas.Top="60"
+                                     Fill="{StaticResource DogLoader.Shadow.Brush}">
+                                <Ellipse.Styles>
+                                    <Style Selector="Ellipse#Shadow">
+                                        <Style.Animations>
+                                            <Animation Duration="0:0:10" IterationCount="Infinite" Easing="CubicEaseInOut">
+                                                <KeyFrame Cue="0%"><Setter Property="Width" Value="178" /></KeyFrame>
+                                                <KeyFrame Cue="5%"><Setter Property="Width" Value="182" /></KeyFrame>
+                                                <KeyFrame Cue="10%"><Setter Property="Width" Value="178" /></KeyFrame>
+                                                <KeyFrame Cue="15%"><Setter Property="Width" Value="182" /></KeyFrame>
+                                                <KeyFrame Cue="20%"><Setter Property="Width" Value="178" /></KeyFrame>
+                                                <KeyFrame Cue="22%"><Setter Property="Width" Value="182" /></KeyFrame>
+                                                <KeyFrame Cue="24%"><Setter Property="Width" Value="182" /></KeyFrame>
+                                                <KeyFrame Cue="26%"><Setter Property="Width" Value="178" /></KeyFrame>
+                                                <KeyFrame Cue="28%"><Setter Property="Width" Value="178" /></KeyFrame>
+                                                <KeyFrame Cue="30%"><Setter Property="Width" Value="178" /></KeyFrame>
+                                                <KeyFrame Cue="34%"><Setter Property="Width" Value="173" /></KeyFrame>
+                                                <KeyFrame Cue="81%"><Setter Property="Width" Value="173" /></KeyFrame>
+                                                <KeyFrame Cue="84%"><Setter Property="Width" Value="178" /></KeyFrame>
+                                                <KeyFrame Cue="100%"><Setter Property="Width" Value="178" /></KeyFrame>
+                                            </Animation>
+                                        </Style.Animations>
+                                    </Style>
+                                </Ellipse.Styles>
+                            </Ellipse>
+
+                            <!-- Body (dog__body) - z-index: -2 -->
+                            <Border x:Name="Body"
+                                    Width="150"
+                                    Height="58"
+                                    Canvas.Left="30"
+                                    Canvas.Top="5"
+                                    CornerRadius="24,48,12,48"
+                                    Background="{StaticResource DogLoader.Body.Brush}"
+                                    ZIndex="-2">
+                                <!-- Tail (dog__tail) -->
+                                <Border Width="36"
+                                        Height="12"
+                                        CornerRadius="12"
+                                        Background="{StaticResource DogLoader.Tail.Brush}"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"
+                                        Margin="0,0,-24,0" />
+                                <Border.Styles>
+                                    <Style Selector="Border#Body">
+                                        <Style.Animations>
+                                            <Animation Duration="0:0:10" IterationCount="Infinite" Easing="CubicEaseInOut">
+                                                <KeyFrame Cue="0%"><Setter Property="Height" Value="58" /></KeyFrame>
+                                                <KeyFrame Cue="5%"><Setter Property="Height" Value="56" /></KeyFrame>
+                                                <KeyFrame Cue="10%"><Setter Property="Height" Value="58" /></KeyFrame>
+                                                <KeyFrame Cue="15%"><Setter Property="Height" Value="56" /></KeyFrame>
+                                                <KeyFrame Cue="20%"><Setter Property="Height" Value="58" /></KeyFrame>
+                                                <KeyFrame Cue="22%"><Setter Property="Height" Value="56" /></KeyFrame>
+                                                <KeyFrame Cue="24%"><Setter Property="Height" Value="56" /></KeyFrame>
+                                                <KeyFrame Cue="26%"><Setter Property="Height" Value="58" /></KeyFrame>
+                                                <KeyFrame Cue="28%"><Setter Property="Height" Value="58" /></KeyFrame>
+                                                <KeyFrame Cue="30%"><Setter Property="Height" Value="56" /></KeyFrame>
+                                                <KeyFrame Cue="32%"><Setter Property="Height" Value="58" /></KeyFrame>
+                                                <KeyFrame Cue="100%"><Setter Property="Height" Value="58" /></KeyFrame>
+                                            </Animation>
+                                        </Style.Animations>
+                                    </Style>
+                                </Border.Styles>
+                            </Border>
+
+                            <!-- Paws Container (dog__paws) -->
+                            <Canvas x:Name="PawsContainer" Width="96" Height="24" Canvas.Left="60" Canvas.Top="42">
+
+                                <!-- Back Left Leg (dog__bl-leg) - z-index: -10 -->
+                                <Canvas x:Name="BackLeftLeg" Width="16" Height="17" Canvas.Left="-24" Canvas.Top="7" ZIndex="-10">
+                                    <!-- Paw (circular part) -->
+                                    <Ellipse Width="30" Height="30" Canvas.Left="0" Canvas.Top="-13"
+                                             Fill="{StaticResource DogLoader.PawBack.Brush}" />
+                                    <!-- Top part (leg) -->
+                                    <Border Width="21" Height="36" Canvas.Left="6" Canvas.Top="-19"
+                                            CornerRadius="11,11,0,0"
+                                            RenderTransformOrigin="1,1">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                                                <GradientStop Color="Transparent" Offset="0.2" />
+                                                <GradientStop Color="{StaticResource DogLoader.LegTopBack.Color}" Offset="0.2" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Border.RenderTransform>
+                                            <TransformGroup>
+                                                <RotateTransform Angle="90" />
+                                                <TranslateTransform X="-1" Y="12" />
+                                            </TransformGroup>
+                                        </Border.RenderTransform>
+                                    </Border>
+                                </Canvas>
+
+                                <!-- Front Left Leg (dog__fl-leg) - z-index: 10 -->
+                                <Canvas x:Name="FrontLeftLeg" Width="16" Height="17" Canvas.Left="0" Canvas.Top="7" ZIndex="10">
+                                    <!-- Paw (circular part) -->
+                                    <Ellipse Width="30" Height="30" Canvas.Left="0" Canvas.Top="-13"
+                                             Fill="{StaticResource DogLoader.PawFront.Brush}" />
+                                    <!-- Top part (leg) -->
+                                    <Border Width="21" Height="36" Canvas.Left="6" Canvas.Top="-19"
+                                            CornerRadius="11,11,0,0"
+                                            RenderTransformOrigin="1,1">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                                                <GradientStop Color="Transparent" Offset="0.2" />
+                                                <GradientStop Color="{StaticResource DogLoader.LegTop.Color}" Offset="0.2" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Border.RenderTransform>
+                                            <TransformGroup>
+                                                <RotateTransform Angle="90" />
+                                                <TranslateTransform X="-1" Y="12" />
+                                            </TransformGroup>
+                                        </Border.RenderTransform>
+                                    </Border>
+                                </Canvas>
+
+                                <!-- Front Right Leg (dog__fr-leg) -->
+                                <Canvas x:Name="FrontRightLeg" Width="16" Height="17" Canvas.Left="80" Canvas.Top="7">
+                                    <!-- Paw (circular part) -->
+                                    <Ellipse Width="30" Height="30" Canvas.Left="0" Canvas.Top="-13"
+                                             Fill="{StaticResource DogLoader.PawFront.Brush}" />
+                                    <!-- Top part (leg) -->
+                                    <Border Width="21" Height="36" Canvas.Left="6" Canvas.Top="-19"
+                                            CornerRadius="11,11,0,0"
+                                            RenderTransformOrigin="1,1">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                                                <GradientStop Color="Transparent" Offset="0.2" />
+                                                <GradientStop Color="{StaticResource DogLoader.LegTop.Color}" Offset="0.2" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Border.RenderTransform>
+                                            <TransformGroup>
+                                                <RotateTransform Angle="90" />
+                                                <TranslateTransform X="-1" Y="12" />
+                                            </TransformGroup>
+                                        </Border.RenderTransform>
+                                    </Border>
+                                </Canvas>
+
+                            </Canvas>
+
+                            <!-- Head Container for ears (dog__head-c) - z-index: -1 -->
+                            <Canvas x:Name="HeadContainer" Width="78" Height="66" Canvas.Left="12" Canvas.Top="0" ZIndex="-1">
+                                <!-- Left Ear (dog__ear-l) -->
+                                <Border x:Name="LeftEar"
+                                        Width="84"
+                                        Height="27"
+                                        Canvas.Left="48"
+                                        Canvas.Top="12"
+                                        CornerRadius="0,0,26,26"
+                                        Background="{StaticResource DogLoader.Ear.Brush}"
+                                        RenderTransformOrigin="0,1"
+                                        ZIndex="-1">
+                                    <Border.RenderTransform>
+                                        <RotateTransform Angle="-50" />
+                                    </Border.RenderTransform>
+                                    <Border.Styles>
+                                        <Style Selector="Border#LeftEar">
+                                            <Style.Animations>
+                                                <Animation Duration="0:0:10" IterationCount="Infinite" Easing="CubicEaseInOut">
+                                                    <KeyFrame Cue="0%"><Setter Property="RenderTransform" Value="rotate(-50deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="5%"><Setter Property="RenderTransform" Value="rotate(-48deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="10%"><Setter Property="RenderTransform" Value="rotate(-50deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="15%"><Setter Property="RenderTransform" Value="rotate(-48deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="20%"><Setter Property="RenderTransform" Value="rotate(-50deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="22%"><Setter Property="RenderTransform" Value="rotate(-48deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="24%"><Setter Property="RenderTransform" Value="rotate(-48deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="26%"><Setter Property="RenderTransform" Value="rotate(-50deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="28%"><Setter Property="RenderTransform" Value="rotate(-50deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="30%"><Setter Property="RenderTransform" Value="rotate(-30deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="31%"><Setter Property="RenderTransform" Value="rotate(-30deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="32%"><Setter Property="RenderTransform" Value="rotate(-60deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="80%"><Setter Property="RenderTransform" Value="rotate(-60deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="82%"><Setter Property="RenderTransform" Value="rotate(-50deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="100%"><Setter Property="RenderTransform" Value="rotate(-50deg)" /></KeyFrame>
+                                                </Animation>
+                                            </Style.Animations>
+                                        </Style>
+                                    </Border.Styles>
+                                </Border>
+
+                                <!-- Right Ear (dog__ear-r) -->
+                                <Border x:Name="RightEar"
+                                        Width="84"
+                                        Height="27"
+                                        Canvas.Left="-30"
+                                        Canvas.Top="12"
+                                        CornerRadius="0,0,26,26"
+                                        Background="{StaticResource DogLoader.Ear.Brush}"
+                                        RenderTransformOrigin="1,1"
+                                        ZIndex="-2">
+                                    <Border.RenderTransform>
+                                        <RotateTransform Angle="20" />
+                                    </Border.RenderTransform>
+                                    <Border.Styles>
+                                        <Style Selector="Border#RightEar">
+                                            <Style.Animations>
+                                                <Animation Duration="0:0:10" IterationCount="Infinite" Easing="CubicEaseInOut">
+                                                    <KeyFrame Cue="0%"><Setter Property="RenderTransform" Value="rotate(20deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="5%"><Setter Property="RenderTransform" Value="rotate(18deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="10%"><Setter Property="RenderTransform" Value="rotate(20deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="15%"><Setter Property="RenderTransform" Value="rotate(18deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="20%"><Setter Property="RenderTransform" Value="rotate(20deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="22%"><Setter Property="RenderTransform" Value="rotate(18deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="24%"><Setter Property="RenderTransform" Value="rotate(18deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="26%"><Setter Property="RenderTransform" Value="rotate(20deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="28%"><Setter Property="RenderTransform" Value="rotate(20deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="30%"><Setter Property="RenderTransform" Value="rotate(10deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="31%"><Setter Property="RenderTransform" Value="rotate(10deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="32%"><Setter Property="RenderTransform" Value="rotate(25deg)" /></KeyFrame>
+                                                    <KeyFrame Cue="100%"><Setter Property="RenderTransform" Value="rotate(25deg)" /></KeyFrame>
+                                                </Animation>
+                                            </Style.Animations>
+                                        </Style>
+                                    </Border.Styles>
+                                </Border>
+                            </Canvas>
+
+                            <!-- Head (dog__head) -->
+                            <Border x:Name="Head"
+                                    Width="78"
+                                    Height="66"
+                                    Canvas.Left="36"
+                                    Canvas.Top="0"
+                                    CornerRadius="32,32,26,26"
+                                    Background="{StaticResource DogLoader.Head.Brush}"
+                                    RenderTransformOrigin="1,1">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="0" />
+                                        <TranslateTransform Y="0" />
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+
+                                <!-- Snout (dog__snout) -->
+                                <Canvas Width="60" Height="30" Margin="-12,0,0,0" VerticalAlignment="Bottom">
+                                    <Border x:Name="Snout"
+                                            Width="60"
+                                            Height="30"
+                                            CornerRadius="0,24,36,24"
+                                            Background="{StaticResource DogLoader.Snout.Brush}">
+                                        <Border.Styles>
+                                            <Style Selector="Border#Snout">
+                                                <Style.Animations>
+                                                    <Animation Duration="0:0:10" IterationCount="Infinite" Easing="CubicEaseInOut">
+                                                        <KeyFrame Cue="0%"><Setter Property="Height" Value="30" /></KeyFrame>
+                                                        <KeyFrame Cue="5%"><Setter Property="Height" Value="28" /></KeyFrame>
+                                                        <KeyFrame Cue="10%"><Setter Property="Height" Value="30" /></KeyFrame>
+                                                        <KeyFrame Cue="15%"><Setter Property="Height" Value="28" /></KeyFrame>
+                                                        <KeyFrame Cue="20%"><Setter Property="Height" Value="30" /></KeyFrame>
+                                                        <KeyFrame Cue="22%"><Setter Property="Height" Value="28" /></KeyFrame>
+                                                        <KeyFrame Cue="24%"><Setter Property="Height" Value="28" /></KeyFrame>
+                                                        <KeyFrame Cue="26%"><Setter Property="Height" Value="30" /></KeyFrame>
+                                                        <KeyFrame Cue="28%"><Setter Property="Height" Value="30" /></KeyFrame>
+                                                        <KeyFrame Cue="82%"><Setter Property="Height" Value="30" /></KeyFrame>
+                                                        <KeyFrame Cue="100%"><Setter Property="Height" Value="30" /></KeyFrame>
+                                                    </Animation>
+                                                </Style.Animations>
+                                            </Style>
+                                        </Border.Styles>
+                                    </Border>
+
+                                    <!-- Snout black part (dog__snout::before) -->
+                                    <Border x:Name="SnoutBlack"
+                                            Width="15"
+                                            Height="9"
+                                            Canvas.Left="-1"
+                                            Canvas.Top="-1"
+                                            CornerRadius="0,24,36,24"
+                                            Background="{StaticResource DogLoader.Eye.Brush}">
+                                        <Border.Styles>
+                                            <Style Selector="Border#SnoutBlack">
+                                                <Style.Animations>
+                                                    <Animation Duration="0:0:10" IterationCount="Infinite" Easing="CubicEaseInOut">
+                                                        <KeyFrame Cue="0%"><Setter Property="Width" Value="15" /></KeyFrame>
+                                                        <KeyFrame Cue="5%"><Setter Property="Width" Value="14" /></KeyFrame>
+                                                        <KeyFrame Cue="10%"><Setter Property="Width" Value="15" /></KeyFrame>
+                                                        <KeyFrame Cue="15%"><Setter Property="Width" Value="14" /></KeyFrame>
+                                                        <KeyFrame Cue="20%"><Setter Property="Width" Value="15" /></KeyFrame>
+                                                        <KeyFrame Cue="22%"><Setter Property="Width" Value="14" /></KeyFrame>
+                                                        <KeyFrame Cue="24%"><Setter Property="Width" Value="14" /></KeyFrame>
+                                                        <KeyFrame Cue="26%"><Setter Property="Width" Value="15" /></KeyFrame>
+                                                        <KeyFrame Cue="28%"><Setter Property="Width" Value="15" /></KeyFrame>
+                                                        <KeyFrame Cue="34%"><Setter Property="Width" Value="10" /></KeyFrame>
+                                                        <KeyFrame Cue="98%"><Setter Property="Width" Value="10" /></KeyFrame>
+                                                        <KeyFrame Cue="100%"><Setter Property="Width" Value="15" /></KeyFrame>
+                                                    </Animation>
+                                                </Style.Animations>
+                                            </Style>
+                                        </Border.Styles>
+                                    </Border>
+
+                                    <!-- Nose (dog__nose) -->
+                                    <Border Width="6"
+                                            Height="19"
+                                            Canvas.Left="24"
+                                            Canvas.Top="-16"
+                                            CornerRadius="4"
+                                            Background="{StaticResource DogLoader.Snout.Brush}"
+                                            RenderTransformOrigin="0.5,1">
+                                        <Border.RenderTransform>
+                                            <RotateTransform Angle="10" />
+                                        </Border.RenderTransform>
+                                    </Border>
+
+                                    <!-- Eyes (dog__eyes) -->
+                                    <Canvas Width="60" Height="10" Canvas.Top="-7">
+                                        <!-- Left Eye -->
+                                        <Ellipse x:Name="LeftEye"
+                                                 Width="5"
+                                                 Height="3"
+                                                 Canvas.Left="16"
+                                                 Canvas.Top="0"
+                                                 Fill="{StaticResource DogLoader.Eye.Brush}">
+                                            <Ellipse.Styles>
+                                                <Style Selector="Ellipse#LeftEye">
+                                                    <Style.Animations>
+                                                        <Animation Duration="0:0:10" IterationCount="Infinite" Easing="CubicEaseInOut">
+                                                            <KeyFrame Cue="0%"><Setter Property="Width" Value="5" /><Setter Property="Height" Value="2" /></KeyFrame>
+                                                            <KeyFrame Cue="30%"><Setter Property="Width" Value="5" /><Setter Property="Height" Value="2" /></KeyFrame>
+                                                            <KeyFrame Cue="32%"><Setter Property="Width" Value="4" /><Setter Property="Height" Value="4" /></KeyFrame>
+                                                            <KeyFrame Cue="59%"><Setter Property="Width" Value="4" /><Setter Property="Height" Value="4" /></KeyFrame>
+                                                            <KeyFrame Cue="90%"><Setter Property="Width" Value="4" /><Setter Property="Height" Value="4" /></KeyFrame>
+                                                            <KeyFrame Cue="100%"><Setter Property="Width" Value="4" /><Setter Property="Height" Value="4" /></KeyFrame>
+                                                        </Animation>
+                                                    </Style.Animations>
+                                                </Style>
+                                            </Ellipse.Styles>
+                                        </Ellipse>
+
+                                        <!-- Right Eye -->
+                                        <Ellipse x:Name="RightEye"
+                                                 Width="5"
+                                                 Height="3"
+                                                 Canvas.Left="39"
+                                                 Canvas.Top="0"
+                                                 Fill="{StaticResource DogLoader.Eye.Brush}">
+                                            <Ellipse.Styles>
+                                                <Style Selector="Ellipse#RightEye">
+                                                    <Style.Animations>
+                                                        <Animation Duration="0:0:10" IterationCount="Infinite" Easing="CubicEaseInOut">
+                                                            <KeyFrame Cue="0%"><Setter Property="Width" Value="5" /><Setter Property="Height" Value="2" /></KeyFrame>
+                                                            <KeyFrame Cue="30%"><Setter Property="Width" Value="5" /><Setter Property="Height" Value="2" /></KeyFrame>
+                                                            <KeyFrame Cue="32%"><Setter Property="Width" Value="4" /><Setter Property="Height" Value="4" /></KeyFrame>
+                                                            <KeyFrame Cue="59%"><Setter Property="Width" Value="4" /><Setter Property="Height" Value="4" /></KeyFrame>
+                                                            <KeyFrame Cue="90%"><Setter Property="Width" Value="4" /><Setter Property="Height" Value="4" /></KeyFrame>
+                                                            <KeyFrame Cue="100%"><Setter Property="Width" Value="4" /><Setter Property="Height" Value="4" /></KeyFrame>
+                                                        </Animation>
+                                                    </Style.Animations>
+                                                </Style>
+                                            </Ellipse.Styles>
+                                        </Ellipse>
+                                    </Canvas>
+                                </Canvas>
+
+                                <Border.Styles>
+                                    <Style Selector="Border#Head">
+                                        <Style.Animations>
+                                            <Animation Duration="0:0:10" IterationCount="Infinite" Easing="CubicEaseInOut">
+                                                <KeyFrame Cue="0%"><Setter Property="Height" Value="66" /></KeyFrame>
+                                                <KeyFrame Cue="5%"><Setter Property="Height" Value="65" /></KeyFrame>
+                                                <KeyFrame Cue="10%"><Setter Property="Height" Value="66" /></KeyFrame>
+                                                <KeyFrame Cue="15%"><Setter Property="Height" Value="65" /></KeyFrame>
+                                                <KeyFrame Cue="20%"><Setter Property="Height" Value="66" /></KeyFrame>
+                                                <KeyFrame Cue="22%"><Setter Property="Height" Value="65" /></KeyFrame>
+                                                <KeyFrame Cue="24%"><Setter Property="Height" Value="65" /></KeyFrame>
+                                                <KeyFrame Cue="26%"><Setter Property="Height" Value="66" /></KeyFrame>
+                                                <KeyFrame Cue="28%"><Setter Property="Height" Value="66" /></KeyFrame>
+                                                <KeyFrame Cue="30%"><Setter Property="Height" Value="65" /></KeyFrame>
+                                                <KeyFrame Cue="32%"><Setter Property="Height" Value="66" /></KeyFrame>
+                                                <KeyFrame Cue="50%"><Setter Property="Height" Value="66" /></KeyFrame>
+                                                <KeyFrame Cue="90%"><Setter Property="Height" Value="66" /></KeyFrame>
+                                                <KeyFrame Cue="100%"><Setter Property="Height" Value="66" /></KeyFrame>
+                                            </Animation>
+                                        </Style.Animations>
+                                    </Style>
+                                </Border.Styles>
+                            </Border>
+
+                        </Canvas>
+                    </Canvas>
+                </Viewbox>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>
