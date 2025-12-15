@@ -52,6 +52,17 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Sync main branch (before work)
+        # Self-hosted runner에서 로컬 main 브랜치를 원격과 동기화
+        # Sync local main branch with remote on self-hosted runner
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git checkout main
+          git reset --hard origin/main
+          Write-Host "Main branch synced with origin/main"
+
       - name: Verify Node.js installation
         run: |
           Write-Host "Node.js version:"
@@ -239,6 +250,17 @@ jobs:
             Write-Host "No changes"
           }
           exit 0
+
+      - name: Sync main branch (after work)
+        # 커밋 전 원격 변경사항 동기화 (push 충돌 방지)
+        # Sync with remote before commit to prevent push conflicts
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git stash --include-untracked
+          git fetch origin main
+          git reset --hard origin/main
+          git stash pop
+          Write-Host "Main branch synced, local changes restored"
 
       - name: Commit and Push
         if: steps.changes.outputs.has_changes == 'true'
