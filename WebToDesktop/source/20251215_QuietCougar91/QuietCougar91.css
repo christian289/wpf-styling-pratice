@@ -1,0 +1,81 @@
+/* From Uiverse.io by kyle1dev  - Tags: tooltip */
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.tooltip-wrapper .tooltip-content {
+  visibility: hidden;
+  background: linear-gradient(to right, #000, #333);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 12px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  transition:
+    visibility 0s linear 0.4s,
+    opacity 0.4s ease,
+    transform 0.4s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.tooltip-wrapper:hover .tooltip-content {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  transition-delay: 0s;
+}
+.tooltip-wrapper:not(:hover) .tooltip-content {
+  visibility: visible;
+  transition-delay: 0s, 0.4s;
+}
+.tooltip-button {
+  background: linear-gradient(to right, #333, #000);
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.tooltip-button:hover {
+  background: linear-gradient(to right, #000, #333);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+}
+.tooltip-button:active {
+  background: #222;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transform: scale(0.95);
+}
+.tooltip-button .tooltip-text {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+.tooltip-button:hover .tooltip-text {
+  transform: translateY(-10px);
+}
+.tooltip-content svg {
+  fill: #fff;
+  width: 16px;
+  height: 16px;
+}

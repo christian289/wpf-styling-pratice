@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="QuietCougar91.Avalonia.Lib\QuietCougar91.Avalonia.Lib.csproj" />
+  <Project Path="QuietCougar91.Avalonia.Gallery\QuietCougar91.Avalonia.Gallery.csproj" />
+</Solution>

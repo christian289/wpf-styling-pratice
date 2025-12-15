@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:QuietCougar91.Avalonia.Lib.Controls"
+        x:Class="QuietCougar91.Avalonia.Gallery.MainWindow"
+        Title="QuietCougar91 - Tooltip Button Gallery"
+        Width="600" Height="400">
+
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+            <GradientStop Color="#1a1a2e" Offset="0" />
+            <GradientStop Color="#16213e" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="40">
+
+            <TextBlock Text="QuietCougar91 Tooltip Button"
+                       Foreground="White"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center" />
+
+            <TextBlock Text="Hover over the button to see the tooltip animation"
+                       Foreground="#888888"
+                       FontSize="14"
+                       HorizontalAlignment="Center" />
+
+            <controls:QuietCougar91Button Text="Hover me"
+                                          TooltipText="Uiverse.io"
+                                          HorizontalAlignment="Center" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>

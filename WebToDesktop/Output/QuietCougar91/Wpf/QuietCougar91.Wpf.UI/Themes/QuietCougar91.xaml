@@ -1,0 +1,200 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:QuietCougar91.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/QuietCougar91.Wpf.UI;component/Themes/QuietCougar91Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:QuietCougar91}">
+        <Setter Property="Foreground" Value="{StaticResource QuietCougar91.Text.Foreground}"/>
+        <Setter Property="FontSize" Value="{StaticResource QuietCougar91.Button.FontSize}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:QuietCougar91}">
+                    <Grid x:Name="PART_Root">
+                        <!-- Tooltip Content (위에 표시됨 / Shown above) -->
+                        <Border x:Name="PART_TooltipBorder"
+                                Background="{StaticResource QuietCougar91.Tooltip.Background}"
+                                CornerRadius="{StaticResource QuietCougar91.CornerRadius}"
+                                Padding="{StaticResource QuietCougar91.Tooltip.Padding}"
+                                Effect="{StaticResource QuietCougar91.Tooltip.Shadow}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Opacity="0"
+                                IsHitTestVisible="False"
+                                RenderTransformOrigin="0.5,1">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <TranslateTransform x:Name="TooltipTranslate" Y="10"/>
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                            <StackPanel Orientation="Horizontal">
+                                <Path Data="{StaticResource QuietCougar91.Icon.PathData}"
+                                      Fill="{StaticResource QuietCougar91.Text.Foreground}"
+                                      Width="{StaticResource QuietCougar91.Icon.Width}"
+                                      Height="{StaticResource QuietCougar91.Icon.Height}"
+                                      Stretch="Uniform"
+                                      Margin="0,0,8,0"/>
+                                <ContentPresenter Content="{TemplateBinding TooltipContent}"
+                                                  VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Button -->
+                        <Border x:Name="PART_ButtonBorder"
+                                Background="{StaticResource QuietCougar91.Button.Background.Normal}"
+                                CornerRadius="{StaticResource QuietCougar91.CornerRadius}"
+                                Padding="{StaticResource QuietCougar91.Button.Padding}"
+                                Margin="{StaticResource QuietCougar91.Button.Margin}"
+                                Effect="{StaticResource QuietCougar91.Button.Shadow.Normal}"
+                                RenderTransformOrigin="0.5,0.5"
+                                VerticalAlignment="Bottom">
+                            <Border.RenderTransform>
+                                <ScaleTransform x:Name="ButtonScale" ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                            <TextBlock x:Name="PART_ButtonText"
+                                       Text="{TemplateBinding ButtonText}"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       HorizontalAlignment="Center"
+                                       RenderTransformOrigin="0.5,0.5">
+                                <TextBlock.RenderTransform>
+                                    <TranslateTransform x:Name="TextTranslate" Y="0"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Border>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <!-- Tooltip fade out -->
+                                        <DoubleAnimation Storyboard.TargetName="PART_TooltipBorder"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.4">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <!-- Tooltip slide down -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="10"
+                                                         Duration="0:0:0.4">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <!-- Button text return -->
+                                        <DoubleAnimation Storyboard.TargetName="TextTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0"
+                                                         Duration="0:0:0.4">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <!-- Button scale reset -->
+                                        <DoubleAnimation Storyboard.TargetName="ButtonScale"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="1"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="ButtonScale"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         To="1"
+                                                         Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <!-- Tooltip fade in -->
+                                        <DoubleAnimation Storyboard.TargetName="PART_TooltipBorder"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.4">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <!-- Tooltip slide up -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0"
+                                                         Duration="0:0:0.4">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <!-- Button text move up -->
+                                        <DoubleAnimation Storyboard.TargetName="TextTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-10"
+                                                         Duration="0:0:0.4">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <!-- Tooltip visible -->
+                                        <DoubleAnimation Storyboard.TargetName="PART_TooltipBorder"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.1"/>
+                                        <DoubleAnimation Storyboard.TargetName="TooltipTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0"
+                                                         Duration="0:0:0.1"/>
+                                        <!-- Button scale down -->
+                                        <DoubleAnimation Storyboard.TargetName="ButtonScale"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="0.95"
+                                                         Duration="0:0:0.1"/>
+                                        <DoubleAnimation Storyboard.TargetName="ButtonScale"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         To="0.95"
+                                                         Duration="0:0:0.1"/>
+                                        <!-- Button text stays up -->
+                                        <DoubleAnimation Storyboard.TargetName="TextTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-10"
+                                                         Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Root"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0.5"
+                                                         Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover 시 버튼 배경색 변경 / Button background change on hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_ButtonBorder" Property="Background"
+                                    Value="{StaticResource QuietCougar91.Button.Background.Hover}"/>
+                            <Setter TargetName="PART_ButtonBorder" Property="Effect"
+                                    Value="{StaticResource QuietCougar91.Button.Shadow.Hover}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,142 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:QuietCougar91.Avalonia.Lib.Controls">
+
+    <!--
+    From Uiverse.io by kyle1dev - Tags: tooltip
+    호버 시 텍스트가 위로 이동하고 툴팁이 나타나는 버튼
+    Button with text animation and tooltip on hover
+    -->
+
+    <Design.PreviewWith>
+        <Border Padding="40" Background="#1a1a2e">
+            <controls:QuietCougar91Button Text="Hover me" TooltipText="Uiverse.io" />
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type controls:QuietCougar91Button}" TargetType="controls:QuietCougar91Button">
+
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Tooltip Content (위쪽에 표시) -->
+                    <Border x:Name="PART_TooltipContent"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Margin="0,-50,0,0"
+                            Padding="12,8"
+                            CornerRadius="6"
+                            BoxShadow="0 6 12 #99000000"
+                            IsHitTestVisible="False"
+                            Opacity="0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+                                <GradientStop Color="#000000" Offset="0" />
+                                <GradientStop Color="#333333" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.RenderTransform>
+                            <TranslateTransform Y="10" />
+                        </Border.RenderTransform>
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <!-- SVG Icon -->
+                            <PathIcon Width="16" Height="16" Foreground="White"
+                                      Data="M13 13h-2v-2h2v2zm0 4h-2v-2h2v2zm1-18h-8v2h8v-2zm0 20h-8v-2h8v2zm5.5-7h-2v-2h2v2zm-7 0h-2v-2h2v2zm1-10h-2v6h2v-6zm6.5 5.5h-1.5v1.5h1.5v-1.5zM4.5 16.5h1.5v1.5h-1.5v-1.5zm12-5h-2v-2h2v2zm-4 4h-2v-2h2v2zm5-3h-2v-2h2v2zm-7 0h-2v-2h2v2zm-3-5h-2v2h2v-2zm-4 8.5h1.5v1.5h-1.5v-1.5zm4.5-12h-2v2h2v-2zm10 1h-2v2h2v-2zm-7 3h-2v2h2v-2zm6 5h-2v-2h2v2zm-7-6h-2v-2h2v2zM6 13H4v-2h2v2zm12 6h-2v-2h2v2zM9 4H7v2h2V4zm11 0h-2v2h2V4z" />
+                            <TextBlock Text="{TemplateBinding TooltipText}"
+                                       Foreground="White"
+                                       FontSize="14"
+                                       VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Button -->
+                    <Border x:Name="PART_ButtonBorder"
+                            Padding="30,15"
+                            CornerRadius="6"
+                            BoxShadow="0 4 8 #80000000"
+                            ClipToBounds="True">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+                                <GradientStop Color="#333333" Offset="0" />
+                                <GradientStop Color="#000000" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <TextBlock x:Name="PART_ButtonText"
+                                   Text="{TemplateBinding Text}"
+                                   Foreground="White"
+                                   FontSize="16"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <TranslateTransform Y="0" />
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Hover State -->
+        <Style Selector="^:pointerover /template/ Border#PART_ButtonBorder">
+            <Setter Property="BoxShadow" Value="0 6 12 #B3000000" />
+            <Setter Property="Background">
+                <LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+                    <GradientStop Color="#000000" Offset="0" />
+                    <GradientStop Color="#333333" Offset="1" />
+                </LinearGradientBrush>
+            </Setter>
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="BoxShadow" Value="0 6 12 #B3000000" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Text Animation on Hover -->
+        <Style Selector="^:pointerover /template/ TextBlock#PART_ButtonText">
+            <Style.Animations>
+                <Animation Duration="0:0:0.4" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-10" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Tooltip Fade In on Hover -->
+        <Style Selector="^:pointerover /template/ Border#PART_TooltipContent">
+            <Style.Animations>
+                <Animation Duration="0:0:0.4" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="0" />
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="10" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1" />
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="0" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Pressed State -->
+        <Style Selector="^:pressed /template/ Border#PART_ButtonBorder">
+            <Setter Property="Background" Value="#222222" />
+            <Setter Property="BoxShadow" Value="0 2 4 #80000000" />
+            <Setter Property="RenderTransform">
+                <ScaleTransform ScaleX="0.95" ScaleY="0.95" />
+            </Setter>
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>
