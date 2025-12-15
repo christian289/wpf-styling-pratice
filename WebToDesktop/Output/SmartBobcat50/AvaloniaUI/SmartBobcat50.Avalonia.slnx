@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SmartBobcat50.Avalonia.Lib\SmartBobcat50.Avalonia.Lib.csproj" />
+  <Project Path="SmartBobcat50.Avalonia.Gallery\SmartBobcat50.Avalonia.Gallery.csproj" />
+</Solution>

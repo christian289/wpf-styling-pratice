@@ -1,0 +1,13 @@
+﻿using System.Configuration;
+using System.Data;
+using System.Windows;
+
+namespace SmartBobcat50.Wpf.Gallery;
+
+/// <summary>
+/// Interaction logic for App.xaml
+/// </summary>
+public partial class App : Application
+{
+}
+

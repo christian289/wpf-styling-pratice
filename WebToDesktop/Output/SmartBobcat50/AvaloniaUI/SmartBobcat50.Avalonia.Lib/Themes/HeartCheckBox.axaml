@@ -1,0 +1,118 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:SmartBobcat50.Avalonia.Lib.Controls">
+
+    <!-- 색상 리소스 / Color Resources -->
+    <Color x:Key="HeartCheckBox.Unchecked.Stroke">#FFFFFF</Color>
+    <Color x:Key="HeartCheckBox.Checked.Fill">#FF5353</Color>
+
+    <!-- 하트 경로 데이터 / Heart Path Data -->
+    <StreamGeometry x:Key="HeartGeometry">M224.6,51.9 C213.3,39.4 197.5,32 180.6,32 C163.4,32 147.6,39.5 136.6,51.5 L128,59.1 L119.5,51.7 C97.2,28.3 59.2,26.3 35.9,47.4 C24,58.3 17.2,73.3 17.1,89.1 C17,104.9 23.5,120.1 35.2,131.1 L118.3,214.2 C121.4,217.3 125.6,219 130,219 C134.4,219 138.6,217.3 141.7,214.2 L222.7,133.2 C243.7,113.2 245.6,75.2 224.6,51.9 Z</StreamGeometry>
+
+    <!-- HeartCheckBox 스타일 / HeartCheckBox Style -->
+    <ControlTheme x:Key="{x:Type controls:HeartCheckBox}" TargetType="controls:HeartCheckBox">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Width" Value="40" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <Viewbox Width="40" Height="40">
+                        <Path x:Name="HeartPath"
+                              Data="{StaticResource HeartGeometry}"
+                              Fill="Transparent"
+                              Stroke="{StaticResource HeartCheckBox.Unchecked.Stroke}"
+                              StrokeThickness="20"
+                              Stretch="Uniform"
+                              RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                            </Path.RenderTransform>
+                        </Path>
+                    </Viewbox>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Hover 상태 - 확대 효과 / Hover State - Scale Effect -->
+        <Style Selector="^:pointerover">
+            <Style.Animations>
+                <Animation Duration="0:0:0.1" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Hover 해제 - 원래 크기로 / Pointer Leave - Back to Original -->
+        <Style Selector="^:not(:pointerover)">
+            <Style.Animations>
+                <Animation Duration="0:0:0.1" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Checked 상태 - 하트 채우기 및 애니메이션 / Checked State - Fill Heart with Animation -->
+        <Style Selector="^:checked /template/ Path#HeartPath">
+            <Setter Property="Fill" Value="{StaticResource HeartCheckBox.Checked.Fill}" />
+            <Setter Property="StrokeThickness" Value="0" />
+            <Style.Animations>
+                <Animation Duration="0:0:0.4" Easing="QuadraticEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="0" ScaleY="0" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Unchecked 상태 - 하트 비우기 및 애니메이션 / Unchecked State - Empty Heart with Animation -->
+        <Style Selector="^:unchecked /template/ Path#HeartPath">
+            <Setter Property="Fill" Value="Transparent" />
+            <Setter Property="Stroke" Value="{StaticResource HeartCheckBox.Unchecked.Stroke}" />
+            <Setter Property="StrokeThickness" Value="20" />
+            <Style.Animations>
+                <Animation Duration="0:0:0.4" Easing="QuadraticEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="0" ScaleY="0" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

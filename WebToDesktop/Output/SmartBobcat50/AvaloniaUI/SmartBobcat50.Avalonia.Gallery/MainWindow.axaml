@@ -1,0 +1,57 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SmartBobcat50.Avalonia.Lib.Controls"
+        x:Class="SmartBobcat50.Avalonia.Gallery.MainWindow"
+        Title="SmartBobcat50 - HeartCheckBox Gallery"
+        Width="400"
+        Height="300"
+        Background="#1a1a2e">
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="20">
+
+        <TextBlock Text="HeartCheckBox Demo"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center" />
+
+        <TextBlock Text="Click the heart to toggle!"
+                   FontSize="14"
+                   Foreground="#888888"
+                   HorizontalAlignment="Center" />
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="30">
+
+            <!-- Unchecked 상태 / Unchecked State -->
+            <StackPanel Spacing="8">
+                <controls:HeartCheckBox IsChecked="False" />
+                <TextBlock Text="Unchecked"
+                           Foreground="#888888"
+                           FontSize="12"
+                           HorizontalAlignment="Center" />
+            </StackPanel>
+
+            <!-- Checked 상태 / Checked State -->
+            <StackPanel Spacing="8">
+                <controls:HeartCheckBox IsChecked="True" />
+                <TextBlock Text="Checked"
+                           Foreground="#888888"
+                           FontSize="12"
+                           HorizontalAlignment="Center" />
+            </StackPanel>
+
+        </StackPanel>
+
+        <TextBlock Text="From Uiverse.io by KSAplay"
+                   FontSize="10"
+                   Foreground="#555555"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,0" />
+
+    </StackPanel>
+
+</Window>

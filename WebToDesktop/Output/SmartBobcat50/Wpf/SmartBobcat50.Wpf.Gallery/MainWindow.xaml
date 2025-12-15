@@ -1,0 +1,45 @@
+<Window x:Class="SmartBobcat50.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:SmartBobcat50.Wpf.UI.Controls;assembly=SmartBobcat50.Wpf.UI"
+        mc:Ignorable="d"
+        Title="SmartBobcat50 - Heart Like Checkbox Gallery"
+        Height="450" Width="800"
+        Background="#1a1a2e">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+
+            <!-- Unchecked State -->
+            <StackPanel Margin="20">
+                <controls:SmartBobcat50 IsChecked="False"/>
+                <TextBlock Text="Unlike"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           Margin="0,10,0,0"/>
+            </StackPanel>
+
+            <!-- Checked State -->
+            <StackPanel Margin="20">
+                <controls:SmartBobcat50 IsChecked="True"/>
+                <TextBlock Text="Like"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           Margin="0,10,0,0"/>
+            </StackPanel>
+
+            <!-- Interactive -->
+            <StackPanel Margin="20">
+                <controls:SmartBobcat50/>
+                <TextBlock Text="Click Me!"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           Margin="0,10,0,0"/>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Window>
