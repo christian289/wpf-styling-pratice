@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SmoothDuck62.Wpf.Gallery/SmoothDuck62.Wpf.Gallery.csproj" />
+  <Project Path="SmoothDuck62.Wpf.UI/SmoothDuck62.Wpf.UI.csproj" />
+</Solution>

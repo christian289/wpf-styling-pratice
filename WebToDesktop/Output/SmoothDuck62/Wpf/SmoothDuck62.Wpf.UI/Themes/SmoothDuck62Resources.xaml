@@ -1,0 +1,26 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Size -->
+    <sys:Double x:Key="SmoothDuck62.Size">20</sys:Double>
+    <sys:Double x:Key="SmoothDuck62.Checked.Width">14</sys:Double>
+    <sys:Double x:Key="SmoothDuck62.Checked.MarginLeft">5</sys:Double>
+
+    <!-- Border -->
+    <sys:Double x:Key="SmoothDuck62.Border.Thickness.Normal">3</sys:Double>
+    <sys:Double x:Key="SmoothDuck62.Border.Thickness.Checked">5</sys:Double>
+    <CornerRadius x:Key="SmoothDuck62.Border.CornerRadius">6</CornerRadius>
+
+    <!-- Colors -->
+    <!-- Unchecked state: #2a2a2ab7 (dark gray with 72% opacity) -->
+    <SolidColorBrush x:Key="SmoothDuck62.Border.Normal" Color="#B72A2A2A"/>
+    <!-- Checked state: #24c78e (green) -->
+    <SolidColorBrush x:Key="SmoothDuck62.Border.Checked" Color="#24C78E"/>
+    <!-- Transparent for top and left borders when checked -->
+    <SolidColorBrush x:Key="SmoothDuck62.Border.Transparent" Color="Transparent"/>
+
+    <!-- Animation Duration: 0.375s -->
+    <!-- Note: Duration cannot be used as StaticResource, use inline in animations -->
+
+</ResourceDictionary>

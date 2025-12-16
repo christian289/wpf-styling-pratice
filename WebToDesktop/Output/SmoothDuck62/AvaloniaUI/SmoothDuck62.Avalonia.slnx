@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SmoothDuck62.Avalonia.Lib\SmoothDuck62.Avalonia.Lib.csproj" />
+  <Project Path="SmoothDuck62.Avalonia.Gallery\SmoothDuck62.Avalonia.Gallery.csproj" />
+</Solution>
