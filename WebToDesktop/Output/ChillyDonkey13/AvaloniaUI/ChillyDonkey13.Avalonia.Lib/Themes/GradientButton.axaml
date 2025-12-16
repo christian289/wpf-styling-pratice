@@ -1,0 +1,121 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:ChillyDonkey13.Avalonia.Lib.Controls">
+
+    <!--
+    Tailwind CSS 클래스 변환:
+    - w-28: 112px (7rem * 16)
+    - h-12: 48px (3rem * 16)
+    - text-white: 흰색 텍스트
+    - font-semibold: FontWeight 600
+    - bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500: 수평 그라디언트
+    - rounded-lg: 8px 둥근 모서리
+    - shadow-lg: 큰 그림자
+    - hover:scale-105: 호버 시 1.05배 확대
+    - duration-200: 0.2초 애니메이션
+    - hover:shadow-[#7dd3fc]: 호버 시 하늘색 그림자
+    -->
+
+    <!-- Tailwind Colors -->
+    <!-- indigo-500: #6366f1 -->
+    <!-- purple-500: #a855f7 -->
+    <!-- pink-500: #ec4899 -->
+    <!-- sky-300 (hover shadow): #7dd3fc -->
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="#1e1e1e">
+            <StackPanel Spacing="10">
+                <controls:GradientButton Content="Button" />
+                <controls:GradientButton Content="Hover Me" />
+                <controls:GradientButton Content="Disabled" IsEnabled="False" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- GradientButton 컨트롤 템플릿 스타일 -->
+    <ControlTheme x:Key="{x:Type controls:GradientButton}" TargetType="controls:GradientButton">
+        <Setter Property="Width" Value="112" />
+        <Setter Property="Height" Value="48" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="RenderTransform">
+            <ScaleTransform ScaleX="1" ScaleY="1" />
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="PART_Border"
+                        CornerRadius="8"
+                        ClipToBounds="True"
+                        BoxShadow="0 10 15 -3 #33000000, 0 4 6 -4 #33000000">
+                    <Border.Background>
+                        <!-- 인디고→보라→핑크 수평 그라디언트 -->
+                        <!-- Indigo→Purple→Pink horizontal gradient -->
+                        <LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+                            <GradientStop Color="#6366f1" Offset="0" />
+                            <GradientStop Color="#a855f7" Offset="0.5" />
+                            <GradientStop Color="#ec4899" Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <ContentPresenter x:Name="PART_ContentPresenter"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      RecognizesAccessKey="True" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- 호버 상태: 1.05배 확대 및 하늘색 그림자 -->
+        <!-- Hover state: scale 1.05x and sky blue shadow -->
+        <Style Selector="^:pointerover">
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+            <Style Selector="^ /template/ Border#PART_Border">
+                <Setter Property="BoxShadow" Value="0 25 50 -12 #807dd3fc" />
+            </Style>
+        </Style>
+
+        <!-- 호버 해제: 원래 크기로 복원 -->
+        <!-- Pointer leave: restore original scale -->
+        <Style Selector="^:not(:pointerover)">
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- 눌림 상태: 약간 축소 -->
+        <!-- Pressed state: slight scale down -->
+        <Style Selector="^:pressed">
+            <Setter Property="RenderTransform">
+                <ScaleTransform ScaleX="0.98" ScaleY="0.98" />
+            </Setter>
+        </Style>
+
+        <!-- 비활성화 상태 -->
+        <!-- Disabled state -->
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.5" />
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

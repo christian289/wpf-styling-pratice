@@ -1,0 +1,43 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:ChillyDonkey13.Avalonia.Lib.Controls"
+        x:Class="ChillyDonkey13.Avalonia.Gallery.MainWindow"
+        Title="ChillyDonkey13 - Gradient Button Gallery"
+        Width="500"
+        Height="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#1a1a2e">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="20">
+
+            <TextBlock Text="Gradient Button Gallery"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20" />
+
+            <!-- 기본 버튼 -->
+            <!-- Default button -->
+            <controls:GradientButton Content="Button" />
+
+            <!-- 호버 테스트용 버튼 -->
+            <!-- Button for hover testing -->
+            <controls:GradientButton Content="Hover Me" />
+
+            <!-- 비활성화 버튼 -->
+            <!-- Disabled button -->
+            <controls:GradientButton Content="Disabled" IsEnabled="False" />
+
+            <TextBlock Text="Hover over buttons to see animation effects"
+                       FontSize="12"
+                       Foreground="#888888"
+                       HorizontalAlignment="Center"
+                       Margin="0,20,0,0" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>
