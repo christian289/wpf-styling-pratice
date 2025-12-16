@@ -1,0 +1,18 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:LovelyMonkey46.Avalonia.Lib.Controls">
+
+    <!--
+        LovelyMonkey46 기본 스타일
+        LovelyMonkey46 default style
+
+        원본 CSS: From Uiverse.io by csemszepp - Source: http://twitter.com/okke29
+        Original CSS: From Uiverse.io by csemszepp - Source: http://twitter.com/okke29
+    -->
+
+    <Style Selector="controls|LovelyMonkey46">
+        <Setter Property="Background" Value="#840b2a"/>
+        <Setter Property="ClipToBounds" Value="True"/>
+    </Style>
+
+</Styles>

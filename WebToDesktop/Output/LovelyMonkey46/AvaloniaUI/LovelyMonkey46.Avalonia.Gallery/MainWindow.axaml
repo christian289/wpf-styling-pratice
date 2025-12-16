@@ -1,0 +1,19 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:LovelyMonkey46.Avalonia.Lib.Controls"
+        x:Class="LovelyMonkey46.Avalonia.Gallery.MainWindow"
+        Title="LovelyMonkey46 Gallery - Pattern Background"
+        Width="800" Height="600"
+        WindowStartupLocation="CenterScreen">
+
+    <!--
+        LovelyMonkey46: 여러 RadialGradient와 LinearGradient를 조합한 패턴 배경
+        LovelyMonkey46: Pattern background combining multiple RadialGradients and LinearGradient
+
+        원본 CSS: From Uiverse.io by csemszepp - Source: http://twitter.com/okke29
+        Original CSS: From Uiverse.io by csemszepp - Source: http://twitter.com/okke29
+    -->
+
+    <controls:LovelyMonkey46 />
+
+</Window>
