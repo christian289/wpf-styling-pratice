@@ -1,0 +1,9 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/GentleFly78.Wpf.UI;component/Themes/GentleFly78.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

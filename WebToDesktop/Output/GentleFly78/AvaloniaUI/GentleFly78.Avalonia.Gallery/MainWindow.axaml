@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:GentleFly78.Avalonia.Lib.Controls"
+        x:Class="GentleFly78.Avalonia.Gallery.MainWindow"
+        Title="GentleFly78 - Emoji Sliding Card"
+        Width="500"
+        Height="300"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#F5F5F5">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="20">
+            <TextBlock Text="Emoji Sliding Card"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Foreground="#333333" />
+
+            <TextBlock Text="From Uiverse.io by devkatyall"
+                       FontSize="12"
+                       HorizontalAlignment="Center"
+                       Foreground="#888888" />
+
+            <controls:GentleFly78Control />
+        </StackPanel>
+    </Grid>
+
+</Window>

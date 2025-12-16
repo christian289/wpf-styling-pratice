@@ -1,0 +1,111 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:GentleFly78.Avalonia.Lib.Controls">
+
+    <!--
+    From Uiverse.io by devkatyall - Tags: card
+    이모지 슬라이딩 카드 컨트롤
+    Emoji sliding card control
+    -->
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="#F0F0F0">
+            <controls:GentleFly78Control />
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type controls:GentleFly78Control}" TargetType="controls:GentleFly78Control">
+        <Setter Property="Width" Value="354" />
+        <Setter Property="ClipToBounds" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="PART_Card"
+                        Background="#12292929"
+                        CornerRadius="50"
+                        ClipToBounds="True"
+                        BoxShadow="-10 0 33 0 #3A000000, 10 0 33 0 #3A000000">
+                    <Canvas x:Name="PART_Canvas" ClipToBounds="True" Height="90">
+                        <!-- 첫 번째 이모지 그룹 / First emoji group -->
+                        <StackPanel x:Name="PART_Emojis1"
+                                    Orientation="Horizontal"
+                                    Canvas.Left="0"
+                                    Canvas.Top="0">
+                            <Button x:Name="Emoji1_1" Content="😄" FontSize="70" Margin="5,0" Padding="0" Background="Transparent" BorderThickness="0" Cursor="Hand" />
+                            <Button x:Name="Emoji1_2" Content="😁" FontSize="70" Margin="5,0" Padding="0" Background="Transparent" BorderThickness="0" Cursor="Hand" />
+                            <Button x:Name="Emoji1_3" Content="😆" FontSize="70" Margin="5,0" Padding="0" Background="Transparent" BorderThickness="0" Cursor="Hand" />
+                            <Button x:Name="Emoji1_4" Content="😂" FontSize="70" Margin="5,0" Padding="0" Background="Transparent" BorderThickness="0" Cursor="Hand" />
+                        </StackPanel>
+
+                        <!-- 두 번째 이모지 그룹 (무한 스크롤용) / Second emoji group (for infinite scroll) -->
+                        <StackPanel x:Name="PART_Emojis2"
+                                    Orientation="Horizontal"
+                                    Canvas.Left="356"
+                                    Canvas.Top="0">
+                            <Button x:Name="Emoji2_1" Content="😄" FontSize="70" Margin="5,0" Padding="0" Background="Transparent" BorderThickness="0" Cursor="Hand" />
+                            <Button x:Name="Emoji2_2" Content="😁" FontSize="70" Margin="5,0" Padding="0" Background="Transparent" BorderThickness="0" Cursor="Hand" />
+                            <Button x:Name="Emoji2_3" Content="😆" FontSize="70" Margin="5,0" Padding="0" Background="Transparent" BorderThickness="0" Cursor="Hand" />
+                            <Button x:Name="Emoji2_4" Content="😂" FontSize="70" Margin="5,0" Padding="0" Background="Transparent" BorderThickness="0" Cursor="Hand" />
+                        </StackPanel>
+                    </Canvas>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- 슬라이딩 애니메이션 / Sliding animation -->
+        <Style Selector="^/template/ StackPanel#PART_Emojis1">
+            <Style.Animations>
+                <Animation Duration="0:0:5" IterationCount="Infinite" Easing="LinearEasing">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Canvas.Left" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Canvas.Left" Value="-356" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^/template/ StackPanel#PART_Emojis2">
+            <Style.Animations>
+                <Animation Duration="0:0:5" IterationCount="Infinite" Easing="LinearEasing">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Canvas.Left" Value="356" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Canvas.Left" Value="0" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- 이모지 버튼 Hover 애니메이션 / Emoji button hover animation -->
+        <Style Selector="^/template/ Button:pointerover">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" FillMode="Forward" Easing="CubicEaseOut">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^/template/ Button:not(:pointerover)">
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" FillMode="Forward" Easing="CubicEaseOut">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1.0" ScaleY="1.0" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^/template/ Button">
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

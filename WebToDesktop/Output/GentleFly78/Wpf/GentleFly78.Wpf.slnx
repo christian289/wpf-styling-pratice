@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="GentleFly78.Wpf.Gallery/GentleFly78.Wpf.Gallery.csproj" />
+  <Project Path="GentleFly78.Wpf.UI/GentleFly78.Wpf.UI.csproj" />
+</Solution>
