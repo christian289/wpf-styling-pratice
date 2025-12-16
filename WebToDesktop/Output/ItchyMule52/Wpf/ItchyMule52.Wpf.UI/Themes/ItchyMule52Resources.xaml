@@ -1,0 +1,31 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Track Background Colors -->
+    <!-- 트랙 배경 색상 -->
+    <SolidColorBrush x:Key="ItchyMule52.Track.Background.Unchecked" Color="#525252"/>
+    <SolidColorBrush x:Key="ItchyMule52.Track.Background.Checked" Color="#A5FF69"/>
+
+    <!-- Thumb Colors -->
+    <!-- 썸 색상 -->
+    <SolidColorBrush x:Key="ItchyMule52.Thumb.Background" Color="#292929"/>
+    <SolidColorBrush x:Key="ItchyMule52.Thumb.Border.Unchecked" Color="#525252"/>
+    <SolidColorBrush x:Key="ItchyMule52.Thumb.Border.Checked" Color="#A5FF69"/>
+
+    <!-- Track Sizes -->
+    <!-- 트랙 크기 -->
+    <sys:Double x:Key="ItchyMule52.Track.Width">50</sys:Double>
+    <sys:Double x:Key="ItchyMule52.Track.Height">17</sys:Double>
+    <CornerRadius x:Key="ItchyMule52.Track.CornerRadius">20</CornerRadius>
+
+    <!-- Thumb Sizes -->
+    <!-- 썸 크기 -->
+    <sys:Double x:Key="ItchyMule52.Thumb.Size">22</sys:Double>
+    <Thickness x:Key="ItchyMule52.Thumb.BorderThickness">2</Thickness>
+
+    <!-- Animation Duration -->
+    <!-- 애니메이션 지속 시간 (XAML에서는 인라인으로 사용) -->
+    <!-- Duration="0:0:0.2" -->
+
+</ResourceDictionary>

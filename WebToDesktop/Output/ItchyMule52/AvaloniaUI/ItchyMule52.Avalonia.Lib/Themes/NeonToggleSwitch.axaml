@@ -1,0 +1,82 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:ItchyMule52.Avalonia.Lib.Controls">
+
+    <!-- Color Resources -->
+    <Color x:Key="NeonToggle.Track.Unchecked">#525252</Color>
+    <Color x:Key="NeonToggle.Track.Checked">#A5FF69</Color>
+    <Color x:Key="NeonToggle.Thumb.Background">#292929</Color>
+    <Color x:Key="NeonToggle.Thumb.Border.Unchecked">#525252</Color>
+    <Color x:Key="NeonToggle.Thumb.Border.Checked">#A5FF69</Color>
+
+    <!-- Brush Resources -->
+    <SolidColorBrush x:Key="NeonToggle.Track.Unchecked.Brush" Color="{StaticResource NeonToggle.Track.Unchecked}"/>
+    <SolidColorBrush x:Key="NeonToggle.Track.Checked.Brush" Color="{StaticResource NeonToggle.Track.Checked}"/>
+    <SolidColorBrush x:Key="NeonToggle.Thumb.Background.Brush" Color="{StaticResource NeonToggle.Thumb.Background}"/>
+    <SolidColorBrush x:Key="NeonToggle.Thumb.Border.Unchecked.Brush" Color="{StaticResource NeonToggle.Thumb.Border.Unchecked}"/>
+    <SolidColorBrush x:Key="NeonToggle.Thumb.Border.Checked.Brush" Color="{StaticResource NeonToggle.Thumb.Border.Checked}"/>
+
+    <!-- Size Constants -->
+    <x:Double x:Key="NeonToggle.Track.Width">50</x:Double>
+    <x:Double x:Key="NeonToggle.Track.Height">17</x:Double>
+    <x:Double x:Key="NeonToggle.Thumb.Size">22</x:Double>
+    <Thickness x:Key="NeonToggle.Thumb.BorderThickness">2</Thickness>
+    <CornerRadius x:Key="NeonToggle.Track.CornerRadius">20</CornerRadius>
+
+    <!-- NeonToggleSwitch Style -->
+    <ControlTheme x:Key="{x:Type controls:NeonToggleSwitch}" TargetType="controls:NeonToggleSwitch">
+        <Setter Property="Width" Value="{StaticResource NeonToggle.Track.Width}"/>
+        <Setter Property="Height" Value="{StaticResource NeonToggle.Thumb.Size}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <!-- Track (배경 트랙) -->
+                    <Border x:Name="PART_Track"
+                            Width="{StaticResource NeonToggle.Track.Width}"
+                            Height="{StaticResource NeonToggle.Track.Height}"
+                            Background="{StaticResource NeonToggle.Track.Unchecked.Brush}"
+                            CornerRadius="{StaticResource NeonToggle.Track.CornerRadius}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Property="Background" Duration="0:0:0.2"/>
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+
+                    <!-- Thumb (동그란 손잡이) -->
+                    <Border x:Name="PART_Thumb"
+                            Width="{StaticResource NeonToggle.Thumb.Size}"
+                            Height="{StaticResource NeonToggle.Thumb.Size}"
+                            Background="{StaticResource NeonToggle.Thumb.Background.Brush}"
+                            BorderBrush="{StaticResource NeonToggle.Thumb.Border.Unchecked.Brush}"
+                            BorderThickness="{StaticResource NeonToggle.Thumb.BorderThickness}"
+                            CornerRadius="11"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            RenderTransform="translateX(0)">
+                        <Border.Transitions>
+                            <Transitions>
+                                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+                                <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Checked State -->
+        <Style Selector="^:checked /template/ Border#PART_Track">
+            <Setter Property="Background" Value="{StaticResource NeonToggle.Track.Checked.Brush}"/>
+        </Style>
+
+        <Style Selector="^:checked /template/ Border#PART_Thumb">
+            <Setter Property="RenderTransform" Value="translateX(28)"/>
+            <Setter Property="BorderBrush" Value="{StaticResource NeonToggle.Thumb.Border.Checked.Brush}"/>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>
