@@ -1,0 +1,238 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:TastyApe73.Avalonia.Lib.Controls">
+
+    <!-- Colors -->
+    <Color x:Key="LevelUp.Background.Color">#FDD835</Color>
+    <Color x:Key="LevelUp.Text.Color">#FFFFFF</Color>
+    <Color x:Key="LevelUp.Shadow.Color">#80000000</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="LevelUp.Background.Brush" Color="{StaticResource LevelUp.Background.Color}" />
+    <SolidColorBrush x:Key="LevelUp.Text.Brush" Color="{StaticResource LevelUp.Text.Color}" />
+
+    <!-- Confetti Colors -->
+    <SolidColorBrush x:Key="Confetti.Yellow" Color="Yellow" />
+    <SolidColorBrush x:Key="Confetti.White" Color="White" />
+    <SolidColorBrush x:Key="Confetti.Green" Color="Green" />
+    <SolidColorBrush x:Key="Confetti.Blue" Color="Blue" />
+    <SolidColorBrush x:Key="Confetti.Red" Color="Red" />
+    <SolidColorBrush x:Key="Confetti.Pink" Color="Pink" />
+    <SolidColorBrush x:Key="Confetti.Purple" Color="Purple" />
+    <SolidColorBrush x:Key="Confetti.Cyan" Color="Cyan" />
+    <SolidColorBrush x:Key="Confetti.Orange" Color="Orange" />
+
+    <!-- ControlTheme for LevelUpNotification -->
+    <ControlTheme x:Key="{x:Type controls:LevelUpNotification}" TargetType="controls:LevelUpNotification">
+        <Setter Property="Background" Value="{StaticResource LevelUp.Background.Brush}" />
+        <Setter Property="Foreground" Value="{StaticResource LevelUp.Text.Brush}" />
+        <Setter Property="FontFamily" Value="Courier New, monospace" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="Padding" Value="20,12" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel ClipToBounds="False">
+                    <!-- Confetti Container -->
+                    <Panel x:Name="PART_ConfettiContainer"
+                           IsVisible="{TemplateBinding IsConfettiEnabled}"
+                           ClipToBounds="False">
+                        <!-- Row 1 Confetti -->
+                        <StackPanel x:Name="PART_ConfettiRow1"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="0,-50,0,0">
+                            <!-- Square -->
+                            <Border Width="12" Height="12" Background="Yellow" Margin="3,0">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="-140" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <!-- Rectangle -->
+                            <Border Width="12" Height="6" Background="Green" Margin="3,0">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="90" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <!-- Square -->
+                            <Border Width="12" Height="12" Background="White" Margin="3,0">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="-140" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <!-- Rectangle -->
+                            <Border Width="12" Height="6" Background="Blue" Margin="3,0" />
+                            <!-- Square -->
+                            <Border Width="12" Height="12" Background="Red" Margin="3,0">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="-140" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <!-- Rectangle -->
+                            <Border Width="12" Height="6" Background="Pink" Margin="3,0">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="90" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <!-- Square -->
+                            <Border Width="12" Height="12" Background="Purple" Margin="3,0">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="-140" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <!-- Rectangle -->
+                            <Border Width="12" Height="6" Background="Cyan" Margin="3,0" />
+                        </StackPanel>
+
+                        <!-- Row 2 Confetti -->
+                        <StackPanel x:Name="PART_ConfettiRow2"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="20,-30,0,0">
+                            <!-- Square -->
+                            <Border Width="10" Height="10" Background="Orange" Margin="3,0">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="45" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <!-- Rectangle -->
+                            <Border Width="10" Height="5" Background="Yellow" Margin="3,0">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="30" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <!-- Square -->
+                            <Border Width="10" Height="10" Background="Green" Margin="3,0">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="-60" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <!-- Rectangle -->
+                            <Border Width="10" Height="5" Background="White" Margin="3,0">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="120" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <!-- Square -->
+                            <Border Width="10" Height="10" Background="Blue" Margin="3,0">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="15" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <!-- Rectangle -->
+                            <Border Width="10" Height="5" Background="Red" Margin="3,0">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="-45" />
+                                </Border.RenderTransform>
+                            </Border>
+                        </StackPanel>
+                    </Panel>
+
+                    <!-- Main Notification Card -->
+                    <Border x:Name="PART_MainBorder"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="10"
+                            Padding="{TemplateBinding Padding}"
+                            BoxShadow="0 0 10 0 #80000000"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Border.RenderTransform>
+
+                        <!-- Level Up Text with Shadow Effect -->
+                        <Panel>
+                            <!-- Text Shadow -->
+                            <TextBlock Text="{TemplateBinding Text}"
+                                       FontFamily="{TemplateBinding FontFamily}"
+                                       FontWeight="{TemplateBinding FontWeight}"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       Foreground="Black"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Margin="2,2,0,0" />
+                            <!-- Main Text -->
+                            <TextBlock Text="{TemplateBinding Text}"
+                                       FontFamily="{TemplateBinding FontFamily}"
+                                       FontWeight="{TemplateBinding FontWeight}"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Panel>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Scale Up Animation on Load -->
+        <Style Selector="^:loaded">
+            <Style.Animations>
+                <Animation Duration="0:0:1.5" Easing="CubicEaseInOut" FillMode="Forward">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="0" />
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="0" ScaleY="0" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1" />
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Hover Animation -->
+        <Style Selector="^:pointerover /template/ Border#PART_MainBorder">
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Confetti Fall Animation on Hover - Row 1 -->
+        <Style Selector="^:pointerover /template/ StackPanel#PART_ConfettiRow1">
+            <Style.Animations>
+                <Animation Duration="0:0:2" Easing="LinearEasing" IterationCount="Infinite">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Margin" Value="0,-100,0,0" />
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Margin" Value="0,150,0,0" />
+                        <Setter Property="Opacity" Value="0.5" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Confetti Fall Animation on Hover - Row 2 -->
+        <Style Selector="^:pointerover /template/ StackPanel#PART_ConfettiRow2">
+            <Style.Animations>
+                <Animation Duration="0:0:2.5" Easing="LinearEasing" IterationCount="Infinite" Delay="0:0:0.3">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Margin" Value="20,-80,0,0" />
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Margin" Value="20,170,0,0" />
+                        <Setter Property="Opacity" Value="0.5" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

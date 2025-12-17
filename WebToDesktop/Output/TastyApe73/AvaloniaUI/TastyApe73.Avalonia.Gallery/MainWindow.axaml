@@ -1,0 +1,43 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:TastyApe73.Avalonia.Lib.Controls"
+        x:Class="TastyApe73.Avalonia.Gallery.MainWindow"
+        Title="TastyApe73 - Level Up Notification Gallery"
+        Width="600"
+        Height="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#2D2D30">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Grid.Row="0"
+                   Text="Level Up Notification Demo"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,10" />
+
+        <!-- Notification Control -->
+        <controls:LevelUpNotification Grid.Row="1"
+                                      Text="Level Up!"
+                                      IsConfettiEnabled="True"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+
+        <!-- Instructions -->
+        <TextBlock Grid.Row="1"
+                   Text="Hover over the notification to see the confetti animation"
+                   FontSize="12"
+                   Foreground="#888888"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   Margin="0,0,0,20" />
+    </Grid>
+
+</Window>

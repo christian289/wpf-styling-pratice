@@ -1,0 +1,50 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <!-- 색상 -->
+    <SolidColorBrush x:Key="TastyApe73.Background" Color="#FDD835"/>
+    <SolidColorBrush x:Key="TastyApe73.Text.Foreground" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="TastyApe73.Text.Shadow" Color="#000000"/>
+
+    <!-- Confetti Colors -->
+    <!-- 컨페티 색상 -->
+    <SolidColorBrush x:Key="TastyApe73.Confetti.Yellow" Color="Yellow"/>
+    <SolidColorBrush x:Key="TastyApe73.Confetti.White" Color="White"/>
+    <SolidColorBrush x:Key="TastyApe73.Confetti.Green" Color="Green"/>
+    <SolidColorBrush x:Key="TastyApe73.Confetti.Blue" Color="Blue"/>
+    <SolidColorBrush x:Key="TastyApe73.Confetti.Red" Color="Red"/>
+    <SolidColorBrush x:Key="TastyApe73.Confetti.Pink" Color="Pink"/>
+    <SolidColorBrush x:Key="TastyApe73.Confetti.Purple" Color="Purple"/>
+    <SolidColorBrush x:Key="TastyApe73.Confetti.Cyan" Color="Cyan"/>
+    <SolidColorBrush x:Key="TastyApe73.Confetti.Orange" Color="Orange"/>
+    <SolidColorBrush x:Key="TastyApe73.Confetti.Indigo" Color="Indigo"/>
+    <SolidColorBrush x:Key="TastyApe73.Confetti.SteelBlue" Color="SteelBlue"/>
+
+    <!-- Sizes -->
+    <!-- 크기 -->
+    <sys:Double x:Key="TastyApe73.Border.Radius">10</sys:Double>
+    <sys:Double x:Key="TastyApe73.Text.FontSize">30</sys:Double>
+    <sys:Double x:Key="TastyApe73.Confetti.Size">16</sys:Double>
+    <sys:Double x:Key="TastyApe73.Confetti.SmallSize">8</sys:Double>
+    <sys:Double x:Key="TastyApe73.Confetti.RectHeight">8</sys:Double>
+    <sys:Double x:Key="TastyApe73.Confetti.DodecagramSize">12.8</sys:Double>
+
+    <!-- Padding/Margins -->
+    <!-- 여백 -->
+    <Thickness x:Key="TastyApe73.Text.Padding">20,12,20,12</Thickness>
+    <Thickness x:Key="TastyApe73.Confetti.Margin">3.2,0,3.2,0</Thickness>
+
+    <!-- CornerRadius -->
+    <CornerRadius x:Key="TastyApe73.CornerRadius">10</CornerRadius>
+
+    <!-- Shadow -->
+    <!-- 그림자 -->
+    <DropShadowEffect x:Key="TastyApe73.Shadow"
+                      BlurRadius="10"
+                      ShadowDepth="0"
+                      Color="#000000"
+                      Opacity="0.5"/>
+
+</ResourceDictionary>
