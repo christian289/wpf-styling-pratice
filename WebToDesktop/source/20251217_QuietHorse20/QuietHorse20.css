@@ -1,0 +1,47 @@
+/* From Uiverse.io by aurellsoleil  - Tags: icon, white, button, hover, active, rounded, modern, hover effect */
+.button {
+  cursor: pointer;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 3px;
+  border: none;
+  border-radius: 30px;
+  font-size: large;
+  font-weight: 600;
+  display: flex;
+  background: #dadada;
+  background: -moz-linear-gradient(top, #dadada 0%, #eeeeee 25%, #ffffff 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #dadada 0%,
+    #eeeeee 25%,
+    #ffffff 100%
+  );
+  background: linear-gradient(to bottom, #dadada 0%, #eeeeee 25%, #ffffff 100%);
+}
+.container {
+  box-shadow: 4px 2px 10px -1px rgba(12, 12, 12, 0.6);
+  /* border: 2px solid rgb(192, 192, 192); */
+  border-radius: 7px;
+  background: #ffffff;
+  background: -moz-linear-gradient(top, #ffffff 0%, #eeeeee 75%, #dadada 100%);
+  background: -webkit-linear-gradient(
+    top,
+    #ffffff 0%,
+    #eeeeee 75%,
+    #dadada 100%
+  );
+  background: linear-gradient(to bottom, #ffffff 0%, #eeeeee 75%, #dadada 100%);
+  transition: all 0.3s;
+}
+.container:hover {
+  box-shadow: 1px 0px 3px 0px rgba(12, 12, 12, 0.6);
+}
+.container:active {
+  box-shadow: 0.5px 0px 1px 0px rgba(12, 12, 12, 0.6);
+}
+.icon {
+  margin-right: 5px;
+}

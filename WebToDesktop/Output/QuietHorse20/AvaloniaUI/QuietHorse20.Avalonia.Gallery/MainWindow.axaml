@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:QuietHorse20.Avalonia.Lib.Controls"
+        x:Class="QuietHorse20.Avalonia.Gallery.MainWindow"
+        Title="QuietHorse20 - Send Message Button Gallery"
+        Width="500"
+        Height="400"
+        Background="#F0F0F0">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="20">
+
+            <!-- Title -->
+            <TextBlock Text="SendMessageButton Control"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+            <!-- Default Button -->
+            <controls:SendMessageButton/>
+
+            <!-- Custom Text Button -->
+            <controls:SendMessageButton Text="Send Email"/>
+
+            <!-- Another Custom Text Button -->
+            <controls:SendMessageButton Text="Submit"/>
+
+        </StackPanel>
+    </Grid>
+
+</Window>
