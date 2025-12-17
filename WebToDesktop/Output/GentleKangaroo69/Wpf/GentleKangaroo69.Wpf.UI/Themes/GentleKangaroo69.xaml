@@ -1,0 +1,167 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:GentleKangaroo69.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/GentleKangaroo69.Wpf.UI;component/Themes/GentleKangaroo69Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:GentleKangaroo69}">
+        <Setter Property="FontFamily" Value="Montserrat, Segoe UI, Arial" />
+        <Setter Property="FontSize" Value="{StaticResource GentleKangaroo69.FontSize}" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="{StaticResource GentleKangaroo69.Foreground.Normal}" />
+        <Setter Property="Background" Value="{StaticResource GentleKangaroo69.Background.Normal}" />
+        <Setter Property="Padding" Value="{StaticResource GentleKangaroo69.Padding}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="1" ScaleY="1" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:GentleKangaroo69}">
+                    <Grid>
+                        <!-- Hover 시 나타나는 원형 점 (::before pseudo-element) -->
+                        <Ellipse x:Name="PART_Dot"
+                                 Width="{StaticResource GentleKangaroo69.Dot.Size}"
+                                 Height="{StaticResource GentleKangaroo69.Dot.Size}"
+                                 Fill="{StaticResource GentleKangaroo69.Dot.Fill}"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Top"
+                                 Margin="0,-25,0,0"
+                                 Opacity="0"
+                                 RenderTransformOrigin="0.5,0.5">
+                            <Ellipse.RenderTransform>
+                                <TranslateTransform Y="0" />
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+
+                        <!-- 메인 컨테이너 -->
+                        <Border x:Name="PART_Border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{StaticResource GentleKangaroo69.CornerRadius}"
+                                Padding="{TemplateBinding Padding}"
+                                Effect="{StaticResource GentleKangaroo69.Shadow}">
+                            <!-- 텍스트 (bounce 애니메이션 적용) -->
+                            <TextBlock x:Name="PART_Text"
+                                       Text="{TemplateBinding Text}"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       FontFamily="{TemplateBinding FontFamily}"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       FontWeight="{TemplateBinding FontWeight}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       RenderTransformOrigin="0.5,0.5">
+                                <TextBlock.RenderTransform>
+                                    <TranslateTransform Y="0" />
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Bounce 애니메이션 (기본 상태) -->
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard x:Name="BounceStoryboard">
+                                <Storyboard RepeatBehavior="Forever">
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Text"
+                                                                   Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)">
+                                        <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                        <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="-10" />
+                                        <LinearDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <!-- Hover 상태 -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <!-- 배경/전경 색상 반전 -->
+                            <Setter TargetName="PART_Border" Property="Background" Value="{StaticResource GentleKangaroo69.Background.Hover}" />
+                            <Setter TargetName="PART_Text" Property="Foreground" Value="{StaticResource GentleKangaroo69.Foreground.Hover}" />
+                            <!-- 원형 점 표시 -->
+                            <Setter TargetName="PART_Dot" Property="Opacity" Value="1" />
+                            <!-- Scale 확대 + Bounce 중지 + Dot 애니메이션 -->
+                            <Trigger.EnterActions>
+                                <!-- 텍스트 Bounce 애니메이션 중지 -->
+                                <StopStoryboard BeginStoryboardName="BounceStoryboard" />
+                                <BeginStoryboard x:Name="HoverStoryboard">
+                                    <Storyboard>
+                                        <!-- Scale 확대 -->
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                         To="{StaticResource GentleKangaroo69.Scale.Hover}"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                         To="{StaticResource GentleKangaroo69.Scale.Hover}"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <!-- 텍스트 위치 초기화 -->
+                                        <DoubleAnimation Storyboard.TargetName="PART_Text"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                         To="0"
+                                                         Duration="0:0:0.1" />
+                                        <!-- 원형 점 bounce 애니메이션 -->
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Dot"
+                                                                       Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                                       RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.25" Value="-10" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <!-- Hover 애니메이션 중지 -->
+                                <StopStoryboard BeginStoryboardName="HoverStoryboard" />
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Scale 원래대로 -->
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                         To="{StaticResource GentleKangaroo69.Scale.Normal}"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                         To="{StaticResource GentleKangaroo69.Scale.Normal}"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                                <!-- 텍스트 Bounce 애니메이션 다시 시작 -->
+                                <BeginStoryboard>
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Text"
+                                                                       Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="-10" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

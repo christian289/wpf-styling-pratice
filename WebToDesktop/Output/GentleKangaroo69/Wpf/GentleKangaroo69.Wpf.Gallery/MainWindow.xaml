@@ -1,0 +1,23 @@
+<Window x:Class="GentleKangaroo69.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:GentleKangaroo69.Wpf.UI.Controls;assembly=GentleKangaroo69.Wpf.UI"
+        mc:Ignorable="d"
+        Title="GentleKangaroo69 - Notification Control Gallery"
+        Height="450" Width="800"
+        Background="#2D2D30">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <!-- 기본 컨트롤 -->
+            <controls:GentleKangaroo69 Margin="0,0,0,30" />
+
+            <!-- 커스텀 텍스트 -->
+            <controls:GentleKangaroo69 Text="SUCCESS!" Margin="0,0,0,30" />
+
+            <!-- 커스텀 텍스트 2 -->
+            <controls:GentleKangaroo69 Text="NEW ACHIEVEMENT!" />
+        </StackPanel>
+    </Grid>
+</Window>

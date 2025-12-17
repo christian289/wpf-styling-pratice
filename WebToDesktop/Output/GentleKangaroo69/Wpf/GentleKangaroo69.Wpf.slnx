@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="GentleKangaroo69.Wpf.Gallery/GentleKangaroo69.Wpf.Gallery.csproj" />
+  <Project Path="GentleKangaroo69.Wpf.UI/GentleKangaroo69.Wpf.UI.csproj" />
+</Solution>

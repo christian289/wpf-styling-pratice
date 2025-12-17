@@ -1,0 +1,46 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <!-- 배경색: #ff5733 (오렌지) -->
+    <Color x:Key="GentleKangaroo69.Color.Primary">#FF5733</Color>
+    <!-- 텍스트색: 흰색 -->
+    <Color x:Key="GentleKangaroo69.Color.Text">#FFFFFF</Color>
+    <!-- 그림자색 -->
+    <Color x:Key="GentleKangaroo69.Color.Shadow">#33000000</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="GentleKangaroo69.Background.Normal" Color="{StaticResource GentleKangaroo69.Color.Primary}" />
+    <SolidColorBrush x:Key="GentleKangaroo69.Foreground.Normal" Color="{StaticResource GentleKangaroo69.Color.Text}" />
+    <SolidColorBrush x:Key="GentleKangaroo69.Background.Hover" Color="{StaticResource GentleKangaroo69.Color.Text}" />
+    <SolidColorBrush x:Key="GentleKangaroo69.Foreground.Hover" Color="{StaticResource GentleKangaroo69.Color.Primary}" />
+    <SolidColorBrush x:Key="GentleKangaroo69.Dot.Fill" Color="{StaticResource GentleKangaroo69.Color.Primary}" />
+
+    <!-- Sizes -->
+    <!-- font-size: 25px -->
+    <sys:Double x:Key="GentleKangaroo69.FontSize">25</sys:Double>
+    <!-- padding: 20px -->
+    <Thickness x:Key="GentleKangaroo69.Padding">20</Thickness>
+    <!-- border-radius: 10px -->
+    <CornerRadius x:Key="GentleKangaroo69.CornerRadius">10</CornerRadius>
+    <!-- transform: scale(1.1) -->
+    <sys:Double x:Key="GentleKangaroo69.Scale.Normal">1.0</sys:Double>
+    <sys:Double x:Key="GentleKangaroo69.Scale.Hover">1.1</sys:Double>
+    <!-- bounce animation: translateY(-10px) -->
+    <sys:Double x:Key="GentleKangaroo69.Bounce.Offset">-10</sys:Double>
+    <!-- dot size: 10px -->
+    <sys:Double x:Key="GentleKangaroo69.Dot.Size">10</sys:Double>
+    <!-- dot top offset: -20px -->
+    <sys:Double x:Key="GentleKangaroo69.Dot.TopOffset">-25</sys:Double>
+
+    <!-- Shadow -->
+    <!-- box-shadow: 0px 5px 10px rgba(0,0,0,0.2) -->
+    <DropShadowEffect x:Key="GentleKangaroo69.Shadow"
+                      ShadowDepth="5"
+                      Direction="270"
+                      BlurRadius="10"
+                      Opacity="0.2"
+                      Color="Black" />
+
+</ResourceDictionary>

@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:GentleKangaroo69.Avalonia.Lib.Controls"
+        x:Class="GentleKangaroo69.Avalonia.Gallery.MainWindow"
+        Title="GentleKangaroo69 - LevelUp Notification Gallery"
+        Width="600" Height="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#1a1a2e">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- 헤더 -->
+        <TextBlock Grid.Row="0"
+                   Text="LevelUp Notification Demo"
+                   FontSize="20"
+                   FontWeight="SemiBold"
+                   Foreground="#8892b0"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,10" />
+
+        <!-- 컨트롤 데모 영역 -->
+        <StackPanel Grid.Row="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Spacing="30">
+
+            <!-- 기본 LevelUpNotification -->
+            <controls:LevelUpNotification />
+
+            <!-- 사용자 정의 텍스트 -->
+            <controls:LevelUpNotification Text="ACHIEVEMENT UNLOCKED!" />
+
+            <!-- 안내 문구 -->
+            <TextBlock Text="Hover over the notifications to see the effect"
+                       FontSize="12"
+                       Foreground="#5c6370"
+                       HorizontalAlignment="Center"
+                       Margin="0,20,0,0" />
+        </StackPanel>
+    </Grid>
+
+</Window>

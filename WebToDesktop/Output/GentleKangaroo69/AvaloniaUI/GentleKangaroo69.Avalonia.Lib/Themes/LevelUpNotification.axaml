@@ -1,0 +1,170 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:GentleKangaroo69.Avalonia.Lib.Controls">
+
+    <!--
+    LevelUpNotification 컨트롤 스타일
+    From Uiverse.io by tursynbek - Tags: notification
+
+    CSS 원본 특징:
+    - bounce 애니메이션 (무한 반복)
+    - hover 시 색상 반전 + scale(1.1)
+    - hover 시 ::before pseudo-element로 원형 장식
+    -->
+
+    <Design.PreviewWith>
+        <Border Padding="40" Background="#2d2d2d">
+            <controls:LevelUpNotification />
+        </Border>
+    </Design.PreviewWith>
+
+    <Styles.Resources>
+        <!-- Colors -->
+        <Color x:Key="LevelUp.Background">#FF5733</Color>
+        <Color x:Key="LevelUp.Foreground">#FFFFFF</Color>
+        <SolidColorBrush x:Key="LevelUp.BackgroundBrush" Color="{StaticResource LevelUp.Background}" />
+        <SolidColorBrush x:Key="LevelUp.ForegroundBrush" Color="{StaticResource LevelUp.Foreground}" />
+    </Styles.Resources>
+
+    <Style Selector="controls|LevelUpNotification">
+        <Setter Property="FontFamily" Value="Montserrat, Segoe UI, sans-serif" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="{StaticResource LevelUp.ForegroundBrush}" />
+        <Setter Property="Background" Value="{StaticResource LevelUp.BackgroundBrush}" />
+        <Setter Property="Padding" Value="20" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+        <Setter Property="RenderTransform">
+            <ScaleTransform ScaleX="1" ScaleY="1" />
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate TargetType="controls:LevelUpNotification">
+                <Panel>
+                    <!-- Hover 시 나타나는 원형 장식 (::before pseudo-element) -->
+                    <Ellipse x:Name="PART_Decoration"
+                             Width="10" Height="10"
+                             Fill="{StaticResource LevelUp.BackgroundBrush}"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Top"
+                             Margin="0,-30,0,0"
+                             Opacity="0"
+                             RenderTransformOrigin="0.5, 0.5">
+                        <Ellipse.RenderTransform>
+                            <TranslateTransform Y="0" />
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <!-- 메인 컨테이너 -->
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="10"
+                            Padding="{TemplateBinding Padding}"
+                            BoxShadow="0 5 10 #33000000"
+                            HorizontalAlignment="Center">
+
+                        <!-- 텍스트 (bounce 애니메이션 적용) -->
+                        <TextBlock x:Name="PART_Text"
+                                   Text="{TemplateBinding Text}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   HorizontalAlignment="Center"
+                                   RenderTransformOrigin="0.5, 0.5">
+                            <TextBlock.RenderTransform>
+                                <TranslateTransform Y="0" />
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <!-- 기본 상태: bounce 애니메이션 -->
+    <Style Selector="controls|LevelUpNotification:not(:pointerover) /template/ TextBlock#PART_Text">
+        <Style.Animations>
+            <Animation Duration="0:0:1" IterationCount="Infinite">
+                <KeyFrame Cue="0%">
+                    <Setter Property="RenderTransform">
+                        <TranslateTransform Y="0" />
+                    </Setter>
+                </KeyFrame>
+                <KeyFrame Cue="50%">
+                    <Setter Property="RenderTransform">
+                        <TranslateTransform Y="-10" />
+                    </Setter>
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="RenderTransform">
+                        <TranslateTransform Y="0" />
+                    </Setter>
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+
+    <!-- Hover 상태: 컨트롤 전체 scale 1.1 -->
+    <Style Selector="controls|LevelUpNotification:pointerover">
+        <Style.Animations>
+            <Animation Duration="0:0:0.3" FillMode="Forward" Easing="CubicEaseOut">
+                <KeyFrame Cue="100%">
+                    <Setter Property="RenderTransform">
+                        <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                    </Setter>
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+
+    <!-- Hover 상태: 배경색 흰색 -->
+    <Style Selector="controls|LevelUpNotification:pointerover /template/ Border#PART_Border">
+        <Style.Animations>
+            <Animation Duration="0:0:0.3" FillMode="Forward">
+                <KeyFrame Cue="100%">
+                    <Setter Property="Background" Value="White" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+
+    <!-- Hover 상태: 텍스트색 주황색 -->
+    <Style Selector="controls|LevelUpNotification:pointerover /template/ TextBlock#PART_Text">
+        <Setter Property="RenderTransform">
+            <TranslateTransform Y="0" />
+        </Setter>
+        <Style.Animations>
+            <Animation Duration="0:0:0.3" FillMode="Forward">
+                <KeyFrame Cue="100%">
+                    <Setter Property="Foreground" Value="{StaticResource LevelUp.BackgroundBrush}" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+
+    <!-- Hover 상태: 원형 장식 표시 + bounce 애니메이션 -->
+    <Style Selector="controls|LevelUpNotification:pointerover /template/ Ellipse#PART_Decoration">
+        <Setter Property="Opacity" Value="1" />
+        <Style.Animations>
+            <Animation Duration="0:0:0.5" IterationCount="Infinite">
+                <KeyFrame Cue="0%">
+                    <Setter Property="RenderTransform">
+                        <TranslateTransform Y="0" />
+                    </Setter>
+                </KeyFrame>
+                <KeyFrame Cue="50%">
+                    <Setter Property="RenderTransform">
+                        <TranslateTransform Y="-10" />
+                    </Setter>
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="RenderTransform">
+                        <TranslateTransform Y="0" />
+                    </Setter>
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+
+</Styles>
