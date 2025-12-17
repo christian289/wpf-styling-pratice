@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:GoodQuail97.Avalonia.Lib.Controls"
+        x:Class="GoodQuail97.Avalonia.Gallery.MainWindow"
+        Title="GoodQuail97 - Neon RadioButton Gallery"
+        Width="400"
+        Height="300"
+        Background="#1a1a2e">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="20">
+
+            <TextBlock Text="Neon Glow RadioButtons"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+            <!-- RadioButton Group (원본 HTML 구조 재현) -->
+            <StackPanel Orientation="Horizontal" Spacing="20">
+                <controls:NeonRadioButton GroupName="neonGroup" IsChecked="True"/>
+                <controls:NeonRadioButton GroupName="neonGroup"/>
+                <controls:NeonRadioButton GroupName="neonGroup"/>
+            </StackPanel>
+
+            <TextBlock Text="Click to select • Hover to scale"
+                       FontSize="12"
+                       Foreground="#888"
+                       HorizontalAlignment="Center"
+                       Margin="0,20,0,0"/>
+
+        </StackPanel>
+    </Grid>
+
+</Window>

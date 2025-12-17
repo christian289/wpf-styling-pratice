@@ -1,0 +1,151 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:GoodQuail97.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/GoodQuail97.Wpf.UI;component/Themes/GoodQuail97Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:GoodQuail97}">
+        <Setter Property="Width" Value="{StaticResource GoodQuail97.Size}" />
+        <Setter Property="Height" Value="{StaticResource GoodQuail97.Size}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background" Value="{StaticResource GoodQuail97.Background.Normal}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:GoodQuail97}">
+                    <Grid>
+                        <!-- Outer Border with Glow Effect -->
+                        <!-- 외부 테두리와 글로우 효과 -->
+                        <Border x:Name="OuterBorder"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{StaticResource GoodQuail97.CornerRadius}"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <ScaleTransform x:Name="ScaleTransform"
+                                                ScaleX="{StaticResource GoodQuail97.Scale.Normal}"
+                                                ScaleY="{StaticResource GoodQuail97.Scale.Normal}" />
+                            </Border.RenderTransform>
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="GlowEffect"
+                                                  ShadowDepth="0"
+                                                  BlurRadius="20"
+                                                  Color="{StaticResource GoodQuail97.Glow.Purple.Color}"
+                                                  Opacity="1" />
+                            </Border.Effect>
+
+                            <!-- Inner Circle for Checked State -->
+                            <!-- 체크 상태를 위한 내부 원 -->
+                            <Ellipse x:Name="CheckedIndicator"
+                                     Width="20"
+                                     Height="20"
+                                     Fill="{StaticResource GoodQuail97.Checked.Background}"
+                                     Opacity="0" />
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover State -->
+                        <!-- 호버 상태 -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="{StaticResource GoodQuail97.Scale.Hover}"
+                                                         Duration="0:0:0.5" />
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         To="{StaticResource GoodQuail97.Scale.Hover}"
+                                                         Duration="0:0:0.5" />
+                                        <ColorAnimation Storyboard.TargetName="OuterBorder"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        To="{StaticResource GoodQuail97.Background.Hover.Color}"
+                                                        Duration="0:0:0.5" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="{StaticResource GoodQuail97.Scale.Normal}"
+                                                         Duration="0:0:0.5" />
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         To="{StaticResource GoodQuail97.Scale.Normal}"
+                                                         Duration="0:0:0.5" />
+                                        <ColorAnimation Storyboard.TargetName="OuterBorder"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        To="{StaticResource GoodQuail97.Background.Normal.Color}"
+                                                        Duration="0:0:0.5" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                        <!-- Checked State -->
+                        <!-- 체크 상태 -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="CheckedIndicator"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="CheckedIndicator"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                    <ControlTemplate.Resources>
+                        <!-- Glow Animation (infinite loop) -->
+                        <!-- 글로우 애니메이션 (무한 반복) -->
+                        <Storyboard x:Key="GlowAnimation" RepeatBehavior="Forever">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="GlowEffect"
+                                                          Storyboard.TargetProperty="Color">
+                                <LinearColorKeyFrame KeyTime="0:0:0" Value="{StaticResource GoodQuail97.Glow.Purple.Color}" />
+                                <LinearColorKeyFrame KeyTime="0:0:0.5" Value="{StaticResource GoodQuail97.Glow.Cyan.Color}" />
+                                <LinearColorKeyFrame KeyTime="0:0:1" Value="{StaticResource GoodQuail97.Glow.Purple.Color}" />
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <!-- Start Glow Animation when control is loaded -->
+        <!-- 컨트롤이 로드되면 글로우 애니메이션 시작 -->
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard>
+                    <Storyboard RepeatBehavior="Forever">
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Effect).(DropShadowEffect.Color)">
+                            <LinearColorKeyFrame KeyTime="0:0:0" Value="{StaticResource GoodQuail97.Glow.Purple.Color}" />
+                            <LinearColorKeyFrame KeyTime="0:0:0.5" Value="{StaticResource GoodQuail97.Glow.Cyan.Color}" />
+                            <LinearColorKeyFrame KeyTime="0:0:1" Value="{StaticResource GoodQuail97.Glow.Purple.Color}" />
+                        </ColorAnimationUsingKeyFrames>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

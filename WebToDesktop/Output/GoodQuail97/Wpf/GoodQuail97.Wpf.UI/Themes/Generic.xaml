@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/GoodQuail97.Wpf.UI;component/Themes/GoodQuail97.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

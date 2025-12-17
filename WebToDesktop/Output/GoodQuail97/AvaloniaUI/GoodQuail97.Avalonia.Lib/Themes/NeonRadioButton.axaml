@@ -1,0 +1,90 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:GoodQuail97.Avalonia.Lib.Controls">
+
+    <!--
+    NeonRadioButton Style - Neon Glow Effect RadioButton
+    From Uiverse.io by radwakhalil22
+    Converted to AvaloniaUI CustomControl
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="NeonRadioButton.Background">#4D051310</Color>
+    <Color x:Key="NeonRadioButton.Background.Hover">#C3BACC</Color>
+    <Color x:Key="NeonRadioButton.Checked.Fill">White</Color>
+    <Color x:Key="NeonRadioButton.Glow.Purple">#5D34A8</Color>
+    <Color x:Key="NeonRadioButton.Glow.Cyan">#51E0D2</Color>
+
+    <ControlTheme x:Key="{x:Type controls:NeonRadioButton}" TargetType="controls:NeonRadioButton">
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="RenderTransform">
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Main Circle Background -->
+                    <Border x:Name="PART_MainBorder"
+                            Width="30"
+                            Height="30"
+                            CornerRadius="15"
+                            Background="{StaticResource NeonRadioButton.Background}"
+                            BoxShadow="5 5 20 #5D34A8, -5 -5 20 #5D34A8">
+
+                        <!-- Checked Indicator -->
+                        <Ellipse x:Name="PART_CheckedIndicator"
+                                 Width="26"
+                                 Height="26"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Fill="White"
+                                 Opacity="0"/>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Glow Animation (기본 상태) -->
+        <Style Selector="^ /template/ Border#PART_MainBorder">
+            <Style.Animations>
+                <Animation Duration="0:0:1" IterationCount="Infinite">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="BoxShadow" Value="5 5 20 #5D34A8, -5 -5 20 #5D34A8"/>
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="BoxShadow" Value="5 5 20 #51E0D2, -5 -5 20 #51E0D2"/>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="BoxShadow" Value="5 5 20 #5D34A8, -5 -5 20 #5D34A8"/>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Hover State -->
+        <Style Selector="^:pointerover /template/ Border#PART_MainBorder">
+            <Setter Property="Background" Value="{StaticResource NeonRadioButton.Background.Hover}"/>
+        </Style>
+
+        <Style Selector="^:pointerover">
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Checked State -->
+        <Style Selector="^[IsChecked=True] /template/ Ellipse#PART_CheckedIndicator">
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

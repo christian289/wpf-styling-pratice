@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="GoodQuail97.Wpf.Gallery/GoodQuail97.Wpf.Gallery.csproj" />
+  <Project Path="GoodQuail97.Wpf.UI/GoodQuail97.Wpf.UI.csproj" />
+</Solution>
