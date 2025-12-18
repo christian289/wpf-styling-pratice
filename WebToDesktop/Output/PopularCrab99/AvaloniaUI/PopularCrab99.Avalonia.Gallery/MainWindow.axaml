@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:PopularCrab99.Avalonia.Lib.Controls"
+        x:Class="PopularCrab99.Avalonia.Gallery.MainWindow"
+        Title="PopularCrab99 - Cube Loader Gallery"
+        Width="400" Height="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#1a1a2e">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- Title -->
+        <TextBlock Grid.Row="0"
+                   Text="Cube Loader"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,10"/>
+
+        <!-- Loader -->
+        <controls:CubeLoader Grid.Row="1"
+                             x:Name="Loader"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"/>
+
+        <!-- Control Panel -->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="0,20">
+            <CheckBox x:Name="RunningCheckBox"
+                      Content="Running"
+                      IsChecked="{Binding #Loader.IsRunning}"
+                      Foreground="White"
+                      VerticalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+
+</Window>
