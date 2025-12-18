@@ -198,6 +198,70 @@ public class MyControl : Control
 
 ---
 
+## BoolToVisibilityConverter
+
+bool 값을 Visibility로 변환. WPF 기본 BooleanToVisibilityConverter에는 Default 멤버가 없으므로 커스텀 구현.
+
+```csharp
+namespace MyApp.Converters;
+
+/// <summary>
+/// bool 값을 Visibility로 변환합니다.
+/// Converts bool value to Visibility.
+/// </summary>
+public sealed class BoolToVisibilityConverter : IValueConverter
+{
+    public static readonly BoolToVisibilityConverter Instance = new();
+
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        var invert = parameter is "Invert" or "invert";
+        var isVisible = value is true;
+
+        if (invert)
+        {
+            isVisible = !isVisible;
+        }
+
+        return isVisible ? Visibility.Visible : Visibility.Collapsed;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        var invert = parameter is "Invert" or "invert";
+        var isVisible = value is Visibility.Visible;
+
+        return invert ? !isVisible : isVisible;
+    }
+}
+```
+
+### XAML 사용
+
+```xml
+<!-- 기본 사용 -->
+<Border Visibility="{Binding IsEnabled,
+    Converter={x:Static local:BoolToVisibilityConverter.Instance}}"/>
+
+<!-- 반전 사용 (true일 때 Collapsed) -->
+<Border Visibility="{Binding IsLoading,
+    Converter={x:Static local:BoolToVisibilityConverter.Instance},
+    ConverterParameter=Invert}"/>
+```
+
+### ResourceDictionary 방식
+
+```xml
+<ResourceDictionary>
+    <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+</ResourceDictionary>
+
+<Border Visibility="{Binding IsEnabled,
+    Converter={StaticResource BoolToVisibilityConverter}}"/>
+```
+
+---
+
 ## GlobalUsings.cs
 
 Converter 프로젝트용 전역 using:

@@ -12,6 +12,11 @@
 | C006   | 회전 요소 Grid 컨테이너 오류         | `#layout` `#canvas` `#grid` `#rotate`      | [layout.md](layout.md#c006)       |
 | C007   | CSS height: 130% 해석 오류           | `#transform` `#height` `#diagonal`         | [transform.md](transform.md#c007) |
 | C008   | ContentPresenter Canvas 내 배치 오류 | `#layout` `#canvas` `#alignment`           | [layout.md](layout.md#c008)       |
+| C009   | StackPanel.Spacing 속성 없음         | `#layout` `#stackpanel` `#avalonia-only`   | [wpf-limitations.md](wpf-limitations.md#c009) |
+| C010   | BooleanToVisibilityConverter.Default 없음 | `#converter` `#singleton`             | [wpf-limitations.md](wpf-limitations.md#c010) |
+| C011   | Trigger TargetName Transform 참조 불가 | `#trigger` `#transform` `#property-path` | [wpf-limitations.md](wpf-limitations.md#c011) |
+| C012   | CornerRadius.Empty 없음              | `#cornerradius` `#animation`               | [wpf-limitations.md](wpf-limitations.md#c012) |
+| C013   | XML 주석에서 '--' 사용 불가           | `#xml` `#comment` `#css-variable`          | [wpf-limitations.md](wpf-limitations.md#c013) |
 
 ## 태그별 분류
 
@@ -34,6 +39,19 @@
 
 - [C002: 그라데이션 바 개수 오류](transform.md#c002)
 - [C007: CSS height: 130% 해석 오류](transform.md#c007)
+- [C011: Trigger TargetName Transform 참조 불가](wpf-limitations.md#c011)
+
+### #wpf-limitations (WPF 제한사항)
+
+- [C009: StackPanel.Spacing 속성 없음](wpf-limitations.md#c009)
+- [C010: BooleanToVisibilityConverter.Default 없음](wpf-limitations.md#c010)
+- [C011: Trigger TargetName Transform 참조 불가](wpf-limitations.md#c011)
+- [C012: CornerRadius.Empty 없음](wpf-limitations.md#c012)
+- [C013: XML 주석에서 '--' 사용 불가](wpf-limitations.md#c013)
+
+### #converter
+
+- [C010: BooleanToVisibilityConverter.Default 없음](wpf-limitations.md#c010)
 
 ## 케이스 추가 방법
 
