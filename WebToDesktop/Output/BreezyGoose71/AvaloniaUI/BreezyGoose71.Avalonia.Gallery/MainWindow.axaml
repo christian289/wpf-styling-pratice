@@ -1,0 +1,43 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:BreezyGoose71.Avalonia.Lib.Controls"
+        x:Class="BreezyGoose71.Avalonia.Gallery.MainWindow"
+        Title="BreezyGoose71 - Bookmark Toggle Button Gallery"
+        Width="400"
+        Height="300"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#2D2D30">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="20">
+
+            <!-- 제목 / Title -->
+            <TextBlock Text="Bookmark Toggle Button"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       HorizontalAlignment="Center" />
+
+            <!-- 설명 / Description -->
+            <TextBlock Text="Click to toggle bookmark"
+                       FontSize="12"
+                       Foreground="#888888"
+                       HorizontalAlignment="Center" />
+
+            <!-- 북마크 토글 버튼 / Bookmark Toggle Button -->
+            <controls:BookmarkToggleButton HorizontalAlignment="Center" />
+
+            <!-- 다양한 크기 예시 / Various Size Examples -->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Spacing="15">
+                <controls:BookmarkToggleButton Width="35" Height="35" IconSize="12" />
+                <controls:BookmarkToggleButton Width="45" Height="45" IconSize="15" />
+                <controls:BookmarkToggleButton Width="60" Height="60" IconSize="20" />
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+
+</Window>

@@ -1,0 +1,95 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:BreezyGoose71.Avalonia.Lib.Controls">
+
+    <!-- 색상 리소스 / Color Resources -->
+    <Color x:Key="BookmarkToggleButton.Background.Color">#008080</Color>
+    <Color x:Key="BookmarkToggleButton.Background.PointerOver.Color">#006666</Color>
+    <Color x:Key="BookmarkToggleButton.Background.Pressed.Color">#005555</Color>
+    <Color x:Key="BookmarkToggleButton.Icon.Stroke.Color">#FFFFFF</Color>
+    <Color x:Key="BookmarkToggleButton.Icon.Fill.Unchecked.Color">#00DDDDDD</Color>
+    <Color x:Key="BookmarkToggleButton.Icon.Fill.Checked.Color">#FFFFFF</Color>
+
+    <SolidColorBrush x:Key="BookmarkToggleButton.Background.Brush" Color="{StaticResource BookmarkToggleButton.Background.Color}" />
+    <SolidColorBrush x:Key="BookmarkToggleButton.Background.PointerOver.Brush" Color="{StaticResource BookmarkToggleButton.Background.PointerOver.Color}" />
+    <SolidColorBrush x:Key="BookmarkToggleButton.Background.Pressed.Brush" Color="{StaticResource BookmarkToggleButton.Background.Pressed.Color}" />
+    <SolidColorBrush x:Key="BookmarkToggleButton.Icon.Stroke.Brush" Color="{StaticResource BookmarkToggleButton.Icon.Stroke.Color}" />
+    <SolidColorBrush x:Key="BookmarkToggleButton.Icon.Fill.Unchecked.Brush" Color="{StaticResource BookmarkToggleButton.Icon.Fill.Unchecked.Color}" />
+    <SolidColorBrush x:Key="BookmarkToggleButton.Icon.Fill.Checked.Brush" Color="{StaticResource BookmarkToggleButton.Icon.Fill.Checked.Color}" />
+
+    <!-- 북마크 아이콘 지오메트리 / Bookmark Icon Geometry -->
+    <StreamGeometry x:Key="BookmarkToggleButton.Icon.Geometry">M46 62.0085L46 3.88139L3.99609 3.88139L3.99609 62.0085L24.5 45.5L46 62.0085Z</StreamGeometry>
+
+    <!-- BookmarkToggleButton 스타일 / BookmarkToggleButton Style -->
+    <ControlTheme x:Key="{x:Type controls:BookmarkToggleButton}" TargetType="controls:BookmarkToggleButton">
+        <Setter Property="Width" Value="45" />
+        <Setter Property="Height" Value="45" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Background" Value="{StaticResource BookmarkToggleButton.Background.Brush}" />
+        <Setter Property="IconSize" Value="15" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="controls:BookmarkToggleButton">
+                <Border x:Name="PART_Border"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}">
+                    <Panel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Path x:Name="PART_Icon"
+                              Data="{StaticResource BookmarkToggleButton.Icon.Geometry}"
+                              Stroke="{StaticResource BookmarkToggleButton.Icon.Stroke.Brush}"
+                              StrokeThickness="7"
+                              Fill="{StaticResource BookmarkToggleButton.Icon.Fill.Unchecked.Brush}"
+                              Stretch="Uniform"
+                              Width="{TemplateBinding IconSize}"
+                              StrokeDashArray="200,0"
+                              StrokeDashOffset="0">
+                            <Path.Transitions>
+                                <Transitions>
+                                    <BrushTransition Property="Fill" Duration="0:0:0.5" />
+                                </Transitions>
+                            </Path.Transitions>
+                        </Path>
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- PointerOver 상태 / PointerOver State -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{StaticResource BookmarkToggleButton.Background.PointerOver.Brush}" />
+        </Style>
+
+        <!-- Pressed 상태 / Pressed State -->
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{StaticResource BookmarkToggleButton.Background.Pressed.Brush}" />
+        </Style>
+
+        <!-- Checked 상태 / Checked State -->
+        <Style Selector="^:checked /template/ Path#PART_Icon">
+            <Setter Property="Fill" Value="{StaticResource BookmarkToggleButton.Icon.Fill.Checked.Brush}" />
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" Easing="LinearEasing">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="StrokeDashArray" Value="0,200" />
+                        <Setter Property="StrokeDashOffset" Value="80" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="StrokeDashArray" Value="200,0" />
+                        <Setter Property="StrokeDashOffset" Value="0" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Unchecked 상태 / Unchecked State -->
+        <Style Selector="^:unchecked /template/ Path#PART_Icon">
+            <Setter Property="Fill" Value="{StaticResource BookmarkToggleButton.Icon.Fill.Unchecked.Brush}" />
+            <Setter Property="StrokeDashArray" Value="200,0" />
+            <Setter Property="StrokeDashOffset" Value="0" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

@@ -1,0 +1,77 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:BreezyGoose71.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/BreezyGoose71.Wpf.UI;component/Themes/BreezyGoose71Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:BreezyGoose71}">
+        <Setter Property="Width" Value="{StaticResource BreezyGoose71.Width}" />
+        <Setter Property="Height" Value="{StaticResource BreezyGoose71.Height}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background" Value="{StaticResource BreezyGoose71.Background}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:BreezyGoose71}">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{StaticResource BreezyGoose71.CornerRadius}">
+                        <Path x:Name="PART_Icon"
+                              Width="{StaticResource BreezyGoose71.Icon.Width}"
+                              Height="{StaticResource BreezyGoose71.Icon.Height}"
+                              Data="{StaticResource BreezyGoose71.Icon.Geometry}"
+                              Stroke="{StaticResource BreezyGoose71.Icon.Stroke}"
+                              StrokeThickness="{StaticResource BreezyGoose71.Icon.StrokeThickness}"
+                              Fill="{StaticResource BreezyGoose71.Icon.Fill.Unchecked}"
+                              Stretch="Uniform"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center">
+                            <Path.RenderTransform>
+                                <ScaleTransform x:Name="IconScaleTransform" ScaleX="1" ScaleY="1" />
+                            </Path.RenderTransform>
+                            <Path.RenderTransformOrigin>
+                                <Point X="0.5" Y="0.5" />
+                            </Path.RenderTransformOrigin>
+                        </Path>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Checked 상태: 아이콘 채우기 및 애니메이션 -->
+                        <!-- Checked state: icon fill and animation -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="PART_Icon" Property="Fill" Value="{StaticResource BreezyGoose71.Icon.Fill.Checked}" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- 스케일 애니메이션: 1 -> 1.2 -> 1 -->
+                                        <!-- Scale animation: 1 -> 1.2 -> 1 -->
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="IconScaleTransform"
+                                                                       Storyboard.TargetProperty="ScaleX">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="1.2" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="IconScaleTransform"
+                                                                       Storyboard.TargetProperty="ScaleY">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="1.2" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+
+                        <!-- Unchecked 상태: 아이콘 채우기 제거 -->
+                        <!-- Unchecked state: remove icon fill -->
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="PART_Icon" Property="Fill" Value="{StaticResource BreezyGoose71.Icon.Fill.Unchecked}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
