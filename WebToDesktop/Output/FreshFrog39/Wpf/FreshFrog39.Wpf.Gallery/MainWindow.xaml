@@ -1,0 +1,52 @@
+<Window x:Class="FreshFrog39.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:FreshFrog39.Wpf.UI.Controls;assembly=FreshFrog39.Wpf.UI"
+        mc:Ignorable="d"
+        Title="FreshFrog39 Loader Gallery" Height="450" Width="800"
+        Background="#1a1a2e">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 헤더 -->
+        <TextBlock Grid.Row="0"
+                   Text="FreshFrog39 - Fading Dots Loader"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,10"/>
+
+        <!-- 컨트롤 데모 영역 -->
+        <StackPanel Grid.Row="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+
+            <!-- 기본 스피너 -->
+            <controls:FreshFrog39 Margin="20"/>
+
+            <!-- 커스텀 색상 스피너 -->
+            <controls:FreshFrog39 Margin="20">
+                <controls:FreshFrog39.DotColor>
+                    <SolidColorBrush Color="#e94560"/>
+                </controls:FreshFrog39.DotColor>
+            </controls:FreshFrog39>
+
+            <!-- 크기 변경 스피너 -->
+            <controls:FreshFrog39 Margin="20"
+                                  DotSize="30"
+                                  DotGap="10"
+                                  Width="150"
+                                  Height="60">
+                <controls:FreshFrog39.DotColor>
+                    <SolidColorBrush Color="#00d9ff"/>
+                </controls:FreshFrog39.DotColor>
+            </controls:FreshFrog39>
+        </StackPanel>
+    </Grid>
+</Window>

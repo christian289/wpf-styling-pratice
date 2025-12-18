@@ -1,0 +1,43 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:FreshFrog39.Avalonia.Lib.Controls"
+        x:Class="FreshFrog39.Avalonia.Gallery.MainWindow"
+        Title="FreshFrog39 Spinner - AvaloniaUI Gallery"
+        Width="400"
+        Height="400"
+        Background="#1a1a1a">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Header -->
+        <TextBlock Grid.Row="0"
+                   Text="FreshFrog39 Spinner"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,0" />
+
+        <!-- Spinner -->
+        <controls:FreshFrog39Spinner Grid.Row="1"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+
+        <!-- Footer -->
+        <StackPanel Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,20"
+                    Spacing="4">
+            <TextBlock Text="From Uiverse.io by satyamchaudharydev"
+                       FontSize="12"
+                       Foreground="#888888"
+                       HorizontalAlignment="Center" />
+            <TextBlock Text="Tags: loader"
+                       FontSize="10"
+                       Foreground="#666666"
+                       HorizontalAlignment="Center" />
+        </StackPanel>
+
+    </Grid>
+
+</Window>

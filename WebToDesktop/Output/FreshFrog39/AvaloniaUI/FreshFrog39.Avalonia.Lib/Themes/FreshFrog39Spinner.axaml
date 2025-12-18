@@ -1,0 +1,114 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:FreshFrog39.Avalonia.Lib.Controls">
+
+    <!--
+    FreshFrog39Spinner Style
+    From Uiverse.io by satyamchaudharydev - Tags: loader
+    3개의 원이 순차적으로 페이드 애니메이션을 실행
+    Three circles that fade in sequence
+    -->
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="#1a1a1a">
+            <controls:FreshFrog39Spinner />
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type controls:FreshFrog39Spinner}" TargetType="controls:FreshFrog39Spinner">
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="100" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Spacing="{TemplateBinding Gap}">
+                    <!-- Circle 1 -->
+                    <Ellipse x:Name="PART_Circle1"
+                             Width="{TemplateBinding CircleSize}"
+                             Height="{TemplateBinding CircleSize}"
+                             Fill="{TemplateBinding SpinnerColor}"
+                             Opacity="0" />
+                    <!-- Circle 2 -->
+                    <Ellipse x:Name="PART_Circle2"
+                             Width="{TemplateBinding CircleSize}"
+                             Height="{TemplateBinding CircleSize}"
+                             Fill="{TemplateBinding SpinnerColor}"
+                             Opacity="0" />
+                    <!-- Circle 3 -->
+                    <Ellipse x:Name="PART_Circle3"
+                             Width="{TemplateBinding CircleSize}"
+                             Height="{TemplateBinding CircleSize}"
+                             Fill="{TemplateBinding SpinnerColor}"
+                             Opacity="0" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+
+        <!--
+        Fade Animation for Circle 1
+        CSS: animation: fade 1s ease-in-out infinite
+        0% -> 1, 60% -> 0, 100% -> 1
+        -->
+        <Style Selector="^:not(:disabled) /template/ Ellipse#PART_Circle1">
+            <Style.Animations>
+                <Animation Duration="0:0:1" IterationCount="Infinite" Easing="SineEaseInOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="60%">
+                        <Setter Property="Opacity" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!--
+        Fade Animation for Circle 2
+        CSS: animation: fade 1s ease-in-out 0.33s infinite
+        Delay: 0.33s (330ms)
+        -->
+        <Style Selector="^:not(:disabled) /template/ Ellipse#PART_Circle2">
+            <Style.Animations>
+                <Animation Duration="0:0:1" IterationCount="Infinite" Easing="SineEaseInOut" Delay="0:0:0.33">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="60%">
+                        <Setter Property="Opacity" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!--
+        Fade Animation for Circle 3
+        CSS: animation: fade 1s ease-in-out 0.66s infinite
+        Delay: 0.66s (660ms)
+        -->
+        <Style Selector="^:not(:disabled) /template/ Ellipse#PART_Circle3">
+            <Style.Animations>
+                <Animation Duration="0:0:1" IterationCount="Infinite" Easing="SineEaseInOut" Delay="0:0:0.66">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="60%">
+                        <Setter Property="Opacity" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

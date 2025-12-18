@@ -1,0 +1,29 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- CSS 변수 매핑 -->
+    <!-- [clr] rgb(0, 113, 128) -->
+    <SolidColorBrush x:Key="FreshFrog39.DotColor" Color="#007180"/>
+
+    <!-- [gap] 6px -->
+    <sys:Double x:Key="FreshFrog39.DotGap">6</sys:Double>
+
+    <!-- 컨테이너 크기 100px -->
+    <sys:Double x:Key="FreshFrog39.ContainerSize">100</sys:Double>
+
+    <!-- 각 점 크기 20px -->
+    <sys:Double x:Key="FreshFrog39.DotSize">20</sys:Double>
+
+    <!-- 애니메이션 Duration 1s -->
+    <Duration x:Key="FreshFrog39.AnimationDuration">0:0:1</Duration>
+
+    <!-- 각 점의 애니메이션 딜레이 -->
+    <!-- 첫 번째 점: 0s -->
+    <KeyTime x:Key="FreshFrog39.Dot1.BeginTime">0:0:0</KeyTime>
+    <!-- 두 번째 점: 0.33s -->
+    <KeyTime x:Key="FreshFrog39.Dot2.BeginTime">0:0:0.33</KeyTime>
+    <!-- 세 번째 점: 0.66s -->
+    <KeyTime x:Key="FreshFrog39.Dot3.BeginTime">0:0:0.66</KeyTime>
+
+</ResourceDictionary>
