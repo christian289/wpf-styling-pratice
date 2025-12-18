@@ -1,0 +1,47 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:FoolishBulldog87.Avalonia.Lib.Controls"
+        x:Class="FoolishBulldog87.Avalonia.Gallery.MainWindow"
+        Title="FoolishBulldog87 CheckBox Gallery"
+        Width="400"
+        Height="300"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#1a1a2e">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="20">
+
+            <TextBlock Text="FoolishBulldog87 CheckBox"
+                       Foreground="White"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center" />
+
+            <TextBlock Text="Original design by elijahgummer from Uiverse.io"
+                       Foreground="#888888"
+                       FontSize="12"
+                       HorizontalAlignment="Center" />
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Spacing="30"
+                        Margin="0,20,0,0">
+
+                <!-- 체크박스 3개 데모 -->
+                <controls:FoolishBulldog87CheckBox />
+                <controls:FoolishBulldog87CheckBox IsChecked="True" />
+                <controls:FoolishBulldog87CheckBox />
+
+            </StackPanel>
+
+            <TextBlock Text="Click to toggle"
+                       Foreground="#666666"
+                       FontSize="11"
+                       HorizontalAlignment="Center"
+                       Margin="0,10,0,0" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>

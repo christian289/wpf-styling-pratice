@@ -1,0 +1,37 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- CSS 변수 매핑: 원본 CSS 색상 및 수치 -->
+    <!-- [checkbox-border-color] = #dc143c (Crimson) -->
+    <!-- [checkbox-check-stroke] = #f9f9f9 -->
+    <!-- [checkbox-hover-bg] = #ff475425 (25% opacity) -->
+    <!-- [checkbox-checked-bg] = #dc143c -->
+    <!-- [stroke-dasharray] = 25 -->
+    <!-- [stroke-dashoffset-unchecked] = 25 -->
+    <!-- [stroke-dashoffset-checked] = 0 -->
+    <!-- [border-width] = 0.2rem (약 3.2px) -->
+    <!-- [border-radius] = 0.2rem (약 3.2px) -->
+
+    <!-- 색상 리소스 -->
+    <SolidColorBrush x:Key="FoolishBulldog87.Border.Brush" Color="#DC143C"/>
+    <SolidColorBrush x:Key="FoolishBulldog87.Check.Stroke" Color="#F9F9F9"/>
+    <SolidColorBrush x:Key="FoolishBulldog87.Hover.Background" Color="#25FF4754"/>
+    <SolidColorBrush x:Key="FoolishBulldog87.Checked.Background" Color="#DC143C"/>
+    <SolidColorBrush x:Key="FoolishBulldog87.Default.Background" Color="Transparent"/>
+
+    <!-- 크기 리소스 -->
+    <sys:Double x:Key="FoolishBulldog87.Size">28</sys:Double>
+    <sys:Double x:Key="FoolishBulldog87.Border.Thickness">3.2</sys:Double>
+    <CornerRadius x:Key="FoolishBulldog87.Border.Radius">3.2</CornerRadius>
+
+    <!-- Stroke 관련 수치 -->
+    <sys:Double x:Key="FoolishBulldog87.StrokeDashArray">25</sys:Double>
+    <sys:Double x:Key="FoolishBulldog87.StrokeDashOffset.Unchecked">25</sys:Double>
+    <sys:Double x:Key="FoolishBulldog87.StrokeDashOffset.Checked">0</sys:Double>
+    <sys:Double x:Key="FoolishBulldog87.StrokeThickness">3.2</sys:Double>
+
+    <!-- 체크마크 Path 데이터 (polyline: 20,6 → 9,17 → 4,12) -->
+    <StreamGeometry x:Key="FoolishBulldog87.Check.Geometry">M 20,6 L 9,17 L 4,12</StreamGeometry>
+
+</ResourceDictionary>

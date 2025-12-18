@@ -1,0 +1,78 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:FoolishBulldog87.Avalonia.Lib.Controls">
+
+    <!--
+    Original design by elijahgummer from Uiverse.io
+    SVG 체크마크 애니메이션이 있는 체크박스
+    Checkbox with animated SVG checkmark
+    -->
+
+    <!-- Colors -->
+    <Color x:Key="FoolishBulldog87.CheckBox.BorderColor">#DC143C</Color>
+    <Color x:Key="FoolishBulldog87.CheckBox.CheckedBackgroundColor">#DC143C</Color>
+    <Color x:Key="FoolishBulldog87.CheckBox.HoverBackgroundColor">#25FF4754</Color>
+    <Color x:Key="FoolishBulldog87.CheckBox.CheckmarkColor">#F9F9F9</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="FoolishBulldog87.CheckBox.BorderBrush" Color="{StaticResource FoolishBulldog87.CheckBox.BorderColor}" />
+    <SolidColorBrush x:Key="FoolishBulldog87.CheckBox.CheckedBackgroundBrush" Color="{StaticResource FoolishBulldog87.CheckBox.CheckedBackgroundColor}" />
+    <SolidColorBrush x:Key="FoolishBulldog87.CheckBox.HoverBackgroundBrush" Color="{StaticResource FoolishBulldog87.CheckBox.HoverBackgroundColor}" />
+    <SolidColorBrush x:Key="FoolishBulldog87.CheckBox.CheckmarkBrush" Color="{StaticResource FoolishBulldog87.CheckBox.CheckmarkColor}" />
+
+    <!-- Style -->
+    <ControlTheme x:Key="{x:Type controls:FoolishBulldog87CheckBox}" TargetType="controls:FoolishBulldog87CheckBox">
+        <Setter Property="Width" Value="28" />
+        <Setter Property="Height" Value="28" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="PART_Border"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Background="Transparent"
+                        BorderBrush="{StaticResource FoolishBulldog87.CheckBox.BorderBrush}"
+                        BorderThickness="3"
+                        CornerRadius="3">
+                    <!-- SVG Checkmark: points="20 6 9 17 4 12" -->
+                    <Path x:Name="PART_Checkmark"
+                          Stroke="{StaticResource FoolishBulldog87.CheckBox.CheckmarkBrush}"
+                          StrokeThickness="3"
+                          StrokeLineCap="Round"
+                          Data="M 20,6 L 9,17 L 4,12"
+                          StrokeDashArray="4,4"
+                          StrokeDashOffset="4"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center">
+                        <Path.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="StrokeDashOffset" Duration="0:0:0.6" Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Path.Transitions>
+                    </Path>
+                    <Border.Transitions>
+                        <Transitions>
+                            <BrushTransition Property="Background" Duration="0:0:0.4" />
+                        </Transitions>
+                    </Border.Transitions>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- PointerOver State (Hover) -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{StaticResource FoolishBulldog87.CheckBox.HoverBackgroundBrush}" />
+        </Style>
+
+        <!-- Checked State -->
+        <Style Selector="^:checked /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{StaticResource FoolishBulldog87.CheckBox.CheckedBackgroundBrush}" />
+        </Style>
+
+        <Style Selector="^:checked /template/ Path#PART_Checkmark">
+            <Setter Property="StrokeDashOffset" Value="0" />
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>
