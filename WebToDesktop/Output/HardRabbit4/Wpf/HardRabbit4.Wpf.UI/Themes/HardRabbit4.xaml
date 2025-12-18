@@ -1,0 +1,68 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:HardRabbit4.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/HardRabbit4.Wpf.UI;component/Themes/HardRabbit4Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--
+        CSS 원본:
+        background: rgba(29, 31, 32, 0.904)
+            radial-gradient(rgba(255, 255, 255, 0.712) 10%, transparent 1%);
+        background-size: 11px 11px;
+
+        WPF 변환:
+        DrawingBrush를 사용하여 타일 패턴 생성
+        - TileMode="Tile"로 반복 패턴
+        - Viewport="0,0,11,11"로 11px x 11px 크기
+        - EllipseGeometry로 도트 그리기
+    -->
+
+    <!-- 도트 패턴 브러시 -->
+    <!-- Dot pattern brush -->
+    <DrawingBrush x:Key="HardRabbit4.DotPattern.Brush"
+                  TileMode="Tile"
+                  Viewport="0,0,11,11"
+                  ViewportUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <GeometryDrawing Brush="{StaticResource HardRabbit4.Dot.Brush}">
+                <GeometryDrawing.Geometry>
+                    <!-- 도트 중앙 배치: center=5.5,5.5 (11/2), radius=0.55 -->
+                    <!-- Dot centered: center=5.5,5.5 (11/2), radius=0.55 -->
+                    <EllipseGeometry Center="5.5,5.5" RadiusX="0.55" RadiusY="0.55" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <Style TargetType="{x:Type controls:HardRabbit4}">
+        <Setter Property="Background" Value="{StaticResource HardRabbit4.Background}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:HardRabbit4}">
+                    <!-- 배경색 + 도트 패턴 레이어 구조 -->
+                    <!-- Background color + dot pattern layer structure -->
+                    <Grid>
+                        <!-- 배경색 레이어 -->
+                        <!-- Background color layer -->
+                        <Border Background="{TemplateBinding Background}" />
+
+                        <!-- 도트 패턴 레이어 -->
+                        <!-- Dot pattern layer -->
+                        <Border Background="{StaticResource HardRabbit4.DotPattern.Brush}" />
+
+                        <!-- 콘텐츠 레이어 -->
+                        <!-- Content layer -->
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

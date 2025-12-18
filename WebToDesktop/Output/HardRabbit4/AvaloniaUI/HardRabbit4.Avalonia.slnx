@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="HardRabbit4.Avalonia.Lib\HardRabbit4.Avalonia.Lib.csproj" />
+  <Project Path="HardRabbit4.Avalonia.Gallery\HardRabbit4.Avalonia.Gallery.csproj" />
+</Solution>

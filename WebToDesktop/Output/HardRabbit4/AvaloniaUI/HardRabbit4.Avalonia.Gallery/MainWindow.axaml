@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:HardRabbit4.Avalonia.Lib.Controls"
+        x:Class="HardRabbit4.Avalonia.Gallery.MainWindow"
+        Title="HardRabbit4 - Dot Pattern Background"
+        Width="800"
+        Height="600">
+
+    <!--
+    From Uiverse.io by escannord
+    Tags: simple, black, pattern
+    점 패턴 배경을 가진 컨테이너
+    -->
+
+    <controls:DotPatternBackground>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="20">
+
+            <TextBlock Text="Dot Pattern Background"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       HorizontalAlignment="Center" />
+
+            <TextBlock Text="From Uiverse.io by escannord"
+                       FontSize="16"
+                       Foreground="#AAAAAA"
+                       HorizontalAlignment="Center" />
+
+            <Border Background="#40FFFFFF"
+                    CornerRadius="8"
+                    Padding="20"
+                    Margin="0,20,0,0">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Properties:"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               Foreground="White" />
+                    <TextBlock Text="• BackgroundColor: rgba(29, 31, 32, 0.904)"
+                               FontSize="12"
+                               Foreground="#CCCCCC" />
+                    <TextBlock Text="• DotColor: rgba(255, 255, 255, 0.712)"
+                               FontSize="12"
+                               Foreground="#CCCCCC" />
+                    <TextBlock Text="• DotSize: 11px"
+                               FontSize="12"
+                               Foreground="#CCCCCC" />
+                    <TextBlock Text="• DotRadiusRatio: 10%"
+                               FontSize="12"
+                               Foreground="#CCCCCC" />
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </controls:DotPatternBackground>
+
+</Window>

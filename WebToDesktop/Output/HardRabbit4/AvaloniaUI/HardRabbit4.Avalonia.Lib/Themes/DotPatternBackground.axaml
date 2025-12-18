@@ -1,0 +1,37 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:HardRabbit4.Avalonia.Lib.Controls">
+
+    <!--
+    DotPatternBackground 컨트롤 스타일
+    점 패턴 배경을 가진 컨테이너
+    From Uiverse.io by escannord - Tags: simple, black, pattern
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="DotPattern.BackgroundColor">#E61D1F20</Color>
+    <Color x:Key="DotPattern.DotColor">#B5FFFFFF</Color>
+    <x:Double x:Key="DotPattern.DotSize">11</x:Double>
+    <x:Double x:Key="DotPattern.DotRadiusRatio">0.10</x:Double>
+
+    <ControlTheme x:Key="{x:Type controls:DotPatternBackground}" TargetType="controls:DotPatternBackground">
+        <Setter Property="BackgroundColor" Value="{StaticResource DotPattern.BackgroundColor}" />
+        <Setter Property="DotColor" Value="{StaticResource DotPattern.DotColor}" />
+        <Setter Property="DotSize" Value="{StaticResource DotPattern.DotSize}" />
+        <Setter Property="DotRadiusRatio" Value="{StaticResource DotPattern.DotRadiusRatio}" />
+        <Setter Property="ClipToBounds" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <ContentPresenter Name="PART_ContentPresenter"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      Padding="{TemplateBinding Padding}"
+                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

@@ -1,0 +1,30 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+        CSS 원본:
+        background: rgba(29, 31, 32, 0.904)
+        radial-gradient(rgba(255, 255, 255, 0.712) 10%, transparent 1%);
+        background-size: 11px 11px;
+    -->
+
+    <!-- 배경색: rgba(29, 31, 32, 0.904) -->
+    <!-- Background color: rgba(29, 31, 32, 0.904) -->
+    <Color x:Key="HardRabbit4.Background.Color">#E71D1F20</Color>
+    <SolidColorBrush x:Key="HardRabbit4.Background" Color="{StaticResource HardRabbit4.Background.Color}" />
+
+    <!-- 도트 색상: rgba(255, 255, 255, 0.712) -->
+    <!-- Dot color: rgba(255, 255, 255, 0.712) -->
+    <Color x:Key="HardRabbit4.Dot.Color">#B5FFFFFF</Color>
+    <SolidColorBrush x:Key="HardRabbit4.Dot.Brush" Color="{StaticResource HardRabbit4.Dot.Color}" />
+
+    <!-- 도트 패턴 크기: 11px x 11px -->
+    <!-- Dot pattern size: 11px x 11px -->
+    <sys:Double x:Key="HardRabbit4.Pattern.Size">11</sys:Double>
+
+    <!-- 도트 크기 비율: 10% of pattern size = 약 1.1px, 반지름 0.55 -->
+    <!-- Dot size ratio: 10% of pattern size = about 1.1px, radius 0.55 -->
+    <sys:Double x:Key="HardRabbit4.Dot.Radius">0.55</sys:Double>
+
+</ResourceDictionary>
