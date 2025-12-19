@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="CurlyBullfrog98.Wpf.Gallery/CurlyBullfrog98.Wpf.Gallery.csproj" />
+  <Project Path="CurlyBullfrog98.Wpf.UI/CurlyBullfrog98.Wpf.UI.csproj" />
+</Solution>

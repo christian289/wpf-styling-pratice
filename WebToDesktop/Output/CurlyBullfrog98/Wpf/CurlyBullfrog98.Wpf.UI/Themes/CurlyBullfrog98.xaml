@@ -1,0 +1,195 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:CurlyBullfrog98.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/CurlyBullfrog98.Wpf.UI;component/Themes/CurlyBullfrog98Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:CurlyBullfrog98}">
+        <Setter Property="Width" Value="200" />
+        <Setter Property="Height" Value="200" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:CurlyBullfrog98}">
+                    <!--
+                    CSS 원본: 3D perspective 큐브 + X/Y 축 동시 회전
+                    WPF 구현: Viewport3D로 실제 3D 큐브 렌더링
+
+                    Original CSS: 3D perspective cube with simultaneous X/Y axis rotation
+                    WPF implementation: Real 3D cube rendering with Viewport3D
+                    -->
+                    <Viewport3D>
+                        <!-- 카메라: perspective 1000px 시뮬레이션 -->
+                        <!-- Camera: simulating perspective 1000px -->
+                        <Viewport3D.Camera>
+                            <PerspectiveCamera Position="0,0,5"
+                                               LookDirection="0,0,-1"
+                                               UpDirection="0,1,0"
+                                               FieldOfView="45" />
+                        </Viewport3D.Camera>
+
+                        <!-- 조명 -->
+                        <!-- Lighting -->
+                        <ModelVisual3D>
+                            <ModelVisual3D.Content>
+                                <DirectionalLight Color="White" Direction="-1,-1,-3" />
+                            </ModelVisual3D.Content>
+                        </ModelVisual3D>
+                        <ModelVisual3D>
+                            <ModelVisual3D.Content>
+                                <AmbientLight Color="#404040" />
+                            </ModelVisual3D.Content>
+                        </ModelVisual3D>
+
+                        <!-- 3D 큐브 -->
+                        <!-- 3D Cube -->
+                        <ModelVisual3D x:Name="PART_Cube">
+                            <ModelVisual3D.Transform>
+                                <Transform3DGroup>
+                                    <RotateTransform3D>
+                                        <RotateTransform3D.Rotation>
+                                            <AxisAngleRotation3D x:Name="PART_RotationX" Axis="1,0,0" Angle="0" />
+                                        </RotateTransform3D.Rotation>
+                                    </RotateTransform3D>
+                                    <RotateTransform3D>
+                                        <RotateTransform3D.Rotation>
+                                            <AxisAngleRotation3D x:Name="PART_RotationY" Axis="0,1,0" Angle="0" />
+                                        </RotateTransform3D.Rotation>
+                                    </RotateTransform3D>
+                                </Transform3DGroup>
+                            </ModelVisual3D.Transform>
+
+                            <ModelVisual3D.Content>
+                                <Model3DGroup>
+                                    <!-- Front face (Z+) - CSS: translateZ(100px) -->
+                                    <GeometryModel3D Material="{StaticResource CurlyBullfrog98.CubeMaterial}">
+                                        <GeometryModel3D.Geometry>
+                                            <MeshGeometry3D Positions="-1,-1,1 1,-1,1 1,1,1 -1,1,1"
+                                                            TriangleIndices="0,1,2 0,2,3"
+                                                            Normals="0,0,1 0,0,1 0,0,1 0,0,1" />
+                                        </GeometryModel3D.Geometry>
+                                        <GeometryModel3D.BackMaterial>
+                                            <DiffuseMaterial Brush="{StaticResource CurlyBullfrog98.CubeBrush}" />
+                                        </GeometryModel3D.BackMaterial>
+                                    </GeometryModel3D>
+
+                                    <!-- Back face (Z-) - CSS: rotateY(180deg) translateZ(100px) -->
+                                    <GeometryModel3D Material="{StaticResource CurlyBullfrog98.CubeMaterial}">
+                                        <GeometryModel3D.Geometry>
+                                            <MeshGeometry3D Positions="1,-1,-1 -1,-1,-1 -1,1,-1 1,1,-1"
+                                                            TriangleIndices="0,1,2 0,2,3"
+                                                            Normals="0,0,-1 0,0,-1 0,0,-1 0,0,-1" />
+                                        </GeometryModel3D.Geometry>
+                                        <GeometryModel3D.BackMaterial>
+                                            <DiffuseMaterial Brush="{StaticResource CurlyBullfrog98.CubeBrush}" />
+                                        </GeometryModel3D.BackMaterial>
+                                    </GeometryModel3D>
+
+                                    <!-- Top face (Y+) - CSS: rotateX(90deg) translateZ(100px) -->
+                                    <GeometryModel3D Material="{StaticResource CurlyBullfrog98.CubeMaterial}">
+                                        <GeometryModel3D.Geometry>
+                                            <MeshGeometry3D Positions="-1,1,1 1,1,1 1,1,-1 -1,1,-1"
+                                                            TriangleIndices="0,1,2 0,2,3"
+                                                            Normals="0,1,0 0,1,0 0,1,0 0,1,0" />
+                                        </GeometryModel3D.Geometry>
+                                        <GeometryModel3D.BackMaterial>
+                                            <DiffuseMaterial Brush="{StaticResource CurlyBullfrog98.CubeBrush}" />
+                                        </GeometryModel3D.BackMaterial>
+                                    </GeometryModel3D>
+
+                                    <!-- Bottom face (Y-) - CSS: rotateX(-90deg) translateZ(100px) -->
+                                    <GeometryModel3D Material="{StaticResource CurlyBullfrog98.CubeMaterial}">
+                                        <GeometryModel3D.Geometry>
+                                            <MeshGeometry3D Positions="-1,-1,-1 1,-1,-1 1,-1,1 -1,-1,1"
+                                                            TriangleIndices="0,1,2 0,2,3"
+                                                            Normals="0,-1,0 0,-1,0 0,-1,0 0,-1,0" />
+                                        </GeometryModel3D.Geometry>
+                                        <GeometryModel3D.BackMaterial>
+                                            <DiffuseMaterial Brush="{StaticResource CurlyBullfrog98.CubeBrush}" />
+                                        </GeometryModel3D.BackMaterial>
+                                    </GeometryModel3D>
+
+                                    <!-- Left face (X-) - CSS: rotateY(-90deg) translateZ(100px) -->
+                                    <GeometryModel3D Material="{StaticResource CurlyBullfrog98.CubeMaterial}">
+                                        <GeometryModel3D.Geometry>
+                                            <MeshGeometry3D Positions="-1,-1,-1 -1,-1,1 -1,1,1 -1,1,-1"
+                                                            TriangleIndices="0,1,2 0,2,3"
+                                                            Normals="-1,0,0 -1,0,0 -1,0,0 -1,0,0" />
+                                        </GeometryModel3D.Geometry>
+                                        <GeometryModel3D.BackMaterial>
+                                            <DiffuseMaterial Brush="{StaticResource CurlyBullfrog98.CubeBrush}" />
+                                        </GeometryModel3D.BackMaterial>
+                                    </GeometryModel3D>
+
+                                    <!-- Right face (X+) - CSS: rotateY(90deg) translateZ(100px) -->
+                                    <GeometryModel3D Material="{StaticResource CurlyBullfrog98.CubeMaterial}">
+                                        <GeometryModel3D.Geometry>
+                                            <MeshGeometry3D Positions="1,-1,1 1,-1,-1 1,1,-1 1,1,1"
+                                                            TriangleIndices="0,1,2 0,2,3"
+                                                            Normals="1,0,0 1,0,0 1,0,0 1,0,0" />
+                                        </GeometryModel3D.Geometry>
+                                        <GeometryModel3D.BackMaterial>
+                                            <DiffuseMaterial Brush="{StaticResource CurlyBullfrog98.CubeBrush}" />
+                                        </GeometryModel3D.BackMaterial>
+                                    </GeometryModel3D>
+
+                                    <!-- Edge lines (White borders) - CSS: border: 3px solid #fff -->
+                                    <!-- Front face edges -->
+                                    <GeometryModel3D Material="{StaticResource CurlyBullfrog98.EdgeMaterial}">
+                                        <GeometryModel3D.Geometry>
+                                            <MeshGeometry3D Positions="-1,-1,1.01 1,-1,1.01 1,-0.95,1.01 -1,-0.95,1.01"
+                                                            TriangleIndices="0,1,2 0,2,3" />
+                                        </GeometryModel3D.Geometry>
+                                    </GeometryModel3D>
+                                    <GeometryModel3D Material="{StaticResource CurlyBullfrog98.EdgeMaterial}">
+                                        <GeometryModel3D.Geometry>
+                                            <MeshGeometry3D Positions="-1,0.95,1.01 1,0.95,1.01 1,1,1.01 -1,1,1.01"
+                                                            TriangleIndices="0,1,2 0,2,3" />
+                                        </GeometryModel3D.Geometry>
+                                    </GeometryModel3D>
+                                    <GeometryModel3D Material="{StaticResource CurlyBullfrog98.EdgeMaterial}">
+                                        <GeometryModel3D.Geometry>
+                                            <MeshGeometry3D Positions="-1,-1,1.01 -0.95,-1,1.01 -0.95,1,1.01 -1,1,1.01"
+                                                            TriangleIndices="0,1,2 0,2,3" />
+                                        </GeometryModel3D.Geometry>
+                                    </GeometryModel3D>
+                                    <GeometryModel3D Material="{StaticResource CurlyBullfrog98.EdgeMaterial}">
+                                        <GeometryModel3D.Geometry>
+                                            <MeshGeometry3D Positions="0.95,-1,1.01 1,-1,1.01 1,1,1.01 0.95,1,1.01"
+                                                            TriangleIndices="0,1,2 0,2,3" />
+                                        </GeometryModel3D.Geometry>
+                                    </GeometryModel3D>
+                                </Model3DGroup>
+                            </ModelVisual3D.Content>
+                        </ModelVisual3D>
+                    </Viewport3D>
+
+                    <!-- 애니메이션: CSS animation 4s linear infinite -->
+                    <!-- Animation: CSS animation 4s linear infinite -->
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever">
+                                    <!-- X축 회전: 0deg → 360deg -->
+                                    <!-- X-axis rotation: 0deg → 360deg -->
+                                    <DoubleAnimation Storyboard.TargetName="PART_RotationX"
+                                                     Storyboard.TargetProperty="Angle"
+                                                     From="0" To="360"
+                                                     Duration="0:0:4" />
+                                    <!-- Y축 회전: 0deg → 360deg -->
+                                    <!-- Y-axis rotation: 0deg → 360deg -->
+                                    <DoubleAnimation Storyboard.TargetName="PART_RotationY"
+                                                     Storyboard.TargetProperty="Angle"
+                                                     From="0" To="360"
+                                                     Duration="0:0:4" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

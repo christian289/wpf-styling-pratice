@@ -1,0 +1,32 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors from CSS -->
+    <!-- background-color: #01b4f9 -->
+    <Color x:Key="CurlyBullfrog98.CubeColor">#01b4f9</Color>
+    <SolidColorBrush x:Key="CurlyBullfrog98.CubeBrush" Color="{StaticResource CurlyBullfrog98.CubeColor}" />
+
+    <!-- border: 3px solid #fff -->
+    <Color x:Key="CurlyBullfrog98.BorderColor">#FFFFFF</Color>
+    <SolidColorBrush x:Key="CurlyBullfrog98.BorderBrush" Color="{StaticResource CurlyBullfrog98.BorderColor}" />
+
+    <!-- Sizes from CSS -->
+    <!-- width/height: 200px -->
+    <sys:Double x:Key="CurlyBullfrog98.CubeSize">200</sys:Double>
+
+    <!-- border-radius: 10px (not used in 3D, but documented) -->
+    <sys:Double x:Key="CurlyBullfrog98.CornerRadius">10</sys:Double>
+
+    <!-- border: 3px -->
+    <sys:Double x:Key="CurlyBullfrog98.BorderThickness">3</sys:Double>
+
+    <!-- Animation -->
+    <!-- animation: animate 4s linear infinite -->
+    <sys:Double x:Key="CurlyBullfrog98.AnimationDuration">4</sys:Double>
+
+    <!-- 3D Materials -->
+    <DiffuseMaterial x:Key="CurlyBullfrog98.CubeMaterial" Brush="{StaticResource CurlyBullfrog98.CubeBrush}" />
+    <DiffuseMaterial x:Key="CurlyBullfrog98.EdgeMaterial" Brush="{StaticResource CurlyBullfrog98.BorderBrush}" />
+
+</ResourceDictionary>

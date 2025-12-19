@@ -1,0 +1,48 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:CurlyBullfrog98.Avalonia.Lib.Controls"
+        x:Class="CurlyBullfrog98.Avalonia.Gallery.MainWindow"
+        Title="CurlyBullfrog98 - 3D Cube Loader"
+        Width="600"
+        Height="500"
+        Background="#1a1a2e">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- Header -->
+        <TextBlock Grid.Row="0"
+                   Text="3D Cube Loading Animation"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,0"/>
+
+        <TextBlock Grid.Row="0"
+                   Text="(2D Simulation - CSS 3D transforms are not supported in AvaloniaUI)"
+                   FontSize="12"
+                   Foreground="#888888"
+                   HorizontalAlignment="Center"
+                   Margin="0,55,0,0"/>
+
+        <!-- Cube Loader Control -->
+        <controls:CurlyBullfrog98Control Grid.Row="1"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"/>
+
+        <!-- Footer -->
+        <StackPanel Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,20">
+            <TextBlock Text="Original: Uiverse.io by Bodyhc"
+                       FontSize="12"
+                       Foreground="#888888"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="Tags: loading, loader, cube, loading animation, 3d loader"
+                       FontSize="10"
+                       Foreground="#666666"
+                       HorizontalAlignment="Center"
+                       Margin="0,5,0,0"/>
+        </StackPanel>
+    </Grid>
+
+</Window>
