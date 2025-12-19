@@ -1,0 +1,134 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:WickedLiger39.Avalonia.Lib.Controls">
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="#FFFFFF">
+            <StackPanel Spacing="10" Orientation="Horizontal">
+                <controls:GenderOption GroupName="test"
+                                       CircleBackground="#DBEAFE"
+                                       RippleBackground="#BFDBFE"
+                                       RingBrush="#60A5FA"
+                                       IconStroke="#60A5FA"
+                                       IconStrokeThickness="1.5"
+                                       IconData="M15.5631 16.1199C14.871 16.81 13.9885 17.2774 13.0288 17.462C12.0617 17.6492 11.0607 17.5459 10.1523 17.165C8.29113 16.3858 7.07347 14.5723 7.05656 12.5547C7.04683 11.0715 7.70821 9.66348 8.8559 8.72397C10.0036 7.78445 11.5145 7.4142 12.9666 7.71668C13.9237 7.9338 14.7953 8.42902 15.4718 9.14008C16.4206 10.0503 16.9696 11.2996 16.9985 12.6141C17.008 13.9276 16.491 15.1903 15.5631 16.1199Z M14.9415 8.60977L16.0022 9.67043L18.9635 6.70907L17.9029 5.64841L14.9415 8.60977Z M16.0853 6.91458L18.4287 6.92872L18.4377 5.42875L16.0944 5.41461L16.0853 6.91458Z M17.6832 6.18326L17.6973 8.52662L19.1973 8.51756L19.1832 6.17421L17.6832 6.18326Z"/>
+                <controls:GenderOption GroupName="test" IsChecked="True"
+                                       CircleBackground="#FCE7F3"
+                                       RippleBackground="#FBCFE8"
+                                       RingBrush="#F472B6"
+                                       IconFill="#F472B6"
+                                       IconData="M20 9C20 13.0803 16.9453 16.4471 12.9981 16.9383C12.9994 16.9587 13 16.9793 13 17V19H14C14.5523 19 15 19.4477 15 20C15 20.5523 14.5523 21 14 21H13V22C13 22.5523 12.5523 23 12 23C11.4477 23 11 22.5523 11 22V21H10C9.44772 21 9 20.5523 9 20C9 19.4477 9.44772 19 10 19H11V17C11 16.9793 11.0006 16.9587 11.0019 16.9383C7.05466 16.4471 4 13.0803 4 9C4 4.58172 7.58172 1 12 1C16.4183 1 20 4.58172 20 9ZM6.00365 9C6.00365 12.3117 8.68831 14.9963 12 14.9963C15.3117 14.9963 17.9963 12.3117 17.9963 9C17.9963 5.68831 15.3117 3.00365 12 3.00365C8.68831 3.00365 6.00365 5.68831 6.00365 9Z"/>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type controls:GenderOption}" TargetType="controls:GenderOption">
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Ripple Background (scales up when checked) -->
+                    <Ellipse x:Name="PART_Ripple"
+                             Width="50" Height="50"
+                             Fill="{TemplateBinding RippleBackground}"
+                             RenderTransformOrigin="0.5,0.5">
+                        <Ellipse.RenderTransform>
+                            <ScaleTransform ScaleX="0" ScaleY="0"/>
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <!-- Circle Background -->
+                    <Border x:Name="PART_Circle"
+                            Width="50" Height="50"
+                            CornerRadius="25"
+                            Background="{TemplateBinding CircleBackground}"
+                            BoxShadow="0 1 2 0 #80000000"
+                            RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Border.RenderTransform>
+                    </Border>
+
+                    <!-- Icon -->
+                    <Viewbox Width="28" Height="28"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center">
+                        <Path x:Name="PART_Icon"
+                              Data="{TemplateBinding IconData}"
+                              Fill="{TemplateBinding IconFill}"
+                              Stroke="{TemplateBinding IconStroke}"
+                              StrokeThickness="{TemplateBinding IconStrokeThickness}"
+                              StrokeLineCap="Round"
+                              StrokeJoin="Round"/>
+                    </Viewbox>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Checked State -->
+        <Style Selector="^:checked /template/ Border#PART_Circle">
+            <Setter Property="BorderBrush" Value="{Binding RingBrush, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:checked /template/ Ellipse#PART_Ripple">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="5" ScaleY="5"/>
+                        </Setter>
+                        <Setter Property="Opacity" Value="0"/>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Unchecked State -->
+        <Style Selector="^:not(:checked) /template/ Border#PART_Circle">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:not(:checked) /template/ Ellipse#PART_Ripple">
+            <Setter Property="Opacity" Value="1"/>
+            <Setter Property="RenderTransform">
+                <ScaleTransform ScaleX="0" ScaleY="0"/>
+            </Setter>
+        </Style>
+
+        <!-- Hover State -->
+        <Style Selector="^:pointerover /template/ Border#PART_Circle">
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

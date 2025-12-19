@@ -1,0 +1,11 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="WickedLiger39.Avalonia.Gallery.App"
+             RequestedThemeVariant="Light">
+
+    <Application.Styles>
+        <FluentTheme/>
+        <StyleInclude Source="avares://WickedLiger39.Avalonia.Lib/Themes/Generic.axaml"/>
+    </Application.Styles>
+
+</Application>

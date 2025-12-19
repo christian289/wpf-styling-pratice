@@ -1,0 +1,29 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:WickedLiger39.Avalonia.Lib.Controls"
+        x:Class="WickedLiger39.Avalonia.Gallery.MainWindow"
+        Title="WickedLiger39 - Gender Selector"
+        Width="400" Height="300"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#F5F5F5">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="20">
+
+            <!-- GenderSelector Control -->
+            <controls:GenderSelector x:Name="genderSelector"
+                                     HeaderText="PLEASE SELECT YOUR GENDER"/>
+
+            <!-- Selected Value Display -->
+            <TextBlock HorizontalAlignment="Center"
+                       FontSize="14"
+                       Foreground="#525252">
+                <Run Text="Selected: "/>
+                <Run Text="{Binding #genderSelector.SelectedGender, FallbackValue='(none)'}"/>
+            </TextBlock>
+
+        </StackPanel>
+    </Grid>
+
+</Window>

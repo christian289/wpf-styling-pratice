@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="WickedLiger39.Wpf.Gallery/WickedLiger39.Wpf.Gallery.csproj" />
+  <Project Path="WickedLiger39.Wpf.UI/WickedLiger39.Wpf.UI.csproj" />
+</Solution>
