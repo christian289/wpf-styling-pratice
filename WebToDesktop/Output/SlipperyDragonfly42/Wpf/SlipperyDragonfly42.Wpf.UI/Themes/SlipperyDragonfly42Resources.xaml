@@ -1,0 +1,80 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors based on Tailwind CSS classes -->
+    <!-- gray-800: #1f2937 (card background) -->
+    <!-- gray-700: #374151 (input background, footer background, input border) -->
+    <!-- gray-400: #9ca3af (secondary text) -->
+    <!-- gray-600: #4b5563 (checkbox border) -->
+    <!-- indigo-500: #6366f1 (primary accent, button, links) -->
+    <!-- indigo-600: #4f46e5 (button hover) -->
+    <!-- indigo-400: #818cf8 (link hover) -->
+    <!-- gray-900: #111827 (button text) -->
+    <!-- white: #ffffff -->
+
+    <!-- Background Colors -->
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Background.Card" Color="#1f2937"/>
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Background.Input" Color="#374151"/>
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Background.Footer" Color="#374151"/>
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Background.Button" Color="#6366f1"/>
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Background.ButtonHover" Color="#4f46e5"/>
+
+    <!-- Border Colors -->
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Border.Input" Color="#374151"/>
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Border.InputFocus" Color="#6366f1"/>
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Border.Checkbox" Color="#4b5563"/>
+
+    <!-- Text Colors -->
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Foreground.Title" Color="#ffffff"/>
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Foreground.Subtitle" Color="#9ca3af"/>
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Foreground.Input" Color="#ffffff"/>
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Foreground.Placeholder" Color="#9ca3af"/>
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Foreground.Label" Color="#9ca3af"/>
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Foreground.Link" Color="#6366f1"/>
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Foreground.LinkHover" Color="#818cf8"/>
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Foreground.Button" Color="#111827"/>
+
+    <!-- Checkbox Colors -->
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Checkbox.Background" Color="#6366f1"/>
+    <SolidColorBrush x:Key="SlipperyDragonfly42.Checkbox.Checkmark" Color="#ffffff"/>
+
+    <!-- Sizes -->
+    <sys:Double x:Key="SlipperyDragonfly42.Size.CardMaxWidth">512</sys:Double>
+    <sys:Double x:Key="SlipperyDragonfly42.Size.Padding">32</sys:Double>
+    <sys:Double x:Key="SlipperyDragonfly42.Size.FooterPaddingVertical">16</sys:Double>
+    <sys:Double x:Key="SlipperyDragonfly42.Size.InputPaddingHorizontal">12</sys:Double>
+    <sys:Double x:Key="SlipperyDragonfly42.Size.InputPaddingVertical">12</sys:Double>
+    <sys:Double x:Key="SlipperyDragonfly42.Size.InputSpacing">16</sys:Double>
+    <sys:Double x:Key="SlipperyDragonfly42.Size.SectionSpacing">24</sys:Double>
+
+    <!-- Font Sizes -->
+    <sys:Double x:Key="SlipperyDragonfly42.FontSize.Title">30</sys:Double>
+    <sys:Double x:Key="SlipperyDragonfly42.FontSize.Subtitle">14</sys:Double>
+    <sys:Double x:Key="SlipperyDragonfly42.FontSize.Input">14</sys:Double>
+    <sys:Double x:Key="SlipperyDragonfly42.FontSize.Label">14</sys:Double>
+    <sys:Double x:Key="SlipperyDragonfly42.FontSize.Button">14</sys:Double>
+    <sys:Double x:Key="SlipperyDragonfly42.FontSize.Link">14</sys:Double>
+
+    <!-- Corner Radius -->
+    <CornerRadius x:Key="SlipperyDragonfly42.CornerRadius.Card">8</CornerRadius>
+    <CornerRadius x:Key="SlipperyDragonfly42.CornerRadius.Input">6</CornerRadius>
+    <CornerRadius x:Key="SlipperyDragonfly42.CornerRadius.Button">6</CornerRadius>
+    <CornerRadius x:Key="SlipperyDragonfly42.CornerRadius.Checkbox">4</CornerRadius>
+
+    <!-- Thickness -->
+    <Thickness x:Key="SlipperyDragonfly42.Padding.Card">32</Thickness>
+    <Thickness x:Key="SlipperyDragonfly42.Padding.Footer">32,16</Thickness>
+    <Thickness x:Key="SlipperyDragonfly42.Padding.Input">12</Thickness>
+    <Thickness x:Key="SlipperyDragonfly42.Padding.Button">16,12</Thickness>
+    <Thickness x:Key="SlipperyDragonfly42.Border.InputThickness">1</Thickness>
+
+    <!-- Box Shadow Effect -->
+    <DropShadowEffect x:Key="SlipperyDragonfly42.Shadow.Card"
+                      BlurRadius="25"
+                      ShadowDepth="10"
+                      Direction="270"
+                      Color="#000000"
+                      Opacity="0.1"/>
+
+</ResourceDictionary>

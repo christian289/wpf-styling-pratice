@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SlipperyDragonfly42.Wpf.Gallery/SlipperyDragonfly42.Wpf.Gallery.csproj" />
+  <Project Path="SlipperyDragonfly42.Wpf.UI/SlipperyDragonfly42.Wpf.UI.csproj" />
+</Solution>

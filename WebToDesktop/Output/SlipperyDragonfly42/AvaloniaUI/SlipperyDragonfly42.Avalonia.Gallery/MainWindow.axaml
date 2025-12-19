@@ -1,0 +1,15 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SlipperyDragonfly42.Avalonia.Lib.Controls"
+        x:Class="SlipperyDragonfly42.Avalonia.Gallery.MainWindow"
+        Title="SlipperyDragonfly42 - Login Form Demo"
+        Width="800" Height="700"
+        WindowStartupLocation="CenterScreen"
+        Background="#111827">
+
+    <Grid>
+        <controls:SlipperyDragonfly42 HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+    </Grid>
+
+</Window>
