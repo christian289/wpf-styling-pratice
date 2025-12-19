@@ -1,0 +1,421 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:MassiveInsect5.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/MassiveInsect5.Wpf.UI;component/Themes/MassiveInsect5Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:MassiveInsect5}">
+        <Setter Property="Width" Value="{StaticResource MassiveInsect5.Card.Width}"/>
+        <Setter Property="Height" Value="{StaticResource MassiveInsect5.Card.Height}"/>
+        <Setter Property="Background" Value="{StaticResource MassiveInsect5.Card.Background}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:MassiveInsect5}">
+                    <Border x:Name="RootBorder"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{StaticResource MassiveInsect5.Card.CornerRadius}"
+                            Effect="{StaticResource MassiveInsect5.Card.Shadow}"
+                            ClipToBounds="True">
+                        <Grid>
+                            <!-- Background Gradient / 배경 그라데이션 -->
+                            <Border x:Name="BackgroundGradient"
+                                    Background="{StaticResource MassiveInsect5.Background.Gradient}"/>
+
+                            <!-- Logo (UI) / 로고 -->
+                            <Canvas x:Name="LogoCanvas"
+                                    Width="{StaticResource MassiveInsect5.Logo.Size}"
+                                    Height="{StaticResource MassiveInsect5.Logo.Size}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RenderTransformOrigin="0.5,0.5">
+                                <Canvas.RenderTransform>
+                                    <TranslateTransform x:Name="LogoTranslate" X="0" Y="0"/>
+                                </Canvas.RenderTransform>
+                                <!-- viewBox="0 0 29.667 31.69" scaled to 30x30 -->
+                                <Path Data="{StaticResource MassiveInsect5.Logo.Path1}"
+                                      Fill="{StaticResource MassiveInsect5.Logo.Fill}"
+                                      RenderTransform="1.01,0,0,0.95,0,0"/>
+                                <Path Data="{StaticResource MassiveInsect5.Logo.Path2}"
+                                      Fill="{StaticResource MassiveInsect5.Logo.Fill}"
+                                      RenderTransform="1.01,0,0,0.95,-45.91,0"/>
+                                <Path Data="{StaticResource MassiveInsect5.Logo.Path3}"
+                                      Fill="{StaticResource MassiveInsect5.Logo.Fill}"
+                                      RenderTransform="1.01,0,0,0.95,0,-51.96"/>
+                            </Canvas>
+
+                            <!-- Box Container / 박스 컨테이너 -->
+                            <Canvas ClipToBounds="True">
+                                <!-- Box4 (smallest, no icon) / 박스4 (가장 작음, 아이콘 없음) -->
+                                <Border x:Name="Box4"
+                                        Width="20" Height="20"
+                                        Canvas.Left="-20" Canvas.Bottom="-20"
+                                        Background="{StaticResource MassiveInsect5.Box.Background}"
+                                        BorderBrush="{StaticResource MassiveInsect5.Box.BorderBrush}"
+                                        BorderThickness="{StaticResource MassiveInsect5.Box.BorderThickness}"
+                                        CornerRadius="2,3,15,0"
+                                        Effect="{StaticResource MassiveInsect5.Box.Shadow}"
+                                        RenderTransformOrigin="0,1">
+                                    <Canvas.Top>
+                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Canvas}"/>
+                                    </Canvas.Top>
+                                </Border>
+
+                                <!-- Box3 (Discord) / 박스3 (디스코드) -->
+                                <Border x:Name="Box3"
+                                        Width="60" Height="60"
+                                        Canvas.Left="-60" Canvas.Bottom="-60"
+                                        Background="{StaticResource MassiveInsect5.Box.Background}"
+                                        BorderBrush="{StaticResource MassiveInsect5.Box.BorderBrush}"
+                                        BorderThickness="{StaticResource MassiveInsect5.Box.BorderThickness}"
+                                        CornerRadius="6,8,45,0"
+                                        Effect="{StaticResource MassiveInsect5.Box.Shadow}"
+                                        Padding="{StaticResource MassiveInsect5.Box.Padding}"
+                                        RenderTransformOrigin="0,1">
+                                    <Canvas.Top>
+                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Canvas}"/>
+                                    </Canvas.Top>
+                                    <Grid>
+                                        <!-- Hover Gradient Overlay -->
+                                        <Border x:Name="Box3Overlay"
+                                                Margin="-10"
+                                                Background="{StaticResource MassiveInsect5.Box3.Gradient}"
+                                                CornerRadius="6,8,45,0"
+                                                Opacity="0"/>
+                                        <!-- Discord Icon -->
+                                        <Viewbox x:Name="Box3Icon"
+                                                 Width="{StaticResource MassiveInsect5.Icon.Size}"
+                                                 Height="{StaticResource MassiveInsect5.Icon.Size}"
+                                                 HorizontalAlignment="Right"
+                                                 VerticalAlignment="Top">
+                                            <Path Data="{StaticResource MassiveInsect5.Icon.Discord}"
+                                                  Fill="{StaticResource MassiveInsect5.Icon.Fill}"/>
+                                        </Viewbox>
+                                    </Grid>
+                                </Border>
+
+                                <!-- Box2 (Twitter) / 박스2 (트위터) -->
+                                <Border x:Name="Box2"
+                                        Width="100" Height="100"
+                                        Canvas.Left="-100" Canvas.Bottom="-100"
+                                        Background="{StaticResource MassiveInsect5.Box.Background}"
+                                        BorderBrush="{StaticResource MassiveInsect5.Box.BorderBrush}"
+                                        BorderThickness="{StaticResource MassiveInsect5.Box.BorderThickness}"
+                                        CornerRadius="10,13,75,0"
+                                        Effect="{StaticResource MassiveInsect5.Box.Shadow}"
+                                        Padding="{StaticResource MassiveInsect5.Box.Padding}"
+                                        RenderTransformOrigin="0,1">
+                                    <Canvas.Top>
+                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Canvas}"/>
+                                    </Canvas.Top>
+                                    <Grid>
+                                        <!-- Hover Gradient Overlay -->
+                                        <Border x:Name="Box2Overlay"
+                                                Margin="-10"
+                                                Background="{StaticResource MassiveInsect5.Box2.Gradient}"
+                                                CornerRadius="10,13,75,0"
+                                                Opacity="0"/>
+                                        <!-- Twitter Icon -->
+                                        <Viewbox x:Name="Box2Icon"
+                                                 Width="{StaticResource MassiveInsect5.Icon.Size}"
+                                                 Height="{StaticResource MassiveInsect5.Icon.Size}"
+                                                 HorizontalAlignment="Right"
+                                                 VerticalAlignment="Top">
+                                            <Path Data="{StaticResource MassiveInsect5.Icon.Twitter}"
+                                                  Fill="{StaticResource MassiveInsect5.Icon.Fill}"/>
+                                        </Viewbox>
+                                    </Grid>
+                                </Border>
+
+                                <!-- Box1 (Instagram - largest) / 박스1 (인스타그램 - 가장 큼) -->
+                                <Border x:Name="Box1"
+                                        Width="140" Height="140"
+                                        Canvas.Left="-140" Canvas.Bottom="-140"
+                                        Background="{StaticResource MassiveInsect5.Box.Background}"
+                                        BorderBrush="{StaticResource MassiveInsect5.Box.BorderBrush}"
+                                        BorderThickness="{StaticResource MassiveInsect5.Box.BorderThickness}"
+                                        CornerRadius="14,18,105,0"
+                                        Effect="{StaticResource MassiveInsect5.Box.Shadow}"
+                                        Padding="{StaticResource MassiveInsect5.Box.Padding}"
+                                        RenderTransformOrigin="0,1">
+                                    <Canvas.Top>
+                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Canvas}"/>
+                                    </Canvas.Top>
+                                    <Grid>
+                                        <!-- Hover Gradient Overlay -->
+                                        <Border x:Name="Box1Overlay"
+                                                Margin="-10"
+                                                Background="{StaticResource MassiveInsect5.Box1.Gradient}"
+                                                CornerRadius="14,18,105,0"
+                                                Opacity="0"/>
+                                        <!-- Instagram Icon -->
+                                        <Viewbox x:Name="Box1Icon"
+                                                 Width="{StaticResource MassiveInsect5.Icon.Size}"
+                                                 Height="{StaticResource MassiveInsect5.Icon.Size}"
+                                                 HorizontalAlignment="Right"
+                                                 VerticalAlignment="Top">
+                                            <Path Data="{StaticResource MassiveInsect5.Icon.Instagram}"
+                                                  Fill="{StaticResource MassiveInsect5.Icon.Fill}"/>
+                                        </Viewbox>
+                                    </Grid>
+                                </Border>
+                            </Canvas>
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Card Hover: Scale up and show boxes / 카드 호버: 확대 및 박스 표시 -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Scale card / 카드 확대 -->
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                         To="1.1" Duration="0:0:1">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                         To="1.1" Duration="0:0:1">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <!-- Move logo to bottom-right / 로고를 우하단으로 이동 -->
+                                        <DoubleAnimation Storyboard.TargetName="LogoTranslate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="70" Duration="0:0:0.6">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="LogoTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="70" Duration="0:0:0.6">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <!-- Box1 slide in / 박스1 슬라이드 -->
+                                        <DoubleAnimation Storyboard.TargetName="Box1"
+                                                         Storyboard.TargetProperty="(Canvas.Left)"
+                                                         To="-1" Duration="0:0:1">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <!-- Box2 slide in (delay 0.2s) / 박스2 슬라이드 (0.2초 지연) -->
+                                        <DoubleAnimation Storyboard.TargetName="Box2"
+                                                         Storyboard.TargetProperty="(Canvas.Left)"
+                                                         To="-1" Duration="0:0:1" BeginTime="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <!-- Box3 slide in (delay 0.4s) / 박스3 슬라이드 (0.4초 지연) -->
+                                        <DoubleAnimation Storyboard.TargetName="Box3"
+                                                         Storyboard.TargetProperty="(Canvas.Left)"
+                                                         To="-1" Duration="0:0:1" BeginTime="0:0:0.4">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <!-- Box4 slide in (delay 0.6s) / 박스4 슬라이드 (0.6초 지연) -->
+                                        <DoubleAnimation Storyboard.TargetName="Box4"
+                                                         Storyboard.TargetProperty="(Canvas.Left)"
+                                                         To="-1" Duration="0:0:1" BeginTime="0:0:0.6">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Scale back / 원래 크기로 -->
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                         To="1" Duration="0:0:1">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                         To="1" Duration="0:0:1">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <!-- Move logo back to center / 로고를 중앙으로 -->
+                                        <DoubleAnimation Storyboard.TargetName="LogoTranslate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="0" Duration="0:0:0.6">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="LogoTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0" Duration="0:0:0.6">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <!-- Box1 slide out / 박스1 슬라이드 아웃 -->
+                                        <DoubleAnimation Storyboard.TargetName="Box1"
+                                                         Storyboard.TargetProperty="(Canvas.Left)"
+                                                         To="-140" Duration="0:0:1">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <!-- Box2 slide out / 박스2 슬라이드 아웃 -->
+                                        <DoubleAnimation Storyboard.TargetName="Box2"
+                                                         Storyboard.TargetProperty="(Canvas.Left)"
+                                                         To="-100" Duration="0:0:1" BeginTime="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <!-- Box3 slide out / 박스3 슬라이드 아웃 -->
+                                        <DoubleAnimation Storyboard.TargetName="Box3"
+                                                         Storyboard.TargetProperty="(Canvas.Left)"
+                                                         To="-60" Duration="0:0:1" BeginTime="0:0:0.4">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <!-- Box4 slide out / 박스4 슬라이드 아웃 -->
+                                        <DoubleAnimation Storyboard.TargetName="Box4"
+                                                         Storyboard.TargetProperty="(Canvas.Left)"
+                                                         To="-20" Duration="0:0:1" BeginTime="0:0:0.6">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                        <!-- Box1 (Instagram) Hover / 박스1 호버 -->
+                        <Trigger SourceName="Box1" Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Box1Overlay"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Box1Overlay"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0" Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                            <Setter TargetName="Box1Icon" Property="Effect" Value="{StaticResource MassiveInsect5.Icon.Glow}"/>
+                        </Trigger>
+
+                        <!-- Box2 (Twitter) Hover / 박스2 호버 -->
+                        <Trigger SourceName="Box2" Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Box2Overlay"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Box2Overlay"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0" Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                            <Setter TargetName="Box2Icon" Property="Effect" Value="{StaticResource MassiveInsect5.Icon.Glow}"/>
+                        </Trigger>
+
+                        <!-- Box3 (Discord) Hover / 박스3 호버 -->
+                        <Trigger SourceName="Box3" Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Box3Overlay"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Box3Overlay"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0" Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                            <Setter TargetName="Box3Icon" Property="Effect" Value="{StaticResource MassiveInsect5.Icon.Glow}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

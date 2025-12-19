@@ -1,0 +1,10 @@
+<Window x:Class="MassiveInsect5.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:MassiveInsect5.Wpf.UI.Controls;assembly=MassiveInsect5.Wpf.UI"
+        Title="MassiveInsect5 Gallery" Height="450" Width="800"
+        Background="#1a1a2e">
+    <Grid>
+        <controls:MassiveInsect5 HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</Window>

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="MassiveInsect5.Avalonia.Lib\MassiveInsect5.Avalonia.Lib.csproj" />
+  <Project Path="MassiveInsect5.Avalonia.Gallery\MassiveInsect5.Avalonia.Gallery.csproj" />
+</Solution>
