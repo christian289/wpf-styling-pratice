@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="BrightTiger84.Avalonia.Lib\BrightTiger84.Avalonia.Lib.csproj" />
+  <Project Path="BrightTiger84.Avalonia.Gallery\BrightTiger84.Avalonia.Gallery.csproj" />
+</Solution>

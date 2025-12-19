@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="BrightTiger84.Wpf.Gallery/BrightTiger84.Wpf.Gallery.csproj" />
+  <Project Path="BrightTiger84.Wpf.UI/BrightTiger84.Wpf.UI.csproj" />
+</Solution>

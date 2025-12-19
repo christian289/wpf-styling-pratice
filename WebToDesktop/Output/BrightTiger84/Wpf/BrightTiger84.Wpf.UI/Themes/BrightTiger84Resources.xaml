@@ -1,0 +1,40 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <!-- 기본 색상 (회색)
+         Default color (gray) -->
+    <SolidColorBrush x:Key="BrightTiger84.Fill.Normal" Color="#666666" />
+
+    <!-- 체크됨 색상 (파란색)
+         Checked color (blue) -->
+    <SolidColorBrush x:Key="BrightTiger84.Fill.Checked" Color="#2196F3" />
+
+    <!-- Sizes -->
+    <!-- 아이콘 크기 50x50
+         Icon size 50x50 -->
+    <sys:Double x:Key="BrightTiger84.Size">50</sys:Double>
+
+    <!-- Animation -->
+    <!-- 호버 시 확대 비율 1.1
+         Hover scale ratio 1.1 -->
+    <sys:Double x:Key="BrightTiger84.HoverScale">1.1</sys:Double>
+
+    <!-- 호버 시 회전 각도 -10도
+         Hover rotation angle -10 degrees -->
+    <sys:Double x:Key="BrightTiger84.HoverRotation">-10</sys:Double>
+
+    <!-- 애니메이션 시간 0.3초
+         Animation duration 0.3s -->
+    <Duration x:Key="BrightTiger84.AnimationDuration">0:0:0.3</Duration>
+
+    <!-- Thumbs Up SVG Path Data -->
+    <!-- 좋아요(엄지 위) 아이콘 경로 데이터
+         Thumbs up icon path data -->
+    <Geometry x:Key="BrightTiger84.ThumbPath">
+        M29.845,17.099l-2.489,8.725C26.989,27.105,25.804,28,24.473,28H11c-0.553,0-1-0.448-1-1V13c0-0.215,0.069-0.425,0.198-0.597l5.392-7.24C16.188,4.414,17.05,4,17.974,4C19.643,4,21,5.357,21,7.026V12h5.002c1.265,0,2.427,0.579,3.188,1.589C29.954,14.601,30.192,15.88,29.845,17.099z
+        M7,12H3c-0.553,0-1,0.448-1,1v14c0,0.552,0.447,1,1,1h4c0.553,0,1-0.448,1-1V13C8,12.448,7.553,12,7,12z M5,25.5c-0.828,0-1.5-0.672-1.5-1.5c0-0.828,0.672-1.5,1.5-1.5c0.828,0,1.5,0.672,1.5,1.5C6.5,24.828,5.828,25.5,5,25.5z
+    </Geometry>
+
+</ResourceDictionary>

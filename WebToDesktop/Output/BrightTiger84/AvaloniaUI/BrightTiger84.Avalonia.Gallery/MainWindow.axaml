@@ -1,0 +1,47 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:BrightTiger84.Avalonia.Lib.Controls"
+        x:Class="BrightTiger84.Avalonia.Gallery.MainWindow"
+        Title="BrightTiger84 - ThumbLikeCheckBox Gallery"
+        Width="400"
+        Height="300">
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="20">
+
+        <TextBlock Text="ThumbLikeCheckBox Demo"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center" />
+
+        <TextBlock Text="Click to toggle like state / Hover for animation"
+                   FontSize="12"
+                   Foreground="Gray"
+                   HorizontalAlignment="Center" />
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="20">
+
+            <!-- Default State -->
+            <StackPanel Spacing="8">
+                <controls:ThumbLikeCheckBox />
+                <TextBlock Text="Like"
+                           HorizontalAlignment="Center"
+                           FontSize="12" />
+            </StackPanel>
+
+            <!-- Initially Checked -->
+            <StackPanel Spacing="8">
+                <controls:ThumbLikeCheckBox IsChecked="True" />
+                <TextBlock Text="Liked"
+                           HorizontalAlignment="Center"
+                           FontSize="12" />
+            </StackPanel>
+
+        </StackPanel>
+
+    </StackPanel>
+
+</Window>

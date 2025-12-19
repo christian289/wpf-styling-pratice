@@ -1,0 +1,40 @@
+<Window x:Class="BrightTiger84.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:BrightTiger84.Wpf.UI.Controls;assembly=BrightTiger84.Wpf.UI"
+        mc:Ignorable="d"
+        Title="BrightTiger84 Gallery - Thumbs Up Toggle Button"
+        Height="450" Width="800"
+        Background="#1a1a1a">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="BrightTiger84 - Thumbs Up Toggle Button"
+                       Foreground="White"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,15" />
+
+            <TextBlock Text="Click to toggle like/unlike"
+                       Foreground="#888888"
+                       FontSize="14"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,30" />
+
+            <!-- 좋아요 토글 버튼 데모
+                 Thumbs up toggle button demo -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,30">
+                <controls:BrightTiger84 Margin="20" />
+                <controls:BrightTiger84 Margin="20" IsChecked="True" />
+                <controls:BrightTiger84 Margin="20" />
+            </StackPanel>
+
+            <TextBlock Text="Hover to see scale and rotation animation"
+                       Foreground="#666666"
+                       FontSize="12"
+                       HorizontalAlignment="Center" />
+        </StackPanel>
+    </Grid>
+</Window>

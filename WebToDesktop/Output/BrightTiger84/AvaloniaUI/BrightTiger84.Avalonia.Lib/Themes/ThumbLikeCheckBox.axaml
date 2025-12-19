@@ -1,0 +1,92 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:BrightTiger84.Avalonia.Lib.Controls">
+
+    <!--
+    Source: Uiverse.io by andrew-demchenk0
+    Tags: checkbox, thumb, like
+    -->
+
+    <!-- Colors -->
+    <Color x:Key="ThumbLike.Default.Color">#666666</Color>
+    <Color x:Key="ThumbLike.Checked.Color">#2196F3</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="ThumbLike.Default.Brush" Color="{StaticResource ThumbLike.Default.Color}" />
+    <SolidColorBrush x:Key="ThumbLike.Checked.Brush" Color="{StaticResource ThumbLike.Checked.Color}" />
+
+    <!-- Thumb Icon Path Data -->
+    <StreamGeometry x:Key="ThumbLike.IconData">M29.845,17.099l-2.489,8.725C26.989,27.105,25.804,28,24.473,28H11c-0.553,0-1-0.448-1-1V13c0-0.215,0.069-0.425,0.198-0.597l5.392-7.24C16.188,4.414,17.05,4,17.974,4C19.643,4,21,5.357,21,7.026V12h5.002c1.265,0,2.427,0.579,3.188,1.589C29.954,14.601,30.192,15.88,29.845,17.099z M7,12H3c-0.553,0-1,0.448-1,1v14c0,0.552,0.447,1,1,1h4c0.553,0,1-0.448,1-1V13C8,12.448,7.553,12,7,12z M5,25.5c-0.828,0-1.5-0.672-1.5-1.5c0-0.828,0.672-1.5,1.5-1.5c0.828,0,1.5,0.672,1.5,1.5C6.5,24.828,5.828,25.5,5,25.5z</StreamGeometry>
+
+    <!-- ThumbLikeCheckBox Style -->
+    <ControlTheme x:Key="{x:Type controls:ThumbLikeCheckBox}" TargetType="controls:ThumbLikeCheckBox">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Width" Value="50" />
+        <Setter Property="Height" Value="50" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <Path x:Name="ThumbIcon"
+                          Data="{StaticResource ThumbLike.IconData}"
+                          Fill="{StaticResource ThumbLike.Default.Brush}"
+                          Stretch="Uniform"
+                          Width="50"
+                          Height="50"
+                          RenderTransformOrigin="0.5,0.5">
+                        <Path.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                <RotateTransform Angle="0" />
+                            </TransformGroup>
+                        </Path.RenderTransform>
+                    </Path>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Hover Animation: scale(1.1) rotate(-10deg) -->
+        <Style Selector="^:pointerover /template/ Path#ThumbIcon">
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" FillMode="Forward" Easing="CubicEaseOut">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                                <RotateTransform Angle="-10" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Hover Out Animation: reset to default -->
+        <Style Selector="^:not(:pointerover) /template/ Path#ThumbIcon">
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" FillMode="Forward" Easing="CubicEaseOut">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                <RotateTransform Angle="0" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Checked State: Blue Fill -->
+        <Style Selector="^:checked /template/ Path#ThumbIcon">
+            <Setter Property="Fill" Value="{StaticResource ThumbLike.Checked.Brush}" />
+        </Style>
+
+        <!-- Unchecked State: Gray Fill -->
+        <Style Selector="^:unchecked /template/ Path#ThumbIcon">
+            <Setter Property="Fill" Value="{StaticResource ThumbLike.Default.Brush}" />
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>
