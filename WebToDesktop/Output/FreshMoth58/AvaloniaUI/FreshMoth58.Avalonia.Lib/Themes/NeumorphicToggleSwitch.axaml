@@ -1,0 +1,132 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:FreshMoth58.Avalonia.Lib.Controls">
+
+    <!--
+    Neumorphism Toggle Switch Style
+    원본: uiverse.io by Ali-Tahmazi99
+    Original: uiverse.io by Ali-Tahmazi99
+
+    CSS 원본 색상:
+    - 배경: #d3d3d3
+    - 토글 (Off): #ffaa00
+    - 토글 (On): #0a100d
+    - 외부 그림자 (밝음): #ffffff
+    - 외부 그림자 (어두움): #969696
+    - 내부 그림자 (밝음): #ffffffbd
+    - 내부 그림자 (어두움): #969696
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="NeumorphicToggle.Background">#D3D3D3</Color>
+    <Color x:Key="NeumorphicToggle.ThumbOff">#FFAA00</Color>
+    <Color x:Key="NeumorphicToggle.ThumbOn">#0A100D</Color>
+    <Color x:Key="NeumorphicToggle.ShadowLight">#FFFFFF</Color>
+    <Color x:Key="NeumorphicToggle.ShadowDark">#969696</Color>
+    <Color x:Key="NeumorphicToggle.InnerShadowLight">#BDFFFFFF</Color>
+    <Color x:Key="NeumorphicToggle.InnerShadowDark">#969696</Color>
+
+    <!-- Brush Resources -->
+    <SolidColorBrush x:Key="NeumorphicToggle.Background.Brush" Color="{StaticResource NeumorphicToggle.Background}"/>
+    <SolidColorBrush x:Key="NeumorphicToggle.ThumbOff.Brush" Color="{StaticResource NeumorphicToggle.ThumbOff}"/>
+    <SolidColorBrush x:Key="NeumorphicToggle.ThumbOn.Brush" Color="{StaticResource NeumorphicToggle.ThumbOn}"/>
+
+    <!-- NeumorphicToggleSwitch Style -->
+    <ControlTheme x:Key="{x:Type controls:NeumorphicToggleSwitch}" TargetType="controls:NeumorphicToggleSwitch">
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!--
+                외부 컨테이너 - Neumorphism 외부 그림자 효과
+                Outer container - Neumorphism outer shadow effect
+                box-shadow: 9px 9px 29px #969696, -9px -9px 29px #ffffff
+                -->
+                <Border x:Name="PART_OuterBorder"
+                        Width="60"
+                        Height="30"
+                        CornerRadius="15"
+                        Background="{StaticResource NeumorphicToggle.Background.Brush}"
+                        BoxShadow="9 9 29 0 #969696, -9 -9 29 0 #FFFFFF">
+
+                    <!--
+                    내부 트랙 - Neumorphism 내부 그림자 효과
+                    Inner track - Neumorphism inner shadow effect
+                    box-shadow: inset 3px 3px 10px #969696, inset -3px -3px 5px #ffffffbd
+                    -->
+                    <Border x:Name="PART_InnerTrack"
+                            Width="50"
+                            Height="20"
+                            CornerRadius="10"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            BoxShadow="inset 3 3 10 0 #969696, inset -3 -3 5 0 #BDFFFFFF">
+
+                        <!--
+                        토글 thumb - 원형 버튼
+                        Toggle thumb - circular button
+                        CSS: width: 20px; height: 20px; border-radius: 50px; left: 0 (Off) / left: 29px (On)
+                        -->
+                        <Border x:Name="PART_Thumb"
+                                Width="20"
+                                Height="20"
+                                CornerRadius="10"
+                                Background="{StaticResource NeumorphicToggle.ThumbOff.Brush}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="-5,0,0,0"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="0"/>
+                                    <TranslateTransform X="0"/>
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                        </Border>
+                    </Border>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Unchecked State (기본 상태) -->
+        <Style Selector="^:not(:checked)">
+            <Style Selector="^ /template/ Border#PART_Thumb">
+                <Setter Property="Background" Value="{StaticResource NeumorphicToggle.ThumbOff.Brush}"/>
+                <Style.Animations>
+                    <Animation Duration="0:0:0.3" Easing="CubicEaseIn" FillMode="Forward">
+                        <KeyFrame Cue="100%">
+                            <Setter Property="RenderTransform">
+                                <TransformGroup>
+                                    <RotateTransform Angle="0"/>
+                                    <TranslateTransform X="0"/>
+                                </TransformGroup>
+                            </Setter>
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+        </Style>
+
+        <!-- Checked State (체크된 상태) -->
+        <Style Selector="^:checked">
+            <Style Selector="^ /template/ Border#PART_Thumb">
+                <Setter Property="Background" Value="{StaticResource NeumorphicToggle.ThumbOn.Brush}"/>
+                <Style.Animations>
+                    <Animation Duration="0:0:0.3" Easing="CubicEaseIn" FillMode="Forward">
+                        <KeyFrame Cue="100%">
+                            <Setter Property="RenderTransform">
+                                <TransformGroup>
+                                    <RotateTransform Angle="220"/>
+                                    <TranslateTransform X="29"/>
+                                </TransformGroup>
+                            </Setter>
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

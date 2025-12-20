@@ -1,0 +1,53 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:FreshMoth58.Avalonia.Lib.Controls"
+        x:Class="FreshMoth58.Avalonia.Gallery.MainWindow"
+        Title="FreshMoth58 - Neumorphic Toggle Switch Gallery"
+        Width="400"
+        Height="300"
+        Background="#E0E0E0">
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="30">
+
+        <!-- Title -->
+        <TextBlock Text="Neumorphic Toggle Switch"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Foreground="#333333"/>
+
+        <!-- Description -->
+        <TextBlock Text="uiverse.io by Ali-Tahmazi99"
+                   FontSize="12"
+                   HorizontalAlignment="Center"
+                   Foreground="#666666"/>
+
+        <!-- Toggle Switch Demo -->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="20">
+
+            <TextBlock Text="Off"
+                       VerticalAlignment="Center"
+                       Foreground="#666666"/>
+
+            <controls:NeumorphicToggleSwitch x:Name="ToggleSwitch"/>
+
+            <TextBlock Text="On"
+                       VerticalAlignment="Center"
+                       Foreground="#666666"/>
+
+        </StackPanel>
+
+        <!-- Status Text -->
+        <TextBlock x:Name="StatusText"
+                   Text="상태: Off / Status: Off"
+                   FontSize="14"
+                   HorizontalAlignment="Center"
+                   Foreground="#444444"/>
+
+    </StackPanel>
+
+</Window>

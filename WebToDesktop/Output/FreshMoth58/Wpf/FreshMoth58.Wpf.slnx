@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="FreshMoth58.Wpf.Gallery/FreshMoth58.Wpf.Gallery.csproj" />
+  <Project Path="FreshMoth58.Wpf.UI/FreshMoth58.Wpf.UI.csproj" />
+</Solution>
