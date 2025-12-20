@@ -1,0 +1,122 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:SilentOtter72.Avalonia.Lib.Controls">
+
+    <!--
+    From Uiverse.io by alexruix - Tags: switch
+    체크마크 아이콘이 있는 토글 스위치 컨트롤
+    A toggle switch control with checkmark icon
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="SilentOtter72.SliderBackground">#B0B0B0</Color>
+    <Color x:Key="SilentOtter72.SliderCheckedBackground">#222222</Color>
+    <Color x:Key="SilentOtter72.ThumbBackground">#FFFFFF</Color>
+    <Color x:Key="SilentOtter72.ThumbBorder">#B0B0B0</Color>
+    <Color x:Key="SilentOtter72.ThumbCheckedBorder">#181818</Color>
+    <Color x:Key="SilentOtter72.IconStroke">#222222</Color>
+
+    <SolidColorBrush x:Key="SilentOtter72.SliderBackgroundBrush" Color="{StaticResource SilentOtter72.SliderBackground}" />
+    <SolidColorBrush x:Key="SilentOtter72.SliderCheckedBackgroundBrush" Color="{StaticResource SilentOtter72.SliderCheckedBackground}" />
+    <SolidColorBrush x:Key="SilentOtter72.ThumbBackgroundBrush" Color="{StaticResource SilentOtter72.ThumbBackground}" />
+    <SolidColorBrush x:Key="SilentOtter72.ThumbBorderBrush" Color="{StaticResource SilentOtter72.ThumbBorder}" />
+    <SolidColorBrush x:Key="SilentOtter72.ThumbCheckedBorderBrush" Color="{StaticResource SilentOtter72.ThumbCheckedBorder}" />
+    <SolidColorBrush x:Key="SilentOtter72.IconStrokeBrush" Color="{StaticResource SilentOtter72.IconStroke}" />
+
+    <!-- Size Resources (based on font-size: 17px) -->
+    <x:Double x:Key="SilentOtter72.Width">59.5</x:Double>
+    <!-- 3.5em * 17 = 59.5 -->
+    <x:Double x:Key="SilentOtter72.Height">34</x:Double>
+    <!-- 2em * 17 = 34 -->
+    <x:Double x:Key="SilentOtter72.ThumbSize">34</x:Double>
+    <!-- 2rem * 17 = 34 -->
+    <x:Double x:Key="SilentOtter72.ThumbBorderThickness">2</x:Double>
+    <x:Double x:Key="SilentOtter72.SliderCornerRadius">16</x:Double>
+    <!-- border-radius: 32px / 2 -->
+    <x:Double x:Key="SilentOtter72.IconSize">12</x:Double>
+    <x:Double x:Key="SilentOtter72.TranslateX">25.5</x:Double>
+    <!-- 1.5em * 17 = 25.5 -->
+
+    <ControlTheme x:Key="{x:Type controls:SilentOtter72}" TargetType="controls:SilentOtter72">
+        <Setter Property="Width" Value="{StaticResource SilentOtter72.Width}" />
+        <Setter Property="Height" Value="{StaticResource SilentOtter72.Height}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <!-- Slider Track -->
+                    <Border x:Name="PART_SliderTrack"
+                            Background="{StaticResource SilentOtter72.SliderBackgroundBrush}"
+                            BorderBrush="{StaticResource SilentOtter72.SliderBackgroundBrush}"
+                            BorderThickness="1"
+                            CornerRadius="{StaticResource SilentOtter72.SliderCornerRadius}">
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Property="Background" Duration="0:0:0.4" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+
+                    <!-- Checkmark Icon -->
+                    <Path x:Name="PART_CheckIcon"
+                          Data="M 4 16.5 L 12 24.5 L 28 8.5"
+                          Stroke="{StaticResource SilentOtter72.IconStrokeBrush}"
+                          StrokeThickness="2.5"
+                          StrokeLineCap="Round"
+                          StrokeJoin="Round"
+                          Width="{StaticResource SilentOtter72.IconSize}"
+                          Height="{StaticResource SilentOtter72.IconSize}"
+                          Stretch="Uniform"
+                          Opacity="0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"
+                          Margin="8,0,0,0">
+                        <Path.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity" Duration="0:0:0.15" />
+                                <ThicknessTransition Property="Margin" Duration="0:0:0.3" Easing="CubicEaseInOut" />
+                            </Transitions>
+                        </Path.Transitions>
+                    </Path>
+
+                    <!-- Thumb -->
+                    <Border x:Name="PART_Thumb"
+                            Width="{StaticResource SilentOtter72.ThumbSize}"
+                            Height="{StaticResource SilentOtter72.ThumbSize}"
+                            Background="{StaticResource SilentOtter72.ThumbBackgroundBrush}"
+                            BorderBrush="{StaticResource SilentOtter72.ThumbBorderBrush}"
+                            BorderThickness="{StaticResource SilentOtter72.ThumbBorderThickness}"
+                            CornerRadius="17"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            RenderTransform="translate(0px, 0px)">
+                        <Border.Transitions>
+                            <Transitions>
+                                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.25" Easing="CubicEaseInOut" />
+                                <BrushTransition Property="BorderBrush" Duration="0:0:0.25" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Checked State -->
+        <Style Selector="^:checked /template/ Border#PART_SliderTrack">
+            <Setter Property="Background" Value="{StaticResource SilentOtter72.SliderCheckedBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource SilentOtter72.SliderCheckedBackgroundBrush}" />
+        </Style>
+
+        <Style Selector="^:checked /template/ Border#PART_Thumb">
+            <Setter Property="RenderTransform" Value="translate(25.5px, 0px)" />
+            <Setter Property="BorderBrush" Value="{StaticResource SilentOtter72.ThumbCheckedBorderBrush}" />
+        </Style>
+
+        <Style Selector="^:checked /template/ Path#PART_CheckIcon">
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="Margin" Value="21,0,0,0" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>
