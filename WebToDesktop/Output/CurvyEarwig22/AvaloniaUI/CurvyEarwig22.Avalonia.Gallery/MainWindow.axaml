@@ -1,0 +1,49 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:CurvyEarwig22.Avalonia.Lib.Controls"
+        x:Class="CurvyEarwig22.Avalonia.Gallery.MainWindow"
+        Title="CurvyEarwig22 - Neon Search Box Gallery"
+        Width="600"
+        Height="400"
+        Background="#1A1A2E">
+
+    <Grid>
+        <!-- Grid Pattern Background (Simulating CSS grid pattern) -->
+        <Canvas Name="GridPatternCanvas"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Opacity="0.3">
+            <Canvas.Effect>
+                <BlurEffect Radius="1" />
+            </Canvas.Effect>
+        </Canvas>
+
+        <!-- Main Content -->
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="30">
+
+            <TextBlock Text="Neon Search Box"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="#FFFFFF"
+                       HorizontalAlignment="Center" />
+
+            <TextBlock Text="From Uiverse.io by Lakshay-art"
+                       FontSize="12"
+                       Foreground="#888888"
+                       HorizontalAlignment="Center" />
+
+            <!-- Neon Search Box Control -->
+            <controls:NeonSearchBox Watermark="Search..."
+                                    HorizontalAlignment="Center" />
+
+            <TextBlock Text="Hover over the control to see effects"
+                       FontSize="11"
+                       Foreground="#666666"
+                       HorizontalAlignment="Center" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>

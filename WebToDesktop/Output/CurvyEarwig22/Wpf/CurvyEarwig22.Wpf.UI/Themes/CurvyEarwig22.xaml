@@ -1,0 +1,415 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:CurvyEarwig22.Wpf.UI.Controls"
+                    xmlns:converters="clr-namespace:CurvyEarwig22.Wpf.UI.Converters">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/CurvyEarwig22.Wpf.UI;component/Themes/CurvyEarwig22Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <converters:SizeToRectConverter x:Key="SizeToRectConverter"/>
+
+    <Style TargetType="{x:Type controls:CurvyEarwig22}">
+        <Setter Property="Width" Value="{StaticResource CurvyEarwig22.Input.Width}"/>
+        <Setter Property="Height" Value="{StaticResource CurvyEarwig22.Input.Height}"/>
+        <Setter Property="FontSize" Value="{StaticResource CurvyEarwig22.Input.FontSize}"/>
+        <Setter Property="Foreground" Value="{StaticResource CurvyEarwig22.Input.ForegroundBrush}"/>
+        <Setter Property="Background" Value="{StaticResource CurvyEarwig22.Input.BackgroundBrush}"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:CurvyEarwig22}">
+                    <Grid x:Name="RootGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <!-- Glow Layer (blur 30px, opacity 0.4) -->
+                        <Border x:Name="GlowLayer"
+                                Width="{StaticResource CurvyEarwig22.Glow.MaxWidth}"
+                                Height="{StaticResource CurvyEarwig22.Glow.MaxHeight}"
+                                CornerRadius="{StaticResource CurvyEarwig22.Layer.CornerRadius}"
+                                Opacity="{StaticResource CurvyEarwig22.Glow.Opacity}"
+                                ClipToBounds="True"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.Effect>
+                                <BlurEffect Radius="{StaticResource CurvyEarwig22.Glow.BlurRadius}"/>
+                            </Border.Effect>
+                            <Border.Clip>
+                                <RectangleGeometry RadiusX="12" RadiusY="12">
+                                    <RectangleGeometry.Rect>
+                                        <MultiBinding Converter="{StaticResource SizeToRectConverter}">
+                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                            <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                        </MultiBinding>
+                                    </RectangleGeometry.Rect>
+                                </RectangleGeometry>
+                            </Border.Clip>
+                            <Canvas>
+                                <Rectangle x:Name="GlowRotatingRect"
+                                           Width="999" Height="999"
+                                           Canvas.Left="-322" Canvas.Top="-434"
+                                           RenderTransformOrigin="0.5,0.5">
+                                    <Rectangle.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#000000" Offset="0"/>
+                                            <GradientStop Color="#402FB5" Offset="0.05"/>
+                                            <GradientStop Color="#000000" Offset="0.38"/>
+                                            <GradientStop Color="#000000" Offset="0.50"/>
+                                            <GradientStop Color="#CF30AA" Offset="0.60"/>
+                                            <GradientStop Color="#000000" Offset="0.87"/>
+                                        </LinearGradientBrush>
+                                    </Rectangle.Fill>
+                                    <Rectangle.RenderTransform>
+                                        <RotateTransform x:Name="GlowRotateTransform" Angle="60"/>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                            </Canvas>
+                        </Border>
+
+                        <!-- DarkBorderBg Layer (blur 3px) -->
+                        <Border x:Name="DarkBorderBgLayer"
+                                Width="{StaticResource CurvyEarwig22.DarkBorderBg.MaxWidth}"
+                                Height="{StaticResource CurvyEarwig22.DarkBorderBg.MaxHeight}"
+                                CornerRadius="{StaticResource CurvyEarwig22.DarkBorderBg.CornerRadius}"
+                                ClipToBounds="True"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.Effect>
+                                <BlurEffect Radius="{StaticResource CurvyEarwig22.Layer.BlurRadius}"/>
+                            </Border.Effect>
+                            <Border.Clip>
+                                <RectangleGeometry RadiusX="12" RadiusY="12">
+                                    <RectangleGeometry.Rect>
+                                        <MultiBinding Converter="{StaticResource SizeToRectConverter}">
+                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                            <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                        </MultiBinding>
+                                    </RectangleGeometry.Rect>
+                                </RectangleGeometry>
+                            </Border.Clip>
+                            <Canvas>
+                                <Rectangle x:Name="DarkBorderBgRotatingRect"
+                                           Width="600" Height="600"
+                                           Canvas.Left="-144" Canvas.Top="-267"
+                                           RenderTransformOrigin="0.5,0.5">
+                                    <Rectangle.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="Transparent" Offset="0"/>
+                                            <GradientStop Color="#18116A" Offset="0.05"/>
+                                            <GradientStop Color="Transparent" Offset="0.10"/>
+                                            <GradientStop Color="Transparent" Offset="0.50"/>
+                                            <GradientStop Color="#6E1B60" Offset="0.55"/>
+                                            <GradientStop Color="Transparent" Offset="0.60"/>
+                                        </LinearGradientBrush>
+                                    </Rectangle.Fill>
+                                    <Rectangle.RenderTransform>
+                                        <RotateTransform x:Name="DarkBorderBgRotateTransform" Angle="82"/>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                            </Canvas>
+                        </Border>
+
+                        <!-- White Layer (blur 2px) -->
+                        <Border x:Name="WhiteLayer"
+                                Width="{StaticResource CurvyEarwig22.White.MaxWidth}"
+                                Height="{StaticResource CurvyEarwig22.White.MaxHeight}"
+                                CornerRadius="{StaticResource CurvyEarwig22.Input.CornerRadius}"
+                                ClipToBounds="True"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.Effect>
+                                <BlurEffect Radius="{StaticResource CurvyEarwig22.White.BlurRadius}"/>
+                            </Border.Effect>
+                            <Border.Clip>
+                                <RectangleGeometry RadiusX="10" RadiusY="10">
+                                    <RectangleGeometry.Rect>
+                                        <MultiBinding Converter="{StaticResource SizeToRectConverter}">
+                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                            <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                        </MultiBinding>
+                                    </RectangleGeometry.Rect>
+                                </RectangleGeometry>
+                            </Border.Clip>
+                            <Canvas>
+                                <Rectangle x:Name="WhiteRotatingRect"
+                                           Width="600" Height="600"
+                                           Canvas.Left="-146" Canvas.Top="-268"
+                                           RenderTransformOrigin="0.5,0.5">
+                                    <Rectangle.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="Transparent" Offset="0"/>
+                                            <GradientStop Color="#A099D8" Offset="0.04"/>
+                                            <GradientStop Color="Transparent" Offset="0.08"/>
+                                            <GradientStop Color="Transparent" Offset="0.50"/>
+                                            <GradientStop Color="#DFA2DA" Offset="0.54"/>
+                                            <GradientStop Color="Transparent" Offset="0.58"/>
+                                        </LinearGradientBrush>
+                                    </Rectangle.Fill>
+                                    <Rectangle.RenderTransform>
+                                        <RotateTransform x:Name="WhiteRotateTransform" Angle="83"/>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                            </Canvas>
+                        </Border>
+
+                        <!-- Border Layer (blur 0.5px) -->
+                        <Border x:Name="BorderLayer"
+                                Width="{StaticResource CurvyEarwig22.Border.MaxWidth}"
+                                Height="{StaticResource CurvyEarwig22.Border.MaxHeight}"
+                                CornerRadius="{StaticResource CurvyEarwig22.Border.CornerRadius}"
+                                ClipToBounds="True"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.Effect>
+                                <BlurEffect Radius="{StaticResource CurvyEarwig22.Border.BlurRadius}"/>
+                            </Border.Effect>
+                            <Border.Clip>
+                                <RectangleGeometry RadiusX="11" RadiusY="11">
+                                    <RectangleGeometry.Rect>
+                                        <MultiBinding Converter="{StaticResource SizeToRectConverter}">
+                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                            <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                        </MultiBinding>
+                                    </RectangleGeometry.Rect>
+                                </RectangleGeometry>
+                            </Border.Clip>
+                            <Canvas>
+                                <Rectangle x:Name="BorderRotatingRect"
+                                           Width="600" Height="600"
+                                           Canvas.Left="-148" Canvas.Top="-270"
+                                           RenderTransformOrigin="0.5,0.5">
+                                    <Rectangle.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#1C191C" Offset="0"/>
+                                            <GradientStop Color="#402FB5" Offset="0.05"/>
+                                            <GradientStop Color="#1C191C" Offset="0.14"/>
+                                            <GradientStop Color="#1C191C" Offset="0.50"/>
+                                            <GradientStop Color="#CF30AA" Offset="0.60"/>
+                                            <GradientStop Color="#1C191C" Offset="0.64"/>
+                                        </LinearGradientBrush>
+                                    </Rectangle.Fill>
+                                    <Rectangle.RenderTransform>
+                                        <RotateTransform x:Name="BorderRotateTransform" Angle="70"/>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                            </Canvas>
+                        </Border>
+
+                        <!-- Main Input Container -->
+                        <Grid x:Name="MainContainer">
+                            <!-- Input Background -->
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="{StaticResource CurvyEarwig22.Input.CornerRadius}"/>
+
+                            <!-- Pink Mask (glow effect on left side) -->
+                            <Border x:Name="PinkMask"
+                                    Width="{StaticResource CurvyEarwig22.PinkMask.Width}"
+                                    Height="{StaticResource CurvyEarwig22.PinkMask.Height}"
+                                    Background="{StaticResource CurvyEarwig22.PinkMask.Brush}"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Margin="{StaticResource CurvyEarwig22.PinkMask.Margin}"
+                                    Opacity="{StaticResource CurvyEarwig22.PinkMask.Opacity}">
+                                <Border.Effect>
+                                    <BlurEffect Radius="{StaticResource CurvyEarwig22.PinkMask.BlurRadius}"/>
+                                </Border.Effect>
+                            </Border>
+
+                            <!-- Search Icon -->
+                            <Path x:Name="SearchCircle"
+                                  Width="{StaticResource CurvyEarwig22.SearchIcon.Size}"
+                                  Height="{StaticResource CurvyEarwig22.SearchIcon.Size}"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  Margin="{StaticResource CurvyEarwig22.SearchIcon.Margin}"
+                                  Stroke="{StaticResource CurvyEarwig22.SearchIcon.CircleBrush}"
+                                  StrokeThickness="2"
+                                  StrokeLineJoin="Round"
+                                  StrokeStartLineCap="Round"
+                                  StrokeEndLineCap="Round"
+                                  Stretch="Uniform"
+                                  Data="M11,3 A8,8 0 1,1 10.999,3 M16.65,16.65 L22,22"/>
+
+                            <!-- Input TextBox -->
+                            <TextBox x:Name="PART_TextBox"
+                                     Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Foreground="{TemplateBinding Foreground}"
+                                     FontSize="{TemplateBinding FontSize}"
+                                     Padding="{StaticResource CurvyEarwig22.Input.Padding}"
+                                     VerticalContentAlignment="Center"
+                                     CaretBrush="{TemplateBinding Foreground}"/>
+
+                            <!-- Placeholder -->
+                            <TextBlock x:Name="PlaceholderText"
+                                       Text="{Binding Placeholder, RelativeSource={RelativeSource TemplatedParent}}"
+                                       Foreground="{StaticResource CurvyEarwig22.Input.PlaceholderBrush}"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       IsHitTestVisible="False"
+                                       VerticalAlignment="Center"
+                                       Margin="59,0,0,0"
+                                       Visibility="Visible"/>
+
+                            <!-- Input Mask (fade effect) -->
+                            <Border x:Name="InputMask"
+                                    Width="{StaticResource CurvyEarwig22.InputMask.Width}"
+                                    Height="{StaticResource CurvyEarwig22.InputMask.Height}"
+                                    Background="{StaticResource CurvyEarwig22.InputMask.BackgroundBrush}"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Margin="{StaticResource CurvyEarwig22.InputMask.Margin}"
+                                    IsHitTestVisible="False"/>
+
+                            <!-- Filter Border (rotating gradient border) -->
+                            <Border x:Name="FilterBorder"
+                                    Width="{StaticResource CurvyEarwig22.FilterBorder.Width}"
+                                    Height="{StaticResource CurvyEarwig22.FilterBorder.Height}"
+                                    CornerRadius="{StaticResource CurvyEarwig22.FilterIcon.CornerRadius}"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Margin="{StaticResource CurvyEarwig22.FilterBorder.Margin}"
+                                    ClipToBounds="True">
+                                <Border.Clip>
+                                    <RectangleGeometry RadiusX="10" RadiusY="10">
+                                        <RectangleGeometry.Rect>
+                                            <MultiBinding Converter="{StaticResource SizeToRectConverter}">
+                                                <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                                <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                            </MultiBinding>
+                                        </RectangleGeometry.Rect>
+                                    </RectangleGeometry>
+                                </Border.Clip>
+                                <Canvas>
+                                    <Rectangle x:Name="FilterBorderRotatingRect"
+                                               Width="600" Height="600"
+                                               Canvas.Left="-280" Canvas.Top="-279"
+                                               RenderTransformOrigin="0.5,0.5">
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="Transparent" Offset="0"/>
+                                                <GradientStop Color="#3D3A4F" Offset="0.25"/>
+                                                <GradientStop Color="Transparent" Offset="0.50"/>
+                                                <GradientStop Color="#3D3A4F" Offset="0.75"/>
+                                                <GradientStop Color="Transparent" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+                                        <Rectangle.RenderTransform>
+                                            <RotateTransform x:Name="FilterBorderRotateTransform" Angle="90"/>
+                                        </Rectangle.RenderTransform>
+                                    </Rectangle>
+                                </Canvas>
+                            </Border>
+
+                            <!-- Filter Icon -->
+                            <Border x:Name="FilterIcon"
+                                    Width="{StaticResource CurvyEarwig22.FilterIcon.Width}"
+                                    Height="{StaticResource CurvyEarwig22.FilterIcon.Height}"
+                                    CornerRadius="{StaticResource CurvyEarwig22.FilterIcon.CornerRadius}"
+                                    Background="{StaticResource CurvyEarwig22.FilterIcon.BackgroundBrush}"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Margin="{StaticResource CurvyEarwig22.FilterIcon.Margin}">
+                                <Path Data="{StaticResource CurvyEarwig22.FilterIcon.PathData}"
+                                      Stroke="{StaticResource CurvyEarwig22.FilterIcon.StrokeBrush}"
+                                      StrokeThickness="1"
+                                      StrokeMiterLimit="10"
+                                      StrokeLineJoin="Round"
+                                      StrokeStartLineCap="Round"
+                                      StrokeEndLineCap="Round"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Stretch="Uniform"
+                                      Width="20" Height="20"/>
+                            </Border>
+                        </Grid>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hide placeholder when text is entered -->
+                        <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource Self}, Converter={x:Static converters:StringToBoolConverter.Instance}}" Value="True">
+                            <Setter TargetName="PlaceholderText" Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+
+                        <!-- Hide input mask and pink mask on focus -->
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter TargetName="InputMask" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PlaceholderText" Property="Visibility" Value="Collapsed"/>
+                            <!-- Rotate gradient layers on focus -->
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="GlowRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="420" Duration="0:0:4"/>
+                                        <DoubleAnimation Storyboard.TargetName="DarkBorderBgRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="442" Duration="0:0:4"/>
+                                        <DoubleAnimation Storyboard.TargetName="WhiteRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="443" Duration="0:0:4"/>
+                                        <DoubleAnimation Storyboard.TargetName="BorderRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="430" Duration="0:0:4"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="GlowRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="60" Duration="0:0:2"/>
+                                        <DoubleAnimation Storyboard.TargetName="DarkBorderBgRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="82" Duration="0:0:2"/>
+                                        <DoubleAnimation Storyboard.TargetName="WhiteRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="83" Duration="0:0:2"/>
+                                        <DoubleAnimation Storyboard.TargetName="BorderRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="70" Duration="0:0:2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                        <!-- Hover effect: rotate gradients and hide pink mask -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PinkMask" Property="Opacity" Value="0"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="GlowRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="-120" Duration="0:0:2"/>
+                                        <DoubleAnimation Storyboard.TargetName="DarkBorderBgRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="-98" Duration="0:0:2"/>
+                                        <DoubleAnimation Storyboard.TargetName="WhiteRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="-97" Duration="0:0:2"/>
+                                        <DoubleAnimation Storyboard.TargetName="BorderRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="-110" Duration="0:0:2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="GlowRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="60" Duration="0:0:2"/>
+                                        <DoubleAnimation Storyboard.TargetName="DarkBorderBgRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="82" Duration="0:0:2"/>
+                                        <DoubleAnimation Storyboard.TargetName="WhiteRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="83" Duration="0:0:2"/>
+                                        <DoubleAnimation Storyboard.TargetName="BorderRotateTransform"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="70" Duration="0:0:2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

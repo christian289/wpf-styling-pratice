@@ -1,0 +1,405 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:CurvyEarwig22.Avalonia.Lib.Controls">
+
+    <!--
+    CSS conic-gradient는 AvaloniaUI에서 직접 지원되지 않음
+    ConicGradientBrush는 Avalonia 12.0+에서 예정
+    대안으로 여러 LinearGradientBrush와 회전 애니메이션 사용
+
+    CSS conic-gradient is not directly supported in AvaloniaUI
+    ConicGradientBrush is planned for Avalonia 12.0+
+    Using multiple LinearGradientBrush with rotation animations as alternative
+    -->
+
+    <!-- Colors -->
+    <Color x:Key="NeonSearchBox.Background">#010201</Color>
+    <Color x:Key="NeonSearchBox.Foreground">#FFFFFF</Color>
+    <Color x:Key="NeonSearchBox.Placeholder">#C0B9C0</Color>
+    <Color x:Key="NeonSearchBox.Purple">#402FB5</Color>
+    <Color x:Key="NeonSearchBox.Pink">#CF30AA</Color>
+    <Color x:Key="NeonSearchBox.DarkPurple">#18116A</Color>
+    <Color x:Key="NeonSearchBox.DarkPink">#6E1B60</Color>
+    <Color x:Key="NeonSearchBox.LightPurple">#A099D8</Color>
+    <Color x:Key="NeonSearchBox.LightPink">#DFA2DA</Color>
+    <Color x:Key="NeonSearchBox.IconStroke">#D6D6E6</Color>
+    <Color x:Key="NeonSearchBox.FilterBg1">#161329</Color>
+    <Color x:Key="NeonSearchBox.FilterBg2">#000000</Color>
+    <Color x:Key="NeonSearchBox.FilterBg3">#1D1B4B</Color>
+    <Color x:Key="NeonSearchBox.FilterBorder">#3D3A4F</Color>
+    <Color x:Key="NeonSearchBox.SearchGradient1">#F8E7F8</Color>
+    <Color x:Key="NeonSearchBox.SearchGradient2">#B6A9B7</Color>
+    <Color x:Key="NeonSearchBox.SearchGradient3">#837484</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="NeonSearchBox.BackgroundBrush" Color="{StaticResource NeonSearchBox.Background}" />
+    <SolidColorBrush x:Key="NeonSearchBox.ForegroundBrush" Color="{StaticResource NeonSearchBox.Foreground}" />
+    <SolidColorBrush x:Key="NeonSearchBox.PlaceholderBrush" Color="{StaticResource NeonSearchBox.Placeholder}" />
+    <SolidColorBrush x:Key="NeonSearchBox.PinkBrush" Color="{StaticResource NeonSearchBox.Pink}" />
+
+    <!-- Filter Button Background -->
+    <LinearGradientBrush x:Key="NeonSearchBox.FilterBackgroundBrush" StartPoint="0%,0%" EndPoint="0%,100%">
+        <GradientStop Color="{StaticResource NeonSearchBox.FilterBg1}" Offset="0" />
+        <GradientStop Color="{StaticResource NeonSearchBox.FilterBg2}" Offset="0.5" />
+        <GradientStop Color="{StaticResource NeonSearchBox.FilterBg3}" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- Search Icon Gradient -->
+    <LinearGradientBrush x:Key="NeonSearchBox.SearchIconBrush" StartPoint="0%,0%" EndPoint="100%,100%">
+        <GradientStop Color="{StaticResource NeonSearchBox.SearchGradient1}" Offset="0" />
+        <GradientStop Color="{StaticResource NeonSearchBox.SearchGradient2}" Offset="0.5" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="NeonSearchBox.SearchLineBrush" StartPoint="0%,0%" EndPoint="100%,100%">
+        <GradientStop Color="{StaticResource NeonSearchBox.SearchGradient2}" Offset="0" />
+        <GradientStop Color="{StaticResource NeonSearchBox.SearchGradient3}" Offset="0.5" />
+    </LinearGradientBrush>
+
+    <!-- Input Mask Gradient -->
+    <LinearGradientBrush x:Key="NeonSearchBox.InputMaskBrush" StartPoint="0%,50%" EndPoint="100%,50%">
+        <GradientStop Color="Transparent" Offset="0" />
+        <GradientStop Color="Black" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- Glow Effect Gradients (Simulating conic-gradient with linear gradients) -->
+    <LinearGradientBrush x:Key="NeonSearchBox.GlowBrush1" StartPoint="0%,0%" EndPoint="100%,100%">
+        <GradientStop Color="Transparent" Offset="0" />
+        <GradientStop Color="{StaticResource NeonSearchBox.Purple}" Offset="0.3" />
+        <GradientStop Color="Transparent" Offset="0.5" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="NeonSearchBox.GlowBrush2" StartPoint="100%,0%" EndPoint="0%,100%">
+        <GradientStop Color="Transparent" Offset="0" />
+        <GradientStop Color="{StaticResource NeonSearchBox.Pink}" Offset="0.3" />
+        <GradientStop Color="Transparent" Offset="0.5" />
+    </LinearGradientBrush>
+
+    <!-- Border Effect Brush -->
+    <LinearGradientBrush x:Key="NeonSearchBox.BorderEffectBrush" StartPoint="0%,0%" EndPoint="100%,100%">
+        <GradientStop Color="#1C191C" Offset="0" />
+        <GradientStop Color="{StaticResource NeonSearchBox.Purple}" Offset="0.05" />
+        <GradientStop Color="#1C191C" Offset="0.14" />
+        <GradientStop Color="{StaticResource NeonSearchBox.Pink}" Offset="0.6" />
+        <GradientStop Color="#1C191C" Offset="0.64" />
+    </LinearGradientBrush>
+
+    <!-- Control Template Style -->
+    <ControlTheme x:Key="{x:Type controls:NeonSearchBox}" TargetType="controls:NeonSearchBox">
+        <Setter Property="Width" Value="314" />
+        <Setter Property="Height" Value="70" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Glow Layer (최하단 레이어 - 블러 효과) -->
+                    <!-- Glow Layer (Bottom layer - blur effect) -->
+                    <Border Name="PART_GlowLayer"
+                            MaxWidth="354"
+                            MaxHeight="130"
+                            CornerRadius="12"
+                            Opacity="0.4"
+                            ClipToBounds="True"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        <Border.Effect>
+                            <BlurEffect Radius="30" />
+                        </Border.Effect>
+                        <Panel Width="354" Height="130">
+                            <Border Background="{StaticResource NeonSearchBox.GlowBrush1}"
+                                    Width="600" Height="600"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="60" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <Border Background="{StaticResource NeonSearchBox.GlowBrush2}"
+                                    Width="600" Height="600"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="240" />
+                                </Border.RenderTransform>
+                            </Border>
+                        </Panel>
+                    </Border>
+
+                    <!-- Dark Border Background Layers -->
+                    <Border Name="PART_DarkBorder1"
+                            MaxWidth="312"
+                            MaxHeight="65"
+                            CornerRadius="12"
+                            ClipToBounds="True"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        <Border.Effect>
+                            <BlurEffect Radius="3" />
+                        </Border.Effect>
+                        <Panel>
+                            <Border Background="{StaticResource NeonSearchBox.GlowBrush1}"
+                                    Width="600" Height="600"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="82" />
+                                </Border.RenderTransform>
+                            </Border>
+                        </Panel>
+                    </Border>
+
+                    <!-- White Layer -->
+                    <Border Name="PART_WhiteLayer"
+                            MaxWidth="307"
+                            MaxHeight="63"
+                            CornerRadius="10"
+                            ClipToBounds="True"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        <Border.Effect>
+                            <BlurEffect Radius="2" />
+                        </Border.Effect>
+                        <Panel>
+                            <Border Background="{StaticResource NeonSearchBox.GlowBrush1}"
+                                    Width="600" Height="600"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Opacity="0.7"
+                                    RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="83" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <Border Background="{StaticResource NeonSearchBox.GlowBrush2}"
+                                    Width="600" Height="600"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Opacity="0.7"
+                                    RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="263" />
+                                </Border.RenderTransform>
+                            </Border>
+                        </Panel>
+                    </Border>
+
+                    <!-- Border Layer -->
+                    <Border Name="PART_BorderLayer"
+                            MaxWidth="303"
+                            MaxHeight="59"
+                            CornerRadius="11"
+                            ClipToBounds="True"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        <Border.Effect>
+                            <BlurEffect Radius="0.5" />
+                        </Border.Effect>
+                        <Panel>
+                            <Border Background="{StaticResource NeonSearchBox.BorderEffectBrush}"
+                                    Width="600" Height="600"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="70" />
+                                </Border.RenderTransform>
+                            </Border>
+                        </Panel>
+                    </Border>
+
+                    <!-- Main Content Area -->
+                    <Panel Name="PART_MainContainer"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center">
+
+                        <!-- Input Field -->
+                        <TextBox Name="PART_TextBox"
+                                 Text="{TemplateBinding Text, Mode=TwoWay}"
+                                 Watermark="{TemplateBinding Watermark}"
+                                 Width="301"
+                                 Height="56"
+                                 CornerRadius="10"
+                                 Background="{StaticResource NeonSearchBox.BackgroundBrush}"
+                                 Foreground="{StaticResource NeonSearchBox.ForegroundBrush}"
+                                 BorderThickness="0"
+                                 FontSize="18"
+                                 Padding="59,0,59,0"
+                                 VerticalContentAlignment="Center" />
+
+                        <!-- Input Mask (Fade effect) -->
+                        <Border Name="PART_InputMask"
+                                Width="100"
+                                Height="20"
+                                Background="{StaticResource NeonSearchBox.InputMaskBrush}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="70,0,0,0"
+                                IsHitTestVisible="False" />
+
+                        <!-- Pink Mask (Glow accent) -->
+                        <Border Name="PART_PinkMask"
+                                Width="30"
+                                Height="20"
+                                Background="{StaticResource NeonSearchBox.PinkBrush}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Margin="5,10,0,0"
+                                Opacity="0.8"
+                                IsHitTestVisible="False">
+                            <Border.Effect>
+                                <BlurEffect Radius="20" />
+                            </Border.Effect>
+                        </Border>
+
+                        <!-- Search Icon -->
+                        <Panel Name="PART_SearchIcon"
+                               Width="24"
+                               Height="24"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="20,0,0,0">
+                            <Ellipse Width="16" Height="16"
+                                     Stroke="{StaticResource NeonSearchBox.SearchIconBrush}"
+                                     StrokeThickness="2"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Top"
+                                     Margin="0,0,0,0" />
+                            <Line StartPoint="14,14"
+                                  EndPoint="20,20"
+                                  Stroke="{StaticResource NeonSearchBox.SearchLineBrush}"
+                                  StrokeThickness="2"
+                                  StrokeLineCap="Round" />
+                        </Panel>
+
+                        <!-- Filter Border (Rotating border effect) -->
+                        <Border Name="PART_FilterBorder"
+                                Width="40"
+                                Height="42"
+                                CornerRadius="10"
+                                ClipToBounds="True"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0,0,7,0">
+                            <Panel>
+                                <Border Width="100" Height="100"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        RenderTransformOrigin="0.5,0.5">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+                                            <GradientStop Color="Transparent" Offset="0" />
+                                            <GradientStop Color="{StaticResource NeonSearchBox.FilterBorder}" Offset="0.5" />
+                                            <GradientStop Color="Transparent" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Border.RenderTransform>
+                                        <RotateTransform Angle="0" />
+                                    </Border.RenderTransform>
+                                </Border>
+                            </Panel>
+                        </Border>
+
+                        <!-- Filter Icon Button -->
+                        <Border Name="PART_FilterIcon"
+                                Width="38"
+                                Height="40"
+                                CornerRadius="10"
+                                Background="{StaticResource NeonSearchBox.FilterBackgroundBrush}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0,0,8,0"
+                                ClipToBounds="True">
+                            <Panel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <!-- Filter SVG Path -->
+                                <Path Data="M8.16 6.65002H15.83C16.47 6.65002 16.99 7.17002 16.99 7.81002V9.09002C16.99 9.56002 16.7 10.14 16.41 10.43L13.91 12.64C13.56 12.93 13.33 13.51 13.33 13.98V16.48C13.33 16.83 13.1 17.29 12.81 17.47L12 17.98C11.24 18.45 10.2 17.92 10.2 16.99V13.91C10.2 13.5 9.97 12.98 9.73 12.69L7.52 10.36C7.23 10.08 7 9.55002 7 9.20002V7.87002C7 7.17002 7.52 6.65002 8.16 6.65002Z"
+                                      Stroke="{StaticResource NeonSearchBox.PlaceholderBrush}"
+                                      StrokeThickness="1"
+                                      StrokeLineCap="Round"
+                                      StrokeJoin="Round"
+                                      Stretch="Uniform"
+                                      Width="20"
+                                      Height="20" />
+                            </Panel>
+                        </Border>
+                    </Panel>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- PointerOver State - Pink mask fades out -->
+        <Style Selector="^:pointerover /template/ Border#PART_PinkMask">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+
+        <!-- Focus State - Input mask hides -->
+        <Style Selector="^:focus-within /template/ Border#PART_InputMask">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+
+        <!-- Animation for filter border rotation -->
+        <Style Selector="^ /template/ Border#PART_FilterBorder">
+            <Style.Animations>
+                <Animation Duration="0:0:4" IterationCount="Infinite">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <RotateTransform Angle="0" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <RotateTransform Angle="360" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+    </ControlTheme>
+
+    <!-- TextBox Style Override for NeonSearchBox -->
+    <ControlTheme x:Key="NeonSearchBoxTextBox" TargetType="TextBox">
+        <Setter Property="Background" Value="{StaticResource NeonSearchBox.BackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource NeonSearchBox.ForegroundBrush}" />
+        <Setter Property="CaretBrush" Value="{StaticResource NeonSearchBox.ForegroundBrush}" />
+        <Setter Property="SelectionBrush" Value="{StaticResource NeonSearchBox.PinkBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <DockPanel>
+                            <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden"
+                                          HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Center">
+                                <Panel>
+                                    <TextBlock Name="PART_Watermark"
+                                               Text="{TemplateBinding Watermark}"
+                                               Foreground="{StaticResource NeonSearchBox.PlaceholderBrush}"
+                                               IsVisible="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static StringConverters.IsNullOrEmpty}}"
+                                               VerticalAlignment="Center"
+                                               Margin="{TemplateBinding Padding}" />
+                                    <TextPresenter Name="PART_TextPresenter"
+                                                   Text="{TemplateBinding Text}"
+                                                   CaretBrush="{TemplateBinding CaretBrush}"
+                                                   CaretIndex="{TemplateBinding CaretIndex}"
+                                                   SelectionBrush="{TemplateBinding SelectionBrush}"
+                                                   SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                                   SelectionStart="{TemplateBinding SelectionStart}"
+                                                   SelectionEnd="{TemplateBinding SelectionEnd}"
+                                                   TextAlignment="{TemplateBinding TextAlignment}"
+                                                   TextWrapping="{TemplateBinding TextWrapping}"
+                                                   VerticalAlignment="Center"
+                                                   Margin="{TemplateBinding Padding}" />
+                                </Panel>
+                            </ScrollViewer>
+                        </DockPanel>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>
