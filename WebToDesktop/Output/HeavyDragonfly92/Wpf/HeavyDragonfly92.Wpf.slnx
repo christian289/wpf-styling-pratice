@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="HeavyDragonfly92.Wpf.Gallery/HeavyDragonfly92.Wpf.Gallery.csproj" />
+  <Project Path="HeavyDragonfly92.Wpf.UI/HeavyDragonfly92.Wpf.UI.csproj" />
+</Solution>

@@ -1,0 +1,54 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <!-- [background] 탭 컨테이너 배경색 -->
+    <SolidColorBrush x:Key="HeavyDragonfly92.Background" Color="#FFFFFF"/>
+
+    <!-- [glider-background] 글라이더 및 알림 기본 배경색 -->
+    <SolidColorBrush x:Key="HeavyDragonfly92.Glider.Background" Color="#E6EEF9"/>
+
+    <!-- [selected-color] 선택된 탭 텍스트 및 알림 배경색 -->
+    <SolidColorBrush x:Key="HeavyDragonfly92.Selected.Foreground" Color="#185EE0"/>
+
+    <!-- [tab-foreground] 탭 기본 텍스트 색상 -->
+    <SolidColorBrush x:Key="HeavyDragonfly92.Tab.Foreground" Color="#000000"/>
+
+    <!-- [notification-selected-foreground] 선택된 알림 배지 텍스트 색상 -->
+    <SolidColorBrush x:Key="HeavyDragonfly92.Notification.Selected.Foreground" Color="#FFFFFF"/>
+
+    <!-- Shadow Color -->
+    <!-- [shadow] rgba(24, 94, 224, 0.15) -->
+    <Color x:Key="HeavyDragonfly92.Shadow.Color">#26185EE0</Color>
+
+    <!-- Sizes -->
+    <!-- [tab-height] 탭 높이: 30px -->
+    <sys:Double x:Key="HeavyDragonfly92.Tab.Height">30</sys:Double>
+
+    <!-- [tab-width] 탭 너비: 50px -->
+    <sys:Double x:Key="HeavyDragonfly92.Tab.Width">50</sys:Double>
+
+    <!-- [padding] 컨테이너 패딩: 0.75rem = 12px -->
+    <Thickness x:Key="HeavyDragonfly92.Padding">12</Thickness>
+
+    <!-- [border-radius] 탭 및 컨테이너 라운드: 99px -->
+    <CornerRadius x:Key="HeavyDragonfly92.CornerRadius">99</CornerRadius>
+
+    <!-- [tab-font-size] 탭 폰트 크기: 0.8rem = 12.8px -->
+    <sys:Double x:Key="HeavyDragonfly92.Tab.FontSize">12.8</sys:Double>
+
+    <!-- [notification-size] 알림 배지 크기: 0.8rem = 12.8px -->
+    <sys:Double x:Key="HeavyDragonfly92.Notification.Size">12.8</sys:Double>
+
+    <!-- [notification-font-size] 알림 배지 폰트 크기: 10px -->
+    <sys:Double x:Key="HeavyDragonfly92.Notification.FontSize">10</sys:Double>
+
+    <!-- Animation Durations -->
+    <!-- [transition-fast] 빠른 전환: 0.15s -->
+    <Duration x:Key="HeavyDragonfly92.Transition.Fast">0:0:0.15</Duration>
+
+    <!-- [transition-glider] 글라이더 전환: 0.25s -->
+    <Duration x:Key="HeavyDragonfly92.Transition.Glider">0:0:0.25</Duration>
+
+</ResourceDictionary>

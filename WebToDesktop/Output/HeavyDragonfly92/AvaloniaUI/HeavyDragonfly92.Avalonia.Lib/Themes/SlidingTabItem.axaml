@@ -1,0 +1,68 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:HeavyDragonfly92.Avalonia.Lib.Controls">
+
+    <!-- Colors -->
+    <Color x:Key="Tab.Foreground.Normal">#000000</Color>
+    <Color x:Key="Tab.Foreground.Selected">#185ee0</Color>
+    <Color x:Key="Notification.Background.Normal">#e6eef9</Color>
+    <Color x:Key="Notification.Background.Selected">#185ee0</Color>
+    <Color x:Key="Notification.Foreground.Selected">#FFFFFF</Color>
+
+    <ControlTheme x:Key="{x:Type controls:SlidingTabItem}" TargetType="controls:SlidingTabItem">
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Foreground" Value="{StaticResource Tab.Foreground.Normal}"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <Border x:Name="PART_Root"
+                            Background="Transparent"
+                            CornerRadius="99">
+                        <Panel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" Spacing="2">
+                                <TextBlock x:Name="PART_Text"
+                                           Text="{TemplateBinding Text}"
+                                           VerticalAlignment="Center"
+                                           Foreground="{TemplateBinding Foreground}"/>
+                                <Border x:Name="PART_Notification"
+                                        Width="10"
+                                        Height="10"
+                                        CornerRadius="5"
+                                        Background="{StaticResource Notification.Background.Normal}"
+                                        IsVisible="{Binding NotificationCount, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                        VerticalAlignment="Top"
+                                        Margin="2,-3,0,0">
+                                    <TextBlock x:Name="PART_NotificationText"
+                                               Text="{TemplateBinding NotificationCount}"
+                                               FontSize="8"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Foreground="{StaticResource Tab.Foreground.Normal}"/>
+                                </Border>
+                            </StackPanel>
+                        </Panel>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Selected State -->
+        <Style Selector="^:selected">
+            <Setter Property="Foreground" Value="{StaticResource Tab.Foreground.Selected}"/>
+        </Style>
+
+        <Style Selector="^:selected /template/ Border#PART_Notification">
+            <Setter Property="Background" Value="{StaticResource Notification.Background.Selected}"/>
+        </Style>
+
+        <Style Selector="^:selected /template/ TextBlock#PART_NotificationText">
+            <Setter Property="Foreground" Value="{StaticResource Notification.Foreground.Selected}"/>
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

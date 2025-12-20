@@ -1,0 +1,28 @@
+<Window x:Class="HeavyDragonfly92.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:HeavyDragonfly92.Wpf.UI.Controls;assembly=HeavyDragonfly92.Wpf.UI"
+        mc:Ignorable="d"
+        Title="HeavyDragonfly92 Gallery" Height="450" Width="800"
+        Background="#F5F5F5">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <!-- Example 1: Basic Tabs -->
+            <controls:HeavyDragonfly92 Margin="0,0,0,30">
+                <controls:HeavyDragonfly92Item Content="Hello" IsSelected="True" ShowNotification="True" NotificationCount="2"/>
+                <controls:HeavyDragonfly92Item Content="UI"/>
+                <controls:HeavyDragonfly92Item Content="World"/>
+            </controls:HeavyDragonfly92>
+
+            <!-- Example 2: More Tabs -->
+            <controls:HeavyDragonfly92>
+                <controls:HeavyDragonfly92Item Content="Home" IsSelected="True"/>
+                <controls:HeavyDragonfly92Item Content="About" ShowNotification="True" NotificationCount="5"/>
+                <controls:HeavyDragonfly92Item Content="Contact"/>
+                <controls:HeavyDragonfly92Item Content="Help"/>
+            </controls:HeavyDragonfly92>
+        </StackPanel>
+    </Grid>
+</Window>

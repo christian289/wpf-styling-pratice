@@ -1,0 +1,49 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:HeavyDragonfly92.Avalonia.Lib.Controls">
+
+    <!-- Colors -->
+    <Color x:Key="Tabs.Background">#FFFFFF</Color>
+    <Color x:Key="Glider.Background">#e6eef9</Color>
+    <Color x:Key="Shadow.Color">#26185ee0</Color>
+
+    <ControlTheme x:Key="{x:Type controls:SlidingTabControl}" TargetType="controls:SlidingTabControl">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{StaticResource Tabs.Background}"
+                        CornerRadius="99"
+                        Padding="9"
+                        BoxShadow="0 0 1 0 #26185ee0, 0 6 12 0 #26185ee0">
+                    <Panel>
+                        <!-- Glider (sliding background) -->
+                        <Border x:Name="PART_Glider"
+                                Width="50"
+                                Height="30"
+                                Background="{StaticResource Glider.Background}"
+                                CornerRadius="99"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                ZIndex="0">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.25" Easing="QuadraticEaseOut"/>
+                                </Transitions>
+                            </Border.Transitions>
+                        </Border>
+
+                        <!-- Tabs Container -->
+                        <ItemsControl x:Name="PART_TabsContainer"
+                                      ZIndex="1">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

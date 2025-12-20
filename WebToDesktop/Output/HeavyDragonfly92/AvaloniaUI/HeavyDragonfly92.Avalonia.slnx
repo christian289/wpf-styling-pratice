@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="HeavyDragonfly92.Avalonia.Gallery/HeavyDragonfly92.Avalonia.Gallery.csproj" />
+  <Project Path="HeavyDragonfly92.Avalonia.Lib/HeavyDragonfly92.Avalonia.Lib.csproj" />
+</Solution>

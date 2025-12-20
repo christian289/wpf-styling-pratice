@@ -1,0 +1,16 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:HeavyDragonfly92.Avalonia.Lib.Controls"
+        x:Class="HeavyDragonfly92.Avalonia.Gallery.MainWindow"
+        Title="HeavyDragonfly92 - Sliding Tabs"
+        Width="400"
+        Height="300"
+        Background="#f0f4f8">
+
+    <Grid>
+        <controls:SlidingTabControl x:Name="TabControl"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+    </Grid>
+
+</Window>
