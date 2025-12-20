@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="RedGoat27.Avalonia.Lib\RedGoat27.Avalonia.Lib.csproj" />
+  <Project Path="RedGoat27.Avalonia.Gallery\RedGoat27.Avalonia.Gallery.csproj" />
+</Solution>

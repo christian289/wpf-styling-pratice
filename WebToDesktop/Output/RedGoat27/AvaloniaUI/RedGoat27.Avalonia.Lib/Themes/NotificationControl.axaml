@@ -1,0 +1,139 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:RedGoat27.Avalonia.Lib.Controls">
+
+    <!-- Colors -->
+    <Color x:Key="Trophy.Color">#FFD700</Color>
+    <SolidColorBrush x:Key="Trophy.Brush" Color="{StaticResource Trophy.Color}" />
+    <SolidColorBrush x:Key="Text.Brush" Color="White" />
+
+    <!-- Trophy SVG Path Data -->
+    <PathGeometry x:Key="Trophy.LeftHandle">M10,50 L40,50 L30,10 L20,10 Z</PathGeometry>
+    <PathGeometry x:Key="Trophy.RightHandle">M60,50 L90,50 L80,10 L70,10 Z</PathGeometry>
+    <PathGeometry x:Key="Trophy.TopRim">M20,10 L80,10 L70,30 L30,30 Z</PathGeometry>
+    <PathGeometry x:Key="Trophy.MiddleBody">M30,30 L70,30 L60,50 L40,50 Z</PathGeometry>
+    <PathGeometry x:Key="Trophy.Base">M25,75 L75,75 L85,90 L15,90 Z</PathGeometry>
+    <PathGeometry x:Key="Trophy.Stem">M40,50 L60,50 L55,70 L45,70 Z</PathGeometry>
+
+    <!-- NotificationControl Style -->
+    <ControlTheme x:Key="{x:Type controls:NotificationControl}" TargetType="controls:NotificationControl">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <StackPanel HorizontalAlignment="Center" Spacing="8">
+                    <!-- Trophy Icon -->
+                    <Canvas Name="PART_TrophyCanvas"
+                            Width="80" Height="80"
+                            HorizontalAlignment="Center"
+                            RenderTransformOrigin="0.5,0.5">
+                        <Canvas.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform X="0" Y="0" />
+                                <RotateTransform Angle="0" />
+                            </TransformGroup>
+                        </Canvas.RenderTransform>
+                        <Viewbox Width="80" Height="80">
+                            <Canvas Width="100" Height="100">
+                                <Path Data="{StaticResource Trophy.LeftHandle}" Fill="{StaticResource Trophy.Brush}" />
+                                <Path Data="{StaticResource Trophy.RightHandle}" Fill="{StaticResource Trophy.Brush}" />
+                                <Path Data="{StaticResource Trophy.TopRim}" Fill="{StaticResource Trophy.Brush}" />
+                                <Path Data="{StaticResource Trophy.MiddleBody}" Fill="{StaticResource Trophy.Brush}" />
+                                <Path Data="{StaticResource Trophy.Base}" Fill="{StaticResource Trophy.Brush}" />
+                                <Path Data="{StaticResource Trophy.Stem}" Fill="{StaticResource Trophy.Brush}" />
+                            </Canvas>
+                        </Viewbox>
+                    </Canvas>
+
+                    <!-- Title Text -->
+                    <TextBlock Text="{TemplateBinding Title}"
+                               Foreground="{StaticResource Text.Brush}"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               TextAlignment="Center"
+                               HorizontalAlignment="Center" />
+
+                    <!-- Message Text -->
+                    <TextBlock Text="{TemplateBinding Message}"
+                               Foreground="{StaticResource Text.Brush}"
+                               FontSize="14"
+                               TextAlignment="Center"
+                               HorizontalAlignment="Center" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Initial Bounce Animation on Load -->
+        <Style Selector="^:loaded /template/ Canvas#PART_TrophyCanvas">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" Easing="QuadraticEaseInOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform X="0" Y="0" />
+                                <RotateTransform Angle="0" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="25%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform X="0" Y="-20" />
+                                <RotateTransform Angle="0" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform X="0" Y="0" />
+                                <RotateTransform Angle="0" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="75%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform X="0" Y="-10" />
+                                <RotateTransform Angle="0" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform X="0" Y="0" />
+                                <RotateTransform Angle="0" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Spin Animation on Hover -->
+        <Style Selector="^:pointerover /template/ Canvas#PART_TrophyCanvas">
+            <Style.Animations>
+                <Animation Duration="0:0:1" Easing="QuadraticEaseInOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform X="0" Y="0" />
+                                <RotateTransform Angle="0" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform X="0" Y="0" />
+                                <RotateTransform Angle="360" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

@@ -1,0 +1,118 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:RedGoat27.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/RedGoat27.Wpf.UI;component/Themes/RedGoat27Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:RedGoat27}">
+        <Setter Property="Margin" Value="{StaticResource RedGoat27.Margin}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:RedGoat27}">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                        <!-- Trophy Icon -->
+                        <!-- 트로피 아이콘 - CSS의 .trophy 요소에 해당 -->
+                        <Viewbox x:Name="TrophyViewbox"
+                                 Width="{StaticResource RedGoat27.Trophy.Size}"
+                                 Height="{StaticResource RedGoat27.Trophy.Size}"
+                                 RenderTransformOrigin="0.5,0.5"
+                                 Cursor="Hand">
+                            <Viewbox.RenderTransform>
+                                <TransformGroup>
+                                    <TranslateTransform x:Name="BounceTransform" Y="0"/>
+                                    <RotateTransform x:Name="SpinTransform" Angle="0"/>
+                                </TransformGroup>
+                            </Viewbox.RenderTransform>
+
+                            <Canvas Width="100" Height="100">
+                                <!-- Combined trophy paths -->
+                                <Path Data="{StaticResource RedGoat27.Trophy.CombinedGeometry}"
+                                      Fill="{StaticResource RedGoat27.Trophy.Fill}"/>
+                            </Canvas>
+                        </Viewbox>
+
+                        <!-- Title Text -->
+                        <!-- 타이틀 텍스트 (예: Congratulations!) -->
+                        <TextBlock Text="{TemplateBinding Title}"
+                                   Foreground="{StaticResource RedGoat27.Text.Foreground}"
+                                   FontSize="{StaticResource RedGoat27.Title.FontSize}"
+                                   FontWeight="{StaticResource RedGoat27.Title.FontWeight}"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,10,0,0"/>
+
+                        <!-- Message Text -->
+                        <!-- 메시지 텍스트 (예: You reached level 10!) -->
+                        <TextBlock Text="{TemplateBinding Message}"
+                                   Foreground="{StaticResource RedGoat27.Text.Foreground}"
+                                   FontSize="{StaticResource RedGoat27.Message.FontSize}"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Loaded Trigger - Bounce Animation -->
+                        <!-- 로드 시 바운스 애니메이션 (CSS bounce keyframes) -->
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <!-- CSS: 0% translateY(0) -> 25% translateY(-20px) -> 50% translateY(0) -> 75% translateY(-10px) -> 100% translateY(0) -->
+                                    <DoubleAnimationUsingKeyFrames
+                                        Storyboard.TargetName="BounceTransform"
+                                        Storyboard.TargetProperty="Y"
+                                        Duration="0:0:0.5">
+                                        <EasingDoubleKeyFrame KeyTime="0%" Value="0"/>
+                                        <EasingDoubleKeyFrame KeyTime="25%" Value="-20">
+                                            <EasingDoubleKeyFrame.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </EasingDoubleKeyFrame.EasingFunction>
+                                        </EasingDoubleKeyFrame>
+                                        <EasingDoubleKeyFrame KeyTime="50%" Value="0">
+                                            <EasingDoubleKeyFrame.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </EasingDoubleKeyFrame.EasingFunction>
+                                        </EasingDoubleKeyFrame>
+                                        <EasingDoubleKeyFrame KeyTime="75%" Value="-10">
+                                            <EasingDoubleKeyFrame.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </EasingDoubleKeyFrame.EasingFunction>
+                                        </EasingDoubleKeyFrame>
+                                        <EasingDoubleKeyFrame KeyTime="100%" Value="0">
+                                            <EasingDoubleKeyFrame.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </EasingDoubleKeyFrame.EasingFunction>
+                                        </EasingDoubleKeyFrame>
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <!-- MouseEnter Trigger - Spin Animation -->
+                        <!-- 호버 시 스핀 애니메이션 (CSS spin keyframes) -->
+                        <EventTrigger RoutedEvent="MouseEnter" SourceName="TrophyViewbox">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <!-- CSS: 0% rotate(0) -> 100% rotate(360deg) -->
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="SpinTransform"
+                                        Storyboard.TargetProperty="Angle"
+                                        From="0" To="360"
+                                        Duration="0:0:1">
+                                        <DoubleAnimation.EasingFunction>
+                                            <QuadraticEase EasingMode="EaseInOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

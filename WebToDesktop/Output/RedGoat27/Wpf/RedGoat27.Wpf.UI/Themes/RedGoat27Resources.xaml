@@ -1,0 +1,50 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <!-- 트로피 색상 (Trophy color) -->
+    <SolidColorBrush x:Key="RedGoat27.Trophy.Fill" Color="Gold"/>
+    <!-- 텍스트 색상 (Text color) -->
+    <SolidColorBrush x:Key="RedGoat27.Text.Foreground" Color="White"/>
+
+    <!-- Sizes -->
+    <!-- 트로피 크기 (Trophy size) -->
+    <sys:Double x:Key="RedGoat27.Trophy.Size">80</sys:Double>
+    <!-- 마진 (Margin) -->
+    <Thickness x:Key="RedGoat27.Margin">50</Thickness>
+
+    <!-- Typography -->
+    <!-- 타이틀 폰트 크기 (Title font size) -->
+    <sys:Double x:Key="RedGoat27.Title.FontSize">18</sys:Double>
+    <!-- 메시지 폰트 크기 (Message font size) -->
+    <sys:Double x:Key="RedGoat27.Message.FontSize">14</sys:Double>
+    <!-- 폰트 두께 (Font weight) -->
+    <FontWeight x:Key="RedGoat27.Title.FontWeight">Bold</FontWeight>
+
+    <!-- Trophy Path Data -->
+    <!-- 트로피 SVG 경로 데이터 (Trophy SVG path data) -->
+    <!-- Left handle: M10,50 L40,50 L30,10 L20,10 Z -->
+    <Geometry x:Key="RedGoat27.Trophy.LeftHandle">M10,50 L40,50 L30,10 L20,10 Z</Geometry>
+    <!-- Right handle: M60,50 L90,50 L80,10 L70,10 Z -->
+    <Geometry x:Key="RedGoat27.Trophy.RightHandle">M60,50 L90,50 L80,10 L70,10 Z</Geometry>
+    <!-- Top rim: M20,10 L80,10 L70,30 L30,30 Z -->
+    <Geometry x:Key="RedGoat27.Trophy.TopRim">M20,10 L80,10 L70,30 L30,30 Z</Geometry>
+    <!-- Cup body: M30,30 L70,30 L60,50 L40,50 Z -->
+    <Geometry x:Key="RedGoat27.Trophy.CupBody">M30,30 L70,30 L60,50 L40,50 Z</Geometry>
+    <!-- Base: M25,75 L75,75 L85,90 L15,90 Z -->
+    <Geometry x:Key="RedGoat27.Trophy.Base">M25,75 L75,75 L85,90 L15,90 Z</Geometry>
+    <!-- Stem: M40,50 L60,50 L55,70 L45,70 Z -->
+    <Geometry x:Key="RedGoat27.Trophy.Stem">M40,50 L60,50 L55,70 L45,70 Z</Geometry>
+
+    <!-- Combined trophy geometry for single path -->
+    <GeometryGroup x:Key="RedGoat27.Trophy.CombinedGeometry">
+        <PathGeometry Figures="M10,50 L40,50 L30,10 L20,10 Z"/>
+        <PathGeometry Figures="M60,50 L90,50 L80,10 L70,10 Z"/>
+        <PathGeometry Figures="M20,10 L80,10 L70,30 L30,30 Z"/>
+        <PathGeometry Figures="M30,30 L70,30 L60,50 L40,50 Z"/>
+        <PathGeometry Figures="M25,75 L75,75 L85,90 L15,90 Z"/>
+        <PathGeometry Figures="M40,50 L60,50 L55,70 L45,70 Z"/>
+    </GeometryGroup>
+
+</ResourceDictionary>

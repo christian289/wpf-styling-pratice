@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="RedGoat27.Wpf.Gallery/RedGoat27.Wpf.Gallery.csproj" />
+  <Project Path="RedGoat27.Wpf.UI/RedGoat27.Wpf.UI.csproj" />
+</Solution>
