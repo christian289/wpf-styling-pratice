@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SwiftChicken44.Wpf.Gallery/SwiftChicken44.Wpf.Gallery.csproj" />
+  <Project Path="SwiftChicken44.Wpf.UI/SwiftChicken44.Wpf.UI.csproj" />
+</Solution>

@@ -1,0 +1,104 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:SwiftChicken44.Avalonia.Lib.Controls">
+
+    <!-- Colors -->
+    <Color x:Key="ValidationTextBox.Valid.Color">#00ff2a</Color>
+    <Color x:Key="ValidationTextBox.Invalid.Color">#ff0000</Color>
+    <Color x:Key="ValidationTextBox.Default.BorderColor">#cccccc</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="ValidationTextBox.Valid.Brush" Color="{StaticResource ValidationTextBox.Valid.Color}" />
+    <SolidColorBrush x:Key="ValidationTextBox.Invalid.Brush" Color="{StaticResource ValidationTextBox.Invalid.Color}" />
+    <SolidColorBrush x:Key="ValidationTextBox.Default.BorderBrush" Color="{StaticResource ValidationTextBox.Default.BorderColor}" />
+
+    <!-- Control Template -->
+    <ControlTheme x:Key="{x:Type controls:ValidationTextBox}" TargetType="controls:ValidationTextBox">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="BorderBrush" Value="{StaticResource ValidationTextBox.Default.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="1,1,1,2" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="Padding" Value="15,0,0,0" />
+        <Setter Property="MinWidth" Value="190" />
+        <Setter Property="Height" Value="45" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="PART_Border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Padding="{TemplateBinding Padding}">
+                    <Panel>
+                        <TextBlock x:Name="PART_Placeholder"
+                                   Text="{TemplateBinding Placeholder}"
+                                   Foreground="#888888"
+                                   VerticalAlignment="Center"
+                                   IsVisible="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static StringConverters.IsNullOrEmpty}}" />
+                        <TextBox x:Name="PART_TextBox"
+                                 Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 VerticalAlignment="Center"
+                                 FontSize="{TemplateBinding FontSize}"
+                                 Foreground="{TemplateBinding Foreground}"
+                                 Watermark="{TemplateBinding Placeholder}" />
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="BorderBrush" Duration="0:0:0.3" />
+                <BrushTransition Property="Foreground" Duration="0:0:0.3" />
+            </Transitions>
+        </Setter>
+
+        <!-- Border BoxShadow Transition -->
+        <Style Selector="^ /template/ Border#PART_Border">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BoxShadowsTransition Property="BoxShadow" Duration="0:0:0.3" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <!-- Valid State -->
+        <Style Selector="^:valid">
+            <Setter Property="BorderBrush" Value="{StaticResource ValidationTextBox.Valid.Brush}" />
+            <Setter Property="Foreground" Value="{StaticResource ValidationTextBox.Valid.Brush}" />
+            <Style Selector="^ /template/ Border#PART_Border">
+                <Setter Property="BoxShadow" Value="2 2 8 1 #00ff2a" />
+            </Style>
+            <Style Selector="^ /template/ TextBox#PART_TextBox">
+                <Setter Property="Foreground" Value="{StaticResource ValidationTextBox.Valid.Brush}" />
+            </Style>
+        </Style>
+
+        <!-- Invalid State -->
+        <Style Selector="^:invalid">
+            <Setter Property="BorderBrush" Value="{StaticResource ValidationTextBox.Invalid.Brush}" />
+            <Setter Property="Foreground" Value="{StaticResource ValidationTextBox.Invalid.Brush}" />
+            <Style Selector="^ /template/ Border#PART_Border">
+                <Setter Property="BoxShadow" Value="2 2 8 1 #ff0000" />
+            </Style>
+            <Style Selector="^ /template/ TextBox#PART_TextBox">
+                <Setter Property="Foreground" Value="{StaticResource ValidationTextBox.Invalid.Brush}" />
+            </Style>
+        </Style>
+
+        <!-- Empty State (default appearance) -->
+        <Style Selector="^:empty">
+            <Setter Property="BorderBrush" Value="{StaticResource ValidationTextBox.Default.BorderBrush}" />
+            <Setter Property="Foreground" Value="Black" />
+            <Style Selector="^ /template/ Border#PART_Border">
+                <Setter Property="BoxShadow" Value="0 0 0 0 Transparent" />
+            </Style>
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>
