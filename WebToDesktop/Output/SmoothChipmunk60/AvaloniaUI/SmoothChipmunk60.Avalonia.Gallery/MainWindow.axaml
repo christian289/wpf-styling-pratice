@@ -1,0 +1,54 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SmoothChipmunk60.Avalonia.Lib.Controls"
+        x:Class="SmoothChipmunk60.Avalonia.Gallery.MainWindow"
+        Title="SmoothChipmunk60 Gallery"
+        Width="400"
+        Height="300"
+        Background="#1a1a2e">
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="30">
+
+        <TextBlock Text="Hamburger Menu Toggle"
+                   Foreground="White"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center" />
+
+        <TextBlock Text="Click to toggle between hamburger and X"
+                   Foreground="#888888"
+                   FontSize="12"
+                   HorizontalAlignment="Center" />
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="40">
+
+            <StackPanel Spacing="10">
+                <controls:SmoothChipmunk60 />
+                <TextBlock Text="Unchecked"
+                           Foreground="#888888"
+                           FontSize="10"
+                           HorizontalAlignment="Center" />
+            </StackPanel>
+
+            <StackPanel Spacing="10">
+                <controls:SmoothChipmunk60 IsChecked="True" />
+                <TextBlock Text="Checked"
+                           Foreground="#888888"
+                           FontSize="10"
+                           HorizontalAlignment="Center" />
+            </StackPanel>
+
+        </StackPanel>
+
+        <TextBlock Text="From Uiverse.io by omar-alghaish"
+                   Foreground="#555555"
+                   FontSize="10"
+                   HorizontalAlignment="Center" />
+
+    </StackPanel>
+
+</Window>

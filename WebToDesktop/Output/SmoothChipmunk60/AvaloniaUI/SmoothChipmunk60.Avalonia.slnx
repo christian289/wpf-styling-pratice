@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SmoothChipmunk60.Avalonia.Gallery/SmoothChipmunk60.Avalonia.Gallery.csproj" />
+  <Project Path="SmoothChipmunk60.Avalonia.Lib/SmoothChipmunk60.Avalonia.Lib.csproj" />
+</Solution>

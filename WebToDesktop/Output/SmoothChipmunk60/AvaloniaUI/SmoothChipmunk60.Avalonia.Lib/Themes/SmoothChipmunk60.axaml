@@ -1,0 +1,189 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:SmoothChipmunk60.Avalonia.Lib.Controls">
+
+    <!-- From Uiverse.io by omar-alghaish - Tags: switch -->
+    <!-- 햄버거 메뉴 토글 버튼 - 체크 시 X 표시로 변환되는 애니메이션 스위치 -->
+    <!-- Hamburger menu toggle button - animated switch that transforms to X when checked -->
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="#1a1a2e">
+            <StackPanel Spacing="20">
+                <controls:SmoothChipmunk60 />
+                <controls:SmoothChipmunk60 IsChecked="True" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type controls:SmoothChipmunk60}" TargetType="controls:SmoothChipmunk60">
+        <Setter Property="Width" Value="40" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <GradientStop Color="#B700FF" Offset="0.2" />
+                    <GradientStop Color="#FF00AA" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="PART_Root"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="5"
+                        BoxShadow="0 5 25 0 #5C000000">
+
+                    <!-- 라인 컨테이너 (80% 크기, 10% 마진) -->
+                    <!-- Line container (80% size, 10% margin) -->
+                    <Panel Margin="4">
+
+                        <!-- Line 1 - 상단 좌측 라인 -->
+                        <!-- Line 1 - Top left line -->
+                        <Border x:Name="PART_Line1"
+                                Background="White"
+                                Height="2"
+                                Width="16"
+                                CornerRadius="1"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                RenderTransformOrigin="0%,50%">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <TranslateTransform X="0" Y="-10" />
+                                    <RotateTransform Angle="0" />
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                        </Border>
+
+                        <!-- Line 2 - 중앙 라인 -->
+                        <!-- Line 2 - Center line -->
+                        <Border x:Name="PART_Line2"
+                                Background="White"
+                                Height="2"
+                                Width="32"
+                                CornerRadius="1"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderTransformOrigin="50%,50%">
+                            <Border.RenderTransform>
+                                <RotateTransform Angle="0" />
+                            </Border.RenderTransform>
+                        </Border>
+
+                        <!-- Line 3 - 하단 우측 라인 -->
+                        <!-- Line 3 - Bottom right line -->
+                        <Border x:Name="PART_Line3"
+                                Background="White"
+                                Height="2"
+                                Width="16"
+                                CornerRadius="1"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                RenderTransformOrigin="100%,50%">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <TranslateTransform X="0" Y="10" />
+                                    <RotateTransform Angle="0" />
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                        </Border>
+
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Unchecked 상태 (기본 햄버거 메뉴) -->
+        <!-- Unchecked state (default hamburger menu) -->
+        <Style Selector="^:not(:checked) /template/ Border#PART_Line1">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" FillMode="Forward" Easing="CubicEaseInOut">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform X="0" Y="-10" />
+                                <RotateTransform Angle="0" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:not(:checked) /template/ Border#PART_Line2">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" FillMode="Forward" Easing="CubicEaseInOut">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <RotateTransform Angle="0" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:not(:checked) /template/ Border#PART_Line3">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" FillMode="Forward" Easing="CubicEaseInOut">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform X="0" Y="10" />
+                                <RotateTransform Angle="0" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Checked 상태 (X 표시) -->
+        <!-- Checked state (X mark) -->
+        <Style Selector="^:checked /template/ Border#PART_Line1">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" FillMode="Forward" Easing="CubicEaseInOut">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform X="8" Y="0" />
+                                <RotateTransform Angle="-45" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:checked /template/ Border#PART_Line2">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" FillMode="Forward" Easing="CubicEaseInOut">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <RotateTransform Angle="45" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:checked /template/ Border#PART_Line3">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" FillMode="Forward" Easing="CubicEaseInOut">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform X="-8" Y="0" />
+                                <RotateTransform Angle="-45" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

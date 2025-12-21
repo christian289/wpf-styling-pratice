@@ -1,0 +1,160 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:SmoothChipmunk60.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/SmoothChipmunk60.Wpf.UI;component/Themes/SmoothChipmunk60Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:SmoothChipmunk60}">
+        <Setter Property="Width" Value="{StaticResource SmoothChipmunk60.Size}"/>
+        <Setter Property="Height" Value="{StaticResource SmoothChipmunk60.Size}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="{StaticResource SmoothChipmunk60.Background}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:SmoothChipmunk60}">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{StaticResource SmoothChipmunk60.CornerRadius}"
+                            Effect="{StaticResource SmoothChipmunk60.Shadow}">
+
+                        <!-- 라인 컨테이너: 80% 크기, 10% 마진 = 중앙 정렬 -->
+                        <!-- Line container: 80% size, 10% margin = center aligned -->
+                        <Grid Margin="4">
+
+                            <!-- Line 1 (상단 라인 - 50% 너비, 왼쪽 정렬) -->
+                            <!-- Line 1 (top line - 50% width, left aligned) -->
+                            <Border x:Name="PART_Line1"
+                                    Background="{StaticResource SmoothChipmunk60.LineBrush}"
+                                    Height="{StaticResource SmoothChipmunk60.LineHeight}"
+                                    CornerRadius="1"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Width="16"
+                                    RenderTransformOrigin="0,0.5">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform x:Name="Line1Translate" X="0" Y="-10"/>
+                                        <RotateTransform x:Name="Line1Rotate" Angle="0"/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                            </Border>
+
+                            <!-- Line 2 (중앙 라인 - 100% 너비) -->
+                            <!-- Line 2 (center line - 100% width) -->
+                            <Border x:Name="PART_Line2"
+                                    Background="{StaticResource SmoothChipmunk60.LineBrush}"
+                                    Height="{StaticResource SmoothChipmunk60.LineHeight}"
+                                    CornerRadius="1"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Center"
+                                    RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <RotateTransform x:Name="Line2Rotate" Angle="0"/>
+                                </Border.RenderTransform>
+                            </Border>
+
+                            <!-- Line 3 (하단 라인 - 50% 너비, 오른쪽 정렬) -->
+                            <!-- Line 3 (bottom line - 50% width, right aligned) -->
+                            <Border x:Name="PART_Line3"
+                                    Background="{StaticResource SmoothChipmunk60.LineBrush}"
+                                    Height="{StaticResource SmoothChipmunk60.LineHeight}"
+                                    CornerRadius="1"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Width="16"
+                                    RenderTransformOrigin="1,0.5">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform x:Name="Line3Translate" X="0" Y="10"/>
+                                        <RotateTransform x:Name="Line3Rotate" Angle="0"/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                            </Border>
+
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Checked 상태: 햄버거 → X 변환 -->
+                        <!-- Checked state: hamburger → X transformation -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Line 1: 왼쪽 위에서 중앙으로 이동 + 회전 -->
+                                        <!-- Line 1: move from top-left to center + rotate -->
+                                        <DoubleAnimation Storyboard.TargetName="Line1Translate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="8" Duration="0:0:0.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="Line1Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0" Duration="0:0:0.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="Line1Rotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="-45" Duration="0:0:0.5"/>
+
+                                        <!-- Line 2: 중앙에서 회전 -->
+                                        <!-- Line 2: rotate at center -->
+                                        <DoubleAnimation Storyboard.TargetName="Line2Rotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="45" Duration="0:0:0.5"/>
+
+                                        <!-- Line 3: 오른쪽 아래에서 중앙으로 이동 + 회전 -->
+                                        <!-- Line 3: move from bottom-right to center + rotate -->
+                                        <DoubleAnimation Storyboard.TargetName="Line3Translate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="-8" Duration="0:0:0.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="Line3Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0" Duration="0:0:0.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="Line3Rotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="-45" Duration="0:0:0.5"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Line 1: 원래 위치로 복원 -->
+                                        <!-- Line 1: restore to original position -->
+                                        <DoubleAnimation Storyboard.TargetName="Line1Translate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="0" Duration="0:0:0.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="Line1Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-10" Duration="0:0:0.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="Line1Rotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="0" Duration="0:0:0.5"/>
+
+                                        <!-- Line 2: 원래 각도로 복원 -->
+                                        <!-- Line 2: restore to original angle -->
+                                        <DoubleAnimation Storyboard.TargetName="Line2Rotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="0" Duration="0:0:0.5"/>
+
+                                        <!-- Line 3: 원래 위치로 복원 -->
+                                        <!-- Line 3: restore to original position -->
+                                        <DoubleAnimation Storyboard.TargetName="Line3Translate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="0" Duration="0:0:0.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="Line3Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="10" Duration="0:0:0.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="Line3Rotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="0" Duration="0:0:0.5"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

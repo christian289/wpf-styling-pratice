@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SmoothChipmunk60.Wpf.Gallery/SmoothChipmunk60.Wpf.Gallery.csproj" />
+  <Project Path="SmoothChipmunk60.Wpf.UI/SmoothChipmunk60.Wpf.UI.csproj" />
+</Solution>
