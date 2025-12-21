@@ -1,0 +1,82 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:TerribleKangaroo96.Avalonia.Lib.Controls">
+
+    <!-- 색상 리소스 / Color Resources -->
+    <Color x:Key="CircleCheckBox.BorderColor">#212fab</Color>
+    <Color x:Key="CircleCheckBox.CheckedBackground">#212fab</Color>
+    <Color x:Key="CircleCheckBox.CheckmarkColor">#FFFFFF</Color>
+
+    <SolidColorBrush x:Key="CircleCheckBox.BorderBrush" Color="{StaticResource CircleCheckBox.BorderColor}"/>
+    <SolidColorBrush x:Key="CircleCheckBox.CheckedBackgroundBrush" Color="{StaticResource CircleCheckBox.CheckedBackground}"/>
+    <SolidColorBrush x:Key="CircleCheckBox.CheckmarkBrush" Color="{StaticResource CircleCheckBox.CheckmarkColor}"/>
+
+    <!-- CircleCheckBox 스타일 / CircleCheckBox Style -->
+    <ControlTheme x:Key="{x:Type controls:CircleCheckBox}" TargetType="controls:CircleCheckBox">
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <!-- 메인 원형 보더 / Main circular border -->
+                    <Border x:Name="OuterBorder"
+                            Width="30"
+                            Height="30"
+                            CornerRadius="15"
+                            BorderThickness="2"
+                            BorderBrush="{StaticResource CircleCheckBox.BorderBrush}"
+                            Background="Transparent">
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Property="Background" Duration="0:0:0.3"/>
+                                <ThicknessTransition Property="BorderThickness" Duration="0:0:0.3"/>
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+
+                    <!-- 체크마크 (L자 모양) / Checkmark (L shape rotated) -->
+                    <Border x:Name="CheckmarkBorder"
+                            Width="6"
+                            Height="12"
+                            BorderThickness="0,0,4,4"
+                            BorderBrush="{StaticResource CircleCheckBox.CheckmarkBrush}"
+                            Opacity="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="0,-2,0,0"
+                            RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="45"/>
+                                <ScaleTransform ScaleX="0" ScaleY="0"/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity" Duration="0:0:0.3"/>
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Checked 상태 / Checked state -->
+        <Style Selector="^:checked /template/ Border#OuterBorder">
+            <Setter Property="Background" Value="{StaticResource CircleCheckBox.CheckedBackgroundBrush}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <Style Selector="^:checked /template/ Border#CheckmarkBorder">
+            <Setter Property="Opacity" Value="1"/>
+            <Setter Property="RenderTransform">
+                <TransformGroup>
+                    <RotateTransform Angle="50"/>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </TransformGroup>
+            </Setter>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

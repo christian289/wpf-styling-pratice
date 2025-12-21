@@ -1,0 +1,24 @@
+<Window x:Class="TerribleKangaroo96.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:TerribleKangaroo96.Wpf.UI.Controls;assembly=TerribleKangaroo96.Wpf.UI"
+        mc:Ignorable="d"
+        Title="TerribleKangaroo96 - Checkbox Gallery"
+        Height="450" Width="800"
+        Background="#1a1a2e">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <!-- 여러 개의 체크박스 데모 -->
+            <!-- Multiple checkbox demo -->
+            <controls:TerribleKangaroo96 Margin="10" />
+            <controls:TerribleKangaroo96 Margin="10" IsChecked="True" />
+            <controls:TerribleKangaroo96 Margin="10" />
+            <controls:TerribleKangaroo96 Margin="10" />
+            <controls:TerribleKangaroo96 Margin="10" />
+        </StackPanel>
+    </Grid>
+</Window>
