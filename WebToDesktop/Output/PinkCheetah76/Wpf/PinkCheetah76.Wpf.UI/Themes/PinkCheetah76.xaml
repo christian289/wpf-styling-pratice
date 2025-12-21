@@ -1,0 +1,149 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:PinkCheetah76.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/PinkCheetah76.Wpf.UI;component/Themes/PinkCheetah76Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--
+    CSS box-shadow 구조:
+    box-shadow: 0px 5px 0px 0px #CC0000, 0px 5px 0px 5px black;
+    - 첫 번째 그림자: 버튼 뒤의 어두운 빨강 (3D 깊이감)
+    - 두 번째 그림자: 검정 외곽선 (spread 5px = 테두리 역할)
+
+    WPF 구현:
+    - 검정 Border (외곽선 역할)
+    - 어두운 빨강 Border (3D 그림자)
+    - 빨강 Border (버튼 본체)
+    - :active 상태에서 TranslateTransform으로 눌림 효과
+
+    CSS box-shadow structure:
+    box-shadow: 0px 5px 0px 0px #CC0000, 0px 5px 0px 5px black;
+    - First shadow: darker red behind button (3D depth)
+    - Second shadow: black outline (spread 5px = border effect)
+
+    WPF implementation:
+    - Black Border (outer outline)
+    - Darker red Border (3D shadow)
+    - Red Border (button body)
+    - :active state uses TranslateTransform for press effect
+    -->
+
+    <Style TargetType="{x:Type controls:PinkCheetah76}">
+        <Setter Property="Background" Value="{StaticResource PinkCheetah76.Background}" />
+        <Setter Property="Foreground" Value="{StaticResource PinkCheetah76.Foreground}" />
+        <Setter Property="FontSize" Value="{StaticResource PinkCheetah76.FontSize}" />
+        <Setter Property="FontWeight" Value="Black" />
+        <Setter Property="FontFamily" Value="Segoe UI, sans-serif" />
+        <Setter Property="Padding" Value="{StaticResource PinkCheetah76.Padding}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:PinkCheetah76}">
+                    <Grid>
+                        <!-- 외부 컨테이너: RenderTransform 적용 -->
+                        <!-- Outer container: RenderTransform applied -->
+                        <Grid x:Name="PART_Container" RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <TranslateTransform x:Name="PART_TranslateTransform" Y="0" />
+                            </Grid.RenderTransform>
+
+                            <!--
+                            레이어 구조 (아래에서 위로):
+                            Layer structure (bottom to top):
+                            1. 검정 외곽선 (Black outline) - 가장 아래
+                            2. 어두운 빨강 그림자 (Dark red shadow) - 중간
+                            3. 빨강 버튼 본체 (Red button body) - 가장 위
+                            -->
+
+                            <!-- 검정 외곽선 (box-shadow spread 5px) -->
+                            <!-- Black outline (box-shadow spread 5px) -->
+                            <Border x:Name="PART_OuterBorder"
+                                    Background="{StaticResource PinkCheetah76.Border}"
+                                    CornerRadius="15"
+                                    Margin="0,5,0,0" />
+
+                            <!-- 어두운 빨강 그림자 레이어 -->
+                            <!-- Darker red shadow layer -->
+                            <Border x:Name="PART_ShadowBorder"
+                                    Background="{StaticResource PinkCheetah76.Shadow}"
+                                    CornerRadius="{StaticResource PinkCheetah76.CornerRadius}"
+                                    Margin="5,5,5,5" />
+
+                            <!-- 버튼 본체 -->
+                            <!-- Button body -->
+                            <Border x:Name="PART_MainBorder"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="{StaticResource PinkCheetah76.CornerRadius}"
+                                    Margin="5,0,5,10">
+                                <!-- ContentPresenter with text shadow effect -->
+                                <ContentPresenter x:Name="PART_ContentPresenter"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  Margin="{TemplateBinding Padding}">
+                                    <ContentPresenter.Effect>
+                                        <!-- text-shadow: 0px 0px 1px black (multiple) -->
+                                        <DropShadowEffect Color="Black"
+                                                          BlurRadius="1"
+                                                          ShadowDepth="0"
+                                                          Opacity="1" />
+                                    </ContentPresenter.Effect>
+                                </ContentPresenter>
+                            </Border>
+                        </Grid>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Pressed 상태: 버튼이 눌린 것처럼 아래로 이동 -->
+                        <!-- Pressed state: button moves down as if pressed -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_TranslateTransform"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="5"
+                                                         Duration="0:0:0.1">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_TranslateTransform"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0"
+                                                         Duration="0:0:0.1">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                            <!-- 눌렸을 때 그림자 레이어 숨기기 -->
+                            <!-- Hide shadow layer when pressed -->
+                            <Setter TargetName="PART_ShadowBorder" Property="Margin" Value="5,10,5,0" />
+                            <Setter TargetName="PART_MainBorder" Property="Margin" Value="5,5,5,5" />
+                            <Setter TargetName="PART_OuterBorder" Property="Margin" Value="0,10,0,-5" />
+                        </Trigger>
+
+                        <!-- Disabled 상태 -->
+                        <!-- Disabled state -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

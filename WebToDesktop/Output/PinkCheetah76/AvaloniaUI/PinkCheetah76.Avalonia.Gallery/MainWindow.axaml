@@ -1,0 +1,54 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:PinkCheetah76.Avalonia.Lib.Controls"
+        x:Class="PinkCheetah76.Avalonia.Gallery.MainWindow"
+        Title="PinkCheetah76 - Press Button Gallery"
+        Width="600" Height="400"
+        Background="#1a1a1a">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- 헤더 -->
+        <TextBlock Grid.Row="0"
+                   Text="PinkCheetah76 - 3D Press Button"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,30,0,10"/>
+
+        <!-- 버튼 갤러리 -->
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="30">
+
+            <!-- 기본 버튼 -->
+            <controls:PressButton Content="Click Me"/>
+
+            <!-- 다른 색상 버튼 -->
+            <controls:PressButton Content="Blue Button">
+                <controls:PressButton.AccentBrush>
+                    <SolidColorBrush Color="#3498db"/>
+                </controls:PressButton.AccentBrush>
+                <controls:PressButton.ShadowBrush>
+                    <SolidColorBrush Color="#2471a3"/>
+                </controls:PressButton.ShadowBrush>
+            </controls:PressButton>
+
+            <!-- 녹색 버튼 -->
+            <controls:PressButton Content="Green Button">
+                <controls:PressButton.AccentBrush>
+                    <SolidColorBrush Color="#27ae60"/>
+                </controls:PressButton.AccentBrush>
+                <controls:PressButton.ShadowBrush>
+                    <SolidColorBrush Color="#1e8449"/>
+                </controls:PressButton.ShadowBrush>
+            </controls:PressButton>
+
+            <!-- 비활성화된 버튼 -->
+            <controls:PressButton Content="Disabled" IsEnabled="False"/>
+
+        </StackPanel>
+    </Grid>
+
+</Window>

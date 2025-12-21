@@ -1,0 +1,35 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors: [button-accent] rgb(255, 0, 0) -->
+    <Color x:Key="PinkCheetah76.AccentColor">#FF0000</Color>
+    <!-- color-mix(in oklab, [button-accent] 80%, black) = 어두운 빨강 -->
+    <!-- color-mix(in oklab, #FF0000 80%, black) = darker red for shadow -->
+    <Color x:Key="PinkCheetah76.ShadowColor">#CC0000</Color>
+    <Color x:Key="PinkCheetah76.BorderColor">#000000</Color>
+    <Color x:Key="PinkCheetah76.ForegroundColor">#FFFFFF</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="PinkCheetah76.Background" Color="{StaticResource PinkCheetah76.AccentColor}" />
+    <SolidColorBrush x:Key="PinkCheetah76.Shadow" Color="{StaticResource PinkCheetah76.ShadowColor}" />
+    <SolidColorBrush x:Key="PinkCheetah76.Border" Color="{StaticResource PinkCheetah76.BorderColor}" />
+    <SolidColorBrush x:Key="PinkCheetah76.Foreground" Color="{StaticResource PinkCheetah76.ForegroundColor}" />
+
+    <!-- Sizes -->
+    <!-- padding: 5px 20px -->
+    <Thickness x:Key="PinkCheetah76.Padding">20,5,20,5</Thickness>
+    <!-- border-radius: 10px -->
+    <CornerRadius x:Key="PinkCheetah76.CornerRadius">10</CornerRadius>
+    <!-- font-size: 24px -->
+    <sys:Double x:Key="PinkCheetah76.FontSize">24</sys:Double>
+    <!-- box-shadow offset: 5px -->
+    <sys:Double x:Key="PinkCheetah76.ShadowOffset">5</sys:Double>
+    <!-- border width: 5px (from box-shadow spread) -->
+    <Thickness x:Key="PinkCheetah76.BorderThickness">5</Thickness>
+
+    <!-- Animation Duration -->
+    <!-- transition: all 0.1s ease-in-out -->
+    <Duration x:Key="PinkCheetah76.TransitionDuration">0:0:0.1</Duration>
+
+</ResourceDictionary>

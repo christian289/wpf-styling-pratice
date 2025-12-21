@@ -1,0 +1,96 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:PinkCheetah76.Avalonia.Lib.Controls">
+
+    <!--
+    PinkCheetah76 - 3D Press Button Style
+    From Uiverse.io by SiddhantEngineer
+
+    CSS 원본:
+    - background: rgb(255, 0, 0)
+    - box-shadow: 0px 5px 0px 0px darker-red, 0px 5px 0px 5px black
+    - border-radius: 10px
+    - font-size: 24px, font-weight: 900
+    - :active에서 translateY(5px) 효과
+    -->
+
+    <Design.PreviewWith>
+        <Border Padding="40" Background="#222222">
+            <StackPanel Spacing="20">
+                <controls:PressButton Content="Click Me"/>
+                <controls:PressButton Content="Disabled" IsEnabled="False"/>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type controls:PressButton}" TargetType="controls:PressButton">
+        <!--
+        3D 효과 구현:
+        - 외부 Border: 검정색 테두리 (5px) 역할
+        - 중간 Border: 어두운 빨간색 그림자 역할
+        - 내부 ContentPresenter: 실제 버튼 내용
+        -->
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Black"/>
+        <Setter Property="Padding" Value="20,5"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="RenderTransform" Value="none"/>
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" Easing="LinearEasing"/>
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate TargetType="controls:PressButton">
+                <!-- 외부 Border: 검정색 테두리 (spread 5px 효과) -->
+                <Border x:Name="PART_OuterBorder"
+                        Background="Black"
+                        CornerRadius="15"
+                        Padding="5">
+                    <!-- 중간 Border: 그림자 색상 (0px 5px offset 효과) -->
+                    <Border x:Name="PART_ShadowBorder"
+                            Background="{TemplateBinding ShadowBrush}"
+                            CornerRadius="10"
+                            Padding="0,0,0,5">
+                        <!-- 내부 Border: 실제 버튼 -->
+                        <Border x:Name="PART_InnerBorder"
+                                Background="{TemplateBinding AccentBrush}"
+                                CornerRadius="10"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter x:Name="PART_ContentPresenter"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </Border>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Pressed 상태: translateY(5px) 효과 - 그림자 패딩 제거 -->
+        <Style Selector="^:pressed /template/ Border#PART_ShadowBorder">
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+
+        <!-- Pressed 상태: 버튼이 아래로 이동한 것처럼 보임 -->
+        <Style Selector="^:pressed">
+            <Setter Property="RenderTransform" Value="translateY(5px)"/>
+        </Style>
+
+        <!-- Disabled 상태 -->
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.5"/>
+        </Style>
+
+        <!-- PointerOver 상태: 약간의 밝기 증가 효과 (선택적) -->
+        <Style Selector="^:pointerover /template/ Border#PART_InnerBorder">
+            <Setter Property="Opacity" Value="0.9"/>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>
