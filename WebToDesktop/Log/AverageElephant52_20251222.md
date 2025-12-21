@@ -1,0 +1,82 @@
+# AverageElephant52 변환 로그
+
+## 변환 일시
+2025-12-22
+
+## 원본 정보
+- **원작자**: seyed-mohsen-mousavi
+- **원본 링크**: https://uiverse.io/seyed-mohsen-mousavi/average-elephant-52
+- **카테고리**: Inputs
+
+## 빌드 결과
+**성공** - 컴파일 에러 없음
+
+## 변환 내용
+
+### CSS → WPF 매핑
+
+| CSS | WPF |
+|-----|-----|
+| `radial-gradient(circle 80px at 80% -10%, #fff, #181b1b)` | `RadialGradientBrush` (GradientOrigin="0.8,0" Center="0.8,0") |
+| `radial-gradient(circle 60px at 0% 100%, #ff3fcb, ...)` | `RadialGradientBrush` (GradientOrigin="0,1" Center="0,1") |
+| `box-shadow: 0 0 5px rgba(0,0,0,0.66)` | `DropShadowEffect` (BlurRadius="5" ShadowDepth="0") |
+| `overflow: hidden` + `border-radius` | `Border.Clip` + `RectangleGeometry` |
+| `transform: skew(10deg, 0deg)` | `SkewTransform` (AngleX="-10") |
+| `transition: all 0.3s` | `Storyboard` + `DoubleAnimation` (Duration="0:0:0.3") |
+| `.blob` (pseudo-element 역할) | 별도 `Border` 요소로 구현 |
+| `::after` (shadow overlay) | 생략 (DropShadowEffect로 대체) |
+| `:focus-within` | `IsKeyboardFocusWithin` Trigger |
+
+### 생성된 파일
+
+```
+AverageElephant52.Wpf.slnx
+AverageElephant52.Wpf.UI/
+├── Controls/
+│   └── AverageElephant52.cs
+├── Converters/
+│   ├── SizeToRectConverter.cs
+│   └── StringNotEmptyConverter.cs
+├── Themes/
+│   ├── Generic.xaml
+│   ├── AverageElephant52.xaml
+│   └── AverageElephant52Resources.xaml
+└── Properties/
+    └── AssemblyInfo.cs
+AverageElephant52.Wpf.Gallery/
+├── App.xaml
+├── MainWindow.xaml
+└── ...
+```
+
+## 잠재적 Runtime Error 가능성
+
+### 1. RadialGradientBrush 렌더링 차이
+- **설명**: CSS의 `radial-gradient(circle 80px at 80% -10%, ...)` 에서 `-10%`는 요소 바깥 영역을 의미
+- **WPF 동작**: RadialGradientBrush의 Center가 0~1 범위 밖이면 예상과 다르게 렌더링될 수 있음
+- **현재 구현**: Center="0.8,0"으로 설정하여 근사 구현
+- **확인 필요**: 실행 후 그라데이션 시각적 확인 필요
+
+### 2. Skew Transform 방향
+- **설명**: CSS `skew(10deg, 0deg)`는 X축 양의 방향으로 기울임
+- **WPF 구현**: `SkewTransform AngleX="-10"`으로 반대 방향 설정 (CSS와 동일한 시각적 효과)
+- **확인 필요**: 실행 후 기울기 방향 확인
+
+### 3. TextBox 스타일 상속
+- **설명**: ControlTemplate 내의 TextBox는 기본 시스템 스타일을 상속받음
+- **현재 구현**: Background="Transparent", BorderThickness="0" 등 인라인 스타일 적용
+- **확인 필요**: 포커스 시 텍스트박스 테두리가 나타나지 않는지 확인
+
+### 4. Clip과 Effect 함께 사용
+- **설명**: Border.Clip과 DropShadowEffect를 함께 사용 시 그림자가 잘릴 수 있음
+- **현재 구현**: Effect는 OuterBorder에, Clip도 OuterBorder에 적용
+- **확인 필요**: 그림자가 정상적으로 표시되는지 확인
+
+## 권장 테스트 항목
+
+1. [ ] 그라데이션 배경이 원본과 유사하게 표시되는지
+2. [ ] 핑크색 Blob 장식이 좌측 하단에 표시되는지
+3. [ ] 클릭/포커스 시 Skew 애니메이션이 작동하는지
+4. [ ] 그림자가 포커스 시 더 강해지는지
+5. [ ] 텍스트 입력 시 placeholder가 사라지는지
+6. [ ] 검색 아이콘이 좌측에 표시되는지

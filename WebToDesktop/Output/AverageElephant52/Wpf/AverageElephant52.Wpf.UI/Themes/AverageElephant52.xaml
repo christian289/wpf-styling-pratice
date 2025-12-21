@@ -1,0 +1,204 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:AverageElephant52.Wpf.UI.Controls"
+                    xmlns:converters="clr-namespace:AverageElephant52.Wpf.UI.Converters">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/AverageElephant52.Wpf.UI;component/Themes/AverageElephant52Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:AverageElephant52}">
+        <Setter Property="Cursor" Value="IBeam"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="MinWidth" Value="{StaticResource AverageElephant52.MinWidth}"/>
+        <Setter Property="MinHeight" Value="{StaticResource AverageElephant52.MinHeight}"/>
+        <Setter Property="FontSize" Value="{StaticResource AverageElephant52.FontSize}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontFamily" Value="Segoe UI, sans-serif"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:AverageElephant52}">
+                    <!-- Outer Container with radial gradient background -->
+                    <!-- CSS: radial-gradient(circle 80px at 80% -10%, #fff, #181b1b) -->
+                    <Border x:Name="PART_OuterBorder"
+                            CornerRadius="{StaticResource AverageElephant52.CornerRadius}"
+                            Padding="{StaticResource AverageElephant52.BorderPadding}"
+                            RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <SkewTransform x:Name="OuterSkewTransform" AngleX="0"/>
+                        </Border.RenderTransform>
+                        <Border.Background>
+                            <!-- WPF RadialGradientBrush: GradientOrigin과 Center 동일하게 설정 -->
+                            <RadialGradientBrush GradientOrigin="0.8,0" Center="0.8,0" RadiusX="0.4" RadiusY="0.8">
+                                <GradientStop Color="{StaticResource AverageElephant52.OuterGradient.Light}" Offset="0"/>
+                                <GradientStop Color="{StaticResource AverageElephant52.OuterGradient.Dark}" Offset="1"/>
+                            </RadialGradientBrush>
+                        </Border.Background>
+                        <Border.Effect>
+                            <!-- CSS: box-shadow: 0 0 5px rgba(0,0,0,0.66) -->
+                            <DropShadowEffect x:Name="OuterShadow"
+                                              Color="{StaticResource AverageElephant52.Shadow.Color}"
+                                              BlurRadius="5"
+                                              ShadowDepth="0"
+                                              Direction="0"/>
+                        </Border.Effect>
+                        <Border.Clip>
+                            <RectangleGeometry RadiusX="{StaticResource AverageElephant52.CornerRadius}"
+                                               RadiusY="{StaticResource AverageElephant52.CornerRadius}">
+                                <RectangleGeometry.Rect>
+                                    <MultiBinding Converter="{x:Static converters:SizeToRectConverter.Instance}">
+                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                    </MultiBinding>
+                                </RectangleGeometry.Rect>
+                            </RectangleGeometry>
+                        </Border.Clip>
+
+                        <Grid>
+                            <!-- Decorative Blob (::before equivalent) -->
+                            <!-- CSS: radial-gradient(circle 60px at 0% 100%, #ff3fcb, rgba(255,0,216,0.5), transparent) -->
+                            <Border x:Name="PART_Blob"
+                                    Width="{StaticResource AverageElephant52.BlobWidth}"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Stretch"
+                                    CornerRadius="{StaticResource AverageElephant52.CornerRadius}">
+                                <Border.Background>
+                                    <RadialGradientBrush GradientOrigin="0,1" Center="0,1" RadiusX="1.2" RadiusY="1.2">
+                                        <GradientStop Color="{StaticResource AverageElephant52.Blob.Primary}" Offset="0"/>
+                                        <GradientStop Color="{StaticResource AverageElephant52.Blob.Secondary}" Offset="0.5"/>
+                                        <GradientStop Color="{StaticResource AverageElephant52.Blob.Transparent}" Offset="1"/>
+                                    </RadialGradientBrush>
+                                </Border.Background>
+                                <Border.Effect>
+                                    <!-- CSS: box-shadow: -10px 10px 30px rgba(255,0,229,0.18) -->
+                                    <DropShadowEffect Color="{StaticResource AverageElephant52.Blob.Shadow.Color}"
+                                                      BlurRadius="30"
+                                                      ShadowDepth="14"
+                                                      Direction="135"/>
+                                </Border.Effect>
+                            </Border>
+
+                            <!-- Inner Content Area -->
+                            <!-- CSS: radial-gradient(circle 80px at 80% -50%, #777, #0f1111) -->
+                            <Border x:Name="PART_InnerBorder"
+                                    Margin="{StaticResource AverageElephant52.InnerMargin}"
+                                    CornerRadius="{StaticResource AverageElephant52.InnerCornerRadius}"
+                                    Padding="40,14,25,14">
+                                <Border.Background>
+                                    <RadialGradientBrush GradientOrigin="0.8,0" Center="0.8,0" RadiusX="0.4" RadiusY="0.6">
+                                        <GradientStop Color="{StaticResource AverageElephant52.InnerGradient.Light}" Offset="0"/>
+                                        <GradientStop Color="{StaticResource AverageElephant52.InnerGradient.Dark}" Offset="1"/>
+                                    </RadialGradientBrush>
+                                </Border.Background>
+
+                                <Grid>
+                                    <!-- Search Icon -->
+                                    <Path x:Name="PART_Icon"
+                                          Data="{StaticResource AverageElephant52.SearchIcon}"
+                                          Stroke="{StaticResource AverageElephant52.Icon.Brush}"
+                                          StrokeThickness="1.5"
+                                          StrokeLineJoin="Round"
+                                          StrokeStartLineCap="Round"
+                                          StrokeEndLineCap="Round"
+                                          Width="{StaticResource AverageElephant52.IconSize}"
+                                          Height="{StaticResource AverageElephant52.IconSize}"
+                                          Stretch="Uniform"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="-28,0,0,0"/>
+
+                                    <!-- Placeholder Text -->
+                                    <TextBlock x:Name="PART_Placeholder"
+                                               Text="{TemplateBinding Placeholder}"
+                                               Foreground="{StaticResource AverageElephant52.Placeholder.Brush}"
+                                               FontWeight="Light"
+                                               VerticalAlignment="Center"
+                                               IsHitTestVisible="False"
+                                               Margin="2,0,0,0"/>
+
+                                    <!-- Text Input -->
+                                    <TextBox x:Name="PART_TextBox"
+                                             Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                             Background="Transparent"
+                                             Foreground="{StaticResource AverageElephant52.Text.Brush}"
+                                             BorderThickness="0"
+                                             CaretBrush="Gray"
+                                             FontSize="{TemplateBinding FontSize}"
+                                             FontWeight="{TemplateBinding FontWeight}"
+                                             FontFamily="{TemplateBinding FontFamily}"
+                                             VerticalAlignment="Center"
+                                             Padding="0"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hide placeholder when text is present -->
+                        <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource Self}, Converter={x:Static converters:StringNotEmptyConverter.Instance}}" Value="True">
+                            <Setter TargetName="PART_Placeholder" Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+
+                        <!-- Focus animation: skew transform -->
+                        <!-- CSS: transform: skew(10deg, 0deg); box-shadow: -13px 20px 20px rgba(0,0,0,0.66) -->
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="OuterSkewTransform"
+                                                         Storyboard.TargetProperty="AngleX"
+                                                         To="-10"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="OuterShadow"
+                                                         Storyboard.TargetProperty="BlurRadius"
+                                                         To="20"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="OuterShadow"
+                                                         Storyboard.TargetProperty="ShadowDepth"
+                                                         To="24"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="OuterShadow"
+                                                         Storyboard.TargetProperty="Direction"
+                                                         To="250"
+                                                         Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="OuterSkewTransform"
+                                                         Storyboard.TargetProperty="AngleX"
+                                                         To="0"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="OuterShadow"
+                                                         Storyboard.TargetProperty="BlurRadius"
+                                                         To="5"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="OuterShadow"
+                                                         Storyboard.TargetProperty="ShadowDepth"
+                                                         To="0"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="OuterShadow"
+                                                         Storyboard.TargetProperty="Direction"
+                                                         To="0"
+                                                         Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

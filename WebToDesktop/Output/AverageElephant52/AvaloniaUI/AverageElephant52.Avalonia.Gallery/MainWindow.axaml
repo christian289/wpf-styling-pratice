@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:AverageElephant52.Avalonia.Lib.Controls"
+        x:Class="AverageElephant52.Avalonia.Gallery.MainWindow"
+        Title="AverageElephant52 - SearchBar Gallery"
+        Width="600"
+        Height="400"
+        Background="#1a1a1a"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="30">
+
+            <!-- 제목 -->
+            <TextBlock Text="SearchBar Component"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       HorizontalAlignment="Center" />
+
+            <TextBlock Text="From Uiverse.io by seyed-mohsen-mousavi"
+                       FontSize="12"
+                       Foreground="#808080"
+                       HorizontalAlignment="Center" />
+
+            <!-- 검색바 -->
+            <controls:SearchBar Width="350"
+                                Placeholder="Search ..." />
+
+            <!-- 설명 -->
+            <TextBlock Text="Click on the search bar to see the skew animation"
+                       FontSize="12"
+                       Foreground="#606060"
+                       HorizontalAlignment="Center" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>

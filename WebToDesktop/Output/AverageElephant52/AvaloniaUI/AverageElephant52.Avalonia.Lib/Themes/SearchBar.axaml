@@ -1,0 +1,187 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:AverageElephant52.Avalonia.Lib.Controls">
+
+    <!--
+        From Uiverse.io by seyed-mohsen-mousavi
+        Tags: input, shadow, gradient
+
+        그라데이션 효과가 있는 검색바 컨트롤
+        Search bar control with gradient effects
+    -->
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="#1a1a1a">
+            <controls:SearchBar Width="300" />
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Color Resources -->
+    <Color x:Key="SearchBar.Outer.Light">#FFFFFFFF</Color>
+    <Color x:Key="SearchBar.Outer.Dark">#FF181B1B</Color>
+    <Color x:Key="SearchBar.Inner.Light">#FF777777</Color>
+    <Color x:Key="SearchBar.Inner.Dark">#FF0F1111</Color>
+    <Color x:Key="SearchBar.Blob.Start">#FFFF3FCB</Color>
+    <Color x:Key="SearchBar.Blob.Mid">#80FF00D8</Color>
+    <Color x:Key="SearchBar.Blob.End">#00000000</Color>
+    <Color x:Key="SearchBar.Icon.Color">#FF808080</Color>
+    <Color x:Key="SearchBar.Text.Color">#FFFFFFFF</Color>
+
+    <ControlTheme x:Key="{x:Type controls:SearchBar}" TargetType="controls:SearchBar">
+        <Setter Property="Cursor" Value="IBeam" />
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{StaticResource SearchBar.Text.Color}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!-- 외부 컨테이너: radial-gradient(circle 80px at 80% -10%, #fff, #181b1b) -->
+                <!-- Outer container with radial gradient -->
+                <Border x:Name="PART_OuterBorder"
+                        Padding="2"
+                        CornerRadius="16"
+                        ClipToBounds="True"
+                        BoxShadow="0 0 5 0 #A8000000"
+                        RenderTransformOrigin="0.5,0.5">
+                    <Border.Background>
+                        <!-- RadialGradientBrush: GradientOrigin과 Center 동일하게 설정 (AvaloniaUI Issue #19888) -->
+                        <RadialGradientBrush GradientOrigin="80%,-10%" Center="80%,-10%" RadiusX="0.4" RadiusY="0.8">
+                            <GradientStop Color="{StaticResource SearchBar.Outer.Light}" Offset="0" />
+                            <GradientStop Color="{StaticResource SearchBar.Outer.Dark}" Offset="1" />
+                        </RadialGradientBrush>
+                    </Border.Background>
+
+                    <Border.RenderTransform>
+                        <SkewTransform AngleX="0" />
+                    </Border.RenderTransform>
+
+                    <Panel>
+                        <!-- Blob 장식 요소: radial-gradient(circle 60px at 0% 100%, ...) -->
+                        <!-- Decorative blob element -->
+                        <Border x:Name="PART_Blob"
+                                Width="70"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Stretch"
+                                CornerRadius="16"
+                                BoxShadow="-10 10 30 0 #2EFF00E5">
+                            <Border.Background>
+                                <!-- RadialGradientBrush: GradientOrigin과 Center 동일하게 설정 -->
+                                <RadialGradientBrush GradientOrigin="0%,100%" Center="0%,100%" RadiusX="0.9" RadiusY="1.2">
+                                    <GradientStop Color="{StaticResource SearchBar.Blob.Start}" Offset="0" />
+                                    <GradientStop Color="{StaticResource SearchBar.Blob.Mid}" Offset="0.5" />
+                                    <GradientStop Color="{StaticResource SearchBar.Blob.End}" Offset="1" />
+                                </RadialGradientBrush>
+                            </Border.Background>
+                        </Border>
+
+                        <!-- ::after pseudo-element 시뮬레이션 (Grid로 비율 처리) -->
+                        <!-- Simulating ::after pseudo-element (using Grid for percentage) -->
+                        <Grid ColumnDefinitions="*,1.857*" RowDefinitions="1.5*,*"
+                              IsHitTestVisible="False">
+                            <Border x:Name="PART_GlowOverlay"
+                                    Grid.Column="1"
+                                    Grid.Row="0"
+                                    CornerRadius="120"
+                                    BoxShadow="0 0 20 0 #38FFFFFF" />
+                        </Grid>
+
+                        <!-- 내부 텍스트박스 컨테이너 -->
+                        <!-- Inner textbox container -->
+                        <Border x:Name="PART_InnerBorder"
+                                Margin="3"
+                                Padding="14,14,25,14"
+                                CornerRadius="14">
+                            <Border.Background>
+                                <!-- RadialGradientBrush: radial-gradient(circle 80px at 80% -50%, #777, #0f1111) -->
+                                <RadialGradientBrush GradientOrigin="80%,-50%" Center="80%,-50%" RadiusX="0.4" RadiusY="0.8">
+                                    <GradientStop Color="{StaticResource SearchBar.Inner.Light}" Offset="0" />
+                                    <GradientStop Color="{StaticResource SearchBar.Inner.Dark}" Offset="1" />
+                                </RadialGradientBrush>
+                            </Border.Background>
+
+                            <Panel>
+                                <!-- 검색 아이콘 -->
+                                <!-- Search icon -->
+                                <PathIcon x:Name="PART_Icon"
+                                          Width="18"
+                                          Height="18"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="0,0,0,0"
+                                          Foreground="{StaticResource SearchBar.Icon.Color}"
+                                          Data="M21 21L15.803 15.803M15.803 15.803A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607Z" />
+
+                                <!-- 텍스트 입력 -->
+                                <!-- Text input -->
+                                <TextBox x:Name="PART_TextBox"
+                                         Margin="26,0,0,0"
+                                         Padding="0"
+                                         Background="Transparent"
+                                         BorderThickness="0"
+                                         Foreground="{TemplateBinding Foreground}"
+                                         FontSize="{TemplateBinding FontSize}"
+                                         FontWeight="{TemplateBinding FontWeight}"
+                                         FontFamily="Segoe UI, system-ui, sans-serif"
+                                         Watermark="{TemplateBinding Placeholder}"
+                                         Text="{TemplateBinding Text, Mode=TwoWay}"
+                                         CaretBrush="Gray"
+                                         VerticalContentAlignment="Center" />
+                            </Panel>
+                        </Border>
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Focus 상태: skew 변환 및 그림자 변경 -->
+        <!-- Focus state: skew transform and shadow change -->
+        <Style Selector="^:focus-within /template/ Border#PART_OuterBorder">
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" Easing="LinearEasing" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="BoxShadow" Value="-13 20 20 0 #A8000000" />
+                        <Setter Property="RenderTransform">
+                            <SkewTransform AngleX="10" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- 내부 TextBox 스타일 -->
+        <!-- Inner TextBox style -->
+        <Style Selector="^ /template/ TextBox#PART_TextBox">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel>
+                        <TextBlock x:Name="PART_Watermark"
+                                   Text="{TemplateBinding Watermark}"
+                                   Foreground="#80FFFFFF"
+                                   FontWeight="Thin"
+                                   VerticalAlignment="Center"
+                                   IsVisible="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static StringConverters.IsNullOrEmpty}}" />
+                        <TextPresenter x:Name="PART_TextPresenter"
+                                       Text="{TemplateBinding Text}"
+                                       CaretBrush="{TemplateBinding CaretBrush}"
+                                       CaretIndex="{TemplateBinding CaretIndex}"
+                                       SelectionStart="{TemplateBinding SelectionStart}"
+                                       SelectionEnd="{TemplateBinding SelectionEnd}"
+                                       SelectionBrush="{TemplateBinding SelectionBrush}"
+                                       SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                       TextAlignment="{TemplateBinding TextAlignment}"
+                                       TextWrapping="{TemplateBinding TextWrapping}"
+                                       VerticalAlignment="Center" />
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+        <Style Selector="^ /template/ TextBox#PART_TextBox:focus">
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+        <Style Selector="^ /template/ TextBox#PART_TextBox:pointerover">
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

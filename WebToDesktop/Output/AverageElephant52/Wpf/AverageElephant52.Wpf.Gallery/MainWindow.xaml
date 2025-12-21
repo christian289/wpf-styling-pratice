@@ -1,0 +1,30 @@
+<Window x:Class="AverageElephant52.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:AverageElephant52.Wpf.UI.Controls;assembly=AverageElephant52.Wpf.UI"
+        mc:Ignorable="d"
+        Title="AverageElephant52 - Search Input Control"
+        Height="450" Width="800"
+        Background="#1A1A2E">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Gradient Search Input Control"
+                       Foreground="White"
+                       FontSize="24"
+                       FontWeight="Light"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,40"/>
+
+            <controls:AverageElephant52 Placeholder="Search ..."
+                                        Width="320"/>
+
+            <TextBlock Text="Click to focus and see the skew animation"
+                       Foreground="#808080"
+                       FontSize="12"
+                       HorizontalAlignment="Center"
+                       Margin="0,30,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

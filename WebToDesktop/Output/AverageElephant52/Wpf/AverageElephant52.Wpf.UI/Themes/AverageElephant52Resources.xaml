@@ -1,0 +1,46 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+        CSS 변수 매핑:
+        search-bar background: radial-gradient(circle 80px at 80% -10%, #fff, #181b1b)
+        inner background: radial-gradient(circle 80px at 80% -50%, #777, #0f1111)
+        blob background: radial-gradient(circle 60px at 0% 100%, #ff3fcb, rgba(255,0,216,0.5), transparent)
+    -->
+
+    <!-- Colors -->
+    <Color x:Key="AverageElephant52.OuterGradient.Light">#FFFFFFFF</Color>
+    <Color x:Key="AverageElephant52.OuterGradient.Dark">#FF181B1B</Color>
+    <Color x:Key="AverageElephant52.InnerGradient.Light">#FF777777</Color>
+    <Color x:Key="AverageElephant52.InnerGradient.Dark">#FF0F1111</Color>
+    <Color x:Key="AverageElephant52.Blob.Primary">#FFFF3FCB</Color>
+    <Color x:Key="AverageElephant52.Blob.Secondary">#80FF00D8</Color>
+    <Color x:Key="AverageElephant52.Blob.Transparent">#00000000</Color>
+    <Color x:Key="AverageElephant52.Text.Foreground">#FFFFFFFF</Color>
+    <Color x:Key="AverageElephant52.Icon.Color">#FF808080</Color>
+    <Color x:Key="AverageElephant52.Placeholder.Color">#FF808080</Color>
+    <Color x:Key="AverageElephant52.Shadow.Color">#A8000000</Color>
+    <Color x:Key="AverageElephant52.Shadow.Focused.Color">#A8000000</Color>
+    <Color x:Key="AverageElephant52.Blob.Shadow.Color">#2EFF00E5</Color>
+
+    <!-- Sizes -->
+    <sys:Double x:Key="AverageElephant52.CornerRadius">16</sys:Double>
+    <sys:Double x:Key="AverageElephant52.InnerCornerRadius">14</sys:Double>
+    <sys:Double x:Key="AverageElephant52.BorderPadding">2</sys:Double>
+    <sys:Double x:Key="AverageElephant52.InnerMargin">3</sys:Double>
+    <sys:Double x:Key="AverageElephant52.BlobWidth">70</sys:Double>
+    <sys:Double x:Key="AverageElephant52.IconSize">24</sys:Double>
+    <sys:Double x:Key="AverageElephant52.FontSize">17</sys:Double>
+    <sys:Double x:Key="AverageElephant52.MinWidth">280</sys:Double>
+    <sys:Double x:Key="AverageElephant52.MinHeight">56</sys:Double>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="AverageElephant52.Text.Brush" Color="{StaticResource AverageElephant52.Text.Foreground}"/>
+    <SolidColorBrush x:Key="AverageElephant52.Icon.Brush" Color="{StaticResource AverageElephant52.Icon.Color}"/>
+    <SolidColorBrush x:Key="AverageElephant52.Placeholder.Brush" Color="{StaticResource AverageElephant52.Placeholder.Color}"/>
+
+    <!-- Search Icon Path Data -->
+    <StreamGeometry x:Key="AverageElephant52.SearchIcon">M21 21L15.803 15.803M15.803 15.803A7.5 7.5 0 1 0 5.196 5.196A7.5 7.5 0 0 0 15.803 15.803Z</StreamGeometry>
+
+</ResourceDictionary>
