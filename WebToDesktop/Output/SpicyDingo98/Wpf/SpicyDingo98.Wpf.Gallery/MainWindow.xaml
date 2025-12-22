@@ -1,0 +1,51 @@
+<Window x:Class="SpicyDingo98.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:SpicyDingo98.Wpf.UI.Controls;assembly=SpicyDingo98.Wpf.UI"
+        Title="SpicyDingo98 - Radio Buttons Gallery"
+        Height="400" Width="600"
+        Background="#1a1a2e"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <!-- Title -->
+            <TextBlock Text="Choose Your Transport"
+                       Foreground="White"
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,40"/>
+
+            <!-- Radio Button Group -->
+            <controls:SpicyDingo98 HorizontalAlignment="Center">
+                <!-- Bicycle Icon -->
+                <controls:SpicyDingo98Item IsSelected="True">
+                    <Path Data="{StaticResource SpicyDingo98.Icon.Bicycle}"
+                          Fill="White"
+                          Stretch="Uniform"/>
+                </controls:SpicyDingo98Item>
+
+                <!-- Motorcycle Icon -->
+                <controls:SpicyDingo98Item>
+                    <Path Data="{StaticResource SpicyDingo98.Icon.Motorcycle}"
+                          Fill="White"
+                          Stretch="Uniform"/>
+                </controls:SpicyDingo98Item>
+
+                <!-- Car Icon -->
+                <controls:SpicyDingo98Item>
+                    <Path Data="{StaticResource SpicyDingo98.Icon.Car}"
+                          Fill="White"
+                          Stretch="Uniform"/>
+                </controls:SpicyDingo98Item>
+            </controls:SpicyDingo98>
+
+            <!-- Description -->
+            <TextBlock Text="Click on an icon to select"
+                       Foreground="#888888"
+                       FontSize="12"
+                       HorizontalAlignment="Center"
+                       Margin="0,30,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

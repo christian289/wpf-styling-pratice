@@ -1,0 +1,116 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:SpicyDingo98.Avalonia.Lib.Controls">
+
+    <!-- Color Resources -->
+    <Color x:Key="Transport.Background.Normal">#444444</Color>
+    <Color x:Key="Transport.Background.Hover">#FBB03B</Color>
+    <Color x:Key="Transport.Background.Checked.Start">#FBB03B</Color>
+    <Color x:Key="Transport.Background.Checked.End">#D4145A</Color>
+    <Color x:Key="Transport.Border.Normal">#FFFFFF</Color>
+    <Color x:Key="Transport.Border.Checked">#D4145A</Color>
+    <Color x:Key="Transport.Foreground.Normal">#FFFFFF</Color>
+    <Color x:Key="Transport.Foreground.Checked">#000000</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="Transport.Background.Normal.Brush" Color="{StaticResource Transport.Background.Normal}" />
+    <SolidColorBrush x:Key="Transport.Background.Hover.Brush" Color="{StaticResource Transport.Background.Hover}" />
+    <SolidColorBrush x:Key="Transport.Border.Normal.Brush" Color="{StaticResource Transport.Border.Normal}" />
+    <SolidColorBrush x:Key="Transport.Border.Checked.Brush" Color="{StaticResource Transport.Border.Checked}" />
+    <SolidColorBrush x:Key="Transport.Foreground.Normal.Brush" Color="{StaticResource Transport.Foreground.Normal}" />
+    <SolidColorBrush x:Key="Transport.Foreground.Checked.Brush" Color="{StaticResource Transport.Foreground.Checked}" />
+
+    <LinearGradientBrush x:Key="Transport.Background.Checked.Brush" StartPoint="100%,100%" EndPoint="0%,0%">
+        <GradientStop Color="{StaticResource Transport.Background.Checked.End}" Offset="0" />
+        <GradientStop Color="{StaticResource Transport.Background.Checked.Start}" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- TransportRadioButton Style -->
+    <ControlTheme x:Key="{x:Type controls:TransportRadioButton}" TargetType="controls:TransportRadioButton">
+        <Setter Property="Width" Value="40" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Outer border (::before equivalent) -->
+                    <!-- Note: CSS border-bottom: dashed는 AvaloniaUI Border에서 지원하지 않아 일반 실선으로 대체 -->
+                    <!-- CSS border-bottom: dashed is not supported in AvaloniaUI Border, using solid line instead -->
+                    <Border x:Name="OuterBorder"
+                            Margin="-5"
+                            CornerRadius="30"
+                            BorderBrush="{StaticResource Transport.Border.Normal.Brush}"
+                            BorderThickness="2"
+                            RenderTransformOrigin="0.5,0.5" />
+
+                    <!-- Main content container -->
+                    <Border x:Name="MainBorder"
+                            Background="{StaticResource Transport.Background.Normal.Brush}"
+                            CornerRadius="30"
+                            BoxShadow="0 5 15 #4D000000"
+                            ClipToBounds="True">
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}" />
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Hover State -->
+        <Style Selector="^:pointerover /template/ Border#MainBorder">
+            <Setter Property="Background" Value="{StaticResource Transport.Background.Hover.Brush}" />
+        </Style>
+
+        <!-- Checked State -->
+        <Style Selector="^:checked">
+            <Setter Property="ZIndex" Value="1" />
+            <Setter Property="RenderTransform">
+                <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+            </Setter>
+        </Style>
+
+        <Style Selector="^:checked /template/ Border#MainBorder">
+            <Setter Property="Background" Value="{StaticResource Transport.Background.Checked.Brush}" />
+        </Style>
+
+        <Style Selector="^:checked /template/ Border#OuterBorder">
+            <Setter Property="BorderBrush" Value="{StaticResource Transport.Border.Checked.Brush}" />
+            <Setter Property="RenderTransform">
+                <RotateTransform Angle="90" />
+            </Setter>
+        </Style>
+
+        <!-- Checked with Animation -->
+        <Style Selector="^:checked /template/ Border#OuterBorder">
+            <Style.Animations>
+                <Animation Duration="0:0:1"
+                           IterationCount="Infinite"
+                           PlaybackDirection="Alternate"
+                           Easing="LinearEasing">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <RotateTransform Angle="90" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <RotateTransform Angle="90" />
+                                <ScaleTransform ScaleX="1.08" ScaleY="1.08" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

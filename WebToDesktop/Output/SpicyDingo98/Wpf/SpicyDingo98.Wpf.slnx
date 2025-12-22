@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SpicyDingo98.Wpf.Gallery/SpicyDingo98.Wpf.Gallery.csproj" />
+  <Project Path="SpicyDingo98.Wpf.UI/SpicyDingo98.Wpf.UI.csproj" />
+</Solution>
