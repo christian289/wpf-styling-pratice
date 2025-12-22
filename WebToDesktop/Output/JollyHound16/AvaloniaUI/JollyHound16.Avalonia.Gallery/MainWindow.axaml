@@ -1,0 +1,46 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:JollyHound16.Avalonia.Lib.Controls"
+        x:Class="JollyHound16.Avalonia.Gallery.MainWindow"
+        Title="JollyHound16 - Pizza Loader Gallery"
+        Width="500"
+        Height="450"
+        Background="#1a1a2e">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- 헤더 -->
+        <TextBlock Grid.Row="0"
+                   Text="Pizza Loader"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,10" />
+
+        <!-- 메인 콘텐츠 -->
+        <Border Grid.Row="1"
+                Background="#16213e"
+                CornerRadius="20"
+                Margin="30"
+                Padding="20">
+            <controls:PizzaLoader HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Scale="1.6" />
+        </Border>
+
+        <!-- 푸터 -->
+        <StackPanel Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,20">
+            <TextBlock Text="From Uiverse.io by AkshatDaxini"
+                       FontSize="12"
+                       Foreground="#888"
+                       HorizontalAlignment="Center" />
+            <TextBlock Text="Converted to AvaloniaUI CustomControl"
+                       FontSize="10"
+                       Foreground="#666"
+                       HorizontalAlignment="Center"
+                       Margin="0,5,0,0" />
+        </StackPanel>
+    </Grid>
+</Window>

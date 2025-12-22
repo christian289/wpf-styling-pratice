@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="JollyHound16.Avalonia.Lib\JollyHound16.Avalonia.Lib.csproj" />
+  <Project Path="JollyHound16.Avalonia.Gallery\JollyHound16.Avalonia.Gallery.csproj" />
+</Solution>

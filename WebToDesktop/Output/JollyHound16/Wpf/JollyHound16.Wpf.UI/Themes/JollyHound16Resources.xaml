@@ -1,0 +1,43 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Pizza Slice Colors -->
+    <!-- 피자 도우 색상 / Pizza dough color -->
+    <SolidColorBrush x:Key="JollyHound16.Slice.Fill" Color="#FDDBA9" />
+    <SolidColorBrush x:Key="JollyHound16.Slice.Stroke" Color="#EE9758" />
+
+    <!-- Pepperoni Color -->
+    <!-- 페페로니 색상 / Pepperoni color -->
+    <SolidColorBrush x:Key="JollyHound16.Pepperoni.Fill" Color="#F12424" />
+
+    <!-- Mushroom Colors -->
+    <!-- 버섯 색상 / Mushroom color -->
+    <SolidColorBrush x:Key="JollyHound16.Mushroom.Fill" Color="#E3DDDD" />
+    <SolidColorBrush x:Key="JollyHound16.Mushroom.Stroke" Color="#000000" />
+
+    <!-- Onion Colors -->
+    <!-- 양파 색상 / Onion color -->
+    <SolidColorBrush x:Key="JollyHound16.Onion.Fill" Color="#FFFBFB" />
+    <SolidColorBrush x:Key="JollyHound16.Onion.Stroke" Color="#000000" />
+
+    <!-- Pepper Colors -->
+    <!-- 피망 색상 / Pepper color -->
+    <SolidColorBrush x:Key="JollyHound16.Pepper.Fill" Color="#1EAA07" />
+    <SolidColorBrush x:Key="JollyHound16.Pepper.Stroke" Color="#FDDBA9" />
+
+    <!-- Size -->
+    <!-- 피자 크기 / Pizza size -->
+    <sys:Double x:Key="JollyHound16.Width">168</sys:Double>
+    <sys:Double x:Key="JollyHound16.Height">158</sys:Double>
+    <sys:Double x:Key="JollyHound16.Scale">1.6</sys:Double>
+
+    <!-- Animation Durations -->
+    <!-- 애니메이션 시간 / Animation durations -->
+    <!-- Note: Duration은 StaticResource 바인딩 불가, 인라인 사용 -->
+    <!-- Note: Duration cannot be bound via StaticResource, use inline -->
+
+    <!-- Pepperoni radius -->
+    <sys:Double x:Key="JollyHound16.Pepperoni.Radius">6</sys:Double>
+
+</ResourceDictionary>
