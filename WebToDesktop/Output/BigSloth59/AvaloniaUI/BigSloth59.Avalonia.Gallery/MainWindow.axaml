@@ -1,0 +1,37 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:BigSloth59.Avalonia.Lib.Controls"
+        x:Class="BigSloth59.Avalonia.Gallery.MainWindow"
+        Title="BigSloth59 - AvaloniaUI Gallery"
+        Width="500"
+        Height="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+
+    <StackPanel VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Spacing="20"
+                Width="300">
+
+        <TextBlock Text="BigSloth59 TextBox Demo"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20" />
+
+        <!-- From Uiverse.io by ozgeozkaraa01 -->
+        <controls:BigSloth59TextBox Watermark="Type..." />
+
+        <controls:BigSloth59TextBox Watermark="Enter your name..." />
+
+        <controls:BigSloth59TextBox Watermark="Email address..." />
+
+        <TextBlock Text="하단 테두리 강조 효과가 있는 입력 필드"
+                   FontSize="12"
+                   Foreground="#666666"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,0" />
+
+    </StackPanel>
+
+</Window>

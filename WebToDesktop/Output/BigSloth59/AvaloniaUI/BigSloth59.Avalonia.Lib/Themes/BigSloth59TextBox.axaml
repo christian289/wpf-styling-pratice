@@ -1,0 +1,104 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:BigSloth59.Avalonia.Lib.Controls">
+
+    <!--
+    From Uiverse.io by ozgeozkaraa01 - Tags: input
+    하단 테두리 강조 효과가 있는 TextBox 스타일
+    TextBox style with bottom border highlight effect
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="BigSloth59.Border.Default">#E5E5E5</Color>
+    <Color x:Key="BigSloth59.Border.Focus">#6941C6</Color>
+    <Color x:Key="BigSloth59.Background">#FFFFFF</Color>
+    <Color x:Key="BigSloth59.Foreground">#000000</Color>
+
+    <SolidColorBrush x:Key="BigSloth59.Border.Default.Brush" Color="{StaticResource BigSloth59.Border.Default}" />
+    <SolidColorBrush x:Key="BigSloth59.Border.Focus.Brush" Color="{StaticResource BigSloth59.Border.Focus}" />
+    <SolidColorBrush x:Key="BigSloth59.Background.Brush" Color="{StaticResource BigSloth59.Background}" />
+    <SolidColorBrush x:Key="BigSloth59.Foreground.Brush" Color="{StaticResource BigSloth59.Foreground}" />
+
+    <!-- BigSloth59TextBox Style -->
+    <ControlTheme x:Key="{x:Type controls:BigSloth59TextBox}" TargetType="controls:BigSloth59TextBox">
+        <Setter Property="Background" Value="{StaticResource BigSloth59.Background.Brush}" />
+        <Setter Property="Foreground" Value="{StaticResource BigSloth59.Foreground.Brush}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="MinHeight" Value="40" />
+        <Setter Property="Padding" Value="10,0,10,0" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="BorderBrush" Value="{StaticResource BigSloth59.Border.Default.Brush}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="PART_Border"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        BorderBrush="{TemplateBinding BorderBrush}">
+                    <DockPanel>
+                        <TextBlock x:Name="PART_FloatingWatermark"
+                                   DockPanel.Dock="Top"
+                                   IsVisible="False" />
+                        <DataValidationErrors>
+                            <Panel>
+                                <TextBlock x:Name="PART_Watermark"
+                                           Text="{TemplateBinding Watermark}"
+                                           Foreground="#999999"
+                                           IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}"
+                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                           Margin="{TemplateBinding Padding}" />
+                                <ScrollViewer x:Name="PART_ScrollViewer"
+                                              HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                                              VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}">
+                                    <TextPresenter x:Name="PART_TextPresenter"
+                                                   Text="{TemplateBinding Text, Mode=TwoWay}"
+                                                   CaretBrush="{TemplateBinding CaretBrush}"
+                                                   CaretIndex="{TemplateBinding CaretIndex}"
+                                                   SelectionStart="{TemplateBinding SelectionStart}"
+                                                   SelectionEnd="{TemplateBinding SelectionEnd}"
+                                                   TextAlignment="{TemplateBinding TextAlignment}"
+                                                   TextWrapping="{TemplateBinding TextWrapping}"
+                                                   PasswordChar="{TemplateBinding PasswordChar}"
+                                                   RevealPassword="{TemplateBinding RevealPassword}"
+                                                   SelectionBrush="{TemplateBinding SelectionBrush}"
+                                                   SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                                   Margin="{TemplateBinding Padding}"
+                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                </ScrollViewer>
+                            </Panel>
+                        </DataValidationErrors>
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Focus 상태 - 하단 테두리 색상 변경 및 전환 애니메이션 -->
+        <!-- Focus state - bottom border color change with transition animation -->
+        <Style Selector="^:focus">
+            <Setter Property="BorderBrush" Value="{StaticResource BigSloth59.Border.Focus.Brush}" />
+        </Style>
+
+        <Style Selector="^:focus /template/ Border#PART_Border">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" Easing="LinearEasing">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="BorderBrush" Value="{StaticResource BigSloth59.Border.Focus.Brush}" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- PointerOver 상태 -->
+        <!-- PointerOver state -->
+        <Style Selector="^:pointerover">
+            <Setter Property="BorderBrush" Value="{StaticResource BigSloth59.Border.Focus.Brush}" />
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

@@ -1,0 +1,35 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <!-- border-bottom: 1px solid #e5e5e5 -->
+    <SolidColorBrush x:Key="BigSloth59.BorderBrush.Normal" Color="#e5e5e5" />
+    <!-- border-bottom: 1px solid #6941c6 (focus) -->
+    <SolidColorBrush x:Key="BigSloth59.BorderBrush.Focused" Color="#6941c6" />
+    <!-- background: transparent (no explicit background in CSS) -->
+    <SolidColorBrush x:Key="BigSloth59.Background" Color="Transparent" />
+    <!-- text color: default black -->
+    <SolidColorBrush x:Key="BigSloth59.Foreground" Color="#000000" />
+    <!-- placeholder color -->
+    <SolidColorBrush x:Key="BigSloth59.Placeholder.Foreground" Color="#999999" />
+
+    <!-- Sizes -->
+    <!-- height: 40px -->
+    <sys:Double x:Key="BigSloth59.Height">40</sys:Double>
+    <!-- border-radius: 10px -->
+    <CornerRadius x:Key="BigSloth59.CornerRadius">10</CornerRadius>
+    <!-- padding-left: 10px -->
+    <Thickness x:Key="BigSloth59.Padding">10,0,10,0</Thickness>
+    <!-- border: none; border-bottom: 1px solid -->
+    <Thickness x:Key="BigSloth59.BorderThickness">0,0,0,1</Thickness>
+    <!-- font-size: 14px -->
+    <sys:Double x:Key="BigSloth59.FontSize">14</sys:Double>
+    <!-- font-weight: 500 (Medium) -->
+    <FontWeight x:Key="BigSloth59.FontWeight">Medium</FontWeight>
+
+    <!-- Animation Duration -->
+    <!-- transition: 0.5s -->
+    <Duration x:Key="BigSloth59.TransitionDuration">0:0:0.5</Duration>
+
+</ResourceDictionary>
