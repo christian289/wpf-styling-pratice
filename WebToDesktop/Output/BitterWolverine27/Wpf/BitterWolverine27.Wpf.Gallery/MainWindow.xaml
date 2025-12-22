@@ -1,0 +1,30 @@
+<Window x:Class="BitterWolverine27.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:BitterWolverine27.Wpf.UI.Controls;assembly=BitterWolverine27.Wpf.UI"
+        mc:Ignorable="d"
+        Title="BitterWolverine27 - Tooltip Control Gallery"
+        Height="450" Width="800"
+        Background="#F5F5F5">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <!-- 기본 예제 (Default example) -->
+            <controls:BitterWolverine27 HorizontalAlignment="Center" Margin="0,0,0,40"/>
+
+            <!-- 커스텀 텍스트 예제 (Custom text example) -->
+            <controls:BitterWolverine27
+                HoverText="Click here !"
+                TooltipText="Hello there!"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,40"/>
+
+            <!-- 다른 커스텀 예제 (Another custom example) -->
+            <controls:BitterWolverine27
+                HoverText="More info"
+                TooltipText="Learn more!"
+                HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>

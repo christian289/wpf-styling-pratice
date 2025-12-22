@@ -1,0 +1,161 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:BitterWolverine27.Avalonia.Lib.Controls">
+
+    <!-- From Uiverse.io by Quezaquo - Tags: simple, tooltip, transition -->
+
+    <!-- Color Resources -->
+    <Color x:Key="HoverTooltip.TextColor">#333333</Color>
+    <Color x:Key="HoverTooltip.BackgroundColor">#FFFFFF</Color>
+    <SolidColorBrush x:Key="HoverTooltip.TextBrush" Color="{StaticResource HoverTooltip.TextColor}" />
+    <SolidColorBrush x:Key="HoverTooltip.BackgroundBrush" Color="{StaticResource HoverTooltip.BackgroundColor}" />
+
+    <!-- ControlTheme for HoverTooltip -->
+    <ControlTheme x:Key="{x:Type controls:HoverTooltip}" TargetType="controls:HoverTooltip">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Foreground" Value="{StaticResource HoverTooltip.TextBrush}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Tooltip (positioned above) -->
+                    <Border x:Name="PART_Tooltip"
+                            Background="{StaticResource HoverTooltip.BackgroundBrush}"
+                            CornerRadius="0"
+                            Padding="3"
+                            BoxShadow="0 0 10 #0D000000"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Margin="0,-50,0,0"
+                            Opacity="0"
+                            IsVisible="False"
+                            Height="10"
+                            RenderTransformOrigin="0.5,0">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1" ScaleY="0" />
+                                <TranslateTransform Y="0" />
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                        <Panel>
+                            <!-- Tooltip text -->
+                            <TextBlock x:Name="PART_TooltipText"
+                                       Text="{TemplateBinding TooltipText}"
+                                       Foreground="{StaticResource HoverTooltip.TextBrush}"
+                                       FontWeight="SemiBold"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       RenderTransformOrigin="0.5,0.5">
+                                <TextBlock.RenderTransform>
+                                    <TranslateTransform Y="0" />
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                            <!-- Arrow (triangle pointing down) -->
+                            <Panel HorizontalAlignment="Right"
+                                   VerticalAlignment="Bottom"
+                                   Margin="0,0,5,-8"
+                                   Width="14"
+                                   Height="8">
+                                <Path Data="M 0,0 L 7,8 L 14,0 Z"
+                                      Fill="{StaticResource HoverTooltip.BackgroundBrush}" />
+                            </Panel>
+                        </Panel>
+                    </Border>
+
+                    <!-- Trigger text with underline -->
+                    <TextBlock x:Name="PART_TriggerText"
+                               Text="{TemplateBinding TriggerText}"
+                               Foreground="{TemplateBinding Foreground}"
+                               FontSize="{TemplateBinding FontSize}"
+                               TextDecorations="Underline"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="0,20,0,0" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- PointerOver state - Show tooltip with popup animation -->
+        <Style Selector="^:pointerover /template/ Border#PART_Tooltip">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Height" Value="40" />
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" Easing="0.68,-0.55,0.27,1.55" FillMode="Forward">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="0" />
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1" ScaleY="0" />
+                                <TranslateTransform Y="0" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="Opacity" Value="1" />
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1" ScaleY="1.2" />
+                                <TranslateTransform Y="-25" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1" />
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                <TranslateTransform Y="-50" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Bounce animation for tooltip text -->
+        <Style Selector="^:pointerover /template/ TextBlock#PART_TooltipText">
+            <Style.Animations>
+                <Animation Duration="0:0:2" IterationCount="Infinite" Easing="QuadraticEaseInOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="0" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="20%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="0" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="40%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-3" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="0" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="60%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-2" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="80%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="0" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="0" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

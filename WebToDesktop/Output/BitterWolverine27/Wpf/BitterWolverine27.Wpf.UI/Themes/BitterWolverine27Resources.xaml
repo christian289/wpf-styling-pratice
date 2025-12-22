@@ -1,0 +1,48 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <!-- 기본 텍스트 색상 (Default text color) -->
+    <SolidColorBrush x:Key="BitterWolverine27.Text.Foreground" Color="#333333"/>
+
+    <!-- Tooltip 배경색 (Tooltip background color) -->
+    <SolidColorBrush x:Key="BitterWolverine27.Tooltip.Background" Color="#FFFFFF"/>
+
+    <!-- Tooltip 화살표 색상 (Tooltip arrow color) -->
+    <SolidColorBrush x:Key="BitterWolverine27.Tooltip.Arrow.Fill" Color="#FFFFFF"/>
+
+    <!-- 밑줄 색상 (Underline color) -->
+    <SolidColorBrush x:Key="BitterWolverine27.HoverText.Underline" Color="#333333"/>
+
+    <!-- Sizes -->
+    <!-- 기본 폰트 크기 (Default font size) -->
+    <sys:Double x:Key="BitterWolverine27.FontSize">18</sys:Double>
+
+    <!-- Tooltip 높이 (Tooltip height) - 애니메이션 종료 시 -->
+    <sys:Double x:Key="BitterWolverine27.Tooltip.Height">40</sys:Double>
+
+    <!-- Tooltip 초기 높이 (Tooltip initial height) -->
+    <sys:Double x:Key="BitterWolverine27.Tooltip.InitialHeight">10</sys:Double>
+
+    <!-- Tooltip 패딩 (Tooltip padding) -->
+    <Thickness x:Key="BitterWolverine27.Tooltip.Padding">4</Thickness>
+
+    <!-- Tooltip 모서리 둥글기 (Tooltip corner radius) -->
+    <CornerRadius x:Key="BitterWolverine27.Tooltip.CornerRadius">8</CornerRadius>
+
+    <!-- Tooltip 그림자 (Tooltip shadow) -->
+    <DropShadowEffect x:Key="BitterWolverine27.Tooltip.Shadow"
+                      BlurRadius="10"
+                      ShadowDepth="0"
+                      Color="#000000"
+                      Opacity="0.05"/>
+
+    <!-- Animation Durations -->
+    <!-- 팝업 애니메이션 시간 (Popup animation duration) -->
+    <Duration x:Key="BitterWolverine27.Animation.Popup.Duration">0:0:0.5</Duration>
+
+    <!-- 바운스 애니메이션 시간 (Bounce animation duration) -->
+    <Duration x:Key="BitterWolverine27.Animation.Bounce.Duration">0:0:2</Duration>
+
+</ResourceDictionary>

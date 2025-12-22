@@ -1,0 +1,188 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:BitterWolverine27.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/BitterWolverine27.Wpf.UI;component/Themes/BitterWolverine27Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:BitterWolverine27}">
+        <Setter Property="FontSize" Value="{StaticResource BitterWolverine27.FontSize}"/>
+        <Setter Property="Foreground" Value="{StaticResource BitterWolverine27.Text.Foreground}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:BitterWolverine27}">
+                    <Grid x:Name="PART_Root">
+                        <!-- Tooltip (위에 표시, hidden by default) -->
+                        <!-- Tooltip (displayed above, hidden by default) -->
+                        <Border x:Name="PART_Tooltip"
+                                Background="{StaticResource BitterWolverine27.Tooltip.Background}"
+                                CornerRadius="{StaticResource BitterWolverine27.Tooltip.CornerRadius}"
+                                Padding="{StaticResource BitterWolverine27.Tooltip.Padding}"
+                                Effect="{StaticResource BitterWolverine27.Tooltip.Shadow}"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Opacity="0"
+                                Height="10"
+                                Margin="0,-50,0,0"
+                                RenderTransformOrigin="0.5,1">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform x:Name="TooltipScaleTransform" ScaleY="0"/>
+                                    <TranslateTransform x:Name="TooltipTranslateTransform" Y="0"/>
+                                </TransformGroup>
+                            </Border.RenderTransform>
+
+                            <!-- 화살표 (Tooltip 하단에 삼각형) -->
+                            <!-- Arrow (triangle at bottom of tooltip) -->
+                            <Grid>
+                                <TextBlock x:Name="PART_TooltipText"
+                                           Text="{TemplateBinding TooltipText}"
+                                           Foreground="{StaticResource BitterWolverine27.Text.Foreground}"
+                                           FontWeight="SemiBold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           RenderTransformOrigin="0.5,0.5">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform x:Name="TextBounceTransform" Y="0"/>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                            </Grid>
+                        </Border>
+
+                        <!-- 화살표 (Arrow) - Tooltip 아래에 삼각형 -->
+                        <Polygon x:Name="PART_Arrow"
+                                 Points="0,0 7,8 14,0"
+                                 Fill="{StaticResource BitterWolverine27.Tooltip.Arrow.Fill}"
+                                 VerticalAlignment="Top"
+                                 HorizontalAlignment="Center"
+                                 Margin="10,-10,0,0"
+                                 Opacity="0"
+                                 RenderTransformOrigin="0.5,0">
+                            <Polygon.RenderTransform>
+                                <TranslateTransform x:Name="ArrowTranslateTransform" Y="0"/>
+                            </Polygon.RenderTransform>
+                        </Polygon>
+
+                        <!-- 메인 텍스트 (Main text with underline) -->
+                        <TextBlock x:Name="PART_HoverText"
+                                   Text="{TemplateBinding HoverText}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   VerticalAlignment="Bottom"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,50,0,0">
+                            <TextBlock.TextDecorations>
+                                <TextDecorationCollection>
+                                    <TextDecoration Location="Underline">
+                                        <TextDecoration.Pen>
+                                            <Pen Brush="{StaticResource BitterWolverine27.HoverText.Underline}" Thickness="1"/>
+                                        </TextDecoration.Pen>
+                                    </TextDecoration>
+                                </TextDecorationCollection>
+                            </TextBlock.TextDecorations>
+                        </TextBlock>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="ShowTooltipStoryboard">
+                                    <Storyboard>
+                                        <!-- goPopup 애니메이션 구현 -->
+                                        <!-- goPopup animation implementation -->
+
+                                        <!-- Opacity: 0 -> 1 -->
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_Tooltip"
+                                            Storyboard.TargetProperty="Opacity">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.25" Value="1"
+                                                KeySpline="0.68,-0.55,0.27,1.55"/>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <!-- ScaleY: 0 -> 1.2 -> 1 (cubic-bezier) -->
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetName="TooltipScaleTransform"
+                                            Storyboard.TargetProperty="ScaleY">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.25" Value="1.2"
+                                                KeySpline="0.68,-0.55,0.27,1.55"/>
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="1"
+                                                KeySpline="0.68,-0.55,0.27,1.55"/>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <!-- Height: 10 -> 40 -->
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_Tooltip"
+                                            Storyboard.TargetProperty="Height">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0" Value="10"/>
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="40"
+                                                KeySpline="0.68,-0.55,0.27,1.55"/>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <!-- Arrow Opacity -->
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_Arrow"
+                                            Storyboard.TargetProperty="Opacity">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.25" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <!-- bounce 애니메이션 (무한 반복) -->
+                                        <!-- bounce animation (infinite loop) -->
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetName="TextBounceTransform"
+                                            Storyboard.TargetProperty="Y"
+                                            RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.8" Value="-3"
+                                                KeySpline="0.42,0,0.58,1"/>
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                                            <SplineDoubleKeyFrame KeyTime="0:0:1.2" Value="-2"
+                                                KeySpline="0.42,0,0.58,1"/>
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1.6" Value="0"/>
+                                            <LinearDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="ShowTooltipStoryboard"/>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- 숨김 애니메이션 (Hide animation) -->
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_Tooltip"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="0"
+                                            Duration="0:0:0.2"/>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="TooltipScaleTransform"
+                                            Storyboard.TargetProperty="ScaleY"
+                                            To="0"
+                                            Duration="0:0:0.2"/>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_Tooltip"
+                                            Storyboard.TargetProperty="Height"
+                                            To="10"
+                                            Duration="0:0:0.2"/>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_Arrow"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="0"
+                                            Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,30 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:BitterWolverine27.Avalonia.Lib.Controls"
+        x:Class="BitterWolverine27.Avalonia.Gallery.MainWindow"
+        Title="BitterWolverine27 - HoverTooltip Gallery"
+        Width="600"
+        Height="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="40">
+
+            <!-- Default HoverTooltip -->
+            <controls:HoverTooltip />
+
+            <!-- Custom text HoverTooltip -->
+            <controls:HoverTooltip TriggerText="Hover for greeting!"
+                                   TooltipText="Hello! 🎉" />
+
+            <!-- Another example -->
+            <controls:HoverTooltip TriggerText="Click info"
+                                   TooltipText="Click me!" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>
