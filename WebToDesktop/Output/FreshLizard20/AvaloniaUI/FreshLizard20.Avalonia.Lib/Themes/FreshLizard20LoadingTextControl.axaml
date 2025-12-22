@@ -1,0 +1,151 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:FreshLizard20.Avalonia.Lib.Controls">
+
+    <!-- Color Resources -->
+    <Color x:Key="FreshLizard20.BackgroundColor">#212121</Color>
+    <Color x:Key="FreshLizard20.TextColor">#7C7C7C</Color>
+    <Color x:Key="FreshLizard20.AccentColor">#956AFA</Color>
+
+    <SolidColorBrush x:Key="FreshLizard20.BackgroundBrush" Color="{StaticResource FreshLizard20.BackgroundColor}" />
+    <SolidColorBrush x:Key="FreshLizard20.TextBrush" Color="{StaticResource FreshLizard20.TextColor}" />
+    <SolidColorBrush x:Key="FreshLizard20.AccentBrush" Color="{StaticResource FreshLizard20.AccentColor}" />
+
+    <!-- Gradient for fading effect -->
+    <LinearGradientBrush x:Key="FreshLizard20.FadeBrush" StartPoint="0%,0%" EndPoint="0%,100%">
+        <GradientStop Color="{StaticResource FreshLizard20.BackgroundColor}" Offset="0" />
+        <GradientStop Color="Transparent" Offset="0.3" />
+        <GradientStop Color="Transparent" Offset="0.7" />
+        <GradientStop Color="{StaticResource FreshLizard20.BackgroundColor}" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- Control Template -->
+    <ControlTheme x:Key="{x:Type controls:FreshLizard20LoadingTextControl}"
+                  TargetType="controls:FreshLizard20LoadingTextControl">
+        <Setter Property="Background" Value="{StaticResource FreshLizard20.BackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource FreshLizard20.TextBrush}" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Padding" Value="32,16" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!-- Card Container -->
+                <Border Background="{TemplateBinding Background}"
+                        CornerRadius="20"
+                        Padding="{TemplateBinding Padding}">
+                    <!-- Loader Container -->
+                    <Border CornerRadius="8"
+                            Padding="10">
+                        <StackPanel Orientation="Horizontal">
+                            <!-- Prefix Text -->
+                            <TextBlock Text="{TemplateBinding PrefixText}"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       FontWeight="{TemplateBinding FontWeight}"
+                                       VerticalAlignment="Center" />
+
+                            <!-- Words Container with Clipping -->
+                            <Panel Height="40"
+                                   ClipToBounds="True">
+                                <!-- Words Stack with Animation -->
+                                <StackPanel x:Name="PART_WordsPanel"
+                                            Orientation="Vertical">
+                                    <StackPanel.Styles>
+                                        <Style Selector="TextBlock.word">
+                                            <Setter Property="Height" Value="40" />
+                                            <Setter Property="Margin" Value="6,0,0,0" />
+                                            <Setter Property="Foreground" Value="{StaticResource FreshLizard20.AccentBrush}" />
+                                            <Setter Property="FontSize" Value="25" />
+                                            <Setter Property="FontWeight" Value="Medium" />
+                                            <Setter Property="VerticalAlignment" Value="Center" />
+                                        </Style>
+                                    </StackPanel.Styles>
+
+                                    <!-- Word Items (hard-coded for animation) -->
+                                    <TextBlock Classes="word" Text="buttons" />
+                                    <TextBlock Classes="word" Text="forms" />
+                                    <TextBlock Classes="word" Text="switches" />
+                                    <TextBlock Classes="word" Text="cards" />
+                                    <TextBlock Classes="word" Text="buttons" />
+
+                                    <!-- RenderTransform for Animation -->
+                                    <StackPanel.RenderTransform>
+                                        <TranslateTransform />
+                                    </StackPanel.RenderTransform>
+                                </StackPanel>
+
+                                <!-- Fade Overlay -->
+                                <Border Background="{StaticResource FreshLizard20.FadeBrush}"
+                                        IsHitTestVisible="False" />
+                            </Panel>
+                        </StackPanel>
+                    </Border>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Animation Styles -->
+        <Style Selector="^:loaded /template/ StackPanel#PART_WordsPanel">
+            <Style.Animations>
+                <Animation Duration="0:0:4"
+                           IterationCount="Infinite"
+                           Easing="LinearEasing">
+                    <!-- 0% - 10%: Hold at 0 -->
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="0" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="10%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-40.8" />
+                        </Setter>
+                    </KeyFrame>
+                    <!-- 10% - 25%: Hold at -100% (-40px) -->
+                    <KeyFrame Cue="25%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-40" />
+                        </Setter>
+                    </KeyFrame>
+                    <!-- 25% - 35%: Transition to -200% -->
+                    <KeyFrame Cue="35%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-80.8" />
+                        </Setter>
+                    </KeyFrame>
+                    <!-- 35% - 50%: Hold at -200% (-80px) -->
+                    <KeyFrame Cue="50%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-80" />
+                        </Setter>
+                    </KeyFrame>
+                    <!-- 50% - 60%: Transition to -300% -->
+                    <KeyFrame Cue="60%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-120.8" />
+                        </Setter>
+                    </KeyFrame>
+                    <!-- 60% - 75%: Hold at -300% (-120px) -->
+                    <KeyFrame Cue="75%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-120" />
+                        </Setter>
+                    </KeyFrame>
+                    <!-- 75% - 85%: Transition to -400% -->
+                    <KeyFrame Cue="85%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-160.8" />
+                        </Setter>
+                    </KeyFrame>
+                    <!-- 85% - 100%: Hold at -400% (-160px) -->
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-160" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

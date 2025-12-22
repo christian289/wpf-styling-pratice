@@ -1,0 +1,47 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors / 색상 -->
+    <!-- bg-color: 카드 배경색 -->
+    <Color x:Key="FreshLizard20.Card.BackgroundColor">#212121</Color>
+    <SolidColorBrush x:Key="FreshLizard20.Card.Background" Color="{StaticResource FreshLizard20.Card.BackgroundColor}" />
+
+    <!-- loader text color: 로딩 텍스트 색상 -->
+    <SolidColorBrush x:Key="FreshLizard20.LoadingText.Foreground" Color="#7C7C7C" />
+
+    <!-- word color: 순환 단어 색상 -->
+    <SolidColorBrush x:Key="FreshLizard20.Word.Foreground" Color="#956AFA" />
+
+    <!-- Sizes / 크기 -->
+    <!-- card padding: 1rem 2rem (16px 32px) -->
+    <Thickness x:Key="FreshLizard20.Card.Padding">32,16,32,16</Thickness>
+
+    <!-- card border-radius: 1.25rem (20px) -->
+    <CornerRadius x:Key="FreshLizard20.Card.CornerRadius">20</CornerRadius>
+
+    <!-- loader border-radius: 8px -->
+    <CornerRadius x:Key="FreshLizard20.Loader.CornerRadius">8</CornerRadius>
+
+    <!-- loader padding: 10px -->
+    <Thickness x:Key="FreshLizard20.Loader.Padding">10</Thickness>
+
+    <!-- loader height: 40px -->
+    <sys:Double x:Key="FreshLizard20.Loader.Height">40</sys:Double>
+
+    <!-- font-size: 25px -->
+    <sys:Double x:Key="FreshLizard20.FontSize">25</sys:Double>
+
+    <!-- word padding-left: 6px -->
+    <Thickness x:Key="FreshLizard20.Word.Margin">6,0,0,0</Thickness>
+
+    <!-- Gradient for fade effect (::after pseudo-element) -->
+    <!-- 위/아래 페이드 효과를 위한 그라데이션 -->
+    <LinearGradientBrush x:Key="FreshLizard20.FadeOverlay" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="{StaticResource FreshLizard20.Card.BackgroundColor}" Offset="0.0" />
+        <GradientStop Color="Transparent" Offset="0.3" />
+        <GradientStop Color="Transparent" Offset="0.7" />
+        <GradientStop Color="{StaticResource FreshLizard20.Card.BackgroundColor}" Offset="1.0" />
+    </LinearGradientBrush>
+
+</ResourceDictionary>

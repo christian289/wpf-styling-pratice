@@ -1,0 +1,125 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:FreshLizard20.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/FreshLizard20.Wpf.UI;component/Themes/FreshLizard20Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:FreshLizard20}">
+        <Setter Property="FontFamily" Value="Segoe UI, Poppins, sans-serif" />
+        <Setter Property="FontSize" Value="{StaticResource FreshLizard20.FontSize}" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:FreshLizard20}">
+                    <!-- Card container -->
+                    <Border Background="{StaticResource FreshLizard20.Card.Background}"
+                            CornerRadius="{StaticResource FreshLizard20.Card.CornerRadius}"
+                            Padding="{StaticResource FreshLizard20.Card.Padding}">
+
+                        <!-- Loader container with flex layout -->
+                        <Border CornerRadius="{StaticResource FreshLizard20.Loader.CornerRadius}"
+                                Padding="{StaticResource FreshLizard20.Loader.Padding}">
+                            <StackPanel Orientation="Horizontal"
+                                        Height="{StaticResource FreshLizard20.Loader.Height}">
+
+                                <!-- Loading text -->
+                                <TextBlock Text="{TemplateBinding LoadingText}"
+                                           Foreground="{StaticResource FreshLizard20.LoadingText.Foreground}"
+                                           FontFamily="{TemplateBinding FontFamily}"
+                                           FontSize="{TemplateBinding FontSize}"
+                                           FontWeight="{TemplateBinding FontWeight}"
+                                           VerticalAlignment="Center" />
+
+                                <!-- Words container with overflow hidden -->
+                                <Grid Height="{StaticResource FreshLizard20.Loader.Height}"
+                                      Margin="{StaticResource FreshLizard20.Word.Margin}">
+
+                                    <!-- Clip to bounds for overflow: hidden -->
+                                    <Grid.Clip>
+                                        <RectangleGeometry Rect="0,0,200,40" />
+                                    </Grid.Clip>
+
+                                    <!-- Words panel with animation -->
+                                    <StackPanel x:Name="PART_WordsPanel"
+                                                Orientation="Vertical"
+                                                RenderTransformOrigin="0,0">
+                                        <StackPanel.RenderTransform>
+                                            <TranslateTransform x:Name="WordsTranslate" Y="0" />
+                                        </StackPanel.RenderTransform>
+
+                                        <!-- Word items -->
+                                        <ItemsControl ItemsSource="{TemplateBinding Words}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding}"
+                                                               Height="40"
+                                                               Foreground="{StaticResource FreshLizard20.Word.Foreground}"
+                                                               VerticalAlignment="Center"
+                                                               LineHeight="40" />
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+
+                                    <!-- Fade overlay (::after pseudo-element) -->
+                                    <Border Background="{StaticResource FreshLizard20.FadeOverlay}"
+                                            IsHitTestVisible="False" />
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsVisible" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <!--
+                                        CSS keyframes spin_4991:
+                                        10%: translateY(-102%) -> -40.8px
+                                        25%: translateY(-100%) -> -40px (단어 1개 높이)
+                                        35%: translateY(-202%) -> -80.8px
+                                        50%: translateY(-200%) -> -80px (단어 2개 높이)
+                                        60%: translateY(-302%) -> -120.8px
+                                        75%: translateY(-300%) -> -120px (단어 3개 높이)
+                                        85%: translateY(-402%) -> -160.8px
+                                        100%: translateY(-400%) -> -160px (단어 4개 높이)
+
+                                        Duration: 4s
+                                        각 키프레임 시간:
+                                        0%   -> 0s
+                                        10%  -> 0.4s (시작 -> -40.8)
+                                        25%  -> 1.0s (안정 -> -40)
+                                        35%  -> 1.4s (시작 -> -80.8)
+                                        50%  -> 2.0s (안정 -> -80)
+                                        60%  -> 2.4s (시작 -> -120.8)
+                                        75%  -> 3.0s (안정 -> -120)
+                                        85%  -> 3.4s (시작 -> -160.8)
+                                        100% -> 4.0s (끝 -> -160)
+                                        -->
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetName="WordsTranslate"
+                                            Storyboard.TargetProperty="Y">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.4" Value="-40.8" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1.0" Value="-40" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1.4" Value="-80.8" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:2.0" Value="-80" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:2.4" Value="-120.8" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:3.0" Value="-120" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:3.4" Value="-160.8" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:4.0" Value="-160" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="FreshLizard20.Avalonia.Lib\FreshLizard20.Avalonia.Lib.csproj" />
+  <Project Path="FreshLizard20.Avalonia.Gallery\FreshLizard20.Avalonia.Gallery.csproj" />
+</Solution>

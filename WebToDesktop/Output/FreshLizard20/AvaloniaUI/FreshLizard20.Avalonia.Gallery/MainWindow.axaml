@@ -1,0 +1,17 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:FreshLizard20.Avalonia.Lib.Controls"
+        x:Class="FreshLizard20.Avalonia.Gallery.MainWindow"
+        Title="FreshLizard20 Loading Text Control - AvaloniaUI"
+        Width="500"
+        Height="300"
+        WindowStartupLocation="CenterScreen"
+        Background="#1A1A1A">
+
+    <Grid>
+        <controls:FreshLizard20LoadingTextControl
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center" />
+    </Grid>
+
+</Window>
