@@ -1,0 +1,162 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:BlackMouse53.Avalonia.Lib.Controls">
+
+    <!--
+    Twitter Bird CSS Art Control
+    원본: uiverse.io by vladaxinte
+    Original: uiverse.io by vladaxinte
+
+    참고: CSS radial-gradient를 RadialGradientBrush로 변환 시
+    GradientOrigin과 Center를 동일하게 설정 (AvaloniaUI Issue #19888)
+    Note: When converting CSS radial-gradient to RadialGradientBrush,
+    GradientOrigin and Center must be set to the same value (AvaloniaUI Issue #19888)
+    -->
+
+    <ControlTheme x:Key="{x:Type controls:TwitterBird}" TargetType="controls:TwitterBird">
+        <Setter Property="Width" Value="300"/>
+        <Setter Property="Height" Value="340"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Width="300" Height="340">
+                    <!-- Container with transform: translate(-15%, 20%) = translate(-45, 68) -->
+                    <Canvas Width="300" Height="340">
+                        <Canvas Canvas.Left="-45" Canvas.Top="68">
+
+                            <!-- tummy: z-index: -1, lowest layer -->
+                            <!-- radial-gradient(circle at 0% -38%, transparent 80%, #fff 30%) -->
+                            <Ellipse Canvas.Left="-3" Canvas.Top="-55"
+                                     Width="320" Height="320">
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush GradientOrigin="0%,-38%" Center="0%,-38%" RadiusX="1" RadiusY="1">
+                                        <GradientStop Color="Transparent" Offset="0.80"/>
+                                        <GradientStop Color="White" Offset="0.80"/>
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <!-- torso -->
+                            <!-- radial-gradient(circle at 0% -40%, transparent 60%, #fff 30%) -->
+                            <Ellipse Canvas.Left="117" Canvas.Top="8"
+                                     Width="200" Height="200"
+                                     RenderTransformOrigin="0.5,0.5">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="10"/>
+                                </Ellipse.RenderTransform>
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush GradientOrigin="0%,-40%" Center="0%,-40%" RadiusX="1" RadiusY="1">
+                                        <GradientStop Color="Transparent" Offset="0.60"/>
+                                        <GradientStop Color="White" Offset="0.60"/>
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <!-- tail -->
+                            <!-- radial-gradient(circle at 10% -42%, transparent 66%, #fff 30%) -->
+                            <Ellipse Canvas.Left="28" Canvas.Top="116"
+                                     Width="228" Height="150"
+                                     RenderTransformOrigin="0.5,0.5">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="5"/>
+                                </Ellipse.RenderTransform>
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush GradientOrigin="10%,-42%" Center="10%,-42%" RadiusX="1" RadiusY="1">
+                                        <GradientStop Color="Transparent" Offset="0.66"/>
+                                        <GradientStop Color="White" Offset="0.66"/>
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <!-- wing-middle: z-index: 20 -->
+                            <!-- radial-gradient(circle at 50% -80%, transparent 80%, #fff 10%) -->
+                            <Ellipse Canvas.Left="73" Canvas.Top="44"
+                                     Width="130" Height="130"
+                                     RenderTransformOrigin="0.5,0.5">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="7"/>
+                                </Ellipse.RenderTransform>
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush GradientOrigin="50%,-80%" Center="50%,-80%" RadiusX="1" RadiusY="1">
+                                        <GradientStop Color="Transparent" Offset="0.80"/>
+                                        <GradientStop Color="White" Offset="0.80"/>
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <!-- wing-top: z-index: 20 -->
+                            <!-- radial-gradient(circle at -100% 90%, transparent 70%, #fff 10%) -->
+                            <Ellipse Canvas.Left="88" Canvas.Top="8"
+                                     Width="125" Height="160"
+                                     RenderTransformOrigin="0.5,0.5">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="132"/>
+                                </Ellipse.RenderTransform>
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush GradientOrigin="-100%,90%" Center="-100%,90%" RadiusX="1" RadiusY="1">
+                                        <GradientStop Color="Transparent" Offset="0.70"/>
+                                        <GradientStop Color="White" Offset="0.70"/>
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <!-- beak-bottom: z-index: 20 -->
+                            <!-- radial-gradient(circle at 10% -30%, transparent 76%, #fff 30%) -->
+                            <Ellipse Canvas.Left="240" Canvas.Top="-36"
+                                     Width="112" Height="140"
+                                     RenderTransformOrigin="0.5,0.5">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="20"/>
+                                </Ellipse.RenderTransform>
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush GradientOrigin="10%,-30%" Center="10%,-30%" RadiusX="1" RadiusY="1">
+                                        <GradientStop Color="Transparent" Offset="0.76"/>
+                                        <GradientStop Color="White" Offset="0.76"/>
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <!-- beak-top: z-index: 20 -->
+                            <!-- radial-gradient(circle at 10% -30%, transparent 76%, #fff 30%) -->
+                            <Ellipse Canvas.Left="225" Canvas.Top="-33"
+                                     Width="112" Height="112"
+                                     RenderTransformOrigin="0.5,0.5">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="15"/>
+                                </Ellipse.RenderTransform>
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush GradientOrigin="10%,-30%" Center="10%,-30%" RadiusX="1" RadiusY="1">
+                                        <GradientStop Color="Transparent" Offset="0.76"/>
+                                        <GradientStop Color="White" Offset="0.76"/>
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <!-- head: z-index above others, solid white circle -->
+                            <Ellipse Canvas.Left="200" Canvas.Top="34"
+                                     Width="116" Height="116"
+                                     Fill="White"/>
+
+                            <!-- wing-bottom: z-index: 90, highest layer -->
+                            <!-- radial-gradient(circle at -100% 90%, transparent 75%, #fff 10%) -->
+                            <Ellipse Canvas.Left="92" Canvas.Top="94"
+                                     Width="120" Height="120"
+                                     RenderTransformOrigin="0.5,0.5">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="86"/>
+                                </Ellipse.RenderTransform>
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush GradientOrigin="-100%,90%" Center="-100%,90%" RadiusX="1" RadiusY="1">
+                                        <GradientStop Color="Transparent" Offset="0.75"/>
+                                        <GradientStop Color="White" Offset="0.75"/>
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                        </Canvas>
+                    </Canvas>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>
