@@ -1,0 +1,271 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:AngryGrasshopper50.Avalonia.Lib.Controls">
+
+    <!--
+    From Uiverse.io by 3bdel3ziz-T
+    Tags: material design, animation, checkbox, hamburger, menu, click effect, click animation, close
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="BurgerIcon.Line.Color">Black</Color>
+    <Color x:Key="BurgerIcon.Line.Hover.Color">#E8E8E8</Color>
+    <Color x:Key="BurgerIcon.Background.Hover.Color">#AEAEAE</Color>
+
+    <SolidColorBrush x:Key="BurgerIcon.Line.Brush" Color="{StaticResource BurgerIcon.Line.Color}"/>
+    <SolidColorBrush x:Key="BurgerIcon.Line.Hover.Brush" Color="{StaticResource BurgerIcon.Line.Hover.Color}"/>
+    <SolidColorBrush x:Key="BurgerIcon.Background.Hover.Brush" Color="{StaticResource BurgerIcon.Background.Hover.Color}"/>
+
+    <!-- BurgerIcon Style -->
+    <ControlTheme x:Key="{x:Type controls:BurgerIcon}" TargetType="controls:BurgerIcon">
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="PART_Border"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        RenderTransformOrigin="0.5,0.5">
+                    <Panel>
+                        <!-- Top Line (::before) -->
+                        <Border x:Name="PART_TopLine"
+                                Width="25"
+                                Height="2"
+                                Background="{StaticResource BurgerIcon.Line.Brush}"
+                                CornerRadius="5"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <TranslateTransform Y="-8"/>
+                                    <RotateTransform Angle="0"/>
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                        </Border>
+
+                        <!-- Middle Line -->
+                        <Border x:Name="PART_MiddleLine"
+                                Width="25"
+                                Height="2"
+                                Background="{StaticResource BurgerIcon.Line.Brush}"
+                                CornerRadius="5"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1"/>
+                            </Border.RenderTransform>
+                        </Border>
+
+                        <!-- Bottom Line (::after) -->
+                        <Border x:Name="PART_BottomLine"
+                                Width="25"
+                                Height="2"
+                                Background="{StaticResource BurgerIcon.Line.Brush}"
+                                CornerRadius="5"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <TranslateTransform Y="8"/>
+                                    <RotateTransform Angle="0"/>
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                        </Border>
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Hover State -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{StaticResource BurgerIcon.Background.Hover.Brush}"/>
+            <Setter Property="CornerRadius" Value="20"/>
+        </Style>
+        <Style Selector="^:pointerover /template/ Border#PART_TopLine">
+            <Setter Property="Background" Value="{StaticResource BurgerIcon.Line.Hover.Brush}"/>
+        </Style>
+        <Style Selector="^:pointerover /template/ Border#PART_MiddleLine">
+            <Setter Property="Background" Value="{StaticResource BurgerIcon.Line.Hover.Brush}"/>
+        </Style>
+        <Style Selector="^:pointerover /template/ Border#PART_BottomLine">
+            <Setter Property="Background" Value="{StaticResource BurgerIcon.Line.Hover.Brush}"/>
+        </Style>
+
+        <!-- Pressed State (scale: 0.95) -->
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="RenderTransform">
+                <ScaleTransform ScaleX="0.95" ScaleY="0.95"/>
+            </Setter>
+        </Style>
+
+        <!-- Checked State - X Shape Animation -->
+        <Style Selector="^:checked /template/ Border#PART_TopLine">
+            <Style.Animations>
+                <Animation Duration="0:0:0.4" Easing="QuadraticEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="-8"/>
+                                <RotateTransform Angle="0"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0"/>
+                                <RotateTransform Angle="0"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0"/>
+                                <RotateTransform Angle="45"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:checked /template/ Border#PART_MiddleLine">
+            <Style.Animations>
+                <Animation Duration="0:0:0.1" Delay="0:0:0.1" Easing="QuadraticEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1"/>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="0"/>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:checked /template/ Border#PART_BottomLine">
+            <Style.Animations>
+                <Animation Duration="0:0:0.4" Easing="QuadraticEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="8"/>
+                                <RotateTransform Angle="0"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0"/>
+                                <RotateTransform Angle="0"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0"/>
+                                <RotateTransform Angle="-45"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Unchecked State - Back to Hamburger Animation -->
+        <Style Selector="^:unchecked /template/ Border#PART_TopLine">
+            <Style.Animations>
+                <Animation Duration="0:0:0.4" Easing="QuadraticEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0"/>
+                                <RotateTransform Angle="45"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0"/>
+                                <RotateTransform Angle="0"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="-8"/>
+                                <RotateTransform Angle="0"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:unchecked /template/ Border#PART_MiddleLine">
+            <Style.Animations>
+                <Animation Duration="0:0:0.1" Delay="0:0:0.2" Easing="QuadraticEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="0"/>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1"/>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:unchecked /template/ Border#PART_BottomLine">
+            <Style.Animations>
+                <Animation Duration="0:0:0.4" Easing="QuadraticEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0"/>
+                                <RotateTransform Angle="-45"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0"/>
+                                <RotateTransform Angle="0"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="8"/>
+                                <RotateTransform Angle="0"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

@@ -1,0 +1,56 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+    CSS 원본 값:
+    - width/height: 40px
+    - line width: 25px
+    - line height: 2.1px
+    - translateY offset: 8px
+    - border-radius: 10px (normal), 50% (hover)
+    - animation duration: 300ms (transition), 400ms (animation)
+    -->
+
+    <!-- Size Resources -->
+    <!-- 컨트롤 크기 / Control size -->
+    <sys:Double x:Key="AngryGrasshopper50.Size">40</sys:Double>
+
+    <!-- 라인 너비 / Line width -->
+    <sys:Double x:Key="AngryGrasshopper50.Line.Width">25</sys:Double>
+
+    <!-- 라인 높이 / Line height -->
+    <sys:Double x:Key="AngryGrasshopper50.Line.Height">2.1</sys:Double>
+
+    <!-- 라인 Y 오프셋 / Line Y offset -->
+    <sys:Double x:Key="AngryGrasshopper50.Line.OffsetY">8</sys:Double>
+
+    <!-- 라인 모서리 반경 / Line corner radius -->
+    <sys:Double x:Key="AngryGrasshopper50.Line.CornerRadius">5</sys:Double>
+
+    <!-- Color Resources -->
+    <!-- 기본 배경색 (투명) / Default background (transparent) -->
+    <SolidColorBrush x:Key="AngryGrasshopper50.Background.Normal" Color="Transparent"/>
+
+    <!-- 호버 배경색 / Hover background -->
+    <SolidColorBrush x:Key="AngryGrasshopper50.Background.Hover" Color="#aeaeae"/>
+
+    <!-- 기본 라인 색상 / Default line color -->
+    <SolidColorBrush x:Key="AngryGrasshopper50.Line.Color.Normal" Color="Black"/>
+
+    <!-- 호버 라인 색상 / Hover line color -->
+    <SolidColorBrush x:Key="AngryGrasshopper50.Line.Color.Hover" Color="#e8e8e8"/>
+
+    <!-- Corner Radius Resources -->
+    <!-- 기본 모서리 반경 / Default corner radius -->
+    <CornerRadius x:Key="AngryGrasshopper50.CornerRadius.Normal">10</CornerRadius>
+
+    <!-- 호버 모서리 반경 (원형) / Hover corner radius (circle) -->
+    <CornerRadius x:Key="AngryGrasshopper50.CornerRadius.Hover">20</CornerRadius>
+
+    <!-- Duration Resources (참고용 - XAML에서 Duration은 인라인 사용) -->
+    <!-- Duration Resources (reference only - Duration must be inline in XAML) -->
+    <!-- Transition: 300ms = 0:0:0.3 -->
+    <!-- Animation: 400ms = 0:0:0.4 -->
+
+</ResourceDictionary>
