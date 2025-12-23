@@ -1,0 +1,117 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:WiseMule92.Avalonia.Lib.Controls">
+
+    <!--
+    CSS 원본 분석:
+    - 기본 배경: #f44336 (빨간색)
+    - 기본 텍스트: #fff (흰색)
+    - hover 배경: #fff (흰색)
+    - hover 텍스트: #f44336 (빨간색)
+    - hover 시 텍스트 회전 -10deg, 확대 1.1x
+    - box-shadow: 복잡한 inset + 외부 그림자 조합
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="WiseMule92.Primary.Color">#f44336</Color>
+    <Color x:Key="WiseMule92.Text.Color">#FFFFFF</Color>
+    <Color x:Key="WiseMule92.Hover.Background">#FFFFFF</Color>
+
+    <SolidColorBrush x:Key="WiseMule92.Primary.Brush" Color="{StaticResource WiseMule92.Primary.Color}" />
+    <SolidColorBrush x:Key="WiseMule92.Text.Brush" Color="{StaticResource WiseMule92.Text.Color}" />
+    <SolidColorBrush x:Key="WiseMule92.Hover.Background.Brush" Color="{StaticResource WiseMule92.Hover.Background}" />
+
+    <!-- ControlTheme for WiseMule92Button -->
+    <ControlTheme x:Key="{x:Type controls:WiseMule92Button}" TargetType="controls:WiseMule92Button">
+        <Setter Property="Background" Value="{StaticResource WiseMule92.Primary.Brush}" />
+        <Setter Property="Foreground" Value="{StaticResource WiseMule92.Text.Brush}" />
+        <Setter Property="Padding" Value="20,10" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="ClipToBounds" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="PART_Root"
+                        Background="{TemplateBinding Background}"
+                        Padding="{TemplateBinding Padding}"
+                        ClipToBounds="True"
+                        BoxShadow="0 2 4 0 #17000000">
+                    <TextBlock x:Name="PART_Text"
+                               Text="{TemplateBinding Text}"
+                               Foreground="{TemplateBinding Foreground}"
+                               FontSize="{TemplateBinding FontSize}"
+                               FontWeight="{TemplateBinding FontWeight}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="0" />
+                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- PointerOver (Hover) State -->
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{StaticResource WiseMule92.Hover.Background.Brush}" />
+            <Setter Property="Foreground" Value="{StaticResource WiseMule92.Primary.Brush}" />
+        </Style>
+
+        <!-- PointerOver Border BoxShadow -->
+        <Style Selector="^:pointerover /template/ Border#PART_Root">
+            <!--
+            CSS box-shadow (hover):
+            inset: 0px -23px 25px 0px rgba(0,0,0,0.17)
+            inset: 0px -36px 30px 0px rgba(0,0,0,0.15)
+            inset: 0px -79px 40px 0px rgba(0,0,0,0.1)
+            외부: 0px 2px 1px rgba(0,0,0,0.06)
+            외부: 0px 4px 2px rgba(0,0,0,0.09)
+            외부: 0px 8px 4px rgba(0,0,0,0.09)
+            외부: 0px 16px 8px rgba(0,0,0,0.09)
+            외부: 0px 32px 16px rgba(0,0,0,0.09)
+
+            AvaloniaUI BoxShadow 형식: offset-x offset-y blur spread color [inset]
+            AvaloniaUI는 여러 개의 그림자를 쉼표로 구분하여 지정 가능
+            -->
+            <Setter Property="BoxShadow" Value="0 -23 25 0 #2B000000 inset, 0 -36 30 0 #26000000 inset, 0 -79 40 0 #1A000000 inset, 0 2 1 0 #0F000000, 0 4 2 0 #17000000, 0 8 4 0 #17000000, 0 16 8 0 #17000000, 0 32 16 0 #17000000" />
+        </Style>
+
+        <!-- PointerOver Text Animation -->
+        <Style Selector="^:pointerover /template/ TextBlock#PART_Text">
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" Easing="CubicEaseInOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <RotateTransform Angle="-10" />
+                                <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Normal State (Not PointerOver) - Reset Animation -->
+        <Style Selector="^:not(:pointerover) /template/ TextBlock#PART_Text">
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" Easing="CubicEaseInOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <RotateTransform Angle="0" />
+                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

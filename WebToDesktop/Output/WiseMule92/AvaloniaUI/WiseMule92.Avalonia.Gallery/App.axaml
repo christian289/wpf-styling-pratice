@@ -1,0 +1,9 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="WiseMule92.Avalonia.Gallery.App"
+             RequestedThemeVariant="Default">
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://WiseMule92.Avalonia.Lib/Themes/Generic.axaml" />
+    </Application.Styles>
+</Application>

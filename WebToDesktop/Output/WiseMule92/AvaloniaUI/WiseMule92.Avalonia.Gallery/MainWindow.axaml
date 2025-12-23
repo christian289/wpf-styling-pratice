@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:WiseMule92.Avalonia.Lib.Controls"
+        x:Class="WiseMule92.Avalonia.Gallery.MainWindow"
+        Title="WiseMule92 - AvaloniaUI Gallery"
+        Width="600"
+        Height="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#2c2c2c">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="20">
+
+            <!-- 기본 버튼 -->
+            <controls:WiseMule92Button />
+
+            <!-- 커스텀 텍스트 버튼 -->
+            <controls:WiseMule92Button Text="ANIME BUTTON" />
+
+            <!-- 다른 텍스트 버튼 -->
+            <controls:WiseMule92Button Text="Click Me!" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>

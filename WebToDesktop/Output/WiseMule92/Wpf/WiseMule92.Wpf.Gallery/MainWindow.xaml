@@ -1,0 +1,26 @@
+<Window x:Class="WiseMule92.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:WiseMule92.Wpf.UI.Controls;assembly=WiseMule92.Wpf.UI"
+        mc:Ignorable="d"
+        Title="WiseMule92 Control Gallery" Height="450" Width="800"
+        Background="#2D2D2D">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="WiseMule92 Button Control"
+                       Foreground="White"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,30" />
+
+            <controls:WiseMule92 Content="鬼滅の刃" Margin="0,0,0,20" />
+
+            <controls:WiseMule92 Content="DEMON SLAYER" Margin="0,0,0,20" />
+
+            <controls:WiseMule92 Content="CLICK ME" IsEnabled="False" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="WiseMule92.Wpf.Gallery/WiseMule92.Wpf.Gallery.csproj" />
+  <Project Path="WiseMule92.Wpf.UI/WiseMule92.Wpf.UI.csproj" />
+</Solution>
