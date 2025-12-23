@@ -43,8 +43,8 @@
                                               Direction="0"/>
                         </Border.Effect>
                         <Border.Clip>
-                            <RectangleGeometry RadiusX="{StaticResource AverageElephant52.CornerRadius}"
-                                               RadiusY="{StaticResource AverageElephant52.CornerRadius}">
+                            <RectangleGeometry RadiusX="{StaticResource AverageElephant52.CornerRadiusValue}"
+                                               RadiusY="{StaticResource AverageElephant52.CornerRadiusValue}">
                                 <RectangleGeometry.Rect>
                                     <MultiBinding Converter="{x:Static converters:SizeToRectConverter.Instance}">
                                         <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}"/>

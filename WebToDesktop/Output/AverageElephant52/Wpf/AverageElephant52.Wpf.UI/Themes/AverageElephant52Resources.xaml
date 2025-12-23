@@ -25,15 +25,21 @@
     <Color x:Key="AverageElephant52.Blob.Shadow.Color">#2EFF00E5</Color>
 
     <!-- Sizes -->
-    <sys:Double x:Key="AverageElephant52.CornerRadius">16</sys:Double>
-    <sys:Double x:Key="AverageElephant52.InnerCornerRadius">14</sys:Double>
-    <sys:Double x:Key="AverageElephant52.BorderPadding">2</sys:Double>
-    <sys:Double x:Key="AverageElephant52.InnerMargin">3</sys:Double>
+    <sys:Double x:Key="AverageElephant52.CornerRadiusValue">16</sys:Double>
+    <sys:Double x:Key="AverageElephant52.InnerCornerRadiusValue">14</sys:Double>
     <sys:Double x:Key="AverageElephant52.BlobWidth">70</sys:Double>
     <sys:Double x:Key="AverageElephant52.IconSize">24</sys:Double>
     <sys:Double x:Key="AverageElephant52.FontSize">17</sys:Double>
     <sys:Double x:Key="AverageElephant52.MinWidth">280</sys:Double>
     <sys:Double x:Key="AverageElephant52.MinHeight">56</sys:Double>
+
+    <!-- CornerRadius -->
+    <CornerRadius x:Key="AverageElephant52.CornerRadius">16</CornerRadius>
+    <CornerRadius x:Key="AverageElephant52.InnerCornerRadius">14</CornerRadius>
+
+    <!-- Thickness -->
+    <Thickness x:Key="AverageElephant52.BorderPadding">2</Thickness>
+    <Thickness x:Key="AverageElephant52.InnerMargin">3</Thickness>
 
     <!-- Brushes -->
     <SolidColorBrush x:Key="AverageElephant52.Text.Brush" Color="{StaticResource AverageElephant52.Text.Foreground}"/>
