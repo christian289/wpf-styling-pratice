@@ -1,0 +1,19 @@
+<Window x:Class="SplendidQuail83.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:SplendidQuail83.Wpf.UI.Controls;assembly=SplendidQuail83.Wpf.UI"
+        mc:Ignorable="d"
+        Title="SplendidQuail83 - Paper Pattern Control" Height="500" Width="700">
+    <Grid>
+        <!-- 전체 화면에 패턴 배경 적용 -->
+        <!-- Pattern background applied to full screen -->
+        <controls:SplendidQuail83 Padding="70,15,15,15">
+            <TextBlock Text="노트 패드 스타일 배경&#x0a;Notebook Style Background"
+                       FontSize="18"
+                       FontFamily="Consolas"
+                       Foreground="#333333"/>
+        </controls:SplendidQuail83>
+    </Grid>
+</Window>

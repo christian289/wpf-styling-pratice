@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SplendidQuail83.Avalonia.Lib.Controls"
+        x:Class="SplendidQuail83.Avalonia.Gallery.MainWindow"
+        Title="SplendidQuail83 - Notebook Paper Background"
+        Width="800"
+        Height="600">
+
+    <Grid>
+        <!-- 공책 줄무늬 패턴 배경 -->
+        <!-- Notebook paper pattern background -->
+        <controls:NotebookPaperBackground />
+
+        <!-- 샘플 콘텐츠 -->
+        <!-- Sample content -->
+        <StackPanel Margin="70,40,20,20"
+                    Spacing="30">
+            <TextBlock Text="Notebook Paper Background"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="#333"/>
+
+            <TextBlock Text="This is a sample text on lined paper."
+                       FontSize="16"
+                       Foreground="#555"/>
+
+            <TextBlock Text="From Uiverse.io by artvelog"
+                       FontSize="14"
+                       Foreground="#888"
+                       FontStyle="Italic"/>
+
+            <TextBlock Text="Tags: paper, light, modern, pattern"
+                       FontSize="12"
+                       Foreground="#aaa"/>
+        </StackPanel>
+    </Grid>
+
+</Window>

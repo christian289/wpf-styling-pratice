@@ -1,0 +1,73 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:SplendidQuail83.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/SplendidQuail83.Wpf.UI;component/Themes/SplendidQuail83Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--
+        CSS 변환:
+        background: #f1f1f1;
+        background-image:
+            linear-gradient(90deg, transparent 50px, #ffb4b8 50px, #ffb4b8 52px, transparent 52px),
+            linear-gradient(#e1e1e1 0.1em, transparent 0.1em);
+        background-size: 100% 30px;
+
+        WPF에서는 VisualBrush/DrawingBrush로 반복 패턴을 구현합니다.
+        In WPF, repeating patterns are implemented using VisualBrush/DrawingBrush.
+    -->
+
+    <Style TargetType="{x:Type controls:SplendidQuail83}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:SplendidQuail83}">
+                    <Grid>
+                        <!-- 레이어 1: 기본 배경색 -->
+                        <!-- Layer 1: Base background color -->
+                        <Rectangle Fill="{StaticResource SplendidQuail83.Background}"/>
+
+                        <!-- 레이어 2: 수평 줄무늬 (반복 패턴) -->
+                        <!-- Layer 2: Horizontal lines (repeating pattern) -->
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <DrawingBrush TileMode="Tile"
+                                              Viewport="0,0,1,30"
+                                              ViewportUnits="Absolute"
+                                              Viewbox="0,0,1,30"
+                                              ViewboxUnits="Absolute">
+                                    <DrawingBrush.Drawing>
+                                        <GeometryDrawing>
+                                            <GeometryDrawing.Brush>
+                                                <SolidColorBrush Color="{StaticResource SplendidQuail83.HorizontalLine.Color}"/>
+                                            </GeometryDrawing.Brush>
+                                            <GeometryDrawing.Geometry>
+                                                <!-- 1px 높이의 수평선 -->
+                                                <!-- 1px height horizontal line -->
+                                                <RectangleGeometry Rect="0,0,1,1"/>
+                                            </GeometryDrawing.Geometry>
+                                        </GeometryDrawing>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+
+                        <!-- 레이어 3: 수직 마진 라인 -->
+                        <!-- Layer 3: Vertical margin line -->
+                        <Rectangle Width="2"
+                                   HorizontalAlignment="Left"
+                                   Margin="50,0,0,0"
+                                   Fill="{StaticResource SplendidQuail83.MarginLine}"/>
+
+                        <!-- 컨텐츠 영역 -->
+                        <!-- Content area -->
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

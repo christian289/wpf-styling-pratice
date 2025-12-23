@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://SplendidQuail83.Avalonia.Lib/Themes/NotebookPaperBackground.axaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SplendidQuail83.Wpf.Gallery/SplendidQuail83.Wpf.Gallery.csproj" />
+  <Project Path="SplendidQuail83.Wpf.UI/SplendidQuail83.Wpf.UI.csproj" />
+</Solution>
