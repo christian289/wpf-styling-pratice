@@ -1,0 +1,80 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:YoungBulldog90.Avalonia.Lib.Controls"
+        x:Class="YoungBulldog90.Avalonia.Gallery.MainWindow"
+        Title="YoungBulldog90 - Spinner Loader Gallery"
+        Width="400"
+        Height="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#1a1a2e">
+
+    <Grid RowDefinitions="Auto,*">
+        <!--
+        타이틀
+        Title
+        -->
+        <TextBlock Grid.Row="0"
+                   Text="Spinner Loader"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,10" />
+
+        <!--
+        스피너 로더 데모
+        Spinner loader demo
+        -->
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="40">
+
+            <!-- 기본 스피너 (원본 CSS 스타일) -->
+            <!-- Default spinner (original CSS style) -->
+            <StackPanel HorizontalAlignment="Center" Spacing="10">
+                <controls:SpinnerLoader Width="60" Height="60" />
+                <TextBlock Text="Default (60x60)"
+                           Foreground="#888888"
+                           HorizontalAlignment="Center" />
+            </StackPanel>
+
+            <!-- 다양한 크기 -->
+            <!-- Various sizes -->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Spacing="30">
+
+                <StackPanel HorizontalAlignment="Center" Spacing="10">
+                    <controls:SpinnerLoader Width="30" Height="30" SpinnerThickness="1.5" />
+                    <TextBlock Text="Small"
+                               Foreground="#888888"
+                               HorizontalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Center" Spacing="10">
+                    <controls:SpinnerLoader Width="80" Height="80" SpinnerThickness="3" />
+                    <TextBlock Text="Large"
+                               Foreground="#888888"
+                               HorizontalAlignment="Center" />
+                </StackPanel>
+
+            </StackPanel>
+
+            <!-- 다양한 색상 -->
+            <!-- Various colors -->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Spacing="20">
+
+                <controls:SpinnerLoader Width="40" Height="40" SpinnerBrush="#00D4FF" />
+                <controls:SpinnerLoader Width="40" Height="40" SpinnerBrush="#FF6B6B" />
+                <controls:SpinnerLoader Width="40" Height="40" SpinnerBrush="#4ECDC4" />
+                <controls:SpinnerLoader Width="40" Height="40" SpinnerBrush="#FFE66D" />
+
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+
+</Window>

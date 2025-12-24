@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="YoungBulldog90.Wpf.Gallery/YoungBulldog90.Wpf.Gallery.csproj" />
+  <Project Path="YoungBulldog90.Wpf.UI/YoungBulldog90.Wpf.UI.csproj" />
+</Solution>

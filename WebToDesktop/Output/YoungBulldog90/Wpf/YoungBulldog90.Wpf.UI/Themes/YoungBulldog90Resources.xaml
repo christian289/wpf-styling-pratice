@@ -1,0 +1,23 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Sizes -->
+    <!-- width: 60px; height: 60px; -->
+    <sys:Double x:Key="YoungBulldog90.Size">60</sys:Double>
+
+    <!-- border-top: 2px solid #8900FF -->
+    <sys:Double x:Key="YoungBulldog90.BorderThickness">2</sys:Double>
+
+    <!-- Colors -->
+    <!-- #8900FF - 보라색 스피너 색상 -->
+    <!-- #8900FF - Purple spinner color -->
+    <Color x:Key="YoungBulldog90.Spinner.Color">#8900FF</Color>
+    <SolidColorBrush x:Key="YoungBulldog90.Spinner.Brush" Color="{StaticResource YoungBulldog90.Spinner.Color}" />
+
+    <!-- Animation -->
+    <!-- animation: spinner8217 0.8s linear infinite -->
+    <!-- Duration은 XAML에서 인라인으로 사용해야 함 (StaticResource 바인딩 불가) -->
+    <!-- Duration must be used inline in XAML (cannot bind as StaticResource) -->
+
+</ResourceDictionary>

@@ -1,0 +1,87 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:YoungBulldog90.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/YoungBulldog90.Wpf.UI;component/Themes/YoungBulldog90Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--
+    CSS 원본:
+    .loader { width: 60px; height: 60px; }
+    .loader::before {
+        content: "";
+        position: absolute;
+        width: 60px; height: 60px;
+        border-radius: 50%;
+        border-top: 2px solid #8900FF;
+        border-right: 2px solid transparent;
+        animation: spinner8217 0.8s linear infinite;
+    }
+    @keyframes spinner8217 { to { transform: rotate(360deg); } }
+
+    WPF 구현:
+    - ::before → Ellipse (Grid 내 배치)
+    - border-top + border-right → Arc Path로 구현 (상단+오른쪽 = 약 180도 호)
+    - animation → Storyboard + RotateTransform
+    -->
+
+    <Style TargetType="{x:Type controls:YoungBulldog90}">
+        <Setter Property="Width" Value="{StaticResource YoungBulldog90.Size}" />
+        <Setter Property="Height" Value="{StaticResource YoungBulldog90.Size}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:YoungBulldog90}">
+                    <Grid>
+                        <!--
+                        CSS border-top + border-right = 상단에서 오른쪽까지 약 180도 호
+                        Arc Path로 구현: M 30,2 A 28,28 0 0 1 58,30
+                        CSS border-top + border-right = arc from top to right (~180 degrees)
+                        -->
+                        <Path x:Name="SpinnerArc"
+                              Stroke="{StaticResource YoungBulldog90.Spinner.Brush}"
+                              StrokeThickness="{StaticResource YoungBulldog90.BorderThickness}"
+                              StrokeStartLineCap="Round"
+                              StrokeEndLineCap="Round"
+                              RenderTransformOrigin="0.5,0.5">
+                            <Path.Data>
+                                <!--
+                                중심 (30,30), 반지름 28 (60/2 - 2 for stroke)
+                                시작점: 상단 중앙 (30, 2)
+                                끝점: 오른쪽 중앙 (58, 30)
+                                Arc: 28,28 반지름, 시계 방향으로 90도
+                                -->
+                                <PathGeometry>
+                                    <PathFigure StartPoint="30,2">
+                                        <ArcSegment Point="58,30"
+                                                    Size="28,28"
+                                                    SweepDirection="Clockwise"
+                                                    IsLargeArc="False" />
+                                    </PathFigure>
+                                </PathGeometry>
+                            </Path.Data>
+                            <Path.RenderTransform>
+                                <RotateTransform x:Name="SpinnerRotation" Angle="0" />
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever">
+                                    <!-- animation: spinner8217 0.8s linear infinite -->
+                                    <DoubleAnimation Storyboard.TargetName="SpinnerRotation"
+                                                     Storyboard.TargetProperty="Angle"
+                                                     From="0"
+                                                     To="360"
+                                                     Duration="0:0:0.8" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

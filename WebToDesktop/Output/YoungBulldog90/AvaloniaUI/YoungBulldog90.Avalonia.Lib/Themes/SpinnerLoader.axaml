@@ -1,0 +1,70 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:YoungBulldog90.Avalonia.Lib.Controls">
+
+    <!--
+    From Uiverse.io by Clemix37 - Tags: loader
+    회전하는 스피너 로더 스타일
+    Rotating spinner loader style
+    -->
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="#1a1a2e">
+            <controls:SpinnerLoader Width="60" Height="60" />
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type controls:SpinnerLoader}" TargetType="controls:SpinnerLoader">
+        <Setter Property="Width" Value="60" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="SpinnerBrush" Value="#8900FF" />
+        <Setter Property="SpinnerThickness" Value="2" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="controls:SpinnerLoader">
+                <Panel>
+                    <!--
+                    CSS ::before 가상 요소를 Arc로 구현
+                    CSS ::before pseudo-element implemented as Arc
+                    border-top과 border-right만 있는 원형 = 90도 호
+                    Circle with only border-top and border-right = 90 degree arc
+                    -->
+                    <Arc Name="PART_SpinnerArc"
+                         Stroke="{TemplateBinding SpinnerBrush}"
+                         StrokeThickness="{TemplateBinding SpinnerThickness}"
+                         StartAngle="-45"
+                         SweepAngle="90"
+                         RenderTransformOrigin="50%,50%">
+                        <Arc.RenderTransform>
+                            <RotateTransform Angle="0" />
+                        </Arc.RenderTransform>
+                    </Arc>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!--
+        CSS animation: spinner8217 0.8s linear infinite
+        360도 회전 애니메이션
+        360 degree rotation animation
+        -->
+        <Style Selector="^:not(:disabled)">
+            <Style.Animations>
+                <Animation Duration="0:0:0.8"
+                           IterationCount="Infinite"
+                           Easing="LinearEasing">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <RotateTransform Angle="0" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <RotateTransform Angle="360" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>
