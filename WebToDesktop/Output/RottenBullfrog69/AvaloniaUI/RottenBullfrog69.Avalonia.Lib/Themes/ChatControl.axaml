@@ -1,0 +1,158 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:RottenBullfrog69.Avalonia.Lib.Controls">
+
+    <!-- Colors -->
+    <Color x:Key="ChatControl.Container.Background">#343541</Color>
+    <Color x:Key="ChatControl.Message.Odd.Background">#2E2F3A</Color>
+    <Color x:Key="ChatControl.Message.Even.Background">#343541</Color>
+    <Color x:Key="ChatControl.InputPlace.Background">#40414F</Color>
+    <Color x:Key="ChatControl.InputPlace.Border">#2E2F3A</Color>
+    <Color x:Key="ChatControl.Text.Primary">#6B6C7B</Color>
+    <Color x:Key="ChatControl.Text.Placeholder">#828E9E</Color>
+    <Color x:Key="ChatControl.Text.Input">#FFFFFF</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="ChatControl.Container.Background.Brush" Color="{StaticResource ChatControl.Container.Background}" />
+    <SolidColorBrush x:Key="ChatControl.Message.Odd.Background.Brush" Color="{StaticResource ChatControl.Message.Odd.Background}" />
+    <SolidColorBrush x:Key="ChatControl.Message.Even.Background.Brush" Color="{StaticResource ChatControl.Message.Even.Background}" />
+    <SolidColorBrush x:Key="ChatControl.InputPlace.Background.Brush" Color="{StaticResource ChatControl.InputPlace.Background}" />
+    <SolidColorBrush x:Key="ChatControl.InputPlace.Border.Brush" Color="{StaticResource ChatControl.InputPlace.Border}" />
+    <SolidColorBrush x:Key="ChatControl.Text.Primary.Brush" Color="{StaticResource ChatControl.Text.Primary}" />
+    <SolidColorBrush x:Key="ChatControl.Text.Placeholder.Brush" Color="{StaticResource ChatControl.Text.Placeholder}" />
+    <SolidColorBrush x:Key="ChatControl.Text.Input.Brush" Color="{StaticResource ChatControl.Text.Input}" />
+
+    <!-- Send Icon Path Data -->
+    <StreamGeometry x:Key="SendIconGeometry">M481.508,210.336L68.414,38.926c-17.403-7.222-37.064-4.045-51.309,8.287C2.86,59.547-3.098,78.551,1.558,96.808 L38.327,241h180.026c8.284,0,15.001,6.716,15.001,15.001c0,8.284-6.716,15.001-15.001,15.001H38.327L1.558,415.193 c-4.656,18.258,1.301,37.262,15.547,49.595c14.274,12.357,33.937,15.495,51.31,8.287l413.094-171.409 C500.317,293.862,512,276.364,512,256.001C512,235.638,500.317,218.139,481.508,210.336z</StreamGeometry>
+
+    <!-- ChatControl Style -->
+    <ControlTheme x:Key="{x:Type controls:ChatControl}" TargetType="controls:ChatControl">
+        <Setter Property="Width" Value="300" />
+        <Setter Property="Height" Value="320" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{StaticResource ChatControl.Container.Background.Brush}"
+                        CornerRadius="8"
+                        ClipToBounds="True">
+                    <Grid RowDefinitions="40,*,70">
+                        <!-- Nav Bar -->
+                        <Grid Grid.Row="0" ColumnDefinitions="*,40">
+                            <TextBlock Grid.Column="0"
+                                       Text="{TemplateBinding Title}"
+                                       Foreground="{StaticResource ChatControl.Text.Primary.Brush}"
+                                       VerticalAlignment="Center"
+                                       Margin="10,0,0,0" />
+
+                            <!-- Close Button -->
+                            <Button Grid.Column="1"
+                                    Command="{TemplateBinding CloseCommand}"
+                                    Width="40"
+                                    Height="40"
+                                    Background="Transparent"
+                                    Cursor="Hand">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Border Background="Transparent">
+                                            <Panel>
+                                                <!-- X 표시를 위한 두 개의 라인 -->
+                                                <!-- Two lines for X mark -->
+                                                <Border Width="20" Height="3"
+                                                        Background="{StaticResource ChatControl.Text.Primary.Brush}"
+                                                        CornerRadius="1.5"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center">
+                                                    <Border.RenderTransform>
+                                                        <RotateTransform Angle="45" />
+                                                    </Border.RenderTransform>
+                                                </Border>
+                                                <Border Width="20" Height="3"
+                                                        Background="{StaticResource ChatControl.Text.Primary.Brush}"
+                                                        CornerRadius="1.5"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center">
+                                                    <Border.RenderTransform>
+                                                        <RotateTransform Angle="135" />
+                                                    </Border.RenderTransform>
+                                                </Border>
+                                            </Panel>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </Grid>
+
+                        <!-- Messages Area -->
+                        <StackPanel Grid.Row="1">
+                            <Border Height="40" Background="{StaticResource ChatControl.Message.Odd.Background.Brush}" />
+                            <Border Height="40" Background="{StaticResource ChatControl.Message.Even.Background.Brush}" />
+                            <Border Height="40" Background="{StaticResource ChatControl.Message.Odd.Background.Brush}" />
+                            <Border Height="40" Background="{StaticResource ChatControl.Message.Even.Background.Brush}" />
+                            <Border Height="40" Background="{StaticResource ChatControl.Message.Odd.Background.Brush}" />
+                            <Border Height="10" Background="{StaticResource ChatControl.Message.Even.Background.Brush}" />
+                        </StackPanel>
+
+                        <!-- Sender Area -->
+                        <Border Grid.Row="2"
+                                Background="{StaticResource ChatControl.Container.Background.Brush}"
+                                CornerRadius="0,0,8,8">
+                            <Border Background="{StaticResource ChatControl.InputPlace.Background.Brush}"
+                                    BorderBrush="{StaticResource ChatControl.InputPlace.Border.Brush}"
+                                    BorderThickness="1"
+                                    CornerRadius="7"
+                                    Height="40"
+                                    Width="280"
+                                    Margin="10,15,10,15"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top">
+                                <Grid ColumnDefinitions="*,30">
+                                    <TextBox Grid.Column="0"
+                                             Text="{TemplateBinding MessageText, Mode=TwoWay}"
+                                             Watermark="{TemplateBinding PlaceholderText}"
+                                             Foreground="{StaticResource ChatControl.Text.Input.Brush}"
+                                             Background="Transparent"
+                                             BorderThickness="0"
+                                             Margin="5,0,0,0"
+                                             VerticalAlignment="Center">
+                                        <TextBox.Styles>
+                                            <Style Selector="TextBox:focus /template/ Border">
+                                                <Setter Property="BorderThickness" Value="0" />
+                                            </Style>
+                                            <Style Selector="TextBox /template/ TextPresenter#PART_TextPresenter">
+                                                <Setter Property="TextWrapping" Value="NoWrap" />
+                                            </Style>
+                                        </TextBox.Styles>
+                                    </TextBox>
+
+                                    <!-- Send Button -->
+                                    <Button Grid.Column="1"
+                                            Command="{TemplateBinding SendCommand}"
+                                            Width="30"
+                                            Height="30"
+                                            Background="Transparent"
+                                            Cursor="Hand"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Border Background="Transparent">
+                                                    <Path Data="{StaticResource SendIconGeometry}"
+                                                          Fill="{StaticResource ChatControl.Text.Primary.Brush}"
+                                                          Width="17"
+                                                          Height="17"
+                                                          Stretch="Uniform"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </Border>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

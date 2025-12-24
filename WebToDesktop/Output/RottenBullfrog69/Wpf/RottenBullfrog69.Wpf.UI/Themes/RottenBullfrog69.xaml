@@ -1,0 +1,171 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:RottenBullfrog69.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/RottenBullfrog69.Wpf.UI;component/Themes/RottenBullfrog69Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:RottenBullfrog69}">
+        <Setter Property="Width" Value="{StaticResource RottenBullfrog69.Container.Width}"/>
+        <Setter Property="Height" Value="{StaticResource RottenBullfrog69.Container.Height}"/>
+        <Setter Property="Background" Value="{StaticResource RottenBullfrog69.Container.Background}"/>
+        <Setter Property="Cursor" Value="Arrow"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:RottenBullfrog69}">
+                    <!-- Container -->
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="{StaticResource RottenBullfrog69.Container.CornerRadius}">
+                        <Border.Clip>
+                            <RectangleGeometry RadiusX="8" RadiusY="8">
+                                <RectangleGeometry.Rect>
+                                    <MultiBinding>
+                                        <MultiBinding.Converter>
+                                            <controls:SizeToRectConverter/>
+                                        </MultiBinding.Converter>
+                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                    </MultiBinding>
+                                </RectangleGeometry.Rect>
+                            </RectangleGeometry>
+                        </Border.Clip>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{StaticResource RottenBullfrog69.NavBar.Height}"/>
+                                <RowDefinition Height="{StaticResource RottenBullfrog69.MessagesArea.Height}"/>
+                                <RowDefinition Height="{StaticResource RottenBullfrog69.SenderArea.Height}"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- NavBar -->
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Title -->
+                                <TextBlock Grid.Column="0"
+                                           Text="{TemplateBinding Title}"
+                                           Foreground="{StaticResource RottenBullfrog69.NavBar.Foreground}"
+                                           Margin="{StaticResource RottenBullfrog69.NavBar.Title.Margin}"
+                                           VerticalAlignment="Center"/>
+
+                                <!-- Close Button -->
+                                <Grid x:Name="PART_CloseButton"
+                                      Grid.Column="1"
+                                      Width="{StaticResource RottenBullfrog69.CloseButton.Size}"
+                                      Height="{StaticResource RottenBullfrog69.CloseButton.Size}"
+                                      Cursor="Hand">
+                                    <!-- Line One (45deg) -->
+                                    <Border Width="{StaticResource RottenBullfrog69.CloseButton.Line.Width}"
+                                            Height="{StaticResource RottenBullfrog69.CloseButton.Line.Height}"
+                                            Background="{StaticResource RottenBullfrog69.CloseButton.Line.Background}"
+                                            CornerRadius="{StaticResource RottenBullfrog69.CloseButton.Line.CornerRadius}"
+                                            RenderTransformOrigin="0.5,0.5">
+                                        <Border.RenderTransform>
+                                            <RotateTransform Angle="45"/>
+                                        </Border.RenderTransform>
+                                    </Border>
+                                    <!-- Line Two (135deg) -->
+                                    <Border Width="{StaticResource RottenBullfrog69.CloseButton.Line.Width}"
+                                            Height="{StaticResource RottenBullfrog69.CloseButton.Line.Height}"
+                                            Background="{StaticResource RottenBullfrog69.CloseButton.Line.Background}"
+                                            CornerRadius="{StaticResource RottenBullfrog69.CloseButton.Line.CornerRadius}"
+                                            RenderTransformOrigin="0.5,0.5">
+                                        <Border.RenderTransform>
+                                            <RotateTransform Angle="135"/>
+                                        </Border.RenderTransform>
+                                    </Border>
+                                </Grid>
+                            </Grid>
+
+                            <!-- Messages Area -->
+                            <StackPanel Grid.Row="1">
+                                <!-- Message 1 (odd) -->
+                                <Border Height="{StaticResource RottenBullfrog69.Message.Height}"
+                                        Background="{StaticResource RottenBullfrog69.Message.Odd.Background}"/>
+                                <!-- Message 2 (even) -->
+                                <Border Height="{StaticResource RottenBullfrog69.Message.Height}"
+                                        Background="{StaticResource RottenBullfrog69.Message.Even.Background}"/>
+                                <!-- Message 3 (odd) -->
+                                <Border Height="{StaticResource RottenBullfrog69.Message.Height}"
+                                        Background="{StaticResource RottenBullfrog69.Message.Odd.Background}"/>
+                                <!-- Message 4 (even) -->
+                                <Border Height="{StaticResource RottenBullfrog69.Message.Height}"
+                                        Background="{StaticResource RottenBullfrog69.Message.Even.Background}"/>
+                                <!-- Message 5 (odd) - partial (210 - 40*4 = 50, but we show 40) -->
+                                <Border Height="35"
+                                        Background="{StaticResource RottenBullfrog69.Message.Odd.Background}"/>
+                            </StackPanel>
+
+                            <!-- Sender Area -->
+                            <Grid Grid.Row="2" Background="{StaticResource RottenBullfrog69.Container.Background}">
+                                <!-- Input Place -->
+                                <Border Margin="{StaticResource RottenBullfrog69.InputPlace.Margin}"
+                                        Height="{StaticResource RottenBullfrog69.InputPlace.Height}"
+                                        Width="{StaticResource RottenBullfrog69.InputPlace.Width}"
+                                        Background="{StaticResource RottenBullfrog69.InputPlace.Background}"
+                                        BorderBrush="{StaticResource RottenBullfrog69.InputPlace.BorderBrush}"
+                                        BorderThickness="{StaticResource RottenBullfrog69.InputPlace.BorderThickness}"
+                                        CornerRadius="{StaticResource RottenBullfrog69.InputPlace.CornerRadius}"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- TextBox with placeholder simulation -->
+                                        <Grid Grid.Column="0" Margin="{StaticResource RottenBullfrog69.SendInput.Margin}">
+                                            <TextBox x:Name="PART_InputTextBox"
+                                                     Text="{Binding InputText, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"
+                                                     Background="Transparent"
+                                                     BorderThickness="0"
+                                                     Foreground="{StaticResource RottenBullfrog69.SendInput.Foreground}"
+                                                     VerticalAlignment="Center"
+                                                     CaretBrush="White"/>
+                                            <TextBlock x:Name="PART_Placeholder"
+                                                       Text="{TemplateBinding PlaceholderText}"
+                                                       Foreground="{StaticResource RottenBullfrog69.SendInput.Placeholder.Foreground}"
+                                                       VerticalAlignment="Center"
+                                                       IsHitTestVisible="False"
+                                                       Visibility="Visible"/>
+                                        </Grid>
+
+                                        <!-- Send Button -->
+                                        <Grid x:Name="PART_SendButton"
+                                              Grid.Column="1"
+                                              Width="{StaticResource RottenBullfrog69.SendButton.Size}"
+                                              Height="{StaticResource RottenBullfrog69.SendButton.Size}"
+                                              Cursor="Hand"
+                                              Margin="0,0,5,0">
+                                            <Viewbox Width="{StaticResource RottenBullfrog69.SendIcon.Width}">
+                                                <Path Data="{StaticResource RottenBullfrog69.SendIcon.Geometry}"
+                                                      Fill="{StaticResource RottenBullfrog69.SendIcon.Fill}"
+                                                      Stretch="Uniform"/>
+                                            </Viewbox>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hide placeholder when there's text -->
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=PART_InputTextBox}" Value="0">
+                            <Setter TargetName="PART_Placeholder" Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Text, ElementName=PART_InputTextBox, Converter={StaticResource NullOrEmptyToFalseConverter}}" Value="True">
+                            <Setter TargetName="PART_Placeholder" Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
