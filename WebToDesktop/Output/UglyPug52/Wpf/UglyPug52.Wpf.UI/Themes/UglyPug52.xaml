@@ -1,0 +1,208 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:UglyPug52.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/UglyPug52.Wpf.UI;component/Themes/UglyPug52Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:UglyPug52}">
+        <Setter Property="Width" Value="{StaticResource UglyPug52.Width}" />
+        <Setter Property="Height" Value="{StaticResource UglyPug52.Height}" />
+        <Setter Property="Background" Value="{StaticResource UglyPug52.Button.Background}" />
+        <Setter Property="Foreground" Value="{StaticResource UglyPug52.Button.Foreground}" />
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Content" Value="Add To Cart" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:UglyPug52}">
+                    <Grid>
+                        <!-- Tooltip (::before pseudo-element) -->
+                        <Border x:Name="TooltipBorder"
+                                Width="{StaticResource UglyPug52.Tooltip.Width}"
+                                Height="{StaticResource UglyPug52.Tooltip.Height}"
+                                Background="{StaticResource UglyPug52.Tooltip.Background}"
+                                CornerRadius="{StaticResource UglyPug52.Tooltip.CornerRadius}"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Opacity="0"
+                                RenderTransformOrigin="0.5,1">
+                            <Border.RenderTransform>
+                                <TranslateTransform x:Name="TooltipTranslate" Y="-53" />
+                            </Border.RenderTransform>
+                            <TextBlock Text="{TemplateBinding TooltipText}"
+                                       Foreground="{StaticResource UglyPug52.Tooltip.Foreground}"
+                                       FontSize="14"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Border>
+
+                        <!-- Tooltip Arrow (::after pseudo-element) -->
+                        <Path x:Name="TooltipArrow"
+                              Data="M0,0 L10,10 L20,0 Z"
+                              Fill="{StaticResource UglyPug52.Tooltip.Background}"
+                              Width="20"
+                              Height="10"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Top"
+                              Stretch="Fill"
+                              Opacity="0"
+                              RenderTransformOrigin="0.5,1">
+                            <Path.RenderTransform>
+                                <TranslateTransform x:Name="ArrowTranslate" Y="-18" />
+                            </Path.RenderTransform>
+                        </Path>
+
+                        <!-- Main Button -->
+                        <Border x:Name="ButtonBorder"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{StaticResource UglyPug52.Button.CornerRadius}">
+                            <Grid ClipToBounds="True">
+                                <!-- Text Content -->
+                                <ContentPresenter x:Name="TextContent"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  Content="{TemplateBinding Content}"
+                                                  RenderTransformOrigin="0.5,0.5">
+                                    <ContentPresenter.RenderTransform>
+                                        <TranslateTransform x:Name="TextTranslate" Y="0" />
+                                    </ContentPresenter.RenderTransform>
+                                </ContentPresenter>
+
+                                <!-- Icon Content -->
+                                <Path x:Name="CartIcon"
+                                      Data="{StaticResource UglyPug52.CartIcon.Data}"
+                                      Fill="{TemplateBinding Foreground}"
+                                      Width="{StaticResource UglyPug52.Icon.Size}"
+                                      Height="{StaticResource UglyPug52.Icon.Size}"
+                                      Stretch="Uniform"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      RenderTransformOrigin="0.5,0.5">
+                                    <Path.RenderTransform>
+                                        <TranslateTransform x:Name="IconTranslate" Y="35" />
+                                    </Path.RenderTransform>
+                                </Path>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover Animation -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Text slides up -->
+                                        <DoubleAnimation Storyboard.TargetName="TextTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-35"
+                                                         Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <!-- Icon slides up -->
+                                        <DoubleAnimation Storyboard.TargetName="IconTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0"
+                                                         Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <!-- Tooltip fade in -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipBorder"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.5" />
+                                        <!-- Tooltip slides down -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-63"
+                                                         Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <!-- Arrow fade in -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipArrow"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.5" />
+                                        <!-- Arrow slides down -->
+                                        <DoubleAnimation Storyboard.TargetName="ArrowTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-28"
+                                                         Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Text slides back -->
+                                        <DoubleAnimation Storyboard.TargetName="TextTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0"
+                                                         Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <!-- Icon slides back -->
+                                        <DoubleAnimation Storyboard.TargetName="IconTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="35"
+                                                         Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <!-- Tooltip fade out -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipBorder"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.5" />
+                                        <!-- Tooltip slides back -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-53"
+                                                         Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <!-- Arrow fade out -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipArrow"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.5" />
+                                        <!-- Arrow slides back -->
+                                        <DoubleAnimation Storyboard.TargetName="ArrowTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-18"
+                                                         Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

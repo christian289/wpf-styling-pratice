@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:UglyPug52.Avalonia.Lib.Controls"
+        x:Class="UglyPug52.Avalonia.Gallery.MainWindow"
+        Title="UglyPug52 - Add To Cart Button Gallery"
+        Width="400"
+        Height="300"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#1a1a1a">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="40">
+
+            <TextBlock Text="UglyPug52 Button"
+                       Foreground="White"
+                       FontSize="18"
+                       FontWeight="SemiBold"
+                       HorizontalAlignment="Center" />
+
+            <!-- Default Button -->
+            <controls:UglyPug52Button />
+
+            <!-- Custom Text Button -->
+            <controls:UglyPug52Button Text="Buy Now"
+                                      TooltipText="SALE 50%" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>

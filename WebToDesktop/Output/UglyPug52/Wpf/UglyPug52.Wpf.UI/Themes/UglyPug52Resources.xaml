@@ -1,0 +1,37 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+        CSS Variables Mapping
+        [width] = 100
+        [height] = 35
+        [tooltip-height] = 35
+        [tooltip-width] = 90
+        [gap-between-tooltip-to-button] = 18
+        [button-color] = #222
+        [tooltip-color] = #fff
+    -->
+
+    <!-- Size Resources -->
+    <sys:Double x:Key="UglyPug52.Width">100</sys:Double>
+    <sys:Double x:Key="UglyPug52.Height">35</sys:Double>
+    <sys:Double x:Key="UglyPug52.Tooltip.Width">90</sys:Double>
+    <sys:Double x:Key="UglyPug52.Tooltip.Height">35</sys:Double>
+    <sys:Double x:Key="UglyPug52.Tooltip.Gap">18</sys:Double>
+    <sys:Double x:Key="UglyPug52.Icon.Size">24</sys:Double>
+
+    <!-- Corner Radius -->
+    <CornerRadius x:Key="UglyPug52.Button.CornerRadius">8</CornerRadius>
+    <CornerRadius x:Key="UglyPug52.Tooltip.CornerRadius">4</CornerRadius>
+
+    <!-- Color Resources -->
+    <SolidColorBrush x:Key="UglyPug52.Button.Background" Color="#222222" />
+    <SolidColorBrush x:Key="UglyPug52.Button.Foreground" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="UglyPug52.Tooltip.Background" Color="#555555" />
+    <SolidColorBrush x:Key="UglyPug52.Tooltip.Foreground" Color="#FFFFFF" />
+
+    <!-- Cart Icon Path Data (Bootstrap Icons bi-cart2) -->
+    <Geometry x:Key="UglyPug52.CartIcon.Data">M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z</Geometry>
+
+</ResourceDictionary>

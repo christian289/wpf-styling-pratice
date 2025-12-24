@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="UglyPug52.Avalonia.Gallery/UglyPug52.Avalonia.Gallery.csproj" />
+  <Project Path="UglyPug52.Avalonia.Lib/UglyPug52.Avalonia.Lib.csproj" />
+</Solution>

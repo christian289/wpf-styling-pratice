@@ -1,0 +1,212 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:UglyPug52.Avalonia.Lib.Controls">
+
+    <!-- Colors -->
+    <Color x:Key="UglyPug52.ButtonColor">#222222</Color>
+    <Color x:Key="UglyPug52.TooltipColor">#555555</Color>
+    <Color x:Key="UglyPug52.TextColor">#FFFFFF</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="UglyPug52.ButtonBrush" Color="{StaticResource UglyPug52.ButtonColor}" />
+    <SolidColorBrush x:Key="UglyPug52.TooltipBrush" Color="{StaticResource UglyPug52.TooltipColor}" />
+    <SolidColorBrush x:Key="UglyPug52.TextBrush" Color="{StaticResource UglyPug52.TextColor}" />
+
+    <!-- Sizes -->
+    <x:Double x:Key="UglyPug52.ButtonWidth">100</x:Double>
+    <x:Double x:Key="UglyPug52.ButtonHeight">35</x:Double>
+    <x:Double x:Key="UglyPug52.TooltipWidth">90</x:Double>
+    <x:Double x:Key="UglyPug52.TooltipHeight">35</x:Double>
+    <x:Double x:Key="UglyPug52.TooltipGap">18</x:Double>
+    <CornerRadius x:Key="UglyPug52.ButtonCornerRadius">6</CornerRadius>
+    <CornerRadius x:Key="UglyPug52.TooltipCornerRadius">3</CornerRadius>
+
+    <!-- Cart Icon Path Data -->
+    <StreamGeometry x:Key="UglyPug52.CartIconGeometry">M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z</StreamGeometry>
+
+    <ControlTheme x:Key="{x:Type controls:UglyPug52Button}" TargetType="controls:UglyPug52Button">
+        <Setter Property="Width" Value="{StaticResource UglyPug52.ButtonWidth}" />
+        <Setter Property="Height" Value="{StaticResource UglyPug52.ButtonHeight}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel ClipToBounds="False">
+                    <!-- Tooltip Arrow (::after pseudo-element) -->
+                    <Panel x:Name="PART_TooltipArrow"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Opacity="0"
+                           ClipToBounds="False">
+                        <Panel.RenderTransform>
+                            <TranslateTransform Y="-28" />
+                        </Panel.RenderTransform>
+                        <Path Fill="{StaticResource UglyPug52.TooltipBrush}"
+                              Data="M 0,0 L 10,10 L 20,0 Z"
+                              HorizontalAlignment="Center" />
+                    </Panel>
+
+                    <!-- Tooltip (::before pseudo-element) -->
+                    <Border x:Name="PART_Tooltip"
+                            Background="{StaticResource UglyPug52.TooltipBrush}"
+                            CornerRadius="{StaticResource UglyPug52.TooltipCornerRadius}"
+                            Width="{StaticResource UglyPug52.TooltipWidth}"
+                            Height="{StaticResource UglyPug52.TooltipHeight}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Opacity="0"
+                            ClipToBounds="False">
+                        <Border.RenderTransform>
+                            <TranslateTransform Y="-63" />
+                        </Border.RenderTransform>
+                        <TextBlock Text="{TemplateBinding TooltipText}"
+                                   Foreground="{StaticResource UglyPug52.TextBrush}"
+                                   FontSize="11"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                    </Border>
+
+                    <!-- Main Button -->
+                    <Border x:Name="PART_Button"
+                            Background="{StaticResource UglyPug52.ButtonBrush}"
+                            CornerRadius="{StaticResource UglyPug52.ButtonCornerRadius}"
+                            ClipToBounds="True">
+                        <Panel>
+                            <!-- Text Layer -->
+                            <Border x:Name="PART_TextLayer"
+                                    ClipToBounds="True">
+                                <Border.RenderTransform>
+                                    <TranslateTransform Y="0" />
+                                </Border.RenderTransform>
+                                <TextBlock Text="{TemplateBinding Text}"
+                                           Foreground="{StaticResource UglyPug52.TextBrush}"
+                                           FontFamily="Arial"
+                                           FontSize="12"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center" />
+                            </Border>
+
+                            <!-- Icon Layer -->
+                            <Border x:Name="PART_IconLayer"
+                                    ClipToBounds="True">
+                                <Border.RenderTransform>
+                                    <TranslateTransform Y="35" />
+                                </Border.RenderTransform>
+                                <Path Data="{StaticResource UglyPug52.CartIconGeometry}"
+                                      Fill="{StaticResource UglyPug52.TextBrush}"
+                                      Width="24"
+                                      Height="24"
+                                      Stretch="Uniform"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                            </Border>
+                        </Panel>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- PointerOver State -->
+        <Style Selector="^:pointerover /template/ Border#PART_TextLayer">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-35" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:pointerover /template/ Border#PART_IconLayer">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="0" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:pointerover /template/ Border#PART_Tooltip">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1" />
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-53" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:pointerover /template/ Panel#PART_TooltipArrow">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1" />
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-18" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Not PointerOver State - Return animations -->
+        <Style Selector="^:not(:pointerover) /template/ Border#PART_TextLayer">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="0" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:not(:pointerover) /template/ Border#PART_IconLayer">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="35" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:not(:pointerover) /template/ Border#PART_Tooltip">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="0" />
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-63" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:not(:pointerover) /template/ Panel#PART_TooltipArrow">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="0" />
+                        <Setter Property="RenderTransform">
+                            <TranslateTransform Y="-28" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

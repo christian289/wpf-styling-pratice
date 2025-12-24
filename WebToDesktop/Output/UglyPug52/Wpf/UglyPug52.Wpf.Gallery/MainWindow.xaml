@@ -1,0 +1,44 @@
+<Window x:Class="UglyPug52.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:UglyPug52.Wpf.UI.Controls;assembly=UglyPug52.Wpf.UI"
+        mc:Ignorable="d"
+        Title="UglyPug52 - Tooltip Button Gallery"
+        Height="450" Width="800"
+        Background="#1a1a2e">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+
+            <TextBlock Text="Tooltip Button with Hover Effect"
+                       Foreground="#FFFFFF"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,40" />
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <!-- Default button -->
+                <controls:UglyPug52 Margin="20" />
+
+                <!-- Button with custom tooltip text -->
+                <controls:UglyPug52 Margin="20"
+                                    TooltipText="SALE 50% OFF" />
+
+                <!-- Button with different content -->
+                <controls:UglyPug52 Margin="20"
+                                    Content="Buy Now"
+                                    TooltipText="FREE SHIPPING" />
+            </StackPanel>
+
+            <TextBlock Text="Hover over buttons to see the tooltip effect"
+                       Foreground="#888888"
+                       FontSize="14"
+                       HorizontalAlignment="Center"
+                       Margin="0,40,0,0" />
+        </StackPanel>
+    </Grid>
+</Window>
