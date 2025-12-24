@@ -1,0 +1,247 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:ShaggyEarwig15.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ShaggyEarwig15.Wpf.UI;component/Themes/ShaggyEarwig15Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:ShaggyEarwig15}">
+        <Setter Property="Width" Value="{StaticResource ShaggyEarwig15.Size}"/>
+        <Setter Property="Height" Value="{StaticResource ShaggyEarwig15.Size}"/>
+        <Setter Property="Background" Value="{StaticResource ShaggyEarwig15.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ShaggyEarwig15.Border.Normal}"/>
+        <Setter Property="BorderThickness" Value="{StaticResource ShaggyEarwig15.BorderThickness}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:ShaggyEarwig15}">
+                    <!-- Outer shadow (light, top-left) -->
+                    <Grid>
+                        <Border x:Name="PART_ShadowDark"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                CornerRadius="{StaticResource ShaggyEarwig15.CornerRadius}">
+                            <Border.Effect>
+                                <DropShadowEffect Color="{StaticResource ShaggyEarwig15.Shadow.Dark}"
+                                                  Direction="315"
+                                                  BlurRadius="12"
+                                                  ShadowDepth="6"
+                                                  Opacity="1"/>
+                            </Border.Effect>
+                        </Border>
+
+                        <Border x:Name="PART_Border"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{StaticResource ShaggyEarwig15.CornerRadius}">
+                            <Border.Effect>
+                                <DropShadowEffect Color="{StaticResource ShaggyEarwig15.Shadow.Light}"
+                                                  Direction="135"
+                                                  BlurRadius="12"
+                                                  ShadowDepth="6"
+                                                  Opacity="1"/>
+                            </Border.Effect>
+
+                            <!-- Hamburger Bars Container -->
+                            <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <!-- Top Bar -->
+                                <Border x:Name="PART_TopBar"
+                                        Width="{StaticResource ShaggyEarwig15.BarWidth}"
+                                        Height="{StaticResource ShaggyEarwig15.BarHeight}"
+                                        Background="{StaticResource ShaggyEarwig15.Bar.Background}"
+                                        CornerRadius="{StaticResource ShaggyEarwig15.BarCornerRadius}"
+                                        VerticalAlignment="Center"
+                                        RenderTransformOrigin="0.5,0.5">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <TranslateTransform x:Name="TopBarTranslate" Y="-7.28"/>
+                                            <RotateTransform x:Name="TopBarRotate" Angle="0"/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+
+                                <!-- Middle Bar -->
+                                <Border x:Name="PART_MidBar"
+                                        Width="{StaticResource ShaggyEarwig15.BarWidth}"
+                                        Height="{StaticResource ShaggyEarwig15.BarHeight}"
+                                        Background="{StaticResource ShaggyEarwig15.Bar.Background}"
+                                        CornerRadius="{StaticResource ShaggyEarwig15.BarCornerRadius}"
+                                        VerticalAlignment="Center"
+                                        RenderTransformOrigin="0.5,0.5"
+                                        Opacity="1">
+                                    <Border.RenderTransform>
+                                        <TranslateTransform x:Name="MidBarTranslate" X="0"/>
+                                    </Border.RenderTransform>
+                                </Border>
+
+                                <!-- Bottom Bar -->
+                                <Border x:Name="PART_BotBar"
+                                        Width="{StaticResource ShaggyEarwig15.BarWidth}"
+                                        Height="{StaticResource ShaggyEarwig15.BarHeight}"
+                                        Background="{StaticResource ShaggyEarwig15.Bar.Background}"
+                                        CornerRadius="{StaticResource ShaggyEarwig15.BarCornerRadius}"
+                                        VerticalAlignment="Center"
+                                        RenderTransformOrigin="0.5,0.5">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <TranslateTransform x:Name="BotBarTranslate" Y="7.28"/>
+                                            <RotateTransform x:Name="BotBarRotate" Angle="0"/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                    <Border.Effect>
+                                        <DropShadowEffect x:Name="BotBarGlow"
+                                                          Color="{StaticResource ShaggyEarwig15.Bar.Glow}"
+                                                          BlurRadius="0"
+                                                          ShadowDepth="0"
+                                                          Opacity="0"/>
+                                    </Border.Effect>
+                                </Border>
+                            </Grid>
+                        </Border>
+
+                        <!-- Inset shadow overlay for pressed state -->
+                        <Border x:Name="PART_InsetShadow"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                CornerRadius="{StaticResource ShaggyEarwig15.CornerRadius}"
+                                Opacity="0">
+                            <Border CornerRadius="{StaticResource ShaggyEarwig15.CornerRadius}"
+                                    BorderThickness="4"
+                                    BorderBrush="{StaticResource ShaggyEarwig15.Background}">
+                                <Border.Effect>
+                                    <BlurEffect Radius="6"/>
+                                </Border.Effect>
+                            </Border>
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover State -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Border" Property="BorderBrush"
+                                    Value="{StaticResource ShaggyEarwig15.Border.Hover}"/>
+                        </Trigger>
+
+                        <!-- Pressed State - Hide outer shadows, show inset effect -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_ShadowDark" Property="Opacity" Value="0"/>
+                            <Setter TargetName="PART_Border" Property="Effect" Value="{x:Null}"/>
+                            <Setter TargetName="PART_InsetShadow" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+
+                        <!-- Checked State - X Transformation -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Top Bar: translateY(290%) = 11.6px, rotate(45deg), width: 40px -->
+                                        <DoubleAnimation Storyboard.TargetName="TopBarTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="TopBarRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="45"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="PART_TopBar"
+                                                         Storyboard.TargetProperty="Width"
+                                                         To="{StaticResource ShaggyEarwig15.BarWidthChecked}"
+                                                         Duration="0:0:0.3"/>
+
+                                        <!-- Middle Bar: translateX(-20px), opacity: 0 -->
+                                        <DoubleAnimation Storyboard.TargetName="MidBarTranslate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="-20"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="PART_MidBar"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.3"/>
+
+                                        <!-- Bottom Bar: translateY(-270%) = -10.8px, rotate(-45deg), width: 40px -->
+                                        <DoubleAnimation Storyboard.TargetName="BotBarTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="BotBarRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="-45"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="PART_BotBar"
+                                                         Storyboard.TargetProperty="Width"
+                                                         To="{StaticResource ShaggyEarwig15.BarWidthChecked}"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="BotBarGlow"
+                                                         Storyboard.TargetProperty="BlurRadius"
+                                                         To="10"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="BotBarGlow"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Top Bar: Reset -->
+                                        <DoubleAnimation Storyboard.TargetName="TopBarTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-7.28"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="TopBarRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="0"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="PART_TopBar"
+                                                         Storyboard.TargetProperty="Width"
+                                                         To="{StaticResource ShaggyEarwig15.BarWidth}"
+                                                         Duration="0:0:0.3"/>
+
+                                        <!-- Middle Bar: Reset -->
+                                        <DoubleAnimation Storyboard.TargetName="MidBarTranslate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="0"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="PART_MidBar"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.3"/>
+
+                                        <!-- Bottom Bar: Reset -->
+                                        <DoubleAnimation Storyboard.TargetName="BotBarTranslate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="7.28"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="BotBarRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="0"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="PART_BotBar"
+                                                         Storyboard.TargetProperty="Width"
+                                                         To="{StaticResource ShaggyEarwig15.BarWidth}"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="BotBarGlow"
+                                                         Storyboard.TargetProperty="BlurRadius"
+                                                         To="0"
+                                                         Duration="0:0:0.3"/>
+                                        <DoubleAnimation Storyboard.TargetName="BotBarGlow"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

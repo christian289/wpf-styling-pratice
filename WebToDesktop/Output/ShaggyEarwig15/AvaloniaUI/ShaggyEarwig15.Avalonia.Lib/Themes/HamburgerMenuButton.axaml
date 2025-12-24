@@ -1,0 +1,158 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:ShaggyEarwig15.Avalonia.Lib.Controls">
+
+    <!-- Colors -->
+    <Color x:Key="HamburgerMenuButton.Background">#e8e8e8</Color>
+    <Color x:Key="HamburgerMenuButton.Border">#e8e8e8</Color>
+    <Color x:Key="HamburgerMenuButton.Bar">#131313</Color>
+    <Color x:Key="HamburgerMenuButton.Shadow.Dark">#c5c5c5</Color>
+    <Color x:Key="HamburgerMenuButton.Shadow.Light">#ffffff</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="HamburgerMenuButton.Background.Brush" Color="{StaticResource HamburgerMenuButton.Background}" />
+    <SolidColorBrush x:Key="HamburgerMenuButton.Border.Brush" Color="{StaticResource HamburgerMenuButton.Border}" />
+    <SolidColorBrush x:Key="HamburgerMenuButton.Bar.Brush" Color="{StaticResource HamburgerMenuButton.Bar}" />
+
+    <!-- ControlTemplate -->
+    <ControlTheme x:Key="{x:Type controls:HamburgerMenuButton}" TargetType="controls:HamburgerMenuButton">
+        <Setter Property="Width" Value="56" />
+        <Setter Property="Height" Value="56" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="PART_Border"
+                        Background="{StaticResource HamburgerMenuButton.Background.Brush}"
+                        BorderBrush="{StaticResource HamburgerMenuButton.Border.Brush}"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        BoxShadow="6 6 12 0 #c5c5c5, -6 -6 12 0 #ffffff">
+                    <Panel>
+                        <!-- Top Bar -->
+                        <Border x:Name="PART_TopBar"
+                                Width="30"
+                                Height="4"
+                                Background="{StaticResource HamburgerMenuButton.Bar.Brush}"
+                                CornerRadius="2"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <TranslateTransform Y="-8" />
+                                    <RotateTransform Angle="0" />
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                        </Border>
+
+                        <!-- Middle Bar -->
+                        <Border x:Name="PART_MidBar"
+                                Width="30"
+                                Height="4"
+                                Background="{StaticResource HamburgerMenuButton.Bar.Brush}"
+                                CornerRadius="2"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Opacity="1"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TranslateTransform X="0" />
+                            </Border.RenderTransform>
+                        </Border>
+
+                        <!-- Bottom Bar -->
+                        <Border x:Name="PART_BotBar"
+                                Width="30"
+                                Height="4"
+                                Background="{StaticResource HamburgerMenuButton.Bar.Brush}"
+                                CornerRadius="2"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <TranslateTransform Y="8" />
+                                    <RotateTransform Angle="0" />
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                        </Border>
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Hover State -->
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="BorderBrush" Value="White" />
+        </Style>
+
+        <!-- Pressed State (Inset Shadow) -->
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="BoxShadow" Value="inset 4 4 12 0 #c5c5c5, inset -4 -4 12 0 #ffffff" />
+        </Style>
+
+        <!-- Checked State - Top Bar -->
+        <Style Selector="^:checked /template/ Border#PART_TopBar">
+            <Setter Property="Width" Value="40" />
+            <Setter Property="RenderTransform">
+                <TransformGroup>
+                    <TranslateTransform Y="0" />
+                    <RotateTransform Angle="45" />
+                </TransformGroup>
+            </Setter>
+        </Style>
+
+        <!-- Checked State - Middle Bar -->
+        <Style Selector="^:checked /template/ Border#PART_MidBar">
+            <Setter Property="Opacity" Value="0" />
+            <Setter Property="RenderTransform">
+                <TranslateTransform X="-20" />
+            </Setter>
+        </Style>
+
+        <!-- Checked State - Bottom Bar -->
+        <Style Selector="^:checked /template/ Border#PART_BotBar">
+            <Setter Property="Width" Value="40" />
+            <Setter Property="BoxShadow" Value="0 0 10 0 #495057" />
+            <Setter Property="RenderTransform">
+                <TransformGroup>
+                    <TranslateTransform Y="0" />
+                    <RotateTransform Angle="-45" />
+                </TransformGroup>
+            </Setter>
+        </Style>
+
+        <!-- Unchecked State - Top Bar (reset) -->
+        <Style Selector="^:unchecked /template/ Border#PART_TopBar">
+            <Setter Property="Width" Value="30" />
+            <Setter Property="RenderTransform">
+                <TransformGroup>
+                    <TranslateTransform Y="-8" />
+                    <RotateTransform Angle="0" />
+                </TransformGroup>
+            </Setter>
+        </Style>
+
+        <!-- Unchecked State - Middle Bar (reset) -->
+        <Style Selector="^:unchecked /template/ Border#PART_MidBar">
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="RenderTransform">
+                <TranslateTransform X="0" />
+            </Setter>
+        </Style>
+
+        <!-- Unchecked State - Bottom Bar (reset) -->
+        <Style Selector="^:unchecked /template/ Border#PART_BotBar">
+            <Setter Property="Width" Value="30" />
+            <Setter Property="BoxShadow" Value="0 0 0 0 Transparent" />
+            <Setter Property="RenderTransform">
+                <TransformGroup>
+                    <TranslateTransform Y="8" />
+                    <RotateTransform Angle="0" />
+                </TransformGroup>
+            </Setter>
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

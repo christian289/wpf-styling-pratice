@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:ShaggyEarwig15.Avalonia.Lib.Controls"
+        x:Class="ShaggyEarwig15.Avalonia.Gallery.MainWindow"
+        Title="ShaggyEarwig15 - Hamburger Menu Button Gallery"
+        Width="400"
+        Height="400"
+        Background="#e8e8e8">
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="20">
+
+        <TextBlock Text="Neumorphism Hamburger Menu Button"
+                   FontSize="16"
+                   FontWeight="SemiBold"
+                   HorizontalAlignment="Center" />
+
+        <TextBlock Text="Click to toggle menu state"
+                   FontSize="12"
+                   Foreground="#666666"
+                   HorizontalAlignment="Center" />
+
+        <controls:HamburgerMenuButton HorizontalAlignment="Center" />
+
+        <TextBlock Text="From Uiverse.io by Jack17432"
+                   FontSize="10"
+                   Foreground="#999999"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,0" />
+
+    </StackPanel>
+
+</Window>

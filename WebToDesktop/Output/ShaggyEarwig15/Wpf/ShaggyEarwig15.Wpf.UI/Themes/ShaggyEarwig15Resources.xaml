@@ -1,0 +1,27 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Size Resources -->
+    <!-- 3.5em = 56px (assuming 1em = 16px) -->
+    <sys:Double x:Key="ShaggyEarwig15.Size">56</sys:Double>
+    <sys:Double x:Key="ShaggyEarwig15.BarWidth">30</sys:Double>
+    <sys:Double x:Key="ShaggyEarwig15.BarWidthChecked">40</sys:Double>
+    <sys:Double x:Key="ShaggyEarwig15.BarHeight">4</sys:Double>
+    <CornerRadius x:Key="ShaggyEarwig15.CornerRadius">8</CornerRadius>
+    <CornerRadius x:Key="ShaggyEarwig15.BarCornerRadius">100</CornerRadius>
+    <Thickness x:Key="ShaggyEarwig15.BorderThickness">1</Thickness>
+
+    <!-- Color Resources -->
+    <SolidColorBrush x:Key="ShaggyEarwig15.Background" Color="#E8E8E8"/>
+    <SolidColorBrush x:Key="ShaggyEarwig15.Border.Normal" Color="#E8E8E8"/>
+    <SolidColorBrush x:Key="ShaggyEarwig15.Border.Hover" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="ShaggyEarwig15.Bar.Background" Color="#131313"/>
+    <Color x:Key="ShaggyEarwig15.Shadow.Light">#FFFFFF</Color>
+    <Color x:Key="ShaggyEarwig15.Shadow.Dark">#C5C5C5</Color>
+    <Color x:Key="ShaggyEarwig15.Bar.Glow">#495057</Color>
+
+    <!-- Animation Duration -->
+    <Duration x:Key="ShaggyEarwig15.TransitionDuration">0:0:0.3</Duration>
+
+</ResourceDictionary>

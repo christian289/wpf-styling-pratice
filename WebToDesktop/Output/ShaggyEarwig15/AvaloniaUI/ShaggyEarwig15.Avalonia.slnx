@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ShaggyEarwig15.Avalonia.Lib\ShaggyEarwig15.Avalonia.Lib.csproj" />
+  <Project Path="ShaggyEarwig15.Avalonia.Gallery\ShaggyEarwig15.Avalonia.Gallery.csproj" />
+</Solution>
