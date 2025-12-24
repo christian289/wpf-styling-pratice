@@ -1,0 +1,57 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+    CSS Variable: [background]
+    linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb)
+    -->
+    <LinearGradientBrush x:Key="RudeSeahorse6.Background.Gradient" StartPoint="0,0" EndPoint="0.83,0.83">
+        <GradientStop Color="#AF40FF" Offset="0" />
+        <GradientStop Color="#5B42F3" Offset="0.5" />
+        <GradientStop Color="#00DDEB" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- Button Colors -->
+    <SolidColorBrush x:Key="RudeSeahorse6.Button.Foreground" Color="AliceBlue" />
+
+    <!-- Tooltip Colors -->
+    <SolidColorBrush x:Key="RudeSeahorse6.Tooltip.Background" Color="#212121" />
+    <SolidColorBrush x:Key="RudeSeahorse6.Tooltip.Foreground" Color="AntiqueWhite" />
+    <SolidColorBrush x:Key="RudeSeahorse6.TooltipItem.Background" Color="#171717" />
+
+    <!-- Sizes -->
+    <sys:Double x:Key="RudeSeahorse6.Button.FontSize">12</sys:Double>
+    <sys:Double x:Key="RudeSeahorse6.Tooltip.FontSize">12</sys:Double>
+    <sys:Double x:Key="RudeSeahorse6.TooltipItem.FontSize">6</sys:Double>
+    <sys:Double x:Key="RudeSeahorse6.Tooltip.Width">100</sys:Double>
+    <sys:Double x:Key="RudeSeahorse6.Tooltip.Height">120</sys:Double>
+
+    <!-- CornerRadius -->
+    <CornerRadius x:Key="RudeSeahorse6.Button.CornerRadius">16</CornerRadius>
+    <CornerRadius x:Key="RudeSeahorse6.Tooltip.CornerRadius">4</CornerRadius>
+    <CornerRadius x:Key="RudeSeahorse6.TooltipItem.CornerRadius">4</CornerRadius>
+
+    <!-- Padding / Margin -->
+    <Thickness x:Key="RudeSeahorse6.Button.Padding">21.6,8.4</Thickness>
+    <Thickness x:Key="RudeSeahorse6.Tooltip.Padding">7.2,3.6</Thickness>
+    <Thickness x:Key="RudeSeahorse6.TooltipItem.Padding">4</Thickness>
+    <Thickness x:Key="RudeSeahorse6.TooltipItem.Margin">0,3,0,3</Thickness>
+
+    <!-- Animation Durations -->
+    <Duration x:Key="RudeSeahorse6.Tooltip.ShowDuration">0:0:0.3</Duration>
+    <Duration x:Key="RudeSeahorse6.Button.HoverDuration">0:0:0.2</Duration>
+    <Duration x:Key="RudeSeahorse6.BeforeAnimation.Duration">0:0:4</Duration>
+    <Duration x:Key="RudeSeahorse6.AfterAnimation.Duration">0:0:5</Duration>
+
+    <!-- Shadow Effect -->
+    <DropShadowEffect x:Key="RudeSeahorse6.Tooltip.Shadow"
+                      BlurRadius="4"
+                      ShadowDepth="2"
+                      Direction="270"
+                      Color="#33000000" />
+
+    <!-- Blur Effect for ::after element simulation -->
+    <BlurEffect x:Key="RudeSeahorse6.Tooltip.BlurEffect" Radius="8" />
+
+</ResourceDictionary>

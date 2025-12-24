@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="RudeSeahorse6.Wpf.Gallery/RudeSeahorse6.Wpf.Gallery.csproj" />
+  <Project Path="RudeSeahorse6.Wpf.UI/RudeSeahorse6.Wpf.UI.csproj" />
+</Solution>

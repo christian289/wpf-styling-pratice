@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="RudeSeahorse6.Avalonia.Gallery/RudeSeahorse6.Avalonia.Gallery.csproj" />
+  <Project Path="RudeSeahorse6.Avalonia.Lib/RudeSeahorse6.Avalonia.Lib.csproj" />
+</Solution>

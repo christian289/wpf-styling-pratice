@@ -1,0 +1,21 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:RudeSeahorse6.Avalonia.Lib.Controls"
+        x:Class="RudeSeahorse6.Avalonia.Gallery.MainWindow"
+        Title="RudeSeahorse6 - Tooltip Button Gallery"
+        Width="600"
+        Height="400"
+        Background="#1a1a2e">
+
+    <Grid>
+        <!-- 컨트롤이 충분한 공간을 가지도록 중앙에 배치 -->
+        <controls:TooltipButton HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="0,100,0,0"
+                                Text="uiverse"
+                                TooltipTitle="LET'S CREATE!"
+                                TooltipItem1="1 - Explore"
+                                TooltipItem2="2 - Have fun!"/>
+    </Grid>
+
+</Window>

@@ -1,0 +1,231 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:RudeSeahorse6.Avalonia.Lib.Controls">
+
+    <!--
+    From Uiverse.io by Javierrocadev
+    Tags: tooltip, gradient, dark, hover effect, hover button
+
+    CSS linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb) 변환:
+    144deg는 좌상단에서 우하단 방향 (StartPoint="0,0" EndPoint="1,1" 근사)
+    -->
+
+    <!-- Colors -->
+    <Color x:Key="TooltipButton.Gradient.Start">#af40ff</Color>
+    <Color x:Key="TooltipButton.Gradient.Middle">#5b42f3</Color>
+    <Color x:Key="TooltipButton.Gradient.End">#00ddeb</Color>
+    <Color x:Key="TooltipButton.Foreground">#F0F8FF</Color>
+    <Color x:Key="TooltipButton.Tooltip.Background">#212121</Color>
+    <Color x:Key="TooltipButton.Tooltip.Foreground">#FAEBD7</Color>
+    <Color x:Key="TooltipButton.TooltipItem.Background">#171717</Color>
+
+    <!-- Gradient Brush -->
+    <LinearGradientBrush x:Key="TooltipButton.GradientBrush" StartPoint="0%,0%" EndPoint="100%,100%">
+        <GradientStop Color="{StaticResource TooltipButton.Gradient.Start}" Offset="0"/>
+        <GradientStop Color="{StaticResource TooltipButton.Gradient.Middle}" Offset="0.5"/>
+        <GradientStop Color="{StaticResource TooltipButton.Gradient.End}" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- Control Template -->
+    <ControlTheme x:Key="{x:Type controls:TooltipButton}" TargetType="controls:TooltipButton">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Tooltip Panel (숨겨진 상태로 시작) -->
+                    <Border x:Name="PART_Tooltip"
+                            Background="{StaticResource TooltipButton.Tooltip.Background}"
+                            CornerRadius="4"
+                            Width="100"
+                            Height="120"
+                            Padding="4,7"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Opacity="0"
+                            IsHitTestVisible="False"
+                            ClipToBounds="True"
+                            BoxShadow="0 2 4 0 #33000000"
+                            RenderTransformOrigin="0.5,1">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform Y="0"/>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+
+                        <Panel>
+                            <!-- ::before - 회전하는 작은 사각형 -->
+                            <Border x:Name="PART_TooltipBefore"
+                                    Width="6"
+                                    Height="6"
+                                    CornerRadius="2"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Margin="0,10,8,0"
+                                    RenderTransformOrigin="0.5,0.5">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                                        <GradientStop Color="{StaticResource TooltipButton.Gradient.Start}" Offset="0"/>
+                                        <GradientStop Color="{StaticResource TooltipButton.Gradient.Middle}" Offset="0.5"/>
+                                        <GradientStop Color="{StaticResource TooltipButton.Gradient.End}" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.RenderTransform>
+                                    <RotateTransform Angle="45"/>
+                                </Border.RenderTransform>
+                            </Border>
+
+                            <!-- ::after - 블러된 원형 효과 (AvaloniaUI에서 blur 효과 제한으로 단순화) -->
+                            <Ellipse x:Name="PART_TooltipAfter"
+                                     Width="43"
+                                     Height="43"
+                                     HorizontalAlignment="Right"
+                                     VerticalAlignment="Bottom"
+                                     Margin="0,0,-5,-10"
+                                     Opacity="0.6"
+                                     RenderTransformOrigin="0.5,0.5">
+                                <Ellipse.Fill>
+                                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                                        <GradientStop Color="{StaticResource TooltipButton.Gradient.Start}" Offset="0"/>
+                                        <GradientStop Color="{StaticResource TooltipButton.Gradient.Middle}" Offset="0.5"/>
+                                        <GradientStop Color="{StaticResource TooltipButton.Gradient.End}" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Ellipse.Fill>
+                                <Ellipse.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <!-- Tooltip Content -->
+                            <StackPanel Spacing="6" ZIndex="5">
+                                <TextBlock Text="{TemplateBinding TooltipTitle}"
+                                           Foreground="{StaticResource TooltipButton.Tooltip.Foreground}"
+                                           FontWeight="Bold"
+                                           FontSize="12"/>
+                                <Border Background="{StaticResource TooltipButton.TooltipItem.Background}"
+                                        CornerRadius="4"
+                                        Padding="4">
+                                    <TextBlock Text="{TemplateBinding TooltipItem1}"
+                                               Foreground="{StaticResource TooltipButton.Tooltip.Foreground}"
+                                               FontWeight="Bold"
+                                               FontSize="6"/>
+                                </Border>
+                                <Border Background="{StaticResource TooltipButton.TooltipItem.Background}"
+                                        CornerRadius="4"
+                                        Padding="4">
+                                    <TextBlock Text="{TemplateBinding TooltipItem2}"
+                                               Foreground="{StaticResource TooltipButton.Tooltip.Foreground}"
+                                               FontWeight="Bold"
+                                               FontSize="6"/>
+                                </Border>
+                            </StackPanel>
+                        </Panel>
+                    </Border>
+
+                    <!-- Main Button -->
+                    <Border x:Name="PART_Button"
+                            Background="{StaticResource TooltipButton.GradientBrush}"
+                            CornerRadius="16"
+                            Padding="22,8"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                        <TextBlock Text="{TemplateBinding Text}"
+                                   Foreground="{StaticResource TooltipButton.Foreground}"
+                                   FontSize="12"
+                                   FontWeight="Bold"/>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- ::before 회전 애니메이션 (항상 실행) -->
+        <Style Selector="^ /template/ Border#PART_TooltipBefore">
+            <Style.Animations>
+                <Animation Duration="0:0:4" IterationCount="Infinite" PlaybackDirection="Alternate">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <RotateTransform Angle="0"/>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <RotateTransform Angle="360"/>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- ::after 스케일 애니메이션 (항상 실행) -->
+        <Style Selector="^ /template/ Ellipse#PART_TooltipAfter">
+            <Style.Animations>
+                <Animation Duration="0:0:5" IterationCount="Infinite" PlaybackDirection="Alternate">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Hover 애니메이션 -->
+        <Style Selector="^:pointerover /template/ Border#PART_Tooltip">
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" FillMode="Forward" Easing="CubicEaseOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="0"/>
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0"/>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1"/>
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="-130"/>
+                                <ScaleTransform ScaleX="2" ScaleY="2"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+            <Setter Property="IsHitTestVisible" Value="True"/>
+        </Style>
+
+        <!-- Not Hover 상태 복귀 -->
+        <Style Selector="^:not(:pointerover) /template/ Border#PART_Tooltip">
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" FillMode="Forward" Easing="CubicEaseOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="1"/>
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="-130"/>
+                                <ScaleTransform ScaleX="2" ScaleY="2"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="0"/>
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0"/>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

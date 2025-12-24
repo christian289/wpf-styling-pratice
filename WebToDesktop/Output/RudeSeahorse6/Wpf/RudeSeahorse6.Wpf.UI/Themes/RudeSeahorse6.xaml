@@ -1,0 +1,191 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:RudeSeahorse6.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/RudeSeahorse6.Wpf.UI;component/Themes/RudeSeahorse6Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:RudeSeahorse6}">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontSize" Value="{StaticResource RudeSeahorse6.Button.FontSize}" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="{StaticResource RudeSeahorse6.Button.Foreground}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:RudeSeahorse6}">
+                    <Grid>
+                        <!-- Tooltip Panel (위에 나타남) -->
+                        <Border x:Name="TooltipPanel"
+                                Background="{StaticResource RudeSeahorse6.Tooltip.Background}"
+                                CornerRadius="{StaticResource RudeSeahorse6.Tooltip.CornerRadius}"
+                                Width="{StaticResource RudeSeahorse6.Tooltip.Width}"
+                                Height="{StaticResource RudeSeahorse6.Tooltip.Height}"
+                                Padding="{StaticResource RudeSeahorse6.Tooltip.Padding}"
+                                Effect="{StaticResource RudeSeahorse6.Tooltip.Shadow}"
+                                Opacity="0"
+                                IsHitTestVisible="False"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                RenderTransformOrigin="0.5,1">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    <TranslateTransform Y="0" />
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                            <Border.Clip>
+                                <RectangleGeometry RadiusX="4" RadiusY="4"
+                                                   Rect="0,0,100,120" />
+                            </Border.Clip>
+
+                            <Grid>
+                                <!-- ::before element - 회전하는 작은 사각형 -->
+                                <Rectangle x:Name="BeforeElement"
+                                           Width="6"
+                                           Height="6"
+                                           RadiusX="2"
+                                           RadiusY="2"
+                                           Fill="{StaticResource RudeSeahorse6.Background.Gradient}"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Top"
+                                           Margin="0,9.6,7,0"
+                                           RenderTransformOrigin="0.5,0.5">
+                                    <Rectangle.RenderTransform>
+                                        <RotateTransform Angle="45" />
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+
+                                <!-- ::after element - 블러 처리된 원형 -->
+                                <Ellipse x:Name="AfterElement"
+                                         Width="43.2"
+                                         Height="43.2"
+                                         Fill="{StaticResource RudeSeahorse6.Background.Gradient}"
+                                         Effect="{StaticResource RudeSeahorse6.Tooltip.BlurEffect}"
+                                         HorizontalAlignment="Right"
+                                         VerticalAlignment="Bottom"
+                                         Margin="0,0,-5,-9.6"
+                                         RenderTransformOrigin="0.5,0.5">
+                                    <Ellipse.RenderTransform>
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </Ellipse.RenderTransform>
+                                </Ellipse>
+
+                                <!-- Tooltip Content -->
+                                <StackPanel VerticalAlignment="Top">
+                                    <TextBlock Text="{TemplateBinding TooltipTitle}"
+                                               Foreground="{StaticResource RudeSeahorse6.Tooltip.Foreground}"
+                                               FontSize="{StaticResource RudeSeahorse6.Tooltip.FontSize}"
+                                               FontWeight="Bold"
+                                               TextWrapping="Wrap" />
+
+                                    <!-- Tooltip Items -->
+                                    <Border Background="{StaticResource RudeSeahorse6.TooltipItem.Background}"
+                                            CornerRadius="{StaticResource RudeSeahorse6.TooltipItem.CornerRadius}"
+                                            Padding="{StaticResource RudeSeahorse6.TooltipItem.Padding}"
+                                            Margin="{StaticResource RudeSeahorse6.TooltipItem.Margin}">
+                                        <TextBlock Text="{TemplateBinding TooltipItem1}"
+                                                   Foreground="{StaticResource RudeSeahorse6.Tooltip.Foreground}"
+                                                   FontSize="{StaticResource RudeSeahorse6.TooltipItem.FontSize}"
+                                                   FontWeight="ExtraBold" />
+                                    </Border>
+
+                                    <Border Background="{StaticResource RudeSeahorse6.TooltipItem.Background}"
+                                            CornerRadius="{StaticResource RudeSeahorse6.TooltipItem.CornerRadius}"
+                                            Padding="{StaticResource RudeSeahorse6.TooltipItem.Padding}"
+                                            Margin="{StaticResource RudeSeahorse6.TooltipItem.Margin}">
+                                        <TextBlock Text="{TemplateBinding TooltipItem2}"
+                                                   Foreground="{StaticResource RudeSeahorse6.Tooltip.Foreground}"
+                                                   FontSize="{StaticResource RudeSeahorse6.TooltipItem.FontSize}"
+                                                   FontWeight="ExtraBold" />
+                                    </Border>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <!-- Button -->
+                        <Border x:Name="ButtonBorder"
+                                Background="{StaticResource RudeSeahorse6.Background.Gradient}"
+                                CornerRadius="{StaticResource RudeSeahorse6.Button.CornerRadius}"
+                                Padding="{StaticResource RudeSeahorse6.Button.Padding}"
+                                VerticalAlignment="Bottom">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              RecognizesAccessKey="True" />
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover Trigger -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Tooltip 나타남 -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipPanel"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.3" />
+                                        <!-- Tooltip 위로 이동 및 스케일 -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipPanel"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.Y)"
+                                                         To="-140"
+                                                         Duration="0:0:0.3" />
+                                        <DoubleAnimation Storyboard.TargetName="TooltipPanel"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                                         To="2"
+                                                         Duration="0:0:0.3" />
+                                        <DoubleAnimation Storyboard.TargetName="TooltipPanel"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                                                         To="2"
+                                                         Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Tooltip 사라짐 -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipPanel"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.3" />
+                                        <!-- Tooltip 원위치 -->
+                                        <DoubleAnimation Storyboard.TargetName="TooltipPanel"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.Y)"
+                                                         To="0"
+                                                         Duration="0:0:0.3" />
+                                        <DoubleAnimation Storyboard.TargetName="TooltipPanel"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                                         To="1"
+                                                         Duration="0:0:0.3" />
+                                        <DoubleAnimation Storyboard.TargetName="TooltipPanel"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                                                         To="1"
+                                                         Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <!-- Tooltip ::before 회전 애니메이션 -->
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard>
+                    <Storyboard RepeatBehavior="Forever" AutoReverse="True">
+                        <!-- ::before 회전 애니메이션 (4초) -->
+                        <DoubleAnimation Storyboard.TargetProperty="(controls:RudeSeahorse6.Template).(ControlTemplate.Storyboard)"
+                                         Duration="0:0:4" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,20 @@
+<Window x:Class="RudeSeahorse6.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:RudeSeahorse6.Wpf.UI.Controls;assembly=RudeSeahorse6.Wpf.UI"
+        mc:Ignorable="d"
+        Title="RudeSeahorse6 - Tooltip Control Gallery"
+        Height="500"
+        Width="700"
+        Background="#1a1a1a">
+    <Grid>
+        <!-- 중앙에 컨트롤 배치, 상단 여백으로 툴팁 공간 확보 -->
+        <controls:RudeSeahorse6 Content="uiverse"
+                                TooltipTitle="LET'S CREATE!"
+                                TooltipItem1="1 - Explore"
+                                TooltipItem2="2 - Have fun!"
+                                Margin="0,150,0,0" />
+    </Grid>
+</Window>
