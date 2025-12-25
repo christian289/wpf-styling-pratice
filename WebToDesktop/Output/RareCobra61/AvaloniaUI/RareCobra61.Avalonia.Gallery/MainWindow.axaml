@@ -1,0 +1,15 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:RareCobra61.Avalonia.Lib.Controls"
+        x:Class="RareCobra61.Avalonia.Gallery.MainWindow"
+        Title="RareCobra61 - LoginForm Gallery"
+        Width="450"
+        Height="600"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#F0F0F0">
+        <controls:LoginForm HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+    </Grid>
+
+</Window>

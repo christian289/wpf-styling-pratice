@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="RareCobra61.Wpf.Gallery/RareCobra61.Wpf.Gallery.csproj" />
+  <Project Path="RareCobra61.Wpf.UI/RareCobra61.Wpf.UI.csproj" />
+</Solution>

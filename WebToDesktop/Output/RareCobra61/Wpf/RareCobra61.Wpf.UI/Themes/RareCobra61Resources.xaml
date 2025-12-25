@@ -1,0 +1,80 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Container -->
+    <sys:Double x:Key="RareCobra61.Container.Width">350</sys:Double>
+    <sys:Double x:Key="RareCobra61.Container.Height">500</sys:Double>
+    <CornerRadius x:Key="RareCobra61.Container.CornerRadius">10</CornerRadius>
+    <Thickness x:Key="RareCobra61.Container.Padding">30,20,30,20</Thickness>
+    <SolidColorBrush x:Key="RareCobra61.Container.Background" Color="#FFFFFF"/>
+    <Color x:Key="RareCobra61.Container.ShadowColor">#59000000</Color>
+
+    <!-- Title -->
+    <sys:Double x:Key="RareCobra61.Title.FontSize">28</sys:Double>
+    <FontWeight x:Key="RareCobra61.Title.FontWeight">ExtraBold</FontWeight>
+    <Thickness x:Key="RareCobra61.Title.Margin">0,10,0,30</Thickness>
+    <FontFamily x:Key="RareCobra61.FontFamily">Lucida Sans, Lucida Sans Regular, Lucida Grande, Lucida Sans Unicode, Geneva, Verdana, sans-serif</FontFamily>
+
+    <!-- Input -->
+    <CornerRadius x:Key="RareCobra61.Input.CornerRadius">20</CornerRadius>
+    <Thickness x:Key="RareCobra61.Input.BorderThickness">1</Thickness>
+    <Thickness x:Key="RareCobra61.Input.Padding">15,12,15,12</Thickness>
+    <SolidColorBrush x:Key="RareCobra61.Input.BorderBrush" Color="#C0C0C0"/>
+    <SolidColorBrush x:Key="RareCobra61.Input.Background" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="RareCobra61.Input.Foreground" Color="#000000"/>
+    <SolidColorBrush x:Key="RareCobra61.Input.PlaceholderForeground" Color="#747474"/>
+
+    <!-- Form Gap -->
+    <Thickness x:Key="RareCobra61.Form.InputMargin">0,0,0,18</Thickness>
+    <Thickness x:Key="RareCobra61.Form.Margin">0,0,0,15</Thickness>
+
+    <!-- Page Link (Forgot Password) -->
+    <sys:Double x:Key="RareCobra61.PageLink.FontSize">9</sys:Double>
+    <FontWeight x:Key="RareCobra61.PageLink.FontWeight">Bold</FontWeight>
+    <SolidColorBrush x:Key="RareCobra61.PageLink.Foreground" Color="#747474"/>
+    <SolidColorBrush x:Key="RareCobra61.PageLink.HoverForeground" Color="#000000"/>
+
+    <!-- Login Button -->
+    <CornerRadius x:Key="RareCobra61.LoginButton.CornerRadius">20</CornerRadius>
+    <Thickness x:Key="RareCobra61.LoginButton.Padding">15,10,15,10</Thickness>
+    <SolidColorBrush x:Key="RareCobra61.LoginButton.Background" Color="#008080"/>
+    <SolidColorBrush x:Key="RareCobra61.LoginButton.Foreground" Color="#FFFFFF"/>
+    <Color x:Key="RareCobra61.LoginButton.ShadowColor">#3D000000</Color>
+    <Thickness x:Key="RareCobra61.LoginButton.Margin">0,18,0,0</Thickness>
+
+    <!-- Sign Up Label -->
+    <sys:Double x:Key="RareCobra61.SignUpLabel.FontSize">10</sys:Double>
+    <SolidColorBrush x:Key="RareCobra61.SignUpLabel.Foreground" Color="#747474"/>
+
+    <!-- Sign Up Link -->
+    <sys:Double x:Key="RareCobra61.SignUpLink.FontSize">11</sys:Double>
+    <FontWeight x:Key="RareCobra61.SignUpLink.FontWeight">ExtraBold</FontWeight>
+    <SolidColorBrush x:Key="RareCobra61.SignUpLink.Foreground" Color="#008080"/>
+
+    <!-- Social Buttons Container -->
+    <Thickness x:Key="RareCobra61.SocialButtons.Margin">0,20,0,0</Thickness>
+    <Thickness x:Key="RareCobra61.SocialButton.Gap">0,0,0,15</Thickness>
+
+    <!-- Social Button Common -->
+    <CornerRadius x:Key="RareCobra61.SocialButton.CornerRadius">20</CornerRadius>
+    <Thickness x:Key="RareCobra61.SocialButton.Padding">15,10,15,10</Thickness>
+    <Thickness x:Key="RareCobra61.SocialButton.BorderThickness">2</Thickness>
+    <sys:Double x:Key="RareCobra61.SocialButton.FontSize">11</sys:Double>
+    <sys:Double x:Key="RareCobra61.SocialButton.IconSize">18</sys:Double>
+    <Thickness x:Key="RareCobra61.SocialButton.IconMargin">0,0,5,0</Thickness>
+
+    <!-- Apple Button -->
+    <SolidColorBrush x:Key="RareCobra61.AppleButton.Background" Color="#000000"/>
+    <SolidColorBrush x:Key="RareCobra61.AppleButton.Foreground" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="RareCobra61.AppleButton.BorderBrush" Color="#000000"/>
+
+    <!-- Google Button -->
+    <SolidColorBrush x:Key="RareCobra61.GoogleButton.Background" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="RareCobra61.GoogleButton.Foreground" Color="#000000"/>
+    <SolidColorBrush x:Key="RareCobra61.GoogleButton.BorderBrush" Color="#747474"/>
+
+    <!-- Icons -->
+    <Geometry x:Key="RareCobra61.AppleIcon">M747.4 535.7c-.4-68.2 30.5-119.6 92.9-157.5-34.9-50-87.7-77.5-157.3-82.8-65.9-5.2-138 38.4-164.4 38.4-27.9 0-91.7-36.6-141.9-36.6C273.1 298.8 163 379.8 163 544.6c0 48.7 8.9 99 26.7 150.8 23.8 68.2 109.6 235.3 199.1 232.6 46.8-1.1 79.9-33.2 140.8-33.2 59.1 0 89.7 33.2 141.9 33.2 90.3-1.3 167.9-153.2 190.5-221.6-121.1-57.1-114.6-167.2-114.6-170.7zm-105.1-305c50.7-60.2 46.1-115 44.6-134.7-44.8 2.6-96.6 30.5-126.1 64.8-32.5 36.8-51.6 82.3-47.5 133.6 48.4 3.7 92.6-21.2 129-63.7z</Geometry>
+
+</ResourceDictionary>

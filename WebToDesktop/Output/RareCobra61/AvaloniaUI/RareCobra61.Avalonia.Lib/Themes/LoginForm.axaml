@@ -1,0 +1,308 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:RareCobra61.Avalonia.Lib.Controls">
+
+    <!-- Colors -->
+    <Color x:Key="LoginForm.Background.Color">#FFFFFF</Color>
+    <Color x:Key="LoginForm.Border.Color">#C0C0C0</Color>
+    <Color x:Key="LoginForm.Text.Gray.Color">#747474</Color>
+    <Color x:Key="LoginForm.Teal.Color">#008080</Color>
+    <Color x:Key="LoginForm.Black.Color">#000000</Color>
+    <Color x:Key="LoginForm.White.Color">#FFFFFF</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="LoginForm.Background.Brush" Color="{StaticResource LoginForm.Background.Color}" />
+    <SolidColorBrush x:Key="LoginForm.Border.Brush" Color="{StaticResource LoginForm.Border.Color}" />
+    <SolidColorBrush x:Key="LoginForm.Text.Gray.Brush" Color="{StaticResource LoginForm.Text.Gray.Color}" />
+    <SolidColorBrush x:Key="LoginForm.Teal.Brush" Color="{StaticResource LoginForm.Teal.Color}" />
+    <SolidColorBrush x:Key="LoginForm.Black.Brush" Color="{StaticResource LoginForm.Black.Color}" />
+    <SolidColorBrush x:Key="LoginForm.White.Brush" Color="{StaticResource LoginForm.White.Color}" />
+
+    <!-- Input TextBox Style -->
+    <ControlTheme x:Key="LoginFormTextBoxTheme" TargetType="TextBox">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="{StaticResource LoginForm.Border.Brush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="Padding" Value="15,12" />
+        <Setter Property="FontFamily" Value="Lucida Sans, Lucida Sans Regular, Lucida Grande, Lucida Sans Unicode, Geneva, Verdana, sans-serif" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                                  VerticalScrollBarVisibility="Hidden">
+                        <Panel>
+                            <TextBlock Name="PART_Watermark"
+                                       Text="{TemplateBinding Watermark}"
+                                       Foreground="#A0A0A0"
+                                       IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}"
+                                       VerticalAlignment="Center" />
+                            <TextPresenter Name="PART_TextPresenter"
+                                           Text="{TemplateBinding Text, Mode=TwoWay}"
+                                           CaretBrush="{TemplateBinding CaretBrush}"
+                                           CaretIndex="{TemplateBinding CaretIndex}"
+                                           SelectionStart="{TemplateBinding SelectionStart}"
+                                           SelectionEnd="{TemplateBinding SelectionEnd}"
+                                           SelectionBrush="{TemplateBinding SelectionBrush}"
+                                           SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                           TextAlignment="{TemplateBinding TextAlignment}"
+                                           TextWrapping="{TemplateBinding TextWrapping}"
+                                           PasswordChar="{TemplateBinding PasswordChar}"
+                                           RevealPassword="{TemplateBinding RevealPassword}"
+                                           VerticalAlignment="Center" />
+                        </Panel>
+                    </ScrollViewer>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:focus">
+            <Setter Property="BorderBrush" Value="{StaticResource LoginForm.Teal.Brush}" />
+        </Style>
+    </ControlTheme>
+
+    <!-- Form Button Style -->
+    <ControlTheme x:Key="LoginFormButtonTheme" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource LoginForm.Teal.Brush}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="Padding" Value="15,10" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Lucida Sans, Lucida Sans Regular, Lucida Grande, Lucida Sans Unicode, Geneva, Verdana, sans-serif" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        BoxShadow="0 3 8 #3D000000">
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      Padding="{TemplateBinding Padding}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="#006666" />
+        </Style>
+
+        <Style Selector="^:pressed">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Padding="{TemplateBinding Padding}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+    </ControlTheme>
+
+    <!-- Apple Login Button Style -->
+    <ControlTheme x:Key="AppleLoginButtonTheme" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource LoginForm.Black.Brush}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderBrush" Value="{StaticResource LoginForm.Black.Brush}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="Padding" Value="15,10" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Lucida Sans, Lucida Sans Regular, Lucida Grande, Lucida Sans Unicode, Geneva, Verdana, sans-serif" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        BoxShadow="0 10 36 #29000000, 0 0 0 1 #0F000000">
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      Padding="{TemplateBinding Padding}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="#333333" />
+        </Style>
+    </ControlTheme>
+
+    <!-- Google Login Button Style -->
+    <ControlTheme x:Key="GoogleLoginButtonTheme" TargetType="Button">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="BorderBrush" Value="{StaticResource LoginForm.Text.Gray.Brush}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="Padding" Value="15,10" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Lucida Sans, Lucida Sans Regular, Lucida Grande, Lucida Sans Unicode, Geneva, Verdana, sans-serif" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        BoxShadow="0 10 36 #29000000, 0 0 0 1 #0F000000">
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      Padding="{TemplateBinding Padding}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="#F5F5F5" />
+        </Style>
+    </ControlTheme>
+
+    <!-- Forgot Password Link Style -->
+    <ControlTheme x:Key="ForgotPasswordLinkTheme" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource LoginForm.Text.Gray.Brush}" />
+        <Setter Property="FontFamily" Value="Lucida Sans, Lucida Sans Regular, Lucida Grande, Lucida Sans Unicode, Geneva, Verdana, sans-serif" />
+        <Setter Property="FontSize" Value="9" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="TextDecorations" Value="Underline" />
+    </ControlTheme>
+
+    <!-- Sign Up Link Style -->
+    <ControlTheme x:Key="SignUpLinkTheme" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource LoginForm.Teal.Brush}" />
+        <Setter Property="FontFamily" Value="Lucida Sans, Lucida Sans Regular, Lucida Grande, Lucida Sans Unicode, Geneva, Verdana, sans-serif" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="ExtraBold" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="TextDecorations" Value="Underline" />
+        <Setter Property="Margin" Value="2,0,0,0" />
+    </ControlTheme>
+
+    <!-- LoginForm Control Theme -->
+    <ControlTheme x:Key="{x:Type controls:LoginForm}" TargetType="controls:LoginForm">
+        <Setter Property="Width" Value="350" />
+        <Setter Property="Height" Value="500" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{StaticResource LoginForm.Background.Brush}"
+                        CornerRadius="10"
+                        BoxShadow="0 5 15 #59000000"
+                        Padding="30,20">
+                    <StackPanel>
+                        <!-- Title -->
+                        <TextBlock Text="{TemplateBinding TitleText}"
+                                   HorizontalAlignment="Center"
+                                   FontFamily="Lucida Sans, Lucida Sans Regular, Lucida Grande, Lucida Sans Unicode, Geneva, Verdana, sans-serif"
+                                   FontSize="28"
+                                   FontWeight="ExtraBold"
+                                   Margin="0,10,0,30" />
+
+                        <!-- Form -->
+                        <StackPanel Spacing="18" Margin="0,0,0,15">
+                            <!-- Email Input -->
+                            <TextBox Theme="{StaticResource LoginFormTextBoxTheme}"
+                                     Watermark="{TemplateBinding EmailPlaceholder}"
+                                     Text="{TemplateBinding Email, Mode=TwoWay}" />
+
+                            <!-- Password Input -->
+                            <TextBox Theme="{StaticResource LoginFormTextBoxTheme}"
+                                     Watermark="{TemplateBinding PasswordPlaceholder}"
+                                     PasswordChar="*"
+                                     Text="{TemplateBinding Password, Mode=TwoWay}" />
+
+                            <!-- Forgot Password Link -->
+                            <TextBlock Theme="{StaticResource ForgotPasswordLinkTheme}"
+                                       Text="{TemplateBinding ForgotPasswordText}"
+                                       HorizontalAlignment="Right" />
+
+                            <!-- Login Button -->
+                            <Button Theme="{StaticResource LoginFormButtonTheme}"
+                                    Content="{TemplateBinding LoginButtonText}"
+                                    HorizontalAlignment="Stretch" />
+                        </StackPanel>
+
+                        <!-- Sign Up Label -->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{TemplateBinding SignUpLabelText}"
+                                       Foreground="{StaticResource LoginForm.Text.Gray.Brush}"
+                                       FontFamily="Lucida Sans, Lucida Sans Regular, Lucida Grande, Lucida Sans Unicode, Geneva, Verdana, sans-serif"
+                                       FontSize="10" />
+                            <TextBlock Theme="{StaticResource SignUpLinkTheme}"
+                                       Text="{TemplateBinding SignUpLinkText}" />
+                        </StackPanel>
+
+                        <!-- Social Login Buttons -->
+                        <StackPanel Spacing="15" Margin="0,20,0,0">
+                            <!-- Apple Login -->
+                            <Button Theme="{StaticResource AppleLoginButtonTheme}"
+                                    HorizontalAlignment="Stretch">
+                                <StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Center">
+                                    <!-- Apple Icon -->
+                                    <PathIcon Data="M747.4 535.7c-.4-68.2 30.5-119.6 92.9-157.5-34.9-50-87.7-77.5-157.3-82.8-65.9-5.2-138 38.4-164.4 38.4-27.9 0-91.7-36.6-141.9-36.6C273.1 298.8 163 379.8 163 544.6c0 48.7 8.9 99 26.7 150.8 23.8 68.2 109.6 235.3 199.1 232.6 46.8-1.1 79.9-33.2 140.8-33.2 59.1 0 89.7 33.2 141.9 33.2 90.3-1.3 167.9-153.2 190.5-221.6-121.1-57.1-114.6-167.2-114.6-170.7zm-105.1-305c50.7-60.2 46.1-115 44.6-134.7-44.8 2.6-96.6 30.5-126.1 64.8-32.5 36.8-51.6 82.3-47.5 133.6 48.4 3.7 92.6-21.2 129-63.7z"
+                                              Width="18" Height="18"
+                                              Foreground="White" />
+                                    <TextBlock Text="{Binding $parent[controls:LoginForm].AppleLoginText}"
+                                               VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Button>
+
+                            <!-- Google Login -->
+                            <Button Theme="{StaticResource GoogleLoginButtonTheme}"
+                                    HorizontalAlignment="Stretch">
+                                <StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Center">
+                                    <!-- Google Icon (simplified) -->
+                                    <Canvas Width="18" Height="18">
+                                        <Path Fill="#FFC107" Data="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z">
+                                            <Path.RenderTransform>
+                                                <ScaleTransform ScaleX="0.375" ScaleY="0.375" />
+                                            </Path.RenderTransform>
+                                        </Path>
+                                        <Path Fill="#FF3D00" Data="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z">
+                                            <Path.RenderTransform>
+                                                <ScaleTransform ScaleX="0.375" ScaleY="0.375" />
+                                            </Path.RenderTransform>
+                                        </Path>
+                                        <Path Fill="#4CAF50" Data="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z">
+                                            <Path.RenderTransform>
+                                                <ScaleTransform ScaleX="0.375" ScaleY="0.375" />
+                                            </Path.RenderTransform>
+                                        </Path>
+                                        <Path Fill="#1976D2" Data="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z">
+                                            <Path.RenderTransform>
+                                                <ScaleTransform ScaleX="0.375" ScaleY="0.375" />
+                                            </Path.RenderTransform>
+                                        </Path>
+                                    </Canvas>
+                                    <TextBlock Text="{Binding $parent[controls:LoginForm].GoogleLoginText}"
+                                               VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

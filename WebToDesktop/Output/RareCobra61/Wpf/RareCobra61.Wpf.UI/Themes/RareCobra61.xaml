@@ -1,0 +1,347 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:RareCobra61.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/RareCobra61.Wpf.UI;component/Themes/RareCobra61Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Placeholder TextBox Style -->
+    <Style x:Key="RareCobra61.PlaceholderTextBoxStyle" TargetType="{x:Type TextBox}">
+        <Setter Property="Background" Value="{StaticResource RareCobra61.Input.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource RareCobra61.Input.BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="{StaticResource RareCobra61.Input.BorderThickness}"/>
+        <Setter Property="Foreground" Value="{StaticResource RareCobra61.Input.Foreground}"/>
+        <Setter Property="Padding" Value="{StaticResource RareCobra61.Input.Padding}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RareCobra61.FontFamily}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{StaticResource RareCobra61.Input.CornerRadius}"
+                            SnapsToDevicePixels="True">
+                        <Grid>
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="False"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden"/>
+                            <TextBlock x:Name="placeholder"
+                                       Text="{TemplateBinding Tag}"
+                                       Foreground="{StaticResource RareCobra61.Input.PlaceholderForeground}"
+                                       Padding="{TemplateBinding Padding}"
+                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                       IsHitTestVisible="False"
+                                       Visibility="Collapsed"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Text" Value="">
+                            <Setter TargetName="placeholder" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter TargetName="placeholder" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Password Box Style -->
+    <Style x:Key="RareCobra61.PasswordBoxStyle" TargetType="{x:Type PasswordBox}">
+        <Setter Property="Background" Value="{StaticResource RareCobra61.Input.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource RareCobra61.Input.BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="{StaticResource RareCobra61.Input.BorderThickness}"/>
+        <Setter Property="Foreground" Value="{StaticResource RareCobra61.Input.Foreground}"/>
+        <Setter Property="Padding" Value="{StaticResource RareCobra61.Input.Padding}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RareCobra61.FontFamily}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{StaticResource RareCobra61.Input.CornerRadius}"
+                            SnapsToDevicePixels="True">
+                        <Grid>
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="False"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden"/>
+                            <TextBlock x:Name="placeholder"
+                                       Text="{TemplateBinding Tag}"
+                                       Foreground="{StaticResource RareCobra61.Input.PlaceholderForeground}"
+                                       Padding="{TemplateBinding Padding}"
+                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                       IsHitTestVisible="False"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=(controls:PasswordBoxHelper.HasPassword), RelativeSource={RelativeSource Self}}" Value="True">
+                            <Setter TargetName="placeholder" Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Link Button Style -->
+    <Style x:Key="RareCobra61.LinkButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontFamily" Value="{StaticResource RareCobra61.FontFamily}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <TextBlock x:Name="content"
+                               Text="{TemplateBinding Content}"
+                               FontSize="{TemplateBinding FontSize}"
+                               FontWeight="{TemplateBinding FontWeight}"
+                               Foreground="{TemplateBinding Foreground}"
+                               TextDecorations="Underline"/>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="content" Property="Foreground" Value="{StaticResource RareCobra61.PageLink.HoverForeground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Login Button Style -->
+    <Style x:Key="RareCobra61.LoginButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource RareCobra61.LoginButton.Background}"/>
+        <Setter Property="Foreground" Value="{StaticResource RareCobra61.LoginButton.Foreground}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="{StaticResource RareCobra61.LoginButton.Padding}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RareCobra61.FontFamily}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{StaticResource RareCobra61.LoginButton.CornerRadius}"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="True">
+                        <Border.Effect>
+                            <DropShadowEffect Color="{StaticResource RareCobra61.LoginButton.ShadowColor}"
+                                              BlurRadius="8"
+                                              ShadowDepth="3"
+                                              Direction="270"
+                                              Opacity="1"/>
+                        </Border.Effect>
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Effect" Value="{x:Null}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Apple Button Style -->
+    <Style x:Key="RareCobra61.AppleButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource RareCobra61.AppleButton.Background}"/>
+        <Setter Property="Foreground" Value="{StaticResource RareCobra61.AppleButton.Foreground}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource RareCobra61.AppleButton.BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="{StaticResource RareCobra61.SocialButton.BorderThickness}"/>
+        <Setter Property="Padding" Value="{StaticResource RareCobra61.SocialButton.Padding}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RareCobra61.FontFamily}"/>
+        <Setter Property="FontSize" Value="{StaticResource RareCobra61.SocialButton.FontSize}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{StaticResource RareCobra61.SocialButton.CornerRadius}"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="True">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#29000000"
+                                              BlurRadius="36"
+                                              ShadowDepth="10"
+                                              Direction="270"
+                                              Opacity="0.16"/>
+                        </Border.Effect>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                            <Path Data="{StaticResource RareCobra61.AppleIcon}"
+                                  Fill="{TemplateBinding Foreground}"
+                                  Width="{StaticResource RareCobra61.SocialButton.IconSize}"
+                                  Height="{StaticResource RareCobra61.SocialButton.IconSize}"
+                                  Stretch="Uniform"
+                                  Margin="{StaticResource RareCobra61.SocialButton.IconMargin}"/>
+                            <ContentPresenter VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Google Button Style -->
+    <Style x:Key="RareCobra61.GoogleButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource RareCobra61.GoogleButton.Background}"/>
+        <Setter Property="Foreground" Value="{StaticResource RareCobra61.GoogleButton.Foreground}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource RareCobra61.GoogleButton.BorderBrush}"/>
+        <Setter Property="BorderThickness" Value="{StaticResource RareCobra61.SocialButton.BorderThickness}"/>
+        <Setter Property="Padding" Value="{StaticResource RareCobra61.SocialButton.Padding}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RareCobra61.FontFamily}"/>
+        <Setter Property="FontSize" Value="{StaticResource RareCobra61.SocialButton.FontSize}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{StaticResource RareCobra61.SocialButton.CornerRadius}"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="True">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#29000000"
+                                              BlurRadius="36"
+                                              ShadowDepth="10"
+                                              Direction="270"
+                                              Opacity="0.16"/>
+                        </Border.Effect>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                            <Canvas Width="{StaticResource RareCobra61.SocialButton.IconSize}"
+                                    Height="{StaticResource RareCobra61.SocialButton.IconSize}"
+                                    Margin="{StaticResource RareCobra61.SocialButton.IconMargin}">
+                                <Canvas.RenderTransform>
+                                    <ScaleTransform ScaleX="0.375" ScaleY="0.375"/>
+                                </Canvas.RenderTransform>
+                                <Path Fill="#FFC107" Data="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
+                                <Path Fill="#FF3D00" Data="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
+                                <Path Fill="#4CAF50" Data="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
+                                <Path Fill="#1976D2" Data="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
+                            </Canvas>
+                            <ContentPresenter VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Main Control Style -->
+    <Style TargetType="{x:Type controls:RareCobra61}">
+        <Setter Property="Width" Value="{StaticResource RareCobra61.Container.Width}"/>
+        <Setter Property="Height" Value="{StaticResource RareCobra61.Container.Height}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RareCobra61.FontFamily}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:RareCobra61}">
+                    <Border Background="{StaticResource RareCobra61.Container.Background}"
+                            CornerRadius="{StaticResource RareCobra61.Container.CornerRadius}"
+                            Padding="{StaticResource RareCobra61.Container.Padding}"
+                            SnapsToDevicePixels="True">
+                        <Border.Effect>
+                            <DropShadowEffect Color="{StaticResource RareCobra61.Container.ShadowColor}"
+                                              BlurRadius="15"
+                                              ShadowDepth="5"
+                                              Direction="270"
+                                              Opacity="0.35"/>
+                        </Border.Effect>
+                        <StackPanel>
+                            <!-- Title -->
+                            <TextBlock Text="{TemplateBinding Title}"
+                                       FontSize="{StaticResource RareCobra61.Title.FontSize}"
+                                       FontWeight="{StaticResource RareCobra61.Title.FontWeight}"
+                                       FontFamily="{StaticResource RareCobra61.FontFamily}"
+                                       HorizontalAlignment="Center"
+                                       Margin="{StaticResource RareCobra61.Title.Margin}"/>
+
+                            <!-- Form -->
+                            <StackPanel Margin="{StaticResource RareCobra61.Form.Margin}">
+                                <!-- Email Input -->
+                                <TextBox x:Name="PART_EmailTextBox"
+                                         Style="{StaticResource RareCobra61.PlaceholderTextBoxStyle}"
+                                         Text="{Binding Email, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         Tag="{TemplateBinding EmailPlaceholder}"
+                                         Margin="{StaticResource RareCobra61.Form.InputMargin}"/>
+
+                                <!-- Password Input -->
+                                <PasswordBox x:Name="PART_PasswordBox"
+                                             Style="{StaticResource RareCobra61.PasswordBoxStyle}"
+                                             Tag="{TemplateBinding PasswordPlaceholder}"
+                                             controls:PasswordBoxHelper.Attach="True"
+                                             Margin="{StaticResource RareCobra61.Form.InputMargin}"/>
+
+                                <!-- Forgot Password -->
+                                <Button x:Name="PART_ForgotPasswordButton"
+                                        Style="{StaticResource RareCobra61.LinkButtonStyle}"
+                                        Content="{TemplateBinding ForgotPasswordText}"
+                                        Foreground="{StaticResource RareCobra61.PageLink.Foreground}"
+                                        FontSize="{StaticResource RareCobra61.PageLink.FontSize}"
+                                        FontWeight="{StaticResource RareCobra61.PageLink.FontWeight}"
+                                        HorizontalAlignment="Right"
+                                        Command="{TemplateBinding ForgotPasswordCommand}"/>
+
+                                <!-- Login Button -->
+                                <Button x:Name="PART_LoginButton"
+                                        Style="{StaticResource RareCobra61.LoginButtonStyle}"
+                                        Content="{TemplateBinding LoginButtonText}"
+                                        Margin="{StaticResource RareCobra61.LoginButton.Margin}"
+                                        Command="{TemplateBinding LoginCommand}"/>
+                            </StackPanel>
+
+                            <!-- Sign Up -->
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{TemplateBinding SignUpLabelText}"
+                                           FontSize="{StaticResource RareCobra61.SignUpLabel.FontSize}"
+                                           Foreground="{StaticResource RareCobra61.SignUpLabel.Foreground}"
+                                           FontFamily="{StaticResource RareCobra61.FontFamily}"
+                                           VerticalAlignment="Center"/>
+                                <Button x:Name="PART_SignUpButton"
+                                        Style="{StaticResource RareCobra61.LinkButtonStyle}"
+                                        Content="{TemplateBinding SignUpLinkText}"
+                                        Foreground="{StaticResource RareCobra61.SignUpLink.Foreground}"
+                                        FontSize="{StaticResource RareCobra61.SignUpLink.FontSize}"
+                                        FontWeight="{StaticResource RareCobra61.SignUpLink.FontWeight}"
+                                        Margin="3,0,0,0"
+                                        Command="{TemplateBinding SignUpCommand}"/>
+                            </StackPanel>
+
+                            <!-- Social Buttons -->
+                            <StackPanel Margin="{StaticResource RareCobra61.SocialButtons.Margin}">
+                                <Button x:Name="PART_AppleLoginButton"
+                                        Style="{StaticResource RareCobra61.AppleButtonStyle}"
+                                        Content="{TemplateBinding AppleLoginText}"
+                                        Margin="{StaticResource RareCobra61.SocialButton.Gap}"
+                                        Command="{TemplateBinding AppleLoginCommand}"/>
+                                <Button x:Name="PART_GoogleLoginButton"
+                                        Style="{StaticResource RareCobra61.GoogleButtonStyle}"
+                                        Content="{TemplateBinding GoogleLoginText}"
+                                        Command="{TemplateBinding GoogleLoginCommand}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
