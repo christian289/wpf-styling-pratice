@@ -1,0 +1,140 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:WiseCrab44.Avalonia.Lib.Controls">
+
+    <!-- Colors -->
+    <Color x:Key="PromptInputBox.Background">#FFFFFF</Color>
+    <Color x:Key="PromptInputBox.Border">#D1D5DB</Color>
+    <Color x:Key="PromptInputBox.Border.Hover">#9CA3AF</Color>
+    <Color x:Key="PromptInputBox.Icon">#4B5563</Color>
+    <Color x:Key="PromptInputBox.Icon.Hover">#374151</Color>
+    <Color x:Key="PromptInputBox.Button.Hover">#F3F4F6</Color>
+    <Color x:Key="PromptInputBox.Placeholder">#9CA3AF</Color>
+    <Color x:Key="PromptInputBox.Shadow">#1A000000</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="PromptInputBox.Background.Brush" Color="{StaticResource PromptInputBox.Background}"/>
+    <SolidColorBrush x:Key="PromptInputBox.Border.Brush" Color="{StaticResource PromptInputBox.Border}"/>
+    <SolidColorBrush x:Key="PromptInputBox.Border.Hover.Brush" Color="{StaticResource PromptInputBox.Border.Hover}"/>
+    <SolidColorBrush x:Key="PromptInputBox.Icon.Brush" Color="{StaticResource PromptInputBox.Icon}"/>
+    <SolidColorBrush x:Key="PromptInputBox.Button.Hover.Brush" Color="{StaticResource PromptInputBox.Button.Hover}"/>
+    <SolidColorBrush x:Key="PromptInputBox.Placeholder.Brush" Color="{StaticResource PromptInputBox.Placeholder}"/>
+
+    <!-- Icon Paths -->
+    <StreamGeometry x:Key="CloudUploadIcon">M8 16L12 12M12 12L16 16M12 12V21M20 16.7428C21.2215 15.734 22 14.2079 22 12.5C22 9.46243 19.5376 7 16.5 7C16.2815 7 16.0771 6.886 15.9661 6.69774C14.6621 4.48484 12.2544 3 9.5 3C5.35786 3 2 6.35786 2 10.5C2 12.5661 2.83545 14.4371 4.18695 15.7935</StreamGeometry>
+    <StreamGeometry x:Key="SendIcon">M18.455 9.8834L7.063 4.1434C6.76535 3.96928 6.40109 3.95274 6.08888 4.09916C5.77667 4.24558 5.55647 4.53621 5.5 4.8764C5.5039 4.98942 5.53114 5.10041 5.58 5.2024L7.749 10.4424C7.85786 10.7903 7.91711 11.1519 7.925 11.5164C7.91714 11.8809 7.85789 12.2425 7.749 12.5904L5.58 17.8304C5.53114 17.9324 5.5039 18.0434 5.5 18.1564C5.55687 18.4961 5.77703 18.7862 6.0889 18.9323C6.40078 19.0785 6.76456 19.062 7.062 18.8884L18.455 13.1484C19.0903 12.8533 19.4967 12.2164 19.4967 11.5159C19.4967 10.8154 19.0903 10.1785 18.455 9.8834Z</StreamGeometry>
+
+    <!-- Icon Button Style -->
+    <ControlTheme x:Key="PromptIconButtonTheme" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="PART_Border"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="4"
+                        Padding="{TemplateBinding Padding}">
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{StaticResource PromptInputBox.Button.Hover.Brush}"/>
+        </Style>
+    </ControlTheme>
+
+    <!-- TextBox Style for Input -->
+    <ControlTheme x:Key="PromptTextBoxTheme" TargetType="TextBox">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <TextBlock x:Name="PART_Watermark"
+                               Text="{TemplateBinding Watermark}"
+                               Foreground="{StaticResource PromptInputBox.Placeholder.Brush}"
+                               IsVisible="False"
+                               Padding="{TemplateBinding Padding}"
+                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    <ScrollViewer x:Name="PART_ScrollViewer"
+                                  HorizontalScrollBarVisibility="Hidden"
+                                  VerticalScrollBarVisibility="Hidden"
+                                  Padding="{TemplateBinding Padding}">
+                        <TextPresenter x:Name="PART_TextPresenter"
+                                       Text="{TemplateBinding Text, Mode=TwoWay}"
+                                       CaretBrush="{TemplateBinding CaretBrush}"
+                                       SelectionBrush="{TemplateBinding SelectionBrush}"
+                                       SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </ScrollViewer>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:empty /template/ TextBlock#PART_Watermark">
+            <Setter Property="IsVisible" Value="True"/>
+        </Style>
+    </ControlTheme>
+
+    <!-- PromptInputBox Control Theme -->
+    <ControlTheme x:Key="{x:Type controls:PromptInputBox}" TargetType="controls:PromptInputBox">
+        <Setter Property="Background" Value="{StaticResource PromptInputBox.Background.Brush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PromptInputBox.Border.Brush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!-- Outer Container with Shadow -->
+                <Border Background="{StaticResource PromptInputBox.Background.Brush}"
+                        CornerRadius="6"
+                        Padding="24"
+                        BoxShadow="0 4 6 #1A000000, 0 1 3 #0D000000">
+                    <!-- Inner Border with Input Controls -->
+                    <Border x:Name="PART_InputBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="6">
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <!-- Cloud Upload Button -->
+                            <Button Grid.Column="0"
+                                    Theme="{StaticResource PromptIconButtonTheme}">
+                                <PathIcon Data="{StaticResource CloudUploadIcon}"
+                                          Width="24"
+                                          Height="24"
+                                          Foreground="{StaticResource PromptInputBox.Icon.Brush}"/>
+                            </Button>
+
+                            <!-- Text Input -->
+                            <TextBox Grid.Column="1"
+                                     Theme="{StaticResource PromptTextBoxTheme}"
+                                     Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                     Watermark="{Binding Placeholder, RelativeSource={RelativeSource TemplatedParent}}"/>
+
+                            <!-- Send Button -->
+                            <Button Grid.Column="2"
+                                    Theme="{StaticResource PromptIconButtonTheme}">
+                                <PathIcon Data="{StaticResource SendIcon}"
+                                          Width="24"
+                                          Height="24"
+                                          Foreground="{StaticResource PromptInputBox.Icon.Brush}"/>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Hover State for Input Border -->
+        <Style Selector="^:pointerover /template/ Border#PART_InputBorder">
+            <Setter Property="BorderBrush" Value="{StaticResource PromptInputBox.Border.Hover.Brush}"/>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

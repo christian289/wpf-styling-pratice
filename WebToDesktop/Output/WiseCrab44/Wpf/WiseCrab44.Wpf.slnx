@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="WiseCrab44.Wpf.Gallery/WiseCrab44.Wpf.Gallery.csproj" />
+  <Project Path="WiseCrab44.Wpf.UI/WiseCrab44.Wpf.UI.csproj" />
+</Solution>

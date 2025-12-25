@@ -1,0 +1,17 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:WiseCrab44.Avalonia.Lib.Controls"
+        x:Class="WiseCrab44.Avalonia.Gallery.MainWindow"
+        Title="WiseCrab44 - Prompt Input Box Demo"
+        Width="600"
+        Height="400"
+        Background="#F3F4F6">
+
+    <Grid VerticalAlignment="Center"
+          HorizontalAlignment="Center"
+          Margin="24">
+        <controls:PromptInputBox Placeholder="Enter your prompt..."
+                                 Width="500"/>
+    </Grid>
+
+</Window>

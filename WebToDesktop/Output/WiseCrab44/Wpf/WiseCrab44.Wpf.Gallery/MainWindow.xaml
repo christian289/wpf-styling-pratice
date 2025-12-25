@@ -1,0 +1,41 @@
+<Window x:Class="WiseCrab44.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:WiseCrab44.Wpf.UI.Controls;assembly=WiseCrab44.Wpf.UI"
+        mc:Ignorable="d"
+        Title="WiseCrab44 - Forms Control Gallery"
+        Height="450" Width="800"
+        Background="#F3F4F6">
+    <Grid>
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Width="500">
+            <!-- Title -->
+            <TextBlock Text="WiseCrab44 Form Input Control"
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                       Foreground="#111827"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,8"/>
+            <TextBlock Text="Modern form input with upload and submit buttons"
+                       FontSize="14"
+                       Foreground="#6B7280"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,32"/>
+
+            <!-- WiseCrab44 Control Demo -->
+            <controls:WiseCrab44 Placeholder="Enter your prompt..."
+                                 Margin="0,0,0,24"/>
+
+            <!-- Another example with custom placeholder -->
+            <controls:WiseCrab44 Placeholder="Type a message..."
+                                 Margin="0,0,0,24"/>
+
+            <!-- Example with pre-filled text -->
+            <controls:WiseCrab44 Text="Hello, World!"
+                                 Placeholder="Enter text here..."/>
+        </StackPanel>
+    </Grid>
+</Window>

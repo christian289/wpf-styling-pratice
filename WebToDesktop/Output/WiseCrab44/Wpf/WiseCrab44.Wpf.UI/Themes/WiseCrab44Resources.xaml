@@ -1,0 +1,44 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors - Tailwind CSS gray palette -->
+    <!-- bg-white -->
+    <SolidColorBrush x:Key="WiseCrab44.Background" Color="#FFFFFF"/>
+    <!-- border-gray-300 -->
+    <SolidColorBrush x:Key="WiseCrab44.Border" Color="#D1D5DB"/>
+    <!-- text-gray-600 -->
+    <SolidColorBrush x:Key="WiseCrab44.Icon" Color="#4B5563"/>
+    <!-- hover:bg-gray-100 -->
+    <SolidColorBrush x:Key="WiseCrab44.Button.Hover" Color="#F3F4F6"/>
+    <!-- placeholder text color -->
+    <SolidColorBrush x:Key="WiseCrab44.Placeholder" Color="#9CA3AF"/>
+    <!-- text color -->
+    <SolidColorBrush x:Key="WiseCrab44.Text" Color="#111827"/>
+    <!-- stroke color for SVG -->
+    <SolidColorBrush x:Key="WiseCrab44.Stroke" Color="#000000"/>
+    <!-- shadow color -->
+    <Color x:Key="WiseCrab44.Shadow.Color">#26000000</Color>
+
+    <!-- Sizes -->
+    <!-- p-6 = 1.5rem = 24px -->
+    <sys:Double x:Key="WiseCrab44.Padding">24</sys:Double>
+    <!-- p-2 = 0.5rem = 8px -->
+    <sys:Double x:Key="WiseCrab44.Button.Padding">8</sys:Double>
+    <!-- h-6 w-6 = 1.5rem = 24px -->
+    <sys:Double x:Key="WiseCrab44.Icon.Size">24</sys:Double>
+    <!-- rounded-md = 0.375rem = 6px -->
+    <CornerRadius x:Key="WiseCrab44.CornerRadius">6</CornerRadius>
+    <!-- border width -->
+    <Thickness x:Key="WiseCrab44.BorderThickness">1</Thickness>
+    <!-- shadow blur radius -->
+    <sys:Double x:Key="WiseCrab44.Shadow.BlurRadius">8</sys:Double>
+    <sys:Double x:Key="WiseCrab44.Shadow.Depth">2</sys:Double>
+
+    <!-- Geometry data for icons -->
+    <!-- Cloud upload icon -->
+    <Geometry x:Key="WiseCrab44.UploadIcon">M8 16L12 12M12 12L16 16M12 12V21M20 16.7428C21.2215 15.734 22 14.2079 22 12.5C22 9.46243 19.5376 7 16.5 7C16.2815 7 16.0771 6.886 15.9661 6.69774C14.6621 4.48484 12.2544 3 9.5 3C5.35786 3 2 6.35786 2 10.5C2 12.5661 2.83545 14.4371 4.18695 15.7935</Geometry>
+    <!-- Send/Submit icon -->
+    <Geometry x:Key="WiseCrab44.SubmitIcon">M18.455 9.8834L7.063 4.1434C6.76535 3.96928 6.40109 3.95274 6.08888 4.09916C5.77667 4.24558 5.55647 4.53621 5.5 4.8764C5.5039 4.98942 5.53114 5.10041 5.58 5.2024L7.749 10.4424C7.85786 10.7903 7.91711 11.1519 7.925 11.5164C7.91714 11.8809 7.85789 12.2425 7.749 12.5904L5.58 17.8304C5.53114 17.9324 5.5039 18.0434 5.5 18.1564C5.55687 18.4961 5.77703 18.7862 6.0889 18.9323C6.40078 19.0785 6.76456 19.062 7.062 18.8884L18.455 13.1484C19.0903 12.8533 19.4967 12.2164 19.4967 11.5159C19.4967 10.8154 19.0903 10.1785 18.455 9.8834Z</Geometry>
+
+</ResourceDictionary>
