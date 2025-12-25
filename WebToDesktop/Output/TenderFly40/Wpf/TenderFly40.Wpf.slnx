@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="TenderFly40.Wpf.Gallery/TenderFly40.Wpf.Gallery.csproj" />
+  <Project Path="TenderFly40.Wpf.UI/TenderFly40.Wpf.UI.csproj" />
+</Solution>

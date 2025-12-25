@@ -1,0 +1,116 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:TenderFly40.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/TenderFly40.Wpf.UI;component/Themes/TenderFly40Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:TenderFly40}">
+        <Setter Property="Width" Value="{StaticResource TenderFly40.Card.Width}"/>
+        <Setter Property="Height" Value="{StaticResource TenderFly40.Card.Height}"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:TenderFly40}">
+                    <Border x:Name="PART_RootBorder"
+                            Background="{StaticResource TenderFly40.Card.Background}"
+                            CornerRadius="{StaticResource TenderFly40.Card.CornerRadius}"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}">
+                        <Grid>
+                            <!-- 카드 타이틀 / Card Title -->
+                            <TextBlock x:Name="PART_CardName"
+                                       Text="{TemplateBinding CardTitle}"
+                                       Foreground="{StaticResource TenderFly40.CardName.Foreground}"
+                                       FontWeight="Bold"
+                                       Padding="{StaticResource TenderFly40.CardName.Padding}"
+                                       VerticalAlignment="Top"
+                                       TextWrapping="Wrap">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Typography.Capitals" Value="AllSmallCaps"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+
+                            <!-- 인용 아이콘 / Quote Icon -->
+                            <Path x:Name="PART_QuoteIcon"
+                                  Data="{StaticResource TenderFly40.QuoteIcon.PathData}"
+                                  Fill="{StaticResource TenderFly40.Quote.Foreground}"
+                                  Width="80" Height="80"
+                                  Stretch="Uniform"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  Margin="30,35,0,0"/>
+
+                            <!-- 본문 텍스트 / Body Text -->
+                            <TextBlock x:Name="PART_BodyText"
+                                       Text="{TemplateBinding QuoteText}"
+                                       Foreground="{StaticResource TenderFly40.BodyText.Foreground}"
+                                       FontSize="{StaticResource TenderFly40.BodyText.FontSize}"
+                                       FontWeight="Black"
+                                       Margin="{StaticResource TenderFly40.BodyText.Margin}"
+                                       TextWrapping="Wrap"
+                                       VerticalAlignment="Top"/>
+
+                            <!-- 작가 정보 / Author Info -->
+                            <StackPanel x:Name="PART_AuthorPanel"
+                                        Orientation="Vertical"
+                                        VerticalAlignment="Bottom"
+                                        Margin="{StaticResource TenderFly40.Author.Padding}"
+                                        Opacity="0">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="- by "
+                                               Foreground="{StaticResource TenderFly40.Author.Foreground}"
+                                               FontWeight="Bold"/>
+                                    <TextBlock Text="{TemplateBinding Author}"
+                                               Foreground="{StaticResource TenderFly40.Author.Foreground}"
+                                               FontWeight="Bold"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,2,0,10">
+                                    <TextBlock Text="{TemplateBinding AuthorDescription}"
+                                               Foreground="{StaticResource TenderFly40.Author.Foreground}"
+                                               FontWeight="Bold"
+                                               Margin="0,0,5,0"/>
+                                    <Path Data="{StaticResource TenderFly40.HeartIcon.PathData}"
+                                          Fill="{StaticResource TenderFly40.Heart.Foreground}"
+                                          Width="18" Height="18"
+                                          Stretch="Uniform"
+                                          VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <!-- 호버 시 작가 정보 표시 / Show author on hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_AuthorPanel"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.5"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_AuthorPanel"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.5"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

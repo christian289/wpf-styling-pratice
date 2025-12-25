@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:TenderFly40.Avalonia.Lib.Controls"
+        x:Class="TenderFly40.Avalonia.Gallery.MainWindow"
+        Title="TenderFly40 - Quote Card Gallery"
+        Width="600"
+        Height="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#2D2D2D">
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="20">
+
+            <!-- Default Card -->
+            <controls:TenderFly40Card />
+
+            <!-- Custom Card -->
+            <controls:TenderFly40Card CardTitle="Wisdom of the day"
+                                      QuoteText="The only way to do great work is to love what you do."
+                                      AuthorName="Steve Jobs"
+                                      AuthorDescription="(Apple founder)" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TenderFly40.Avalonia.Lib\TenderFly40.Avalonia.Lib.csproj" />
+  <Project Path="TenderFly40.Avalonia.Gallery\TenderFly40.Avalonia.Gallery.csproj" />
+</Solution>
