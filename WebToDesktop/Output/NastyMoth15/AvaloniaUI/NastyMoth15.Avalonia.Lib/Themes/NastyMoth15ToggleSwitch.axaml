@@ -1,0 +1,191 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:NastyMoth15.Avalonia.Lib.Controls">
+
+    <!-- Color Resources -->
+    <Color x:Key="NastyMoth15.Primary.Color">#54a8fc</Color>
+    <Color x:Key="NastyMoth15.Light.Color">#d9d9d9</Color>
+    <Color x:Key="NastyMoth15.Dark.Color">#121212</Color>
+    <Color x:Key="NastyMoth15.Gray.Color">#414344</Color>
+    <Color x:Key="NastyMoth15.Border.Color">#777777</Color>
+    <Color x:Key="NastyMoth15.IconBorder.Color">#aaaaaa</Color>
+    <Color x:Key="NastyMoth15.CheckedBorder.Color">#3d6970</Color>
+    <Color x:Key="NastyMoth15.CheckedGradientStart.Color">#045ab1</Color>
+
+    <SolidColorBrush x:Key="NastyMoth15.Primary.Brush" Color="{StaticResource NastyMoth15.Primary.Color}"/>
+    <SolidColorBrush x:Key="NastyMoth15.Light.Brush" Color="{StaticResource NastyMoth15.Light.Color}"/>
+    <SolidColorBrush x:Key="NastyMoth15.Dark.Brush" Color="{StaticResource NastyMoth15.Dark.Color}"/>
+    <SolidColorBrush x:Key="NastyMoth15.Gray.Brush" Color="{StaticResource NastyMoth15.Gray.Color}"/>
+    <SolidColorBrush x:Key="NastyMoth15.Border.Brush" Color="{StaticResource NastyMoth15.Border.Color}"/>
+
+    <!-- Flag Icon Path Data -->
+    <StreamGeometry x:Key="NastyMoth15.FlagIcon">M0.96233 28.61C1.36043 29.0081 1.96007 29.1255 2.47555 28.8971L10.4256 25.3552C13.2236 24.11 16.4254 24.1425 19.2107 25.4401L27.4152 29.2747C27.476 29.3044 27.5418 29.3023 27.6047 29.32C27.6563 29.3348 27.7079 29.3497 27.761 29.3574C27.843 29.3687 27.9194 29.3758 28 29.3688C28.1273 29.3617 28.2531 29.3405 28.3726 29.2945C28.4447 29.262 28.5162 29.2287 28.5749 29.1842C28.6399 29.1446 28.6993 29.0994 28.7509 29.0477L28.9008 28.8582C28.9468 28.7995 28.9793 28.7274 29.0112 28.656C29.0599 28.5322 29.0811 28.4036 29.0882 28.2734C29.0939 28.1957 29.0868 28.1207 29.0769 28.0415C29.0705 27.9955 29.0585 27.9524 29.0472 27.9072C29.0295 27.8343 29.0302 27.7601 28.9984 27.6901L25.1638 19.4855C23.8592 16.7073 23.8273 13.5048 25.0726 10.7068L28.6145 2.75679C28.8429 2.24131 28.7318 1.63531 28.3337 1.2372C27.9165 0.820011 27.271 0.721743 26.7491 0.9961L19.8357 4.59596C16.8418 6.15442 13.2879 6.18696 10.2615 4.70062L1.80308 0.520214C1.7055 0.474959 1.60722 0.441742 1.50964 0.421943C1.44459 0.409215 1.37882 0.395769 1.3074 0.402133C1.14406 0.395769 0.981436 0.428275 0.818095 0.499692C0.77284 0.519491 0.719805 0.545671 0.67455 0.578198C0.596061 0.617088 0.524653 0.675786 0.4596 0.74084C0.394546 0.805894 0.335843 0.877306 0.296245 0.956502C0.263718 1.00176 0.237561 1.05477 0.217762 1.10003C0.152708 1.24286 0.126545 1.40058 0.120181 1.54978C0.120181 1.61483 0.126527 1.6735 0.132891 1.73219C0.15269 1.85664 0.178881 1.97332 0.237571 2.08434L4.41798 10.5427C5.91139 13.5621 5.8725 17.1238 4.3204 20.1099L0.720514 27.0233C0.440499 27.5536 0.545137 28.1928 0.96233 28.61Z</StreamGeometry>
+
+    <!-- ControlTheme for NastyMoth15ToggleSwitch -->
+    <ControlTheme x:Key="{x:Type controls:NastyMoth15ToggleSwitch}" TargetType="controls:NastyMoth15ToggleSwitch">
+        <Setter Property="Width" Value="126"/>
+        <Setter Property="Height" Value="66"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Outer border (::before equivalent) -->
+                    <Border x:Name="OuterBorder"
+                            CornerRadius="9999"
+                            Background="{StaticResource NastyMoth15.Gray.Brush}"
+                            BorderBrush="{StaticResource NastyMoth15.Border.Brush}"
+                            BorderThickness="1,1,1,0"/>
+
+                    <!-- Inner container (toggle-label) -->
+                    <Border x:Name="InnerContainer"
+                            Margin="12"
+                            CornerRadius="9999"
+                            Background="{StaticResource NastyMoth15.Dark.Brush}"
+                            BorderBrush="{StaticResource NastyMoth15.Border.Brush}"
+                            BorderThickness="1,1,1,0">
+
+                        <!-- Radial gradient overlay (::after equivalent) -->
+                        <Border.OpacityMask>
+                            <VisualBrush Stretch="Fill"/>
+                        </Border.OpacityMask>
+                    </Border>
+
+                    <!-- Radial gradient background layer -->
+                    <Border x:Name="GradientOverlay"
+                            Margin="12"
+                            CornerRadius="9999"
+                            Opacity="0.8">
+                        <Border.Background>
+                            <!-- Note: AvaloniaUI RadialGradientBrush - Center와 GradientOrigin 동일하게 설정 -->
+                            <!-- AvaloniaUI Issue #19888로 인해 GradientOrigin과 Center가 반드시 동일해야 함 -->
+                            <RadialGradientBrush GradientOrigin="50%,0%" Center="50%,0%" RadiusX="100%" RadiusY="100%">
+                                <GradientStop Color="#3A9BFC" Offset="0"/>
+                                <GradientStop Color="#0C0C0C" Offset="0.8"/>
+                            </RadialGradientBrush>
+                        </Border.Background>
+                    </Border>
+
+                    <!-- Toggle knob container -->
+                    <Border x:Name="KnobContainer"
+                            Margin="20,8,20,8"
+                            HorizontalAlignment="Left"
+                            Width="50"
+                            Height="50"
+                            CornerRadius="9999"
+                            BorderBrush="#AAAAAA"
+                            BorderThickness="1,1,1,0"
+                            ClipToBounds="True"
+                            RenderTransformOrigin="0.5,0.5"
+                            RenderTransform="translate(0px, 0px) rotate(0deg)">
+                        <Border.Background>
+                            <!-- Note: AvaloniaUI RadialGradientBrush - Center와 GradientOrigin 동일하게 설정 -->
+                            <RadialGradientBrush GradientOrigin="50%,0%" Center="50%,0%" RadiusX="100%" RadiusY="100%">
+                                <GradientStop Color="#666666" Offset="0"/>
+                                <GradientStop Color="#414344" Offset="1"/>
+                            </RadialGradientBrush>
+                        </Border.Background>
+
+                        <!-- Inner glow effect -->
+                        <Border CornerRadius="9999"
+                                BoxShadow="inset 0 -2 2 #54a8fc">
+                            <Panel>
+                                <!-- Sparkle particles -->
+                                <Ellipse x:Name="Sparkle1" Width="2" Height="2" Fill="{StaticResource NastyMoth15.Light.Brush}"
+                                         HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.7">
+                                    <Ellipse.RenderTransform>
+                                        <RotateTransform Angle="25"/>
+                                    </Ellipse.RenderTransform>
+                                </Ellipse>
+                                <Ellipse x:Name="Sparkle2" Width="1" Height="1" Fill="{StaticResource NastyMoth15.Light.Brush}"
+                                         HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.7">
+                                    <Ellipse.RenderTransform>
+                                        <RotateTransform Angle="100"/>
+                                    </Ellipse.RenderTransform>
+                                </Ellipse>
+                                <Ellipse x:Name="Sparkle3" Width="1" Height="1" Fill="{StaticResource NastyMoth15.Light.Brush}"
+                                         HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.7">
+                                    <Ellipse.RenderTransform>
+                                        <RotateTransform Angle="280"/>
+                                    </Ellipse.RenderTransform>
+                                </Ellipse>
+                                <Ellipse x:Name="Sparkle4" Width="2" Height="2" Fill="{StaticResource NastyMoth15.Light.Brush}"
+                                         HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.7">
+                                    <Ellipse.RenderTransform>
+                                        <RotateTransform Angle="200"/>
+                                    </Ellipse.RenderTransform>
+                                </Ellipse>
+
+                                <!-- Flag Icon -->
+                                <PathIcon x:Name="FlagIcon"
+                                          Width="18" Height="18"
+                                          Data="{StaticResource NastyMoth15.FlagIcon}"
+                                          Foreground="{StaticResource NastyMoth15.Light.Brush}"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                            </Panel>
+                        </Border>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Transitions -->
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.3" Easing="CubicEaseInOut"/>
+            </Transitions>
+        </Setter>
+
+        <!-- Unchecked state - explicit for transitions -->
+        <Style Selector="^:not(:checked)">
+            <Style Selector="^ /template/ Border#KnobContainer">
+                <Setter Property="RenderTransform" Value="translate(0px, 0px) rotate(0deg)"/>
+            </Style>
+        </Style>
+
+        <!-- Checked state -->
+        <Style Selector="^:checked">
+            <Style Selector="^ /template/ Border#InnerContainer">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="#3d6970"/>
+            </Style>
+            <Style Selector="^ /template/ Border#OuterBorder">
+                <Setter Property="BoxShadow" Value="0 16 40 -32 #0080ff"/>
+            </Style>
+            <Style Selector="^ /template/ Border#KnobContainer">
+                <Setter Property="BorderBrush" Value="{StaticResource NastyMoth15.Primary.Brush}"/>
+                <Setter Property="ClipToBounds" Value="False"/>
+                <Setter Property="RenderTransform" Value="translate(36px, 0px) rotate(-225deg)"/>
+                <Setter Property="Background">
+                    <!-- Note: AvaloniaUI RadialGradientBrush - Center와 GradientOrigin 동일하게 설정 -->
+                    <RadialGradientBrush GradientOrigin="50%,0%" Center="50%,0%" RadiusX="100%" RadiusY="100%">
+                        <GradientStop Color="#045ab1" Offset="0"/>
+                        <GradientStop Color="#54a8fc" Offset="1"/>
+                    </RadialGradientBrush>
+                </Setter>
+            </Style>
+        </Style>
+
+        <!-- Border Transitions -->
+        <Style Selector="^">
+            <Style Selector="^ /template/ Border#KnobContainer">
+                <Setter Property="Transitions">
+                    <Transitions>
+                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.3" Easing="CubicEaseInOut"/>
+                        <BrushTransition Property="Background" Duration="0:0:0.3"/>
+                        <BrushTransition Property="BorderBrush" Duration="0:0:0.3"/>
+                    </Transitions>
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ Border#InnerContainer">
+                <Setter Property="Transitions">
+                    <Transitions>
+                        <BrushTransition Property="Background" Duration="0:0:0.3"/>
+                        <BrushTransition Property="BorderBrush" Duration="0:0:0.3"/>
+                    </Transitions>
+                </Setter>
+            </Style>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

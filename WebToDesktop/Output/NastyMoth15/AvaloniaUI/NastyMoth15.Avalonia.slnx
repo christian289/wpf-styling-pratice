@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="NastyMoth15.Avalonia.Lib\NastyMoth15.Avalonia.Lib.csproj" />
+  <Project Path="NastyMoth15.Avalonia.Gallery\NastyMoth15.Avalonia.Gallery.csproj" />
+</Solution>
