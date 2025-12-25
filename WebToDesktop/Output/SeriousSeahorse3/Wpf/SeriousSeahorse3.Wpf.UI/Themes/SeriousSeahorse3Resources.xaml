@@ -1,0 +1,54 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Button Background Colors -->
+    <!-- Tailwind neutral-200: #e5e5e5 -->
+    <SolidColorBrush x:Key="SeriousSeahorse3.Button.Background.Normal" Color="#e5e5e5" />
+    <!-- Tailwind neutral-300: #d4d4d4 -->
+    <SolidColorBrush x:Key="SeriousSeahorse3.Button.Background.Hover" Color="#d4d4d4" />
+    <!-- Tailwind neutral-400: #a3a3a3 -->
+    <SolidColorBrush x:Key="SeriousSeahorse3.Button.Background.Pressed" Color="#a3a3a3" />
+
+    <!-- Button Border Color -->
+    <!-- Tailwind neutral-300: #d4d4d4 -->
+    <SolidColorBrush x:Key="SeriousSeahorse3.Button.Border" Color="#d4d4d4" />
+
+    <!-- Button Text Color -->
+    <!-- Tailwind neutral-600: #525252 -->
+    <SolidColorBrush x:Key="SeriousSeahorse3.Button.Foreground" Color="#525252" />
+
+    <!-- Tooltip Colors -->
+    <SolidColorBrush x:Key="SeriousSeahorse3.Tooltip.Background" Color="Black" />
+    <SolidColorBrush x:Key="SeriousSeahorse3.Tooltip.Foreground" Color="White" />
+
+    <!-- Button Dimensions -->
+    <!-- px-3 = 12px, py-2 = 8px -->
+    <Thickness x:Key="SeriousSeahorse3.Button.Padding">12,8</Thickness>
+    <CornerRadius x:Key="SeriousSeahorse3.Button.CornerRadius">6</CornerRadius>
+    <Thickness x:Key="SeriousSeahorse3.Button.BorderThickness">1</Thickness>
+
+    <!-- Tooltip Dimensions -->
+    <!-- px-1.5 = 6px, py-1 = 4px -->
+    <Thickness x:Key="SeriousSeahorse3.Tooltip.Padding">6,4</Thickness>
+    <CornerRadius x:Key="SeriousSeahorse3.Tooltip.CornerRadius">6</CornerRadius>
+
+    <!-- Tooltip Arrow (Triangle) Size -->
+    <!-- w-3 = 12px, h-[4px] = 4px -->
+    <sys:Double x:Key="SeriousSeahorse3.Tooltip.Arrow.Width">12</sys:Double>
+    <sys:Double x:Key="SeriousSeahorse3.Tooltip.Arrow.Height">4</sys:Double>
+
+    <!-- Tooltip Offset from Button -->
+    <!-- bottom-[calc(100%+4px)] = 4px gap -->
+    <sys:Double x:Key="SeriousSeahorse3.Tooltip.Offset">4</sys:Double>
+
+    <!-- Font Size -->
+    <!-- text-sm = 14px, text-[10px] = 10px -->
+    <sys:Double x:Key="SeriousSeahorse3.Button.FontSize">14</sys:Double>
+    <sys:Double x:Key="SeriousSeahorse3.Tooltip.FontSize">10</sys:Double>
+
+    <!-- Animation Durations (referenced only, not directly usable in Duration) -->
+    <!-- transition-all typically 150ms -->
+    <sys:Double x:Key="SeriousSeahorse3.Animation.DurationSeconds">0.15</sys:Double>
+
+</ResourceDictionary>

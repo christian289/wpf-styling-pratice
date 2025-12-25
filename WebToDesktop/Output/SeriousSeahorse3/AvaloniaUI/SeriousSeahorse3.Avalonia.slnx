@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SeriousSeahorse3.Avalonia.Lib\SeriousSeahorse3.Avalonia.Lib.csproj" />
+  <Project Path="SeriousSeahorse3.Avalonia.Gallery\SeriousSeahorse3.Avalonia.Gallery.csproj" />
+</Solution>

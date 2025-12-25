@@ -1,0 +1,54 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SeriousSeahorse3.Avalonia.Lib.Controls"
+        x:Class="SeriousSeahorse3.Avalonia.Gallery.MainWindow"
+        Title="SeriousSeahorse3 - TooltipButton Gallery"
+        Width="600"
+        Height="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#F5F5F5">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="24">
+
+            <!-- Title -->
+            <TextBlock Text="TooltipButton Gallery"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Foreground="#525252" />
+
+            <!-- Description -->
+            <TextBlock Text="Hover over the buttons to see the tooltips"
+                       FontSize="14"
+                       HorizontalAlignment="Center"
+                       Foreground="#737373" />
+
+            <!-- Tooltip Buttons -->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Spacing="16">
+
+                <controls:TooltipButton Content="Tooltip me 👀"
+                                        TooltipText="👋🏻👽 Hi!" />
+
+                <controls:TooltipButton Content="Hover here"
+                                        TooltipText="Hello World!" />
+
+                <controls:TooltipButton Content="Click me"
+                                        TooltipText="This is a tooltip" />
+
+            </StackPanel>
+
+            <!-- Footer -->
+            <TextBlock Text="From Uiverse.io by eduardojsc18"
+                       FontSize="12"
+                       HorizontalAlignment="Center"
+                       Foreground="#A3A3A3"
+                       Margin="0,20,0,0" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>

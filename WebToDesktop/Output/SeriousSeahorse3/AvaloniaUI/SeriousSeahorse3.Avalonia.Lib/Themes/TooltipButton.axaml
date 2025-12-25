@@ -1,0 +1,138 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:SeriousSeahorse3.Avalonia.Lib.Controls">
+
+    <!-- Colors (Tailwind neutral palette) -->
+    <!-- 색상 (Tailwind neutral 팔레트) -->
+    <Color x:Key="Neutral200Color">#E5E5E5</Color>
+    <Color x:Key="Neutral300Color">#D4D4D4</Color>
+    <Color x:Key="Neutral600Color">#525252</Color>
+    <Color x:Key="TooltipBackgroundColor">#000000</Color>
+    <Color x:Key="TooltipForegroundColor">#FFFFFF</Color>
+
+    <SolidColorBrush x:Key="Neutral200Brush" Color="{StaticResource Neutral200Color}" />
+    <SolidColorBrush x:Key="Neutral300Brush" Color="{StaticResource Neutral300Color}" />
+    <SolidColorBrush x:Key="Neutral600Brush" Color="{StaticResource Neutral600Color}" />
+    <SolidColorBrush x:Key="TooltipBackgroundBrush" Color="{StaticResource TooltipBackgroundColor}" />
+    <SolidColorBrush x:Key="TooltipForegroundBrush" Color="{StaticResource TooltipForegroundColor}" />
+
+    <!-- TooltipButton Style -->
+    <!-- TooltipButton 스타일 -->
+    <ControlTheme x:Key="{x:Type controls:TooltipButton}" TargetType="controls:TooltipButton">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="{StaticResource Neutral600Brush}" />
+        <Setter Property="Background" Value="{StaticResource Neutral200Brush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Neutral300Brush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="12,8" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Tooltip Container (hidden by default) -->
+                    <!-- 툴팁 컨테이너 (기본적으로 숨김) -->
+                    <Panel Name="PART_TooltipContainer"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Margin="0,-30,0,0"
+                           IsVisible="False"
+                           Opacity="0"
+                           RenderTransform="scaleY(0.5)">
+                        <Panel.RenderTransform>
+                            <ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+                        </Panel.RenderTransform>
+
+                        <!-- Tooltip Body -->
+                        <!-- 툴팁 본체 -->
+                        <Border Name="PART_TooltipBody"
+                                Background="{StaticResource TooltipBackgroundBrush}"
+                                CornerRadius="6"
+                                Padding="6,4"
+                                HorizontalAlignment="Center"
+                                BoxShadow="0 2 4 0 #40000000">
+                            <TextBlock Text="{TemplateBinding TooltipText}"
+                                       Foreground="{StaticResource TooltipForegroundBrush}"
+                                       FontSize="10"
+                                       TextAlignment="Center" />
+                        </Border>
+
+                        <!-- Tooltip Arrow (triangle pointing down) -->
+                        <!-- 툴팁 화살표 (아래 방향 삼각형) -->
+                        <Path Name="PART_TooltipArrow"
+                              Fill="{StaticResource TooltipBackgroundBrush}"
+                              Data="M 0,0 L 6,4 L 12,0 Z"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Bottom"
+                              Margin="0,0,0,-4" />
+                    </Panel>
+
+                    <!-- Button -->
+                    <!-- 버튼 -->
+                    <Border Name="PART_ButtonBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="6"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          Content="{TemplateBinding Content}"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Hover State -->
+        <!-- 호버 상태 -->
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{StaticResource Neutral300Brush}" />
+
+            <Style Selector="^ /template/ Panel#PART_TooltipContainer">
+                <Setter Property="IsVisible" Value="True" />
+                <Style.Animations>
+                    <Animation Duration="0:0:0.2" FillMode="Forward" Easing="CubicEaseOut">
+                        <KeyFrame Cue="0%">
+                            <Setter Property="Opacity" Value="0" />
+                            <Setter Property="RenderTransform">
+                                <ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+                            </Setter>
+                        </KeyFrame>
+                        <KeyFrame Cue="100%">
+                            <Setter Property="Opacity" Value="1" />
+                            <Setter Property="RenderTransform">
+                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                            </Setter>
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+        </Style>
+
+        <!-- Not Hovered State (hide tooltip) -->
+        <!-- 호버되지 않은 상태 (툴팁 숨김) -->
+        <Style Selector="^:not(:pointerover)">
+            <Style Selector="^ /template/ Panel#PART_TooltipContainer">
+                <Style.Animations>
+                    <Animation Duration="0:0:0.15" FillMode="Forward" Easing="CubicEaseIn">
+                        <KeyFrame Cue="0%">
+                            <Setter Property="Opacity" Value="1" />
+                            <Setter Property="RenderTransform">
+                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                            </Setter>
+                        </KeyFrame>
+                        <KeyFrame Cue="100%">
+                            <Setter Property="Opacity" Value="0" />
+                            <Setter Property="RenderTransform">
+                                <ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+                            </Setter>
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

@@ -1,0 +1,42 @@
+<Window x:Class="SeriousSeahorse3.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:SeriousSeahorse3.Wpf.UI.Controls;assembly=SeriousSeahorse3.Wpf.UI"
+        mc:Ignorable="d"
+        Title="SeriousSeahorse3 Tooltip Gallery" Height="450" Width="800"
+        Background="#f5f5f5">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Tooltip Button Demo"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="#525252"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20" />
+
+            <TextBlock Text="tooltip using after:content-[attr()]"
+                       FontSize="12"
+                       Foreground="#737373"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,30" />
+
+            <!-- Demo Button with Default Tooltip -->
+            <controls:SeriousSeahorse3 Content="Tooltip me"
+                                       TooltipText="Hi!"
+                                       Margin="0,40,0,20" />
+
+            <!-- Demo Button with Custom Tooltip -->
+            <controls:SeriousSeahorse3 Content="Hover for info"
+                                       TooltipText="This is a custom tooltip!"
+                                       Margin="0,40,0,20" />
+
+            <TextBlock Text="I recommend using it within tailwind's global css."
+                       FontSize="11"
+                       Foreground="#a3a3a3"
+                       HorizontalAlignment="Center"
+                       Margin="0,30,0,0" />
+        </StackPanel>
+    </Grid>
+</Window>
