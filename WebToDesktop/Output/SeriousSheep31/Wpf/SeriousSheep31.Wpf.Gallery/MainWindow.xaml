@@ -1,0 +1,20 @@
+<Window x:Class="SeriousSheep31.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:SeriousSheep31.Wpf.UI.Controls;assembly=SeriousSheep31.Wpf.UI"
+        mc:Ignorable="d"
+        Title="SeriousSheep31 - Neumorphic Radio Buttons"
+        Height="500" Width="600"
+        Background="#ECF0F3"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <controls:NeumorphicRadioButtonGroup HorizontalAlignment="Center" VerticalAlignment="Center">
+            <controls:NeumorphicRadioButton Content="a) close" GroupName="Options" IsChecked="True" />
+            <controls:NeumorphicRadioButton Content="b) remove" GroupName="Options" />
+            <controls:NeumorphicRadioButton Content="c) delete" GroupName="Options" />
+            <controls:NeumorphicRadioButton Content="d) all of the above" GroupName="Options" />
+        </controls:NeumorphicRadioButtonGroup>
+    </Grid>
+</Window>

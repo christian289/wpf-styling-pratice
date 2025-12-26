@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SeriousSheep31.Avalonia.Lib.Controls"
+        x:Class="SeriousSheep31.Avalonia.Gallery.MainWindow"
+        Title="SeriousSheep31 - Neumorphic RadioButton Gallery"
+        Width="500"
+        Height="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#ECF0F3">
+
+    <!-- Neumorphic RadioGroup Container -->
+    <Border Padding="48,48,64,48"
+            CornerRadius="16"
+            Background="#ECF0F3"
+            BoxShadow="4 4 4 0 #D1D9E6 inset, -4 -4 4 0 #FFFFFF inset"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+        <StackPanel>
+            <controls:NeumorphicRadioButton Content="a) close" GroupName="QuizGroup" />
+            <controls:NeumorphicRadioButton Content="b) remove" GroupName="QuizGroup" />
+            <controls:NeumorphicRadioButton Content="c) delete" GroupName="QuizGroup" />
+            <controls:NeumorphicRadioButton Content="d) all of the above" GroupName="QuizGroup" IsChecked="True" />
+        </StackPanel>
+
+    </Border>
+
+</Window>

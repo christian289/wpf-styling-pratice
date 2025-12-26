@@ -1,0 +1,54 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- [Background] Neumorphic base background color -->
+    <Color x:Key="NeumorphicRadioButton.Background.Color">#ECF0F3</Color>
+    <SolidColorBrush x:Key="NeumorphicRadioButton.Background" Color="{StaticResource NeumorphicRadioButton.Background.Color}" />
+
+    <!-- [Shadow.Dark] Dark shadow color for depth effect -->
+    <Color x:Key="NeumorphicRadioButton.Shadow.Dark.Color">#D1D9E6</Color>
+    <SolidColorBrush x:Key="NeumorphicRadioButton.Shadow.Dark" Color="{StaticResource NeumorphicRadioButton.Shadow.Dark.Color}" />
+
+    <!-- [Shadow.Light] Light shadow color for highlight effect -->
+    <Color x:Key="NeumorphicRadioButton.Shadow.Light.Color">#FFFFFF</Color>
+    <SolidColorBrush x:Key="NeumorphicRadioButton.Shadow.Light" Color="{StaticResource NeumorphicRadioButton.Shadow.Light.Color}" />
+
+    <!-- [Foreground] Text color -->
+    <Color x:Key="NeumorphicRadioButton.Foreground.Color">#394A56</Color>
+    <SolidColorBrush x:Key="NeumorphicRadioButton.Foreground" Color="{StaticResource NeumorphicRadioButton.Foreground.Color}" />
+
+    <!-- [Group.Padding] padding: 48px 64px -->
+    <Thickness x:Key="NeumorphicRadioButton.Group.Padding">64,48,64,48</Thickness>
+
+    <!-- [Group.CornerRadius] border-radius: 16px -->
+    <CornerRadius x:Key="NeumorphicRadioButton.Group.CornerRadius">16</CornerRadius>
+
+    <!-- [Item.Margin] margin: 8px 0 -->
+    <Thickness x:Key="NeumorphicRadioButton.Item.Margin">0,8,0,8</Thickness>
+
+    <!-- [Indicator.Size] height: 30px, width: 30px -->
+    <sys:Double x:Key="NeumorphicRadioButton.Indicator.Size">30</sys:Double>
+
+    <!-- [Indicator.InnerSize] 80% of indicator size -->
+    <sys:Double x:Key="NeumorphicRadioButton.Indicator.InnerSize">24</sys:Double>
+
+    <!-- [Indicator.InnerOffset] 10% offset -->
+    <sys:Double x:Key="NeumorphicRadioButton.Indicator.InnerOffset">3</sys:Double>
+
+    <!-- [Text.Margin] margin-left: 16px -->
+    <Thickness x:Key="NeumorphicRadioButton.Text.Margin">16,0,0,0</Thickness>
+
+    <!-- [Text.Opacity.Normal] opacity: 0.6 -->
+    <sys:Double x:Key="NeumorphicRadioButton.Text.Opacity.Normal">0.6</sys:Double>
+
+    <!-- [Text.Opacity.Active] opacity: 1 -->
+    <sys:Double x:Key="NeumorphicRadioButton.Text.Opacity.Active">1</sys:Double>
+
+    <!-- [Animation.Duration.Opacity] transition: opacity 0.2s -->
+    <!-- Duration must be inline in WPF, this is for reference only -->
+
+    <!-- [Animation.Duration.Transform] transition: 0.25s -->
+    <!-- Duration must be inline in WPF, this is for reference only -->
+
+</ResourceDictionary>
