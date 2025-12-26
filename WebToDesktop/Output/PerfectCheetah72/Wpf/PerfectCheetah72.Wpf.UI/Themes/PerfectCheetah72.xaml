@@ -1,0 +1,228 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:PerfectCheetah72.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/PerfectCheetah72.Wpf.UI;component/Themes/PerfectCheetah72Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Theme option item style for dropdown list -->
+    <Style x:Key="ThemeOptionItemStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{StaticResource PerfectCheetah72.Text.Foreground}"/>
+        <Setter Property="FontSize" Value="{StaticResource PerfectCheetah72.ListItem.FontSize}"/>
+        <Setter Property="Padding" Value="{StaticResource PerfectCheetah72.ListItem.Padding}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="ItemBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{StaticResource PerfectCheetah72.ListItem.CornerRadius}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ItemBorder" Property="Background"
+                                    Value="{StaticResource PerfectCheetah72.Button.HoverBackground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Active theme option item style -->
+    <Style x:Key="ActiveThemeOptionItemStyle" TargetType="Button" BasedOn="{StaticResource ThemeOptionItemStyle}">
+        <Setter Property="Background" Value="{StaticResource PerfectCheetah72.ListItem.ActiveBackground}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PerfectCheetah72.ListItem.OutlineColor}"/>
+    </Style>
+
+    <!-- Main control style -->
+    <Style TargetType="{x:Type controls:PerfectCheetah72}">
+        <Setter Property="Foreground" Value="{StaticResource PerfectCheetah72.Text.Foreground}"/>
+        <Setter Property="FontFamily" Value="Consolas, Menlo, Monaco, monospace"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Background" Value="{StaticResource PerfectCheetah72.Button.Background}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:PerfectCheetah72}">
+                    <Grid>
+                        <!-- Main toggle button -->
+                        <ToggleButton x:Name="PART_ToggleButton"
+                                      IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                      Background="{TemplateBinding Background}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      FontFamily="{TemplateBinding FontFamily}"
+                                      FontWeight="{TemplateBinding FontWeight}">
+                            <ToggleButton.Template>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border x:Name="ButtonBorder"
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="Transparent"
+                                            BorderThickness="{StaticResource PerfectCheetah72.Button.OutlineThickness}"
+                                            CornerRadius="{StaticResource PerfectCheetah72.Button.CornerRadius}"
+                                            Padding="{StaticResource PerfectCheetah72.Button.HorizontalPadding}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <!-- Icon container - shows current theme icon -->
+                                            <Grid Width="{StaticResource PerfectCheetah72.Icon.Size}"
+                                                  Height="{StaticResource PerfectCheetah72.Icon.Size}"
+                                                  Margin="{StaticResource PerfectCheetah72.Icon.RightMargin}">
+                                                <!-- Default icon -->
+                                                <Path x:Name="DefaultIcon"
+                                                      Data="{StaticResource PerfectCheetah72.Icon.Default}"
+                                                      Fill="{TemplateBinding Foreground}"
+                                                      Stretch="Uniform"
+                                                      Visibility="Collapsed"/>
+                                                <!-- Sun icon -->
+                                                <Path x:Name="SunIcon"
+                                                      Data="{StaticResource PerfectCheetah72.Icon.Sun}"
+                                                      Fill="{TemplateBinding Foreground}"
+                                                      Stretch="Uniform"
+                                                      Visibility="Collapsed"/>
+                                                <!-- Moon icon -->
+                                                <Path x:Name="MoonIcon"
+                                                      Data="{StaticResource PerfectCheetah72.Icon.Moon}"
+                                                      Fill="{TemplateBinding Foreground}"
+                                                      Stretch="Uniform"
+                                                      Visibility="Collapsed"/>
+                                            </Grid>
+                                            <!-- Button text -->
+                                            <TextBlock Text="{Binding ButtonText, RelativeSource={RelativeSource AncestorType=controls:PerfectCheetah72}}"
+                                                       VerticalAlignment="Center"
+                                                       FontFamily="{TemplateBinding FontFamily}"
+                                                       FontWeight="{TemplateBinding FontWeight}"/>
+                                        </StackPanel>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Show icon based on selected theme -->
+                                        <DataTrigger Binding="{Binding SelectedTheme, RelativeSource={RelativeSource AncestorType=controls:PerfectCheetah72}}" Value="Default">
+                                            <Setter TargetName="DefaultIcon" Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedTheme, RelativeSource={RelativeSource AncestorType=controls:PerfectCheetah72}}" Value="Light">
+                                            <Setter TargetName="SunIcon" Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedTheme, RelativeSource={RelativeSource AncestorType=controls:PerfectCheetah72}}" Value="Dark">
+                                            <Setter TargetName="MoonIcon" Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <!-- Hover effect -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background"
+                                                    Value="{StaticResource PerfectCheetah72.Button.HoverBackground}"/>
+                                        </Trigger>
+                                        <!-- Checked (dropdown open) effect -->
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter TargetName="ButtonBorder" Property="Background"
+                                                    Value="{StaticResource PerfectCheetah72.Button.HoverBackground}"/>
+                                            <Setter TargetName="ButtonBorder" Property="BorderBrush"
+                                                    Value="{StaticResource PerfectCheetah72.Button.OutlineColor}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </ToggleButton.Template>
+                        </ToggleButton>
+
+                        <!-- Dropdown popup -->
+                        <Popup x:Name="PART_Popup"
+                               IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                               Placement="Bottom"
+                               PlacementTarget="{Binding ElementName=PART_ToggleButton}"
+                               StaysOpen="False"
+                               AllowsTransparency="True"
+                               PopupAnimation="Fade"
+                               VerticalOffset="{StaticResource PerfectCheetah72.List.Offset}">
+                            <Border Background="{StaticResource PerfectCheetah72.Button.Background}"
+                                    CornerRadius="{StaticResource PerfectCheetah72.Button.CornerRadius}"
+                                    Padding="{StaticResource PerfectCheetah72.List.Padding}">
+                                <StackPanel>
+                                    <!-- OS Default option -->
+                                    <Button x:Name="DefaultOption"
+                                            Command="{x:Static controls:PerfectCheetah72.SelectThemeCommand}"
+                                            CommandParameter="{x:Static controls:ThemeOption.Default}"
+                                            Style="{StaticResource ThemeOptionItemStyle}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Grid Width="{StaticResource PerfectCheetah72.Icon.Size}"
+                                                  Height="{StaticResource PerfectCheetah72.Icon.Size}"
+                                                  Margin="{StaticResource PerfectCheetah72.ListItem.IconMargin}">
+                                                <Path Data="{StaticResource PerfectCheetah72.Icon.Default}"
+                                                      Fill="{StaticResource PerfectCheetah72.Text.Foreground}"
+                                                      Stretch="Uniform"/>
+                                            </Grid>
+                                            <TextBlock Text="OS Default" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+
+                                    <!-- Light option -->
+                                    <Button x:Name="LightOption"
+                                            Command="{x:Static controls:PerfectCheetah72.SelectThemeCommand}"
+                                            CommandParameter="{x:Static controls:ThemeOption.Light}"
+                                            Style="{StaticResource ThemeOptionItemStyle}"
+                                            Margin="{StaticResource PerfectCheetah72.ListItem.TopMargin}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Grid Width="{StaticResource PerfectCheetah72.Icon.Size}"
+                                                  Height="{StaticResource PerfectCheetah72.Icon.Size}"
+                                                  Margin="{StaticResource PerfectCheetah72.ListItem.IconMargin}">
+                                                <Path Data="{StaticResource PerfectCheetah72.Icon.Sun}"
+                                                      Fill="{StaticResource PerfectCheetah72.Text.Foreground}"
+                                                      Stretch="Uniform"/>
+                                            </Grid>
+                                            <TextBlock Text="Light" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+
+                                    <!-- Dark option -->
+                                    <Button x:Name="DarkOption"
+                                            Command="{x:Static controls:PerfectCheetah72.SelectThemeCommand}"
+                                            CommandParameter="{x:Static controls:ThemeOption.Dark}"
+                                            Style="{StaticResource ThemeOptionItemStyle}"
+                                            Margin="{StaticResource PerfectCheetah72.ListItem.TopMargin}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Grid Width="{StaticResource PerfectCheetah72.Icon.Size}"
+                                                  Height="{StaticResource PerfectCheetah72.Icon.Size}"
+                                                  Margin="{StaticResource PerfectCheetah72.ListItem.IconMargin}">
+                                                <Path Data="{StaticResource PerfectCheetah72.Icon.Moon}"
+                                                      Fill="{StaticResource PerfectCheetah72.Text.Foreground}"
+                                                      Stretch="Uniform"/>
+                                            </Grid>
+                                            <TextBlock Text="Night" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                </StackPanel>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- Highlight selected theme in dropdown -->
+                        <Trigger Property="SelectedTheme" Value="Default">
+                            <Setter TargetName="DefaultOption" Property="Background"
+                                    Value="{StaticResource PerfectCheetah72.ListItem.ActiveBackground}"/>
+                            <Setter TargetName="DefaultOption" Property="BorderBrush"
+                                    Value="{StaticResource PerfectCheetah72.ListItem.OutlineColor}"/>
+                        </Trigger>
+                        <Trigger Property="SelectedTheme" Value="Light">
+                            <Setter TargetName="LightOption" Property="Background"
+                                    Value="{StaticResource PerfectCheetah72.ListItem.ActiveBackground}"/>
+                            <Setter TargetName="LightOption" Property="BorderBrush"
+                                    Value="{StaticResource PerfectCheetah72.ListItem.OutlineColor}"/>
+                        </Trigger>
+                        <Trigger Property="SelectedTheme" Value="Dark">
+                            <Setter TargetName="DarkOption" Property="Background"
+                                    Value="{StaticResource PerfectCheetah72.ListItem.ActiveBackground}"/>
+                            <Setter TargetName="DarkOption" Property="BorderBrush"
+                                    Value="{StaticResource PerfectCheetah72.ListItem.OutlineColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
