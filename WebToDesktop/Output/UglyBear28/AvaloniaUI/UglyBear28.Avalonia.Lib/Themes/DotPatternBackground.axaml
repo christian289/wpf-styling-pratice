@@ -1,0 +1,86 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:UglyBear28.Avalonia.Lib.Controls">
+
+    <!--
+    CSS 원본 분석:
+    - background: #fff (흰색 배경)
+    - filter: contrast(7) (고대비 필터 - AvaloniaUI에서 직접 지원 안함)
+    - ::before에 radial-gradient(#000, transparent) 0 0/1em 1em space
+    - mask: linear-gradient(red, rgba(0,0,0,0.45)) (그라데이션 마스크)
+
+    AvaloniaUI 변환 전략:
+    - 고대비 필터는 RadialGradientBrush의 GradientStops로 시뮬레이션
+    - 도트 패턴은 DrawingBrush의 TileMode로 반복
+    - 마스크 효과는 Opacity 그라데이션으로 근사
+
+    Original CSS analysis:
+    - background: #fff (white background)
+    - filter: contrast(7) (high contrast filter - not directly supported in AvaloniaUI)
+    - ::before with radial-gradient(#000, transparent) 0 0/1em 1em space
+    - mask: linear-gradient(red, rgba(0,0,0,0.45)) (gradient mask)
+
+    AvaloniaUI conversion strategy:
+    - High contrast filter simulated via RadialGradientBrush GradientStops
+    - Dot pattern repeated using DrawingBrush TileMode
+    - Mask effect approximated with Opacity gradient
+    -->
+
+    <Style Selector="controls|DotPatternBackground">
+        <Setter Property="Template">
+            <ControlTemplate TargetType="controls:DotPatternBackground">
+                <Panel>
+                    <!-- 기본 배경 / Base background -->
+                    <Border Background="{TemplateBinding BackgroundColor}" />
+
+                    <!-- 도트 패턴 레이어 / Dot pattern layer -->
+                    <!-- CSS ::before pseudo-element 변환 -->
+                    <Border Opacity="{TemplateBinding DotOpacity}">
+                        <Border.Background>
+                            <VisualBrush TileMode="Tile"
+                                         SourceRect="0,0,16,16"
+                                         DestinationRect="0,0,16,16">
+                                <VisualBrush.Visual>
+                                    <Canvas Width="16" Height="16">
+                                        <!-- radial-gradient(#000, transparent) 변환 -->
+                                        <!-- RadialGradientBrush: GradientOrigin과 Center 동일하게 설정 (Issue #19888) -->
+                                        <Ellipse Width="12" Height="12"
+                                                 Canvas.Left="2" Canvas.Top="2">
+                                            <Ellipse.Fill>
+                                                <RadialGradientBrush GradientOrigin="50%,50%"
+                                                                     Center="50%,50%"
+                                                                     RadiusX="50%" RadiusY="50%">
+                                                    <GradientStop Color="#000000" Offset="0" />
+                                                    <GradientStop Color="#80000000" Offset="0.3" />
+                                                    <GradientStop Color="#40000000" Offset="0.6" />
+                                                    <GradientStop Color="Transparent" Offset="1" />
+                                                </RadialGradientBrush>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                    </Canvas>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Border.Background>
+
+                        <!-- 마스크 효과 시뮬레이션: 상단에서 하단으로 투명도 증가 -->
+                        <!-- Mask effect simulation: increasing transparency from top to bottom -->
+                        <Border.OpacityMask>
+                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                <GradientStop Color="#FFFFFFFF" Offset="0" />
+                                <GradientStop Color="#73FFFFFF" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.OpacityMask>
+                    </Border>
+
+                    <!-- 콘텐츠 영역 / Content area -->
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                       ContentTemplate="{TemplateBinding ContentTemplate}"
+                                       Padding="{TemplateBinding Padding}"
+                                       HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                       VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+</Styles>

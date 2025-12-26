@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="UglyBear28.Avalonia.Lib\UglyBear28.Avalonia.Lib.csproj" />
+  <Project Path="UglyBear28.Avalonia.Gallery\UglyBear28.Avalonia.Gallery.csproj" />
+</Solution>

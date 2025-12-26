@@ -1,0 +1,65 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:UglyBear28.Avalonia.Lib.Controls"
+        x:Class="UglyBear28.Avalonia.Gallery.MainWindow"
+        Title="UglyBear28 - Dot Pattern Background"
+        Width="800" Height="600">
+
+    <!--
+    From Uiverse.io by csemszepp
+    Tags: simple, material design, pattern
+
+    CSS 원본:
+    - background: #fff with filter: contrast(7)
+    - ::before pseudo-element with radial-gradient dot pattern
+    - linear-gradient mask for fading effect
+
+    AvaloniaUI 변환:
+    - DotPatternBackground 커스텀 컨트롤 사용
+    - RadialGradientBrush로 도트 패턴 구현
+    - LinearGradientBrush OpacityMask로 마스크 효과 시뮬레이션
+    -->
+
+    <controls:DotPatternBackground BackgroundColor="White"
+                                    DotOpacity="0.45"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center">
+        <StackPanel Spacing="20" HorizontalAlignment="Center">
+            <TextBlock Text="Dot Pattern Background"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="#333333"
+                       HorizontalAlignment="Center" />
+
+            <TextBlock Text="From Uiverse.io by csemszepp"
+                       FontSize="14"
+                       Foreground="#666666"
+                       HorizontalAlignment="Center" />
+
+            <TextBlock Text="CSS filter: contrast(7) + radial-gradient dot pattern"
+                       FontSize="12"
+                       Foreground="#888888"
+                       HorizontalAlignment="Center" />
+
+            <Border Background="#FFFFFF"
+                    CornerRadius="12"
+                    Padding="24"
+                    BoxShadow="0 4 16 #20000000"
+                    Margin="40">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Sample Card"
+                               FontSize="18"
+                               FontWeight="SemiBold" />
+                    <TextBlock Text="This card demonstrates how the dot pattern background looks behind content."
+                               TextWrapping="Wrap"
+                               MaxWidth="300"
+                               Foreground="#555555" />
+                    <Button Content="Learn More"
+                            HorizontalAlignment="Left"
+                            Margin="0,8,0,0" />
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </controls:DotPatternBackground>
+
+</Window>

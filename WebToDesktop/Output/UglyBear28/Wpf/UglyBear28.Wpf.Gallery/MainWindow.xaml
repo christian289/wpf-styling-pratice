@@ -1,0 +1,28 @@
+<Window x:Class="UglyBear28.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:UglyBear28.Wpf.UI.Controls;assembly=UglyBear28.Wpf.UI"
+        mc:Ignorable="d"
+        Title="UglyBear28 - Pattern Control Gallery" Height="450" Width="800"
+        Background="#1a1a2e">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="UglyBear28 Pattern Control"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   Margin="0,0,0,20"/>
+
+        <Border Grid.Row="1"
+                CornerRadius="10"
+                Background="#2d2d44">
+            <controls:UglyBear28 Margin="10"/>
+        </Border>
+    </Grid>
+</Window>

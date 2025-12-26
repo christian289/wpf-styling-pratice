@@ -1,0 +1,27 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- UglyBear28 Pattern Control Resources -->
+    <!-- CSS: background: #fff -->
+    <SolidColorBrush x:Key="UglyBear28.Background" Color="#FFFFFF"/>
+
+    <!-- CSS: radial-gradient(#000, transparent) -->
+    <SolidColorBrush x:Key="UglyBear28.DotColor" Color="#000000"/>
+
+    <!-- CSS: mask: linear-gradient(red, rgba(0, 0, 0, 0.45)) -->
+    <!-- 마스크용 그라데이션 색상 -->
+    <!-- Gradient colors for mask -->
+    <Color x:Key="UglyBear28.Mask.StartColor">#FFFF0000</Color>
+    <Color x:Key="UglyBear28.Mask.EndColor">#73000000</Color>
+
+    <!-- CSS: background 0 0/1em 1em space -->
+    <!-- 점 패턴 크기 (1em ≈ 16px) -->
+    <!-- Dot pattern size (1em ≈ 16px) -->
+    <sys:Double x:Key="UglyBear28.PatternSize">16</sys:Double>
+
+    <!-- 점 크기 (패턴 크기의 절반) -->
+    <!-- Dot size (half of pattern size) -->
+    <sys:Double x:Key="UglyBear28.DotRadius">8</sys:Double>
+
+</ResourceDictionary>
