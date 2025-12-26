@@ -1,0 +1,36 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Size values (8em = 128px at default 16px em) -->
+    <sys:Double x:Key="FatDodo89.Size">108</sys:Double>
+    <sys:Double x:Key="FatDodo89.ViewBoxSize">128</sys:Double>
+    <sys:Double x:Key="FatDodo89.Radius">56</sys:Double>
+    <sys:Double x:Key="FatDodo89.EyeRadius">8</sys:Double>
+    <sys:Double x:Key="FatDodo89.StrokeWidth">12</sys:Double>
+    <sys:Double x:Key="FatDodo89.Center">64</sys:Double>
+
+    <!-- Color values: hsl(193,90%,50%) = Cyan, hsl(223,90%,50%) = Blue -->
+    <Color x:Key="FatDodo89.Color.Cyan">#0AC2E8</Color>
+    <Color x:Key="FatDodo89.Color.Blue">#0D47F0</Color>
+
+    <SolidColorBrush x:Key="FatDodo89.Brush.Cyan" Color="{StaticResource FatDodo89.Color.Cyan}"/>
+    <SolidColorBrush x:Key="FatDodo89.Brush.Blue" Color="{StaticResource FatDodo89.Color.Blue}"/>
+
+    <!-- Animation duration: 3s -->
+    <Duration x:Key="FatDodo89.Animation.Duration">0:0:3</Duration>
+    <KeyTime x:Key="FatDodo89.KeyTime.0">0:0:0</KeyTime>
+    <KeyTime x:Key="FatDodo89.KeyTime.25">0:0:0.75</KeyTime>
+    <KeyTime x:Key="FatDodo89.KeyTime.50">0:0:1.5</KeyTime>
+    <KeyTime x:Key="FatDodo89.KeyTime.52.5">0:0:1.575</KeyTime>
+    <KeyTime x:Key="FatDodo89.KeyTime.55">0:0:1.65</KeyTime>
+    <KeyTime x:Key="FatDodo89.KeyTime.60">0:0:1.8</KeyTime>
+    <KeyTime x:Key="FatDodo89.KeyTime.70">0:0:2.1</KeyTime>
+    <KeyTime x:Key="FatDodo89.KeyTime.75">0:0:2.25</KeyTime>
+    <KeyTime x:Key="FatDodo89.KeyTime.100">0:0:3</KeyTime>
+
+    <!-- Stroke dash values -->
+    <!-- stroke-dasharray="175.93 351.86" means half circumference visible -->
+    <!-- Circumference = 2 * PI * 56 = 351.86 -->
+
+</ResourceDictionary>
