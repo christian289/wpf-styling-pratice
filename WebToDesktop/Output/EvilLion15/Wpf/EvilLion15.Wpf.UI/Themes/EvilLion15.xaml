@@ -1,0 +1,163 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:EvilLion15.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/EvilLion15.Wpf.UI;component/Themes/EvilLion15Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:EvilLion15}">
+        <Setter Property="Width" Value="{StaticResource EvilLion15.Switch.Width}"/>
+        <Setter Property="Height" Value="{StaticResource EvilLion15.Switch.Height}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:EvilLion15}">
+                    <Grid>
+                        <!-- 외부 컨테이너: 인디케이터 점 포함 -->
+                        <!-- Outer container: includes indicator dots -->
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <!-- 왼쪽 인디케이터 (활성/빨강) -->
+                            <!-- Left indicator (active/red) -->
+                            <Border x:Name="LeftIndicator"
+                                    Width="{StaticResource EvilLion15.Indicator.Size}"
+                                    Height="{StaticResource EvilLion15.Indicator.Size}"
+                                    CornerRadius="{StaticResource EvilLion15.Indicator.CornerRadius}"
+                                    BorderBrush="{StaticResource EvilLion15.LeftIndicator.BorderBrush}"
+                                    BorderThickness="1"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="{StaticResource EvilLion15.LeftIndicator.Margin}">
+                                <Border.Background>
+                                    <RadialGradientBrush GradientOrigin="0.45,0.5" Center="0.45,0.5">
+                                        <GradientStop Color="{StaticResource EvilLion15.LeftIndicator.GradientCenter}" Offset="0"/>
+                                        <GradientStop Color="{StaticResource EvilLion15.LeftIndicator.GradientOuter}" Offset="1"/>
+                                    </RadialGradientBrush>
+                                </Border.Background>
+                            </Border>
+
+                            <!-- 오른쪽 인디케이터 (비활성/회색) -->
+                            <!-- Right indicator (inactive/gray) -->
+                            <Border x:Name="RightIndicator"
+                                    Width="{StaticResource EvilLion15.Indicator.Size}"
+                                    Height="{StaticResource EvilLion15.Indicator.Size}"
+                                    CornerRadius="{StaticResource EvilLion15.Indicator.CornerRadius}"
+                                    BorderBrush="{StaticResource EvilLion15.RightIndicator.BorderBrush}"
+                                    BorderThickness="1"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Margin="{StaticResource EvilLion15.RightIndicator.Margin}">
+                                <Border.Background>
+                                    <RadialGradientBrush GradientOrigin="0.45,0.5" Center="0.45,0.5">
+                                        <GradientStop Color="{StaticResource EvilLion15.RightIndicator.GradientCenter}" Offset="0"/>
+                                        <GradientStop Color="{StaticResource EvilLion15.RightIndicator.GradientOuter}" Offset="1"/>
+                                    </RadialGradientBrush>
+                                </Border.Background>
+                            </Border>
+
+                            <!-- 메인 스위치 트랙 -->
+                            <!-- Main switch track -->
+                            <Border x:Name="SwitchTrack"
+                                    Width="{StaticResource EvilLion15.Switch.Width}"
+                                    Height="{StaticResource EvilLion15.Switch.Height}"
+                                    Background="{StaticResource EvilLion15.Switch.Background}"
+                                    BorderBrush="{StaticResource EvilLion15.Switch.BorderBrush}"
+                                    BorderThickness="{StaticResource EvilLion15.Switch.BorderThickness}"
+                                    CornerRadius="{StaticResource EvilLion15.Switch.CornerRadius}">
+
+                                <!-- 슬라이딩 썸 (핸들) -->
+                                <!-- Sliding thumb (handle) -->
+                                <Border x:Name="Thumb"
+                                        Width="{StaticResource EvilLion15.Thumb.Width}"
+                                        Height="{StaticResource EvilLion15.Thumb.Height}"
+                                        CornerRadius="{StaticResource EvilLion15.Thumb.CornerRadius}"
+                                        BorderBrush="{StaticResource EvilLion15.Thumb.BorderBrush}"
+                                        BorderThickness="1"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Margin="{StaticResource EvilLion15.Thumb.Margin}">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="{StaticResource EvilLion15.Thumb.GradientStart}" Offset="0"/>
+                                            <GradientStop Color="{StaticResource EvilLion15.Thumb.GradientEnd}" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+
+                                    <Grid>
+                                        <!-- 썸 왼쪽 부분 (::before 대응) -->
+                                        <!-- Thumb left part (::before equivalent) -->
+                                        <Border Width="{StaticResource EvilLion15.ThumbPart.Width}"
+                                                Height="{StaticResource EvilLion15.ThumbPart.Height}"
+                                                CornerRadius="{StaticResource EvilLion15.ThumbPart.LeftCornerRadius}"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                Margin="{StaticResource EvilLion15.ThumbPart.Margin}">
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                                    <GradientStop Color="{StaticResource EvilLion15.ThumbPart.GradientStart}" Offset="0"/>
+                                                    <GradientStop Color="{StaticResource EvilLion15.ThumbPart.GradientEnd}" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                        </Border>
+
+                                        <!-- 썸 오른쪽 부분 (::after 대응) -->
+                                        <!-- Thumb right part (::after equivalent) -->
+                                        <Border Width="{StaticResource EvilLion15.ThumbPart.Width}"
+                                                Height="{StaticResource EvilLion15.ThumbPart.Height}"
+                                                CornerRadius="{StaticResource EvilLion15.ThumbPart.RightCornerRadius}"
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center"
+                                                Margin="{StaticResource EvilLion15.ThumbPart.Margin}">
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="1,0.5" EndPoint="0,0.5">
+                                                    <GradientStop Color="{StaticResource EvilLion15.ThumbPart.GradientStart}" Offset="0"/>
+                                                    <GradientStop Color="{StaticResource EvilLion15.ThumbPart.GradientEnd}" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </Border>
+                        </Grid>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- 체크 상태: 썸이 오른쪽으로 이동 -->
+                        <!-- Checked state: thumb moves to the right -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="Thumb"
+                                                            Storyboard.TargetProperty="Margin"
+                                                            To="59,1,1,1"
+                                                            Duration="0:0:0.2">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="Thumb"
+                                                            Storyboard.TargetProperty="Margin"
+                                                            To="1,1,1,1"
+                                                            Duration="0:0:0.2">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

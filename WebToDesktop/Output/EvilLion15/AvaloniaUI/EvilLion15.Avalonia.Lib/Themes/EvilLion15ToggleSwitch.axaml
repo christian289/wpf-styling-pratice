@@ -1,0 +1,200 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:EvilLion15.Avalonia.Lib.Controls">
+
+    <!--
+    From Uiverse.io by vikramsinghnegi
+    Tags: simple, neumorphism, glassmorphism
+    Converted to AvaloniaUI
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="Switch.Background">#33000000</Color>
+    <Color x:Key="Switch.BorderColor">#1AD15C5C</Color>
+    <Color x:Key="Switch.Handle.GradientStart">#4F4F4F</Color>
+    <Color x:Key="Switch.Handle.GradientEnd">#2B2B2B</Color>
+    <Color x:Key="Switch.Handle.Border">#1A1A1A</Color>
+    <Color x:Key="Switch.LeftIndicator.GradientStart">#744E4E</Color>
+    <Color x:Key="Switch.LeftIndicator.GradientEnd">#FF7171</Color>
+    <Color x:Key="Switch.LeftIndicator.Border">#742323</Color>
+    <Color x:Key="Switch.RightIndicator.GradientStart">#993C3C3C</Color>
+    <Color x:Key="Switch.RightIndicator.GradientEnd">#99979797</Color>
+    <Color x:Key="Switch.RightIndicator.Border">#111111</Color>
+    <Color x:Key="Switch.HandleSide.GradientStart">#66303030</Color>
+    <Color x:Key="Switch.HandleSide.GradientEnd">#66222222</Color>
+
+    <!-- Brush Resources -->
+    <SolidColorBrush x:Key="Switch.Background.Brush" Color="{StaticResource Switch.Background}" />
+    <SolidColorBrush x:Key="Switch.BorderColor.Brush" Color="{StaticResource Switch.BorderColor}" />
+    <SolidColorBrush x:Key="Switch.Handle.Border.Brush" Color="{StaticResource Switch.Handle.Border}" />
+    <SolidColorBrush x:Key="Switch.LeftIndicator.Border.Brush" Color="{StaticResource Switch.LeftIndicator.Border}" />
+    <SolidColorBrush x:Key="Switch.RightIndicator.Border.Brush" Color="{StaticResource Switch.RightIndicator.Border}" />
+
+    <LinearGradientBrush x:Key="Switch.Handle.Background.Brush" StartPoint="0%,0%" EndPoint="0%,100%">
+        <GradientStop Color="{StaticResource Switch.Handle.GradientStart}" Offset="0" />
+        <GradientStop Color="{StaticResource Switch.Handle.GradientEnd}" Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="Switch.HandleLeft.Background.Brush" StartPoint="0%,0%" EndPoint="100%,0%">
+        <GradientStop Color="{StaticResource Switch.HandleSide.GradientStart}" Offset="0" />
+        <GradientStop Color="{StaticResource Switch.HandleSide.GradientEnd}" Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="Switch.HandleRight.Background.Brush" StartPoint="100%,0%" EndPoint="0%,0%">
+        <GradientStop Color="{StaticResource Switch.HandleSide.GradientStart}" Offset="0" />
+        <GradientStop Color="{StaticResource Switch.HandleSide.GradientEnd}" Offset="1" />
+    </LinearGradientBrush>
+
+    <!--
+    RadialGradientBrush 주의: AvaloniaUI Issue #19888로 인해 GradientOrigin과 Center가 반드시 동일해야 함
+    RadialGradientBrush Note: Due to AvaloniaUI Issue #19888, GradientOrigin and Center must be identical
+    -->
+    <RadialGradientBrush x:Key="Switch.LeftIndicator.Background.Brush"
+                         GradientOrigin="45%,45%" Center="45%,45%" RadiusX="100%" RadiusY="100%">
+        <GradientStop Color="{StaticResource Switch.LeftIndicator.GradientStart}" Offset="0" />
+        <GradientStop Color="{StaticResource Switch.LeftIndicator.GradientEnd}" Offset="1" />
+    </RadialGradientBrush>
+
+    <RadialGradientBrush x:Key="Switch.RightIndicator.Background.Brush"
+                         GradientOrigin="45%,45%" Center="45%,45%" RadiusX="100%" RadiusY="100%">
+        <GradientStop Color="{StaticResource Switch.RightIndicator.GradientStart}" Offset="0" />
+        <GradientStop Color="{StaticResource Switch.RightIndicator.GradientEnd}" Offset="1" />
+    </RadialGradientBrush>
+
+    <!-- Control Template Style -->
+    <ControlTheme x:Key="{x:Type controls:EvilLion15ToggleSwitch}" TargetType="controls:EvilLion15ToggleSwitch">
+        <Setter Property="Width" Value="115" />
+        <Setter Property="Height" Value="42" />
+        <Setter Property="Margin" Value="8" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!--
+                    외부 컨테이너 (switch class)
+                    Outer container (switch class)
+                    background-color: rgba(0, 0, 0, 0.2)
+                    border-radius: 50px
+                    border: 4px solid rgba(209, 92, 92, 0.1)
+                    box-shadow: 8 0 6px rgba(44, 26, 26, 0.5) inset
+                    -->
+                    <Border Background="{StaticResource Switch.Background.Brush}"
+                            CornerRadius="21"
+                            BorderBrush="{StaticResource Switch.BorderColor.Brush}"
+                            BorderThickness="4"
+                            BoxShadow="inset 8 0 6 #802C1A1A" />
+
+                    <!--
+                    왼쪽 인디케이터 (::before pseudo-element)
+                    Left indicator (::before pseudo-element)
+                    위치: left: -20% (약 -23px), top: 16px
+                    Position: left: -20% (~-23px), top: 16px
+                    -->
+                    <Border Width="10" Height="10"
+                            CornerRadius="5"
+                            Background="{StaticResource Switch.LeftIndicator.Background.Brush}"
+                            BorderBrush="{StaticResource Switch.LeftIndicator.Border.Brush}"
+                            BorderThickness="1"
+                            BoxShadow="0 2 5 #99FF4330, inset 0 0 5 #80FF9F6D"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="-23,0,0,0"
+                            ZIndex="12" />
+
+                    <!--
+                    오른쪽 인디케이터 (::after pseudo-element)
+                    Right indicator (::after pseudo-element)
+                    위치: right: -20% (약 -23px), top: 16px
+                    Position: right: -20% (~-23px), top: 16px
+                    -->
+                    <Border Width="10" Height="10"
+                            CornerRadius="5"
+                            Background="{StaticResource Switch.RightIndicator.Background.Brush}"
+                            BorderBrush="{StaticResource Switch.RightIndicator.Border.Brush}"
+                            BorderThickness="1"
+                            BoxShadow="0 2 5 #80141414"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Margin="0,0,-23,0"
+                            ZIndex="12" />
+
+                    <!--
+                    슬라이딩 핸들 (span element)
+                    Sliding handle (span element)
+                    크기: 53x38, 위치: left 1px (checked시 59px)
+                    Size: 53x38, Position: left 1px (59px when checked)
+                    -->
+                    <Border Name="PART_Handle"
+                            Width="53" Height="38"
+                            CornerRadius="19"
+                            Background="{StaticResource Switch.Handle.Background.Brush}"
+                            BorderBrush="{StaticResource Switch.Handle.Border.Brush}"
+                            BorderThickness="1"
+                            BoxShadow="0 0 4 #80000000, inset 0 1 1 #1AFFFFFF, inset 0 -2 0 #33000000"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="1,0,0,0">
+
+                        <Panel>
+                            <!--
+                            핸들 왼쪽 장식 (span::before)
+                            Handle left decoration (span::before)
+                            border-radius: 30px 10px 10px 30px
+                            -->
+                            <Border Width="21" Height="33"
+                                    CornerRadius="15,5,5,15"
+                                    Background="{StaticResource Switch.HandleLeft.Background.Brush}"
+                                    BoxShadow="inset -2 0 5 #33000000"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="2,0,0,0" />
+
+                            <!--
+                            핸들 오른쪽 장식 (span::after)
+                            Handle right decoration (span::after)
+                            border-radius: 10px 30px 30px 10px
+                            -->
+                            <Border Width="21" Height="33"
+                                    CornerRadius="5,15,15,5"
+                                    Background="{StaticResource Switch.HandleRight.Background.Brush}"
+                                    BoxShadow="inset 2 0 5 #33000000"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,2,0" />
+                        </Panel>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!--
+        Checked 상태: 핸들을 오른쪽으로 이동 (left: 59px → Margin: 59,0,0,0)
+        Checked state: Move handle to the right (left: 59px → Margin: 59,0,0,0)
+        transition: all 0.2s linear
+        -->
+        <Style Selector="^:checked /template/ Border#PART_Handle">
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Easing="LinearEasing" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Margin" Value="59,0,0,0" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!--
+        Unchecked 상태로 돌아갈 때 애니메이션
+        Animation when returning to unchecked state
+        -->
+        <Style Selector="^:not(:checked) /template/ Border#PART_Handle">
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Easing="LinearEasing" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Margin" Value="1,0,0,0" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

@@ -1,0 +1,43 @@
+<Window x:Class="EvilLion15.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:EvilLion15.Wpf.UI.Controls;assembly=EvilLion15.Wpf.UI"
+        mc:Ignorable="d"
+        Title="EvilLion15 - Toggle Switch Gallery"
+        Height="450" Width="800"
+        Background="#2D2D2D">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+
+            <!-- 제목 -->
+            <TextBlock Text="Neumorphism Toggle Switch"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,30"/>
+
+            <!-- 토글 스위치들 -->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+
+                <controls:EvilLion15 Margin="20"/>
+                <controls:EvilLion15 IsChecked="True" Margin="20"/>
+                <controls:EvilLion15 Margin="20"/>
+
+            </StackPanel>
+
+            <!-- 설명 텍스트 -->
+            <TextBlock Text="클릭하여 토글 / Click to toggle"
+                       FontSize="14"
+                       Foreground="#888888"
+                       HorizontalAlignment="Center"
+                       Margin="0,30,0,0"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
