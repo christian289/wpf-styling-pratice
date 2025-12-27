@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/WisePanda94.Wpf.UI;component/Themes/WisePanda94.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

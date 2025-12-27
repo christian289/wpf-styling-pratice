@@ -1,0 +1,38 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <SolidColorBrush x:Key="WisePanda94.Background" Color="White" />
+    <SolidColorBrush x:Key="WisePanda94.Foreground" Color="Black" />
+    <SolidColorBrush x:Key="WisePanda94.Icon.Stroke" Color="Black" />
+
+    <!-- Sizes -->
+    <sys:Double x:Key="WisePanda94.Padding.Horizontal">16</sys:Double>
+    <sys:Double x:Key="WisePanda94.Padding.Vertical">8</sys:Double>
+    <sys:Double x:Key="WisePanda94.Icon.Size">24</sys:Double>
+    <sys:Double x:Key="WisePanda94.Icon.StrokeThickness">2</sys:Double>
+    <sys:Double x:Key="WisePanda94.Spacing">8</sys:Double>
+
+    <!-- Shadow (shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1)) -->
+    <DropShadowEffect x:Key="WisePanda94.Shadow"
+                      BlurRadius="6"
+                      Direction="270"
+                      ShadowDepth="4"
+                      Opacity="0.15"
+                      Color="Black" />
+
+    <!-- Icon Path Data (plane icon rotated 45 degrees) -->
+    <Geometry x:Key="WisePanda94.Icon.PathData">M12 19l9 2-9-18-9 18 9-2M12 19v-8</Geometry>
+
+    <!-- Animation Durations -->
+    <Duration x:Key="WisePanda94.Animation.Duration">0:0:0.3</Duration>
+
+    <!-- Scale Values -->
+    <sys:Double x:Key="WisePanda94.Scale.Normal">1.0</sys:Double>
+    <sys:Double x:Key="WisePanda94.Scale.Hover">1.1</sys:Double>
+
+    <!-- Font -->
+    <FontWeight x:Key="WisePanda94.FontWeight">SemiBold</FontWeight>
+
+</ResourceDictionary>

@@ -1,0 +1,35 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:WisePanda94.Avalonia.Lib.Controls"
+        x:Class="WisePanda94.Avalonia.Gallery.MainWindow"
+        Title="WisePanda94 - SendMessageButton Gallery"
+        Width="600"
+        Height="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#F3F4F6">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="24">
+
+            <TextBlock Text="SendMessageButton Gallery"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Foreground="#1F2937" />
+
+            <TextBlock Text="Hover over the button to see the scale animation"
+                       FontSize="14"
+                       HorizontalAlignment="Center"
+                       Foreground="#6B7280" />
+
+            <!-- Default SendMessageButton -->
+            <controls:SendMessageButton />
+
+            <!-- Custom Text SendMessageButton -->
+            <controls:SendMessageButton Text="Send Email" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>
