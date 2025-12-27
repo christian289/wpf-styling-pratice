@@ -1,0 +1,45 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:BitterMoth36.Avalonia.Lib.Controls"
+        x:Class="BitterMoth36.Avalonia.Gallery.MainWindow"
+        Title="BitterMoth36 Loader Gallery"
+        Width="400"
+        Height="300"
+        Background="#333333">
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="20">
+
+        <TextBlock Text="BitterMoth36 Loader"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center" />
+
+        <TextBlock Text="Original: uiverse.io by Shoh2008"
+                   FontSize="12"
+                   Foreground="#AAAAAA"
+                   HorizontalAlignment="Center" />
+
+        <!-- 기본 로더 -->
+        <!-- Default loader -->
+        <controls:BitterMoth36Loader Width="48" Height="48" />
+
+        <!-- 커스텀 색상 로더 -->
+        <!-- Custom color loader -->
+        <controls:BitterMoth36Loader Width="48"
+                                      Height="48"
+                                      TopCircleColor="#00BFFF"
+                                      BottomCircleColor="#FF69B4" />
+
+        <!-- 큰 로더 -->
+        <!-- Large loader -->
+        <controls:BitterMoth36Loader Width="72"
+                                      Height="72"
+                                      TopCircleColor="#98FB98"
+                                      BottomCircleColor="#FFD700" />
+
+    </StackPanel>
+
+</Window>

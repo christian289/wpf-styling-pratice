@@ -1,0 +1,135 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:BitterMoth36.Avalonia.Lib.Controls">
+
+    <!--
+    BitterMoth36Loader: 회전하는 로더 컨트롤 (두 개의 원이 스케일 애니메이션)
+    BitterMoth36Loader: Rotating loader control with two scaling circles
+    Original: uiverse.io by Shoh2008
+    -->
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="#333">
+            <controls:BitterMoth36Loader Width="48" Height="48" />
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type controls:BitterMoth36Loader}" TargetType="controls:BitterMoth36Loader">
+        <Setter Property="Width" Value="48" />
+        <Setter Property="Height" Value="48" />
+        <Setter Property="TopCircleColor" Value="White" />
+        <Setter Property="BottomCircleColor" Value="#FF3D00" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!--
+                    회전 컨테이너: 전체 컨트롤이 360도 회전
+                    Rotation container: entire control rotates 360 degrees
+                    -->
+                    <Panel x:Name="PART_RotationContainer"
+                           RenderTransformOrigin="50%,50%">
+                        <Panel.RenderTransform>
+                            <RotateTransform />
+                        </Panel.RenderTransform>
+
+                        <!--
+                        상단 원 (흰색): 위쪽에 위치, 스케일 애니메이션
+                        Top circle (white): positioned at top, scale animation
+                        -->
+                        <Ellipse x:Name="PART_TopCircle"
+                                 Width="24"
+                                 Height="24"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Top"
+                                 Fill="{TemplateBinding TopCircleColor}"
+                                 RenderTransformOrigin="50%,50%">
+                            <Ellipse.RenderTransform>
+                                <ScaleTransform ScaleX="0" ScaleY="0" />
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+
+                        <!--
+                        하단 원 (오렌지): 아래쪽에 위치, 0.5초 지연된 스케일 애니메이션
+                        Bottom circle (orange): positioned at bottom, 0.5s delayed scale animation
+                        -->
+                        <Ellipse x:Name="PART_BottomCircle"
+                                 Width="24"
+                                 Height="24"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Bottom"
+                                 Fill="{TemplateBinding BottomCircleColor}"
+                                 RenderTransformOrigin="50%,50%">
+                            <Ellipse.RenderTransform>
+                                <ScaleTransform ScaleX="0" ScaleY="0" />
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                    </Panel>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!--
+        애니메이션 정의
+        Animation definitions
+        -->
+        <Style Selector="^:loaded">
+            <!--
+            회전 애니메이션: 1초 동안 360도 회전, 무한 반복
+            Rotation animation: 360 degree rotation over 1s, infinite loop
+            -->
+            <Style Selector="^ /template/ Panel#PART_RotationContainer">
+                <Style.Animations>
+                    <Animation Duration="0:0:1" IterationCount="Infinite">
+                        <KeyFrame Cue="0%">
+                            <Setter Property="RenderTransform" Value="rotate(0deg)" />
+                        </KeyFrame>
+                        <KeyFrame Cue="100%">
+                            <Setter Property="RenderTransform" Value="rotate(360deg)" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+
+            <!--
+            상단 원 스케일 애니메이션: 0 -> 1 -> 0, ease-in-out
+            Top circle scale animation: 0 -> 1 -> 0, ease-in-out
+            -->
+            <Style Selector="^ /template/ Ellipse#PART_TopCircle">
+                <Style.Animations>
+                    <Animation Duration="0:0:1" IterationCount="Infinite" Easing="QuadraticEaseInOut">
+                        <KeyFrame Cue="0%">
+                            <Setter Property="RenderTransform" Value="scale(0,0)" />
+                        </KeyFrame>
+                        <KeyFrame Cue="50%">
+                            <Setter Property="RenderTransform" Value="scale(1,1)" />
+                        </KeyFrame>
+                        <KeyFrame Cue="100%">
+                            <Setter Property="RenderTransform" Value="scale(0,0)" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+
+            <!--
+            하단 원 스케일 애니메이션: 0.5초 지연, 0 -> 1 -> 0
+            Bottom circle scale animation: 0.5s delay, 0 -> 1 -> 0
+            -->
+            <Style Selector="^ /template/ Ellipse#PART_BottomCircle">
+                <Style.Animations>
+                    <Animation Duration="0:0:1" IterationCount="Infinite" Delay="0:0:0.5" Easing="QuadraticEaseInOut">
+                        <KeyFrame Cue="0%">
+                            <Setter Property="RenderTransform" Value="scale(0,0)" />
+                        </KeyFrame>
+                        <KeyFrame Cue="50%">
+                            <Setter Property="RenderTransform" Value="scale(1,1)" />
+                        </KeyFrame>
+                        <KeyFrame Cue="100%">
+                            <Setter Property="RenderTransform" Value="scale(0,0)" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

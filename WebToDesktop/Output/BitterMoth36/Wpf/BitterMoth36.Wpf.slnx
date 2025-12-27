@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="BitterMoth36.Wpf.Gallery/BitterMoth36.Wpf.Gallery.csproj" />
+  <Project Path="BitterMoth36.Wpf.UI/BitterMoth36.Wpf.UI.csproj" />
+</Solution>

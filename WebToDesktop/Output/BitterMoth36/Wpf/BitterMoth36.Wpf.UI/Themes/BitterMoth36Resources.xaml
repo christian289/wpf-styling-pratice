@@ -1,0 +1,33 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Container Size: 48x48 -->
+    <sys:Double x:Key="BitterMoth36.Container.Size">48</sys:Double>
+
+    <!-- Circle Size: 24x24 (half of container) -->
+    <sys:Double x:Key="BitterMoth36.Circle.Size">24</sys:Double>
+
+    <!-- Colors -->
+    <!-- 상단 원 색상 (::after) - 흰색 -->
+    <!-- Top circle color (::after) - White -->
+    <SolidColorBrush x:Key="BitterMoth36.TopCircle.Background" Color="#FFFFFF"/>
+
+    <!-- 하단 원 색상 (::before) - 오렌지 -->
+    <!-- Bottom circle color (::before) - Orange -->
+    <SolidColorBrush x:Key="BitterMoth36.BottomCircle.Background" Color="#FF3D00"/>
+
+    <!-- Animation Durations -->
+    <!-- 회전 애니메이션: 1초 -->
+    <!-- Rotation animation: 1 second -->
+    <sys:Double x:Key="BitterMoth36.Rotation.DurationSeconds">1</sys:Double>
+
+    <!-- 스케일 애니메이션: 1초 -->
+    <!-- Scale animation: 1 second -->
+    <sys:Double x:Key="BitterMoth36.Scale.DurationSeconds">1</sys:Double>
+
+    <!-- 하단 원 딜레이: 0.5초 -->
+    <!-- Bottom circle delay: 0.5 seconds -->
+    <sys:Double x:Key="BitterMoth36.BottomCircle.DelaySeconds">0.5</sys:Double>
+
+</ResourceDictionary>
