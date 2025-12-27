@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:GreatDragonfly65.Avalonia.Lib.Controls"
+        x:Class="GreatDragonfly65.Avalonia.Gallery.MainWindow"
+        Title="GreatDragonfly65 - HoverButton Gallery"
+        Width="600" Height="400"
+        Background="#1a1a2e">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="40">
+
+            <TextBlock Text="HoverButton Demo"
+                       Foreground="White"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+
+            <TextBlock Text="Hover over the button to see the animation effect"
+                       Foreground="#888888"
+                       FontSize="14"
+                       HorizontalAlignment="Center"/>
+
+            <controls:HoverButton Text="Hover Me"
+                                  HoverText="SMOOKY DEV"
+                                  BeforeText="Hover ME"
+                                  BeforeHoverText="SMOOKY"
+                                  HorizontalAlignment="Center"/>
+
+        </StackPanel>
+    </Grid>
+
+</Window>

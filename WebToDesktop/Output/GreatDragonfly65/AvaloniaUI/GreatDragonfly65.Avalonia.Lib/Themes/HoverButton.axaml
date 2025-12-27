@@ -1,0 +1,235 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:GreatDragonfly65.Avalonia.Lib.Controls">
+
+    <!-- 색상 리소스 / Color Resources -->
+    <Color x:Key="Rose900">#881337</Color>
+    <Color x:Key="Pink700">#BE185D</Color>
+    <Color x:Key="Pink600">#DB2777</Color>
+    <Color x:Key="Rose700">#BE123C</Color>
+
+    <!-- 그라데이션 브러시 / Gradient Brushes -->
+    <LinearGradientBrush x:Key="MainGradientBrush" StartPoint="0%,50%" EndPoint="100%,50%">
+        <GradientStop Color="{StaticResource Rose900}" Offset="0"/>
+        <GradientStop Color="{StaticResource Pink700}" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="AfterGradientBrush" StartPoint="0%,50%" EndPoint="100%,50%">
+        <GradientStop Color="{StaticResource Rose700}" Offset="0"/>
+        <GradientStop Color="{StaticResource Pink600}" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="BeforeGradientBrush" StartPoint="100%,50%" EndPoint="0%,50%">
+        <GradientStop Color="{StaticResource Rose700}" Offset="0"/>
+        <GradientStop Color="{StaticResource Pink600}" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- HoverButton 스타일 / HoverButton Style -->
+    <ControlTheme x:Key="{x:Type controls:HoverButton}" TargetType="controls:HoverButton">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- 메인 버튼 배경 / Main button background -->
+                    <Border x:Name="MainBorder"
+                            Background="{StaticResource MainGradientBrush}"
+                            CornerRadius="0,4,4,0"
+                            Padding="40,16">
+                        <Border.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Border.RenderTransform>
+                        <TextBlock x:Name="MainText"
+                                   Text="{TemplateBinding Text}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </Border>
+
+                    <!-- ::before pseudo-element (왼쪽 클립 영역) / Left clipped area -->
+                    <Border x:Name="BeforeBorder"
+                            Background="{StaticResource BeforeGradientBrush}"
+                            CornerRadius="0,4,4,0"
+                            Padding="40,16"
+                            RenderTransformOrigin="0%,100%"
+                            ClipToBounds="True">
+                        <Border.Clip>
+                            <!-- clip-path: polygon(26% 0, 38% 17%, 25% 32%, 41% 66%, 27% 81%, 50% 100%, 0 100%, 0% 70%, 0% 35%, 0 0) -->
+                            <!-- 크기 기준: Width=140, Height=52 가정 / Assuming Width=140, Height=52 -->
+                            <PathGeometry>
+                                <PathFigure StartPoint="36.4,0" IsClosed="True">
+                                    <LineSegment Point="53.2,8.84"/>
+                                    <LineSegment Point="35,16.64"/>
+                                    <LineSegment Point="57.4,34.32"/>
+                                    <LineSegment Point="37.8,42.12"/>
+                                    <LineSegment Point="70,52"/>
+                                    <LineSegment Point="0,52"/>
+                                    <LineSegment Point="0,36.4"/>
+                                    <LineSegment Point="0,18.2"/>
+                                    <LineSegment Point="0,0"/>
+                                </PathFigure>
+                            </PathGeometry>
+                        </Border.Clip>
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform X="0"/>
+                                <RotateTransform Angle="0"/>
+                                <SkewTransform AngleY="0"/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                        <TextBlock x:Name="BeforeText"
+                                   Text="{TemplateBinding BeforeText}"
+                                   Foreground="White"
+                                   FontWeight="SemiBold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </Border>
+
+                    <!-- ::after pseudo-element (오른쪽 클립 영역) / Right clipped area -->
+                    <Border x:Name="AfterBorder"
+                            Background="{StaticResource AfterGradientBrush}"
+                            CornerRadius="0,4,4,0"
+                            Padding="40,16"
+                            RenderTransformOrigin="100%,100%"
+                            ClipToBounds="True">
+                        <Border.Clip>
+                            <!-- clip-path: polygon(50% 0%, 100% 0, 100% 34%, 100% 100%, 77% 87%, 88% 62%, 64% 75%, 67% 50%, 48% 32%, 82% 18%) -->
+                            <PathGeometry>
+                                <PathFigure StartPoint="70,0" IsClosed="True">
+                                    <LineSegment Point="140,0"/>
+                                    <LineSegment Point="140,17.68"/>
+                                    <LineSegment Point="140,52"/>
+                                    <LineSegment Point="107.8,45.24"/>
+                                    <LineSegment Point="123.2,32.24"/>
+                                    <LineSegment Point="89.6,39"/>
+                                    <LineSegment Point="93.8,26"/>
+                                    <LineSegment Point="67.2,16.64"/>
+                                    <LineSegment Point="114.8,9.36"/>
+                                </PathFigure>
+                            </PathGeometry>
+                        </Border.Clip>
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform X="0"/>
+                                <RotateTransform Angle="0"/>
+                                <SkewTransform AngleY="0"/>
+                                <ScaleTransform ScaleX="1"/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                        <TextBlock x:Name="AfterText"
+                                   Text="{TemplateBinding HoverText}"
+                                   Foreground="White"
+                                   FontWeight="SemiBold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Hover 상태 애니메이션 / Hover state animations -->
+        <Style Selector="^:pointerover /template/ Border#MainBorder">
+            <Style.Animations>
+                <Animation Duration="0:0:0.7" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Before 호버 애니메이션 / Before hover animation -->
+        <Style Selector="^:pointerover /template/ Border#BeforeBorder">
+            <Style.Animations>
+                <Animation Duration="0:0:0.7" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform X="0"/>
+                                <RotateTransform Angle="-45"/>
+                                <SkewTransform AngleY="6"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:pointerover /template/ TextBlock#BeforeText">
+            <Setter Property="Text" Value="{Binding BeforeHoverText, RelativeSource={RelativeSource TemplatedParent}}"/>
+        </Style>
+
+        <!-- After 호버 애니메이션 / After hover animation -->
+        <Style Selector="^:pointerover /template/ Border#AfterBorder">
+            <Style.Animations>
+                <Animation Duration="0:0:0.7" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform X="-1"/>
+                                <RotateTransform Angle="100"/>
+                                <SkewTransform AngleY="6"/>
+                                <ScaleTransform ScaleX="0.5"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- 마우스가 떠날 때 애니메이션 / Animation when mouse leaves -->
+        <Style Selector="^:not(:pointerover) /template/ Border#MainBorder">
+            <Style.Animations>
+                <Animation Duration="0:0:1" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:not(:pointerover) /template/ Border#BeforeBorder">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform X="0"/>
+                                <RotateTransform Angle="0"/>
+                                <SkewTransform AngleY="0"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:not(:pointerover) /template/ TextBlock#BeforeText">
+            <Setter Property="Text" Value="{Binding BeforeText, RelativeSource={RelativeSource TemplatedParent}}"/>
+        </Style>
+
+        <Style Selector="^:not(:pointerover) /template/ Border#AfterBorder">
+            <Style.Animations>
+                <Animation Duration="0:0:0.5" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform X="0"/>
+                                <RotateTransform Angle="0"/>
+                                <SkewTransform AngleY="0"/>
+                                <ScaleTransform ScaleX="1"/>
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

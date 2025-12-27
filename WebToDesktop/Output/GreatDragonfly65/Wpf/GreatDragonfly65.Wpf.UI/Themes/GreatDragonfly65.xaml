@@ -1,0 +1,206 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:GreatDragonfly65.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/GreatDragonfly65.Wpf.UI;component/Themes/GreatDragonfly65Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:GreatDragonfly65}">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{StaticResource GreatDragonfly65.Foreground}"/>
+        <Setter Property="Padding" Value="40,16"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:GreatDragonfly65}">
+                    <Grid x:Name="RootGrid">
+                        <!-- Main Background Border with gradient -->
+                        <Border x:Name="BackgroundBorder"
+                                CornerRadius="{StaticResource GreatDragonfly65.CornerRadius}">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Color="{StaticResource GreatDragonfly65.Background.GradientStart}" Offset="0"/>
+                                    <GradientStop Color="{StaticResource GreatDragonfly65.Background.GradientEnd}" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <Grid ClipToBounds="True">
+                                <!-- Before Pseudo-element -->
+                                <Border x:Name="BeforePseudo"
+                                        CornerRadius="{StaticResource GreatDragonfly65.CornerRadius}"
+                                        RenderTransformOrigin="0,1">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <SkewTransform x:Name="BeforeSkew" AngleY="0"/>
+                                            <RotateTransform x:Name="BeforeRotate" Angle="0"/>
+                                            <TranslateTransform x:Name="BeforeTranslate" X="0"/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="1,0.5" EndPoint="0,0.5">
+                                            <GradientStop Color="{StaticResource GreatDragonfly65.Pseudo.GradientStart}" Offset="0"/>
+                                            <GradientStop Color="{StaticResource GreatDragonfly65.Pseudo.GradientEnd}" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Border.Clip>
+                                        <PathGeometry>
+                                            <PathFigure StartPoint="26,0" IsClosed="True">
+                                                <LineSegment Point="38,17"/>
+                                                <LineSegment Point="25,32"/>
+                                                <LineSegment Point="41,66"/>
+                                                <LineSegment Point="27,81"/>
+                                                <LineSegment Point="50,100"/>
+                                                <LineSegment Point="0,100"/>
+                                                <LineSegment Point="0,70"/>
+                                                <LineSegment Point="0,35"/>
+                                                <LineSegment Point="0,0"/>
+                                            </PathFigure>
+                                        </PathGeometry>
+                                    </Border.Clip>
+                                    <TextBlock x:Name="BeforeText"
+                                               Text="{TemplateBinding BeforeText}"
+                                               Foreground="White"
+                                               FontWeight="SemiBold"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Border>
+
+                                <!-- After Pseudo-element -->
+                                <Border x:Name="AfterPseudo"
+                                        CornerRadius="{StaticResource GreatDragonfly65.CornerRadius}"
+                                        RenderTransformOrigin="1,1">
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform x:Name="AfterScale" ScaleX="1" ScaleY="1"/>
+                                            <SkewTransform x:Name="AfterSkew" AngleY="0"/>
+                                            <RotateTransform x:Name="AfterRotate" Angle="0"/>
+                                            <TranslateTransform x:Name="AfterTranslate" X="0"/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                            <GradientStop Color="{StaticResource GreatDragonfly65.Pseudo.GradientStart}" Offset="0"/>
+                                            <GradientStop Color="{StaticResource GreatDragonfly65.Pseudo.GradientEnd}" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Border.Clip>
+                                        <PathGeometry>
+                                            <PathFigure StartPoint="50,0" IsClosed="True">
+                                                <LineSegment Point="100,0"/>
+                                                <LineSegment Point="100,34"/>
+                                                <LineSegment Point="100,100"/>
+                                                <LineSegment Point="77,87"/>
+                                                <LineSegment Point="88,62"/>
+                                                <LineSegment Point="64,75"/>
+                                                <LineSegment Point="67,50"/>
+                                                <LineSegment Point="48,32"/>
+                                                <LineSegment Point="82,18"/>
+                                            </PathFigure>
+                                        </PathGeometry>
+                                    </Border.Clip>
+                                    <TextBlock x:Name="AfterText"
+                                               Text="{TemplateBinding AfterText}"
+                                               Foreground="White"
+                                               FontWeight="SemiBold"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+                                </Border>
+
+                                <!-- Content -->
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  Margin="{TemplateBinding Padding}"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <!-- Scale the entire button -->
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Button scale animation -->
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                         To="1.05" Duration="0:0:0.7"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                         To="1.05" Duration="0:0:0.7"/>
+
+                                        <!-- Before pseudo-element animations -->
+                                        <DoubleAnimation Storyboard.TargetName="BeforeRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="-45" Duration="0:0:0.7"/>
+                                        <DoubleAnimation Storyboard.TargetName="BeforeSkew"
+                                                         Storyboard.TargetProperty="AngleY"
+                                                         To="6" Duration="0:0:0.7"/>
+
+                                        <!-- After pseudo-element animations -->
+                                        <DoubleAnimation Storyboard.TargetName="AfterRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="100" Duration="0:0:0.7"/>
+                                        <DoubleAnimation Storyboard.TargetName="AfterSkew"
+                                                         Storyboard.TargetProperty="AngleY"
+                                                         To="6" Duration="0:0:0.7"/>
+                                        <DoubleAnimation Storyboard.TargetName="AfterScale"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="0.5" Duration="0:0:0.7"/>
+                                        <DoubleAnimation Storyboard.TargetName="AfterTranslate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="-1" Duration="0:0:0.7"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Button scale animation -->
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                         To="1.0" Duration="0:0:0.5"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                         To="1.0" Duration="0:0:0.5"/>
+
+                                        <!-- Before pseudo-element animations -->
+                                        <DoubleAnimation Storyboard.TargetName="BeforeRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="0" Duration="0:0:0.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="BeforeSkew"
+                                                         Storyboard.TargetProperty="AngleY"
+                                                         To="0" Duration="0:0:0.5"/>
+
+                                        <!-- After pseudo-element animations -->
+                                        <DoubleAnimation Storyboard.TargetName="AfterRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="0" Duration="0:0:0.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="AfterSkew"
+                                                         Storyboard.TargetProperty="AngleY"
+                                                         To="0" Duration="0:0:0.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="AfterScale"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="1.0" Duration="0:0:0.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="AfterTranslate"
+                                                         Storyboard.TargetProperty="X"
+                                                         To="0" Duration="0:0:0.5"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+
+                            <!-- Text change on hover -->
+                            <Setter TargetName="BeforeText" Property="Text" Value="{Binding BeforeHoverText, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="AfterText" Property="Text" Value="{Binding AfterHoverText, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

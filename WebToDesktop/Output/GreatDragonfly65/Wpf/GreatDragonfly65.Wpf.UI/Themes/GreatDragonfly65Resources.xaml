@@ -1,0 +1,55 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Tailwind CSS Color Mapping -->
+    <!-- rose-900: #881337 -->
+    <!-- rose-700: #be123c -->
+    <!-- pink-700: #be185d -->
+    <!-- pink-600: #db2777 -->
+
+    <!-- Background Gradient Colors -->
+    <Color x:Key="GreatDragonfly65.Background.GradientStart">#FF881337</Color>
+    <Color x:Key="GreatDragonfly65.Background.GradientEnd">#FFBE185D</Color>
+
+    <!-- Pseudo-element Gradient Colors (from-rose-700 to-pink-600) -->
+    <Color x:Key="GreatDragonfly65.Pseudo.GradientStart">#FFBE123C</Color>
+    <Color x:Key="GreatDragonfly65.Pseudo.GradientEnd">#FFDB2777</Color>
+
+    <!-- Text Color -->
+    <SolidColorBrush x:Key="GreatDragonfly65.Foreground" Color="White"/>
+
+    <!-- Sizes (Tailwind: px-10 = 40px, py-4 = 16px) -->
+    <sys:Double x:Key="GreatDragonfly65.PaddingHorizontal">40</sys:Double>
+    <sys:Double x:Key="GreatDragonfly65.PaddingVertical">16</sys:Double>
+
+    <!-- Border Radius (rounded-e = right corners only, typically 4px) -->
+    <CornerRadius x:Key="GreatDragonfly65.CornerRadius">0,4,4,0</CornerRadius>
+
+    <!-- Animation Durations -->
+    <!-- duration-700 = 700ms, duration-500 = 500ms, duration-1000 = 1000ms -->
+    <sys:Double x:Key="GreatDragonfly65.Duration.Fast">0.5</sys:Double>
+    <sys:Double x:Key="GreatDragonfly65.Duration.Normal">0.7</sys:Double>
+    <sys:Double x:Key="GreatDragonfly65.Duration.Slow">1.0</sys:Double>
+
+    <!-- Scale Factor (hover:scale-105 = 1.05) -->
+    <sys:Double x:Key="GreatDragonfly65.Scale.Normal">1.0</sys:Double>
+    <sys:Double x:Key="GreatDragonfly65.Scale.Hover">1.05</sys:Double>
+
+    <!-- Clip-path Geometries for pseudo-elements -->
+    <!-- after: polygon(50% 0%, 100% 0, 100% 34%, 100% 100%, 77% 87%, 88% 62%, 64% 75%, 67% 50%, 48% 32%, 82% 18%) -->
+    <!-- before: polygon(26% 0, 38% 17%, 25% 32%, 41% 66%, 27% 81%, 50% 100%, 0 100%, 0% 70%, 0% 35%, 0 0) -->
+    <StreamGeometry x:Key="GreatDragonfly65.After.ClipGeometry">M 50,0 L 100,0 L 100,34 L 100,100 L 77,87 L 88,62 L 64,75 L 67,50 L 48,32 L 82,18 Z</StreamGeometry>
+    <StreamGeometry x:Key="GreatDragonfly65.Before.ClipGeometry">M 26,0 L 38,17 L 25,32 L 41,66 L 27,81 L 50,100 L 0,100 L 0,70 L 0,35 L 0,0 Z</StreamGeometry>
+
+    <!-- Rotation Angles -->
+    <sys:Double x:Key="GreatDragonfly65.Before.RotateAngle">-45</sys:Double>
+    <sys:Double x:Key="GreatDragonfly65.After.RotateAngle">100</sys:Double>
+
+    <!-- Skew Values (hover:skew-y-6 = 6deg) -->
+    <sys:Double x:Key="GreatDragonfly65.Skew.Hover">6</sys:Double>
+
+    <!-- Scale X for after element (hover:scale-x-50 = 0.5) -->
+    <sys:Double x:Key="GreatDragonfly65.After.ScaleX.Hover">0.5</sys:Double>
+
+</ResourceDictionary>
