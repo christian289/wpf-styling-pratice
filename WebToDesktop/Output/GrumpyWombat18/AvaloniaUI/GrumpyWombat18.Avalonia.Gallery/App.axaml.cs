@@ -4,7 +4,7 @@ using Avalonia.Markup.Xaml;
 
 namespace GrumpyWombat18.Avalonia.Gallery;
 
-public sealed partial class App : Application
+public partial class App : Application
 {
     public override void Initialize()
     {

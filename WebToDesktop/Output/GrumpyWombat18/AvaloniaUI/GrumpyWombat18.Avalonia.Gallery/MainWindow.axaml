@@ -6,67 +6,40 @@
         Width="600"
         Height="400"
         Background="#2D2D2D">
-
+    
     <StackPanel HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Spacing="30">
-
+        
         <TextBlock Text="IconToggleButton Demo"
-                   FontSize="28"
+                   FontSize="24"
                    FontWeight="Bold"
                    Foreground="White"
                    HorizontalAlignment="Center"/>
-
-        <TextBlock Text="From Uiverse.io by milegelu"
+        
+        <TextBlock Text="Click to toggle between ball and Game modes"
                    FontSize="14"
-                   Foreground="#888888"
+                   Foreground="#AAAAAA"
                    HorizontalAlignment="Center"/>
-
+        
         <!-- Default IconToggleButton -->
-        <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center">
-            <controls:IconToggleButton UncheckedText="ball"
-                                        CheckedText="Game"/>
-
-            <controls:IconToggleButton UncheckedText="Off"
-                                        CheckedText="On"
-                                        IsChecked="True"/>
-        </StackPanel>
-
-        <!-- Custom Colors IconToggleButton -->
-        <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center">
-            <controls:IconToggleButton UncheckedText="Dark"
-                                        CheckedText="Light"
-                                        CheckedBackground="#4CAF50"/>
-
-            <controls:IconToggleButton UncheckedText="Stop"
-                                        CheckedText="Play"
-                                        UncheckedBackground="#D32F2F"
-                                        CheckedBackground="#4CAF50"/>
-        </StackPanel>
-
-        <!-- Different Sizes -->
-        <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center">
-            <controls:IconToggleButton UncheckedText="S"
-                                        CheckedText="S"
-                                        IconSize="20"
-                                        FontSize="14"/>
-
-            <controls:IconToggleButton UncheckedText="Medium"
-                                        CheckedText="Medium"/>
-
-            <controls:IconToggleButton UncheckedText="Large"
-                                        CheckedText="Large"
-                                        IconSize="40"
-                                        FontSize="24"/>
-        </StackPanel>
-
-        <!-- Instructions -->
-        <TextBlock Text="Click the buttons to toggle between states"
-                   FontSize="12"
-                   Foreground="#666666"
-                   HorizontalAlignment="Center"
-                   Margin="0,20,0,0"/>
-
+        <controls:IconToggleButton UncheckedText="ball"
+                                   CheckedText="Game"
+                                   HorizontalAlignment="Center"/>
+        
+        <!-- Custom Sized IconToggleButton -->
+        <controls:IconToggleButton UncheckedText="ball"
+                                   CheckedText="Game"
+                                   IconSize="40"
+                                   FontSize="24"
+                                   Padding="15"
+                                   HorizontalAlignment="Center"/>
+        
+        <!-- Pre-checked IconToggleButton -->
+        <controls:IconToggleButton UncheckedText="ball"
+                                   CheckedText="Game"
+                                   IsChecked="True"
+                                   HorizontalAlignment="Center"/>
+        
     </StackPanel>
-
 </Window>
