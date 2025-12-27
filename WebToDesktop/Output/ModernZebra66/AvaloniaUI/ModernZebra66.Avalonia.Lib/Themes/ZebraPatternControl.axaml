@@ -1,0 +1,58 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:ModernZebra66.Avalonia.Lib.Controls">
+
+    <!--
+    ModernZebra66 패턴 컨트롤 스타일
+    CSS repeating conic gradient 기반 육각형 지브라 패턴
+
+    ModernZebra66 Pattern Control Style
+    Hexagonal zebra pattern based on CSS repeating conic gradient
+
+    Original CSS:
+    repeating conic gradient from 30deg with three colors
+    Background size: var(s) calc(var(s) * 0.577)
+
+    Source: uiverse.io by csemszepp
+    -->
+
+    <Styles.Resources>
+        <Color x:Key="ZebraPattern.Color1">#1d1d1d</Color>
+        <Color x:Key="ZebraPattern.Color2">#4e4f51</Color>
+        <Color x:Key="ZebraPattern.Color3">#3c3c3c</Color>
+    </Styles.Resources>
+
+    <!-- Default Style -->
+    <Style Selector="controls|ZebraPatternControl">
+        <Setter Property="TileSize" Value="200"/>
+        <Setter Property="Color1" Value="{StaticResource ZebraPattern.Color1}"/>
+        <Setter Property="Color2" Value="{StaticResource ZebraPattern.Color2}"/>
+        <Setter Property="Color3" Value="{StaticResource ZebraPattern.Color3}"/>
+        <Setter Property="ClipToBounds" Value="True"/>
+    </Style>
+
+    <!-- Small Tile Variant -->
+    <Style Selector="controls|ZebraPatternControl.small">
+        <Setter Property="TileSize" Value="100"/>
+    </Style>
+
+    <!-- Large Tile Variant -->
+    <Style Selector="controls|ZebraPatternControl.large">
+        <Setter Property="TileSize" Value="300"/>
+    </Style>
+
+    <!-- Light Theme Variant -->
+    <Style Selector="controls|ZebraPatternControl.light">
+        <Setter Property="Color1" Value="#e0e0e0"/>
+        <Setter Property="Color2" Value="#f0f0f0"/>
+        <Setter Property="Color3" Value="#d0d0d0"/>
+    </Style>
+
+    <!-- Blue Theme Variant -->
+    <Style Selector="controls|ZebraPatternControl.blue">
+        <Setter Property="Color1" Value="#1a365d"/>
+        <Setter Property="Color2" Value="#2c5282"/>
+        <Setter Property="Color3" Value="#234876"/>
+    </Style>
+
+</Styles>

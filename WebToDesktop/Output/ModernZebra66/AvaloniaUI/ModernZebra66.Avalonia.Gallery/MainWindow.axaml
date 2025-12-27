@@ -1,0 +1,135 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:ModernZebra66.Avalonia.Lib.Controls"
+        x:Class="ModernZebra66.Avalonia.Gallery.MainWindow"
+        Title="ModernZebra66 - Hexagonal Pattern Gallery"
+        Width="1200" Height="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Background="#2d2d2d"
+                Padding="20">
+            <StackPanel Spacing="8">
+                <TextBlock Text="ModernZebra66 Pattern"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+                <TextBlock Text="CSS repeating-conic-gradient 기반 육각형 패턴 (Hexagonal pattern based on CSS repeating-conic-gradient)"
+                           FontSize="14"
+                           Foreground="#888888"/>
+                <TextBlock Text="Source: uiverse.io by csemszepp (Afif13)"
+                           FontSize="12"
+                           Foreground="#666666"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Pattern Showcase -->
+        <TabControl Grid.Row="1" Margin="10">
+
+            <!-- Default Pattern -->
+            <TabItem Header="Default">
+                <Grid>
+                    <controls:ZebraPatternControl />
+                    <Border Background="#80000000"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            CornerRadius="8"
+                            Padding="20">
+                        <TextBlock Text="Default Pattern (TileSize=200)"
+                                   FontSize="18"
+                                   Foreground="White"/>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <!-- Small Pattern -->
+            <TabItem Header="Small">
+                <Grid>
+                    <controls:ZebraPatternControl Classes="small"/>
+                    <Border Background="#80000000"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            CornerRadius="8"
+                            Padding="20">
+                        <TextBlock Text="Small Pattern (TileSize=100)"
+                                   FontSize="18"
+                                   Foreground="White"/>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <!-- Large Pattern -->
+            <TabItem Header="Large">
+                <Grid>
+                    <controls:ZebraPatternControl Classes="large"/>
+                    <Border Background="#80000000"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            CornerRadius="8"
+                            Padding="20">
+                        <TextBlock Text="Large Pattern (TileSize=300)"
+                                   FontSize="18"
+                                   Foreground="White"/>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <!-- Light Theme -->
+            <TabItem Header="Light Theme">
+                <Grid>
+                    <controls:ZebraPatternControl Classes="light"/>
+                    <Border Background="#80FFFFFF"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            CornerRadius="8"
+                            Padding="20">
+                        <TextBlock Text="Light Theme Variant"
+                                   FontSize="18"
+                                   Foreground="Black"/>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <!-- Blue Theme -->
+            <TabItem Header="Blue Theme">
+                <Grid>
+                    <controls:ZebraPatternControl Classes="blue"/>
+                    <Border Background="#80000000"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            CornerRadius="8"
+                            Padding="20">
+                        <TextBlock Text="Blue Theme Variant"
+                                   FontSize="18"
+                                   Foreground="White"/>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <!-- Custom Colors -->
+            <TabItem Header="Custom">
+                <Grid>
+                    <controls:ZebraPatternControl TileSize="150"
+                                                   Color1="#2d1b4e"
+                                                   Color2="#4a3372"
+                                                   Color3="#3d2760"/>
+                    <Border Background="#80000000"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            CornerRadius="8"
+                            Padding="20">
+                        <TextBlock Text="Custom Purple Theme"
+                                   FontSize="18"
+                                   Foreground="White"/>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+
+</Window>

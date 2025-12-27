@@ -1,0 +1,64 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+        CSS 변수 매핑:
+        [s]: 200px - 타일 크기 (패턴 단위 크기)
+        [c1]: #1d1d1d - 첫 번째 색상 (가장 어두운)
+        [c2]: #4e4f51 - 두 번째 색상 (중간)
+        [c3]: #3c3c3c - 세 번째 색상 (어두운 중간)
+
+        CSS variable mapping:
+        [s]: 200px - tile size (pattern unit size)
+        [c1]: #1d1d1d - first color (darkest)
+        [c2]: #4e4f51 - second color (medium)
+        [c3]: #3c3c3c - third color (dark medium)
+    -->
+
+    <!-- 크기 / Size -->
+    <sys:Double x:Key="ModernZebra66.TileSize">200</sys:Double>
+    <sys:Double x:Key="ModernZebra66.TileHeight">115.47</sys:Double>
+    <!-- 200 * 0.577 ≈ 115.47 (육각형 비율 / hexagon ratio) -->
+
+    <!-- 색상 / Colors -->
+    <Color x:Key="ModernZebra66.Color1">#1d1d1d</Color>
+    <Color x:Key="ModernZebra66.Color2">#4e4f51</Color>
+    <Color x:Key="ModernZebra66.Color3">#3c3c3c</Color>
+
+    <SolidColorBrush x:Key="ModernZebra66.Brush1" Color="{StaticResource ModernZebra66.Color1}" />
+    <SolidColorBrush x:Key="ModernZebra66.Brush2" Color="{StaticResource ModernZebra66.Color2}" />
+    <SolidColorBrush x:Key="ModernZebra66.Brush3" Color="{StaticResource ModernZebra66.Color3}" />
+
+    <!--
+        육각형 타일 지오메트리 (정육각형)
+        CSS의 repeating-conic-gradient를 Polygon Path로 시뮬레이션
+
+        Hexagonal tile geometry (regular hexagon)
+        Simulating CSS repeating-conic-gradient with Polygon Paths
+
+        육각형 좌표 계산 (중심: 50,50, 반지름: 50):
+        Hexagon coordinate calculation (center: 50,50, radius: 50):
+        - 0°:   50 + 50*cos(0°),   50 + 50*sin(0°)   = 100, 50
+        - 60°:  50 + 50*cos(60°),  50 + 50*sin(60°)  = 75, 93.3
+        - 120°: 50 + 50*cos(120°), 50 + 50*sin(120°) = 25, 93.3
+        - 180°: 50 + 50*cos(180°), 50 + 50*sin(180°) = 0, 50
+        - 240°: 50 + 50*cos(240°), 50 + 50*sin(240°) = 25, 6.7
+        - 300°: 50 + 50*cos(300°), 50 + 50*sin(300°) = 75, 6.7
+    -->
+
+    <!-- 삼각형 섹터 지오메트리 (60도 단위) / Triangle sector geometry (60 degree units) -->
+    <!-- 섹터 1: 0-60° (c1) -->
+    <StreamGeometry x:Key="ModernZebra66.Sector1">M 50,50 L 100,50 L 75,93.3 Z</StreamGeometry>
+    <!-- 섹터 2: 60-120° (c2) -->
+    <StreamGeometry x:Key="ModernZebra66.Sector2">M 50,50 L 75,93.3 L 25,93.3 Z</StreamGeometry>
+    <!-- 섹터 3: 120-180° (c3) -->
+    <StreamGeometry x:Key="ModernZebra66.Sector3">M 50,50 L 25,93.3 L 0,50 Z</StreamGeometry>
+    <!-- 섹터 4: 180-240° (c1) -->
+    <StreamGeometry x:Key="ModernZebra66.Sector4">M 50,50 L 0,50 L 25,6.7 Z</StreamGeometry>
+    <!-- 섹터 5: 240-300° (c2) -->
+    <StreamGeometry x:Key="ModernZebra66.Sector5">M 50,50 L 25,6.7 L 75,6.7 Z</StreamGeometry>
+    <!-- 섹터 6: 300-360° (c3) -->
+    <StreamGeometry x:Key="ModernZebra66.Sector6">M 50,50 L 75,6.7 L 100,50 Z</StreamGeometry>
+
+</ResourceDictionary>

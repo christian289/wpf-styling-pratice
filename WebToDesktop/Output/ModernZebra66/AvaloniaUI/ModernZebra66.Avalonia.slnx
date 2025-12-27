@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ModernZebra66.Avalonia.Lib\ModernZebra66.Avalonia.Lib.csproj" />
+  <Project Path="ModernZebra66.Avalonia.Gallery\ModernZebra66.Avalonia.Gallery.csproj" />
+</Solution>

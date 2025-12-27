@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="ModernZebra66.Wpf.Gallery/ModernZebra66.Wpf.Gallery.csproj" />
+  <Project Path="ModernZebra66.Wpf.UI/ModernZebra66.Wpf.UI.csproj" />
+</Solution>
