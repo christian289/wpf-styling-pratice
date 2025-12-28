@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="ThinCrab36.Avalonia.Gallery/ThinCrab36.Avalonia.Gallery.csproj" />
+  <Project Path="ThinCrab36.Avalonia.Lib/ThinCrab36.Avalonia.Lib.csproj" />
+</Solution>

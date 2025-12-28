@@ -1,0 +1,298 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:ThinCrab36.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ThinCrab36.Wpf.UI;component/Themes/ThinCrab36Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Secondary Button Style (Mark as Read - White Background) -->
+    <Style x:Key="ThinCrab36.SecondaryButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource ThinCrab36.SecondaryButton.Background}" />
+        <Setter Property="Foreground" Value="{StaticResource ThinCrab36.SecondaryButton.Foreground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ThinCrab36.SecondaryButton.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="{StaticResource ThinCrab36.Button.BorderThickness}" />
+        <Setter Property="Padding" Value="{StaticResource ThinCrab36.Button.Padding}" />
+        <Setter Property="FontSize" Value="{StaticResource ThinCrab36.Button.FontSize}" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <!-- Shadow Layer -->
+                        <Border x:Name="ShadowBorder"
+                                Background="{StaticResource ThinCrab36.Card.ShadowBrush}"
+                                Margin="5,5,0,0" />
+
+                        <!-- Main Button Layer -->
+                        <Border x:Name="MainBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Margin="0,0,5,5">
+                            <Grid>
+                                <!-- Shine Effect Layer (::before pseudo-element) -->
+                                <Border x:Name="ShineEffect"
+                                        Background="{x:Null}"
+                                        ClipToBounds="True">
+                                    <Rectangle x:Name="ShineRectangle"
+                                               HorizontalAlignment="Left"
+                                               Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Border}}"
+                                               RenderTransformOrigin="0.5,0.5">
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                                <LinearGradientBrush.Transform>
+                                                    <RotateTransform Angle="30" />
+                                                </LinearGradientBrush.Transform>
+                                                <GradientStop Color="Transparent" Offset="0" />
+                                                <GradientStop Color="#4DFFFFFF" Offset="0.5" />
+                                                <GradientStop Color="Transparent" Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+                                        <Rectangle.RenderTransform>
+                                            <TranslateTransform x:Name="ShineTransform" X="-200" />
+                                        </Rectangle.RenderTransform>
+                                    </Rectangle>
+                                </Border>
+
+                                <!-- Content -->
+                                <ContentPresenter x:Name="ContentPresenter"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="Center"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                                                  TextBlock.FontSize="{TemplateBinding FontSize}" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover State -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="MainBorder" Property="Background"
+                                    Value="{StaticResource ThinCrab36.SecondaryButton.HoverBackground}" />
+                            <Setter TargetName="MainBorder" Property="BorderBrush"
+                                    Value="{StaticResource ThinCrab36.SecondaryButton.HoverBorderBrush}" />
+                            <Setter Property="Foreground"
+                                    Value="{StaticResource ThinCrab36.SecondaryButton.HoverForeground}" />
+                            <Setter TargetName="ShadowBorder" Property="Background"
+                                    Value="{StaticResource ThinCrab36.SecondaryButton.HoverShadowBrush}" />
+                            <Setter TargetName="MainBorder" Property="Margin" Value="-2,-2,7,7" />
+                            <Setter TargetName="ShadowBorder" Property="Margin" Value="7,7,0,0" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ShineTransform"
+                                                         Storyboard.TargetProperty="X"
+                                                         From="-200" To="400"
+                                                         Duration="0:0:0.6" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+
+                        <!-- Pressed State -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="MainBorder" Property="Margin" Value="5,5,0,0" />
+                            <Setter TargetName="ShadowBorder" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Primary Button Style (Okay - Black Background) -->
+    <Style x:Key="ThinCrab36.PrimaryButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource ThinCrab36.PrimaryButton.Background}" />
+        <Setter Property="Foreground" Value="{StaticResource ThinCrab36.PrimaryButton.Foreground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ThinCrab36.PrimaryButton.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="{StaticResource ThinCrab36.Button.BorderThickness}" />
+        <Setter Property="Padding" Value="{StaticResource ThinCrab36.Button.Padding}" />
+        <Setter Property="FontSize" Value="{StaticResource ThinCrab36.Button.FontSize}" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <!-- Shadow Layer -->
+                        <Border x:Name="ShadowBorder"
+                                Background="{StaticResource ThinCrab36.Card.ShadowBrush}"
+                                Margin="5,5,0,0" />
+
+                        <!-- Main Button Layer -->
+                        <Border x:Name="MainBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Margin="0,0,5,5">
+                            <Grid>
+                                <!-- Shine Effect Layer -->
+                                <Border x:Name="ShineEffect"
+                                        ClipToBounds="True">
+                                    <Rectangle x:Name="ShineRectangle"
+                                               HorizontalAlignment="Left"
+                                               Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Border}}">
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                                <LinearGradientBrush.Transform>
+                                                    <RotateTransform Angle="30" />
+                                                </LinearGradientBrush.Transform>
+                                                <GradientStop Color="Transparent" Offset="0" />
+                                                <GradientStop Color="#4DFFFFFF" Offset="0.5" />
+                                                <GradientStop Color="Transparent" Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+                                        <Rectangle.RenderTransform>
+                                            <TranslateTransform x:Name="ShineTransform" X="-200" />
+                                        </Rectangle.RenderTransform>
+                                    </Rectangle>
+                                </Border>
+
+                                <!-- Content -->
+                                <ContentPresenter x:Name="ContentPresenter"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="Center"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  TextBlock.FontWeight="{TemplateBinding FontWeight}"
+                                                  TextBlock.FontSize="{TemplateBinding FontSize}" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover State -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="MainBorder" Property="Background"
+                                    Value="{StaticResource ThinCrab36.PrimaryButton.HoverBackground}" />
+                            <Setter TargetName="MainBorder" Property="BorderBrush"
+                                    Value="{StaticResource ThinCrab36.PrimaryButton.HoverBorderBrush}" />
+                            <Setter Property="Foreground"
+                                    Value="{StaticResource ThinCrab36.PrimaryButton.HoverForeground}" />
+                            <Setter TargetName="ShadowBorder" Property="Background"
+                                    Value="{StaticResource ThinCrab36.PrimaryButton.HoverShadowBrush}" />
+                            <Setter TargetName="MainBorder" Property="Margin" Value="-2,-2,7,7" />
+                            <Setter TargetName="ShadowBorder" Property="Margin" Value="7,7,0,0" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ShineTransform"
+                                                         Storyboard.TargetProperty="X"
+                                                         From="-200" To="400"
+                                                         Duration="0:0:0.6" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+
+                        <!-- Pressed State -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="MainBorder" Property="Margin" Value="5,5,0,0" />
+                            <Setter TargetName="ShadowBorder" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Main ThinCrab36 Card Control Style -->
+    <Style TargetType="{x:Type controls:ThinCrab36}">
+        <Setter Property="Width" Value="{StaticResource ThinCrab36.Card.Width}" />
+        <Setter Property="Background" Value="{StaticResource ThinCrab36.Card.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ThinCrab36.Card.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="{StaticResource ThinCrab36.Card.BorderThickness}" />
+        <Setter Property="Padding" Value="{StaticResource ThinCrab36.Card.Padding}" />
+        <Setter Property="FontFamily" Value="Arial, sans-serif" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:ThinCrab36}">
+                    <Grid>
+                        <!-- Card Shadow Layer -->
+                        <!-- CSS: box-shadow: 10px 10px 0 #000 -->
+                        <Border Background="{StaticResource ThinCrab36.Card.ShadowBrush}"
+                                Margin="10,10,0,0" />
+
+                        <!-- Main Card Layer -->
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Padding="{TemplateBinding Padding}"
+                                Margin="0,0,10,10">
+                            <StackPanel>
+                                <!-- Header Section -->
+                                <!-- CSS: .brutalist-card__header -->
+                                <Border BorderBrush="{StaticResource ThinCrab36.Card.BorderBrush}"
+                                        BorderThickness="{StaticResource ThinCrab36.Header.BorderThickness}"
+                                        Padding="{StaticResource ThinCrab36.Header.Padding}"
+                                        Margin="{StaticResource ThinCrab36.Header.Margin}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <!-- Icon Container -->
+                                        <!-- CSS: .brutalist-card__icon -->
+                                        <Border Background="{StaticResource ThinCrab36.Icon.Background}"
+                                                Padding="{StaticResource ThinCrab36.Icon.Padding}"
+                                                Margin="0,0,16,0">
+                                            <Path Data="{TemplateBinding IconData}"
+                                                  Fill="{StaticResource ThinCrab36.Icon.Foreground}"
+                                                  Width="{StaticResource ThinCrab36.Icon.Size}"
+                                                  Height="{StaticResource ThinCrab36.Icon.Size}"
+                                                  Stretch="Uniform" />
+                                        </Border>
+
+                                        <!-- Title -->
+                                        <!-- CSS: .brutalist-card__alert -->
+                                        <TextBlock Text="{TemplateBinding Title}"
+                                                   FontSize="{StaticResource ThinCrab36.Title.FontSize}"
+                                                   FontWeight="Black"
+                                                   Foreground="{StaticResource ThinCrab36.Title.Foreground}"
+                                                   VerticalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Typography.Capitals" Value="AllSmallCaps" />
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Message Section -->
+                                <!-- CSS: .brutalist-card__message -->
+                                <Border BorderBrush="{StaticResource ThinCrab36.Card.BorderBrush}"
+                                        BorderThickness="{StaticResource ThinCrab36.Message.BorderThickness}"
+                                        Margin="{StaticResource ThinCrab36.Message.Margin}"
+                                        Padding="{StaticResource ThinCrab36.Message.Padding}">
+                                    <TextBlock Text="{TemplateBinding Message}"
+                                               FontSize="{StaticResource ThinCrab36.Message.FontSize}"
+                                               FontWeight="SemiBold"
+                                               Foreground="{StaticResource ThinCrab36.Title.Foreground}"
+                                               TextWrapping="Wrap"
+                                               LineHeight="20" />
+                                </Border>
+
+                                <!-- Actions Section -->
+                                <!-- CSS: .brutalist-card__actions -->
+                                <StackPanel Margin="0,16,0,0">
+                                    <!-- Secondary Button (Mark as Read) -->
+                                    <Button x:Name="PART_SecondaryButton"
+                                            Content="{TemplateBinding SecondaryButtonText}"
+                                            Style="{StaticResource ThinCrab36.SecondaryButtonStyle}"
+                                            Margin="{StaticResource ThinCrab36.Button.Margin}" />
+
+                                    <!-- Primary Button (Okay) -->
+                                    <Button x:Name="PART_PrimaryButton"
+                                            Content="{TemplateBinding PrimaryButtonText}"
+                                            Style="{StaticResource ThinCrab36.PrimaryButtonStyle}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

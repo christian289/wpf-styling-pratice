@@ -1,0 +1,17 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:ThinCrab36.Avalonia.Lib.Controls"
+        x:Class="ThinCrab36.Avalonia.Gallery.MainWindow"
+        Title="ThinCrab36 - Brutalist Card Gallery"
+        Width="500"
+        Height="500"
+        Background="#F5F5F5">
+
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <controls:BrutalistCard AlertText="Warning"
+                                Message="This is a brutalist card with a very angry button. Proceed with caution, you've been warned."
+                                PrimaryButtonText="Okay"
+                                SecondaryButtonText="Mark as Read" />
+    </Grid>
+
+</Window>

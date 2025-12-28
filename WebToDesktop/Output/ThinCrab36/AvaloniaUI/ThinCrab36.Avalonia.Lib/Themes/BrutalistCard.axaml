@@ -1,0 +1,198 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:ThinCrab36.Avalonia.Lib.Controls">
+
+    <!-- Colors -->
+    <Color x:Key="BrutalistCard.Black">#000000</Color>
+    <Color x:Key="BrutalistCard.White">#FFFFFF</Color>
+    <Color x:Key="BrutalistCard.Blue">#296FBB</Color>
+    <Color x:Key="BrutalistCard.BlueDark">#004280</Color>
+    <Color x:Key="BrutalistCard.Red">#FF0000</Color>
+    <Color x:Key="BrutalistCard.RedDark">#800000</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="BrutalistCard.BlackBrush" Color="{StaticResource BrutalistCard.Black}" />
+    <SolidColorBrush x:Key="BrutalistCard.WhiteBrush" Color="{StaticResource BrutalistCard.White}" />
+    <SolidColorBrush x:Key="BrutalistCard.BlueBrush" Color="{StaticResource BrutalistCard.Blue}" />
+    <SolidColorBrush x:Key="BrutalistCard.BlueDarkBrush" Color="{StaticResource BrutalistCard.BlueDark}" />
+    <SolidColorBrush x:Key="BrutalistCard.RedBrush" Color="{StaticResource BrutalistCard.Red}" />
+    <SolidColorBrush x:Key="BrutalistCard.RedDarkBrush" Color="{StaticResource BrutalistCard.RedDark}" />
+
+    <!-- Icon Path Data -->
+    <StreamGeometry x:Key="BrutalistCard.WarningIcon">M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z</StreamGeometry>
+
+    <!-- Secondary Button Style (Mark as Read) -->
+    <ControlTheme x:Key="BrutalistCardSecondaryButton" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource BrutalistCard.WhiteBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource BrutalistCard.BlackBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource BrutalistCard.BlackBrush}" />
+        <Setter Property="BorderThickness" Value="3" />
+        <Setter Property="Padding" Value="9" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="ClipToBounds" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Shadow -->
+                    <Border Background="{StaticResource BrutalistCard.BlackBrush}"
+                            Margin="5,5,-5,-5" />
+                    <!-- Main Button -->
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Padding="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{StaticResource BrutalistCard.BlueBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource BrutalistCard.BlueBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource BrutalistCard.WhiteBrush}" />
+            <Setter Property="RenderTransform">
+                <TranslateTransform X="-2" Y="-2" />
+            </Setter>
+        </Style>
+
+        <Style Selector="^:pressed">
+            <Setter Property="RenderTransform">
+                <TranslateTransform X="5" Y="5" />
+            </Setter>
+        </Style>
+    </ControlTheme>
+
+    <!-- Primary Button Style (Okay/Read) -->
+    <ControlTheme x:Key="BrutalistCardPrimaryButton" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource BrutalistCard.BlackBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource BrutalistCard.WhiteBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource BrutalistCard.BlackBrush}" />
+        <Setter Property="BorderThickness" Value="3" />
+        <Setter Property="Padding" Value="9" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="ClipToBounds" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Shadow -->
+                    <Border Background="{StaticResource BrutalistCard.BlackBrush}"
+                            Margin="5,5,-5,-5" />
+                    <!-- Main Button -->
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Padding="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{StaticResource BrutalistCard.RedBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource BrutalistCard.RedBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource BrutalistCard.WhiteBrush}" />
+            <Setter Property="RenderTransform">
+                <TranslateTransform X="-2" Y="-2" />
+            </Setter>
+        </Style>
+
+        <Style Selector="^:pressed">
+            <Setter Property="RenderTransform">
+                <TranslateTransform X="5" Y="5" />
+            </Setter>
+        </Style>
+    </ControlTheme>
+
+    <!-- BrutalistCard ControlTheme -->
+    <ControlTheme x:Key="{x:Type controls:BrutalistCard}" TargetType="controls:BrutalistCard">
+        <Setter Property="Width" Value="320" />
+        <Setter Property="Background" Value="{StaticResource BrutalistCard.WhiteBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource BrutalistCard.BlackBrush}" />
+        <Setter Property="BorderThickness" Value="4" />
+        <Setter Property="Padding" Value="18" />
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Card Shadow -->
+                    <Border Background="{StaticResource BrutalistCard.BlackBrush}"
+                            Width="{TemplateBinding Width}"
+                            Margin="10,10,-10,-10" />
+                    <!-- Main Card -->
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"
+                            Width="{TemplateBinding Width}">
+                        <StackPanel>
+                            <!-- Header -->
+                            <Border BorderBrush="{StaticResource BrutalistCard.BlackBrush}"
+                                    BorderThickness="0,0,0,2"
+                                    Padding="0,0,0,12"
+                                    Margin="0,0,0,12">
+                                <StackPanel Orientation="Horizontal" Spacing="12">
+                                    <!-- Icon -->
+                                    <Border Background="{StaticResource BrutalistCard.BlackBrush}"
+                                            Padding="6">
+                                        <PathIcon Data="{StaticResource BrutalistCard.WarningIcon}"
+                                                  Foreground="{StaticResource BrutalistCard.WhiteBrush}"
+                                                  Width="18"
+                                                  Height="18" />
+                                    </Border>
+                                    <!-- Alert Text -->
+                                    <TextBlock Text="{TemplateBinding AlertText}"
+                                               FontWeight="Black"
+                                               FontSize="18"
+                                               Foreground="{StaticResource BrutalistCard.BlackBrush}"
+                                               VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Message -->
+                            <Border BorderBrush="{StaticResource BrutalistCard.BlackBrush}"
+                                    BorderThickness="0,0,0,2"
+                                    Padding="0,0,0,12"
+                                    Margin="0,0,0,12">
+                                <TextBlock Text="{TemplateBinding Message}"
+                                           FontSize="11"
+                                           FontWeight="SemiBold"
+                                           Foreground="{StaticResource BrutalistCard.BlackBrush}"
+                                           TextWrapping="Wrap"
+                                           LineHeight="15.4" />
+                            </Border>
+
+                            <!-- Actions -->
+                            <StackPanel Spacing="12">
+                                <Button Theme="{StaticResource BrutalistCardSecondaryButton}"
+                                        Content="{TemplateBinding SecondaryButtonText}" />
+                                <Button Theme="{StaticResource BrutalistCardPrimaryButton}"
+                                        Content="{TemplateBinding PrimaryButtonText}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

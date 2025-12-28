@@ -1,0 +1,115 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Card Size -->
+    <!-- [card-width] CSS: width: 320px -->
+    <sys:Double x:Key="ThinCrab36.Card.Width">320</sys:Double>
+
+    <!-- Card Colors -->
+    <!-- [card-background] CSS: background-color: #fff -->
+    <SolidColorBrush x:Key="ThinCrab36.Card.Background" Color="#FFFFFF" />
+    <!-- [card-border] CSS: border: 4px solid #000 -->
+    <SolidColorBrush x:Key="ThinCrab36.Card.BorderBrush" Color="#000000" />
+    <!-- [card-shadow] CSS: box-shadow: 10px 10px 0 #000 -->
+    <SolidColorBrush x:Key="ThinCrab36.Card.ShadowBrush" Color="#000000" />
+
+    <!-- Card Spacing -->
+    <!-- [card-padding] CSS: padding: 1.5rem (24px) -->
+    <Thickness x:Key="ThinCrab36.Card.Padding">24</Thickness>
+    <!-- [card-border-thickness] CSS: border: 4px solid -->
+    <Thickness x:Key="ThinCrab36.Card.BorderThickness">4</Thickness>
+
+    <!-- Header Colors -->
+    <!-- [icon-background] CSS: background-color: #000 -->
+    <SolidColorBrush x:Key="ThinCrab36.Icon.Background" Color="#000000" />
+    <!-- [icon-foreground] CSS: fill: #fff -->
+    <SolidColorBrush x:Key="ThinCrab36.Icon.Foreground" Color="#FFFFFF" />
+
+    <!-- Header Spacing -->
+    <!-- [header-margin-bottom] CSS: margin-bottom: 1rem (16px) -->
+    <Thickness x:Key="ThinCrab36.Header.Margin">0,0,0,16</Thickness>
+    <!-- [header-padding-bottom] CSS: padding-bottom: 1rem (16px) -->
+    <Thickness x:Key="ThinCrab36.Header.Padding">0,0,0,16</Thickness>
+    <!-- [header-border-thickness] CSS: border-bottom: 2px solid #000 -->
+    <Thickness x:Key="ThinCrab36.Header.BorderThickness">0,0,0,2</Thickness>
+
+    <!-- Icon Size -->
+    <!-- [icon-size] CSS: height/width: 1.5rem (24px) -->
+    <sys:Double x:Key="ThinCrab36.Icon.Size">24</sys:Double>
+    <!-- [icon-padding] CSS: padding: 0.5rem (8px) -->
+    <Thickness x:Key="ThinCrab36.Icon.Padding">8</Thickness>
+
+    <!-- Title Style -->
+    <!-- [title-font-size] CSS: font-size: 1.5rem (24px) -->
+    <sys:Double x:Key="ThinCrab36.Title.FontSize">24</sys:Double>
+    <!-- [title-foreground] CSS: color: #000 -->
+    <SolidColorBrush x:Key="ThinCrab36.Title.Foreground" Color="#000000" />
+
+    <!-- Message Style -->
+    <!-- [message-font-size] CSS: font-size: 0.9rem (14.4px) -->
+    <sys:Double x:Key="ThinCrab36.Message.FontSize">14.4</sys:Double>
+    <!-- [message-margin] CSS: margin-top: 1rem (16px), padding-bottom: 1rem -->
+    <Thickness x:Key="ThinCrab36.Message.Margin">0,16,0,0</Thickness>
+    <Thickness x:Key="ThinCrab36.Message.Padding">0,0,0,16</Thickness>
+    <!-- [message-border-thickness] CSS: border-bottom: 2px solid #000 -->
+    <Thickness x:Key="ThinCrab36.Message.BorderThickness">0,0,0,2</Thickness>
+
+    <!-- Button Base Style -->
+    <!-- [button-padding] CSS: padding: 0.75rem (12px) -->
+    <Thickness x:Key="ThinCrab36.Button.Padding">12</Thickness>
+    <!-- [button-font-size] CSS: font-size: 1rem (16px) -->
+    <sys:Double x:Key="ThinCrab36.Button.FontSize">16</sys:Double>
+    <!-- [button-border-thickness] CSS: border: 3px solid #000 -->
+    <Thickness x:Key="ThinCrab36.Button.BorderThickness">3</Thickness>
+    <!-- [button-margin-bottom] CSS: margin-bottom: 1rem (16px) -->
+    <Thickness x:Key="ThinCrab36.Button.Margin">0,0,0,16</Thickness>
+
+    <!-- Secondary Button Colors (Mark as Read - White Background) -->
+    <!-- [secondary-background] CSS: background-color: #fff -->
+    <SolidColorBrush x:Key="ThinCrab36.SecondaryButton.Background" Color="#FFFFFF" />
+    <!-- [secondary-foreground] CSS: color: #000 -->
+    <SolidColorBrush x:Key="ThinCrab36.SecondaryButton.Foreground" Color="#000000" />
+    <!-- [secondary-border] CSS: border: 3px solid #000 -->
+    <SolidColorBrush x:Key="ThinCrab36.SecondaryButton.BorderBrush" Color="#000000" />
+    <!-- [secondary-hover-background] CSS: background-color: #296fbb -->
+    <SolidColorBrush x:Key="ThinCrab36.SecondaryButton.HoverBackground" Color="#296FBB" />
+    <!-- [secondary-hover-border] CSS: border-color: #296fbb -->
+    <SolidColorBrush x:Key="ThinCrab36.SecondaryButton.HoverBorderBrush" Color="#296FBB" />
+    <!-- [secondary-hover-foreground] CSS: color: #fff -->
+    <SolidColorBrush x:Key="ThinCrab36.SecondaryButton.HoverForeground" Color="#FFFFFF" />
+    <!-- [secondary-hover-shadow] CSS: box-shadow: 7px 7px 0 #004280 -->
+    <SolidColorBrush x:Key="ThinCrab36.SecondaryButton.HoverShadowBrush" Color="#004280" />
+
+    <!-- Primary Button Colors (Okay - Black Background) -->
+    <!-- [primary-background] CSS: background-color: #000 -->
+    <SolidColorBrush x:Key="ThinCrab36.PrimaryButton.Background" Color="#000000" />
+    <!-- [primary-foreground] CSS: color: #fff -->
+    <SolidColorBrush x:Key="ThinCrab36.PrimaryButton.Foreground" Color="#FFFFFF" />
+    <!-- [primary-border] CSS: border: 3px solid #000 -->
+    <SolidColorBrush x:Key="ThinCrab36.PrimaryButton.BorderBrush" Color="#000000" />
+    <!-- [primary-hover-background] CSS: background-color: #ff0000 -->
+    <SolidColorBrush x:Key="ThinCrab36.PrimaryButton.HoverBackground" Color="#FF0000" />
+    <!-- [primary-hover-border] CSS: border-color: #ff0000 -->
+    <SolidColorBrush x:Key="ThinCrab36.PrimaryButton.HoverBorderBrush" Color="#FF0000" />
+    <!-- [primary-hover-foreground] CSS: color: #fff -->
+    <SolidColorBrush x:Key="ThinCrab36.PrimaryButton.HoverForeground" Color="#FFFFFF" />
+    <!-- [primary-hover-shadow] CSS: box-shadow: 7px 7px 0 #800000 -->
+    <SolidColorBrush x:Key="ThinCrab36.PrimaryButton.HoverShadowBrush" Color="#800000" />
+
+    <!-- Shadow Offsets -->
+    <!-- [card-shadow-offset] CSS: box-shadow: 10px 10px 0 #000 -->
+    <sys:Double x:Key="ThinCrab36.Card.ShadowOffsetX">10</sys:Double>
+    <sys:Double x:Key="ThinCrab36.Card.ShadowOffsetY">10</sys:Double>
+    <!-- [button-shadow-offset] CSS: box-shadow: 5px 5px 0 #000 -->
+    <sys:Double x:Key="ThinCrab36.Button.ShadowOffsetX">5</sys:Double>
+    <sys:Double x:Key="ThinCrab36.Button.ShadowOffsetY">5</sys:Double>
+    <!-- [button-hover-shadow-offset] CSS: box-shadow: 7px 7px 0 #000 -->
+    <sys:Double x:Key="ThinCrab36.Button.HoverShadowOffsetX">7</sys:Double>
+    <sys:Double x:Key="ThinCrab36.Button.HoverShadowOffsetY">7</sys:Double>
+
+    <!-- Icon Path Data -->
+    <!-- Warning icon: circle with exclamation mark -->
+    <Geometry x:Key="ThinCrab36.Icon.WarningPath">M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z</Geometry>
+
+</ResourceDictionary>
