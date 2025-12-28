@@ -1,0 +1,20 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors from CSS -->
+    <!-- Primary: #ff7e5f (Coral/Orange) -->
+    <!-- Secondary: #3f51b5 (Indigo/Blue) -->
+    <Color x:Key="RottenCatfish64.Color.Primary">#FF7E5F</Color>
+    <Color x:Key="RottenCatfish64.Color.Secondary">#3F51B5</Color>
+
+    <SolidColorBrush x:Key="RottenCatfish64.Brush.Primary" Color="{StaticResource RottenCatfish64.Color.Primary}" />
+    <SolidColorBrush x:Key="RottenCatfish64.Brush.Secondary" Color="{StaticResource RottenCatfish64.Color.Secondary}" />
+
+    <!-- Stripe width from CSS: 10px -->
+    <sys:Double x:Key="RottenCatfish64.StripeWidth">10</sys:Double>
+
+    <!-- Tile size for the pattern (20px = 2 stripes) -->
+    <sys:Double x:Key="RottenCatfish64.TileSize">40</sys:Double>
+
+</ResourceDictionary>

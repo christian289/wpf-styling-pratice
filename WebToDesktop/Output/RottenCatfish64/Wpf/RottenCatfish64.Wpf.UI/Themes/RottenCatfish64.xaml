@@ -1,0 +1,184 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:RottenCatfish64.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/RottenCatfish64.Wpf.UI;component/Themes/RottenCatfish64Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--
+    CSS repeating-linear-gradient 변환:
+    원본 CSS는 4개의 repeating-linear-gradient를 레이어로 사용
+    WPF에서는 DrawingBrush + TileMode로 대각선 줄무늬 패턴 구현
+
+    CSS repeating-linear-gradient conversion:
+    Original CSS uses 4 repeating-linear-gradient layers
+    WPF implements diagonal stripe pattern using DrawingBrush + TileMode
+    -->
+
+    <!-- -45도 대각선 줄무늬 브러시 (Primary → Secondary) -->
+    <DrawingBrush x:Key="RottenCatfish64.Brush.DiagonalStripe45"
+                  TileMode="Tile"
+                  Viewport="0,0,28.28,28.28"
+                  ViewportUnits="Absolute"
+                  Viewbox="0,0,28.28,28.28"
+                  ViewboxUnits="Absolute">
+        <DrawingBrush.Transform>
+            <RotateTransform Angle="-45" CenterX="0" CenterY="0" />
+        </DrawingBrush.Transform>
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <!-- 배경 -->
+                <GeometryDrawing Brush="{StaticResource RottenCatfish64.Brush.Secondary}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,40,40" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <!-- Primary 색상 줄무늬 -->
+                <GeometryDrawing Brush="{StaticResource RottenCatfish64.Brush.Primary}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,10,40" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource RottenCatfish64.Brush.Primary}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="20,0,10,40" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <!-- 45도 대각선 줄무늬 브러시 (Secondary → Primary) -->
+    <DrawingBrush x:Key="RottenCatfish64.Brush.DiagonalStripe135"
+                  TileMode="Tile"
+                  Viewport="0,0,28.28,28.28"
+                  ViewportUnits="Absolute"
+                  Viewbox="0,0,28.28,28.28"
+                  ViewboxUnits="Absolute">
+        <DrawingBrush.Transform>
+            <RotateTransform Angle="45" CenterX="0" CenterY="0" />
+        </DrawingBrush.Transform>
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <!-- 배경 -->
+                <GeometryDrawing Brush="{StaticResource RottenCatfish64.Brush.Primary}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,40,40" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <!-- Secondary 색상 줄무늬 -->
+                <GeometryDrawing Brush="{StaticResource RottenCatfish64.Brush.Secondary}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,10,40" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource RottenCatfish64.Brush.Secondary}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="20,0,10,40" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <!-- 복합 패턴 브러시 (4개 그라데이션 레이어 조합) -->
+    <DrawingBrush x:Key="RottenCatfish64.Brush.ComplexPattern"
+                  TileMode="Tile"
+                  Viewport="0,0,40,40"
+                  ViewportUnits="Absolute"
+                  Viewbox="0,0,40,40"
+                  ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <!-- 기본 배경 -->
+                <GeometryDrawing Brush="{StaticResource RottenCatfish64.Brush.Primary}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,40,40" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <!-- -45도 대각선 줄무늬 레이어 -->
+                <DrawingGroup>
+                    <DrawingGroup.Transform>
+                        <RotateTransform Angle="-45" CenterX="20" CenterY="20" />
+                    </DrawingGroup.Transform>
+                    <GeometryDrawing Brush="{StaticResource RottenCatfish64.Brush.Secondary}">
+                        <GeometryDrawing.Geometry>
+                            <GeometryGroup>
+                                <RectangleGeometry Rect="-20,0,10,80" />
+                                <RectangleGeometry Rect="0,0,10,80" />
+                                <RectangleGeometry Rect="20,0,10,80" />
+                                <RectangleGeometry Rect="40,0,10,80" />
+                            </GeometryGroup>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+
+                <!-- 45도 대각선 줄무늬 레이어 (반투명) -->
+                <DrawingGroup Opacity="0.5">
+                    <DrawingGroup.Transform>
+                        <RotateTransform Angle="45" CenterX="20" CenterY="20" />
+                    </DrawingGroup.Transform>
+                    <GeometryDrawing Brush="{StaticResource RottenCatfish64.Brush.Secondary}">
+                        <GeometryDrawing.Geometry>
+                            <GeometryGroup>
+                                <RectangleGeometry Rect="-20,0,10,80" />
+                                <RectangleGeometry Rect="0,0,10,80" />
+                                <RectangleGeometry Rect="20,0,10,80" />
+                                <RectangleGeometry Rect="40,0,10,80" />
+                            </GeometryGroup>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+
+                <!-- -30도 대각선 줄무늬 레이어 (반투명) -->
+                <DrawingGroup Opacity="0.3">
+                    <DrawingGroup.Transform>
+                        <RotateTransform Angle="-30" CenterX="20" CenterY="20" />
+                    </DrawingGroup.Transform>
+                    <GeometryDrawing Brush="{StaticResource RottenCatfish64.Brush.Secondary}">
+                        <GeometryDrawing.Geometry>
+                            <GeometryGroup>
+                                <RectangleGeometry Rect="-20,0,10,80" />
+                                <RectangleGeometry Rect="0,0,10,80" />
+                                <RectangleGeometry Rect="20,0,10,80" />
+                                <RectangleGeometry Rect="40,0,10,80" />
+                            </GeometryGroup>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+
+                <!-- 30도 대각선 줄무늬 레이어 (반투명) -->
+                <DrawingGroup Opacity="0.3">
+                    <DrawingGroup.Transform>
+                        <RotateTransform Angle="30" CenterX="20" CenterY="20" />
+                    </DrawingGroup.Transform>
+                    <GeometryDrawing Brush="{StaticResource RottenCatfish64.Brush.Primary}">
+                        <GeometryDrawing.Geometry>
+                            <GeometryGroup>
+                                <RectangleGeometry Rect="-20,0,10,80" />
+                                <RectangleGeometry Rect="0,0,10,80" />
+                                <RectangleGeometry Rect="20,0,10,80" />
+                                <RectangleGeometry Rect="40,0,10,80" />
+                            </GeometryGroup>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <Style TargetType="{x:Type controls:RottenCatfish64}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:RottenCatfish64}">
+                    <Border Background="{StaticResource RottenCatfish64.Brush.ComplexPattern}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="RottenCatfish64.Avalonia.Lib\RottenCatfish64.Avalonia.Lib.csproj" />
+  <Project Path="RottenCatfish64.Avalonia.Gallery\RottenCatfish64.Avalonia.Gallery.csproj" />
+</Solution>

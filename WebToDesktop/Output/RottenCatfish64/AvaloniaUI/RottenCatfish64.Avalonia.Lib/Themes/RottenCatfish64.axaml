@@ -1,0 +1,11 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:RottenCatfish64.Avalonia.Lib.Controls">
+
+    <!-- RottenCatfish64 Pattern Control Style -->
+    <!-- CSS repeating-linear-gradient 패턴을 구현한 컨트롤 스타일 -->
+    <Style Selector="controls|RottenCatfish64">
+        <Setter Property="ClipToBounds" Value="True"/>
+    </Style>
+
+</Styles>

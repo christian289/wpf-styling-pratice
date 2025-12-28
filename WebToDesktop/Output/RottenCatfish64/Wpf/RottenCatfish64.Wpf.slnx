@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="RottenCatfish64.Wpf.Gallery/RottenCatfish64.Wpf.Gallery.csproj" />
+  <Project Path="RottenCatfish64.Wpf.UI/RottenCatfish64.Wpf.UI.csproj" />
+</Solution>

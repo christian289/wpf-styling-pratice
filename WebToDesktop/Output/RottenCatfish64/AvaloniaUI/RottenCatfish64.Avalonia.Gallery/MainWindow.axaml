@@ -1,0 +1,13 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:RottenCatfish64.Avalonia.Lib.Controls"
+        x:Class="RottenCatfish64.Avalonia.Gallery.MainWindow"
+        Title="RottenCatfish64 - Repeating Gradient Pattern"
+        Width="600"
+        Height="400">
+
+    <!-- CSS repeating-linear-gradient 패턴 데모 -->
+    <!-- From Uiverse.io by AmruthGowda91200 - Tags: simple, blue, minimalist, html, css, pattern -->
+    <controls:RottenCatfish64/>
+
+</Window>
