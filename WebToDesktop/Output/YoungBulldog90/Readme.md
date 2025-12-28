@@ -1,6 +1,6 @@
 # YoungBulldog90
 
-loaders 스타일 컨트롤
+loaders 스타일 컨트롤 - 회전하는 원형 로딩 스피너
 
 ## 원본 정보
 
@@ -21,7 +21,7 @@ cd Wpf && dotnet run --project YoungBulldog90.Wpf.Gallery
 cd AvaloniaUI && dotnet run --project YoungBulldog90.Avalonia.Gallery
 ```
 
-## CSS to WPF 변환 매핑
+## CSS → WPF 변환 매핑
 
 | CSS | WPF | 설명 |
 |-----|-----|------|
