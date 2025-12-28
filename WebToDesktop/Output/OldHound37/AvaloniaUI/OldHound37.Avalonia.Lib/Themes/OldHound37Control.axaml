@@ -1,0 +1,318 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:OldHound37.Avalonia.Lib.Controls">
+
+    <!--
+    CSS Pattern Analysis (From Uiverse.io by csemszepp):
+    - Base: repeating-conic-gradient(#125c65 0 45deg, #bc4a33 0 90deg) - Teal/Orange checkerboard
+    - conic-gradient corners: #dc9d37 25%, #fed450 50% - Gold/Yellow triangles at corners
+    - repeating-linear-gradient: White grid lines
+
+    Since AvaloniaUI doesn't support conic-gradient, we use DrawingBrush with Polygons.
+    AvaloniaUI는 conic-gradient를 지원하지 않으므로, DrawingBrush와 Polygon을 사용합니다.
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="OldHound37.Color.Teal">#125c65</Color>
+    <Color x:Key="OldHound37.Color.Orange">#bc4a33</Color>
+    <Color x:Key="OldHound37.Color.Gold">#dc9d37</Color>
+    <Color x:Key="OldHound37.Color.Yellow">#fed450</Color>
+    <Color x:Key="OldHound37.Color.White">#ffffff</Color>
+
+    <SolidColorBrush x:Key="OldHound37.Brush.Teal" Color="{StaticResource OldHound37.Color.Teal}"/>
+    <SolidColorBrush x:Key="OldHound37.Brush.Orange" Color="{StaticResource OldHound37.Color.Orange}"/>
+    <SolidColorBrush x:Key="OldHound37.Brush.Gold" Color="{StaticResource OldHound37.Color.Gold}"/>
+    <SolidColorBrush x:Key="OldHound37.Brush.Yellow" Color="{StaticResource OldHound37.Color.Yellow}"/>
+    <SolidColorBrush x:Key="OldHound37.Brush.White" Color="{StaticResource OldHound37.Color.White}"/>
+
+    <!-- Pattern Tile Brush using DrawingBrush -->
+    <!-- 200x200 타일을 기준으로 패턴을 구성합니다 -->
+    <DrawingBrush x:Key="OldHound37.PatternBrush"
+                  TileMode="Tile"
+                  Stretch="None"
+                  SourceRect="0,0,200,200"
+                  DestinationRect="0,0,200,200">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <!-- Base checkerboard pattern (repeating-conic-gradient simulation) -->
+                <!-- 베이스 체커보드 패턴: 4분할, 청록색과 주황색 교차 -->
+
+                <!-- Top-Left quadrant: Teal + Orange diagonal split -->
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Orange}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,100,100"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Teal}">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure StartPoint="0,0" IsClosed="True">
+                                <LineSegment Point="100,0"/>
+                                <LineSegment Point="0,100"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <!-- Top-Right quadrant -->
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Teal}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="100,0,100,100"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Orange}">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure StartPoint="100,0" IsClosed="True">
+                                <LineSegment Point="200,0"/>
+                                <LineSegment Point="200,100"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <!-- Bottom-Left quadrant -->
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Teal}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,100,100,100"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Orange}">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure StartPoint="0,100" IsClosed="True">
+                                <LineSegment Point="0,200"/>
+                                <LineSegment Point="100,200"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <!-- Bottom-Right quadrant -->
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Orange}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="100,100,100,100"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Teal}">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure StartPoint="100,100" IsClosed="True">
+                                <LineSegment Point="200,100"/>
+                                <LineSegment Point="200,200"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <!-- Corner triangles: Gold/Yellow gradient simulation -->
+                <!-- conic-gradient at 25%,75% (bottom-left of top-left quadrant) -->
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Gold}">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure StartPoint="50,150" IsClosed="True">
+                                <LineSegment Point="0,100"/>
+                                <LineSegment Point="0,150"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Yellow}">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure StartPoint="50,150" IsClosed="True">
+                                <LineSegment Point="0,150"/>
+                                <LineSegment Point="0,200"/>
+                                <LineSegment Point="50,200"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <!-- conic-gradient at 25%,25% (top-left corner) -->
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Gold}">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure StartPoint="50,50" IsClosed="True">
+                                <LineSegment Point="50,0"/>
+                                <LineSegment Point="0,0"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Yellow}">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure StartPoint="50,50" IsClosed="True">
+                                <LineSegment Point="0,0"/>
+                                <LineSegment Point="0,50"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <!-- conic-gradient at 75%,75% (bottom-right corner) -->
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Gold}">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure StartPoint="150,150" IsClosed="True">
+                                <LineSegment Point="200,200"/>
+                                <LineSegment Point="150,200"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Yellow}">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure StartPoint="150,150" IsClosed="True">
+                                <LineSegment Point="150,200"/>
+                                <LineSegment Point="200,200"/>
+                                <LineSegment Point="200,150"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <!-- conic-gradient at 75%,25% (top-right corner) -->
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Gold}">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure StartPoint="150,50" IsClosed="True">
+                                <LineSegment Point="200,0"/>
+                                <LineSegment Point="200,50"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.Yellow}">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure StartPoint="150,50" IsClosed="True">
+                                <LineSegment Point="150,0"/>
+                                <LineSegment Point="200,0"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <!-- White grid lines (repeating-linear-gradient simulation) -->
+                <!-- Horizontal lines at 0%, 25%, 50%, 75%, 100% -->
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.White}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,200,1"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.White}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,50,200,1"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.White}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,100,200,1"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.White}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,150,200,1"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <!-- Vertical lines at 0%, 25%, 50%, 75%, 100% -->
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.White}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,1,200"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.White}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="50,0,1,200"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.White}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="100,0,1,200"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="{StaticResource OldHound37.Brush.White}">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="150,0,1,200"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <!-- Diagonal lines (45deg and -45deg) -->
+                <!-- These approximate the repeating-linear-gradient at 45deg -->
+                <GeometryDrawing>
+                    <GeometryDrawing.Brush>
+                        <SolidColorBrush Color="{StaticResource OldHound37.Color.White}"/>
+                    </GeometryDrawing.Brush>
+                    <GeometryDrawing.Pen>
+                        <Pen Brush="{StaticResource OldHound37.Brush.White}" Thickness="1"/>
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <!-- 45deg lines -->
+                            <PathFigure StartPoint="0,50" IsClosed="False">
+                                <LineSegment Point="50,0"/>
+                            </PathFigure>
+                            <PathFigure StartPoint="0,100" IsClosed="False">
+                                <LineSegment Point="100,0"/>
+                            </PathFigure>
+                            <PathFigure StartPoint="0,150" IsClosed="False">
+                                <LineSegment Point="150,0"/>
+                            </PathFigure>
+                            <PathFigure StartPoint="0,200" IsClosed="False">
+                                <LineSegment Point="200,0"/>
+                            </PathFigure>
+                            <PathFigure StartPoint="50,200" IsClosed="False">
+                                <LineSegment Point="200,50"/>
+                            </PathFigure>
+                            <PathFigure StartPoint="100,200" IsClosed="False">
+                                <LineSegment Point="200,100"/>
+                            </PathFigure>
+                            <PathFigure StartPoint="150,200" IsClosed="False">
+                                <LineSegment Point="200,150"/>
+                            </PathFigure>
+                            <!-- -45deg lines -->
+                            <PathFigure StartPoint="50,0" IsClosed="False">
+                                <LineSegment Point="0,50"/>
+                            </PathFigure>
+                            <PathFigure StartPoint="100,0" IsClosed="False">
+                                <LineSegment Point="0,100"/>
+                            </PathFigure>
+                            <PathFigure StartPoint="150,0" IsClosed="False">
+                                <LineSegment Point="0,150"/>
+                            </PathFigure>
+                            <PathFigure StartPoint="200,0" IsClosed="False">
+                                <LineSegment Point="0,200"/>
+                            </PathFigure>
+                            <PathFigure StartPoint="200,50" IsClosed="False">
+                                <LineSegment Point="50,200"/>
+                            </PathFigure>
+                            <PathFigure StartPoint="200,100" IsClosed="False">
+                                <LineSegment Point="100,200"/>
+                            </PathFigure>
+                            <PathFigure StartPoint="200,150" IsClosed="False">
+                                <LineSegment Point="150,200"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <!-- Control Template Style -->
+    <ControlTheme x:Key="{x:Type controls:OldHound37Control}" TargetType="controls:OldHound37Control">
+        <Setter Property="ClipToBounds" Value="True"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{StaticResource OldHound37.PatternBrush}"
+                        ClipToBounds="True"/>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

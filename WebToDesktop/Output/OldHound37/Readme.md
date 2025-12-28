@@ -4,14 +4,20 @@ Patterns 스타일의 기하학적 패턴 배경 컨트롤입니다.
 
 ## 원본 정보
 
-- **출처:** [uiverse.io](https://uiverse.io)
 - **원작자:** csemszepp
+- **원본 링크:** [https://uiverse.io/csemszepp/old-hound-37](https://uiverse.io/csemszepp/old-hound-37) (클릭 시 원본 CSS/HTML 확인 가능)
 - **태그:** simple, minimalist, pattern
 
 ## 빌드 및 실행
 
+### WPF
 ```bash
 cd Wpf && dotnet run --project OldHound37.Wpf.Gallery
+```
+
+### AvaloniaUI
+```bash
+cd AvaloniaUI && dotnet run --project OldHound37.Avalonia.Gallery
 ```
 
 ## 프로젝트 구조
