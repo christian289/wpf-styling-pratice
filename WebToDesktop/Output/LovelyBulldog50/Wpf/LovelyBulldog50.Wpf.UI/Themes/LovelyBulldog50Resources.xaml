@@ -1,0 +1,28 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <Color x:Key="LovelyBulldog50.Border.Invalid">#FE4567</Color>
+    <Color x:Key="LovelyBulldog50.Border.Valid">#45FEAF</Color>
+    <Color x:Key="LovelyBulldog50.Foreground">#F9F9F9</Color>
+    <Color x:Key="LovelyBulldog50.Background">Transparent</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="LovelyBulldog50.Border.Invalid.Brush" Color="{StaticResource LovelyBulldog50.Border.Invalid}" />
+    <SolidColorBrush x:Key="LovelyBulldog50.Border.Valid.Brush" Color="{StaticResource LovelyBulldog50.Border.Valid}" />
+    <SolidColorBrush x:Key="LovelyBulldog50.Foreground.Brush" Color="{StaticResource LovelyBulldog50.Foreground}" />
+    <SolidColorBrush x:Key="LovelyBulldog50.Background.Brush" Color="{StaticResource LovelyBulldog50.Background}" />
+
+    <!-- Sizes -->
+    <sys:Double x:Key="LovelyBulldog50.Width">210</sys:Double>
+    <sys:Double x:Key="LovelyBulldog50.Height">50</sys:Double>
+    <sys:Double x:Key="LovelyBulldog50.BorderThickness">1</sys:Double>
+    <CornerRadius x:Key="LovelyBulldog50.CornerRadius">4</CornerRadius>
+    <Thickness x:Key="LovelyBulldog50.Padding">16,0</Thickness>
+
+    <!-- Animation values -->
+    <sys:Double x:Key="LovelyBulldog50.Shake.Distance">8</sys:Double>
+    <sys:Double x:Key="LovelyBulldog50.Shake.NegativeDistance">-8</sys:Double>
+
+</ResourceDictionary>

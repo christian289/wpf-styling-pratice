@@ -1,0 +1,103 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:LovelyBulldog50.Avalonia.Lib.Controls">
+
+    <!-- Colors -->
+    <Color x:Key="ShakeTextBox.Invalid.BorderColor">#fe4567</Color>
+    <Color x:Key="ShakeTextBox.Valid.BorderColor">#45feaf</Color>
+    <Color x:Key="ShakeTextBox.Text.Color">#f9f9f9</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="ShakeTextBox.Invalid.BorderBrush" Color="{StaticResource ShakeTextBox.Invalid.BorderColor}" />
+    <SolidColorBrush x:Key="ShakeTextBox.Valid.BorderBrush" Color="{StaticResource ShakeTextBox.Valid.BorderColor}" />
+    <SolidColorBrush x:Key="ShakeTextBox.Text.Brush" Color="{StaticResource ShakeTextBox.Text.Color}" />
+
+    <!-- ShakeTextBox Style -->
+    <ControlTheme x:Key="{x:Type controls:ShakeTextBox}" TargetType="controls:ShakeTextBox">
+        <Setter Property="Width" Value="210" />
+        <Setter Property="Height" Value="50" />
+        <Setter Property="Padding" Value="16,0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{StaticResource ShakeTextBox.Invalid.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="Foreground" Value="{StaticResource ShakeTextBox.Text.Brush}" />
+        <Setter Property="CaretBrush" Value="{StaticResource ShakeTextBox.Text.Brush}" />
+        <Setter Property="SelectionBrush" Value="#40fe4567" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="PART_Border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <DockPanel>
+                        <TextBlock x:Name="PART_FloatingWatermark"
+                                   DockPanel.Dock="Top"
+                                   IsVisible="False" />
+                        <DataValidationErrors>
+                            <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden">
+                                <Panel>
+                                    <TextBlock x:Name="PART_Watermark"
+                                               Text="{TemplateBinding Watermark}"
+                                               Foreground="#80f9f9f9"
+                                               IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}"
+                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    <TextPresenter x:Name="PART_TextPresenter"
+                                                   Text="{TemplateBinding Text, Mode=TwoWay}"
+                                                   CaretBrush="{TemplateBinding CaretBrush}"
+                                                   CaretIndex="{TemplateBinding CaretIndex}"
+                                                   SelectionBrush="{TemplateBinding SelectionBrush}"
+                                                   SelectionStart="{TemplateBinding SelectionStart}"
+                                                   SelectionEnd="{TemplateBinding SelectionEnd}"
+                                                   TextAlignment="{TemplateBinding TextAlignment}"
+                                                   TextWrapping="{TemplateBinding TextWrapping}"
+                                                   PasswordChar="{TemplateBinding PasswordChar}"
+                                                   RevealPassword="{TemplateBinding RevealPassword}"
+                                                   SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                   Margin="{TemplateBinding Padding}" />
+                                </Panel>
+                            </ScrollViewer>
+                        </DataValidationErrors>
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Invalid State (Default) - Shake Animation -->
+        <Style Selector="^:not(.valid)">
+            <Setter Property="BorderBrush" Value="{StaticResource ShakeTextBox.Invalid.BorderBrush}" />
+            <Style.Animations>
+                <Animation Duration="0:0:0.14"
+                           IterationCount="3"
+                           PlaybackDirection="Normal"
+                           Easing="LinearEasing">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="TranslateTransform.X" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="25%">
+                        <Setter Property="TranslateTransform.X" Value="8" />
+                    </KeyFrame>
+                    <KeyFrame Cue="75%">
+                        <Setter Property="TranslateTransform.X" Value="-8" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="TranslateTransform.X" Value="0" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Valid State -->
+        <Style Selector="^.valid">
+            <Setter Property="BorderBrush" Value="{StaticResource ShakeTextBox.Valid.BorderBrush}" />
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>
