@@ -1,0 +1,110 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:NewDog56.Avalonia.Lib.Controls">
+
+    <!--
+    Primary button with gradient hover effect
+    CSS ::before pseudo-element를 Border로 구현
+    hover 시 검정 배경 → 그라데이션 배경으로 전환
+    -->
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="#F0F0F0">
+            <controls:NewDog56Button Content="Primary button" />
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type controls:NewDog56Button}" TargetType="controls:NewDog56Button">
+        <Setter Property="MinWidth" Value="111" />
+        <Setter Property="Height" Value="56" />
+        <Setter Property="Padding" Value="40,16" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="#000000" />
+        <Setter Property="CornerRadius" Value="40" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="ClipToBounds" Value="False" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!--
+                    CSS ::before pseudo-element 구현
+                    그라데이션 배경 (기본 Opacity=0, hover 시 1로 전환)
+                    linear-gradient(69deg, #c3aab2 -4.77%, #9ec 46.72%, #80c0c8 90.23%, #4B8bfa 134.46%)
+                    -->
+                    <Border Name="PART_GradientBorder"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Opacity="0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+                                <!-- 69deg 각도를 StartPoint/EndPoint로 근사 변환 -->
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStop Color="#C3AAB2" Offset="0" />
+                                    <GradientStop Color="#99EECC" Offset="0.47" />
+                                    <GradientStop Color="#80C0C8" Offset="0.90" />
+                                    <GradientStop Color="#4B8BFA" Offset="1" />
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+
+                    <!-- 메인 버튼 배경 -->
+                    <Border Name="PART_MainBorder"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Transitions (CSS transition: 0.2s ease-in-out) -->
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Foreground" Duration="0:0:0.2" Easing="QuadraticEaseInOut" />
+            </Transitions>
+        </Setter>
+
+        <!-- PointerOver state (CSS :hover) -->
+        <Style Selector="^:pointerover">
+            <Setter Property="Foreground" Value="#000000" />
+
+            <Style Selector="^ /template/ Border#PART_MainBorder">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+
+            <Style Selector="^ /template/ Border#PART_GradientBorder">
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+        </Style>
+
+        <!-- Pressed state -->
+        <Style Selector="^:pressed">
+            <Setter Property="Foreground" Value="#000000" />
+            <Setter Property="RenderTransform" Value="scale(0.98)" />
+
+            <Style Selector="^ /template/ Border#PART_MainBorder">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+
+            <Style Selector="^ /template/ Border#PART_GradientBorder">
+                <Setter Property="Opacity" Value="0.9" />
+            </Style>
+        </Style>
+
+        <!-- Disabled state -->
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.5" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

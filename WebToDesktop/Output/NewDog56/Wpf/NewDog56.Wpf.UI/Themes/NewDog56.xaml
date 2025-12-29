@@ -1,0 +1,98 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:NewDog56.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/NewDog56.Wpf.UI;component/Themes/NewDog56Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:NewDog56}">
+        <Setter Property="MinWidth" Value="{StaticResource NewDog56.MinWidth}" />
+        <Setter Property="Height" Value="{StaticResource NewDog56.Height}" />
+        <Setter Property="Padding" Value="{StaticResource NewDog56.Padding}" />
+        <Setter Property="FontSize" Value="{StaticResource NewDog56.FontSize}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Foreground" Value="{StaticResource NewDog56.Foreground.Normal.Brush}" />
+        <Setter Property="Background" Value="{StaticResource NewDog56.Background.Normal.Brush}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:NewDog56}">
+                    <Grid>
+                        <!-- ::before pseudo-element (gradient background) -->
+                        <!-- ::before 의사 요소 (그라데이션 배경) -->
+                        <!-- z-index: -1 in CSS, rendered first in XAML for same effect -->
+                        <Border x:Name="PART_GradientBorder"
+                                CornerRadius="{StaticResource NewDog56.CornerRadius}"
+                                Background="{StaticResource NewDog56.Gradient.Brush}"
+                                Opacity="0" />
+
+                        <!-- Main button background -->
+                        <!-- 메인 버튼 배경 -->
+                        <Border x:Name="PART_MainBorder"
+                                CornerRadius="{StaticResource NewDog56.CornerRadius}"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <!-- background: transparent -->
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Main border background fade out -->
+                                        <!-- 메인 테두리 배경 페이드 아웃 -->
+                                        <ColorAnimation Storyboard.TargetName="PART_MainBorder"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        To="{StaticResource NewDog56.Background.Hover}"
+                                                        Duration="0:0:0.2" />
+                                        <!-- Gradient opacity fade in -->
+                                        <!-- 그라데이션 불투명도 페이드 인 -->
+                                        <DoubleAnimation Storyboard.TargetName="PART_GradientBorder"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.2" />
+                                        <!-- Foreground color change -->
+                                        <!-- 전경색 변경 -->
+                                        <ColorAnimation Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)"
+                                                        To="{StaticResource NewDog56.Foreground.Hover}"
+                                                        Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Main border background fade in -->
+                                        <!-- 메인 테두리 배경 페이드 인 -->
+                                        <ColorAnimation Storyboard.TargetName="PART_MainBorder"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        To="{StaticResource NewDog56.Background.Normal}"
+                                                        Duration="0:0:0.2" />
+                                        <!-- Gradient opacity fade out -->
+                                        <!-- 그라데이션 불투명도 페이드 아웃 -->
+                                        <DoubleAnimation Storyboard.TargetName="PART_GradientBorder"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.2" />
+                                        <!-- Foreground color change back -->
+                                        <!-- 전경색 원래대로 변경 -->
+                                        <ColorAnimation Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)"
+                                                        To="{StaticResource NewDog56.Foreground.Normal}"
+                                                        Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="NewDog56.Avalonia.Lib\NewDog56.Avalonia.Lib.csproj" />
+  <Project Path="NewDog56.Avalonia.Gallery\NewDog56.Avalonia.Gallery.csproj" />
+</Solution>

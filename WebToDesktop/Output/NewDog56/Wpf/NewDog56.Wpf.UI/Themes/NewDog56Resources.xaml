@@ -1,0 +1,58 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <!-- 색상 -->
+    <Color x:Key="NewDog56.Background.Normal">#000000</Color>
+    <Color x:Key="NewDog56.Background.Hover">#00000000</Color>
+    <Color x:Key="NewDog56.Foreground.Normal">#FFFFFF</Color>
+    <Color x:Key="NewDog56.Foreground.Hover">#000000</Color>
+
+    <!-- Gradient Colors -->
+    <!-- 그라데이션 색상 -->
+    <Color x:Key="NewDog56.Gradient.Color1">#C3AAB2</Color>
+    <Color x:Key="NewDog56.Gradient.Color2">#99EECC</Color>
+    <Color x:Key="NewDog56.Gradient.Color3">#80C0C8</Color>
+    <Color x:Key="NewDog56.Gradient.Color4">#4B8BFA</Color>
+
+    <!-- Brushes -->
+    <!-- 브러시 -->
+    <SolidColorBrush x:Key="NewDog56.Background.Normal.Brush" Color="{StaticResource NewDog56.Background.Normal}" />
+    <SolidColorBrush x:Key="NewDog56.Background.Hover.Brush" Color="{StaticResource NewDog56.Background.Hover}" />
+    <SolidColorBrush x:Key="NewDog56.Foreground.Normal.Brush" Color="{StaticResource NewDog56.Foreground.Normal}" />
+    <SolidColorBrush x:Key="NewDog56.Foreground.Hover.Brush" Color="{StaticResource NewDog56.Foreground.Hover}" />
+
+    <!-- Gradient Brush for ::before pseudo-element -->
+    <!-- ::before 의사 요소용 그라데이션 브러시 -->
+    <!-- linear-gradient(69deg, #c3aab2 -4.77%, #9ec 46.72%, #80c0c8 90.23%, #4B8bfa 134.46%) -->
+    <LinearGradientBrush x:Key="NewDog56.Gradient.Brush" StartPoint="0,0.5" EndPoint="1,0.5">
+        <LinearGradientBrush.RelativeTransform>
+            <RotateTransform Angle="-21" CenterX="0.5" CenterY="0.5" />
+        </LinearGradientBrush.RelativeTransform>
+        <GradientStop Color="{StaticResource NewDog56.Gradient.Color1}" Offset="0.0" />
+        <GradientStop Color="{StaticResource NewDog56.Gradient.Color2}" Offset="0.47" />
+        <GradientStop Color="{StaticResource NewDog56.Gradient.Color3}" Offset="0.90" />
+        <GradientStop Color="{StaticResource NewDog56.Gradient.Color4}" Offset="1.0" />
+    </LinearGradientBrush>
+
+    <!-- Sizes -->
+    <!-- 크기 -->
+    <sys:Double x:Key="NewDog56.MinWidth">111</sys:Double>
+    <sys:Double x:Key="NewDog56.Height">56</sys:Double>
+    <sys:Double x:Key="NewDog56.FontSize">16</sys:Double>
+
+    <!-- CornerRadius -->
+    <!-- 모서리 반경 -->
+    <CornerRadius x:Key="NewDog56.CornerRadius">40</CornerRadius>
+
+    <!-- Padding -->
+    <!-- 여백 -->
+    <Thickness x:Key="NewDog56.Padding">40,16</Thickness>
+
+    <!-- Animation Duration -->
+    <!-- 애니메이션 지속 시간 (0.2s) -->
+    <!-- Duration은 StaticResource로 바인딩 불가, 인라인으로 사용해야 함 -->
+    <!-- Duration cannot be bound via StaticResource, must be used inline -->
+
+</ResourceDictionary>

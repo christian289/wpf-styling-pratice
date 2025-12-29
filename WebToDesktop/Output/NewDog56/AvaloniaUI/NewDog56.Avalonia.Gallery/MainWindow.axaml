@@ -1,0 +1,35 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:NewDog56.Avalonia.Lib.Controls"
+        x:Class="NewDog56.Avalonia.Gallery.MainWindow"
+        Title="NewDog56 - Primary Button Gallery"
+        Width="600"
+        Height="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#F5F5F5">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="20">
+
+            <TextBlock Text="NewDog56 Primary Button"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Foreground="#333333" />
+
+            <TextBlock Text="Hover over the button to see the gradient effect"
+                       FontSize="14"
+                       HorizontalAlignment="Center"
+                       Foreground="#666666" />
+
+            <controls:NewDog56Button Content="Primary button" />
+
+            <controls:NewDog56Button Content="Click Me!" />
+
+            <controls:NewDog56Button Content="Submit" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>
