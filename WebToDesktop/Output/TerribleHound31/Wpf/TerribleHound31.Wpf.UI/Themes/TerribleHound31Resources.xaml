@@ -1,0 +1,45 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Size Resources -->
+    <!-- 크기 리소스 -->
+    <sys:Double x:Key="TerribleHound31.Size">300</sys:Double>
+    <sys:Double x:Key="TerribleHound31.Leaf.Width">90</sys:Double>
+    <sys:Double x:Key="TerribleHound31.Leaf.Height">90</sys:Double>
+
+    <!-- CornerRadius Resources -->
+    <!-- 모서리 반경 리소스 -->
+    <!-- border-radius: 40% = 약 120px (300 * 0.4) -->
+    <CornerRadius x:Key="TerribleHound31.CornerRadius">120</CornerRadius>
+    <!-- border-radius: 0 40% 0 60% (잎 모양) -->
+    <CornerRadius x:Key="TerribleHound31.Leaf.CornerRadius">0,36,0,54</CornerRadius>
+
+    <!-- Color Resources -->
+    <!-- 색상 리소스 -->
+    <Color x:Key="TerribleHound31.Gradient.StartColor">Red</Color>
+    <Color x:Key="TerribleHound31.Gradient.EndColor">Orange</Color>
+    <Color x:Key="TerribleHound31.Leaf.Color">Green</Color>
+    <Color x:Key="TerribleHound31.Shadow.Color">Black</Color>
+    <Color x:Key="TerribleHound31.Leaf.Shadow.Color">#B1040404</Color>
+
+    <!-- Brush Resources -->
+    <!-- 브러시 리소스 -->
+    <LinearGradientBrush x:Key="TerribleHound31.Background" StartPoint="0,0.5" EndPoint="1,0.5">
+        <GradientStop Color="{StaticResource TerribleHound31.Gradient.StartColor}" Offset="0"/>
+        <GradientStop Color="{StaticResource TerribleHound31.Gradient.EndColor}" Offset="1"/>
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="TerribleHound31.Leaf.Background" Color="{StaticResource TerribleHound31.Leaf.Color}"/>
+
+    <!-- Margin/Position Resources -->
+    <!-- 여백/위치 리소스 -->
+    <!-- top: 5%, left: 42% (상대 위치) -->
+    <Thickness x:Key="TerribleHound31.Leaf.Margin">126,-15,0,0</Thickness>
+
+    <!-- Font Resources -->
+    <!-- 폰트 리소스 -->
+    <sys:Double x:Key="TerribleHound31.Emoji.FontSize">100</sys:Double>
+    <FontFamily x:Key="TerribleHound31.Emoji.FontFamily">Segoe UI Emoji</FontFamily>
+
+</ResourceDictionary>

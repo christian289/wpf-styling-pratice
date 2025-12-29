@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://TerribleHound31.Avalonia.Lib/Themes/FruitLogo.axaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>
