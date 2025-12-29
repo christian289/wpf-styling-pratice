@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="OrangeNewt83.Wpf.Gallery/OrangeNewt83.Wpf.Gallery.csproj" />
+  <Project Path="OrangeNewt83.Wpf.UI/OrangeNewt83.Wpf.UI.csproj" />
+</Solution>

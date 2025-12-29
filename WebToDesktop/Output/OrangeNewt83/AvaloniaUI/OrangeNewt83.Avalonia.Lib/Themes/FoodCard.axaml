@@ -1,0 +1,127 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:OrangeNewt83.Avalonia.Lib.Controls">
+
+    <!-- Color Resources -->
+    <Color x:Key="FoodCard.AccentColor">#EE9933</Color>
+    <Color x:Key="FoodCard.InfoColor">#66000000</Color>
+    <SolidColorBrush x:Key="FoodCard.AccentBrush" Color="{StaticResource FoodCard.AccentColor}" />
+    <SolidColorBrush x:Key="FoodCard.InfoBrush" Color="{StaticResource FoodCard.InfoColor}" />
+    <SolidColorBrush x:Key="FoodCard.BackgroundBrush" Color="White" />
+
+    <!-- Size Resources -->
+    <x:Double x:Key="FoodCard.Width">190</x:Double>
+    <x:Double x:Key="FoodCard.Height">254</x:Double>
+    <x:Double x:Key="FoodCard.CornerRadius">5</x:Double>
+    <x:Double x:Key="FoodCard.Padding">20</x:Double>
+    <x:Double x:Key="FoodCard.BackgroundRotation">5</x:Double>
+    <x:Double x:Key="FoodCard.ContentRotation">-5</x:Double>
+    <x:Double x:Key="FoodCard.IconSize">100</x:Double>
+
+    <!-- FoodCard Style -->
+    <ControlTheme x:Key="{x:Type controls:FoodCard}" TargetType="controls:FoodCard">
+        <Setter Property="Width" Value="{StaticResource FoodCard.Width}" />
+        <Setter Property="Height" Value="{StaticResource FoodCard.Height}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Background Layer (::before equivalent) -->
+                    <Border x:Name="PART_Background"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            Background="{StaticResource FoodCard.AccentBrush}"
+                            CornerRadius="{StaticResource FoodCard.CornerRadius}"
+                            BoxShadow="0 0 5 1 #22000000"
+                            RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <RotateTransform Angle="{StaticResource FoodCard.BackgroundRotation}" />
+                        </Border.RenderTransform>
+                    </Border>
+
+                    <!-- Content Layer -->
+                    <Border x:Name="PART_Content"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            Background="{StaticResource FoodCard.BackgroundBrush}"
+                            CornerRadius="{StaticResource FoodCard.CornerRadius}"
+                            BoxShadow="0 0 5 1 #22000000"
+                            Padding="{StaticResource FoodCard.Padding}"
+                            RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <RotateTransform Angle="{StaticResource FoodCard.ContentRotation}" />
+                        </Border.RenderTransform>
+
+                        <StackPanel HorizontalAlignment="Center">
+                            <!-- Icon Area -->
+                            <ContentPresenter Content="{TemplateBinding Icon}"
+                                              Width="{StaticResource FoodCard.IconSize}"
+                                              Height="{StaticResource FoodCard.IconSize}"
+                                              HorizontalAlignment="Center" />
+
+                            <!-- Description Area -->
+                            <StackPanel Margin="0,20,0,0" HorizontalAlignment="Center">
+                                <!-- Title -->
+                                <TextBlock Text="{TemplateBinding Title}"
+                                           FontWeight="Bold"
+                                           TextAlignment="Center"
+                                           Margin="0,0,0,10" />
+
+                                <!-- Info -->
+                                <TextBlock Text="{TemplateBinding Info}"
+                                           Foreground="{StaticResource FoodCard.InfoBrush}"
+                                           TextAlignment="Center"
+                                           Margin="0,0,0,10" />
+
+                                <!-- Price -->
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="{TemplateBinding PricePrefix}"
+                                               FontWeight="Bold"
+                                               Foreground="{StaticResource FoodCard.AccentBrush}" />
+                                    <TextBlock Text="{Binding Price, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:F2}}"
+                                               FontWeight="Bold"
+                                               Foreground="{StaticResource FoodCard.AccentBrush}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Hover State - Rotate to 0 -->
+        <Style Selector="^:pointerover /template/ Border#PART_Background">
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <RotateTransform Angle="0" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:pointerover /template/ Border#PART_Content">
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" Easing="CubicEaseOut" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <RotateTransform Angle="0" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Pressed State - Remove shadow -->
+        <Style Selector="^:pressed /template/ Border#PART_Background">
+            <Setter Property="BoxShadow" Value="none" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ Border#PART_Content">
+            <Setter Property="BoxShadow" Value="none" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

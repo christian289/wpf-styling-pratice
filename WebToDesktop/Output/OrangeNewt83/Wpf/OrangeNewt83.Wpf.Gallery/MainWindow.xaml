@@ -1,0 +1,108 @@
+<Window x:Class="OrangeNewt83.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:OrangeNewt83.Wpf.UI.Controls;assembly=OrangeNewt83.Wpf.UI"
+        mc:Ignorable="d"
+        Title="OrangeNewt83 Card Gallery" Height="500" Width="900"
+        Background="#F5F5F5">
+    <Grid>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+            <!-- Card 1: Burger Example -->
+            <controls:OrangeNewt83 Title="Spicy Burger"
+                                   Info="30 Min | 165 Sell"
+                                   Price="2.50"
+                                   Margin="40">
+                <controls:OrangeNewt83.Icon>
+                    <Viewbox Width="80" Height="80">
+                        <Canvas Width="512" Height="512">
+                            <!-- Red handles -->
+                            <Path Data="{StaticResource OrangeNewt83.Burger.RedLeftPath}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.Red}"/>
+                            <Path Data="{StaticResource OrangeNewt83.Burger.RedRightPath}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.Red}"/>
+
+                            <!-- Orange bun and plate -->
+                            <Path Data="{StaticResource OrangeNewt83.Burger.TopBunPath}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.Orange}"/>
+                            <Path Data="{StaticResource OrangeNewt83.Burger.BottomPlatePath}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.Orange}"/>
+
+                            <!-- Red picks -->
+                            <Path Data="{StaticResource OrangeNewt83.Burger.RedPicks1Path}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.RedLight}"/>
+                            <Path Data="{StaticResource OrangeNewt83.Burger.RedPicks2Path}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.RedLight}"/>
+                            <Path Data="{StaticResource OrangeNewt83.Burger.RedPicks3Path}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.RedLight}"/>
+                            <Path Data="{StaticResource OrangeNewt83.Burger.RedPicks4Path}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.RedLight}"/>
+
+                            <!-- Green lettuce -->
+                            <Path Data="{StaticResource OrangeNewt83.Burger.Lettuce1Path}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.Green}"/>
+                            <Path Data="{StaticResource OrangeNewt83.Burger.Lettuce2Path}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.Green}"/>
+                            <Path Data="{StaticResource OrangeNewt83.Burger.Lettuce3Path}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.Green}"/>
+                            <Path Data="{StaticResource OrangeNewt83.Burger.Lettuce4Path}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.Green}"/>
+                            <Path Data="{StaticResource OrangeNewt83.Burger.Lettuce5Path}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.Green}"/>
+                            <Path Data="{StaticResource OrangeNewt83.Burger.Lettuce6Path}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.Green}"/>
+                            <Path Data="{StaticResource OrangeNewt83.Burger.Lettuce7Path}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.Green}"/>
+
+                            <!-- Orange patty -->
+                            <Path Data="{StaticResource OrangeNewt83.Burger.PattyPath}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.OrangeBright}"/>
+
+                            <!-- Brown wood board -->
+                            <Path Data="{StaticResource OrangeNewt83.Burger.WoodBoardPath}"
+                                  Fill="{StaticResource OrangeNewt83.Icon.Brown}"/>
+                        </Canvas>
+                    </Viewbox>
+                </controls:OrangeNewt83.Icon>
+            </controls:OrangeNewt83>
+
+            <!-- Card 2: Simple Text Icon Example -->
+            <controls:OrangeNewt83 Title="Pizza Slice"
+                                   Info="15 Min | 230 Sell"
+                                   Price="3.99"
+                                   Margin="40">
+                <controls:OrangeNewt83.Icon>
+                    <TextBlock Text="PIZZA"
+                               FontSize="24"
+                               FontWeight="Bold"
+                               Foreground="#EE9933"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </controls:OrangeNewt83.Icon>
+            </controls:OrangeNewt83>
+
+            <!-- Card 3: Ellipse Icon Example -->
+            <controls:OrangeNewt83 Title="Hot Coffee"
+                                   Info="5 Min | 420 Sell"
+                                   Price="1.50"
+                                   Margin="40">
+                <controls:OrangeNewt83.Icon>
+                    <Grid Width="60" Height="60">
+                        <Ellipse Fill="#8B4513"/>
+                        <TextBlock Text="C"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </Grid>
+                </controls:OrangeNewt83.Icon>
+            </controls:OrangeNewt83>
+
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,147 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:OrangeNewt83.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/OrangeNewt83.Wpf.UI;component/Themes/OrangeNewt83Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:OrangeNewt83}">
+        <Setter Property="Width" Value="{StaticResource OrangeNewt83.Card.Width}"/>
+        <Setter Property="Height" Value="{StaticResource OrangeNewt83.Card.Height}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="ClipToBounds" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:OrangeNewt83}">
+                    <Grid ClipToBounds="False">
+                        <!-- Background Card (::before pseudo-element) -->
+                        <!-- 배경 카드 (::before 가상 요소) -->
+                        <Border x:Name="BackCard"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                Background="{StaticResource OrangeNewt83.BackCard.Background}"
+                                CornerRadius="{StaticResource OrangeNewt83.Border.CornerRadius}"
+                                Effect="{StaticResource OrangeNewt83.Card.Shadow}"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <RotateTransform x:Name="BackCardRotate" Angle="{StaticResource OrangeNewt83.BackCard.Angle}"/>
+                            </Border.RenderTransform>
+                        </Border>
+
+                        <!-- Front Content Card -->
+                        <!-- 전면 콘텐츠 카드 -->
+                        <Border x:Name="FrontCard"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                Background="{StaticResource OrangeNewt83.FrontCard.Background}"
+                                CornerRadius="{StaticResource OrangeNewt83.Border.CornerRadius}"
+                                Effect="{StaticResource OrangeNewt83.Card.Shadow}"
+                                Padding="{StaticResource OrangeNewt83.Content.Padding}"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <RotateTransform x:Name="FrontCardRotate" Angle="{StaticResource OrangeNewt83.FrontCard.Angle}"/>
+                            </Border.RenderTransform>
+
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                                <!-- Icon Area -->
+                                <!-- 아이콘 영역 -->
+                                <ContentPresenter Content="{TemplateBinding Icon}"
+                                                  Width="{StaticResource OrangeNewt83.Icon.Size}"
+                                                  Height="{StaticResource OrangeNewt83.Icon.Size}"
+                                                  HorizontalAlignment="Center"/>
+
+                                <!-- Description Area -->
+                                <!-- 설명 영역 -->
+                                <StackPanel Margin="{StaticResource OrangeNewt83.Description.Margin}"
+                                            HorizontalAlignment="Center">
+                                    <!-- Title -->
+                                    <!-- 제목 -->
+                                    <TextBlock x:Name="TitleText"
+                                               Text="{TemplateBinding Title}"
+                                               FontWeight="Bold"
+                                               Foreground="{StaticResource OrangeNewt83.Title.Foreground}"
+                                               TextAlignment="Center"
+                                               Margin="{StaticResource OrangeNewt83.Title.Margin}"/>
+
+                                    <!-- Info -->
+                                    <!-- 정보 -->
+                                    <TextBlock x:Name="InfoText"
+                                               Text="{TemplateBinding Info}"
+                                               Foreground="{StaticResource OrangeNewt83.Info.Foreground}"
+                                               TextAlignment="Center"
+                                               Margin="{StaticResource OrangeNewt83.Info.Margin}"/>
+
+                                    <!-- Price with Prefix -->
+                                    <!-- 접두사가 있는 가격 -->
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                                Margin="{StaticResource OrangeNewt83.Price.Margin}">
+                                        <TextBlock Text="{TemplateBinding PricePrefix}"
+                                                   FontWeight="Bold"
+                                                   Foreground="{StaticResource OrangeNewt83.Price.Foreground}"/>
+                                        <TextBlock Text="{TemplateBinding Price}"
+                                                   FontWeight="Bold"
+                                                   Foreground="{StaticResource OrangeNewt83.Price.Foreground}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover Animation -->
+                        <!-- 호버 애니메이션 -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="BackCardRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="{StaticResource OrangeNewt83.Hover.Angle}"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="FrontCardRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="{StaticResource OrangeNewt83.Hover.Angle}"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="BackCardRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="{StaticResource OrangeNewt83.BackCard.Angle}"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="FrontCardRotate"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="{StaticResource OrangeNewt83.FrontCard.Angle}"
+                                                         Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
