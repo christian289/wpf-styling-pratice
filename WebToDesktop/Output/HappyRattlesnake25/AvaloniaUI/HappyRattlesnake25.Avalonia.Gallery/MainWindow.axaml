@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:HappyRattlesnake25.Avalonia.Lib.Controls"
+        x:Class="HappyRattlesnake25.Avalonia.Gallery.MainWindow"
+        Title="HappyRattlesnake25 - Material Design Pattern"
+        Width="800"
+        Height="600"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <!--
+            Material Design 스타일의 기하학적 패턴 배경
+            Geometric pattern background in Material Design style
+            원본: conic-gradient 기반 육각형/삼각형 타일 패턴
+            Original: Hexagonal/triangular tile pattern based on conic-gradient
+        -->
+        <controls:HappyRattlesnake25 />
+
+        <!-- 오버레이 텍스트 -->
+        <!-- Overlay text -->
+        <Border Background="#80FFFFFF"
+                CornerRadius="12"
+                Padding="24"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                BoxShadow="0 4 12 #40000000">
+            <StackPanel Spacing="8">
+                <TextBlock Text="HappyRattlesnake25"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center" />
+                <TextBlock Text="Material Design Geometric Pattern"
+                           FontSize="14"
+                           Foreground="#666666"
+                           HorizontalAlignment="Center" />
+                <TextBlock Text="From Uiverse.io by csemszepp (Afif13)"
+                           FontSize="12"
+                           Foreground="#999999"
+                           HorizontalAlignment="Center" />
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</Window>

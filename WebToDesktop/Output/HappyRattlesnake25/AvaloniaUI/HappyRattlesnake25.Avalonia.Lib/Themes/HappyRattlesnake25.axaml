@@ -1,0 +1,24 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:HappyRattlesnake25.Avalonia.Lib.Controls">
+
+    <Styles.Resources>
+        <!-- Color Resources -->
+        <Color x:Key="HappyRattlesnake25.Color1">#dadee1</Color>
+        <Color x:Key="HappyRattlesnake25.Color2">#4a99b4</Color>
+        <Color x:Key="HappyRattlesnake25.Color3">#9cceb5</Color>
+
+        <!-- Size Resources -->
+        <x:Double x:Key="HappyRattlesnake25.PatternSize">65</x:Double>
+    </Styles.Resources>
+
+    <!-- Default Style -->
+    <Style Selector="controls|HappyRattlesnake25">
+        <Setter Property="PatternSize" Value="{StaticResource HappyRattlesnake25.PatternSize}" />
+        <Setter Property="Color1" Value="{StaticResource HappyRattlesnake25.Color1}" />
+        <Setter Property="Color2" Value="{StaticResource HappyRattlesnake25.Color2}" />
+        <Setter Property="Color3" Value="{StaticResource HappyRattlesnake25.Color3}" />
+        <Setter Property="ClipToBounds" Value="True" />
+    </Style>
+
+</Styles>

@@ -1,0 +1,151 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:HappyRattlesnake25.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/HappyRattlesnake25.Wpf.UI;component/Themes/HappyRattlesnake25Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--
+    CSS conic-gradient 패턴을 WPF DrawingBrush로 변환
+    원본 CSS는 conic-gradient를 사용하여 기하학적 패턴을 생성합니다.
+    WPF에서는 conic-gradient를 직접 지원하지 않으므로,
+    DrawingBrush + GeometryDrawing으로 유사한 패턴을 구현합니다.
+
+    CSS conic-gradient pattern converted to WPF DrawingBrush.
+    The original CSS uses conic-gradient to create geometric patterns.
+    Since WPF doesn't directly support conic-gradient,
+    we implement a similar pattern using DrawingBrush + GeometryDrawing.
+
+    패턴 분석 (Pattern Analysis):
+    - 타일 크기: 2*s x s (130px x 65px)
+    - 각도: 63.43deg, 116.36deg 등은 삼각형 비율에 기반
+    - 63.43deg ≈ atan(2) - 2:1 비율의 대각선
+    -->
+
+    <Style TargetType="{x:Type controls:HappyRattlesnake25}">
+        <Setter Property="ClipToBounds" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:HappyRattlesnake25}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <!--
+                            기하학적 패턴 배경
+                            DrawingBrush의 TileMode="Tile"로 패턴을 반복합니다.
+                            Viewport는 타일 크기를 정의합니다 (2*TileSize x TileSize).
+
+                            Geometric pattern background.
+                            Uses DrawingBrush with TileMode="Tile" to repeat the pattern.
+                            Viewport defines the tile size (2*TileSize x TileSize).
+                            -->
+                            <Rectangle>
+                                <Rectangle.Fill>
+                                    <DrawingBrush TileMode="Tile"
+                                                  Viewport="0,0,130,65"
+                                                  ViewportUnits="Absolute"
+                                                  Viewbox="0,0,130,65"
+                                                  ViewboxUnits="Absolute">
+                                        <DrawingBrush.Drawing>
+                                            <DrawingGroup>
+                                                <!-- 기본 배경 (c1: #dadee1) -->
+                                                <GeometryDrawing Brush="{StaticResource HappyRattlesnake25.Brush1}">
+                                                    <GeometryDrawing.Geometry>
+                                                        <RectangleGeometry Rect="0,0,130,65" />
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+
+                                                <!--
+                                                conic-gradient 패턴 시뮬레이션
+                                                63.43deg와 116.36deg 각도의 삼각형들을 조합하여
+                                                원본 CSS와 유사한 기하학적 패턴을 구현합니다.
+
+                                                Simulating conic-gradient pattern.
+                                                Combining triangles at 63.43deg and 116.36deg angles
+                                                to achieve a pattern similar to the original CSS.
+                                                -->
+
+                                                <!-- 왼쪽 상단 삼각형 (c2: #4a99b4) -->
+                                                <GeometryDrawing Brush="{StaticResource HappyRattlesnake25.Brush2}">
+                                                    <GeometryDrawing.Geometry>
+                                                        <PathGeometry Figures="M 0,0 L 32.5,32.5 L 0,32.5 Z" />
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+
+                                                <!-- 왼쪽 하단 삼각형 (c2: #4a99b4) -->
+                                                <GeometryDrawing Brush="{StaticResource HappyRattlesnake25.Brush2}">
+                                                    <GeometryDrawing.Geometry>
+                                                        <PathGeometry Figures="M 0,32.5 L 32.5,32.5 L 0,65 Z" />
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+
+                                                <!-- 중앙 왼쪽 마름모 (c3: #9cceb5) -->
+                                                <GeometryDrawing Brush="{StaticResource HappyRattlesnake25.Brush3}">
+                                                    <GeometryDrawing.Geometry>
+                                                        <PathGeometry Figures="M 32.5,0 L 65,32.5 L 32.5,65 L 0,32.5 Z" />
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+
+                                                <!-- 오른쪽 상단 삼각형 (c2: #4a99b4) -->
+                                                <GeometryDrawing Brush="{StaticResource HappyRattlesnake25.Brush2}">
+                                                    <GeometryDrawing.Geometry>
+                                                        <PathGeometry Figures="M 65,0 L 97.5,32.5 L 65,32.5 Z" />
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+
+                                                <!-- 오른쪽 하단 삼각형 (c2: #4a99b4) -->
+                                                <GeometryDrawing Brush="{StaticResource HappyRattlesnake25.Brush2}">
+                                                    <GeometryDrawing.Geometry>
+                                                        <PathGeometry Figures="M 65,32.5 L 97.5,32.5 L 65,65 Z" />
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+
+                                                <!-- 중앙 오른쪽 마름모 (c3: #9cceb5) -->
+                                                <GeometryDrawing Brush="{StaticResource HappyRattlesnake25.Brush3}">
+                                                    <GeometryDrawing.Geometry>
+                                                        <PathGeometry Figures="M 97.5,0 L 130,32.5 L 97.5,65 L 65,32.5 Z" />
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+
+                                                <!-- 상단 가운데 삼각형 (c1 위에 c2 오버레이) -->
+                                                <GeometryDrawing Brush="{StaticResource HappyRattlesnake25.Brush2}">
+                                                    <GeometryDrawing.Geometry>
+                                                        <PathGeometry Figures="M 32.5,0 L 65,0 L 48.75,16.25 Z" />
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+
+                                                <!-- 하단 가운데 삼각형 (c1 위에 c2 오버레이) -->
+                                                <GeometryDrawing Brush="{StaticResource HappyRattlesnake25.Brush2}">
+                                                    <GeometryDrawing.Geometry>
+                                                        <PathGeometry Figures="M 32.5,65 L 65,65 L 48.75,48.75 Z" />
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+
+                                                <!-- 우측 상단 작은 삼각형 -->
+                                                <GeometryDrawing Brush="{StaticResource HappyRattlesnake25.Brush2}">
+                                                    <GeometryDrawing.Geometry>
+                                                        <PathGeometry Figures="M 97.5,0 L 130,0 L 113.75,16.25 Z" />
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+
+                                                <!-- 우측 하단 작은 삼각형 -->
+                                                <GeometryDrawing Brush="{StaticResource HappyRattlesnake25.Brush2}">
+                                                    <GeometryDrawing.Geometry>
+                                                        <PathGeometry Figures="M 97.5,65 L 130,65 L 113.75,48.75 Z" />
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+                                            </DrawingGroup>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

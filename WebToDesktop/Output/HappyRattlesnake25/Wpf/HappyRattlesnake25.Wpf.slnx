@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="HappyRattlesnake25.Wpf.Gallery/HappyRattlesnake25.Wpf.Gallery.csproj" />
+  <Project Path="HappyRattlesnake25.Wpf.UI/HappyRattlesnake25.Wpf.UI.csproj" />
+</Solution>

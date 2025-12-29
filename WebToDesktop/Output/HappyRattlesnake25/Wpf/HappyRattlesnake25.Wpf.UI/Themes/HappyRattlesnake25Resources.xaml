@@ -1,0 +1,25 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+    CSS Variable Mapping (CSS 변수 매핑):
+    s (TileSize): 65px - 패턴 타일 크기
+    c1: #dadee1 - 밝은 회색 (배경색)
+    c2: #4a99b4 - 청록색 (주요 강조색)
+    c3: #9cceb5 - 연한 녹색 (보조 강조색)
+    -->
+
+    <!-- Color Resources (색상 리소스) -->
+    <Color x:Key="HappyRattlesnake25.Color1">#dadee1</Color>
+    <Color x:Key="HappyRattlesnake25.Color2">#4a99b4</Color>
+    <Color x:Key="HappyRattlesnake25.Color3">#9cceb5</Color>
+
+    <SolidColorBrush x:Key="HappyRattlesnake25.Brush1" Color="{StaticResource HappyRattlesnake25.Color1}" />
+    <SolidColorBrush x:Key="HappyRattlesnake25.Brush2" Color="{StaticResource HappyRattlesnake25.Color2}" />
+    <SolidColorBrush x:Key="HappyRattlesnake25.Brush3" Color="{StaticResource HappyRattlesnake25.Color3}" />
+
+    <!-- Size Resources (크기 리소스) -->
+    <sys:Double x:Key="HappyRattlesnake25.TileSize">65</sys:Double>
+
+</ResourceDictionary>
