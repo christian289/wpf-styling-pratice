@@ -1,0 +1,33 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:TinyTiger4.Avalonia.Lib.Controls"
+        x:Class="TinyTiger4.Avalonia.Gallery.MainWindow"
+        Title="TinyTiger4 - Bubble RadioButton Gallery"
+        Width="400"
+        Height="300"
+        Background="#1a1a2e">
+
+    <StackPanel VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Spacing="16">
+
+        <TextBlock Text="Bubble RadioButton"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="#61cea5"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20" />
+
+        <controls:TinyTiger4RadioButton Text="Bubble 1"
+                                        GroupName="demo"
+                                        IsChecked="True" />
+
+        <controls:TinyTiger4RadioButton Text="Bubble 2"
+                                        GroupName="demo" />
+
+        <controls:TinyTiger4RadioButton Text="Bubble 3"
+                                        GroupName="demo" />
+
+    </StackPanel>
+
+</Window>

@@ -1,0 +1,194 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:TinyTiger4.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/TinyTiger4.Wpf.UI;component/Themes/TinyTiger4Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:TinyTiger4}">
+        <!-- CSS: cursor: pointer -->
+        <Setter Property="Cursor" Value="Hand" />
+        <!-- CSS: color: #61cea5 -->
+        <Setter Property="Foreground" Value="{StaticResource TinyTiger4.Accent.Brush}" />
+        <!-- CSS: line-height: 3rem -->
+        <Setter Property="MinHeight" Value="{StaticResource TinyTiger4.LineHeight}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:TinyTiger4}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <!-- CSS: padding-left: 3rem (원형 영역) -->
+                            <ColumnDefinition Width="{StaticResource TinyTiger4.PaddingLeft}" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- 원형 영역 (::before + ::after) -->
+                        <Grid Grid.Column="0"
+                              Width="{StaticResource TinyTiger4.Circle.Size}"
+                              Height="{StaticResource TinyTiger4.Circle.Size}"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center">
+
+                            <!-- CSS: ::before - 배경 원형 -->
+                            <!-- width: 2rem; aspect-ratio: 1/1; border-radius: 50%; background: #61cea5 -->
+                            <Ellipse x:Name="BackgroundCircle"
+                                     Fill="{StaticResource TinyTiger4.Circle.Background}" />
+
+                            <!-- CSS: ::after - 버블 효과 -->
+                            <!-- left: 0.2rem; width: 1.4rem; aspect-ratio: 1/1 -->
+                            <Ellipse x:Name="BubbleCircle"
+                                     Width="{StaticResource TinyTiger4.Bubble.Size}"
+                                     Height="{StaticResource TinyTiger4.Bubble.Size}"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Center"
+                                     Margin="3.2,0,0,0"
+                                     StrokeThickness="{StaticResource TinyTiger4.Bubble.BorderThickness}"
+                                     Stroke="{StaticResource TinyTiger4.Bubble.Border.Brush}"
+                                     RenderTransformOrigin="0.5,0.5">
+                                <Ellipse.Fill>
+                                    <!-- CSS radial-gradient를 DrawingBrush로 변환 -->
+                                    <!-- WPF에서 다중 radial-gradient는 단일 DrawingBrush + DrawingGroup으로 구현 -->
+                                    <DrawingBrush>
+                                        <DrawingBrush.Drawing>
+                                            <DrawingGroup>
+                                                <!-- 기본 투명 배경 -->
+                                                <GeometryDrawing>
+                                                    <GeometryDrawing.Geometry>
+                                                        <EllipseGeometry Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5" />
+                                                    </GeometryDrawing.Geometry>
+                                                    <GeometryDrawing.Brush>
+                                                        <SolidColorBrush Color="Transparent" />
+                                                    </GeometryDrawing.Brush>
+                                                </GeometryDrawing>
+
+                                                <!-- radial-gradient 4: circle at 50% 55%, yellow ring -->
+                                                <GeometryDrawing>
+                                                    <GeometryDrawing.Geometry>
+                                                        <EllipseGeometry Center="0.5,0.55" RadiusX="0.45" RadiusY="0.45" />
+                                                    </GeometryDrawing.Geometry>
+                                                    <GeometryDrawing.Brush>
+                                                        <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                                                            <GradientStop Color="Transparent" Offset="0.35" />
+                                                            <GradientStop Color="{StaticResource TinyTiger4.Gradient4.Yellow}" Offset="0.45" />
+                                                            <GradientStop Color="Transparent" Offset="0.55" />
+                                                        </RadialGradientBrush>
+                                                    </GeometryDrawing.Brush>
+                                                </GeometryDrawing>
+
+                                                <!-- radial-gradient 3: circle at 50% 50%, cyan ring -->
+                                                <GeometryDrawing>
+                                                    <GeometryDrawing.Geometry>
+                                                        <EllipseGeometry Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5" />
+                                                    </GeometryDrawing.Geometry>
+                                                    <GeometryDrawing.Brush>
+                                                        <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                                                            <GradientStop Color="Transparent" Offset="0.4" />
+                                                            <GradientStop Color="{StaticResource TinyTiger4.Gradient3.Cyan}" Offset="0.6" />
+                                                            <GradientStop Color="Transparent" Offset="0.68" />
+                                                        </RadialGradientBrush>
+                                                    </GeometryDrawing.Brush>
+                                                </GeometryDrawing>
+
+                                                <!-- radial-gradient 2: circle at 60% 55%, magenta outer glow -->
+                                                <GeometryDrawing>
+                                                    <GeometryDrawing.Geometry>
+                                                        <EllipseGeometry Center="0.6,0.55" RadiusX="0.5" RadiusY="0.5" />
+                                                    </GeometryDrawing.Geometry>
+                                                    <GeometryDrawing.Brush>
+                                                        <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                                                            <GradientStop Color="Transparent" Offset="0.6" />
+                                                            <GradientStop Color="{StaticResource TinyTiger4.Gradient2.Magenta}" Offset="1.0" />
+                                                        </RadialGradientBrush>
+                                                    </GeometryDrawing.Brush>
+                                                </GeometryDrawing>
+
+                                                <!-- radial-gradient 1: circle at 70% 30%, white highlight -->
+                                                <GeometryDrawing>
+                                                    <GeometryDrawing.Geometry>
+                                                        <EllipseGeometry Center="0.7,0.3" RadiusX="0.25" RadiusY="0.25" />
+                                                    </GeometryDrawing.Geometry>
+                                                    <GeometryDrawing.Brush>
+                                                        <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                                                            <GradientStop Color="{StaticResource TinyTiger4.Gradient1.Start}" Offset="0" />
+                                                            <GradientStop Color="{StaticResource TinyTiger4.Gradient1.End}" Offset="1" />
+                                                        </RadialGradientBrush>
+                                                    </GeometryDrawing.Brush>
+                                                </GeometryDrawing>
+                                            </DrawingGroup>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </Ellipse.Fill>
+                                <Ellipse.RenderTransform>
+                                    <!-- CSS: transform: translateY(-50%) scale(0) -> scale(1) -->
+                                    <ScaleTransform x:Name="BubbleScale" ScaleX="0" ScaleY="0" />
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                        </Grid>
+
+                        <!-- 텍스트 콘텐츠 -->
+                        <ContentPresenter Grid.Column="1"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          RecognizesAccessKey="True" />
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- CSS: input:checked + label::after { transform: scale(1) } -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- CSS: transition: 0.5s -->
+                                        <DoubleAnimation Storyboard.TargetName="BubbleScale"
+                                                         Storyboard.TargetProperty="ScaleX"
+                                                         To="1"
+                                                         Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="BubbleScale"
+                                                         Storyboard.TargetProperty="ScaleY"
+                                                         To="1"
+                                                         Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+
+                        <!-- CSS: input:not(:checked) + label::after { animation: radio 0.5s linear } -->
+                        <!-- Unchecked 시 버블이 커졌다가 사라지는 효과 -->
+                        <Trigger Property="IsChecked" Value="False">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- CSS: @keyframes radio { 0%: scale(1) -> 100%: scale(1.7) } -->
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="BubbleScale"
+                                                                       Storyboard.TargetProperty="ScaleX">
+                                            <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0" />
+                                            <LinearDoubleKeyFrame Value="1.7" KeyTime="0:0:0.5" />
+                                            <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0.5" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="BubbleScale"
+                                                                       Storyboard.TargetProperty="ScaleY">
+                                            <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0" />
+                                            <LinearDoubleKeyFrame Value="1.7" KeyTime="0:0:0.5" />
+                                            <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0.5" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

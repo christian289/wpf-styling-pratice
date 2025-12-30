@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="TinyTiger4.Wpf.Gallery/TinyTiger4.Wpf.Gallery.csproj" />
+  <Project Path="TinyTiger4.Wpf.UI/TinyTiger4.Wpf.UI.csproj" />
+</Solution>

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TinyTiger4.Avalonia.Lib\TinyTiger4.Avalonia.Lib.csproj" />
+  <Project Path="TinyTiger4.Avalonia.Gallery\TinyTiger4.Avalonia.Gallery.csproj" />
+</Solution>

@@ -1,0 +1,186 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:TinyTiger4.Avalonia.Lib.Controls">
+
+    <Styles.Resources>
+        <!-- Colors -->
+        <Color x:Key="TinyTiger4.Primary.Color">#61cea5</Color>
+        <Color x:Key="TinyTiger4.White.Color">#FFFFFF</Color>
+        <Color x:Key="TinyTiger4.Transparent.Color">#00000000</Color>
+        <Color x:Key="TinyTiger4.Magenta.Color">#CCFF00FF</Color>
+        <Color x:Key="TinyTiger4.Cyan.Color">#330FFFFF</Color>
+        <Color x:Key="TinyTiger4.Yellow.Color">#33FFFF00</Color>
+
+        <!-- Brushes -->
+        <SolidColorBrush x:Key="TinyTiger4.Primary.Brush" Color="{StaticResource TinyTiger4.Primary.Color}" />
+        <SolidColorBrush x:Key="TinyTiger4.White.Brush" Color="{StaticResource TinyTiger4.White.Color}" />
+
+        <!--
+        버블 하이라이트 그라데이션 (왼쪽 상단 빛 반사)
+        Bubble highlight gradient (top-left light reflection)
+        Note: AvaloniaUI Issue #19888 - GradientOrigin must equal Center
+        CSS: radial-gradient(circle at 70% 30%, #fff, transparent 25%)
+        -->
+        <RadialGradientBrush x:Key="TinyTiger4.Bubble.Highlight.Brush"
+                             GradientOrigin="70%,30%" Center="70%,30%" RadiusX="50%" RadiusY="50%">
+            <GradientStop Color="{StaticResource TinyTiger4.White.Color}" Offset="0" />
+            <GradientStop Color="{StaticResource TinyTiger4.Transparent.Color}" Offset="0.25" />
+        </RadialGradientBrush>
+
+        <!--
+        버블 마젠타 그라데이션 (하단 가장자리)
+        Bubble magenta gradient (bottom edge)
+        CSS: radial-gradient(circle at 60% 55%, transparent 60%, rgba(255,0,255,0.8) 100%)
+        -->
+        <RadialGradientBrush x:Key="TinyTiger4.Bubble.Magenta.Brush"
+                             GradientOrigin="60%,55%" Center="60%,55%" RadiusX="80%" RadiusY="80%">
+            <GradientStop Color="{StaticResource TinyTiger4.Transparent.Color}" Offset="0.6" />
+            <GradientStop Color="{StaticResource TinyTiger4.Magenta.Color}" Offset="1.0" />
+        </RadialGradientBrush>
+
+        <!--
+        버블 시안 링 그라데이션
+        Bubble cyan ring gradient
+        CSS: radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,255,255,0.2) 60%, transparent 68%)
+        -->
+        <RadialGradientBrush x:Key="TinyTiger4.Bubble.Cyan.Brush"
+                             GradientOrigin="50%,50%" Center="50%,50%" RadiusX="70%" RadiusY="70%">
+            <GradientStop Color="{StaticResource TinyTiger4.Transparent.Color}" Offset="0.4" />
+            <GradientStop Color="{StaticResource TinyTiger4.Cyan.Color}" Offset="0.6" />
+            <GradientStop Color="{StaticResource TinyTiger4.Transparent.Color}" Offset="0.68" />
+        </RadialGradientBrush>
+
+        <!--
+        버블 옐로우 링 그라데이션
+        Bubble yellow ring gradient
+        CSS: radial-gradient(circle at 50% 55%, transparent 35%, rgba(255,255,0,0.2) 45%, transparent 55%)
+        -->
+        <RadialGradientBrush x:Key="TinyTiger4.Bubble.Yellow.Brush"
+                             GradientOrigin="50%,55%" Center="50%,55%" RadiusX="60%" RadiusY="60%">
+            <GradientStop Color="{StaticResource TinyTiger4.Transparent.Color}" Offset="0.35" />
+            <GradientStop Color="{StaticResource TinyTiger4.Yellow.Color}" Offset="0.45" />
+            <GradientStop Color="{StaticResource TinyTiger4.Transparent.Color}" Offset="0.55" />
+        </RadialGradientBrush>
+
+        <!-- Sizes -->
+        <x:Double x:Key="TinyTiger4.OuterCircle.Size">24</x:Double>
+        <x:Double x:Key="TinyTiger4.InnerBubble.Size">16.8</x:Double>
+        <Thickness x:Key="TinyTiger4.Label.Padding">36,0,0,0</Thickness>
+        <x:Double x:Key="TinyTiger4.Bubble.Offset">2.4</x:Double>
+        <Thickness x:Key="TinyTiger4.Bubble.BorderThickness">1.2</Thickness>
+    </Styles.Resources>
+
+    <!-- Control Theme -->
+    <Style Selector="controls|TinyTiger4RadioButton">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Height" Value="36" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!--
+                    외부 원 (녹색 배경)
+                    Outer circle (green background)
+                    CSS: label::before - background: #61cea5, border-radius: 50%
+                    -->
+                    <Ellipse Name="PART_OuterCircle"
+                             Width="{StaticResource TinyTiger4.OuterCircle.Size}"
+                             Height="{StaticResource TinyTiger4.OuterCircle.Size}"
+                             Fill="{StaticResource TinyTiger4.Primary.Brush}"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center" />
+
+                    <!--
+                    버블 컨테이너 (여러 그라데이션 레이어 중첩)
+                    Bubble container (multiple gradient layers stacked)
+                    CSS: label::after - multiple radial-gradients
+                    -->
+                    <Panel Name="PART_BubbleContainer"
+                           Width="{StaticResource TinyTiger4.InnerBubble.Size}"
+                           Height="{StaticResource TinyTiger4.InnerBubble.Size}"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="2.4,0,0,0"
+                           RenderTransformOrigin="0.5,0.5">
+                        <Panel.RenderTransform>
+                            <ScaleTransform ScaleX="0" ScaleY="0" />
+                        </Panel.RenderTransform>
+
+                        <!-- 버블 테두리 / Bubble border -->
+                        <Ellipse Stroke="{StaticResource TinyTiger4.White.Brush}"
+                                 StrokeThickness="1.2" />
+
+                        <!-- 버블 옐로우 링 / Bubble yellow ring -->
+                        <Ellipse Fill="{StaticResource TinyTiger4.Bubble.Yellow.Brush}" />
+
+                        <!-- 버블 시안 링 / Bubble cyan ring -->
+                        <Ellipse Fill="{StaticResource TinyTiger4.Bubble.Cyan.Brush}" />
+
+                        <!-- 버블 마젠타 / Bubble magenta -->
+                        <Ellipse Fill="{StaticResource TinyTiger4.Bubble.Magenta.Brush}" />
+
+                        <!-- 버블 하이라이트 / Bubble highlight -->
+                        <Ellipse Fill="{StaticResource TinyTiger4.Bubble.Highlight.Brush}" />
+                    </Panel>
+
+                    <!--
+                    라벨 텍스트
+                    Label text
+                    CSS: label - color: #61cea5, padding-left: 3rem
+                    -->
+                    <TextBlock Name="PART_Label"
+                               Text="{TemplateBinding Text}"
+                               Foreground="{StaticResource TinyTiger4.Primary.Brush}"
+                               VerticalAlignment="Center"
+                               Padding="{StaticResource TinyTiger4.Label.Padding}" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <!--
+    체크됨 상태: 버블 표시
+    Checked state: show bubble
+    CSS: input:checked + label::after { transform: scale(1) }
+    -->
+    <Style Selector="controls|TinyTiger4RadioButton:checked /template/ Panel#PART_BubbleContainer">
+        <Style.Animations>
+            <Animation Duration="0:0:0.5" FillMode="Forward" Easing="CubicEaseOut">
+                <KeyFrame Cue="0%">
+                    <Setter Property="RenderTransform">
+                        <ScaleTransform ScaleX="0" ScaleY="0" />
+                    </Setter>
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="RenderTransform">
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Setter>
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+
+    <!--
+    체크 해제됨 상태: 버블 숨김 (확대 후 사라짐)
+    Unchecked state: hide bubble (scale up then disappear)
+    CSS: input:not(:checked) + label::after { animation: radio 0.5s linear }
+    -->
+    <Style Selector="controls|TinyTiger4RadioButton:not(:checked) /template/ Panel#PART_BubbleContainer">
+        <Style.Animations>
+            <Animation Duration="0:0:0.5" FillMode="Forward" Easing="LinearEasing">
+                <KeyFrame Cue="0%">
+                    <Setter Property="RenderTransform">
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Setter>
+                    <Setter Property="Opacity" Value="1" />
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="RenderTransform">
+                        <ScaleTransform ScaleX="1.7" ScaleY="1.7" />
+                    </Setter>
+                    <Setter Property="Opacity" Value="0" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+
+</Styles>

@@ -1,0 +1,19 @@
+<Window x:Class="TinyTiger4.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:TinyTiger4.Wpf.UI.Controls;assembly=TinyTiger4.Wpf.UI"
+        mc:Ignorable="d"
+        Title="TinyTiger4 - Radio Button Gallery"
+        Height="450" Width="800"
+        Background="#1a1a2e">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <!-- HTML 원본의 라디오 버튼 그룹 -->
+            <controls:TinyTiger4 Content="Bubble 1" IsChecked="True" GroupName="RadioGroup" Margin="0,8" />
+            <controls:TinyTiger4 Content="Bubble 2" GroupName="RadioGroup" Margin="0,8" />
+            <controls:TinyTiger4 Content="Bubble 3" GroupName="RadioGroup" Margin="0,8" />
+        </StackPanel>
+    </Grid>
+</Window>

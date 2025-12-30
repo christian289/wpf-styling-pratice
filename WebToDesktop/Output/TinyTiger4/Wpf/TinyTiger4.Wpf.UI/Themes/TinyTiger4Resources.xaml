@@ -1,0 +1,54 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- 색상 리소스 [Color Resources] -->
+    <!-- CSS: color: #61cea5 -->
+    <Color x:Key="TinyTiger4.Accent.Color">#61CEA5</Color>
+    <SolidColorBrush x:Key="TinyTiger4.Accent.Brush" Color="{StaticResource TinyTiger4.Accent.Color}" />
+
+    <!-- CSS: background: #61cea5 (::before 원형 배경) -->
+    <SolidColorBrush x:Key="TinyTiger4.Circle.Background" Color="{StaticResource TinyTiger4.Accent.Color}" />
+
+    <!-- CSS: border: 0.1rem solid #fff -->
+    <Color x:Key="TinyTiger4.Bubble.Border.Color">#FFFFFF</Color>
+    <SolidColorBrush x:Key="TinyTiger4.Bubble.Border.Brush" Color="{StaticResource TinyTiger4.Bubble.Border.Color}" />
+
+    <!-- RadialGradient 색상들 -->
+    <!-- radial-gradient 1: circle at 70% 30%, #fff, rgba(0,0,0,0) 25% -->
+    <Color x:Key="TinyTiger4.Gradient1.Start">#FFFFFF</Color>
+    <Color x:Key="TinyTiger4.Gradient1.End">#00000000</Color>
+
+    <!-- radial-gradient 2: rgba(255,0,255,0.8) 마젠타 -->
+    <Color x:Key="TinyTiger4.Gradient2.Magenta">#CCFF00FF</Color>
+
+    <!-- radial-gradient 3: rgba(0,255,255,0.2) 시안 -->
+    <Color x:Key="TinyTiger4.Gradient3.Cyan">#3300FFFF</Color>
+
+    <!-- radial-gradient 4: rgba(255,255,0,0.2) 노랑 -->
+    <Color x:Key="TinyTiger4.Gradient4.Yellow">#33FFFF00</Color>
+
+    <!-- 크기 리소스 [Size Resources] -->
+    <!-- CSS: line-height: 3rem ≈ 48px -->
+    <sys:Double x:Key="TinyTiger4.LineHeight">48</sys:Double>
+
+    <!-- CSS: width: 2rem ≈ 32px (::before 원형 크기) -->
+    <sys:Double x:Key="TinyTiger4.Circle.Size">32</sys:Double>
+
+    <!-- CSS: width: 1.4rem ≈ 22.4px (::after 버블 크기) -->
+    <sys:Double x:Key="TinyTiger4.Bubble.Size">22.4</sys:Double>
+
+    <!-- CSS: left: 0.2rem ≈ 3.2px (::after 오프셋) -->
+    <sys:Double x:Key="TinyTiger4.Bubble.Left">3.2</sys:Double>
+
+    <!-- CSS: padding-left: 3rem ≈ 48px -->
+    <sys:Double x:Key="TinyTiger4.PaddingLeft">48</sys:Double>
+
+    <!-- CSS: border: 0.1rem ≈ 1.6px -->
+    <sys:Double x:Key="TinyTiger4.Bubble.BorderThickness">1.6</sys:Double>
+
+    <!-- 애니메이션 Duration -->
+    <!-- CSS: transition: 0.5s -->
+    <!-- 참고: Duration은 XAML에서 인라인으로 사용해야 함 -->
+
+</ResourceDictionary>
