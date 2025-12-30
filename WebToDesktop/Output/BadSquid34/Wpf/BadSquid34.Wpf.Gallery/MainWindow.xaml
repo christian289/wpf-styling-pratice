@@ -1,0 +1,26 @@
+<Window x:Class="BadSquid34.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:BadSquid34.Wpf.UI.Controls;assembly=BadSquid34.Wpf.UI"
+        mc:Ignorable="d"
+        Title="BadSquid34 - Error Alert Card Gallery"
+        Height="450"
+        Width="800"
+        Background="#2D2D30">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <!-- Default error message -->
+            <controls:BadSquid34 Message="lorem ipsum dolor sit amet" Margin="0,0,0,20" />
+
+            <!-- Custom error messages -->
+            <controls:BadSquid34 Message="Connection failed. Please try again." Margin="0,0,0,20" />
+
+            <controls:BadSquid34 Message="Invalid username or password." Margin="0,0,0,20" />
+
+            <controls:BadSquid34 Message="File upload error: Maximum size exceeded." />
+        </StackPanel>
+    </Grid>
+</Window>

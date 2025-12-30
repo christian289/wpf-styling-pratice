@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:BadSquid34.Avalonia.Lib.Controls"
+        x:Class="BadSquid34.Avalonia.Gallery.MainWindow"
+        Title="BadSquid34 - ErrorAlert Gallery"
+        Width="500" Height="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#F5F5F5">
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Spacing="20">
+
+            <!-- ErrorAlert Demo -->
+            <controls:ErrorAlert x:Name="ErrorAlert1"
+                                 Message="lorem ipsum dolor sit amet"
+                                 CloseClicked="OnErrorAlertCloseClicked" />
+
+            <!-- Additional Demo with longer message -->
+            <controls:ErrorAlert x:Name="ErrorAlert2"
+                                 Message="Network connection failed. Please check your internet connection."
+                                 CloseClicked="OnErrorAlertCloseClicked" />
+
+            <!-- Status TextBlock -->
+            <TextBlock x:Name="StatusText"
+                       HorizontalAlignment="Center"
+                       Foreground="#666666"
+                       FontSize="12"
+                       Text="Click the close button to hide an alert" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>

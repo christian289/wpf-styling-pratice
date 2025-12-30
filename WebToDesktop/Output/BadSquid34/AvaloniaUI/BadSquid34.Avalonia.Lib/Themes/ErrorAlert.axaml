@@ -1,0 +1,88 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:BadSquid34.Avalonia.Lib.Controls">
+
+    <!-- From Uiverse.io by andrew-demchenk0 - Tags: alert, red, card, error, message, white and red, close, error message -->
+
+    <!-- Colors -->
+    <Color x:Key="ErrorAlert.Background.Color">#EF665B</Color>
+    <Color x:Key="ErrorAlert.Foreground.Color">#FFFFFF</Color>
+    <Color x:Key="ErrorAlert.Shadow.Color">#33111111</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="ErrorAlert.Background.Brush" Color="{StaticResource ErrorAlert.Background.Color}" />
+    <SolidColorBrush x:Key="ErrorAlert.Foreground.Brush" Color="{StaticResource ErrorAlert.Foreground.Color}" />
+
+    <!-- Icon Path Data -->
+    <StreamGeometry x:Key="ErrorAlert.WarningIcon">M13 13H11V7H13ZM13 17H11V15H13ZM12 2C10.6868 2 9.38642 2.25866 8.17317 2.7612C6.95991 3.26375 5.85752 4.00035 4.92893 4.92893C3.05357 6.8043 2 9.34784 2 12C2 14.6522 3.05357 17.1957 4.92893 19.0711C5.85752 19.9997 6.95991 20.7362 8.17317 21.2388C9.38642 21.7413 10.6868 22 12 22C14.6522 22 17.1957 20.9464 19.0711 19.0711C20.9464 17.1957 22 14.6522 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7362 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2Z</StreamGeometry>
+    <StreamGeometry x:Key="ErrorAlert.CloseIcon">M15.8333 5.34166L14.6583 4.16666L10 8.825L5.34167 4.16666L4.16667 5.34166L8.825 10L4.16667 14.6583L5.34167 15.8333L10 11.175L14.6583 15.8333L15.8333 14.6583L11.175 10Z</StreamGeometry>
+
+    <!-- ErrorAlert Style -->
+    <ControlTheme x:Key="{x:Type controls:ErrorAlert}" TargetType="controls:ErrorAlert">
+        <Setter Property="Width" Value="320" />
+        <Setter Property="Background" Value="{StaticResource ErrorAlert.Background.Brush}" />
+        <Setter Property="Foreground" Value="{StaticResource ErrorAlert.Foreground.Brush}" />
+        <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Padding" Value="12" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Padding="{TemplateBinding Padding}"
+                        BoxShadow="0 0 5 0 #33111111">
+                    <Grid ColumnDefinitions="Auto,*,Auto">
+                        <!-- Warning Icon -->
+                        <Viewbox Grid.Column="0"
+                                 Width="20" Height="20"
+                                 Margin="0,0,8,0"
+                                 VerticalAlignment="Center">
+                            <Canvas Width="24" Height="24">
+                                <Path Data="{StaticResource ErrorAlert.WarningIcon}"
+                                      Fill="{TemplateBinding Foreground}" />
+                            </Canvas>
+                        </Viewbox>
+
+                        <!-- Message Text -->
+                        <TextBlock Grid.Column="1"
+                                   Text="{TemplateBinding Message}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   VerticalAlignment="Center"
+                                   TextWrapping="Wrap" />
+
+                        <!-- Close Button -->
+                        <Button x:Name="PART_CloseButton"
+                                Grid.Column="2"
+                                Width="20" Height="20"
+                                Margin="8,0,0,0"
+                                Padding="0"
+                                VerticalAlignment="Center"
+                                Cursor="Hand"
+                                Background="Transparent"
+                                BorderThickness="0">
+                            <Button.Styles>
+                                <Style Selector="Button:pointerover">
+                                    <Setter Property="Opacity" Value="0.7" />
+                                </Style>
+                                <Style Selector="Button:pressed">
+                                    <Setter Property="Opacity" Value="0.5" />
+                                </Style>
+                            </Button.Styles>
+                            <Viewbox Width="14" Height="14">
+                                <Canvas Width="20" Height="20">
+                                    <Path Data="{StaticResource ErrorAlert.CloseIcon}"
+                                          Fill="{Binding $parent[controls:ErrorAlert].Foreground}" />
+                                </Canvas>
+                            </Viewbox>
+                        </Button>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>
