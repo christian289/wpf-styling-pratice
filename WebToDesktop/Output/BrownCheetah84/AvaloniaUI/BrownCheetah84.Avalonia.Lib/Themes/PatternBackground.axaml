@@ -1,0 +1,91 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:BrownCheetah84.Avalonia.Lib.Controls">
+
+    <!--
+    CSS 원본 분석 (From Uiverse.io by elijahgummer - Tags: simple, blue, modern, pattern):
+    - 45도와 -45도 대각선 줄무늬를 조합한 체크 패턴
+    - 배경색: #f0f0f0, 패턴색: #3498db, 투명도: 0.8
+    - 패턴 크기: 20px x 20px
+
+    CSS original analysis:
+    - Check pattern combining 45deg and -45deg diagonal stripes
+    - Background: #f0f0f0, Pattern: #3498db, Opacity: 0.8
+    - Pattern size: 20px x 20px
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="PatternBackground.BackgroundColor">#f0f0f0</Color>
+    <Color x:Key="PatternBackground.PatternColor">#3498db</Color>
+
+    <SolidColorBrush x:Key="PatternBackground.BackgroundBrush" Color="{StaticResource PatternBackground.BackgroundColor}"/>
+    <SolidColorBrush x:Key="PatternBackground.PatternBrush" Color="{StaticResource PatternBackground.PatternColor}"/>
+
+    <!-- PatternBackground ControlTheme -->
+    <ControlTheme x:Key="{x:Type controls:PatternBackground}" TargetType="controls:PatternBackground">
+        <Setter Property="Background" Value="{StaticResource PatternBackground.BackgroundBrush}"/>
+        <Setter Property="PatternBrush" Value="{StaticResource PatternBackground.PatternBrush}"/>
+        <Setter Property="PatternOpacity" Value="0.8"/>
+        <Setter Property="PatternSize" Value="20"/>
+        <Setter Property="Template">
+            <ControlTemplate TargetType="controls:PatternBackground">
+                <Panel>
+                    <!-- 배경 레이어 / Background layer -->
+                    <Border Background="{TemplateBinding Background}"/>
+
+                    <!-- 패턴 레이어 / Pattern layer -->
+                    <!--
+                    CSS의 복잡한 대각선 gradient 패턴을 AvaloniaUI에서 구현하기 위해
+                    DrawingBrush와 GeometryDrawing을 사용한 타일 패턴으로 대체
+
+                    To implement complex CSS diagonal gradient pattern in AvaloniaUI,
+                    using DrawingBrush with GeometryDrawing for tiled pattern
+                    -->
+                    <Border Opacity="{TemplateBinding PatternOpacity}">
+                        <Border.Background>
+                            <DrawingBrush TileMode="Tile"
+                                          DestinationRect="0,0,20,20"
+                                          SourceRect="0,0,20,20">
+                                <DrawingBrush.Drawing>
+                                    <DrawingGroup>
+                                        <!-- 45도 대각선 줄무늬 / 45deg diagonal stripe -->
+                                        <GeometryDrawing Brush="{StaticResource PatternBackground.PatternBrush}">
+                                            <GeometryDrawing.Geometry>
+                                                <GeometryGroup>
+                                                    <!-- 좌하단 삼각형 / Bottom-left triangle -->
+                                                    <PathGeometry Figures="M0,10 L10,20 L0,20 Z"/>
+                                                    <!-- 우상단 삼각형 / Top-right triangle -->
+                                                    <PathGeometry Figures="M10,0 L20,0 L20,10 Z"/>
+                                                </GeometryGroup>
+                                            </GeometryDrawing.Geometry>
+                                        </GeometryDrawing>
+
+                                        <!-- -45도 대각선 줄무늬 / -45deg diagonal stripe -->
+                                        <GeometryDrawing Brush="{StaticResource PatternBackground.PatternBrush}">
+                                            <GeometryDrawing.Geometry>
+                                                <GeometryGroup>
+                                                    <!-- 좌상단 삼각형 / Top-left triangle -->
+                                                    <PathGeometry Figures="M0,0 L10,0 L0,10 Z"/>
+                                                    <!-- 우하단 삼각형 / Bottom-right triangle -->
+                                                    <PathGeometry Figures="M20,10 L20,20 L10,20 Z"/>
+                                                </GeometryGroup>
+                                            </GeometryDrawing.Geometry>
+                                        </GeometryDrawing>
+                                    </DrawingGroup>
+                                </DrawingBrush.Drawing>
+                            </DrawingBrush>
+                        </Border.Background>
+                    </Border>
+
+                    <!-- 콘텐츠 / Content -->
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      Padding="{TemplateBinding Padding}"/>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

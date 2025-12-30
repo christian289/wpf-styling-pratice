@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:BrownCheetah84.Avalonia.Lib.Controls"
+        x:Class="BrownCheetah84.Avalonia.Gallery.MainWindow"
+        Title="BrownCheetah84 - Pattern Background Gallery"
+        Width="800" Height="600">
+
+    <!--
+    From Uiverse.io by elijahgummer
+    Tags: simple, blue, modern, pattern
+
+    대각선 체크 패턴 배경 데모
+    Diagonal check pattern background demo
+    -->
+    <controls:PatternBackground HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center">
+        <Border Background="#FFFFFF"
+                CornerRadius="12"
+                Padding="40"
+                BoxShadow="0 8 32 #40000000">
+            <StackPanel Spacing="16">
+                <TextBlock Text="Pattern Background"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="#2c3e50"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="From Uiverse.io by elijahgummer"
+                           FontSize="14"
+                           Foreground="#7f8c8d"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="Simple, Blue, Modern Pattern"
+                           FontSize="12"
+                           Foreground="#95a5a6"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </controls:PatternBackground>
+
+</Window>

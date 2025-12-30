@@ -1,0 +1,102 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:BrownCheetah84.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/BrownCheetah84.Wpf.UI;component/Themes/BrownCheetah84Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--
+    CSS 원본: 45도와 -45도 linear-gradient를 사용한 대각선 체크무늬 패턴
+    CSS Original: Diagonal checkered pattern using 45deg and -45deg linear-gradient
+
+    CSS:
+    background: linear-gradient(45deg, #3498db 25%, transparent 25%, transparent 50%, #3498db 50%, #3498db 75%, transparent 75%, transparent),
+                linear-gradient(-45deg, #3498db 25%, transparent 25%, transparent 50%, #3498db 50%, #3498db 75%, transparent 75%, transparent);
+    background-size: 20px 20px;
+
+    WPF 구현: DrawingBrush로 타일 패턴 생성
+    WPF Implementation: Create tile pattern using DrawingBrush
+    -->
+
+    <Style TargetType="{x:Type controls:BrownCheetah84}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:BrownCheetah84}">
+                    <Grid>
+                        <!-- 배경 레이어 / Background layer -->
+                        <Border Background="{StaticResource BrownCheetah84.Background.Brush}" />
+
+                        <!-- 패턴 레이어 (::before pseudo-element) / Pattern layer -->
+                        <Border Opacity="{StaticResource BrownCheetah84.Pattern.Opacity}">
+                            <Border.Background>
+                                <!--
+                                DrawingBrush로 대각선 체크무늬 패턴 구현
+                                Diagonal checkered pattern using DrawingBrush
+
+                                CSS의 linear-gradient 45deg + -45deg 조합은
+                                WPF에서 GeometryDrawing으로 삼각형들을 배치하여 구현
+                                -->
+                                <DrawingBrush TileMode="Tile"
+                                              Viewport="0,0,20,20"
+                                              ViewportUnits="Absolute"
+                                              Viewbox="0,0,20,20"
+                                              ViewboxUnits="Absolute">
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <!--
+                                            45도 그라데이션 패턴 (왼쪽 아래에서 오른쪽 위로)
+                                            45deg gradient pattern (bottom-left to top-right)
+
+                                            CSS: 25% 위치에서 색상, 50% 투명, 75% 색상
+                                            25% = 5px, 50% = 10px, 75% = 15px (20px 타일 기준)
+                                            -->
+
+                                            <!-- 왼쪽 아래 삼각형 / Bottom-left triangle -->
+                                            <GeometryDrawing Brush="{StaticResource BrownCheetah84.Pattern.Brush}">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry Figures="M 0,10 L 0,20 L 10,20 Z" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!-- 오른쪽 위 삼각형 / Top-right triangle -->
+                                            <GeometryDrawing Brush="{StaticResource BrownCheetah84.Pattern.Brush}">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry Figures="M 10,0 L 20,0 L 20,10 Z" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!--
+                                            -45도 그라데이션 패턴 (왼쪽 위에서 오른쪽 아래로)
+                                            -45deg gradient pattern (top-left to bottom-right)
+                                            -->
+
+                                            <!-- 왼쪽 위 삼각형 / Top-left triangle -->
+                                            <GeometryDrawing Brush="{StaticResource BrownCheetah84.Pattern.Brush}">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry Figures="M 0,0 L 10,0 L 0,10 Z" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!-- 오른쪽 아래 삼각형 / Bottom-right triangle -->
+                                            <GeometryDrawing Brush="{StaticResource BrownCheetah84.Pattern.Brush}">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry Figures="M 20,10 L 20,20 L 10,20 Z" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Border.Background>
+                        </Border>
+
+                        <!-- 콘텐츠 영역 / Content area -->
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

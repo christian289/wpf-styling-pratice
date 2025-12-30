@@ -1,0 +1,21 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <!-- 배경색 / Background color -->
+    <Color x:Key="BrownCheetah84.Background.Color">#F0F0F0</Color>
+    <!-- 패턴색 (파란색) / Pattern color (blue) -->
+    <Color x:Key="BrownCheetah84.Pattern.Color">#3498DB</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="BrownCheetah84.Background.Brush" Color="{StaticResource BrownCheetah84.Background.Color}" />
+    <SolidColorBrush x:Key="BrownCheetah84.Pattern.Brush" Color="{StaticResource BrownCheetah84.Pattern.Color}" />
+
+    <!-- Pattern Size (20px x 20px in CSS) -->
+    <sys:Double x:Key="BrownCheetah84.Pattern.Size">20</sys:Double>
+
+    <!-- Pattern Opacity (0.8 in CSS) -->
+    <sys:Double x:Key="BrownCheetah84.Pattern.Opacity">0.8</sys:Double>
+
+</ResourceDictionary>
