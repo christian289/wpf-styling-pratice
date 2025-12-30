@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="FatPanther54.Wpf.Gallery/FatPanther54.Wpf.Gallery.csproj" />
+  <Project Path="FatPanther54.Wpf.UI/FatPanther54.Wpf.UI.csproj" />
+</Solution>

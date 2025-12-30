@@ -1,0 +1,152 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:FatPanther54.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/FatPanther54.Wpf.UI;component/Themes/FatPanther54Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--
+    CSS conic-gradient 패턴을 WPF DrawingBrush로 변환
+    Converting CSS conic-gradient pattern to WPF DrawingBrush
+
+    원본 CSS:
+    - conic-gradient(from 60deg at 56.25% calc(425% / 6), ...)
+    - conic-gradient(from 180deg at 43.75% calc(425% / 6), ...)
+    - conic-gradient(from -60deg at 50% calc(175% / 12), ...)
+
+    WPF 구현:
+    - DrawingBrush with TileMode="Tile"
+    - Polygon 기반 삼각형 패턴
+    -->
+
+    <Style TargetType="{x:Type controls:FatPanther54}">
+        <Setter Property="Background" Value="{StaticResource FatPanther54.Background.Brush}" />
+        <Setter Property="PatternSize" Value="{StaticResource FatPanther54.PatternSize.Default}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:FatPanther54}">
+                    <Border Background="{TemplateBinding Background}">
+                        <!--
+                        conic-gradient 패턴을 삼각형 타일링으로 근사
+                        Approximating conic-gradient pattern with triangle tiling
+
+                        타일 크기: 2*s x 3.46*s (s = PatternSize)
+                        Tile size: 2*s x 3.46*s (s = PatternSize)
+                        -->
+                        <Border.OpacityMask>
+                            <VisualBrush Stretch="None" TileMode="Tile"
+                                         Viewport="0,0,74,128.02" ViewportUnits="Absolute">
+                                <VisualBrush.Visual>
+                                    <Canvas Width="74" Height="128.02">
+                                        <!-- 배경 (Background) -->
+                                        <Rectangle Width="74" Height="128.02" Fill="#ECBE13" />
+                                    </Canvas>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Border.OpacityMask>
+
+                        <!--
+                        DrawingBrush를 사용한 삼각형 패턴
+                        Triangle pattern using DrawingBrush
+                        -->
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <DrawingBrush TileMode="Tile" Stretch="None"
+                                              Viewport="0,0,74,128.02" ViewportUnits="Absolute">
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <!-- 배경색 (Background color: #ECBE13) -->
+                                            <GeometryDrawing Brush="#ECBE13">
+                                                <GeometryDrawing.Geometry>
+                                                    <RectangleGeometry Rect="0,0,74,128.02" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!--
+                                            삼각형 패턴 (Triangle pattern)
+                                            CSS conic-gradient 근사를 위한 삼각형 배치
+                                            Triangle placement to approximate CSS conic-gradient
+
+                                            계산:
+                                            - s = 37px
+                                            - 타일 너비 = 2*s = 74px
+                                            - 타일 높이 = 3.46*s ≈ 128.02px
+                                            - 1.73*s ≈ 64.01px
+                                            -->
+
+                                            <!-- 상단 삼각형 그룹 1 (Top triangle group 1) -->
+                                            <GeometryDrawing Brush="#2FB8AC">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry>
+                                                        <!-- g1: from 60deg at 56.25% calc(425%/6) = 56.25%, 70.83% -->
+                                                        <PathFigure StartPoint="41.625,90.68" IsClosed="True">
+                                                            <LineSegment Point="0,64.01" />
+                                                            <LineSegment Point="0,117.35" />
+                                                        </PathFigure>
+                                                        <PathFigure StartPoint="41.625,90.68" IsClosed="True">
+                                                            <LineSegment Point="74,64.01" />
+                                                            <LineSegment Point="74,117.35" />
+                                                        </PathFigure>
+                                                    </PathGeometry>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!-- 상단 삼각형 그룹 2 (Top triangle group 2) -->
+                                            <GeometryDrawing Brush="#2FB8AC">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry>
+                                                        <!-- g2: from 180deg at 43.75% calc(425%/6) = 43.75%, 70.83% -->
+                                                        <PathFigure StartPoint="32.375,90.68" IsClosed="True">
+                                                            <LineSegment Point="0,64.01" />
+                                                            <LineSegment Point="0,117.35" />
+                                                        </PathFigure>
+                                                    </PathGeometry>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!-- 하단 삼각형 그룹 (Bottom triangle group) -->
+                                            <GeometryDrawing Brush="#2FB8AC">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry>
+                                                        <!-- g3: from -60deg at 50% calc(175%/12) = 50%, 14.58% -->
+                                                        <PathFigure StartPoint="37,18.67" IsClosed="True">
+                                                            <LineSegment Point="0,0" />
+                                                            <LineSegment Point="74,0" />
+                                                        </PathFigure>
+                                                        <PathFigure StartPoint="37,18.67" IsClosed="True">
+                                                            <LineSegment Point="0,37.34" />
+                                                            <LineSegment Point="74,37.34" />
+                                                        </PathFigure>
+                                                    </PathGeometry>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <!-- 추가 삼각형 (Additional triangles for pattern completion) -->
+                                            <GeometryDrawing Brush="#2FB8AC">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry>
+                                                        <!-- 하단 반복 패턴 (Bottom repeat pattern) -->
+                                                        <PathFigure StartPoint="37,82.68" IsClosed="True">
+                                                            <LineSegment Point="0,64.01" />
+                                                            <LineSegment Point="74,64.01" />
+                                                        </PathFigure>
+                                                        <PathFigure StartPoint="37,101.35" IsClosed="True">
+                                                            <LineSegment Point="0,128.02" />
+                                                            <LineSegment Point="74,128.02" />
+                                                        </PathFigure>
+                                                    </PathGeometry>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

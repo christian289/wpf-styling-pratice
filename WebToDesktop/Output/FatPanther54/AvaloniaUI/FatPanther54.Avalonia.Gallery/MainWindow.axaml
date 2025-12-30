@@ -1,0 +1,78 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:FatPanther54.Avalonia.Lib.Controls"
+        x:Class="FatPanther54.Avalonia.Gallery.MainWindow"
+        Title="FatPanther54 - Geometric Pattern Gallery"
+        Width="800"
+        Height="600">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Background="#333"
+                Padding="20">
+            <StackPanel Spacing="8">
+                <TextBlock Text="GeometricPatternPanel"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+                <TextBlock Text="From Uiverse.io by csemszepp - Tags: simple, minimalist, pattern"
+                           FontSize="12"
+                           Foreground="#AAA"/>
+                <TextBlock Text="Conic-gradient 기반 삼각형 타일 패턴을 AvaloniaUI로 변환한 커스텀 컨트롤"
+                           FontSize="14"
+                           Foreground="#CCC"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Pattern Display Area -->
+        <controls:GeometricPatternPanel Grid.Row="1"
+                                         PatternSize="37"
+                                         TriangleColor="#2fb8ac"
+                                         BackgroundColor="#ecbe13"
+                                         HorizontalContentAlignment="Center"
+                                         VerticalContentAlignment="Center">
+
+            <!-- Overlay Content Demo -->
+            <Border Background="#80000000"
+                    CornerRadius="16"
+                    Padding="32">
+                <StackPanel Spacing="16"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="Geometric Pattern Panel"
+                               FontSize="28"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="CSS conic-gradient를 AvaloniaUI DrawingContext로 변환"
+                               FontSize="14"
+                               Foreground="#DDD"
+                               HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="16"
+                                HorizontalAlignment="Center">
+                        <Border Background="#2fb8ac"
+                                CornerRadius="8"
+                                Padding="16,8">
+                            <TextBlock Text="Triangle: #2fb8ac"
+                                       Foreground="White"
+                                       FontWeight="SemiBold"/>
+                        </Border>
+                        <Border Background="#ecbe13"
+                                CornerRadius="8"
+                                Padding="16,8">
+                            <TextBlock Text="Background: #ecbe13"
+                                       Foreground="#333"
+                                       FontWeight="SemiBold"/>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+        </controls:GeometricPatternPanel>
+
+    </Grid>
+
+</Window>

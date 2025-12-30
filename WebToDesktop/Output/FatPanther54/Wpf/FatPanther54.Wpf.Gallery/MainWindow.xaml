@@ -1,0 +1,33 @@
+<Window x:Class="FatPanther54.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:FatPanther54.Wpf.UI.Controls;assembly=FatPanther54.Wpf.UI"
+        mc:Ignorable="d"
+        Title="FatPanther54 Pattern Gallery" Height="600" Width="800"
+        Background="#1a1a2e">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- 제목 (Title) -->
+        <TextBlock Grid.Row="0"
+                   Text="FatPanther54 - Geometric Triangle Pattern"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20" />
+
+        <!-- 패턴 컨트롤 (Pattern Control) -->
+        <Border Grid.Row="1"
+                CornerRadius="10"
+                BorderBrush="#333"
+                BorderThickness="2">
+            <controls:FatPanther54 />
+        </Border>
+    </Grid>
+</Window>

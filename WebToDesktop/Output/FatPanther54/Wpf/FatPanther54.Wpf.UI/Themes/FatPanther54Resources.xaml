@@ -1,0 +1,31 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+    CSS 변수 매핑 (CSS Variable Mapping)
+    s: 37px - 패턴 타일 크기 (pattern tile size)
+    c: #0000, #2fb8ac 0.5deg 119.5deg, #0000 120deg - conic gradient 색상 (conic gradient colors)
+    배경색: #ecbe13 - 골드/노란색 (gold/yellow background)
+    -->
+
+    <!-- 색상 리소스 (Color Resources) -->
+    <!-- 주요 패턴 색상: teal -->
+    <Color x:Key="FatPanther54.Pattern.Color">#2FB8AC</Color>
+    <SolidColorBrush x:Key="FatPanther54.Pattern.Brush" Color="{StaticResource FatPanther54.Pattern.Color}" />
+
+    <!-- 배경 색상: gold/yellow -->
+    <Color x:Key="FatPanther54.Background.Color">#ECBE13</Color>
+    <SolidColorBrush x:Key="FatPanther54.Background.Brush" Color="{StaticResource FatPanther54.Background.Color}" />
+
+    <!-- 크기 리소스 (Size Resources) -->
+    <!-- 기본 패턴 크기: 37px -->
+    <sys:Double x:Key="FatPanther54.PatternSize.Default">37</sys:Double>
+
+    <!-- 타일 비율 (Tile Ratios) -->
+    <!-- 타일 너비 = 2 * s -->
+    <sys:Double x:Key="FatPanther54.TileWidth.Multiplier">2</sys:Double>
+    <!-- 타일 높이 = 3.46 * s (sqrt(12) ≈ 3.464) -->
+    <sys:Double x:Key="FatPanther54.TileHeight.Multiplier">3.46</sys:Double>
+
+</ResourceDictionary>
