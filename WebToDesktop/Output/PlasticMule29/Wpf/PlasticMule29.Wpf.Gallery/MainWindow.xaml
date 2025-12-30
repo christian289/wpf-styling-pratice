@@ -1,0 +1,26 @@
+<Window x:Class="PlasticMule29.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:PlasticMule29.Wpf.UI.Controls;assembly=PlasticMule29.Wpf.UI"
+        mc:Ignorable="d"
+        Title="PlasticMule29 Gallery" Height="450" Width="800"
+        Background="#2D2D2D">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="PlasticMule29 Button Control"
+                       Foreground="White"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,30" />
+
+            <controls:PlasticMule29 Content="BUTTON" Margin="0,0,0,20" />
+
+            <controls:PlasticMule29 Content="CLICK ME" Margin="0,0,0,20" />
+
+            <controls:PlasticMule29 Content="SUBMIT" />
+        </StackPanel>
+    </Grid>
+</Window>

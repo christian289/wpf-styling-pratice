@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="PlasticMule29.Wpf.Gallery/PlasticMule29.Wpf.Gallery.csproj" />
+  <Project Path="PlasticMule29.Wpf.UI/PlasticMule29.Wpf.UI.csproj" />
+</Solution>

@@ -1,0 +1,129 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:PlasticMule29.Avalonia.Lib.Controls">
+
+    <!--
+    PlasticMule29Button: CSS ::before, ::after를 활용한 3D 입체 버튼
+    원본 CSS: inset box-shadow로 상하좌우 경계면 입체감 표현
+    AvaloniaUI: Border 레이어로 inset shadow 효과 시뮬레이션
+
+    PlasticMule29Button: 3D button using CSS ::before, ::after
+    Original CSS: inset box-shadow for 3D edge effect on all sides
+    AvaloniaUI: Simulate inset shadow effect with Border layers
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="PlasticMule29.Primary">#008542</Color>
+    <Color x:Key="PlasticMule29.Foreground">#FFFFFF</Color>
+    <Color x:Key="PlasticMule29.Shadow.Top">#80156C00</Color>
+    <Color x:Key="PlasticMule29.Shadow.Bottom">#FC64FD1F</Color>
+    <Color x:Key="PlasticMule29.Shadow.Left">#8064FD1F</Color>
+    <Color x:Key="PlasticMule29.Shadow.Right">#80156C00</Color>
+    <Color x:Key="PlasticMule29.Hover.Shadow.Top">#80000000</Color>
+    <Color x:Key="PlasticMule29.Hover.Shadow.Bottom">#33FFFFFF</Color>
+    <Color x:Key="PlasticMule29.Hover.Shadow.Left">#33FFFFFF</Color>
+    <Color x:Key="PlasticMule29.Hover.Shadow.Right">#80000000</Color>
+    <Color x:Key="PlasticMule29.DropShadow">#26000000</Color>
+
+    <ControlTheme x:Key="{x:Type controls:PlasticMule29Button}" TargetType="controls:PlasticMule29Button">
+        <Setter Property="Background" Value="{StaticResource PlasticMule29.Primary}" />
+        <Setter Property="Foreground" Value="{StaticResource PlasticMule29.Foreground}" />
+        <Setter Property="Padding" Value="24,12.8" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="Black" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="RenderTransform" Value="none" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- 외부 드롭 섀도우 (::after - box-shadow: 0 4px 0 0) -->
+                    <!-- Outer drop shadow (::after - box-shadow: 0 4px 0 0) -->
+                    <Border Name="PART_DropShadow"
+                            Background="{StaticResource PlasticMule29.DropShadow}"
+                            Margin="0,4,0,-4"
+                            IsHitTestVisible="False" />
+
+                    <!-- 메인 배경 + inset shadow 레이어 -->
+                    <!-- Main background + inset shadow layers -->
+                    <Border Name="PART_Background"
+                            Background="{TemplateBinding Background}"
+                            ClipToBounds="True">
+                        <Panel>
+                            <!-- 상단 inset shadow (0 -4px inset) -->
+                            <!-- Top inset shadow (0 -4px inset) -->
+                            <Border Name="PART_TopShadow"
+                                    Height="4"
+                                    VerticalAlignment="Top"
+                                    Background="{StaticResource PlasticMule29.Shadow.Top}"
+                                    IsHitTestVisible="False" />
+
+                            <!-- 하단 inset shadow (0 4px inset) -->
+                            <!-- Bottom inset shadow (0 4px inset) -->
+                            <Border Name="PART_BottomShadow"
+                                    Height="4"
+                                    VerticalAlignment="Bottom"
+                                    Background="{StaticResource PlasticMule29.Shadow.Bottom}"
+                                    IsHitTestVisible="False" />
+
+                            <!-- 좌측 inset shadow (-4px 0 inset) -->
+                            <!-- Left inset shadow (-4px 0 inset) -->
+                            <Border Name="PART_LeftShadow"
+                                    Width="4"
+                                    HorizontalAlignment="Left"
+                                    Background="{StaticResource PlasticMule29.Shadow.Left}"
+                                    IsHitTestVisible="False" />
+
+                            <!-- 우측 inset shadow (4px 0 inset) -->
+                            <!-- Right inset shadow (4px 0 inset) -->
+                            <Border Name="PART_RightShadow"
+                                    Width="4"
+                                    HorizontalAlignment="Right"
+                                    Background="{StaticResource PlasticMule29.Shadow.Right}"
+                                    IsHitTestVisible="False" />
+
+                            <!-- 콘텐츠 영역 -->
+                            <!-- Content area -->
+                            <ContentPresenter Name="PART_ContentPresenter"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Padding="{TemplateBinding Padding}"
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              TextElement.FontWeight="{TemplateBinding FontWeight}" />
+                        </Panel>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- PointerOver 상태 (hover) -->
+        <!-- PointerOver state (hover) -->
+        <Style Selector="^:pointerover /template/ Border#PART_TopShadow">
+            <Setter Property="Background" Value="{StaticResource PlasticMule29.Hover.Shadow.Top}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Border#PART_BottomShadow">
+            <Setter Property="Background" Value="{StaticResource PlasticMule29.Hover.Shadow.Bottom}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Border#PART_LeftShadow">
+            <Setter Property="Background" Value="{StaticResource PlasticMule29.Hover.Shadow.Left}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Border#PART_RightShadow">
+            <Setter Property="Background" Value="{StaticResource PlasticMule29.Hover.Shadow.Right}" />
+        </Style>
+
+        <!-- Pressed 상태 (active) - translateY(4px) -->
+        <!-- Pressed state (active) - translateY(4px) -->
+        <Style Selector="^:pressed">
+            <Setter Property="RenderTransform">
+                <TranslateTransform Y="4" />
+            </Setter>
+        </Style>
+        <Style Selector="^:pressed /template/ Border#PART_DropShadow">
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

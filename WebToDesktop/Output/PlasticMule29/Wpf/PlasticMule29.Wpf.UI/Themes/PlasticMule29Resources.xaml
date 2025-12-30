@@ -1,0 +1,47 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <!-- 기본 배경색 (Primary background color) -->
+    <Color x:Key="PlasticMule29.Background.Color">#008542</Color>
+    <SolidColorBrush x:Key="PlasticMule29.Background" Color="{StaticResource PlasticMule29.Background.Color}" />
+
+    <!-- 전경색 (Foreground color) -->
+    <SolidColorBrush x:Key="PlasticMule29.Foreground" Color="#FFFFFF" />
+
+    <!-- Inset Shadow Colors - Normal State -->
+    <!-- 상단 inset shadow (어두운 녹색, 50% 투명도) -->
+    <Color x:Key="PlasticMule29.InsetShadow.Top.Normal">#80156C00</Color>
+    <!-- 하단 inset shadow (밝은 녹색, 99% 투명도) -->
+    <Color x:Key="PlasticMule29.InsetShadow.Bottom.Normal">#FC64FD1F</Color>
+    <!-- 좌측 inset shadow (밝은 녹색, 50% 투명도) -->
+    <Color x:Key="PlasticMule29.InsetShadow.Left.Normal">#8064FD1F</Color>
+    <!-- 우측 inset shadow (어두운 녹색, 50% 투명도) -->
+    <Color x:Key="PlasticMule29.InsetShadow.Right.Normal">#80156C00</Color>
+
+    <!-- Inset Shadow Colors - Hover State -->
+    <!-- 상단 inset shadow (검정, 50% 투명도) -->
+    <Color x:Key="PlasticMule29.InsetShadow.Top.Hover">#80000000</Color>
+    <!-- 하단 inset shadow (흰색, 20% 투명도) -->
+    <Color x:Key="PlasticMule29.InsetShadow.Bottom.Hover">#33FFFFFF</Color>
+    <!-- 좌측 inset shadow (흰색, 20% 투명도) -->
+    <Color x:Key="PlasticMule29.InsetShadow.Left.Hover">#33FFFFFF</Color>
+    <!-- 우측 inset shadow (검정, 50% 투명도) -->
+    <Color x:Key="PlasticMule29.InsetShadow.Right.Hover">#80000000</Color>
+
+    <!-- Drop Shadow (외부 그림자) -->
+    <Color x:Key="PlasticMule29.DropShadow.Color">#26000000</Color>
+
+    <!-- Sizes -->
+    <sys:Double x:Key="PlasticMule29.FontSize">18</sys:Double>
+    <sys:Double x:Key="PlasticMule29.InsetBorderThickness">4</sys:Double>
+    <sys:Double x:Key="PlasticMule29.DropShadowHeight">4</sys:Double>
+
+    <!-- Padding (0.8rem 1.5rem = 약 12.8px 24px) -->
+    <Thickness x:Key="PlasticMule29.Padding">24,12.8,24,12.8</Thickness>
+
+    <!-- Animation Duration -->
+    <sys:TimeSpan x:Key="PlasticMule29.Animation.Duration">0:0:0.3</sys:TimeSpan>
+
+</ResourceDictionary>

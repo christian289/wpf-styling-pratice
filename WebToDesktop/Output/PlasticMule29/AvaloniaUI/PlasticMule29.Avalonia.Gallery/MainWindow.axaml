@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:PlasticMule29.Avalonia.Lib.Controls"
+        x:Class="PlasticMule29.Avalonia.Gallery.MainWindow"
+        Title="PlasticMule29 Button Gallery"
+        Width="600"
+        Height="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#F5F5F5">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="20">
+
+            <TextBlock Text="PlasticMule29 Button"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20" />
+
+            <!-- 기본 버튼 -->
+            <!-- Default button -->
+            <controls:PlasticMule29Button Content="BUTTON" />
+
+            <!-- 다양한 텍스트 버튼 -->
+            <!-- Various text buttons -->
+            <controls:PlasticMule29Button Content="CLICK ME" />
+
+            <controls:PlasticMule29Button Content="SUBMIT" />
+
+            <TextBlock Text="3D 입체 효과 버튼 - Hover/Press 시 효과 확인"
+                       FontSize="12"
+                       Foreground="#666666"
+                       HorizontalAlignment="Center"
+                       Margin="0,20,0,0" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>

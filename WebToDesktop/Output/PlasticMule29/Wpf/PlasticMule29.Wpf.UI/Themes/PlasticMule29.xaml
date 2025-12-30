@@ -1,0 +1,195 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:PlasticMule29.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/PlasticMule29.Wpf.UI;component/Themes/PlasticMule29Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:PlasticMule29}">
+        <Setter Property="Background" Value="{StaticResource PlasticMule29.Background}" />
+        <Setter Property="Foreground" Value="{StaticResource PlasticMule29.Foreground}" />
+        <Setter Property="FontSize" Value="{StaticResource PlasticMule29.FontSize}" />
+        <Setter Property="FontWeight" Value="Black" />
+        <Setter Property="Padding" Value="{StaticResource PlasticMule29.Padding}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:PlasticMule29}">
+                    <Grid x:Name="RootGrid">
+                        <!--
+                        CSS의 구조:
+                        - button:before = 배경 + inset box-shadow (z-index: -1)
+                        - button = 텍스트 (z-index: 1)
+                        - button:after = 외부 drop shadow
+
+                        WPF 구현:
+                        - DropShadowBorder: 외부 그림자 (::after에 해당)
+                        - MainBorder: 메인 배경
+                        - InsetBorders: 4개의 Border로 inset shadow 시뮬레이션 (::before에 해당)
+                        - ContentPresenter: 텍스트
+                        -->
+
+                        <!-- 외부 Drop Shadow (button:after의 box-shadow: 0 4px 0 0 rgb(0 0 0 / 15%)) -->
+                        <Border x:Name="DropShadowBorder"
+                                Background="{x:Null}"
+                                Margin="0,4,0,-4">
+                            <Border.Effect>
+                                <DropShadowEffect Color="{StaticResource PlasticMule29.DropShadow.Color}"
+                                                  BlurRadius="0"
+                                                  ShadowDepth="4"
+                                                  Direction="270"
+                                                  Opacity="1" />
+                            </Border.Effect>
+                        </Border>
+
+                        <!-- 메인 배경 Border -->
+                        <Border x:Name="MainBorder"
+                                Background="{TemplateBinding Background}">
+
+                            <Grid>
+                                <!-- Inset Shadow Borders (CSS inset box-shadow 시뮬레이션) -->
+                                <!-- 상단 inset shadow: 0 -4px ... inset = 상단에서 4px 높이 -->
+                                <Border x:Name="TopInsetBorder"
+                                        VerticalAlignment="Top"
+                                        Height="4">
+                                    <Border.Background>
+                                        <SolidColorBrush x:Name="TopInsetBrush" Color="{StaticResource PlasticMule29.InsetShadow.Top.Normal}" />
+                                    </Border.Background>
+                                </Border>
+
+                                <!-- 하단 inset shadow: 0 4px ... inset = 하단에서 4px 높이 -->
+                                <Border x:Name="BottomInsetBorder"
+                                        VerticalAlignment="Bottom"
+                                        Height="4">
+                                    <Border.Background>
+                                        <SolidColorBrush x:Name="BottomInsetBrush" Color="{StaticResource PlasticMule29.InsetShadow.Bottom.Normal}" />
+                                    </Border.Background>
+                                </Border>
+
+                                <!-- 좌측 inset shadow: -4px 0 ... inset = 좌측에서 4px 너비 -->
+                                <Border x:Name="LeftInsetBorder"
+                                        HorizontalAlignment="Left"
+                                        Width="4">
+                                    <Border.Background>
+                                        <SolidColorBrush x:Name="LeftInsetBrush" Color="{StaticResource PlasticMule29.InsetShadow.Left.Normal}" />
+                                    </Border.Background>
+                                </Border>
+
+                                <!-- 우측 inset shadow: 4px 0 ... inset = 우측에서 4px 너비 -->
+                                <Border x:Name="RightInsetBorder"
+                                        HorizontalAlignment="Right"
+                                        Width="4">
+                                    <Border.Background>
+                                        <SolidColorBrush x:Name="RightInsetBrush" Color="{StaticResource PlasticMule29.InsetShadow.Right.Normal}" />
+                                    </Border.Background>
+                                </Border>
+
+                                <!-- 콘텐츠 (텍스트) -->
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  Margin="{TemplateBinding Padding}">
+                                    <!-- CSS의 text-shadow: 0 2px 0 rgb(0 0 0 / 25%) -->
+                                    <ContentPresenter.Effect>
+                                        <DropShadowEffect Color="Black"
+                                                          BlurRadius="0"
+                                                          ShadowDepth="2"
+                                                          Direction="270"
+                                                          Opacity="0.25" />
+                                    </ContentPresenter.Effect>
+                                </ContentPresenter>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover 상태: inset shadow 색상 변경 -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="TopInsetBrush"
+                                                        Storyboard.TargetProperty="Color"
+                                                        To="{StaticResource PlasticMule29.InsetShadow.Top.Hover}"
+                                                        Duration="0:0:0.3" />
+                                        <ColorAnimation Storyboard.TargetName="BottomInsetBrush"
+                                                        Storyboard.TargetProperty="Color"
+                                                        To="{StaticResource PlasticMule29.InsetShadow.Bottom.Hover}"
+                                                        Duration="0:0:0.3" />
+                                        <ColorAnimation Storyboard.TargetName="LeftInsetBrush"
+                                                        Storyboard.TargetProperty="Color"
+                                                        To="{StaticResource PlasticMule29.InsetShadow.Left.Hover}"
+                                                        Duration="0:0:0.3" />
+                                        <ColorAnimation Storyboard.TargetName="RightInsetBrush"
+                                                        Storyboard.TargetProperty="Color"
+                                                        To="{StaticResource PlasticMule29.InsetShadow.Right.Hover}"
+                                                        Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="TopInsetBrush"
+                                                        Storyboard.TargetProperty="Color"
+                                                        To="{StaticResource PlasticMule29.InsetShadow.Top.Normal}"
+                                                        Duration="0:0:0.3" />
+                                        <ColorAnimation Storyboard.TargetName="BottomInsetBrush"
+                                                        Storyboard.TargetProperty="Color"
+                                                        To="{StaticResource PlasticMule29.InsetShadow.Bottom.Normal}"
+                                                        Duration="0:0:0.3" />
+                                        <ColorAnimation Storyboard.TargetName="LeftInsetBrush"
+                                                        Storyboard.TargetProperty="Color"
+                                                        To="{StaticResource PlasticMule29.InsetShadow.Left.Normal}"
+                                                        Duration="0:0:0.3" />
+                                        <ColorAnimation Storyboard.TargetName="RightInsetBrush"
+                                                        Storyboard.TargetProperty="Color"
+                                                        To="{StaticResource PlasticMule29.InsetShadow.Right.Normal}"
+                                                        Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                        <!-- Pressed 상태: transform: translateY(4px) + drop shadow 제거 -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- RootGrid를 아래로 4px 이동 -->
+                                        <ThicknessAnimation Storyboard.TargetName="RootGrid"
+                                                            Storyboard.TargetProperty="Margin"
+                                                            To="0,4,0,-4"
+                                                            Duration="0:0:0.1" />
+                                        <!-- Drop shadow depth를 0으로 -->
+                                        <DoubleAnimation Storyboard.TargetName="DropShadowBorder"
+                                                         Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.ShadowDepth)"
+                                                         To="0"
+                                                         Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetName="RootGrid"
+                                                            Storyboard.TargetProperty="Margin"
+                                                            To="0,0,0,0"
+                                                            Duration="0:0:0.1" />
+                                        <DoubleAnimation Storyboard.TargetName="DropShadowBorder"
+                                                         Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.ShadowDepth)"
+                                                         To="4"
+                                                         Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
