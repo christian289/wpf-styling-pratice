@@ -1,0 +1,29 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <!-- CSS: background: #333 -->
+    <SolidColorBrush x:Key="SpicyJellyfish41.Line.Background" Color="#333333" />
+
+    <!-- Sizes -->
+    <!-- CSS: width: 30px -->
+    <sys:Double x:Key="SpicyJellyfish41.Line.Width">30</sys:Double>
+    <!-- CSS: height: 3px -->
+    <sys:Double x:Key="SpicyJellyfish41.Line.Height">3</sys:Double>
+    <!-- CSS: margin: 6px 0 (상하 마진) -->
+    <sys:Double x:Key="SpicyJellyfish41.Line.Margin">6</sys:Double>
+    <!-- translateY 이동량: 8px -->
+    <sys:Double x:Key="SpicyJellyfish41.TranslateY">8</sys:Double>
+    <!-- translateX 이동량: -20px -->
+    <sys:Double x:Key="SpicyJellyfish41.TranslateX">-20</sys:Double>
+
+    <!-- Animation Duration -->
+    <!-- CSS: transition: 0.3s -->
+    <Duration x:Key="SpicyJellyfish41.Animation.Duration">0:0:0.3</Duration>
+
+    <!-- Animation Easing -->
+    <!-- CSS: cubic-bezier(0.68, -0.55, 0.265, 1.55) - Back ease in/out 유사 -->
+    <KeySpline x:Key="SpicyJellyfish41.Animation.Easing">0.68,-0.55,0.265,1.55</KeySpline>
+
+</ResourceDictionary>

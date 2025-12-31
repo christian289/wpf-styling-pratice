@@ -1,0 +1,157 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:SpicyJellyfish41.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/SpicyJellyfish41.Wpf.UI;component/Themes/SpicyJellyfish41Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--
+    햄버거 메뉴 토글 버튼 스타일
+    Hamburger menu toggle button style
+
+    CSS 변환 매핑:
+    - .burger span → 3개의 Border 요소
+    - transform: translateY(8px) rotate(45deg) → TranslateTransform + RotateTransform
+    - opacity: 0; transform: translateX(-20px) → Opacity + TranslateTransform
+    - transition: 0.3s cubic-bezier(...) → Storyboard with SplineDoubleKeyFrame
+    -->
+    <Style TargetType="{x:Type controls:SpicyJellyfish41}">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Width" Value="30" />
+        <Setter Property="Height" Value="27" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:SpicyJellyfish41}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <!-- 첫 번째 줄 (상단) - First line (top) -->
+                            <!-- CSS: #burger-checkbox:checked + .burger span:nth-child(1) { transform: translateY(8px) rotate(45deg); } -->
+                            <Border x:Name="Line1"
+                                    Width="{StaticResource SpicyJellyfish41.Line.Width}"
+                                    Height="{StaticResource SpicyJellyfish41.Line.Height}"
+                                    Background="{StaticResource SpicyJellyfish41.Line.Background}"
+                                    Margin="0,0,0,6"
+                                    RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform x:Name="Line1Translate" Y="0" />
+                                        <RotateTransform x:Name="Line1Rotate" Angle="0" />
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                            </Border>
+
+                            <!-- 두 번째 줄 (중간) - Second line (middle) -->
+                            <!-- CSS: #burger-checkbox:checked + .burger span:nth-child(2) { opacity: 0; transform: translateX(-20px); } -->
+                            <Border x:Name="Line2"
+                                    Width="{StaticResource SpicyJellyfish41.Line.Width}"
+                                    Height="{StaticResource SpicyJellyfish41.Line.Height}"
+                                    Background="{StaticResource SpicyJellyfish41.Line.Background}"
+                                    Margin="0,0,0,6"
+                                    Opacity="1"
+                                    RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <TranslateTransform x:Name="Line2Translate" X="0" />
+                                </Border.RenderTransform>
+                            </Border>
+
+                            <!-- 세 번째 줄 (하단) - Third line (bottom) -->
+                            <!-- CSS: #burger-checkbox:checked + .burger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); } -->
+                            <Border x:Name="Line3"
+                                    Width="{StaticResource SpicyJellyfish41.Line.Width}"
+                                    Height="{StaticResource SpicyJellyfish41.Line.Height}"
+                                    Background="{StaticResource SpicyJellyfish41.Line.Background}"
+                                    RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform x:Name="Line3Translate" Y="0" />
+                                        <RotateTransform x:Name="Line3Rotate" Angle="0" />
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- Checked 상태 - X 형태로 변형 -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Line1: translateY(8px) rotate(45deg) -->
+                                        <!-- 8px = 3px(height) + 6px(margin) - 1px 조정 -->
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Line1Translate"
+                                                                        Storyboard.TargetProperty="Y">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="9" KeySpline="0.68,-0.55,0.265,1.55" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Line1Rotate"
+                                                                        Storyboard.TargetProperty="Angle">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="45" KeySpline="0.68,-0.55,0.265,1.55" />
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <!-- Line2: opacity 0, translateX(-20px) -->
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Line2"
+                                                                        Storyboard.TargetProperty="Opacity">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="0" KeySpline="0.25,0.1,0.25,1" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Line2Translate"
+                                                                        Storyboard.TargetProperty="X">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="-20" KeySpline="0.68,-0.55,0.265,1.55" />
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <!-- Line3: translateY(-8px) rotate(-45deg) -->
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Line3Translate"
+                                                                        Storyboard.TargetProperty="Y">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="-9" KeySpline="0.68,-0.55,0.265,1.55" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Line3Rotate"
+                                                                        Storyboard.TargetProperty="Angle">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="-45" KeySpline="0.68,-0.55,0.265,1.55" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Line1: 원래 위치로 복원 - Restore to original position -->
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Line1Translate"
+                                                                        Storyboard.TargetProperty="Y">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="0" KeySpline="0.68,-0.55,0.265,1.55" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Line1Rotate"
+                                                                        Storyboard.TargetProperty="Angle">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="0" KeySpline="0.68,-0.55,0.265,1.55" />
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <!-- Line2: 원래 위치로 복원 - Restore to original position -->
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Line2"
+                                                                        Storyboard.TargetProperty="Opacity">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="1" KeySpline="0.25,0.1,0.25,1" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Line2Translate"
+                                                                        Storyboard.TargetProperty="X">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="0" KeySpline="0.68,-0.55,0.265,1.55" />
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <!-- Line3: 원래 위치로 복원 - Restore to original position -->
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Line3Translate"
+                                                                        Storyboard.TargetProperty="Y">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="0" KeySpline="0.68,-0.55,0.265,1.55" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Line3Rotate"
+                                                                        Storyboard.TargetProperty="Angle">
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="0" KeySpline="0.68,-0.55,0.265,1.55" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

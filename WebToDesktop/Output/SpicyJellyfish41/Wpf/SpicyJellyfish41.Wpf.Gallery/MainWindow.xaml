@@ -1,0 +1,43 @@
+<Window x:Class="SpicyJellyfish41.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:SpicyJellyfish41.Wpf.UI.Controls;assembly=SpicyJellyfish41.Wpf.UI"
+        mc:Ignorable="d"
+        Title="SpicyJellyfish41 Gallery - Hamburger Menu Toggle"
+        Height="450" Width="800"
+        Background="#F5F5F5">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Hamburger Menu Toggle Button"
+                       FontSize="24" FontWeight="SemiBold"
+                       HorizontalAlignment="Center"
+                       Foreground="#333333"
+                       Margin="0,0,0,15" />
+
+            <TextBlock Text="Click to toggle between hamburger and X"
+                       FontSize="14"
+                       HorizontalAlignment="Center"
+                       Foreground="#666666"
+                       Margin="0,0,0,30" />
+
+            <!-- 햄버거 메뉴 토글 버튼 - Hamburger menu toggle button -->
+            <Border Background="White"
+                    CornerRadius="12"
+                    Padding="40"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,30">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="2" Opacity="0.1" />
+                </Border.Effect>
+                <controls:SpicyJellyfish41 />
+            </Border>
+
+            <TextBlock Text="Original: uiverse.io/ahmedyasserdev/spicy-jellyfish-41"
+                       FontSize="11"
+                       HorizontalAlignment="Center"
+                       Foreground="#999999" />
+        </StackPanel>
+    </Grid>
+</Window>

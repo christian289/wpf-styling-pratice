@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SpicyJellyfish41.Wpf.Gallery/SpicyJellyfish41.Wpf.Gallery.csproj" />
+  <Project Path="SpicyJellyfish41.Wpf.UI/SpicyJellyfish41.Wpf.UI.csproj" />
+</Solution>
