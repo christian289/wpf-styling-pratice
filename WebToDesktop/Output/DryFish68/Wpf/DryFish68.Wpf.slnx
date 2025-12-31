@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="DryFish68.Wpf.Gallery/DryFish68.Wpf.Gallery.csproj" />
+  <Project Path="DryFish68.Wpf.UI/DryFish68.Wpf.UI.csproj" />
+</Solution>

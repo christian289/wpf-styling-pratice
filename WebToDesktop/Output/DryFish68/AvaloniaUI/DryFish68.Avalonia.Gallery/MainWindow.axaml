@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:DryFish68.Avalonia.Lib.Controls"
+        x:Class="DryFish68.Avalonia.Gallery.MainWindow"
+        Title="DryFish68 Button Gallery"
+        Width="600"
+        Height="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#1a1a2e">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="30">
+
+            <TextBlock Text="DryFish68 Button Gallery"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       HorizontalAlignment="Center" />
+
+            <TextBlock Text="Hover over the button to see the fill-down animation"
+                       FontSize="14"
+                       Foreground="#888"
+                       HorizontalAlignment="Center" />
+
+            <!-- DryFish68Button -->
+            <controls:DryFish68Button Content="Download CV"
+                                      HorizontalAlignment="Center" />
+
+            <!-- Additional button examples -->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Spacing="20">
+
+                <controls:DryFish68Button Content="Get Started" />
+                <controls:DryFish68Button Content="Learn More" />
+
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+
+</Window>

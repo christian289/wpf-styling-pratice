@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="DryFish68.Avalonia.Lib\DryFish68.Avalonia.Lib.csproj" />
+  <Project Path="DryFish68.Avalonia.Gallery\DryFish68.Avalonia.Gallery.csproj" />
+</Solution>

@@ -1,0 +1,11 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="DryFish68.Avalonia.Gallery.App"
+             RequestedThemeVariant="Dark">
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://DryFish68.Avalonia.Lib/Themes/Generic.axaml" />
+    </Application.Styles>
+
+</Application>

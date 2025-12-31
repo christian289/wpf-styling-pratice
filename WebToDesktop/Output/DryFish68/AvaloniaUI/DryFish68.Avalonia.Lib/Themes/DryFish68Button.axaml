@@ -1,0 +1,105 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:DryFish68.Avalonia.Lib.Controls">
+
+    <!-- Color Resources -->
+    <Color x:Key="DryFish68.AccentColor">#ed553b</Color>
+    <Color x:Key="DryFish68.ForegroundColor">#FFFFFF</Color>
+    <Color x:Key="DryFish68.HoverForegroundColor">#4e484a</Color>
+
+    <SolidColorBrush x:Key="DryFish68.AccentBrush" Color="{StaticResource DryFish68.AccentColor}" />
+    <SolidColorBrush x:Key="DryFish68.ForegroundBrush" Color="{StaticResource DryFish68.ForegroundColor}" />
+    <SolidColorBrush x:Key="DryFish68.HoverForegroundBrush" Color="{StaticResource DryFish68.HoverForegroundColor}" />
+
+    <!-- DryFish68Button Style -->
+    <ControlTheme x:Key="{x:Type controls:DryFish68Button}" TargetType="controls:DryFish68Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource DryFish68.ForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource DryFish68.AccentBrush}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Padding" Value="40,14,40,13" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontFamily" Value="Segoe UI, sans-serif" />
+        <Setter Property="CornerRadius" Value="50" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="ClipToBounds" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Main Border (visible border) -->
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            ClipToBounds="True">
+                        <Panel>
+                            <!-- Background fill element (::before pseudo-element equivalent) -->
+                            <Border x:Name="PART_BackgroundFill"
+                                    Background="{StaticResource DryFish68.AccentBrush}"
+                                    Margin="-5,-5,-5,-5"
+                                    VerticalAlignment="Bottom"
+                                    CornerRadius="50">
+                                <Border.RenderTransform>
+                                    <TranslateTransform Y="0" />
+                                </Border.RenderTransform>
+                            </Border>
+
+                            <!-- Content -->
+                            <ContentPresenter x:Name="PART_ContentPresenter"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Padding="{TemplateBinding Padding}"
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Panel>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- PointerOver State -->
+        <Style Selector="^:pointerover">
+            <Setter Property="Foreground" Value="{StaticResource DryFish68.HoverForegroundBrush}" />
+            <Style Selector="^ /template/ Border#PART_BackgroundFill">
+                <Style.Animations>
+                    <Animation Duration="0:0:0.3" Easing="CubicEaseOut" FillMode="Forward">
+                        <KeyFrame Cue="100%">
+                            <Setter Property="RenderTransform">
+                                <TranslateTransform Y="40" />
+                            </Setter>
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+        </Style>
+
+        <!-- Not PointerOver State (return animation) -->
+        <Style Selector="^:not(:pointerover)">
+            <Style Selector="^ /template/ Border#PART_BackgroundFill">
+                <Style.Animations>
+                    <Animation Duration="0:0:0.3" Easing="CubicEaseOut" FillMode="Forward">
+                        <KeyFrame Cue="100%">
+                            <Setter Property="RenderTransform">
+                                <TranslateTransform Y="0" />
+                            </Setter>
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+        </Style>
+
+        <!-- Pressed State -->
+        <Style Selector="^:pressed">
+            <Setter Property="Opacity" Value="0.9" />
+        </Style>
+
+        <!-- Disabled State -->
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.5" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

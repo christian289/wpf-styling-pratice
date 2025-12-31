@@ -1,0 +1,38 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <!-- 테두리 및 배경색: #ed553b (오렌지-레드) -->
+    <!-- Border and background color: #ed553b (orange-red) -->
+    <Color x:Key="DryFish68.Color.Primary">#ED553B</Color>
+
+    <!-- 기본 텍스트 색상: 흰색 -->
+    <!-- Default text color: white -->
+    <Color x:Key="DryFish68.Color.Foreground.Normal">#FFFFFF</Color>
+
+    <!-- Hover 시 텍스트 색상: #4e484a (어두운 회색) -->
+    <!-- Text color on hover: #4e484a (dark gray) -->
+    <Color x:Key="DryFish68.Color.Foreground.Hover">#4E484A</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="DryFish68.Brush.Border" Color="{StaticResource DryFish68.Color.Primary}" />
+    <SolidColorBrush x:Key="DryFish68.Brush.Background" Color="{StaticResource DryFish68.Color.Primary}" />
+    <SolidColorBrush x:Key="DryFish68.Brush.Foreground.Normal" Color="{StaticResource DryFish68.Color.Foreground.Normal}" />
+    <SolidColorBrush x:Key="DryFish68.Brush.Foreground.Hover" Color="{StaticResource DryFish68.Color.Foreground.Hover}" />
+
+    <!-- Sizes -->
+    <!-- border: 2px solid -->
+    <sys:Double x:Key="DryFish68.BorderThickness">2</sys:Double>
+
+    <!-- border-radius: 50px -->
+    <CornerRadius x:Key="DryFish68.CornerRadius">50</CornerRadius>
+
+    <!-- padding: 14px 40px 13px -->
+    <Thickness x:Key="DryFish68.Padding">40,14,40,13</Thickness>
+
+    <!-- Animation Duration -->
+    <!-- transition: all .3s ease -->
+    <Duration x:Key="DryFish68.Animation.Duration">0:0:0.3</Duration>
+
+</ResourceDictionary>
