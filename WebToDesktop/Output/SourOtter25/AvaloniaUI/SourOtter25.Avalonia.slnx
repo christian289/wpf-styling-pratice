@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SourOtter25.Avalonia.Lib\SourOtter25.Avalonia.Lib.csproj" />
+  <Project Path="SourOtter25.Avalonia.Gallery\SourOtter25.Avalonia.Gallery.csproj" />
+</Solution>

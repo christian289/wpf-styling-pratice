@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SourOtter25.Wpf.Gallery/SourOtter25.Wpf.Gallery.csproj" />
+  <Project Path="SourOtter25.Wpf.UI/SourOtter25.Wpf.UI.csproj" />
+</Solution>

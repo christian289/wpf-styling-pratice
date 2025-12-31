@@ -1,0 +1,25 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SourOtter25.Avalonia.Lib.Controls"
+        x:Class="SourOtter25.Avalonia.Gallery.MainWindow"
+        Title="SourOtter25 - ClipPath Card Gallery"
+        Width="600"
+        Height="400"
+        Background="#1a1a2e">
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Horizontal"
+                Spacing="20">
+
+        <!-- Default Card -->
+        <controls:ClipPathCard />
+
+        <!-- Custom Card -->
+        <controls:ClipPathCard Title="Avalonia UI"
+                               Subtitle="Cross-Platform"
+                               Description=".NET UI Framework" />
+
+    </StackPanel>
+
+</Window>

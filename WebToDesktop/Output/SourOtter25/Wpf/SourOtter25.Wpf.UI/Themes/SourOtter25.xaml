@@ -1,0 +1,278 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:SourOtter25.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/SourOtter25.Wpf.UI;component/Themes/SourOtter25Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--
+    CSS clip-path 변환:
+    초기: polygon(54% 27%, 100% 50%, 100% 100%, 51% 74%, 0 50%, 0% 0%)
+         - 190x254 기준: (102.6,68.58), (190,127), (190,254), (96.9,187.96), (0,127), (0,0)
+    호버: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 0 50%, 0% 0%)
+         - 190x254 기준: (190,0), (190,127), (190,254), (0,254), (0,127), (0,0)
+
+    WPF에서는 PointAnimation을 사용하여 PathGeometry의 각 점을 애니메이션합니다.
+    -->
+
+    <Style TargetType="{x:Type controls:SourOtter25}">
+        <Setter Property="Width" Value="{StaticResource SourOtter25.Card.Width}" />
+        <Setter Property="Height" Value="{StaticResource SourOtter25.Card.Height}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:SourOtter25}">
+                    <!-- 외부 카드 컨테이너 - 그라데이션 배경 -->
+                    <Border x:Name="CardBorder"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}">
+                        <Border.Background>
+                            <!-- linear-gradient(135deg, #1afbf0, #da00ff) -->
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Offset="0" Color="{StaticResource SourOtter25.Gradient.StartColor}" />
+                                <GradientStop Offset="1" Color="{StaticResource SourOtter25.Gradient.EndColor}" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <!-- 박스 레이어 - 반투명 오버레이 (backdrop-filter는 WPF에서 지원 안됨) -->
+                        <Border x:Name="BoxLayer">
+                            <Border.Background>
+                                <SolidColorBrush Color="{StaticResource SourOtter25.Overlay.BackgroundColor}" />
+                            </Border.Background>
+
+                            <!-- 콘텐츠 영역 - clip-path가 적용되는 부분 -->
+                            <Grid x:Name="ContentGrid">
+                                <!-- 클립 경로를 통해 표시되는 그라데이션 배경 -->
+                                <Border x:Name="ClippedContent">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Offset="0" Color="{StaticResource SourOtter25.Gradient.StartColor}" />
+                                            <GradientStop Offset="1" Color="{StaticResource SourOtter25.Gradient.EndColor}" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+
+                                    <!-- clip-path: polygon(54% 27%, 100% 50%, 100% 100%, 51% 74%, 0 50%, 0% 0%) -->
+                                    <Border.Clip>
+                                        <PathGeometry>
+                                            <PathFigure StartPoint="0,0" IsClosed="True">
+                                                <!-- 점 순서: 0%,0% -> 54%,27% -> 100%,50% -> 100%,100% -> 51%,74% -> 0%,50% -->
+                                                <LineSegment x:Name="Point1" Point="102.6,68.58" />
+                                                <LineSegment x:Name="Point2" Point="190,127" />
+                                                <LineSegment x:Name="Point3" Point="190,254" />
+                                                <LineSegment x:Name="Point4" Point="96.9,187.96" />
+                                                <LineSegment x:Name="Point5" Point="0,127" />
+                                            </PathFigure>
+                                        </PathGeometry>
+                                    </Border.Clip>
+
+                                    <!-- 콘텐츠 레이아웃 -->
+                                    <Grid Margin="{StaticResource SourOtter25.Content.Padding}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <!-- 카드 제목 - 회전 애니메이션 적용 -->
+                                        <TextBlock x:Name="TitleText"
+                                                   Grid.Row="0"
+                                                   Text="{TemplateBinding Title}"
+                                                   Foreground="{StaticResource SourOtter25.Text.Foreground}"
+                                                   FontSize="{StaticResource SourOtter25.Title.FontSize}"
+                                                   FontWeight="Bold"
+                                                   VerticalAlignment="Top"
+                                                   HorizontalAlignment="Left"
+                                                   Margin="47.5,100.8,0,0"
+                                                   RenderTransformOrigin="0,0.5">
+                                            <TextBlock.RenderTransform>
+                                                <RotateTransform x:Name="TitleRotation" Angle="34" />
+                                            </TextBlock.RenderTransform>
+                                        </TextBlock>
+
+                                        <!-- 텍스트 영역 - opacity 애니메이션 적용 -->
+                                        <StackPanel x:Name="TextPanel"
+                                                    Grid.Row="1"
+                                                    Opacity="0"
+                                                    VerticalAlignment="Bottom">
+                                            <TextBlock Text="{TemplateBinding Author}"
+                                                       Foreground="{StaticResource SourOtter25.Text.Foreground}"
+                                                       FontSize="{StaticResource SourOtter25.Author.FontSize}"
+                                                       FontWeight="Bold" />
+                                            <TextBlock Text="{TemplateBinding Description}"
+                                                       Foreground="{StaticResource SourOtter25.Text.Foreground}"
+                                                       FontSize="{StaticResource SourOtter25.Description.FontSize}" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <!-- 호버 트리거 -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="HoverStoryboard">
+                                    <Storyboard>
+                                        <!-- clip-path 애니메이션: 폴리곤 점들이 이동 -->
+                                        <!-- 호버: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 0 50%, 0% 0%) -->
+                                        <!-- (190,0), (190,127), (190,254), (0,254), (0,127) -->
+                                        <PointAnimation Storyboard.TargetName="Point1"
+                                                        Storyboard.TargetProperty="Point"
+                                                        To="190,0"
+                                                        Duration="0:0:0.5">
+                                            <PointAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </PointAnimation.EasingFunction>
+                                        </PointAnimation>
+                                        <PointAnimation Storyboard.TargetName="Point2"
+                                                        Storyboard.TargetProperty="Point"
+                                                        To="190,127"
+                                                        Duration="0:0:0.5">
+                                            <PointAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </PointAnimation.EasingFunction>
+                                        </PointAnimation>
+                                        <PointAnimation Storyboard.TargetName="Point3"
+                                                        Storyboard.TargetProperty="Point"
+                                                        To="190,254"
+                                                        Duration="0:0:0.5">
+                                            <PointAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </PointAnimation.EasingFunction>
+                                        </PointAnimation>
+                                        <PointAnimation Storyboard.TargetName="Point4"
+                                                        Storyboard.TargetProperty="Point"
+                                                        To="0,254"
+                                                        Duration="0:0:0.5">
+                                            <PointAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </PointAnimation.EasingFunction>
+                                        </PointAnimation>
+                                        <PointAnimation Storyboard.TargetName="Point5"
+                                                        Storyboard.TargetProperty="Point"
+                                                        To="0,127"
+                                                        Duration="0:0:0.5">
+                                            <PointAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </PointAnimation.EasingFunction>
+                                        </PointAnimation>
+
+                                        <!-- 제목 마진 애니메이션: margin-left 25% -> 0%, padding-top 6.3em -> 1em -->
+                                        <ThicknessAnimation Storyboard.TargetName="TitleText"
+                                                            Storyboard.TargetProperty="Margin"
+                                                            To="0,16,0,0"
+                                                            Duration="0:0:0.5">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+
+                                        <!-- 제목 회전 애니메이션: rotate(34deg) -> rotate(0deg) -->
+                                        <DoubleAnimation Storyboard.TargetName="TitleRotation"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="0"
+                                                         Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <!-- 텍스트 영역 opacity 애니메이션: 0 -> 1 -->
+                                        <DoubleAnimation Storyboard.TargetName="TextPanel"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- clip-path 복원 애니메이션 -->
+                                        <!-- 초기: polygon(54% 27%, 100% 50%, 100% 100%, 51% 74%, 0 50%, 0% 0%) -->
+                                        <PointAnimation Storyboard.TargetName="Point1"
+                                                        Storyboard.TargetProperty="Point"
+                                                        To="102.6,68.58"
+                                                        Duration="0:0:0.5">
+                                            <PointAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </PointAnimation.EasingFunction>
+                                        </PointAnimation>
+                                        <PointAnimation Storyboard.TargetName="Point2"
+                                                        Storyboard.TargetProperty="Point"
+                                                        To="190,127"
+                                                        Duration="0:0:0.5">
+                                            <PointAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </PointAnimation.EasingFunction>
+                                        </PointAnimation>
+                                        <PointAnimation Storyboard.TargetName="Point3"
+                                                        Storyboard.TargetProperty="Point"
+                                                        To="190,254"
+                                                        Duration="0:0:0.5">
+                                            <PointAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </PointAnimation.EasingFunction>
+                                        </PointAnimation>
+                                        <PointAnimation Storyboard.TargetName="Point4"
+                                                        Storyboard.TargetProperty="Point"
+                                                        To="96.9,187.96"
+                                                        Duration="0:0:0.5">
+                                            <PointAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </PointAnimation.EasingFunction>
+                                        </PointAnimation>
+                                        <PointAnimation Storyboard.TargetName="Point5"
+                                                        Storyboard.TargetProperty="Point"
+                                                        To="0,127"
+                                                        Duration="0:0:0.5">
+                                            <PointAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </PointAnimation.EasingFunction>
+                                        </PointAnimation>
+
+                                        <!-- 제목 마진 복원 -->
+                                        <ThicknessAnimation Storyboard.TargetName="TitleText"
+                                                            Storyboard.TargetProperty="Margin"
+                                                            To="47.5,100.8,0,0"
+                                                            Duration="0:0:0.5">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+
+                                        <!-- 제목 회전 복원 -->
+                                        <DoubleAnimation Storyboard.TargetName="TitleRotation"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="34"
+                                                         Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <!-- 텍스트 영역 opacity 복원 -->
+                                        <DoubleAnimation Storyboard.TargetName="TextPanel"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.5">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

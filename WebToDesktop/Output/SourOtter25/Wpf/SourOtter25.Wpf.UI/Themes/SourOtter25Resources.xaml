@@ -1,0 +1,63 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+    CSS 원본 값:
+    - width: 11.875em (약 190px, 1em=16px 기준)
+    - height: 15.875em (약 254px)
+    - background: linear-gradient(135deg, #1afbf0, #da00ff)
+    - backdrop-filter: blur(20px) - WPF에서는 직접 지원 안됨
+    - clip-path: polygon(...)
+    - transition: 0.5s
+    -->
+
+    <!-- 카드 크기 / Card dimensions -->
+    <sys:Double x:Key="SourOtter25.Card.Width">190</sys:Double>
+    <sys:Double x:Key="SourOtter25.Card.Height">254</sys:Double>
+
+    <!-- 그라데이션 배경 색상 / Gradient background colors -->
+    <!-- linear-gradient(135deg, #1afbf0, #da00ff) -->
+    <Color x:Key="SourOtter25.Gradient.StartColor">#1AFBF0</Color>
+    <Color x:Key="SourOtter25.Gradient.EndColor">#DA00FF</Color>
+
+    <!-- 오버레이 배경 / Overlay background -->
+    <!-- rgba(255, 255, 255, 0.074) -->
+    <Color x:Key="SourOtter25.Overlay.BackgroundColor">#13FFFFFF</Color>
+
+    <!-- 텍스트 색상 / Text colors -->
+    <SolidColorBrush x:Key="SourOtter25.Text.Foreground" Color="White" />
+
+    <!-- 폰트 크기 / Font sizes -->
+    <!-- font-size: 1.2em (약 19.2px) -->
+    <sys:Double x:Key="SourOtter25.Title.FontSize">19.2</sys:Double>
+    <sys:Double x:Key="SourOtter25.Author.FontSize">14</sys:Double>
+    <sys:Double x:Key="SourOtter25.Description.FontSize">12</sys:Double>
+
+    <!-- 패딩 / Padding -->
+    <!-- padding: 10px -->
+    <Thickness x:Key="SourOtter25.Content.Padding">10</Thickness>
+
+    <!-- 애니메이션 시간 / Animation duration -->
+    <!-- transition: 0.5s -->
+    <Duration x:Key="SourOtter25.Animation.Duration">0:0:0.5</Duration>
+
+    <!-- 제목 초기 상태 / Title initial state -->
+    <!-- padding-top: 6.3em (약 100.8px), margin-left: 25%, rotate(34deg) -->
+    <sys:Double x:Key="SourOtter25.Title.InitialPaddingTop">100.8</sys:Double>
+    <sys:Double x:Key="SourOtter25.Title.InitialMarginLeft">47.5</sys:Double>
+    <sys:Double x:Key="SourOtter25.Title.InitialRotation">34</sys:Double>
+
+    <!-- 제목 호버 상태 / Title hover state -->
+    <!-- padding-top: 1em (약 16px), margin-left: 0%, rotate(0deg) -->
+    <sys:Double x:Key="SourOtter25.Title.HoverPaddingTop">16</sys:Double>
+    <sys:Double x:Key="SourOtter25.Title.HoverMarginLeft">0</sys:Double>
+    <sys:Double x:Key="SourOtter25.Title.HoverRotation">0</sys:Double>
+
+    <!-- 클립 경로 / Clip paths -->
+    <!-- 초기: polygon(54% 27%, 100% 50%, 100% 100%, 51% 74%, 0 50%, 0% 0%) -->
+    <!-- 호버: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 0 50%, 0% 0%) -->
+
+    <!-- 클립 경로는 PathGeometry로 직접 정의 - 상대 좌표 사용을 위해 ControlTemplate에서 처리 -->
+
+</ResourceDictionary>
