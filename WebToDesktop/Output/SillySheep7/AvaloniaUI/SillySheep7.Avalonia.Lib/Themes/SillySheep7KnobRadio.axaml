@@ -1,0 +1,192 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:SillySheep7.Avalonia.Lib.Controls">
+
+    <!--
+    From Uiverse.io by Subaashbala
+    Tags: skeuomorphism, realistic, radio, rotate, click effect
+
+    스큐어모피즘 스타일의 회전 노브 라디오 버튼 컨트롤
+    Skeuomorphism style rotating knob radio button control
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="SillySheep7.KnobBackground">#CFC9BD</Color>
+    <Color x:Key="SillySheep7.KnobBorder">Black</Color>
+    <Color x:Key="SillySheep7.KnobOutline">Gray</Color>
+    <Color x:Key="SillySheep7.CenterOutline">#60FFFFFF</Color>
+    <Color x:Key="SillySheep7.IndicatorColor">Black</Color>
+    <Color x:Key="SillySheep7.LabelColor">Black</Color>
+    <Color x:Key="SillySheep7.RadioDotColor">Black</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="SillySheep7.KnobBackground.Brush" Color="{StaticResource SillySheep7.KnobBackground}" />
+    <SolidColorBrush x:Key="SillySheep7.KnobBorder.Brush" Color="{StaticResource SillySheep7.KnobBorder}" />
+    <SolidColorBrush x:Key="SillySheep7.KnobOutline.Brush" Color="{StaticResource SillySheep7.KnobOutline}" />
+    <SolidColorBrush x:Key="SillySheep7.CenterOutline.Brush" Color="{StaticResource SillySheep7.CenterOutline}" />
+    <SolidColorBrush x:Key="SillySheep7.IndicatorColor.Brush" Color="{StaticResource SillySheep7.IndicatorColor}" />
+    <SolidColorBrush x:Key="SillySheep7.LabelColor.Brush" Color="{StaticResource SillySheep7.LabelColor}" />
+    <SolidColorBrush x:Key="SillySheep7.RadioDotColor.Brush" Color="{StaticResource SillySheep7.RadioDotColor}" />
+
+    <!-- RadioButton style for hiding default appearance -->
+    <ControlTheme x:Key="SillySheep7HiddenRadioButton" TargetType="RadioButton">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="Transparent" Width="8" Height="8">
+                    <Ellipse Width="6" Height="6"
+                             Fill="{StaticResource SillySheep7.RadioDotColor.Brush}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <!-- Main Control Theme -->
+    <ControlTheme x:Key="{x:Type controls:SillySheep7KnobRadio}" TargetType="controls:SillySheep7KnobRadio">
+        <Setter Property="Width" Value="320" />
+        <Setter Property="Height" Value="320" />
+        <Setter Property="KnobBackground" Value="{StaticResource SillySheep7.KnobBackground.Brush}" />
+        <Setter Property="KnobBorderBrush" Value="{StaticResource SillySheep7.KnobBorder.Brush}" />
+        <Setter Property="LabelFontSize" Value="12" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Radio Button Container (arc positions) -->
+                    <!-- 20em = 320px base, positions calculated from CSS percentages -->
+
+                    <!-- Position 1: left:0, top:25%, rotate:-45deg -->
+                    <StackPanel x:Name="PART_Container1"
+                                Canvas.Left="16" Canvas.Top="80"
+                                RenderTransformOrigin="0.5,0.5">
+                        <StackPanel.RenderTransform>
+                            <RotateTransform Angle="-45" />
+                        </StackPanel.RenderTransform>
+                        <TextBlock Text="1"
+                                   FontWeight="Black"
+                                   FontSize="{TemplateBinding LabelFontSize}"
+                                   Foreground="{StaticResource SillySheep7.LabelColor.Brush}"
+                                   HorizontalAlignment="Center" />
+                        <RadioButton x:Name="PART_Radio1"
+                                     GroupName="KnobRadio"
+                                     Theme="{StaticResource SillySheep7HiddenRadioButton}"
+                                     HorizontalAlignment="Center"
+                                     Cursor="Hand" />
+                    </StackPanel>
+
+                    <!-- Position 2: left:15%, top:5%, rotate:-25deg -->
+                    <StackPanel x:Name="PART_Container2"
+                                Canvas.Left="48" Canvas.Top="16"
+                                RenderTransformOrigin="0.5,0.5">
+                        <StackPanel.RenderTransform>
+                            <RotateTransform Angle="-25" />
+                        </StackPanel.RenderTransform>
+                        <TextBlock Text="2"
+                                   FontWeight="Black"
+                                   FontSize="{TemplateBinding LabelFontSize}"
+                                   Foreground="{StaticResource SillySheep7.LabelColor.Brush}"
+                                   HorizontalAlignment="Center" />
+                        <RadioButton x:Name="PART_Radio2"
+                                     GroupName="KnobRadio"
+                                     Theme="{StaticResource SillySheep7HiddenRadioButton}"
+                                     HorizontalAlignment="Center"
+                                     Cursor="Hand" />
+                    </StackPanel>
+
+                    <!-- Position 3: left:44%, top:-5%, rotate:0deg (center top) -->
+                    <StackPanel x:Name="PART_Container3"
+                                Canvas.Left="141" Canvas.Top="-16"
+                                RenderTransformOrigin="0.5,0.5">
+                        <TextBlock Text="3"
+                                   FontWeight="Black"
+                                   FontSize="{TemplateBinding LabelFontSize}"
+                                   Foreground="{StaticResource SillySheep7.LabelColor.Brush}"
+                                   HorizontalAlignment="Center" />
+                        <RadioButton x:Name="PART_Radio3"
+                                     GroupName="KnobRadio"
+                                     Theme="{StaticResource SillySheep7HiddenRadioButton}"
+                                     HorizontalAlignment="Center"
+                                     Cursor="Hand" />
+                    </StackPanel>
+
+                    <!-- Position 4: right:15%, top:5%, rotate:25deg -->
+                    <StackPanel x:Name="PART_Container4"
+                                Canvas.Left="256" Canvas.Top="16"
+                                RenderTransformOrigin="0.5,0.5">
+                        <StackPanel.RenderTransform>
+                            <RotateTransform Angle="25" />
+                        </StackPanel.RenderTransform>
+                        <TextBlock Text="4"
+                                   FontWeight="Black"
+                                   FontSize="{TemplateBinding LabelFontSize}"
+                                   Foreground="{StaticResource SillySheep7.LabelColor.Brush}"
+                                   HorizontalAlignment="Center" />
+                        <RadioButton x:Name="PART_Radio4"
+                                     GroupName="KnobRadio"
+                                     Theme="{StaticResource SillySheep7HiddenRadioButton}"
+                                     HorizontalAlignment="Center"
+                                     Cursor="Hand" />
+                    </StackPanel>
+
+                    <!-- Position 5: right:0, top:25%, rotate:45deg -->
+                    <StackPanel x:Name="PART_Container5"
+                                Canvas.Left="288" Canvas.Top="80"
+                                RenderTransformOrigin="0.5,0.5">
+                        <StackPanel.RenderTransform>
+                            <RotateTransform Angle="45" />
+                        </StackPanel.RenderTransform>
+                        <TextBlock Text="5"
+                                   FontWeight="Black"
+                                   FontSize="{TemplateBinding LabelFontSize}"
+                                   Foreground="{StaticResource SillySheep7.LabelColor.Brush}"
+                                   HorizontalAlignment="Center" />
+                        <RadioButton x:Name="PART_Radio5"
+                                     GroupName="KnobRadio"
+                                     Theme="{StaticResource SillySheep7HiddenRadioButton}"
+                                     HorizontalAlignment="Center"
+                                     Cursor="Hand" />
+                    </StackPanel>
+
+                    <!-- Knob (The circular thing that rotates) -->
+                    <!-- 13em = 208px, positioned at top:25% (80px), centered horizontally -->
+                    <Border x:Name="PART_Knob"
+                            Width="208" Height="208"
+                            CornerRadius="104"
+                            Background="{TemplateBinding KnobBackground}"
+                            BorderBrush="{TemplateBinding KnobBorderBrush}"
+                            BorderThickness="3"
+                            ClipToBounds="True"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Margin="0,80,0,0"
+                            RenderTransformOrigin="0.5,0.5"
+                            BoxShadow="0 0 0 3 Gray">
+
+                        <!-- Center handle -->
+                        <Panel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Border Width="36" Height="208"
+                                    CornerRadius="7"
+                                    Background="{TemplateBinding KnobBackground}"
+                                    BorderBrush="{StaticResource SillySheep7.CenterOutline.Brush}"
+                                    BorderThickness="1"
+                                    BoxShadow="15 0 35 0 #79FFFFFF, -15 0 40 5 #90808080">
+                                <!-- Indicator line (::after pseudo-element) -->
+                                <Border Width="3" Height="25"
+                                        Background="{StaticResource SillySheep7.IndicatorColor.Brush}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Top"
+                                        Margin="0,2,0,0" />
+                            </Border>
+                        </Panel>
+                    </Border>
+
+                    <!-- Animation Transitions -->
+                    <Panel.Transitions>
+                        <Transitions>
+                            <DoubleTransition Property="Opacity" Duration="0:0:0.2" />
+                        </Transitions>
+                    </Panel.Transitions>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

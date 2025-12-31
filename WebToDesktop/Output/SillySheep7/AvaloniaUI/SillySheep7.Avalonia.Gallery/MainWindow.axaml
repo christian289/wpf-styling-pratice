@@ -1,0 +1,52 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="using:SillySheep7.Avalonia.Lib.Controls"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="500"
+        x:Class="SillySheep7.Avalonia.Gallery.MainWindow"
+        Title="SillySheep7 Knob Radio - AvaloniaUI Gallery"
+        Width="500" Height="500"
+        Background="#F5F5F5">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <StackPanel Grid.Row="0" Margin="20" HorizontalAlignment="Center">
+            <TextBlock Text="Skeuomorphism Knob Radio"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center" />
+            <TextBlock Text="From Uiverse.io by Subaashbala"
+                       FontSize="12"
+                       Foreground="Gray"
+                       HorizontalAlignment="Center"
+                       Margin="0,4,0,0" />
+        </StackPanel>
+
+        <!-- Knob Radio Control -->
+        <controls:SillySheep7KnobRadio x:Name="KnobRadio"
+                                        Grid.Row="1"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        SelectedValue="3" />
+
+        <!-- Selected Value Display -->
+        <StackPanel Grid.Row="2" Margin="20" HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Text="Selected Value: "
+                       FontSize="16"
+                       VerticalAlignment="Center" />
+            <TextBlock Text="{Binding #KnobRadio.SelectedValue}"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Foreground="#2196F3"
+                       VerticalAlignment="Center" />
+        </StackPanel>
+    </Grid>
+
+</Window>

@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SillySheep7.Wpf.Gallery/SillySheep7.Wpf.Gallery.csproj" />
+  <Project Path="SillySheep7.Wpf.UI/SillySheep7.Wpf.UI.csproj" />
+</Solution>

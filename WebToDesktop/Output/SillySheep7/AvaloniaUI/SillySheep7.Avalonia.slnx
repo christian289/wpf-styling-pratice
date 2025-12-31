@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SillySheep7.Avalonia.Lib\SillySheep7.Avalonia.Lib.csproj" />
+  <Project Path="SillySheep7.Avalonia.Gallery\SillySheep7.Avalonia.Gallery.csproj" />
+</Solution>
