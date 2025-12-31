@@ -1,0 +1,85 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:SpottyShrimp35.Avalonia.Lib.Controls">
+
+    <!--
+    CSS 원본 / CSS Original:
+    repeating-linear-gradient(45deg, #0050fc, #0050fc 20px, #0684fade 20px, #0684fade 40px)
+
+    AvaloniaUI에서는 repeating-linear-gradient를 직접 지원하지 않으므로
+    DrawingBrush + GeometryDrawing으로 타일링 패턴을 구현합니다.
+
+    Since AvaloniaUI doesn't directly support repeating-linear-gradient,
+    we implement the tiling pattern using DrawingBrush + GeometryDrawing.
+    -->
+
+    <ControlTheme x:Key="{x:Type controls:StripedPatternControl}"
+                  TargetType="controls:StripedPatternControl">
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border x:Name="PART_Root"
+                        ClipToBounds="True">
+                    <Border.Background>
+                        <!--
+                        45도 대각선 스트라이프 패턴을 DrawingBrush로 구현
+                        Implementing 45-degree diagonal stripe pattern with DrawingBrush
+
+                        타일 크기: 40x40 (각 스트라이프 20px * 2)
+                        Tile size: 40x40 (each stripe 20px * 2)
+                        -->
+                        <DrawingBrush TileMode="Tile"
+                                      Stretch="None"
+                                      DestinationRect="0,0,40,40">
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <!-- 배경색 (첫 번째 스트라이프 색상) / Background (first stripe color) -->
+                                    <GeometryDrawing>
+                                        <GeometryDrawing.Brush>
+                                            <SolidColorBrush Color="{Binding Stripe1Color, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                        </GeometryDrawing.Brush>
+                                        <GeometryDrawing.Geometry>
+                                            <RectangleGeometry Rect="0,0,40,40"/>
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+
+                                    <!-- 대각선 스트라이프 (두 번째 색상) / Diagonal stripe (second color) -->
+                                    <!--
+                                    45도 대각선 스트라이프를 표현하기 위해 평행사변형 모양의 폴리곤 사용
+                                    Using parallelogram-shaped polygons for 45-degree diagonal stripes
+                                    -->
+                                    <GeometryDrawing>
+                                        <GeometryDrawing.Brush>
+                                            <SolidColorBrush Color="{Binding Stripe2Color, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                        </GeometryDrawing.Brush>
+                                        <GeometryDrawing.Geometry>
+                                            <PathGeometry>
+                                                <PathGeometry.Figures>
+                                                    <!-- 첫 번째 대각선 영역 / First diagonal region -->
+                                                    <PathFigure StartPoint="20,0" IsClosed="True">
+                                                        <LineSegment Point="40,0"/>
+                                                        <LineSegment Point="40,20"/>
+                                                        <LineSegment Point="20,40"/>
+                                                        <LineSegment Point="0,40"/>
+                                                        <LineSegment Point="0,20"/>
+                                                    </PathFigure>
+                                                </PathGeometry.Figures>
+                                            </PathGeometry>
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Border.Background>
+
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      Margin="{TemplateBinding Padding}"/>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

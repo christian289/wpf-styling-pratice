@@ -1,0 +1,91 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SpottyShrimp35.Avalonia.Lib.Controls"
+        x:Class="SpottyShrimp35.Avalonia.Gallery.MainWindow"
+        Title="SpottyShrimp35 - Striped Pattern Gallery"
+        Width="800" Height="600">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- 헤더 / Header -->
+        <Border Grid.Row="0"
+                Background="#2C3E50"
+                Padding="20">
+            <StackPanel Spacing="8">
+                <TextBlock Text="SpottyShrimp35 - Striped Pattern"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+                <TextBlock Text="CSS repeating-linear-gradient converted to AvaloniaUI DrawingBrush"
+                           FontSize="14"
+                           Foreground="#BDC3C7"/>
+                <TextBlock Text="From Uiverse.io by lautyYT - Tags: simple, blue, pattern"
+                           FontSize="12"
+                           Foreground="#95A5A6"/>
+            </StackPanel>
+        </Border>
+
+        <!-- 메인 컨텐츠 / Main Content -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- 기본 패턴 / Default Pattern -->
+            <Border Grid.Row="0" Grid.Column="0" Margin="10" CornerRadius="8" ClipToBounds="True">
+                <Grid>
+                    <controls:StripedPatternControl/>
+                    <Border Background="#80000000" VerticalAlignment="Bottom" Padding="10">
+                        <TextBlock Text="Default Pattern"
+                                   Foreground="White"
+                                   FontWeight="Bold"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- 커스텀 색상 1 / Custom Color 1 -->
+            <Border Grid.Row="0" Grid.Column="1" Margin="10" CornerRadius="8" ClipToBounds="True">
+                <Grid>
+                    <controls:StripedPatternControl Stripe1Color="#E74C3C" Stripe2Color="#C0392B"/>
+                    <Border Background="#80000000" VerticalAlignment="Bottom" Padding="10">
+                        <TextBlock Text="Red Theme"
+                                   Foreground="White"
+                                   FontWeight="Bold"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- 커스텀 색상 2 / Custom Color 2 -->
+            <Border Grid.Row="1" Grid.Column="0" Margin="10" CornerRadius="8" ClipToBounds="True">
+                <Grid>
+                    <controls:StripedPatternControl Stripe1Color="#27AE60" Stripe2Color="#2ECC71"/>
+                    <Border Background="#80000000" VerticalAlignment="Bottom" Padding="10">
+                        <TextBlock Text="Green Theme"
+                                   Foreground="White"
+                                   FontWeight="Bold"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- 커스텀 색상 3 / Custom Color 3 -->
+            <Border Grid.Row="1" Grid.Column="1" Margin="10" CornerRadius="8" ClipToBounds="True">
+                <Grid>
+                    <controls:StripedPatternControl Stripe1Color="#9B59B6" Stripe2Color="#8E44AD"/>
+                    <Border Background="#80000000" VerticalAlignment="Bottom" Padding="10">
+                        <TextBlock Text="Purple Theme"
+                                   Foreground="White"
+                                   FontWeight="Bold"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+        </Grid>
+
+    </Grid>
+
+</Window>

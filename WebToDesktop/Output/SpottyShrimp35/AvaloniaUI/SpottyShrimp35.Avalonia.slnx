@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SpottyShrimp35.Avalonia.Lib\SpottyShrimp35.Avalonia.Lib.csproj" />
+  <Project Path="SpottyShrimp35.Avalonia.Gallery\SpottyShrimp35.Avalonia.Gallery.csproj" />
+</Solution>
