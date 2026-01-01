@@ -1,0 +1,53 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Sizes -->
+    <!-- width: 250px -->
+    <sys:Double x:Key="FuzzyFly47.Width">250</sys:Double>
+    <!-- height: 60px -->
+    <sys:Double x:Key="FuzzyFly47.Height">60</sys:Double>
+    <!-- border-radius: 14px -->
+    <CornerRadius x:Key="FuzzyFly47.CornerRadius">14</CornerRadius>
+    <!-- padding: 5px 15px -->
+    <Thickness x:Key="FuzzyFly47.Padding">15,5,15,5</Thickness>
+
+    <!-- Colors -->
+    <!-- background: rgba(0, 0, 0, 0.5) -->
+    <SolidColorBrush x:Key="FuzzyFly47.Background" Color="#80000000"/>
+
+    <!-- box-shadow inset colors: rgba(255, 0, 0, 0.5) and rgba(255, 0, 0, 0.8) -->
+    <SolidColorBrush x:Key="FuzzyFly47.InnerBorder.TopLeft" Color="#80FF0000"/>
+    <SolidColorBrush x:Key="FuzzyFly47.InnerBorder.BottomRight" Color="#CCFF0000"/>
+
+    <!-- arrow color: rgba(255, 0, 0, 0.95) -->
+    <SolidColorBrush x:Key="FuzzyFly47.Arrow.Foreground" Color="#F2FF0000"/>
+
+    <!-- Text colors (inherits, default white) -->
+    <SolidColorBrush x:Key="FuzzyFly47.Foreground" Color="#FFFFFF"/>
+
+    <!-- Font Sizes -->
+    <!-- font-size: 11px (message) -->
+    <sys:Double x:Key="FuzzyFly47.Message.FontSize">11</sys:Double>
+    <!-- font-size: 20px (level) -->
+    <sys:Double x:Key="FuzzyFly47.Level.FontSize">20</sys:Double>
+    <!-- font-size: 25px (arrow) -->
+    <sys:Double x:Key="FuzzyFly47.Arrow.FontSize">25</sys:Double>
+
+    <!-- Spacing -->
+    <!-- gap: 5px -->
+    <Thickness x:Key="FuzzyFly47.Arrow.Margin">5,0,0,0</Thickness>
+    <Thickness x:Key="FuzzyFly47.Arrow.First.Margin">0,0,5,0</Thickness>
+    <!-- margin-top: 5px -->
+    <Thickness x:Key="FuzzyFly47.Level.Margin">0,5,0,0</Thickness>
+
+    <!-- Drop Shadow -->
+    <!-- box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, .25) -->
+    <DropShadowEffect x:Key="FuzzyFly47.DropShadow"
+                      ShadowDepth="2"
+                      Direction="270"
+                      BlurRadius="5"
+                      Opacity="0.25"
+                      Color="Black"/>
+
+</ResourceDictionary>

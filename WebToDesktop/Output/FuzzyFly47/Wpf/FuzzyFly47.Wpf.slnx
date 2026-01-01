@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="FuzzyFly47.Wpf.Gallery/FuzzyFly47.Wpf.Gallery.csproj" />
+  <Project Path="FuzzyFly47.Wpf.UI/FuzzyFly47.Wpf.UI.csproj" />
+</Solution>

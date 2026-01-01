@@ -1,0 +1,152 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:FuzzyFly47.Avalonia.Lib.Controls">
+
+    <!-- Colors -->
+    <Color x:Key="Notification.Background">#80000000</Color>
+    <Color x:Key="Notification.InsetShadow.Light">#80FF0000</Color>
+    <Color x:Key="Notification.InsetShadow.Dark">#CCFF0000</Color>
+    <Color x:Key="Arrow.Color">#F2FF0000</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="Notification.Background.Brush" Color="{StaticResource Notification.Background}" />
+    <SolidColorBrush x:Key="Notification.InsetShadow.Light.Brush" Color="{StaticResource Notification.InsetShadow.Light}" />
+    <SolidColorBrush x:Key="Notification.InsetShadow.Dark.Brush" Color="{StaticResource Notification.InsetShadow.Dark}" />
+    <SolidColorBrush x:Key="Arrow.Brush" Color="{StaticResource Arrow.Color}" />
+
+    <!-- LevelNotification Style -->
+    <ControlTheme x:Key="{x:Type controls:LevelNotification}" TargetType="controls:LevelNotification">
+        <Setter Property="Width" Value="250" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- 외부 그림자 -->
+                    <!-- Outer shadow -->
+                    <Border CornerRadius="14"
+                            BoxShadow="0 2 5 0 #40000000" />
+
+                    <!-- 메인 배경 -->
+                    <!-- Main background -->
+                    <Border Background="{StaticResource Notification.Background.Brush}"
+                            CornerRadius="14"
+                            Padding="15,5">
+
+                        <!-- 인셋 그림자 효과를 위한 내부 보더들 -->
+                        <!-- Inner borders for inset shadow effect -->
+                        <Panel>
+                            <!-- 상단 좌측 인셋 그림자 (밝은 빨강) -->
+                            <!-- Top-left inset shadow (light red) -->
+                            <Border BorderBrush="{StaticResource Notification.InsetShadow.Light.Brush}"
+                                    BorderThickness="1,1,0,0"
+                                    CornerRadius="14"
+                                    Margin="-13,-3,-13,-3" />
+
+                            <!-- 하단 우측 인셋 그림자 (진한 빨강) -->
+                            <!-- Bottom-right inset shadow (dark red) -->
+                            <Border BorderBrush="{StaticResource Notification.InsetShadow.Dark.Brush}"
+                                    BorderThickness="0,0,1,1"
+                                    CornerRadius="14"
+                                    Margin="-13,-3,-13,-3" />
+
+                            <!-- 콘텐츠 -->
+                            <!-- Content -->
+                            <StackPanel HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Spacing="5">
+                                <!-- 메시지 텍스트 -->
+                                <!-- Message text -->
+                                <TextBlock Text="{TemplateBinding Message}"
+                                           FontSize="11"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{TemplateBinding Foreground}"
+                                           LetterSpacing="1" />
+
+                                <!-- 레벨 영역 -->
+                                <!-- Level area -->
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Center"
+                                            Spacing="5">
+                                    <!-- 왼쪽 화살표 (애니메이션 포함) -->
+                                    <!-- Left arrow (with animation) -->
+                                    <TextBlock Text="↑"
+                                               FontSize="25"
+                                               Foreground="{StaticResource Arrow.Brush}"
+                                               VerticalAlignment="Center"
+                                               Name="PART_LeftArrow">
+                                        <TextBlock.RenderTransform>
+                                            <TranslateTransform />
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
+
+                                    <!-- 레벨 텍스트 -->
+                                    <!-- Level text -->
+                                    <TextBlock Text="{TemplateBinding LevelText}"
+                                               FontSize="20"
+                                               FontWeight="Bold"
+                                               Foreground="{TemplateBinding Foreground}"
+                                               VerticalAlignment="Center"
+                                               LetterSpacing="2" />
+
+                                    <!-- 오른쪽 화살표 (애니메이션 포함) -->
+                                    <!-- Right arrow (with animation) -->
+                                    <TextBlock Text="↑"
+                                               FontSize="25"
+                                               Foreground="{StaticResource Arrow.Brush}"
+                                               VerticalAlignment="Center"
+                                               Name="PART_RightArrow">
+                                        <TextBlock.RenderTransform>
+                                            <TranslateTransform />
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </Panel>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- 화살표 애니메이션 -->
+        <!-- Arrow animations -->
+        <Style Selector="^:loaded /template/ TextBlock#PART_LeftArrow">
+            <Style.Animations>
+                <Animation Duration="0:0:1" IterationCount="Infinite" Easing="QuadraticEaseInOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform" Value="translate(0px, -1px)" />
+                        <Setter Property="Opacity" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="RenderTransform" Value="translate(0px, -5px)" />
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform" Value="translate(0px, -1px)" />
+                        <Setter Property="Opacity" Value="0" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^:loaded /template/ TextBlock#PART_RightArrow">
+            <Style.Animations>
+                <Animation Duration="0:0:1" IterationCount="Infinite" Easing="QuadraticEaseInOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform" Value="translate(0px, -1px)" />
+                        <Setter Property="Opacity" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="RenderTransform" Value="translate(0px, -5px)" />
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform" Value="translate(0px, -1px)" />
+                        <Setter Property="Opacity" Value="0" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

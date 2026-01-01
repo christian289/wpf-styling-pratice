@@ -1,0 +1,25 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:FuzzyFly47.Avalonia.Lib.Controls"
+        x:Class="FuzzyFly47.Avalonia.Gallery.MainWindow"
+        Title="FuzzyFly47 - Level Notification Gallery"
+        Width="400"
+        Height="300"
+        Background="#1a1a2e">
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="20">
+
+        <!-- 기본 레벨업 알림 -->
+        <!-- Default level-up notification -->
+        <controls:LevelNotification />
+
+        <!-- 커스텀 메시지 레벨업 알림 -->
+        <!-- Custom message level-up notification -->
+        <controls:LevelNotification Message="VICTORY!"
+                                    LevelText="Level 99" />
+
+    </StackPanel>
+
+</Window>
