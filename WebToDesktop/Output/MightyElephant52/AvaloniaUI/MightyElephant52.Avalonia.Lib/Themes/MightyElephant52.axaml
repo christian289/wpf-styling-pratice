@@ -1,0 +1,118 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:MightyElephant52.Avalonia.Lib.Controls">
+
+    <!--
+    Tooltip이 있는 Follow 버튼 컨트롤 스타일
+    uiverse.io by vinodjangid07 디자인 기반
+    Follow button control style with tooltip
+    Based on uiverse.io design by vinodjangid07
+    -->
+
+    <ControlTheme x:Key="{x:Type controls:MightyElephant52}" TargetType="controls:MightyElephant52">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!-- 메인 컨테이너 / Main container -->
+                <Border x:Name="PART_Container"
+                        Background="White"
+                        BorderBrush="#D3D3D3"
+                        BorderThickness="1"
+                        CornerRadius="12"
+                        Padding="18,11">
+
+                    <Panel>
+                        <!-- 툴팁 영역 / Tooltip area -->
+                        <Border x:Name="PART_Tooltip"
+                                Background="White"
+                                CornerRadius="12"
+                                Padding="7.2,3.6"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Opacity="0"
+                                IsHitTestVisible="False"
+                                RenderTransform="translate(0px, 0px)">
+                            <Panel>
+                                <!-- 툴팁 화살표 (삼각형) / Tooltip arrow (triangle) -->
+                                <Border x:Name="PART_TooltipArrow"
+                                        Width="7.2"
+                                        Height="7.2"
+                                        Background="White"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Margin="0,0,0,-3.6"
+                                        RenderTransform="rotate(45deg)" />
+                                <!-- 툴팁 텍스트 / Tooltip text -->
+                                <TextBlock Text="{TemplateBinding TooltipText}"
+                                           Foreground="#222222"
+                                           FontSize="12"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center" />
+                            </Panel>
+                        </Border>
+
+                        <!-- 버튼 콘텐츠 영역 / Button content area -->
+                        <StackPanel x:Name="PART_Content"
+                                    Orientation="Horizontal"
+                                    Spacing="10"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                            <!-- SVG 아이콘 (사람 모양) / SVG icon (person shape) -->
+                            <Viewbox Width="16" Height="19">
+                                <Canvas Width="95" Height="114">
+                                    <!-- 머리 (둥근 사각형) / Head (rounded rectangle) -->
+                                    <Rectangle Canvas.Left="19" Canvas.Top="0"
+                                               Width="57" Height="57"
+                                               RadiusX="28.5" RadiusY="28.5"
+                                               Fill="Black" />
+                                    <!-- 몸통 (반원) / Body (half circle) -->
+                                    <Path Fill="Black"
+                                          Data="M0 109.5C0 83.2665 21.2665 62 47.5 62C73.7335 62 95 83.2665 95 109.5V114H0V109.5Z" />
+                                </Canvas>
+                            </Viewbox>
+                            <!-- 버튼 텍스트 / Button text -->
+                            <TextBlock Text="{TemplateBinding ButtonText}"
+                                       FontSize="14"
+                                       FontWeight="SemiBold"
+                                       Foreground="Black"
+                                       VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- 호버 상태 - 툴팁 표시 애니메이션 / Hover state - tooltip show animation -->
+        <Style Selector="^:pointerover /template/ Border#PART_Tooltip">
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" FillMode="Forward" Easing="CubicEaseOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="0" />
+                        <Setter Property="RenderTransform" Value="translate(0px, 0px)" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1" />
+                        <Setter Property="RenderTransform" Value="translate(0px, -35px)" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- 호버 해제 시 툴팁 숨김 애니메이션 / Pointer leave - tooltip hide animation -->
+        <Style Selector="^:not(:pointerover) /template/ Border#PART_Tooltip">
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" FillMode="Forward" Easing="CubicEaseIn">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="1" />
+                        <Setter Property="RenderTransform" Value="translate(0px, -35px)" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="0" />
+                        <Setter Property="RenderTransform" Value="translate(0px, 0px)" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

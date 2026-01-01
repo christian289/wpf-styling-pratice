@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:MightyElephant52.Avalonia.Lib.Controls"
+        x:Class="MightyElephant52.Avalonia.Gallery.MainWindow"
+        Title="MightyElephant52 - Follow Button with Tooltip"
+        Width="500"
+        Height="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#F5F5F5">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="30">
+
+            <!-- 기본 사용 예시 / Default usage example -->
+            <TextBlock Text="Default Follow Button"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       HorizontalAlignment="Center" />
+            <controls:MightyElephant52 HorizontalAlignment="Center" />
+
+            <!-- 커스텀 텍스트 예시 / Custom text example -->
+            <TextBlock Text="Custom Text Example"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       HorizontalAlignment="Center"
+                       Margin="0,20,0,0" />
+            <controls:MightyElephant52 TooltipText="1.2M"
+                                       ButtonText="Subscribe"
+                                       HorizontalAlignment="Center" />
+
+            <!-- 또 다른 예시 / Another example -->
+            <controls:MightyElephant52 TooltipText="256"
+                                       ButtonText="Connect"
+                                       HorizontalAlignment="Center" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>

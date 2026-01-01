@@ -1,0 +1,34 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors -->
+    <SolidColorBrush x:Key="MightyElephant52.Background" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="MightyElephant52.Border" Color="#D3D3D3"/>
+    <SolidColorBrush x:Key="MightyElephant52.Foreground" Color="#000000"/>
+    <SolidColorBrush x:Key="MightyElephant52.Tooltip.Background" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="MightyElephant52.Tooltip.Foreground" Color="#222222"/>
+    <SolidColorBrush x:Key="MightyElephant52.Icon.Fill" Color="#000000"/>
+
+    <!-- Sizes -->
+    <sys:Double x:Key="MightyElephant52.FontSize">14</sys:Double>
+    <sys:Double x:Key="MightyElephant52.Icon.Width">16</sys:Double>
+    <sys:Double x:Key="MightyElephant52.Icon.Height">19</sys:Double>
+    <sys:Double x:Key="MightyElephant52.Tooltip.Arrow.Size">8</sys:Double>
+
+    <!-- Geometry -->
+    <CornerRadius x:Key="MightyElephant52.CornerRadius">12</CornerRadius>
+    <Thickness x:Key="MightyElephant52.Padding">18,11</Thickness>
+    <Thickness x:Key="MightyElephant52.BorderThickness">1</Thickness>
+    <Thickness x:Key="MightyElephant52.Tooltip.Padding">5,3</Thickness>
+
+    <!-- Duration -->
+    <Duration x:Key="MightyElephant52.Animation.Duration">0:0:0.3</Duration>
+
+    <!-- SVG Icon Path Data (person icon) -->
+    <!-- rect rx="28.5" height="57" width="57" x="19" -> head circle -->
+    <!-- path d="M0 109.5C0 83.2665 21.2665 62 47.5 62V62C73.7335 62 95 83.2665 95 109.5V114H0V109.5Z" -> body -->
+    <Geometry x:Key="MightyElephant52.Icon.HeadGeometry">M47.5,0 A28.5,28.5 0 1 1 47.5,57 A28.5,28.5 0 1 1 47.5,0</Geometry>
+    <Geometry x:Key="MightyElephant52.Icon.BodyGeometry">M0,109.5 C0,83.2665 21.2665,62 47.5,62 C73.7335,62 95,83.2665 95,109.5 V114 H0 V109.5 Z</Geometry>
+
+</ResourceDictionary>
