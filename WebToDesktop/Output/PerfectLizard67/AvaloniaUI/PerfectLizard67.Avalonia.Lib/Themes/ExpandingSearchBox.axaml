@@ -1,0 +1,111 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:PerfectLizard67.Avalonia.Lib.Controls">
+
+    <!-- Colors -->
+    <Color x:Key="ExpandingSearchBox.Primary">#7e4fd4</Color>
+    <Color x:Key="ExpandingSearchBox.Shadow">#f3f3f3</Color>
+    <Color x:Key="ExpandingSearchBox.Placeholder">#8f8f8f</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="ExpandingSearchBox.Primary.Brush" Color="{StaticResource ExpandingSearchBox.Primary}" />
+    <SolidColorBrush x:Key="ExpandingSearchBox.Shadow.Brush" Color="{StaticResource ExpandingSearchBox.Shadow}" />
+    <SolidColorBrush x:Key="ExpandingSearchBox.Placeholder.Brush" Color="{StaticResource ExpandingSearchBox.Placeholder}" />
+
+    <ControlTheme x:Key="{x:Type controls:ExpandingSearchBox}" TargetType="controls:ExpandingSearchBox">
+        <Setter Property="Width" Value="250" />
+        <Setter Property="Height" Value="50" />
+        <Setter Property="FontFamily" Value="Trebuchet MS, Lucida Sans Unicode, Lucida Grande, Lucida Sans, Arial, sans-serif" />
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Border wrapper for BoxShadow (TextBox에는 BoxShadow 속성이 없음) -->
+                    <Border x:Name="PART_ShadowBorder"
+                            Width="50"
+                            Height="50"
+                            CornerRadius="25"
+                            Background="{StaticResource ExpandingSearchBox.Primary.Brush}"
+                            BoxShadow="0 0 3 #f3f3f3"
+                            HorizontalAlignment="Right">
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Width" Duration="0:0:0.5" Easing="CubicEaseOut" />
+                                <CornerRadiusTransition Property="CornerRadius" Duration="0:0:0.5" Easing="CubicEaseOut" />
+                                <BrushTransition Property="Background" Duration="0:0:0.5" Easing="CubicEaseOut" />
+                                <BoxShadowsTransition Property="BoxShadow" Duration="0:0:0.5" Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+
+                    <!-- TextBox -->
+                    <TextBox x:Name="PART_TextBox"
+                             Text="{TemplateBinding Text, Mode=TwoWay}"
+                             Watermark="{TemplateBinding Placeholder}"
+                             FontFamily="{TemplateBinding FontFamily}"
+                             FontSize="{TemplateBinding FontSize}"
+                             Foreground="White"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Padding="10,10,45,10"
+                             Height="50"
+                             Width="50"
+                             HorizontalAlignment="Right"
+                             VerticalContentAlignment="Center">
+                        <TextBox.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Width" Duration="0:0:0.5" Easing="CubicEaseOut" />
+                            </Transitions>
+                        </TextBox.Transitions>
+                        <TextBox.Styles>
+                            <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+                                <Setter Property="BorderThickness" Value="0" />
+                            </Style>
+                            <Style Selector="TextBox /template/ TextBlock#PART_Watermark">
+                                <Setter Property="Foreground" Value="{StaticResource ExpandingSearchBox.Placeholder.Brush}" />
+                            </Style>
+                        </TextBox.Styles>
+                    </TextBox>
+
+                    <!-- Search Button -->
+                    <Button x:Name="PART_SearchButton"
+                            Width="50"
+                            Height="50"
+                            HorizontalAlignment="Right"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Padding="0">
+                        <PathIcon Data="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+                                  Foreground="White"
+                                  Width="25"
+                                  Height="25" />
+                        <Button.Styles>
+                            <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                                <Setter Property="Background" Value="Transparent" />
+                            </Style>
+                        </Button.Styles>
+                    </Button>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Expanded State - Border -->
+        <Style Selector="^.expanded /template/ Border#PART_ShadowBorder">
+            <Setter Property="Width" Value="250" />
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BoxShadow" Value="0 0 0 Transparent" />
+            <Setter Property="BorderThickness" Value="0,0,0,3" />
+            <Setter Property="BorderBrush" Value="{StaticResource ExpandingSearchBox.Primary.Brush}" />
+        </Style>
+
+        <!-- Expanded State - TextBox -->
+        <Style Selector="^.expanded /template/ TextBox#PART_TextBox">
+            <Setter Property="Width" Value="250" />
+            <Setter Property="Foreground" Value="{StaticResource ExpandingSearchBox.Primary.Brush}" />
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

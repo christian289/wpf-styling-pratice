@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="PerfectLizard67.Wpf.Gallery/PerfectLizard67.Wpf.Gallery.csproj" />
+  <Project Path="PerfectLizard67.Wpf.UI/PerfectLizard67.Wpf.UI.csproj" />
+</Solution>

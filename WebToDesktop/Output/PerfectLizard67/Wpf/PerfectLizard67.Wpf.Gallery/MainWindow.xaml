@@ -1,0 +1,17 @@
+<Window x:Class="PerfectLizard67.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:PerfectLizard67.Wpf.UI.Controls;assembly=PerfectLizard67.Wpf.UI"
+        mc:Ignorable="d"
+        Title="PerfectLizard67 - Expandable Search Input"
+        Height="450" Width="800"
+        Background="#2d2d2d">
+    <Grid>
+        <!-- 중앙 배치된 검색 컨트롤 -->
+        <!-- Centered search control -->
+        <controls:PerfectLizard67 HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+    </Grid>
+</Window>
