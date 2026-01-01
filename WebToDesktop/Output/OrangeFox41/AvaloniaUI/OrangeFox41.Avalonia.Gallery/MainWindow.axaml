@@ -1,0 +1,35 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:OrangeFox41.Avalonia.Lib.Controls"
+        x:Class="OrangeFox41.Avalonia.Gallery.MainWindow"
+        Title="OrangeFox41 - Material Design Tooltip"
+        Width="600"
+        Height="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#FFFBFE">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="20">
+
+            <TextBlock Text="Material Design 3 Tooltip Demo"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Foreground="#1D192B" />
+
+            <TextBlock Text="Hover over the button to see the tooltip"
+                       FontSize="14"
+                       HorizontalAlignment="Center"
+                       Foreground="#49454F" />
+
+            <controls:OrangeFox41 Title="Title"
+                                  ContentText="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                                  ButtonText="Material Design Tooltip"
+                                  HorizontalAlignment="Center"
+                                  Margin="0,40,0,0" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>

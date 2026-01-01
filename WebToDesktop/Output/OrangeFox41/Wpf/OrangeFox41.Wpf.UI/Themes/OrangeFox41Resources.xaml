@@ -1,0 +1,44 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Container Colors -->
+    <!-- 컨테이너 색상 -->
+    <SolidColorBrush x:Key="OrangeFox41.Container.Background" Color="#e8def8"/>
+    <SolidColorBrush x:Key="OrangeFox41.Container.Foreground" Color="#1d192b"/>
+
+    <!-- Tooltip Colors -->
+    <!-- 툴팁 색상 -->
+    <SolidColorBrush x:Key="OrangeFox41.Tooltip.Background" Color="#f3edf7"/>
+    <SolidColorBrush x:Key="OrangeFox41.Tooltip.Foreground" Color="#49454f"/>
+
+    <!-- Shadow Colors -->
+    <!-- 그림자 색상 -->
+    <Color x:Key="OrangeFox41.Shadow.Color">#000000</Color>
+
+    <!-- Font Sizes -->
+    <!-- 폰트 크기 -->
+    <sys:Double x:Key="OrangeFox41.FontSize.Container">17</sys:Double>
+    <sys:Double x:Key="OrangeFox41.FontSize.Title">17</sys:Double>
+    <sys:Double x:Key="OrangeFox41.FontSize.Content">14.45</sys:Double>
+
+    <!-- Padding Values (em to px: 17px * em) -->
+    <!-- 패딩 값 (em을 px로 변환: 17px * em) -->
+    <Thickness x:Key="OrangeFox41.Container.Padding">30.6,11.9,30.6,11.9</Thickness>
+    <Thickness x:Key="OrangeFox41.Tooltip.Padding">17</Thickness>
+
+    <!-- Corner Radius -->
+    <!-- 모서리 둥글기 -->
+    <CornerRadius x:Key="OrangeFox41.Container.CornerRadius">50</CornerRadius>
+    <CornerRadius x:Key="OrangeFox41.Tooltip.CornerRadius">12</CornerRadius>
+
+    <!-- Tooltip Size -->
+    <!-- 툴팁 크기 -->
+    <sys:Double x:Key="OrangeFox41.Tooltip.MinWidth">312</sys:Double>
+
+    <!-- Animation Durations (in-line에서 사용) -->
+    <!-- 애니메이션 지속 시간 -->
+    <!-- Container hover: 0.2s = 0:0:0.2 -->
+    <!-- Tooltip scale: 0.25s = 0:0:0.25 -->
+
+</ResourceDictionary>

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="OrangeFox41.Avalonia.Lib\OrangeFox41.Avalonia.Lib.csproj" />
+  <Project Path="OrangeFox41.Avalonia.Gallery\OrangeFox41.Avalonia.Gallery.csproj" />
+</Solution>
