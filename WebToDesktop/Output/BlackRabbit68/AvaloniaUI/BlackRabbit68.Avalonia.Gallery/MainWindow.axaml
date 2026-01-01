@@ -1,0 +1,26 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:BlackRabbit68.Avalonia.Lib.Controls"
+        x:Class="BlackRabbit68.Avalonia.Gallery.MainWindow"
+        Title="BlackRabbit68 - Bitcoin Coin Animation"
+        Width="500"
+        Height="500"
+        Background="#1a1a2e">
+
+    <Grid>
+        <!-- 중앙에 비트코인 동전 배치 / Bitcoin coin centered -->
+        <controls:BitcoinCoin CoinSize="200"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"/>
+
+        <!-- 제목 / Title -->
+        <TextBlock Text="Rotating Bitcoin Coin"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Foreground="#F7931A"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   Margin="0,0,0,30"/>
+    </Grid>
+
+</Window>

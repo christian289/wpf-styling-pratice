@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="BlackRabbit68.Wpf.Gallery/BlackRabbit68.Wpf.Gallery.csproj" />
+  <Project Path="BlackRabbit68.Wpf.UI/BlackRabbit68.Wpf.UI.csproj" />
+</Solution>
