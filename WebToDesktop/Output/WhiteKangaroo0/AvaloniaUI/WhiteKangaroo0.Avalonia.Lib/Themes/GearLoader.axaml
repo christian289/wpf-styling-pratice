@@ -1,0 +1,250 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:WhiteKangaroo0.Avalonia.Lib.Controls">
+
+    <!--
+    Original CSS: From Uiverse.io by Shoh2008 - Tags: loader
+    기어 로더 - 회전하는 기어 형태의 로딩 애니메이션
+    Gear Loader - Rotating gear-shaped loading animation
+    -->
+
+    <!-- Colors -->
+    <Color x:Key="GearLoader.GearColor">#FF3D00</Color>
+    <Color x:Key="GearLoader.TeethColor">#FFFFFF</Color>
+    <Color x:Key="GearLoader.BaseColor">#FFFFFF</Color>
+
+    <SolidColorBrush x:Key="GearLoader.GearBrush" Color="{StaticResource GearLoader.GearColor}" />
+    <SolidColorBrush x:Key="GearLoader.TeethBrush" Color="{StaticResource GearLoader.TeethColor}" />
+    <SolidColorBrush x:Key="GearLoader.BaseBrush" Color="{StaticResource GearLoader.BaseColor}" />
+
+    <ControlTheme x:Key="{x:Type controls:GearLoader}" TargetType="controls:GearLoader">
+        <Setter Property="Width" Value="175" />
+        <Setter Property="Height" Value="80" />
+        <Setter Property="LargeGearBrush" Value="{StaticResource GearLoader.GearBrush}" />
+        <Setter Property="SmallGearBrush" Value="{StaticResource GearLoader.GearBrush}" />
+        <Setter Property="TeethBrush" Value="{StaticResource GearLoader.TeethBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Base structure (CSS: background-image with radial/linear gradients) -->
+                    <!-- 왼쪽 작은 원 (circle 25px at 25px 25px) -->
+                    <Ellipse Width="50" Height="50"
+                             Fill="{StaticResource GearLoader.BaseBrush}"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Bottom"
+                             Margin="0,0,0,0" />
+
+                    <!-- 중앙 큰 원 (circle 50px at 50px 50px) -->
+                    <Ellipse Width="100" Height="100"
+                             Fill="{StaticResource GearLoader.BaseBrush}"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             Margin="37,-12,0,0" />
+
+                    <!-- 오른쪽 작은 원 (circle 25px at 25px 25px) -->
+                    <Ellipse Width="50" Height="50"
+                             Fill="{StaticResource GearLoader.BaseBrush}"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Bottom"
+                             Margin="122,0,0,0" />
+
+                    <!-- 하단 막대 (linear-gradient) -->
+                    <Border Width="120" Height="40"
+                            Background="{StaticResource GearLoader.BaseBrush}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            Margin="25,0,0,0" />
+
+                    <!-- Large Gear (::before pseudo-element) -->
+                    <!-- 큰 기어: 36x36px, 위치: left=60px, bottom=18px -->
+                    <Panel Width="36" Height="36"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Bottom"
+                           Margin="60,0,0,18"
+                           RenderTransformOrigin="0.5,0.5">
+                        <Panel.RenderTransform>
+                            <RotateTransform />
+                        </Panel.RenderTransform>
+                        <Panel.Styles>
+                            <Style Selector="Panel">
+                                <Style.Animations>
+                                    <Animation Duration="0:0:3" IterationCount="Infinite">
+                                        <KeyFrame Cue="0%">
+                                            <Setter Property="RenderTransform" Value="rotate(0deg)" />
+                                        </KeyFrame>
+                                        <KeyFrame Cue="100%">
+                                            <Setter Property="RenderTransform" Value="rotate(-360deg)" />
+                                        </KeyFrame>
+                                    </Animation>
+                                </Style.Animations>
+                            </Style>
+                        </Panel.Styles>
+
+                        <!-- 기어 본체 -->
+                        <Ellipse Width="36" Height="36"
+                                 Fill="{TemplateBinding LargeGearBrush}" />
+
+                        <!-- 중앙 원 (circle 8px at 18px 18px) -->
+                        <Ellipse Width="16" Height="16"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center" />
+
+                        <!-- 톱니 (상, 하, 좌, 우, 대각선) -->
+                        <!-- 상단 (circle 4px at 18px 0px) -->
+                        <Ellipse Width="8" Height="8"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Top"
+                                 Margin="0,-4,0,0" />
+
+                        <!-- 하단 (circle 4px at 18px 36px) -->
+                        <Ellipse Width="8" Height="8"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Bottom"
+                                 Margin="0,0,0,-4" />
+
+                        <!-- 좌측 (circle 4px at 0px 18px) -->
+                        <Ellipse Width="8" Height="8"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Center"
+                                 Margin="-4,0,0,0" />
+
+                        <!-- 우측 (circle 4px at 36px 18px) -->
+                        <Ellipse Width="8" Height="8"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Center"
+                                 Margin="0,0,-4,0" />
+
+                        <!-- 대각선 톱니들 -->
+                        <!-- 우상단 (circle 4px at 30px 5px) -->
+                        <Ellipse Width="8" Height="8"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 Margin="26,1,0,0" />
+
+                        <!-- 우하단 (circle 4px at 30px 30px) -->
+                        <Ellipse Width="8" Height="8"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 Margin="26,26,0,0" />
+
+                        <!-- 좌하단 (circle 4px at 5px 30px) -->
+                        <Ellipse Width="8" Height="8"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 Margin="1,26,0,0" />
+
+                        <!-- 좌상단 (circle 4px at 5px 5px) -->
+                        <Ellipse Width="8" Height="8"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 Margin="1,1,0,0" />
+                    </Panel>
+
+                    <!-- Small Gear (::after pseudo-element) -->
+                    <!-- 작은 기어: 24x24px, 위치: left=94px, bottom=15px -->
+                    <Panel Width="24" Height="24"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Bottom"
+                           Margin="94,0,0,15"
+                           RenderTransformOrigin="0.5,0.5">
+                        <Panel.RenderTransform>
+                            <RotateTransform />
+                        </Panel.RenderTransform>
+                        <Panel.Styles>
+                            <Style Selector="Panel">
+                                <Style.Animations>
+                                    <Animation Duration="0:0:4" IterationCount="Infinite" PlaybackDirection="Reverse">
+                                        <KeyFrame Cue="0%">
+                                            <Setter Property="RenderTransform" Value="rotate(0deg)" />
+                                        </KeyFrame>
+                                        <KeyFrame Cue="100%">
+                                            <Setter Property="RenderTransform" Value="rotate(-360deg)" />
+                                        </KeyFrame>
+                                    </Animation>
+                                </Style.Animations>
+                            </Style>
+                        </Panel.Styles>
+
+                        <!-- 기어 본체 -->
+                        <Ellipse Width="24" Height="24"
+                                 Fill="{TemplateBinding SmallGearBrush}" />
+
+                        <!-- 중앙 원 (circle 5px at 12px 12px) -->
+                        <Ellipse Width="10" Height="10"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center" />
+
+                        <!-- 톱니 (상, 하, 좌, 우) -->
+                        <!-- 상단 (circle 2.5px at 12px 0px) -->
+                        <Ellipse Width="5" Height="5"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Top"
+                                 Margin="0,-2.5,0,0" />
+
+                        <!-- 하단 (circle 2.5px at 12px 24px) -->
+                        <Ellipse Width="5" Height="5"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Bottom"
+                                 Margin="0,0,0,-2.5" />
+
+                        <!-- 좌측 (circle 2.5px at 0px 12px) -->
+                        <Ellipse Width="5" Height="5"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Center"
+                                 Margin="-2.5,0,0,0" />
+
+                        <!-- 우측 (circle 2.5px at 24px 12px) -->
+                        <Ellipse Width="5" Height="5"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Center"
+                                 Margin="0,0,-2.5,0" />
+
+                        <!-- 대각선 톱니들 -->
+                        <!-- 우상단 (circle 2.5px at 20px 3px) -->
+                        <Ellipse Width="5" Height="5"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 Margin="17.5,0.5,0,0" />
+
+                        <!-- 우하단 (circle 2.5px at 20px 20px) -->
+                        <Ellipse Width="5" Height="5"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 Margin="17.5,17.5,0,0" />
+
+                        <!-- 좌하단 (circle 2.5px at 3px 20px) -->
+                        <Ellipse Width="5" Height="5"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 Margin="0.5,17.5,0,0" />
+
+                        <!-- 좌상단 (circle 2.5px at 3px 3px) -->
+                        <Ellipse Width="5" Height="5"
+                                 Fill="{TemplateBinding TeethBrush}"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 Margin="0.5,0.5,0,0" />
+                    </Panel>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

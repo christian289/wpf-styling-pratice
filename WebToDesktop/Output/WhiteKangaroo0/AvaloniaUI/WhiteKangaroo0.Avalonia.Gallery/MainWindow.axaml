@@ -1,0 +1,33 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:WhiteKangaroo0.Avalonia.Lib.Controls"
+        x:Class="WhiteKangaroo0.Avalonia.Gallery.MainWindow"
+        Title="WhiteKangaroo0 - Gear Loader Gallery"
+        Width="400"
+        Height="300"
+        WindowStartupLocation="CenterScreen"
+        Background="#1a1a2e">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Spacing="20">
+
+            <TextBlock Text="Gear Loader"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       HorizontalAlignment="Center" />
+
+            <TextBlock Text="From Uiverse.io by Shoh2008"
+                       FontSize="12"
+                       Foreground="#888888"
+                       HorizontalAlignment="Center" />
+
+            <!-- GearLoader Control -->
+            <controls:GearLoader HorizontalAlignment="Center" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>

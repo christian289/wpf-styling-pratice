@@ -1,0 +1,237 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:WhiteKangaroo0.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/WhiteKangaroo0.Wpf.UI;component/Themes/WhiteKangaroo0Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:WhiteKangaroo0}">
+        <Setter Property="Width" Value="{StaticResource WhiteKangaroo0.Width}" />
+        <Setter Property="Height" Value="{StaticResource WhiteKangaroo0.Height}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:WhiteKangaroo0}">
+                    <Canvas Width="{StaticResource WhiteKangaroo0.Width}"
+                            Height="{StaticResource WhiteKangaroo0.Height}">
+
+                        <!-- 배경 요소들 (로봇/사람 형태) / Background Elements (Robot/Person Shape) -->
+
+                        <!-- 왼쪽 원 (왼손/왼어깨) / Left Circle (Left Arm/Shoulder) -->
+                        <Ellipse Canvas.Left="{StaticResource WhiteKangaroo0.LeftCircle.Left}"
+                                 Canvas.Top="{StaticResource WhiteKangaroo0.LeftCircle.Top}"
+                                 Width="{StaticResource WhiteKangaroo0.LeftCircle.Size}"
+                                 Height="{StaticResource WhiteKangaroo0.LeftCircle.Size}"
+                                 Fill="{StaticResource WhiteKangaroo0.Brush.White}" />
+
+                        <!-- 중앙 큰 원 (머리) / Center Circle (Head) -->
+                        <Ellipse Canvas.Left="{StaticResource WhiteKangaroo0.CenterCircle.Left}"
+                                 Canvas.Top="{StaticResource WhiteKangaroo0.CenterCircle.Top}"
+                                 Width="{StaticResource WhiteKangaroo0.CenterCircle.Size}"
+                                 Height="{StaticResource WhiteKangaroo0.CenterCircle.Size}"
+                                 Fill="{StaticResource WhiteKangaroo0.Brush.White}" />
+
+                        <!-- 오른쪽 원 (오른손/오른어깨) / Right Circle (Right Arm/Shoulder) -->
+                        <Ellipse Canvas.Left="{StaticResource WhiteKangaroo0.RightCircle.Left}"
+                                 Canvas.Top="{StaticResource WhiteKangaroo0.RightCircle.Top}"
+                                 Width="{StaticResource WhiteKangaroo0.RightCircle.Size}"
+                                 Height="{StaticResource WhiteKangaroo0.RightCircle.Size}"
+                                 Fill="{StaticResource WhiteKangaroo0.Brush.White}" />
+
+                        <!-- 몸통 사각형 / Body Rectangle -->
+                        <Rectangle Canvas.Left="{StaticResource WhiteKangaroo0.Body.Left}"
+                                   Canvas.Top="{StaticResource WhiteKangaroo0.Body.Top}"
+                                   Width="{StaticResource WhiteKangaroo0.Body.Width}"
+                                   Height="{StaticResource WhiteKangaroo0.Body.Height}"
+                                   Fill="{StaticResource WhiteKangaroo0.Brush.White}" />
+
+                        <!-- 큰 톱니바퀴 (::before) / Large Gear (::before) -->
+                        <Ellipse x:Name="PART_LargeGear"
+                                 Canvas.Left="{StaticResource WhiteKangaroo0.LargeGear.Left}"
+                                 Canvas.Top="{StaticResource WhiteKangaroo0.LargeGear.Top}"
+                                 Width="{StaticResource WhiteKangaroo0.LargeGear.Size}"
+                                 Height="{StaticResource WhiteKangaroo0.LargeGear.Size}"
+                                 RenderTransformOrigin="0.5,0.5">
+                            <Ellipse.Fill>
+                                <DrawingBrush>
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <!-- 기어 배경 원 (주황색) / Gear Background Circle (Orange) -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.GearOrange}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="18,18" RadiusX="18" RadiusY="18" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 중앙 흰색 원 (8px 반지름) / Center White Circle (8px Radius) -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="18,18" RadiusX="8" RadiusY="8" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 상단 톱니 / Top Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="18,0" RadiusX="4" RadiusY="4" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 좌측 톱니 / Left Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="0,18" RadiusX="4" RadiusY="4" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 우측 톱니 / Right Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="36,18" RadiusX="4" RadiusY="4" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 하단 톱니 / Bottom Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="18,36" RadiusX="4" RadiusY="4" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 우상단 톱니 / Top-Right Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="30,5" RadiusX="4" RadiusY="4" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 우하단 톱니 / Bottom-Right Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="30,30" RadiusX="4" RadiusY="4" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 좌하단 톱니 / Bottom-Left Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="5,30" RadiusX="4" RadiusY="4" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 좌상단 톱니 / Top-Left Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="5,5" RadiusX="4" RadiusY="4" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Ellipse.Fill>
+                            <Ellipse.RenderTransform>
+                                <RotateTransform x:Name="LargeGearRotation" Angle="0" />
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+
+                        <!-- 작은 톱니바퀴 (::after) / Small Gear (::after) -->
+                        <Ellipse x:Name="PART_SmallGear"
+                                 Canvas.Left="{StaticResource WhiteKangaroo0.SmallGear.Left}"
+                                 Canvas.Top="{StaticResource WhiteKangaroo0.SmallGear.Top}"
+                                 Width="{StaticResource WhiteKangaroo0.SmallGear.Size}"
+                                 Height="{StaticResource WhiteKangaroo0.SmallGear.Size}"
+                                 RenderTransformOrigin="0.5,0.5">
+                            <Ellipse.Fill>
+                                <DrawingBrush>
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <!-- 기어 배경 원 (주황색) / Gear Background Circle (Orange) -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.GearOrange}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="12,12" RadiusX="12" RadiusY="12" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 중앙 흰색 원 (5px 반지름) / Center White Circle (5px Radius) -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="12,12" RadiusX="5" RadiusY="5" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 상단 톱니 / Top Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="12,0" RadiusX="2.5" RadiusY="2.5" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 좌측 톱니 / Left Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="0,12" RadiusX="2.5" RadiusY="2.5" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 우측 톱니 / Right Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="24,12" RadiusX="2.5" RadiusY="2.5" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 하단 톱니 / Bottom Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="12,24" RadiusX="2.5" RadiusY="2.5" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 우상단 톱니 / Top-Right Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="20,3" RadiusX="2.5" RadiusY="2.5" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 우하단 톱니 / Bottom-Right Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="20,20" RadiusX="2.5" RadiusY="2.5" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 좌하단 톱니 / Bottom-Left Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="3,20" RadiusX="2.5" RadiusY="2.5" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                            <!-- 좌상단 톱니 / Top-Left Tooth -->
+                                            <GeometryDrawing Brush="{StaticResource WhiteKangaroo0.Brush.White}">
+                                                <GeometryDrawing.Geometry>
+                                                    <EllipseGeometry Center="3,3" RadiusX="2.5" RadiusY="2.5" />
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Ellipse.Fill>
+                            <Ellipse.RenderTransform>
+                                <RotateTransform x:Name="SmallGearRotation" Angle="0" />
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                    </Canvas>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <!-- 큰 톱니바퀴: 3초 역방향 회전 / Large Gear: 3s Reverse Rotation -->
+                                    <DoubleAnimation Storyboard.TargetName="LargeGearRotation"
+                                                     Storyboard.TargetProperty="Angle"
+                                                     From="0"
+                                                     To="-360"
+                                                     Duration="0:0:3"
+                                                     RepeatBehavior="Forever" />
+
+                                    <!-- 작은 톱니바퀴: 4초 정방향 회전 (reverse) / Small Gear: 4s Forward Rotation (reverse) -->
+                                    <DoubleAnimation Storyboard.TargetName="SmallGearRotation"
+                                                     Storyboard.TargetProperty="Angle"
+                                                     From="0"
+                                                     To="360"
+                                                     Duration="0:0:4"
+                                                     RepeatBehavior="Forever" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
