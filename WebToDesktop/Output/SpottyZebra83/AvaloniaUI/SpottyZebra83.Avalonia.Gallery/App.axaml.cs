@@ -4,7 +4,7 @@ using Avalonia.Markup.Xaml;
 
 namespace SpottyZebra83.Avalonia.Gallery;
 
-public partial class App : Application
+public sealed partial class App : Application
 {
     public override void Initialize()
     {

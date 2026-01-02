@@ -11,25 +11,20 @@
                 VerticalAlignment="Center"
                 Spacing="40">
 
-        <TextBlock Text="TooltipButton Control Demo"
+        <TextBlock Text="TooltipButton Gallery"
                    FontSize="24"
                    FontWeight="Bold"
-                   Foreground="#e8e8e8"
-                   HorizontalAlignment="Center" />
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20" />
 
-        <StackPanel Orientation="Horizontal" Spacing="30">
-            <controls:TooltipButton Text="TOOLTIP"
-                                    TooltipText="Uiverse.io"
-                                    HoverText="Hello!" />
+        <!-- Default TooltipButton -->
+        <controls:TooltipButton />
 
-            <controls:TooltipButton Text="HOVER ME"
-                                    TooltipText="Custom Tip"
-                                    HoverText="Welcome!" />
-
-            <controls:TooltipButton Text="CLICK"
-                                    TooltipText="Info"
-                                    HoverText="Hi there!" />
-        </StackPanel>
+        <!-- Custom TooltipButton -->
+        <controls:TooltipButton Text="HOVER ME"
+                                TooltipText="Custom Tooltip"
+                                HoverText="Welcome!" />
 
     </StackPanel>
 

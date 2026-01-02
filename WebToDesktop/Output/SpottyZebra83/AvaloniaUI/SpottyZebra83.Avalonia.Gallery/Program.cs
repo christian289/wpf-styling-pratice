@@ -2,7 +2,7 @@ using Avalonia;
 
 namespace SpottyZebra83.Avalonia.Gallery;
 
-internal sealed class Program
+sealed class Program
 {
     [STAThread]
     public static void Main(string[] args) => BuildAvaloniaApp()
