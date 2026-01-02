@@ -1,0 +1,40 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+    CSS 원본 값 / Original CSS values:
+    - font-size: 20px (기준)
+    - height/width: 1.3em = 26px
+    - border-radius: 25px
+    - background-color (unchecked): #ccc
+    - background-color (checked): limegreen
+    - checkmark border: white
+    - checkmark border-width: 0.15em = 3px
+    - checkmark left: 0.45em = 9px
+    - checkmark top: 0.25em = 5px
+    - checkmark width: 0.25em = 5px
+    - checkmark height: 0.5em = 10px
+    - transition: 0.15s
+    -->
+
+    <!-- 크기 값 / Size values -->
+    <sys:Double x:Key="WiseElephant23.Size">26</sys:Double>
+    <CornerRadius x:Key="WiseElephant23.CornerRadius">13</CornerRadius>
+
+    <!-- 체크마크 크기 / Checkmark size -->
+    <sys:Double x:Key="WiseElephant23.Checkmark.Width">5</sys:Double>
+    <sys:Double x:Key="WiseElephant23.Checkmark.Height">10</sys:Double>
+    <sys:Double x:Key="WiseElephant23.Checkmark.BorderThickness">3</sys:Double>
+    <sys:Double x:Key="WiseElephant23.Checkmark.Left">9</sys:Double>
+    <sys:Double x:Key="WiseElephant23.Checkmark.Top">5</sys:Double>
+
+    <!-- 색상 값 / Color values -->
+    <SolidColorBrush x:Key="WiseElephant23.Background.Unchecked" Color="#CCCCCC"/>
+    <SolidColorBrush x:Key="WiseElephant23.Background.Checked" Color="LimeGreen"/>
+    <SolidColorBrush x:Key="WiseElephant23.Checkmark.Stroke" Color="White"/>
+
+    <!-- 애니메이션 시간 / Animation duration -->
+    <Duration x:Key="WiseElephant23.TransitionDuration">0:0:0.15</Duration>
+
+</ResourceDictionary>

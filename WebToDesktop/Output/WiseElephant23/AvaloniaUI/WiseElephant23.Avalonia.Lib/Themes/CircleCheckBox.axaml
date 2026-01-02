@@ -1,0 +1,77 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:WiseElephant23.Avalonia.Lib.Controls">
+
+    <!--
+    From Uiverse.io by martinval9 - Tags: checkbox, circle
+    원형 체크박스 스타일
+    Circle checkbox style
+    -->
+
+    <Styles.Resources>
+        <!-- Color Resources -->
+        <Color x:Key="CircleCheckBox.Unchecked.Background">#CCCCCC</Color>
+        <Color x:Key="CircleCheckBox.Checked.Background">LimeGreen</Color>
+        <SolidColorBrush x:Key="CircleCheckBox.Unchecked.BackgroundBrush" Color="{StaticResource CircleCheckBox.Unchecked.Background}" />
+        <SolidColorBrush x:Key="CircleCheckBox.Checked.BackgroundBrush" Color="{StaticResource CircleCheckBox.Checked.Background}" />
+        <SolidColorBrush x:Key="CircleCheckBox.Checkmark.Brush" Color="White" />
+
+        <!-- Size Resources (em 단위 기준: 1em = 20px에서 계산) -->
+        <!-- Size Resources (calculated from em unit: 1em = 20px) -->
+        <x:Double x:Key="CircleCheckBox.Size">26</x:Double>
+        <CornerRadius x:Key="CircleCheckBox.CornerRadius">13</CornerRadius>
+        <x:Double x:Key="CircleCheckBox.CheckmarkWidth">5</x:Double>
+        <x:Double x:Key="CircleCheckBox.CheckmarkHeight">10</x:Double>
+
+        <ControlTheme x:Key="{x:Type controls:CircleCheckBox}" TargetType="controls:CircleCheckBox">
+            <Setter Property="Width" Value="{StaticResource CircleCheckBox.Size}" />
+            <Setter Property="Height" Value="{StaticResource CircleCheckBox.Size}" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel>
+                        <!-- Background Circle -->
+                        <Border x:Name="PART_Background"
+                                Width="{StaticResource CircleCheckBox.Size}"
+                                Height="{StaticResource CircleCheckBox.Size}"
+                                CornerRadius="{StaticResource CircleCheckBox.CornerRadius}"
+                                Background="{StaticResource CircleCheckBox.Unchecked.BackgroundBrush}">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <BrushTransition Property="Background" Duration="0:0:0.15" />
+                                </Transitions>
+                            </Border.Transitions>
+                        </Border>
+
+                        <!-- Checkmark (L-shaped rotated 45 degrees) -->
+                        <Border x:Name="PART_Checkmark"
+                                Width="{StaticResource CircleCheckBox.CheckmarkWidth}"
+                                Height="{StaticResource CircleCheckBox.CheckmarkHeight}"
+                                BorderBrush="{StaticResource CircleCheckBox.Checkmark.Brush}"
+                                BorderThickness="0,0,3,3"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="0,-3,0,0"
+                                RenderTransformOrigin="0.5,0.5"
+                                IsVisible="False">
+                            <Border.RenderTransform>
+                                <RotateTransform Angle="45" />
+                            </Border.RenderTransform>
+                        </Border>
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+
+            <!-- Checked State -->
+            <Style Selector="^:checked">
+                <Style Selector="^ /template/ Border#PART_Background">
+                    <Setter Property="Background" Value="{StaticResource CircleCheckBox.Checked.BackgroundBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Checkmark">
+                    <Setter Property="IsVisible" Value="True" />
+                </Style>
+            </Style>
+        </ControlTheme>
+    </Styles.Resources>
+
+</Styles>

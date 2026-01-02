@@ -1,0 +1,55 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:WiseElephant23.Avalonia.Lib.Controls"
+        x:Class="WiseElephant23.Avalonia.Gallery.MainWindow"
+        Title="WiseElephant23 - Circle CheckBox Gallery"
+        Width="400"
+        Height="300">
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="20">
+
+        <TextBlock Text="Circle CheckBox Demo"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center" />
+
+        <TextBlock Text="From Uiverse.io by martinval9"
+                   FontSize="12"
+                   Foreground="Gray"
+                   HorizontalAlignment="Center" />
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="20">
+
+            <!-- Unchecked State -->
+            <StackPanel Spacing="8">
+                <controls:CircleCheckBox IsChecked="False" />
+                <TextBlock Text="Unchecked"
+                           HorizontalAlignment="Center"
+                           FontSize="12" />
+            </StackPanel>
+
+            <!-- Checked State -->
+            <StackPanel Spacing="8">
+                <controls:CircleCheckBox IsChecked="True" />
+                <TextBlock Text="Checked"
+                           HorizontalAlignment="Center"
+                           FontSize="12" />
+            </StackPanel>
+
+            <!-- Interactive -->
+            <StackPanel Spacing="8">
+                <controls:CircleCheckBox />
+                <TextBlock Text="Click Me!"
+                           HorizontalAlignment="Center"
+                           FontSize="12" />
+            </StackPanel>
+
+        </StackPanel>
+
+    </StackPanel>
+
+</Window>

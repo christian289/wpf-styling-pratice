@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="WiseElephant23.Avalonia.Lib\WiseElephant23.Avalonia.Lib.csproj" />
+  <Project Path="WiseElephant23.Avalonia.Gallery\WiseElephant23.Avalonia.Gallery.csproj" />
+</Solution>
