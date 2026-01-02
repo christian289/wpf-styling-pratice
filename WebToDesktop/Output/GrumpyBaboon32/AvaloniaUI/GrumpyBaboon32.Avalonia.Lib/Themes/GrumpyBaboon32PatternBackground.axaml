@@ -1,0 +1,29 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:GrumpyBaboon32.Avalonia.Lib.Controls">
+
+    <!--
+    GrumpyBaboon32 Pattern Background Styles
+    From Uiverse.io by mobinkakei - Tags: simple, blue, pattern
+
+    CSS 원본:
+    - 타일 크기: 25px
+    - 기본 색상: #1eaaee (cyan)
+    - 배경 색상: #171717 (dark)
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="GrumpyBaboon32.PrimaryColor">#1eaaee</Color>
+    <Color x:Key="GrumpyBaboon32.BackgroundColor">#171717</Color>
+    <x:Double x:Key="GrumpyBaboon32.TileSize">25</x:Double>
+
+    <!-- Default Style -->
+    <ControlTheme x:Key="{x:Type controls:GrumpyBaboon32PatternBackground}"
+                  TargetType="controls:GrumpyBaboon32PatternBackground">
+        <Setter Property="TileSize" Value="{StaticResource GrumpyBaboon32.TileSize}" />
+        <Setter Property="PrimaryColor" Value="{StaticResource GrumpyBaboon32.PrimaryColor}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource GrumpyBaboon32.BackgroundColor}" />
+        <Setter Property="ClipToBounds" Value="True" />
+    </ControlTheme>
+
+</ResourceDictionary>

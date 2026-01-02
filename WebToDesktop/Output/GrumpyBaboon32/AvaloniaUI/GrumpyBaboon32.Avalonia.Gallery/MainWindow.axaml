@@ -1,0 +1,52 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:GrumpyBaboon32.Avalonia.Lib.Controls"
+        x:Class="GrumpyBaboon32.Avalonia.Gallery.MainWindow"
+        Title="GrumpyBaboon32 Pattern Background - AvaloniaUI Gallery"
+        Width="800" Height="600"
+        Background="#171717">
+
+    <!--
+    GrumpyBaboon32 Pattern Background Demo
+    From Uiverse.io by mobinkakei - Tags: simple, blue, pattern
+
+    CSS 원본 패턴:
+    - radial-gradient: 중앙에 원형 (35% 반지름)
+    - linear-gradient 45deg/135deg: 대각선 라인
+    - 타일 크기: 25px
+    -->
+
+    <Grid>
+        <!-- 패턴 배경 -->
+        <controls:GrumpyBaboon32PatternBackground />
+
+        <!-- 데모 콘텐츠 오버레이 -->
+        <Border Background="#80171717"
+                CornerRadius="16"
+                Padding="32"
+                Margin="100"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+            <StackPanel Spacing="16" HorizontalAlignment="Center">
+                <TextBlock Text="GrumpyBaboon32"
+                           FontSize="32"
+                           FontWeight="Bold"
+                           Foreground="#1eaaee"
+                           HorizontalAlignment="Center" />
+                <TextBlock Text="Pattern Background"
+                           FontSize="24"
+                           Foreground="White"
+                           HorizontalAlignment="Center" />
+                <TextBlock Text="From Uiverse.io by mobinkakei"
+                           FontSize="14"
+                           Foreground="#888888"
+                           HorizontalAlignment="Center" />
+                <TextBlock Text="Tags: simple, blue, pattern"
+                           FontSize="12"
+                           Foreground="#666666"
+                           HorizontalAlignment="Center" />
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</Window>

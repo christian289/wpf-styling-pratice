@@ -1,0 +1,25 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- CSS 변수 매핑 [CSS variables mapping] -->
+    <!-- [s]: 패턴 타일 크기 [pattern tile size] -->
+    <sys:Double x:Key="GrumpyBaboon32.PatternSize">25</sys:Double>
+
+    <!-- [c1]: 주요 색상 (파란색) [primary color (blue)] -->
+    <Color x:Key="GrumpyBaboon32.Color.Primary">#1EAAEE</Color>
+    <SolidColorBrush x:Key="GrumpyBaboon32.Brush.Primary" Color="{StaticResource GrumpyBaboon32.Color.Primary}" />
+
+    <!-- [c2]: 배경 색상 (어두운 회색) [background color (dark gray)] -->
+    <Color x:Key="GrumpyBaboon32.Color.Background">#171717</Color>
+    <SolidColorBrush x:Key="GrumpyBaboon32.Brush.Background" Color="{StaticResource GrumpyBaboon32.Color.Background}" />
+
+    <!-- 그라데이션 정지점 비율 [Gradient stop percentages] -->
+    <!-- CSS: 71%, 79% for linear-gradient -->
+    <!-- CSS: 35%, 37% for radial-gradient -->
+    <sys:Double x:Key="GrumpyBaboon32.Gradient.Linear.Start">0.71</sys:Double>
+    <sys:Double x:Key="GrumpyBaboon32.Gradient.Linear.End">0.79</sys:Double>
+    <sys:Double x:Key="GrumpyBaboon32.Gradient.Radial.Inner">0.35</sys:Double>
+    <sys:Double x:Key="GrumpyBaboon32.Gradient.Radial.Outer">0.37</sys:Double>
+
+</ResourceDictionary>

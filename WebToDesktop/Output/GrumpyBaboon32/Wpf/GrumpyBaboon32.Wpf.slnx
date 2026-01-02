@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="GrumpyBaboon32.Wpf.Gallery/GrumpyBaboon32.Wpf.Gallery.csproj" />
+  <Project Path="GrumpyBaboon32.Wpf.UI/GrumpyBaboon32.Wpf.UI.csproj" />
+</Solution>

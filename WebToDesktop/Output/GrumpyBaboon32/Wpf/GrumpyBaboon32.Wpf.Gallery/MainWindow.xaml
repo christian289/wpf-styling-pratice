@@ -1,0 +1,12 @@
+<Window x:Class="GrumpyBaboon32.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:GrumpyBaboon32.Wpf.UI.Controls;assembly=GrumpyBaboon32.Wpf.UI"
+        mc:Ignorable="d"
+        Title="GrumpyBaboon32 Pattern Gallery" Height="450" Width="800">
+    <Grid>
+        <controls:GrumpyBaboon32 />
+    </Grid>
+</Window>
