@@ -1,0 +1,37 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+    SwiftChipmunk76 Rating Control Resources
+    Based on: https://uiverse.io/PriyanshuGupta28/swift-chipmunk-76
+    -->
+
+    <!-- Colors -->
+    <!-- 기본 별 색상 (회색) / Default star color (gray) -->
+    <!-- CSS: color: #ccc -->
+    <SolidColorBrush x:Key="SwiftChipmunk76.Star.Normal" Color="#CCCCCC"/>
+
+    <!-- 선택/호버 시 별 색상 (보라색) / Selected/hovered star color (purple) -->
+    <!-- CSS: color: #6f00ff -->
+    <SolidColorBrush x:Key="SwiftChipmunk76.Star.Selected" Color="#6F00FF"/>
+
+    <!-- Sizes -->
+    <!-- 별 크기 / Star size -->
+    <!-- CSS: font-size: 30px -->
+    <sys:Double x:Key="SwiftChipmunk76.Star.FontSize">30</sys:Double>
+
+    <!-- 별 사이 간격 / Star spacing -->
+    <Thickness x:Key="SwiftChipmunk76.Star.Margin">2,0</Thickness>
+
+    <!-- Animation Duration -->
+    <!-- 색상 전환 시간 / Color transition duration -->
+    <!-- CSS: transition: color 0.3s -->
+    <Duration x:Key="SwiftChipmunk76.Transition.Duration">0:0:0.3</Duration>
+
+    <!-- Star Character -->
+    <!-- 별 유니코드 문자 / Star unicode character -->
+    <!-- CSS: content: '\2605' (★) -->
+    <sys:String x:Key="SwiftChipmunk76.Star.Character">&#x2605;</sys:String>
+
+</ResourceDictionary>

@@ -1,0 +1,83 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:SwiftChipmunk76.Avalonia.Lib.Controls">
+
+    <!--
+    Original CSS from uiverse.io by PriyanshuGupta28
+    Tags: input, stars, rating
+
+    CSS에서 사용된 색상:
+    - 기본 별 색상: #ccc (회색)
+    - 활성화/호버 색상: #6f00ff (보라색)
+    - 전환 효과: 0.3s
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="StarRating.InactiveColor">#CCCCCC</Color>
+    <Color x:Key="StarRating.ActiveColor">#6F00FF</Color>
+
+    <SolidColorBrush x:Key="StarRating.InactiveBrush" Color="{StaticResource StarRating.InactiveColor}" />
+    <SolidColorBrush x:Key="StarRating.ActiveBrush" Color="{StaticResource StarRating.ActiveColor}" />
+
+    <!-- Star Item Style -->
+    <ControlTheme x:Key="{x:Type controls:StarItem}" TargetType="controls:StarItem">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="Foreground" Value="{StaticResource StarRating.InactiveBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!-- ★ Unicode: U+2605 -->
+                <TextBlock x:Name="StarText"
+                           Text="★"
+                           FontSize="{TemplateBinding FontSize}"
+                           Foreground="{TemplateBinding Foreground}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center">
+                    <TextBlock.Transitions>
+                        <Transitions>
+                            <BrushTransition Property="Foreground" Duration="0:0:0.3" />
+                        </Transitions>
+                    </TextBlock.Transitions>
+                </TextBlock>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Active State: 선택된 별과 그 이전 별들 -->
+        <Style Selector="^[IsActive=True]">
+            <Setter Property="Foreground" Value="{StaticResource StarRating.ActiveBrush}" />
+        </Style>
+
+        <!-- Hovered State: 호버된 별과 그 이전 별들 -->
+        <Style Selector="^[IsHovered=True]">
+            <Setter Property="Foreground" Value="{StaticResource StarRating.ActiveBrush}" />
+        </Style>
+    </ControlTheme>
+
+    <!-- Star Rating Style -->
+    <ControlTheme x:Key="{x:Type controls:StarRating}" TargetType="controls:StarRating">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!-- CSS에서는 float: right로 오른쪽부터 배치되지만,
+                     AvaloniaUI에서는 왼쪽부터 1-5순서로 표시합니다 -->
+                <StackPanel x:Name="PART_StarsPanel" Orientation="Horizontal" Spacing="2">
+                    <controls:StarItem StarIndex="1"
+                                       IsActive="{Binding Value, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static controls:StarRatingConverters.IsStarActive}, ConverterParameter=1}"
+                                       IsHovered="{Binding HoverValue, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static controls:StarRatingConverters.IsStarHovered}, ConverterParameter=1}" />
+                    <controls:StarItem StarIndex="2"
+                                       IsActive="{Binding Value, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static controls:StarRatingConverters.IsStarActive}, ConverterParameter=2}"
+                                       IsHovered="{Binding HoverValue, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static controls:StarRatingConverters.IsStarHovered}, ConverterParameter=2}" />
+                    <controls:StarItem StarIndex="3"
+                                       IsActive="{Binding Value, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static controls:StarRatingConverters.IsStarActive}, ConverterParameter=3}"
+                                       IsHovered="{Binding HoverValue, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static controls:StarRatingConverters.IsStarHovered}, ConverterParameter=3}" />
+                    <controls:StarItem StarIndex="4"
+                                       IsActive="{Binding Value, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static controls:StarRatingConverters.IsStarActive}, ConverterParameter=4}"
+                                       IsHovered="{Binding HoverValue, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static controls:StarRatingConverters.IsStarHovered}, ConverterParameter=4}" />
+                    <controls:StarItem StarIndex="5"
+                                       IsActive="{Binding Value, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static controls:StarRatingConverters.IsStarActive}, ConverterParameter=5}"
+                                       IsHovered="{Binding HoverValue, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static controls:StarRatingConverters.IsStarHovered}, ConverterParameter=5}" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>
