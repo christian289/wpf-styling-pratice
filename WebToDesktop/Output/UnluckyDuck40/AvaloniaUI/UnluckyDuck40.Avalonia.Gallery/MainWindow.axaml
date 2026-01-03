@@ -1,0 +1,29 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:UnluckyDuck40.Avalonia.Lib.Controls"
+        x:Class="UnluckyDuck40.Avalonia.Gallery.MainWindow"
+        Title="UnluckyDuck40 - Social Share Button Gallery"
+        Width="400"
+        Height="300">
+
+    <Grid Background="#F5F5F5">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="20">
+            <TextBlock Text="Social Share Button"
+                       FontSize="18"
+                       FontWeight="SemiBold"
+                       HorizontalAlignment="Center" />
+            <TextBlock Text="Hover over the button to see social icons"
+                       FontSize="12"
+                       Foreground="Gray"
+                       HorizontalAlignment="Center" />
+
+            <!-- 버튼 위에 공간을 확보하여 소셜 아이콘 패널이 보이도록 함 -->
+            <Border Margin="0,60,0,0">
+                <controls:SocialShareButton />
+            </Border>
+        </StackPanel>
+    </Grid>
+
+</Window>

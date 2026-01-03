@@ -1,0 +1,32 @@
+<Window x:Class="UnluckyDuck40.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:UnluckyDuck40.Wpf.UI.Controls;assembly=UnluckyDuck40.Wpf.UI"
+        mc:Ignorable="d"
+        Title="UnluckyDuck40 - Social Share Button Gallery"
+        Height="450" Width="800"
+        Background="#F5F5F5">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Social Share Button"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+            <TextBlock Text="Hover over the button to see social media icons"
+                       FontSize="14"
+                       Foreground="Gray"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,40"/>
+
+            <!-- Default Share Button -->
+            <controls:UnluckyDuck40 HorizontalAlignment="Center" Margin="0,60,0,0"/>
+
+            <!-- Custom Text Button -->
+            <controls:UnluckyDuck40 Text="SHARE IT" HorizontalAlignment="Center" Margin="0,60,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

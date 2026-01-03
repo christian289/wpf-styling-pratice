@@ -1,0 +1,194 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:UnluckyDuck40.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/UnluckyDuck40.Wpf.UI;component/Themes/UnluckyDuck40Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:UnluckyDuck40}">
+        <Setter Property="Width" Value="{StaticResource UnluckyDuck40.Width}"/>
+        <Setter Property="Height" Value="{StaticResource UnluckyDuck40.Height}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:UnluckyDuck40}">
+                    <Grid>
+                        <!-- Socials Panel (appears on hover) -->
+                        <Border x:Name="PART_Socials"
+                                CornerRadius="{StaticResource UnluckyDuck40.CornerRadius}"
+                                Background="{StaticResource UnluckyDuck40.Background.Normal}"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                Opacity="0"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TranslateTransform Y="0"/>
+                            </Border.RenderTransform>
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="3" ShadowDepth="1" Direction="315" Color="#7A7A7A" Opacity="0.808"/>
+                            </Border.Effect>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+                                <!-- Twitter Icon -->
+                                <Button x:Name="PART_TwitterButton"
+                                        Style="{x:Null}"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Cursor="Hand"
+                                        Margin="8,0">
+                                    <Viewbox Width="{StaticResource UnluckyDuck40.SocialIconSize}"
+                                             Height="{StaticResource UnluckyDuck40.SocialIconSize}">
+                                        <Canvas Width="48" Height="40">
+                                            <Canvas.RenderTransform>
+                                                <TranslateTransform X="-300" Y="-164"/>
+                                            </Canvas.RenderTransform>
+                                            <Path Fill="{StaticResource UnluckyDuck40.Twitter.Color}"
+                                                  Data="{StaticResource UnluckyDuck40.TwitterIcon.PathData}"/>
+                                        </Canvas>
+                                    </Viewbox>
+                                </Button>
+
+                                <!-- Instagram Icon -->
+                                <Button x:Name="PART_InstagramButton"
+                                        Style="{x:Null}"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Cursor="Hand"
+                                        Margin="8,0">
+                                    <Viewbox Width="{StaticResource UnluckyDuck40.SocialIconSize}"
+                                             Height="{StaticResource UnluckyDuck40.SocialIconSize}">
+                                        <Canvas Width="32" Height="32">
+                                            <!-- Instagram Background with Gradient -->
+                                            <Rectangle Width="28" Height="28" Canvas.Left="2" Canvas.Top="2" RadiusX="6" RadiusY="6">
+                                                <Rectangle.Fill>
+                                                    <RadialGradientBrush GradientOrigin="0.21,0.66" Center="0.21,0.66" RadiusX="0.85" RadiusY="0.85">
+                                                        <GradientStop Color="#B13589" Offset="0"/>
+                                                        <GradientStop Color="#C62F94" Offset="0.79309"/>
+                                                        <GradientStop Color="#8A3AC8" Offset="1"/>
+                                                    </RadialGradientBrush>
+                                                </Rectangle.Fill>
+                                            </Rectangle>
+                                            <Rectangle Width="28" Height="28" Canvas.Left="2" Canvas.Top="2" RadiusX="6" RadiusY="6">
+                                                <Rectangle.Fill>
+                                                    <RadialGradientBrush GradientOrigin="0.16,0.94" Center="0.16,0.94" RadiusX="0.75" RadiusY="0.75">
+                                                        <GradientStop Color="#E0E8B7" Offset="0"/>
+                                                        <GradientStop Color="#FB8A2E" Offset="0.444662"/>
+                                                        <GradientStop Color="#E2425C" Offset="0.71474"/>
+                                                        <GradientStop Color="#00E2425C" Offset="1"/>
+                                                    </RadialGradientBrush>
+                                                </Rectangle.Fill>
+                                            </Rectangle>
+                                            <Rectangle Width="28" Height="28" Canvas.Left="2" Canvas.Top="2" RadiusX="6" RadiusY="6">
+                                                <Rectangle.Fill>
+                                                    <RadialGradientBrush GradientOrigin="0.015,0.09" Center="0.015,0.09" RadiusX="1.22" RadiusY="0.26">
+                                                        <GradientStop Color="#406ADC" Offset="0.156701"/>
+                                                        <GradientStop Color="#6A45BE" Offset="0.467799"/>
+                                                        <GradientStop Color="#006A45BE" Offset="1"/>
+                                                    </RadialGradientBrush>
+                                                </Rectangle.Fill>
+                                            </Rectangle>
+                                            <!-- Instagram Icon paths -->
+                                            <Path Fill="White" Data="{StaticResource UnluckyDuck40.InstagramIcon.Dot.PathData}"/>
+                                            <Path Fill="White" Data="{StaticResource UnluckyDuck40.InstagramIcon.Circle.PathData}"/>
+                                            <Path Fill="White" Data="{StaticResource UnluckyDuck40.InstagramIcon.Border.PathData}"/>
+                                        </Canvas>
+                                    </Viewbox>
+                                </Button>
+
+                                <!-- Facebook Icon -->
+                                <Button x:Name="PART_FacebookButton"
+                                        Style="{x:Null}"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Cursor="Hand"
+                                        Margin="8,0">
+                                    <Viewbox Width="{StaticResource UnluckyDuck40.SocialIconSize}"
+                                             Height="{StaticResource UnluckyDuck40.SocialIconSize}">
+                                        <Canvas Width="32" Height="32">
+                                            <Ellipse Width="28" Height="28" Canvas.Left="2" Canvas.Top="2"
+                                                     Fill="{StaticResource UnluckyDuck40.Facebook.Background}"/>
+                                            <Path Fill="White" Data="{StaticResource UnluckyDuck40.FacebookIcon.PathData}"/>
+                                        </Canvas>
+                                    </Viewbox>
+                                </Button>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Main Button -->
+                        <Border x:Name="PART_MainButton"
+                                CornerRadius="{StaticResource UnluckyDuck40.CornerRadius}"
+                                Background="{StaticResource UnluckyDuck40.Background.Normal}"
+                                BorderBrush="{StaticResource UnluckyDuck40.Border.Brush}"
+                                BorderThickness="{StaticResource UnluckyDuck40.BorderThickness}">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="3" ShadowDepth="1" Direction="315" Color="#7A7A7A" Opacity="0.808"/>
+                            </Border.Effect>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+                                <TextBlock Text="{TemplateBinding Text}"
+                                           Foreground="{StaticResource UnluckyDuck40.Foreground}"
+                                           VerticalAlignment="Center"
+                                           FontSize="{TemplateBinding FontSize}"
+                                           FontWeight="{TemplateBinding FontWeight}"/>
+                                <Viewbox Width="{StaticResource UnluckyDuck40.IconSize}"
+                                         Height="{StaticResource UnluckyDuck40.IconSize}"
+                                         Margin="10,0,0,0">
+                                    <Canvas Width="24" Height="24">
+                                        <Path Stroke="{StaticResource UnluckyDuck40.Foreground}"
+                                              StrokeThickness="2"
+                                              StrokeStartLineCap="Round"
+                                              StrokeEndLineCap="Round"
+                                              Data="{StaticResource UnluckyDuck40.ShareIcon.PathData}"/>
+                                    </Canvas>
+                                </Viewbox>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Fade in socials -->
+                                        <DoubleAnimation Storyboard.TargetName="PART_Socials"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="{StaticResource UnluckyDuck40.Animation.Duration}"/>
+                                        <!-- Move socials up (top: -120% = -48px for 40px height) -->
+                                        <DoubleAnimation Storyboard.TargetName="PART_Socials"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                         To="-48"
+                                                         Duration="{StaticResource UnluckyDuck40.Animation.Duration}"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- Fade out socials -->
+                                        <DoubleAnimation Storyboard.TargetName="PART_Socials"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="{StaticResource UnluckyDuck40.Animation.Duration}"/>
+                                        <!-- Move socials back down -->
+                                        <DoubleAnimation Storyboard.TargetName="PART_Socials"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                         To="0"
+                                                         Duration="{StaticResource UnluckyDuck40.Animation.Duration}"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

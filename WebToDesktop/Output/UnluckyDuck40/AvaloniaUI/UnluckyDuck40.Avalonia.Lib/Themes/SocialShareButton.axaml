@@ -1,0 +1,163 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:UnluckyDuck40.Avalonia.Lib.Controls">
+
+    <!-- From Uiverse.io by boryanakrasteva - Tags: social, button, share -->
+    <!-- Share 버튼에 hover 시 소셜 미디어 아이콘이 위로 슬라이드되어 나타나는 버튼 -->
+
+    <Design.PreviewWith>
+        <Border Padding="40" Background="#F5F5F5">
+            <controls:SocialShareButton />
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type controls:SocialShareButton}" TargetType="controls:SocialShareButton">
+        <Setter Property="Width" Value="130" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!-- Main Button -->
+                    <Border x:Name="PART_MainButton"
+                            Background="Transparent"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            CornerRadius="20"
+                            BoxShadow="1 1 3 0 #CE7A7A7A">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Spacing="10">
+                            <TextBlock Text="SHARE"
+                                       VerticalAlignment="Center"
+                                       FontSize="12"
+                                       LetterSpacing="2.5" />
+                            <!-- Share Icon -->
+                            <PathIcon Width="20" Height="20"
+                                      Foreground="Black">
+                                <PathIcon.Data>
+                                    <PathGeometry>M15.2141 7.39294L8.68387 10.6581M8.68387 10.6581C8.19134 9.67492 7.17449 9 6 9C4.34315 9 3 10.3431 3 12C3 13.6569 4.34315 15 6 15C7.17449 15 8.19134 14.3251 8.68387 13.3419M8.68387 10.6581C8.88616 11.0619 9 11.5176 9 12C9 12.4824 8.88616 12.9381 8.68387 13.3419M15.2141 16.6071L8.68387 13.3419M21 6C21 7.65685 19.6569 9 18 9C16.3431 9 15 7.65685 15 6C15 4.34315 16.3431 3 18 3C19.6569 3 21 4.34315 21 6ZM21 18C21 19.6569 19.6569 21 18 21C16.3431 21 15 19.6569 15 18C15 16.3431 16.3431 15 18 15C19.6569 15 21 16.3431 21 18Z</PathGeometry>
+                                </PathIcon.Data>
+                            </PathIcon>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Social Icons Panel (hidden by default, slides up on hover) -->
+                    <Border x:Name="PART_SocialsPanel"
+                            Background="White"
+                            CornerRadius="20"
+                            BoxShadow="1 1 3 0 #CE7A7A7A"
+                            Opacity="0"
+                            IsVisible="False"
+                            RenderTransform="translate(0px, 0px)">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Spacing="15">
+                            <!-- Twitter Icon -->
+                            <Panel Width="20" Height="20" Cursor="Hand">
+                                <PathIcon Foreground="#00AAEC">
+                                    <PathIcon.Data>
+                                        <PathGeometry>M48 8.73528C46.2363 9.53846 44.3374 10.0816 42.3455 10.3243C44.3796 9.0762 45.9405 7.09715 46.6758 4.73962C44.7713 5.89527 42.6667 6.73601 40.4184 7.18671C38.6265 5.22499 36.0655 4 33.2312 4C27.7964 4 23.3872 8.52149 23.3872 14.0975C23.3872 14.8891 23.4717 15.6576 23.6408 16.3973C15.4562 15.9754 8.20144 11.9596 3.34143 5.84327C2.4934 7.33983 2.0088 9.0762 2.0088 10.9252C2.0088 14.4269 3.74714 17.5182 6.38986 19.3297C4.77831 19.2806 3.25691 18.8212 1.9271 18.0701L1.9271 18.1943C1.9271 23.0885 5.32206 27.1708 9.8299 28.0953C9.0044 28.3323 8.13383 28.4507 7.23508 28.4507C6.60116 28.4507 5.98134 28.39 5.38123 28.2716C6.63497 32.2817 10.2694 35.2026 14.58 35.2806C11.2104 37.9906 6.96179 39.6056 2.34971 39.6056C1.5552 39.6056 0.76915 39.5594 0 39.467C4.35851 42.3272 9.53689 44 15.0956 44C33.2115 44 43.1146 28.6154 43.1146 15.2705C43.1146 14.8313 43.1062 14.3922 43.0893 13.9617C45.0136 12.5374 46.6843 10.7606 48 8.73528</PathGeometry>
+                                    </PathIcon.Data>
+                                </PathIcon>
+                            </Panel>
+
+                            <!-- Instagram Icon -->
+                            <Panel Width="20" Height="20" Cursor="Hand">
+                                <Canvas Width="32" Height="32">
+                                    <Canvas.RenderTransform>
+                                        <ScaleTransform ScaleX="0.625" ScaleY="0.625" />
+                                    </Canvas.RenderTransform>
+                                    <!-- Background rectangles with gradients -->
+                                    <Rectangle Canvas.Left="2" Canvas.Top="2" Width="28" Height="28" RadiusX="6" RadiusY="6">
+                                        <Rectangle.Fill>
+                                            <!-- RadialGradientBrush: GradientOrigin과 Center를 동일하게 설정 (Avalonia Issue #19888) -->
+                                            <RadialGradientBrush GradientOrigin="37.5%,71.875%" Center="37.5%,71.875%" RadiusX="0.8" RadiusY="0.8">
+                                                <GradientStop Color="#B13589" Offset="0" />
+                                                <GradientStop Color="#C62F94" Offset="0.79309" />
+                                                <GradientStop Color="#8A3AC8" Offset="1" />
+                                            </RadialGradientBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    <Rectangle Canvas.Left="2" Canvas.Top="2" Width="28" Height="28" RadiusX="6" RadiusY="6">
+                                        <Rectangle.Fill>
+                                            <RadialGradientBrush GradientOrigin="34.375%,96.875%" Center="34.375%,96.875%" RadiusX="0.71" RadiusY="0.71">
+                                                <GradientStop Color="#E0E8B7" Offset="0" />
+                                                <GradientStop Color="#FB8A2E" Offset="0.444662" />
+                                                <GradientStop Color="#E2425C" Offset="0.71474" />
+                                                <GradientStop Color="#00E2425C" Offset="1" />
+                                            </RadialGradientBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    <Rectangle Canvas.Left="2" Canvas.Top="2" Width="28" Height="28" RadiusX="6" RadiusY="6">
+                                        <Rectangle.Fill>
+                                            <RadialGradientBrush GradientOrigin="1.5625%,9.375%" Center="1.5625%,9.375%" RadiusX="1.22" RadiusY="0.26">
+                                                <GradientStop Color="#406ADC" Offset="0.156701" />
+                                                <GradientStop Color="#6A45BE" Offset="0.467799" />
+                                                <GradientStop Color="#006A45BE" Offset="1" />
+                                            </RadialGradientBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    <!-- Camera dot -->
+                                    <Ellipse Canvas.Left="20" Canvas.Top="9" Width="3" Height="3" Fill="White" />
+                                    <!-- Camera circle (outer) -->
+                                    <Path Fill="White" Data="M16 21C18.7614 21 21 18.7614 21 16C21 13.2386 18.7614 11 16 11C13.2386 11 11 13.2386 11 16C11 18.7614 13.2386 21 16 21ZM16 19C17.6569 19 19 17.6569 19 16C19 14.3431 17.6569 13 16 13C14.3431 13 13 14.3431 13 16C13 17.6569 14.3431 19 16 19Z" />
+                                    <!-- Border frame -->
+                                    <Path Fill="White" Data="M6 15.6C6 12.2397 6 10.5595 6.65396 9.27606C7.2292 8.14708 8.14708 7.2292 9.27606 6.65396C10.5595 6 12.2397 6 15.6 6H16.4C19.7603 6 21.4405 6 22.7239 6.65396C23.8529 7.2292 24.7708 8.14708 25.346 9.27606C26 10.5595 26 12.2397 26 15.6V16.4C26 19.7603 26 21.4405 25.346 22.7239C24.7708 23.8529 23.8529 24.7708 22.7239 25.346C21.4405 26 19.7603 26 16.4 26H15.6C12.2397 26 10.5595 26 9.27606 25.346C8.14708 24.7708 7.2292 23.8529 6.65396 22.7239C6 21.4405 6 19.7603 6 16.4V15.6ZM15.6 8H16.4C18.1132 8 19.2777 8.00156 20.1779 8.0751C21.0548 8.14674 21.5032 8.27659 21.816 8.43597C22.5686 8.81947 23.1805 9.43139 23.564 10.184C23.7234 10.4968 23.8533 10.9452 23.9249 11.8221C23.9984 12.7223 24 13.8868 24 15.6V16.4C24 18.1132 23.9984 19.2777 23.9249 20.1779C23.8533 21.0548 23.7234 21.5032 23.564 21.816C23.1805 22.5686 22.5686 23.1805 21.816 23.564C21.5032 23.7234 21.0548 23.8533 20.1779 23.9249C19.2777 23.9984 18.1132 24 16.4 24H15.6C13.8868 24 12.7223 23.9984 11.8221 23.9249C10.9452 23.8533 10.4968 23.7234 10.184 23.564C9.43139 23.1805 8.81947 22.5686 8.43597 21.816C8.27659 21.5032 8.14674 21.0548 8.0751 20.1779C8.00156 19.2777 8 18.1132 8 16.4V15.6C8 13.8868 8.00156 12.7223 8.0751 11.8221C8.14674 10.9452 8.27659 10.4968 8.43597 10.184C8.81947 9.43139 9.43139 8.81947 10.184 8.43597C10.4968 8.27659 10.9452 8.14674 11.8221 8.0751C12.7223 8.00156 13.8868 8 15.6 8Z" />
+                                </Canvas>
+                            </Panel>
+
+                            <!-- Facebook Icon -->
+                            <Panel Width="20" Height="20" Cursor="Hand">
+                                <Canvas Width="32" Height="32">
+                                    <Canvas.RenderTransform>
+                                        <ScaleTransform ScaleX="0.625" ScaleY="0.625" />
+                                    </Canvas.RenderTransform>
+                                    <!-- Blue circle background -->
+                                    <Ellipse Width="28" Height="28" Canvas.Left="2" Canvas.Top="2">
+                                        <Ellipse.Fill>
+                                            <LinearGradientBrush StartPoint="50%,0%" EndPoint="50%,100%">
+                                                <GradientStop Color="#18ACFE" Offset="0" />
+                                                <GradientStop Color="#0163E0" Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <!-- Facebook F -->
+                                    <Path Fill="White" Data="M21.2137 20.2816L21.8356 16.3301H17.9452V13.767C17.9452 12.6857 18.4877 11.6311 20.2302 11.6311H22V8.26699C22 8.26699 20.3945 8 18.8603 8C15.6548 8 13.5617 9.89294 13.5617 13.3184V16.3301H10V20.2816H13.5617V29.8345C14.2767 29.944 15.0082 30 15.7534 30C16.4986 30 17.2302 29.944 17.9452 29.8345V20.2816H21.2137Z" />
+                                </Canvas>
+                            </Panel>
+                        </StackPanel>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Hover Animation - Show socials panel sliding up -->
+        <Style Selector="^:pointerover /template/ Border#PART_SocialsPanel">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="RenderTransform" Value="translate(0px, -48px)" />
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Easing="LinearEasing" FillMode="Forward">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="0" />
+                        <Setter Property="RenderTransform" Value="translate(0px, 0px)" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1" />
+                        <Setter Property="RenderTransform" Value="translate(0px, -48px)" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Ensure socials panel is hidden when not hovering -->
+        <Style Selector="^:not(:pointerover) /template/ Border#PART_SocialsPanel">
+            <Setter Property="IsVisible" Value="False" />
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>
