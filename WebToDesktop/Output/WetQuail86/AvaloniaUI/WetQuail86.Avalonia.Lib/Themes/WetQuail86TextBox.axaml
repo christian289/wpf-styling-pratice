@@ -1,0 +1,126 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:WetQuail86.Avalonia.Lib.Controls">
+
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://WetQuail86.Avalonia.Lib/Themes/WetQuail86TextBoxResources.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--
+            WetQuail86TextBox 스타일
+            WetQuail86TextBox style
+            From Uiverse.io by catraco
+
+            CSS → Avalonia 변환:
+            - .title::before pseudo-element → 45도 회전된 Border (화살표)
+            - opacity: 0 → 1 트랜지션 → Animation으로 구현
+            - :hover → :pointerover 선택자
+            - :focus → :focus-within 선택자
+            - letter-spacing: 2px → LetterSpacing="2"
+            -->
+
+            <ControlTheme x:Key="{x:Type controls:WetQuail86TextBox}" TargetType="controls:WetQuail86TextBox">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="{StaticResource WetQuail86.Light.Brush}"/>
+                <Setter Property="BorderBrush" Value="White"/>
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="Padding" Value="{StaticResource WetQuail86.Padding}"/>
+                <Setter Property="MaxWidth" Value="{StaticResource WetQuail86.MaxWidth}"/>
+                <Setter Property="Opacity" Value="0.8"/>
+                <Setter Property="Template">
+                    <ControlTemplate TargetType="controls:WetQuail86TextBox">
+                        <Panel>
+                            <!--
+                            타이틀 Border (tooltip처럼 동작)
+                            Title Border (behaves like tooltip)
+                            CSS: position: absolute; transform: translate(-50%, -150%); opacity: 0;
+                            -->
+                            <Border x:Name="TitleBorder"
+                                    Background="{StaticResource WetQuail86.Light.Brush}"
+                                    CornerRadius="{StaticResource WetQuail86.CornerRadiusValue}"
+                                    Padding="{StaticResource WetQuail86.Padding}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Opacity="0"
+                                    RenderTransformOrigin="0.5,1">
+                                <Border.RenderTransform>
+                                    <TranslateTransform Y="-40"/>
+                                </Border.RenderTransform>
+                                <Panel>
+                                    <!--
+                                    화살표 (::before pseudo-element)
+                                    Arrow (::before pseudo-element)
+                                    CSS: transform: translate(-50%, 50%) rotate(45deg); width: 10px; height: 10px;
+                                    -->
+                                    <Border Background="{StaticResource WetQuail86.Light.Brush}"
+                                            Width="10"
+                                            Height="10"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Bottom"
+                                            Margin="0,0,0,-5"
+                                            RenderTransformOrigin="0.5,0.5"
+                                            ZIndex="-1">
+                                        <Border.RenderTransform>
+                                            <RotateTransform Angle="45"/>
+                                        </Border.RenderTransform>
+                                    </Border>
+                                    <TextBlock x:Name="TitleText"
+                                               Text="{TemplateBinding Title}"
+                                               Foreground="{StaticResource WetQuail86.Dark.Brush}"
+                                               FontSize="{StaticResource WetQuail86.TitleFontSize}"
+                                               FontWeight="SemiBold"
+                                               LetterSpacing="2"
+                                               HorizontalAlignment="Center"/>
+                                </Panel>
+                            </Border>
+
+                            <!--
+                            입력 TextBox
+                            Input TextBox
+                            CSS: background-color: transparent; border: 2px solid white; max-width: 200px; opacity: .8;
+                            -->
+                            <TextBox x:Name="PART_TextBox"
+                                     Text="{TemplateBinding Text, Mode=TwoWay}"
+                                     Watermark="{TemplateBinding Placeholder}"
+                                     Background="Transparent"
+                                     Foreground="{TemplateBinding Foreground}"
+                                     BorderBrush="{TemplateBinding BorderBrush}"
+                                     BorderThickness="{TemplateBinding BorderThickness}"
+                                     Padding="{TemplateBinding Padding}"
+                                     MaxWidth="{TemplateBinding MaxWidth}"
+                                     CornerRadius="{StaticResource WetQuail86.CornerRadiusValue}"
+                                     Margin="0,20,0,0"/>
+                        </Panel>
+                    </ControlTemplate>
+                </Setter>
+
+                <!--
+                PointerOver 상태 - 타이틀 표시
+                PointerOver State - Show Title
+                CSS: .container:hover .title { opacity: 1; }
+                -->
+                <Style Selector="^:pointerover /template/ Border#TitleBorder">
+                    <Style.Animations>
+                        <Animation Duration="0:0:0.2" Easing="CubicEaseInOut" FillMode="Forward">
+                            <KeyFrame Cue="100%">
+                                <Setter Property="Opacity" Value="1"/>
+                            </KeyFrame>
+                        </Animation>
+                    </Style.Animations>
+                </Style>
+
+                <!--
+                Focus 상태
+                Focus State
+                CSS: .input:focus { opacity: 1; }
+                -->
+                <Style Selector="^:focus-within">
+                    <Setter Property="Opacity" Value="1"/>
+                </Style>
+            </ControlTheme>
+        </ResourceDictionary>
+    </Styles.Resources>
+
+</Styles>

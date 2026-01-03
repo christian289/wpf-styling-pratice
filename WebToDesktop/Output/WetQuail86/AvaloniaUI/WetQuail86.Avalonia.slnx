@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="WetQuail86.Avalonia.Lib\WetQuail86.Avalonia.Lib.csproj"/>
+  <Project Path="WetQuail86.Avalonia.Gallery\WetQuail86.Avalonia.Gallery.csproj"/>
+</Solution>

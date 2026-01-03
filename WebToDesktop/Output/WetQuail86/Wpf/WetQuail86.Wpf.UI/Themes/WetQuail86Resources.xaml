@@ -1,0 +1,34 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Colors [light: rgb(255, 255, 255)] -->
+    <SolidColorBrush x:Key="WetQuail86.Light" Color="#FFFFFF" />
+    <!-- Colors [dark: rgb(50, 50, 50)] -->
+    <SolidColorBrush x:Key="WetQuail86.Dark" Color="#323232" />
+    <!-- Border Color -->
+    <SolidColorBrush x:Key="WetQuail86.Border" Color="White" />
+
+    <!-- Sizes [br: 8px] -->
+    <CornerRadius x:Key="WetQuail86.CornerRadius">8</CornerRadius>
+    <sys:Double x:Key="WetQuail86.BorderThickness">2</sys:Double>
+    <sys:Double x:Key="WetQuail86.MaxWidth">200</sys:Double>
+    <Thickness x:Key="WetQuail86.Padding">8</Thickness>
+
+    <!-- Title Sizes -->
+    <sys:Double x:Key="WetQuail86.Title.FontSize">15</sys:Double>
+    <FontWeight x:Key="WetQuail86.Title.FontWeight">SemiBold</FontWeight>
+    <sys:Double x:Key="WetQuail86.Title.LetterSpacing">2</sys:Double>
+
+    <!-- Arrow Size -->
+    <sys:Double x:Key="WetQuail86.Arrow.Size">10</sys:Double>
+
+    <!-- Opacity -->
+    <sys:Double x:Key="WetQuail86.Opacity.Normal">0.8</sys:Double>
+    <sys:Double x:Key="WetQuail86.Opacity.Focused">1.0</sys:Double>
+    <sys:Double x:Key="WetQuail86.Opacity.Hidden">0</sys:Double>
+
+    <!-- Animation Duration -->
+    <Duration x:Key="WetQuail86.AnimationDuration">0:0:0.2</Duration>
+
+</ResourceDictionary>

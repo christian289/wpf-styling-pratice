@@ -1,0 +1,14 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:WetQuail86.Avalonia.Lib.Controls"
+        x:Class="WetQuail86.Avalonia.Gallery.MainWindow"
+        Title="WetQuail86 - Avalonia Gallery"
+        Width="400"
+        Height="300"
+        Background="#1a1a1a">
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <controls:WetQuail86TextBox Title="Title" Placeholder="Enter text..."/>
+    </Grid>
+
+</Window>
