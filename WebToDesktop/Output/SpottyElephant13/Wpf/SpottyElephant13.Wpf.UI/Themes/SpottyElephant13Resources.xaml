@@ -1,0 +1,54 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- 색상 리소스 [clr] -->
+    <!-- 체크된 상태 배경색 / Checked state background color -->
+    <Color x:Key="SpottyElephant13.CheckedColor">#0B6E4F</Color>
+    <SolidColorBrush x:Key="SpottyElephant13.Checked.Background" Color="{StaticResource SpottyElephant13.CheckedColor}" />
+
+    <!-- 체크되지 않은 상태 배경색 / Unchecked state background color -->
+    <SolidColorBrush x:Key="SpottyElephant13.Unchecked.Background" Color="#CCCCCC" />
+
+    <!-- 체크마크 색상 / Checkmark color -->
+    <SolidColorBrush x:Key="SpottyElephant13.Checkmark.Stroke" Color="#E0E0E2" />
+
+    <!-- 펄스 그림자 색상 / Pulse shadow colors -->
+    <Color x:Key="SpottyElephant13.Pulse.Shadow.Start">#900B6E4F</Color>
+    <Color x:Key="SpottyElephant13.Pulse.Shadow.Mid">#600B6E4F</Color>
+    <Color x:Key="SpottyElephant13.Pulse.Shadow.End">#300B6E4F</Color>
+
+    <!-- 크기 리소스 (font-size: 1.5rem = 24px 기준) -->
+    <!-- Size resources (based on font-size: 1.5rem = 24px) -->
+    <sys:Double x:Key="SpottyElephant13.Size">31.2</sys:Double>
+    <!-- 1.3em * 24px = 31.2px -->
+
+    <!-- 체크마크 위치 및 크기 -->
+    <!-- Checkmark position and size -->
+    <sys:Double x:Key="SpottyElephant13.Checkmark.Left">10.8</sys:Double>
+    <!-- 0.45em * 24px -->
+    <sys:Double x:Key="SpottyElephant13.Checkmark.Top">6</sys:Double>
+    <!-- 0.25em * 24px -->
+    <sys:Double x:Key="SpottyElephant13.Checkmark.Width">6</sys:Double>
+    <!-- 0.25em * 24px -->
+    <sys:Double x:Key="SpottyElephant13.Checkmark.Height">12</sys:Double>
+    <!-- 0.5em * 24px -->
+    <sys:Double x:Key="SpottyElephant13.Checkmark.StrokeThickness">3.6</sys:Double>
+    <!-- 0.15em * 24px -->
+
+    <!-- 체크마크 Margin (Left, Top, 0, 0) -->
+    <!-- Checkmark Margin -->
+    <Thickness x:Key="SpottyElephant13.Checkmark.Margin">10.8,6,0,0</Thickness>
+
+    <!-- CornerRadius -->
+    <CornerRadius x:Key="SpottyElephant13.Unchecked.CornerRadius">15.6</CornerRadius>
+    <!-- 50% of 31.2px -->
+    <CornerRadius x:Key="SpottyElephant13.Checked.CornerRadius">8</CornerRadius>
+    <!-- 0.5rem = 8px -->
+
+    <!-- 애니메이션 지속 시간 -->
+    <!-- Animation durations -->
+    <Duration x:Key="SpottyElephant13.Transition.Duration">0:0:0.3</Duration>
+    <Duration x:Key="SpottyElephant13.Pulse.Duration">0:0:0.5</Duration>
+
+</ResourceDictionary>

@@ -1,0 +1,134 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:SpottyElephant13.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/SpottyElephant13.Wpf.UI;component/Themes/SpottyElephant13Resources.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:SpottyElephant13}">
+        <Setter Property="Width" Value="{StaticResource SpottyElephant13.Size}" />
+        <Setter Property="Height" Value="{StaticResource SpottyElephant13.Size}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:SpottyElephant13}">
+                    <Grid>
+                        <!--
+                        체크마크 컨테이너 (checkmark div)
+                        원형 -> 둥근 사각형으로 변환되는 배경
+                        Checkmark container that transforms from circle to rounded rectangle
+                        -->
+                        <Border x:Name="PART_Checkmark"
+                                Width="{StaticResource SpottyElephant13.Size}"
+                                Height="{StaticResource SpottyElephant13.Size}"
+                                Background="{StaticResource SpottyElephant13.Unchecked.Background}"
+                                CornerRadius="{StaticResource SpottyElephant13.Unchecked.CornerRadius}"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <RotateTransform x:Name="CheckmarkRotation" Angle="0" />
+                            </Border.RenderTransform>
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="PulseShadow"
+                                                  ShadowDepth="0"
+                                                  BlurRadius="0"
+                                                  Color="{StaticResource SpottyElephant13.Pulse.Shadow.Start}"
+                                                  Opacity="0" />
+                            </Border.Effect>
+
+                            <!--
+                            체크마크 (::after pseudo-element)
+                            border-right와 border-bottom으로 체크 표시 구현
+                            Checkmark indicator using border-right and border-bottom
+                            -->
+                            <Grid x:Name="PART_CheckmarkIndicator"
+                                  Visibility="Collapsed"
+                                  Margin="{StaticResource SpottyElephant13.Checkmark.Margin}"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  Width="{StaticResource SpottyElephant13.Checkmark.Width}"
+                                  Height="{StaticResource SpottyElephant13.Checkmark.Height}"
+                                  RenderTransformOrigin="0.5,0.5">
+                                <Grid.RenderTransform>
+                                    <RotateTransform Angle="45" />
+                                </Grid.RenderTransform>
+                                <!--
+                                border-right: 0.15em solid #E0E0E2
+                                오른쪽 세로 선
+                                Right vertical line
+                                -->
+                                <Border HorizontalAlignment="Right"
+                                        Width="{StaticResource SpottyElephant13.Checkmark.StrokeThickness}"
+                                        Background="{StaticResource SpottyElephant13.Checkmark.Stroke}" />
+                                <!--
+                                border-bottom: 0.15em solid #E0E0E2
+                                하단 가로 선
+                                Bottom horizontal line
+                                -->
+                                <Border VerticalAlignment="Bottom"
+                                        Height="{StaticResource SpottyElephant13.Checkmark.StrokeThickness}"
+                                        Background="{StaticResource SpottyElephant13.Checkmark.Stroke}" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- 체크된 상태 / Checked state -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="PART_Checkmark" Property="Background"
+                                    Value="{StaticResource SpottyElephant13.Checked.Background}" />
+                            <Setter TargetName="PART_Checkmark" Property="CornerRadius"
+                                    Value="{StaticResource SpottyElephant13.Checked.CornerRadius}" />
+                            <Setter TargetName="PART_CheckmarkIndicator" Property="Visibility" Value="Visible" />
+                            <Trigger.EnterActions>
+                                <!--
+                                펄스 애니메이션 (@keyframes pulse)
+                                rotate: 20deg -> -20deg -> 0
+                                box-shadow: 0 -> 10px -> 13px blur
+                                -->
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- 회전 애니메이션: 20deg -> -20deg -> 0 -->
+                                        <!-- Rotation animation: 20deg -> -20deg -> 0 -->
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetName="CheckmarkRotation"
+                                            Storyboard.TargetProperty="Angle"
+                                            Duration="0:0:0.5">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="20" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.25" Value="-20" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <!-- 그림자 BlurRadius 애니메이션: 0 -> 10 -> 13 -->
+                                        <!-- Shadow BlurRadius animation: 0 -> 10 -> 13 -->
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PulseShadow"
+                                            Storyboard.TargetProperty="BlurRadius"
+                                            Duration="0:0:0.5">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.375" Value="20" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="26" />
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                        <!-- 그림자 Opacity 애니메이션 -->
+                                        <!-- Shadow Opacity animation -->
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PulseShadow"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Duration="0:0:0.5">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0.56" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.375" Value="0.38" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="0.19" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

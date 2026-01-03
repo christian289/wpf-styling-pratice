@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SpottyElephant13.Wpf.Gallery/SpottyElephant13.Wpf.Gallery.csproj" />
+  <Project Path="SpottyElephant13.Wpf.UI/SpottyElephant13.Wpf.UI.csproj" />
+</Solution>

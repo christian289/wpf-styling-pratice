@@ -1,0 +1,50 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SpottyElephant13.Avalonia.Lib.Controls"
+        x:Class="SpottyElephant13.Avalonia.Gallery.MainWindow"
+        Title="SpottyElephant13 CheckBox Gallery"
+        Width="400"
+        Height="300"
+        WindowStartupLocation="CenterScreen">
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="20">
+
+        <TextBlock Text="SpottyElephant13 Pulse CheckBox"
+                   FontSize="18"
+                   FontWeight="SemiBold"
+                   HorizontalAlignment="Center"/>
+
+        <TextBlock Text="From Uiverse.io by bociKond"
+                   FontSize="12"
+                   Foreground="Gray"
+                   HorizontalAlignment="Center"/>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="20">
+
+            <!-- 체크된 상태 / Checked state -->
+            <StackPanel Spacing="8" HorizontalAlignment="Center">
+                <controls:SpottyElephant13CheckBox IsChecked="True"/>
+                <TextBlock Text="Checked" FontSize="12" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <!-- 체크되지 않은 상태 / Unchecked state -->
+            <StackPanel Spacing="8" HorizontalAlignment="Center">
+                <controls:SpottyElephant13CheckBox IsChecked="False"/>
+                <TextBlock Text="Unchecked" FontSize="12" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <TextBlock Text="Click to toggle and see the pulse animation!"
+                   FontSize="11"
+                   Foreground="Gray"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,0"/>
+
+    </StackPanel>
+
+</Window>

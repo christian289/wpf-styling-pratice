@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SpottyElephant13.Avalonia.Lib\SpottyElephant13.Avalonia.Lib.csproj" />
+  <Project Path="SpottyElephant13.Avalonia.Gallery\SpottyElephant13.Avalonia.Gallery.csproj" />
+</Solution>
