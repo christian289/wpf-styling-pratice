@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="TidyVampirebat71.Wpf.Gallery/TidyVampirebat71.Wpf.Gallery.csproj" />
+  <Project Path="TidyVampirebat71.Wpf.UI/TidyVampirebat71.Wpf.UI.csproj" />
+</Solution>

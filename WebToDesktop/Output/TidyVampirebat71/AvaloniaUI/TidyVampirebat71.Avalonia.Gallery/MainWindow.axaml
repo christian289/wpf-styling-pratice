@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:TidyVampirebat71.Avalonia.Lib.Controls"
+        x:Class="TidyVampirebat71.Avalonia.Gallery.MainWindow"
+        Title="TidyVampirebat71 - Rainbow CheckBox Gallery"
+        Width="400"
+        Height="400"
+        Background="#1a1a2e">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- 헤더 / Header -->
+        <TextBlock Grid.Row="0"
+                   Text="Rainbow CheckBox"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,10" />
+
+        <!-- 컨트롤 데모 영역 / Control Demo Area -->
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="30">
+
+            <!-- RainbowCheckBox -->
+            <controls:RainbowCheckBox />
+
+            <!-- 설명 텍스트 / Description -->
+            <TextBlock Text="Click to toggle"
+                       FontSize="14"
+                       Foreground="#888888"
+                       HorizontalAlignment="Center" />
+
+        </StackPanel>
+    </Grid>
+
+</Window>

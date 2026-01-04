@@ -1,0 +1,496 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:TidyVampirebat71.Avalonia.Lib.Controls">
+
+    <!-- 색상 리소스 / Color Resources -->
+    <Color x:Key="RainbowCheckBox.Cover.Background">#2A3439</Color>
+    <Color x:Key="RainbowCheckBox.Cover2.Background">#91A3B0</Color>
+    <Color x:Key="RainbowCheckBox.Cover2.Outline">#B2FFFF</Color>
+    <Color x:Key="RainbowCheckBox.Bar.Default">White</Color>
+    <Color x:Key="RainbowCheckBox.Bar1.Checked">#FFADAD</Color>
+    <Color x:Key="RainbowCheckBox.Bar2.Checked">#FFD6A5</Color>
+    <Color x:Key="RainbowCheckBox.Bar3.Checked">#FDFFB6</Color>
+    <Color x:Key="RainbowCheckBox.Bar4.Checked">#CAFFBF</Color>
+    <Color x:Key="RainbowCheckBox.Bar5.Checked">#9BF6FF</Color>
+    <Color x:Key="RainbowCheckBox.Bar6.Checked">#A0C4FF</Color>
+    <Color x:Key="RainbowCheckBox.Bar7.Checked">#BDB2FF</Color>
+    <Color x:Key="RainbowCheckBox.Bar8.Checked">#FFC6FF</Color>
+    <Color x:Key="RainbowCheckBox.Lock.Stroke">#2A3439</Color>
+
+    <!-- 크기 리소스 / Size Resources -->
+    <x:Double x:Key="RainbowCheckBox.Size">48</x:Double>
+    <x:Double x:Key="RainbowCheckBox.Bar.Width">4</x:Double>
+    <x:Double x:Key="RainbowCheckBox.Bar.Height">48</x:Double>
+    <x:Double x:Key="RainbowCheckBox.Cover.Size">64</x:Double>
+    <x:Double x:Key="RainbowCheckBox.Cover2.Size">32</x:Double>
+    <x:Double x:Key="RainbowCheckBox.Nut.Size">4.8</x:Double>
+    <x:Double x:Key="RainbowCheckBox.Lock.Size">24</x:Double>
+    <CornerRadius x:Key="RainbowCheckBox.Bar.CornerRadius">2</CornerRadius>
+
+    <!-- RainbowCheckBox 스타일 / RainbowCheckBox Style -->
+    <ControlTheme x:Key="{x:Type controls:RainbowCheckBox}" TargetType="controls:RainbowCheckBox">
+        <Setter Property="Width" Value="{StaticResource RainbowCheckBox.Size}" />
+        <Setter Property="Height" Value="{StaticResource RainbowCheckBox.Size}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel Name="PART_Root">
+                    <!-- Bar 1-8 : 8개의 회전 바 / 8 rotating bars -->
+                    <Border Name="PART_Bar1"
+                            Width="{StaticResource RainbowCheckBox.Bar.Width}"
+                            Height="{StaticResource RainbowCheckBox.Bar.Height}"
+                            CornerRadius="{StaticResource RainbowCheckBox.Bar.CornerRadius}"
+                            Background="{StaticResource RainbowCheckBox.Bar.Default}"
+                            RenderTransformOrigin="0.5,1"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            Margin="0,-24,0,0">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform Y="-16" />
+                                <RotateTransform Angle="45" />
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                    </Border>
+
+                    <Border Name="PART_Bar2"
+                            Width="{StaticResource RainbowCheckBox.Bar.Width}"
+                            Height="{StaticResource RainbowCheckBox.Bar.Height}"
+                            CornerRadius="{StaticResource RainbowCheckBox.Bar.CornerRadius}"
+                            Background="{StaticResource RainbowCheckBox.Bar.Default}"
+                            RenderTransformOrigin="0.5,1"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            Margin="0,-24,0,0">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform Y="-16" />
+                                <RotateTransform Angle="90" />
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                    </Border>
+
+                    <Border Name="PART_Bar3"
+                            Width="{StaticResource RainbowCheckBox.Bar.Width}"
+                            Height="{StaticResource RainbowCheckBox.Bar.Height}"
+                            CornerRadius="{StaticResource RainbowCheckBox.Bar.CornerRadius}"
+                            Background="{StaticResource RainbowCheckBox.Bar.Default}"
+                            RenderTransformOrigin="0.5,1"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            Margin="0,-24,0,0">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform Y="-16" />
+                                <RotateTransform Angle="135" />
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                    </Border>
+
+                    <Border Name="PART_Bar4"
+                            Width="{StaticResource RainbowCheckBox.Bar.Width}"
+                            Height="{StaticResource RainbowCheckBox.Bar.Height}"
+                            CornerRadius="{StaticResource RainbowCheckBox.Bar.CornerRadius}"
+                            Background="{StaticResource RainbowCheckBox.Bar.Default}"
+                            RenderTransformOrigin="0.5,1"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            Margin="0,-24,0,0">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform Y="-16" />
+                                <RotateTransform Angle="180" />
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                    </Border>
+
+                    <Border Name="PART_Bar5"
+                            Width="{StaticResource RainbowCheckBox.Bar.Width}"
+                            Height="{StaticResource RainbowCheckBox.Bar.Height}"
+                            CornerRadius="{StaticResource RainbowCheckBox.Bar.CornerRadius}"
+                            Background="{StaticResource RainbowCheckBox.Bar.Default}"
+                            RenderTransformOrigin="0.5,1"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            Margin="0,-24,0,0">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform Y="-16" />
+                                <RotateTransform Angle="225" />
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                    </Border>
+
+                    <Border Name="PART_Bar6"
+                            Width="{StaticResource RainbowCheckBox.Bar.Width}"
+                            Height="{StaticResource RainbowCheckBox.Bar.Height}"
+                            CornerRadius="{StaticResource RainbowCheckBox.Bar.CornerRadius}"
+                            Background="{StaticResource RainbowCheckBox.Bar.Default}"
+                            RenderTransformOrigin="0.5,1"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            Margin="0,-24,0,0">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform Y="-16" />
+                                <RotateTransform Angle="270" />
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                    </Border>
+
+                    <Border Name="PART_Bar7"
+                            Width="{StaticResource RainbowCheckBox.Bar.Width}"
+                            Height="{StaticResource RainbowCheckBox.Bar.Height}"
+                            CornerRadius="{StaticResource RainbowCheckBox.Bar.CornerRadius}"
+                            Background="{StaticResource RainbowCheckBox.Bar.Default}"
+                            RenderTransformOrigin="0.5,1"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            Margin="0,-24,0,0">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform Y="-16" />
+                                <RotateTransform Angle="315" />
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                    </Border>
+
+                    <Border Name="PART_Bar8"
+                            Width="{StaticResource RainbowCheckBox.Bar.Width}"
+                            Height="{StaticResource RainbowCheckBox.Bar.Height}"
+                            CornerRadius="{StaticResource RainbowCheckBox.Bar.CornerRadius}"
+                            Background="{StaticResource RainbowCheckBox.Bar.Default}"
+                            RenderTransformOrigin="0.5,1"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"
+                            Margin="0,-24,0,0">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform Y="-16" />
+                                <RotateTransform Angle="360" />
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                    </Border>
+
+                    <!-- Nut 1-8 : 8개의 작은 원 / 8 small circles -->
+                    <Ellipse Name="PART_Nut1"
+                             Width="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Height="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Fill="White"
+                             VerticalAlignment="Top"
+                             HorizontalAlignment="Center"
+                             Margin="0,-8,0,0"
+                             RenderTransformOrigin="0.5,5">
+                        <Ellipse.RenderTransform>
+                            <RotateTransform Angle="45" />
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <Ellipse Name="PART_Nut2"
+                             Width="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Height="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Fill="White"
+                             VerticalAlignment="Top"
+                             HorizontalAlignment="Center"
+                             Margin="0,-8,0,0"
+                             RenderTransformOrigin="0.5,5">
+                        <Ellipse.RenderTransform>
+                            <RotateTransform Angle="90" />
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <Ellipse Name="PART_Nut3"
+                             Width="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Height="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Fill="White"
+                             VerticalAlignment="Top"
+                             HorizontalAlignment="Center"
+                             Margin="0,-8,0,0"
+                             RenderTransformOrigin="0.5,5">
+                        <Ellipse.RenderTransform>
+                            <RotateTransform Angle="135" />
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <Ellipse Name="PART_Nut4"
+                             Width="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Height="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Fill="White"
+                             VerticalAlignment="Top"
+                             HorizontalAlignment="Center"
+                             Margin="0,-8,0,0"
+                             RenderTransformOrigin="0.5,5">
+                        <Ellipse.RenderTransform>
+                            <RotateTransform Angle="180" />
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <Ellipse Name="PART_Nut5"
+                             Width="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Height="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Fill="White"
+                             VerticalAlignment="Top"
+                             HorizontalAlignment="Center"
+                             Margin="0,-8,0,0"
+                             RenderTransformOrigin="0.5,5">
+                        <Ellipse.RenderTransform>
+                            <RotateTransform Angle="225" />
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <Ellipse Name="PART_Nut6"
+                             Width="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Height="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Fill="White"
+                             VerticalAlignment="Top"
+                             HorizontalAlignment="Center"
+                             Margin="0,-8,0,0"
+                             RenderTransformOrigin="0.5,5">
+                        <Ellipse.RenderTransform>
+                            <RotateTransform Angle="270" />
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <Ellipse Name="PART_Nut7"
+                             Width="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Height="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Fill="White"
+                             VerticalAlignment="Top"
+                             HorizontalAlignment="Center"
+                             Margin="0,-8,0,0"
+                             RenderTransformOrigin="0.5,5">
+                        <Ellipse.RenderTransform>
+                            <RotateTransform Angle="315" />
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <Ellipse Name="PART_Nut8"
+                             Width="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Height="{StaticResource RainbowCheckBox.Nut.Size}"
+                             Fill="White"
+                             VerticalAlignment="Top"
+                             HorizontalAlignment="Center"
+                             Margin="0,-8,0,0"
+                             RenderTransformOrigin="0.5,5">
+                        <Ellipse.RenderTransform>
+                            <RotateTransform Angle="360" />
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+
+                    <!-- Cover : 중앙 어두운 원 / Central dark circle -->
+                    <Ellipse Name="PART_Cover"
+                             Width="{StaticResource RainbowCheckBox.Cover.Size}"
+                             Height="{StaticResource RainbowCheckBox.Cover.Size}"
+                             Fill="{StaticResource RainbowCheckBox.Cover.Background}"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center" />
+
+                    <!-- Cover2 : 무지개 중앙 원 / Rainbow center circle -->
+                    <Border Name="PART_Cover2"
+                            Width="{StaticResource RainbowCheckBox.Cover2.Size}"
+                            Height="{StaticResource RainbowCheckBox.Cover2.Size}"
+                            CornerRadius="16"
+                            Background="{StaticResource RainbowCheckBox.Cover2.Background}"
+                            BorderBrush="{StaticResource RainbowCheckBox.Cover2.Outline}"
+                            BorderThickness="4"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            ClipToBounds="True">
+                        <!-- Rainbow stripes 내부 / Inner rainbow stripes -->
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
+                            <Border Height="4.57" Background="{StaticResource RainbowCheckBox.Bar1.Checked}" />
+                            <Border Height="4.57" Background="{StaticResource RainbowCheckBox.Bar2.Checked}" />
+                            <Border Height="4.57" Background="{StaticResource RainbowCheckBox.Bar3.Checked}" />
+                            <Border Height="4.57" Background="{StaticResource RainbowCheckBox.Bar4.Checked}" />
+                            <Border Height="4.57" Background="{StaticResource RainbowCheckBox.Bar5.Checked}" />
+                            <Border Height="4.57" Background="{StaticResource RainbowCheckBox.Bar6.Checked}" />
+                            <Border Height="4.57" Background="{StaticResource RainbowCheckBox.Bar7.Checked}" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Lock Icon : 자물쇠 아이콘 / Lock icon -->
+                    <PathIcon Name="PART_Lock"
+                              Width="{StaticResource RainbowCheckBox.Lock.Size}"
+                              Height="{StaticResource RainbowCheckBox.Lock.Size}"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Opacity="0"
+                              Foreground="{StaticResource RainbowCheckBox.Lock.Stroke}"
+                              Data="M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Checked 상태 : 바 색상 변경 및 회전 애니메이션 / Checked state: bar color change and rotation animation -->
+        <Style Selector="^:checked">
+            <Setter Property="RenderTransform">
+                <RotateTransform Angle="-360" />
+            </Setter>
+            <Style.Animations>
+                <Animation Duration="0:0:1.95" Easing="CubicEaseInOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RenderTransform">
+                            <RotateTransform Angle="0" />
+                        </Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <RotateTransform Angle="-360" />
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Bar1 Checked Animation -->
+        <Style Selector="^:checked /template/ Border#PART_Bar1">
+            <Setter Property="Background" Value="{StaticResource RainbowCheckBox.Bar1.Checked}" />
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Delay="0:0:0" Easing="CubicEaseIn" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0" />
+                                <RotateTransform Angle="45" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Bar2 Checked Animation -->
+        <Style Selector="^:checked /template/ Border#PART_Bar2">
+            <Setter Property="Background" Value="{StaticResource RainbowCheckBox.Bar2.Checked}" />
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Delay="0:0:0.25" Easing="CubicEaseIn" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0" />
+                                <RotateTransform Angle="90" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Bar3 Checked Animation -->
+        <Style Selector="^:checked /template/ Border#PART_Bar3">
+            <Setter Property="Background" Value="{StaticResource RainbowCheckBox.Bar3.Checked}" />
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Delay="0:0:0.5" Easing="CubicEaseIn" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0" />
+                                <RotateTransform Angle="135" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Bar4 Checked Animation -->
+        <Style Selector="^:checked /template/ Border#PART_Bar4">
+            <Setter Property="Background" Value="{StaticResource RainbowCheckBox.Bar4.Checked}" />
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Delay="0:0:0.75" Easing="CubicEaseIn" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0" />
+                                <RotateTransform Angle="180" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Bar5 Checked Animation -->
+        <Style Selector="^:checked /template/ Border#PART_Bar5">
+            <Setter Property="Background" Value="{StaticResource RainbowCheckBox.Bar5.Checked}" />
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Delay="0:0:1" Easing="CubicEaseIn" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0" />
+                                <RotateTransform Angle="225" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Bar6 Checked Animation -->
+        <Style Selector="^:checked /template/ Border#PART_Bar6">
+            <Setter Property="Background" Value="{StaticResource RainbowCheckBox.Bar6.Checked}" />
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Delay="0:0:1.25" Easing="CubicEaseIn" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0" />
+                                <RotateTransform Angle="270" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Bar7 Checked Animation -->
+        <Style Selector="^:checked /template/ Border#PART_Bar7">
+            <Setter Property="Background" Value="{StaticResource RainbowCheckBox.Bar7.Checked}" />
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Delay="0:0:1.5" Easing="CubicEaseIn" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0" />
+                                <RotateTransform Angle="315" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Bar8 Checked Animation -->
+        <Style Selector="^:checked /template/ Border#PART_Bar8">
+            <Setter Property="Background" Value="{StaticResource RainbowCheckBox.Bar8.Checked}" />
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Delay="0:0:1.75" Easing="CubicEaseIn" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RenderTransform">
+                            <TransformGroup>
+                                <TranslateTransform Y="0" />
+                                <RotateTransform Angle="360" />
+                            </TransformGroup>
+                        </Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!-- Lock Icon Checked Animation -->
+        <Style Selector="^:checked /template/ PathIcon#PART_Lock">
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Delay="0:0:1.95" Easing="CubicEaseIn" FillMode="Forward">
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

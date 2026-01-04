@@ -1,0 +1,32 @@
+<Window x:Class="TidyVampirebat71.Wpf.Gallery.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:TidyVampirebat71.Wpf.UI.Controls;assembly=TidyVampirebat71.Wpf.UI"
+        mc:Ignorable="d"
+        Title="TidyVampirebat71 - Rainbow Checkbox Gallery" Height="450" Width="800"
+        Background="#1a1a2e">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Rainbow Bar Animated Checkbox"
+                       FontSize="24" FontWeight="Bold"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+            <TextBlock Text="Click to toggle the rainbow animation"
+                       FontSize="14"
+                       Foreground="#91A3B0"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+            <controls:TidyVampirebat71 HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <TextBlock Text="Original: Uncannypotato69 @ uiverse.io"
+                       FontSize="12"
+                       Foreground="#666"
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>

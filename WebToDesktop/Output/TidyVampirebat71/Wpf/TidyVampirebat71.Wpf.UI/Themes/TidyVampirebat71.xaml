@@ -1,0 +1,394 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:TidyVampirebat71.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/TidyVampirebat71.Wpf.UI;component/Themes/TidyVampirebat71Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:TidyVampirebat71}">
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:TidyVampirebat71}">
+                    <Grid x:Name="RootGrid" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <RotateTransform x:Name="RootRotation" Angle="0"/>
+                        </Grid.RenderTransform>
+
+                        <!-- Bars Container (8 bars rotating around center) -->
+                        <Canvas x:Name="BarsCanvas" Width="100" Height="100">
+                            <!-- Bar 1 - 45 degrees -->
+                            <Rectangle x:Name="Bar1" Width="4" Height="48" RadiusX="2" RadiusY="2"
+                                       Fill="{StaticResource TidyVampirebat71.Bar.Background}"
+                                       Canvas.Left="48" Canvas.Top="2"
+                                       RenderTransformOrigin="0.5,1">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform x:Name="Bar1Translate" Y="-16"/>
+                                        <RotateTransform Angle="45"/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+
+                            <!-- Bar 2 - 90 degrees -->
+                            <Rectangle x:Name="Bar2" Width="4" Height="48" RadiusX="2" RadiusY="2"
+                                       Fill="{StaticResource TidyVampirebat71.Bar.Background}"
+                                       Canvas.Left="48" Canvas.Top="2"
+                                       RenderTransformOrigin="0.5,1">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform x:Name="Bar2Translate" Y="-16"/>
+                                        <RotateTransform Angle="90"/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+
+                            <!-- Bar 3 - 135 degrees -->
+                            <Rectangle x:Name="Bar3" Width="4" Height="48" RadiusX="2" RadiusY="2"
+                                       Fill="{StaticResource TidyVampirebat71.Bar.Background}"
+                                       Canvas.Left="48" Canvas.Top="2"
+                                       RenderTransformOrigin="0.5,1">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform x:Name="Bar3Translate" Y="-16"/>
+                                        <RotateTransform Angle="135"/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+
+                            <!-- Bar 4 - 180 degrees -->
+                            <Rectangle x:Name="Bar4" Width="4" Height="48" RadiusX="2" RadiusY="2"
+                                       Fill="{StaticResource TidyVampirebat71.Bar.Background}"
+                                       Canvas.Left="48" Canvas.Top="2"
+                                       RenderTransformOrigin="0.5,1">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform x:Name="Bar4Translate" Y="-16"/>
+                                        <RotateTransform Angle="180"/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+
+                            <!-- Bar 5 - 225 degrees -->
+                            <Rectangle x:Name="Bar5" Width="4" Height="48" RadiusX="2" RadiusY="2"
+                                       Fill="{StaticResource TidyVampirebat71.Bar.Background}"
+                                       Canvas.Left="48" Canvas.Top="2"
+                                       RenderTransformOrigin="0.5,1">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform x:Name="Bar5Translate" Y="-16"/>
+                                        <RotateTransform Angle="225"/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+
+                            <!-- Bar 6 - 270 degrees -->
+                            <Rectangle x:Name="Bar6" Width="4" Height="48" RadiusX="2" RadiusY="2"
+                                       Fill="{StaticResource TidyVampirebat71.Bar.Background}"
+                                       Canvas.Left="48" Canvas.Top="2"
+                                       RenderTransformOrigin="0.5,1">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform x:Name="Bar6Translate" Y="-16"/>
+                                        <RotateTransform Angle="270"/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+
+                            <!-- Bar 7 - 315 degrees -->
+                            <Rectangle x:Name="Bar7" Width="4" Height="48" RadiusX="2" RadiusY="2"
+                                       Fill="{StaticResource TidyVampirebat71.Bar.Background}"
+                                       Canvas.Left="48" Canvas.Top="2"
+                                       RenderTransformOrigin="0.5,1">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform x:Name="Bar7Translate" Y="-16"/>
+                                        <RotateTransform Angle="315"/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+
+                            <!-- Bar 8 - 360 degrees -->
+                            <Rectangle x:Name="Bar8" Width="4" Height="48" RadiusX="2" RadiusY="2"
+                                       Fill="{StaticResource TidyVampirebat71.Bar.Background}"
+                                       Canvas.Left="48" Canvas.Top="2"
+                                       RenderTransformOrigin="0.5,1">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform x:Name="Bar8Translate" Y="-16"/>
+                                        <RotateTransform Angle="360"/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+
+                            <!-- Nuts (small circles at the end of bars) -->
+                            <Ellipse x:Name="Nut1" Width="5" Height="5"
+                                     Fill="{StaticResource TidyVampirebat71.Nut.Background}"
+                                     Canvas.Left="47.5" Canvas.Top="5"
+                                     RenderTransformOrigin="0.5,9">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="45"/>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <Ellipse x:Name="Nut2" Width="5" Height="5"
+                                     Fill="{StaticResource TidyVampirebat71.Nut.Background}"
+                                     Canvas.Left="47.5" Canvas.Top="5"
+                                     RenderTransformOrigin="0.5,9">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="90"/>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <Ellipse x:Name="Nut3" Width="5" Height="5"
+                                     Fill="{StaticResource TidyVampirebat71.Nut.Background}"
+                                     Canvas.Left="47.5" Canvas.Top="5"
+                                     RenderTransformOrigin="0.5,9">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="135"/>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <Ellipse x:Name="Nut4" Width="5" Height="5"
+                                     Fill="{StaticResource TidyVampirebat71.Nut.Background}"
+                                     Canvas.Left="47.5" Canvas.Top="5"
+                                     RenderTransformOrigin="0.5,9">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="180"/>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <Ellipse x:Name="Nut5" Width="5" Height="5"
+                                     Fill="{StaticResource TidyVampirebat71.Nut.Background}"
+                                     Canvas.Left="47.5" Canvas.Top="5"
+                                     RenderTransformOrigin="0.5,9">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="225"/>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <Ellipse x:Name="Nut6" Width="5" Height="5"
+                                     Fill="{StaticResource TidyVampirebat71.Nut.Background}"
+                                     Canvas.Left="47.5" Canvas.Top="5"
+                                     RenderTransformOrigin="0.5,9">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="270"/>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <Ellipse x:Name="Nut7" Width="5" Height="5"
+                                     Fill="{StaticResource TidyVampirebat71.Nut.Background}"
+                                     Canvas.Left="47.5" Canvas.Top="5"
+                                     RenderTransformOrigin="0.5,9">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="315"/>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <Ellipse x:Name="Nut8" Width="5" Height="5"
+                                     Fill="{StaticResource TidyVampirebat71.Nut.Background}"
+                                     Canvas.Left="47.5" Canvas.Top="5"
+                                     RenderTransformOrigin="0.5,9">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="360"/>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                        </Canvas>
+
+                        <!-- Cover (outer dark circle) -->
+                        <Ellipse x:Name="Cover" Width="64" Height="64"
+                                 Fill="{StaticResource TidyVampirebat71.Cover.Background}"
+                                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <!-- Cover2 (inner circle with rainbow) -->
+                        <Border x:Name="Cover2" Width="32" Height="32" CornerRadius="16"
+                                Background="{StaticResource TidyVampirebat71.Cover2.Background}"
+                                BorderBrush="{StaticResource TidyVampirebat71.Cover2.Outline}"
+                                BorderThickness="4"
+                                HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Border.Clip>
+                                <EllipseGeometry Center="16,16" RadiusX="16" RadiusY="16"/>
+                            </Border.Clip>
+
+                            <!-- Rainbow stripes -->
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Rectangle Grid.Row="0" Fill="{StaticResource TidyVampirebat71.Rainbow.Color1}"/>
+                                <Rectangle Grid.Row="1" Fill="{StaticResource TidyVampirebat71.Rainbow.Color2}"/>
+                                <Rectangle Grid.Row="2" Fill="{StaticResource TidyVampirebat71.Rainbow.Color3}"/>
+                                <Rectangle Grid.Row="3" Fill="{StaticResource TidyVampirebat71.Rainbow.Color4}"/>
+                                <Rectangle Grid.Row="4" Fill="{StaticResource TidyVampirebat71.Rainbow.Color5}"/>
+                                <Rectangle Grid.Row="5" Fill="{StaticResource TidyVampirebat71.Rainbow.Color6}"/>
+                                <Rectangle Grid.Row="6" Fill="{StaticResource TidyVampirebat71.Rainbow.Color7}"/>
+                            </Grid>
+                        </Border>
+
+                        <!-- Lock Icon -->
+                        <Path x:Name="LockIcon"
+                              Data="{StaticResource TidyVampirebat71.Lock.Geometry}"
+                              Stroke="{StaticResource TidyVampirebat71.Lock.Stroke}"
+                              StrokeThickness="2"
+                              StrokeLineJoin="Round"
+                              StrokeStartLineCap="Round"
+                              StrokeEndLineCap="Round"
+                              Width="24" Height="24"
+                              Stretch="Uniform"
+                              HorizontalAlignment="Center" VerticalAlignment="Center"
+                              Opacity="0"/>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Unchecked">
+                                    <Storyboard>
+                                        <!-- Root rotation back to 0 -->
+                                        <DoubleAnimation Storyboard.TargetName="RootRotation"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="0" Duration="0:0:1.95"/>
+
+                                        <!-- All bars slide up (hide) with staggered delays -->
+                                        <DoubleAnimation Storyboard.TargetName="Bar1Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-16" Duration="0:0:0.2" BeginTime="0:0:0"/>
+                                        <DoubleAnimation Storyboard.TargetName="Bar2Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-16" Duration="0:0:0.2" BeginTime="0:0:0.25"/>
+                                        <DoubleAnimation Storyboard.TargetName="Bar3Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-16" Duration="0:0:0.2" BeginTime="0:0:0.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="Bar4Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-16" Duration="0:0:0.2" BeginTime="0:0:0.75"/>
+                                        <DoubleAnimation Storyboard.TargetName="Bar5Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-16" Duration="0:0:0.2" BeginTime="0:0:1"/>
+                                        <DoubleAnimation Storyboard.TargetName="Bar6Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-16" Duration="0:0:0.2" BeginTime="0:0:1.25"/>
+                                        <DoubleAnimation Storyboard.TargetName="Bar7Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-16" Duration="0:0:0.2" BeginTime="0:0:1.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="Bar8Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="-16" Duration="0:0:0.2" BeginTime="0:0:1.75"/>
+
+                                        <!-- Bar colors back to white -->
+                                        <ColorAnimation Storyboard.TargetName="Bar1"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="White" Duration="0:0:0.2"/>
+                                        <ColorAnimation Storyboard.TargetName="Bar2"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="White" Duration="0:0:0.2"/>
+                                        <ColorAnimation Storyboard.TargetName="Bar3"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="White" Duration="0:0:0.2"/>
+                                        <ColorAnimation Storyboard.TargetName="Bar4"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="White" Duration="0:0:0.2"/>
+                                        <ColorAnimation Storyboard.TargetName="Bar5"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="White" Duration="0:0:0.2"/>
+                                        <ColorAnimation Storyboard.TargetName="Bar6"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="White" Duration="0:0:0.2"/>
+                                        <ColorAnimation Storyboard.TargetName="Bar7"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="White" Duration="0:0:0.2"/>
+                                        <ColorAnimation Storyboard.TargetName="Bar8"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="White" Duration="0:0:0.2"/>
+
+                                        <!-- Lock icon fade out -->
+                                        <DoubleAnimation Storyboard.TargetName="LockIcon"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <!-- Root rotation -360 degrees -->
+                                        <DoubleAnimation Storyboard.TargetName="RootRotation"
+                                                         Storyboard.TargetProperty="Angle"
+                                                         To="-360" Duration="0:0:1.95"/>
+
+                                        <!-- All bars slide down (show) with staggered delays -->
+                                        <DoubleAnimation Storyboard.TargetName="Bar1Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0" Duration="0:0:0.2" BeginTime="0:0:0"/>
+                                        <DoubleAnimation Storyboard.TargetName="Bar2Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0" Duration="0:0:0.2" BeginTime="0:0:0.25"/>
+                                        <DoubleAnimation Storyboard.TargetName="Bar3Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0" Duration="0:0:0.2" BeginTime="0:0:0.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="Bar4Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0" Duration="0:0:0.2" BeginTime="0:0:0.75"/>
+                                        <DoubleAnimation Storyboard.TargetName="Bar5Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0" Duration="0:0:0.2" BeginTime="0:0:1"/>
+                                        <DoubleAnimation Storyboard.TargetName="Bar6Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0" Duration="0:0:0.2" BeginTime="0:0:1.25"/>
+                                        <DoubleAnimation Storyboard.TargetName="Bar7Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0" Duration="0:0:0.2" BeginTime="0:0:1.5"/>
+                                        <DoubleAnimation Storyboard.TargetName="Bar8Translate"
+                                                         Storyboard.TargetProperty="Y"
+                                                         To="0" Duration="0:0:0.2" BeginTime="0:0:1.75"/>
+
+                                        <!-- Bar colors change to rainbow colors -->
+                                        <ColorAnimation Storyboard.TargetName="Bar1"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="#FFADAD" Duration="0:0:0.2" BeginTime="0:0:0"/>
+                                        <ColorAnimation Storyboard.TargetName="Bar2"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="#FFD6A5" Duration="0:0:0.2" BeginTime="0:0:0.25"/>
+                                        <ColorAnimation Storyboard.TargetName="Bar3"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="#FDFFB6" Duration="0:0:0.2" BeginTime="0:0:0.5"/>
+                                        <ColorAnimation Storyboard.TargetName="Bar4"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="#CAFFBF" Duration="0:0:0.2" BeginTime="0:0:0.75"/>
+                                        <ColorAnimation Storyboard.TargetName="Bar5"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="#9BF6FF" Duration="0:0:0.2" BeginTime="0:0:1"/>
+                                        <ColorAnimation Storyboard.TargetName="Bar6"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="#A0C4FF" Duration="0:0:0.2" BeginTime="0:0:1.25"/>
+                                        <ColorAnimation Storyboard.TargetName="Bar7"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="#BDB2FF" Duration="0:0:0.2" BeginTime="0:0:1.5"/>
+                                        <ColorAnimation Storyboard.TargetName="Bar8"
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        To="#FFC6FF" Duration="0:0:0.2" BeginTime="0:0:1.75"/>
+
+                                        <!-- Lock icon fade in after animation completes -->
+                                        <DoubleAnimation Storyboard.TargetName="LockIcon"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1" Duration="0:0:0.2" BeginTime="0:0:1.95"/>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Indeterminate"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
