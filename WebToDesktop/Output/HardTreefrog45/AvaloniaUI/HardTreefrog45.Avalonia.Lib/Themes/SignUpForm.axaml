@@ -1,0 +1,345 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:HardTreefrog45.Avalonia.Lib.Controls">
+
+    <!-- Colors -->
+    <Color x:Key="SignUpForm.Background">#FFFFFF</Color>
+    <Color x:Key="SignUpForm.BorderColor">#9CA3AF</Color>
+    <Color x:Key="SignUpForm.TextColor">#374151</Color>
+    <Color x:Key="SignUpForm.LightTextColor">#6B7280</Color>
+    <Color x:Key="SignUpForm.InputBackground">#F3F4F6</Color>
+    <Color x:Key="SignUpForm.ButtonColor">#00A400</Color>
+    <Color x:Key="SignUpForm.ButtonHoverColor">#008800</Color>
+    <Color x:Key="SignUpForm.LinkColor">#1E40AF</Color>
+    <Color x:Key="SignUpForm.DividerColor">#D1D5DB</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="SignUpForm.BackgroundBrush" Color="{StaticResource SignUpForm.Background}" />
+    <SolidColorBrush x:Key="SignUpForm.BorderBrush" Color="{StaticResource SignUpForm.BorderColor}" />
+    <SolidColorBrush x:Key="SignUpForm.TextBrush" Color="{StaticResource SignUpForm.TextColor}" />
+    <SolidColorBrush x:Key="SignUpForm.LightTextBrush" Color="{StaticResource SignUpForm.LightTextColor}" />
+    <SolidColorBrush x:Key="SignUpForm.InputBackgroundBrush" Color="{StaticResource SignUpForm.InputBackground}" />
+    <SolidColorBrush x:Key="SignUpForm.ButtonBrush" Color="{StaticResource SignUpForm.ButtonColor}" />
+    <SolidColorBrush x:Key="SignUpForm.ButtonHoverBrush" Color="{StaticResource SignUpForm.ButtonHoverColor}" />
+    <SolidColorBrush x:Key="SignUpForm.LinkBrush" Color="{StaticResource SignUpForm.LinkColor}" />
+    <SolidColorBrush x:Key="SignUpForm.DividerBrush" Color="{StaticResource SignUpForm.DividerColor}" />
+
+    <!-- TextBox Style -->
+    <ControlTheme x:Key="SignUpFormTextBox" TargetType="TextBox">
+        <Setter Property="Background" Value="{StaticResource SignUpForm.InputBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource SignUpForm.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Padding" Value="8,8" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="MinHeight" Value="36" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="TextBox">
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <DockPanel>
+                        <TextBlock Name="PART_FloatingWatermark"
+                                   DockPanel.Dock="Top"
+                                   IsVisible="False" />
+                        <DataValidationErrors>
+                            <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                                          VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}">
+                                <Panel>
+                                    <TextBlock Name="PART_Watermark"
+                                               Text="{TemplateBinding Watermark}"
+                                               Foreground="{StaticResource SignUpForm.LightTextBrush}"
+                                               IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}"
+                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                               Margin="{TemplateBinding Padding}" />
+                                    <TextPresenter Name="PART_TextPresenter"
+                                                   Text="{TemplateBinding Text, Mode=TwoWay}"
+                                                   CaretIndex="{TemplateBinding CaretIndex}"
+                                                   SelectionStart="{TemplateBinding SelectionStart}"
+                                                   SelectionEnd="{TemplateBinding SelectionEnd}"
+                                                   SelectionBrush="{TemplateBinding SelectionBrush}"
+                                                   SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                                   CaretBrush="{TemplateBinding CaretBrush}"
+                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                   Margin="{TemplateBinding Padding}" />
+                                </Panel>
+                            </ScrollViewer>
+                        </DataValidationErrors>
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:focus /template/ Border">
+            <Setter Property="BorderBrush" Value="#3B82F6" />
+            <Setter Property="BorderThickness" Value="2" />
+        </Style>
+    </ControlTheme>
+
+    <!-- ComboBox Style -->
+    <ControlTheme x:Key="SignUpFormComboBox" TargetType="ComboBox">
+        <Setter Property="Background" Value="{StaticResource SignUpForm.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource SignUpForm.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Padding" Value="8,6" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="MinHeight" Value="36" />
+    </ControlTheme>
+
+    <!-- Gender RadioButton Style -->
+    <ControlTheme x:Key="SignUpFormGenderRadio" TargetType="RadioButton">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{StaticResource SignUpForm.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="RadioButton">
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Padding="{TemplateBinding Padding}">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <ContentPresenter Grid.Column="0"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          VerticalAlignment="Center" />
+                        <Ellipse Grid.Column="1"
+                                 Name="PART_RadioOuter"
+                                 Width="16"
+                                 Height="16"
+                                 Stroke="{StaticResource SignUpForm.BorderBrush}"
+                                 StrokeThickness="1"
+                                 Fill="Transparent" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:checked /template/ Ellipse#PART_RadioOuter">
+            <Setter Property="Stroke" Value="#3B82F6" />
+            <Setter Property="StrokeThickness" Value="5" />
+        </Style>
+    </ControlTheme>
+
+    <!-- Sign Up Button Style -->
+    <ControlTheme x:Key="SignUpFormButton" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource SignUpForm.ButtonBrush}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Padding" Value="64,6" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="Button">
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Padding="{TemplateBinding Padding}">
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover /template/ Border">
+            <Setter Property="Background" Value="{StaticResource SignUpForm.ButtonHoverBrush}" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ Border">
+            <Setter Property="Background" Value="#006600" />
+        </Style>
+    </ControlTheme>
+
+    <!-- Close Button Style -->
+    <ControlTheme x:Key="SignUpFormCloseButton" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource SignUpForm.LightTextBrush}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="Button">
+                <Border Background="{TemplateBinding Background}"
+                        Padding="{TemplateBinding Padding}">
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Foreground" Value="{StaticResource SignUpForm.TextBrush}" />
+        </Style>
+    </ControlTheme>
+
+    <!-- Main SignUpForm Style -->
+    <ControlTheme x:Key="{x:Type controls:SignUpForm}" TargetType="controls:SignUpForm">
+        <Setter Property="Background" Value="{StaticResource SignUpForm.BackgroundBrush}" />
+        <Setter Property="Width" Value="432" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="controls:SignUpForm">
+                <Border Background="{TemplateBinding Background}"
+                        CornerRadius="6"
+                        BoxShadow="0 4 6 -1 #1A000000, 0 2 4 -2 #1A000000">
+                    <StackPanel>
+                        <!-- Header -->
+                        <Grid Margin="16,12" ColumnDefinitions="*,Auto">
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Sign Up"
+                                           FontSize="32"
+                                           FontWeight="Bold"
+                                           Foreground="{StaticResource SignUpForm.TextBrush}" />
+                                <TextBlock Text="It's quick and easy."
+                                           FontSize="15"
+                                           Foreground="{StaticResource SignUpForm.LightTextBrush}" />
+                            </StackPanel>
+                            <Button Grid.Column="1"
+                                    Name="PART_CloseButton"
+                                    Theme="{StaticResource SignUpFormCloseButton}"
+                                    VerticalAlignment="Top">
+                                <PathIcon Data="M6 18L18 6M6 6l12 12"
+                                          Width="28"
+                                          Height="28" />
+                            </Button>
+                        </Grid>
+
+                        <!-- Divider -->
+                        <Rectangle Height="1"
+                                   Fill="{StaticResource SignUpForm.DividerBrush}" />
+
+                        <!-- Form Content -->
+                        <StackPanel Margin="16,12,16,24" Spacing="12">
+                            <!-- Name Row -->
+                            <Grid ColumnDefinitions="*,12,*">
+                                <TextBox Grid.Column="0"
+                                         Theme="{StaticResource SignUpFormTextBox}"
+                                         Watermark="First name"
+                                         Text="{TemplateBinding FirstName, Mode=TwoWay}" />
+                                <TextBox Grid.Column="2"
+                                         Theme="{StaticResource SignUpFormTextBox}"
+                                         Watermark="Surname"
+                                         Text="{TemplateBinding Surname, Mode=TwoWay}" />
+                            </Grid>
+
+                            <!-- Email/Phone -->
+                            <TextBox Theme="{StaticResource SignUpFormTextBox}"
+                                     Watermark="Mobile number or email address"
+                                     Text="{TemplateBinding EmailOrPhone, Mode=TwoWay}" />
+
+                            <!-- Password -->
+                            <TextBox Theme="{StaticResource SignUpFormTextBox}"
+                                     Watermark="New password"
+                                     PasswordChar="*"
+                                     Text="{TemplateBinding Password, Mode=TwoWay}" />
+
+                            <!-- Date of Birth -->
+                            <StackPanel Spacing="4">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Date of birth"
+                                               FontSize="12"
+                                               Foreground="{StaticResource SignUpForm.LightTextBrush}" />
+                                    <TextBlock Text=" (?)"
+                                               FontSize="12"
+                                               Foreground="{StaticResource SignUpForm.LinkBrush}"
+                                               Cursor="Hand" />
+                                </StackPanel>
+                                <Grid ColumnDefinitions="*,12,*,12,*">
+                                    <ComboBox Grid.Column="0"
+                                              Theme="{StaticResource SignUpFormComboBox}"
+                                              ItemsSource="{TemplateBinding Days}"
+                                              SelectedItem="{TemplateBinding SelectedDay, Mode=TwoWay}"
+                                              HorizontalAlignment="Stretch" />
+                                    <ComboBox Grid.Column="2"
+                                              Theme="{StaticResource SignUpFormComboBox}"
+                                              ItemsSource="{TemplateBinding Months}"
+                                              SelectedIndex="{TemplateBinding SelectedMonth, Mode=TwoWay}"
+                                              HorizontalAlignment="Stretch" />
+                                    <ComboBox Grid.Column="4"
+                                              Theme="{StaticResource SignUpFormComboBox}"
+                                              ItemsSource="{TemplateBinding Years}"
+                                              SelectedItem="{TemplateBinding SelectedYear, Mode=TwoWay}"
+                                              HorizontalAlignment="Stretch" />
+                                </Grid>
+                            </StackPanel>
+
+                            <!-- Gender -->
+                            <StackPanel Spacing="4">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Gender"
+                                               FontSize="12"
+                                               Foreground="{StaticResource SignUpForm.LightTextBrush}" />
+                                    <TextBlock Text=" (?)"
+                                               FontSize="12"
+                                               Foreground="{StaticResource SignUpForm.LinkBrush}"
+                                               Cursor="Hand" />
+                                </StackPanel>
+                                <Grid ColumnDefinitions="*,12,*,12,*">
+                                    <RadioButton Grid.Column="0"
+                                                 Name="PART_FemaleRadio"
+                                                 Theme="{StaticResource SignUpFormGenderRadio}"
+                                                 Content="Female"
+                                                 GroupName="Gender" />
+                                    <RadioButton Grid.Column="2"
+                                                 Name="PART_MaleRadio"
+                                                 Theme="{StaticResource SignUpFormGenderRadio}"
+                                                 Content="Male"
+                                                 GroupName="Gender" />
+                                    <RadioButton Grid.Column="4"
+                                                 Name="PART_CustomRadio"
+                                                 Theme="{StaticResource SignUpFormGenderRadio}"
+                                                 Content="Custom"
+                                                 GroupName="Gender" />
+                                </Grid>
+                            </StackPanel>
+
+                            <!-- Terms Text -->
+                            <StackPanel Spacing="8">
+                                <TextBlock TextWrapping="Wrap"
+                                           FontSize="11"
+                                           Foreground="{StaticResource SignUpForm.LightTextBrush}">
+                                    <Run Text="People who use our service may have uploaded your contact information to Facebook. " />
+                                    <Run Text="Learn more"
+                                         Foreground="{StaticResource SignUpForm.LinkBrush}"
+                                         TextDecorations="None" />
+                                    <Run Text="." />
+                                </TextBlock>
+                                <TextBlock TextWrapping="Wrap"
+                                           FontSize="11"
+                                           Foreground="{StaticResource SignUpForm.LightTextBrush}">
+                                    <Run Text="By clicking Sign Up, you agree to our " />
+                                    <Run Text="Terms"
+                                         Foreground="{StaticResource SignUpForm.LinkBrush}" />
+                                    <Run Text=", " />
+                                    <Run Text="Privacy Policy"
+                                         Foreground="{StaticResource SignUpForm.LinkBrush}" />
+                                    <Run Text=" and " />
+                                    <Run Text="Cookies Policy"
+                                         Foreground="{StaticResource SignUpForm.LinkBrush}" />
+                                    <Run Text=". You may receive SMS notifications from us and can opt out at any time." />
+                                </TextBlock>
+                            </StackPanel>
+
+                            <!-- Sign Up Button -->
+                            <Border HorizontalAlignment="Center" Margin="0,8,0,0">
+                                <Button Name="PART_SignUpButton"
+                                        Theme="{StaticResource SignUpFormButton}"
+                                        Content="Sign Up" />
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

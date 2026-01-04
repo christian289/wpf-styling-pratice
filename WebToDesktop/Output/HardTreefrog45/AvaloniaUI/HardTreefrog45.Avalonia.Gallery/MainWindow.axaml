@@ -1,0 +1,21 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="using:HardTreefrog45.Avalonia.Lib.Controls"
+        mc:Ignorable="d"
+        d:DesignWidth="600"
+        d:DesignHeight="700"
+        x:Class="HardTreefrog45.Avalonia.Gallery.MainWindow"
+        Title="HardTreefrog45 - Sign Up Form Gallery"
+        Width="600"
+        Height="700"
+        Background="#F3F4F6"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <controls:SignUpForm HorizontalAlignment="Center"
+                             VerticalAlignment="Center" />
+    </Grid>
+
+</Window>
