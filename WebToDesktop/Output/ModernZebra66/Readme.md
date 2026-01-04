@@ -1,6 +1,6 @@
 # ModernZebra66
 
-Patterns 스타일 컨트롤
+Patterns 스타일 컨트롤 - CSS `repeating-conic-gradient` 기반 육각형 패턴 배경
 
 ## 원본 정보
 
