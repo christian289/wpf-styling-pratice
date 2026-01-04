@@ -1,0 +1,104 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:AverageShrimp57.Wpf.UI.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/AverageShrimp57.Wpf.UI;component/Themes/AverageShrimp57Resources.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:AverageShrimp57}">
+        <Setter Property="Width" Value="{StaticResource AverageShrimp57.Container.Width}"/>
+        <Setter Property="Height" Value="{StaticResource AverageShrimp57.Container.Height}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Focusable" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:AverageShrimp57}">
+                    <!-- 외부 컨테이너 / Outer Container -->
+                    <Border x:Name="OuterBorder"
+                            Width="{StaticResource AverageShrimp57.Container.Width}"
+                            Height="{StaticResource AverageShrimp57.Container.Height}"
+                            CornerRadius="{StaticResource AverageShrimp57.Container.CornerRadius}"
+                            Background="{StaticResource AverageShrimp57.Container.Background}"
+                            Padding="{StaticResource AverageShrimp57.Container.Padding}">
+                        <!-- 컨테이너 그림자 효과 -->
+                        <!-- Container shadow effect: 0 -1px 1px 0 rgba(0,0,0,.5), 0px 1px 1px 0 rgba(255,255,255,1) -->
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="1" Direction="270" BlurRadius="1" Opacity="0.5" Color="Black"/>
+                        </Border.Effect>
+
+                        <!-- 내부 토글 트랙 / Inner toggle track -->
+                        <Border x:Name="TrackBorder"
+                                Width="{StaticResource AverageShrimp57.Track.Width}"
+                                Height="{StaticResource AverageShrimp57.Track.Height}"
+                                CornerRadius="{StaticResource AverageShrimp57.Track.CornerRadius}"
+                                BorderThickness="{StaticResource AverageShrimp57.Track.BorderThickness}"
+                                BorderBrush="{StaticResource AverageShrimp57.Track.BorderBrush}"
+                                Background="{StaticResource AverageShrimp57.Track.Background.Unchecked}">
+
+                            <Grid>
+                                <!-- On 텍스트 (왼쪽) / On text (left) -->
+                                <TextBlock x:Name="OnTextBlock"
+                                           Text="{TemplateBinding OnText}"
+                                           Foreground="{StaticResource AverageShrimp57.OnText.Foreground.Unchecked}"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Top"
+                                           Margin="{StaticResource AverageShrimp57.OnText.Margin}"
+                                           FontWeight="Medium"/>
+
+                                <!-- Off 텍스트 (오른쪽) / Off text (right) -->
+                                <TextBlock x:Name="OffTextBlock"
+                                           Text="{TemplateBinding OffText}"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Top"
+                                           Margin="{StaticResource AverageShrimp57.OffText.Margin}"
+                                           FontWeight="Medium">
+                                    <TextBlock.Foreground>
+                                        <SolidColorBrush x:Name="OffTextForeground" Color="#DF0000"/>
+                                    </TextBlock.Foreground>
+                                    <!-- Off 텍스트에 빨간색 글로우 효과 (Unchecked 상태) -->
+                                    <!-- Red glow effect for Off text (Unchecked state) -->
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect x:Name="OffTextGlow"
+                                                          ShadowDepth="0"
+                                                          BlurRadius="7"
+                                                          Color="{StaticResource AverageShrimp57.OffText.GlowColor}"
+                                                          Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+                            </Grid>
+                        </Border>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Checked 상태 / Checked state -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <!-- 트랙 배경 변경 / Change track background -->
+                            <Setter TargetName="TrackBorder" Property="Background"
+                                    Value="{StaticResource AverageShrimp57.Track.Background.Checked}"/>
+
+                            <!-- On 텍스트: 초록색 + 글로우 / On text: green + glow -->
+                            <Setter TargetName="OnTextBlock" Property="Foreground"
+                                    Value="{StaticResource AverageShrimp57.OnText.Foreground.Checked}"/>
+                            <Setter TargetName="OnTextBlock" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0"
+                                                      BlurRadius="7"
+                                                      Color="{StaticResource AverageShrimp57.OnText.GlowColor}"
+                                                      Opacity="1"/>
+                                </Setter.Value>
+                            </Setter>
+
+                            <!-- Off 텍스트: 검정색, 글로우 없음 / Off text: black, no glow -->
+                            <Setter TargetName="OffTextBlock" Property="Foreground"
+                                    Value="{StaticResource AverageShrimp57.OffText.Foreground.Checked}"/>
+                            <Setter TargetName="OffTextBlock" Property="Effect" Value="{x:Null}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

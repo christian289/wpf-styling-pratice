@@ -1,0 +1,133 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:AverageShrimp57.Avalonia.Lib.Controls">
+
+    <!--
+    Light Switch Toggle Control Style
+    원본: uiverse.io by JaydipPrajapati1910
+    CSS에서 영감받은 On/Off 라이트 스위치 토글
+    -->
+
+    <!-- Color Resources -->
+    <Color x:Key="LightSwitch.Outer.GradientStart">#BDBFC1</Color>
+    <Color x:Key="LightSwitch.Outer.GradientEnd">#F9FBFE</Color>
+    <Color x:Key="LightSwitch.Inner.Border">#979797</Color>
+    <Color x:Key="LightSwitch.Unchecked.GradientStart">#FDFCFB</Color>
+    <Color x:Key="LightSwitch.Unchecked.GradientEnd">#E5E5E5</Color>
+    <Color x:Key="LightSwitch.Checked.GradientStart">#E5E5E5</Color>
+    <Color x:Key="LightSwitch.Checked.GradientEnd">#FDFCFB</Color>
+    <Color x:Key="LightSwitch.On.Active">#119400</Color>
+    <Color x:Key="LightSwitch.On.Glow">#007A08</Color>
+    <Color x:Key="LightSwitch.Off.Active">#DF0000</Color>
+
+    <!-- Brush Resources -->
+    <LinearGradientBrush x:Key="LightSwitch.Outer.Background" StartPoint="0%,0%" EndPoint="0%,100%">
+        <GradientStop Color="{StaticResource LightSwitch.Outer.GradientStart}" Offset="0"/>
+        <GradientStop Color="{StaticResource LightSwitch.Outer.GradientEnd}" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="LightSwitch.Inner.Unchecked.Background" StartPoint="0%,0%" EndPoint="100%,0%">
+        <GradientStop Color="{StaticResource LightSwitch.Unchecked.GradientStart}" Offset="0.37"/>
+        <GradientStop Color="{StaticResource LightSwitch.Unchecked.GradientEnd}" Offset="0.61"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="LightSwitch.Inner.Checked.Background" StartPoint="0%,0%" EndPoint="100%,0%">
+        <GradientStop Color="{StaticResource LightSwitch.Checked.GradientStart}" Offset="0.39"/>
+        <GradientStop Color="{StaticResource LightSwitch.Checked.GradientEnd}" Offset="0.63"/>
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="LightSwitch.Inner.BorderBrush" Color="{StaticResource LightSwitch.Inner.Border}"/>
+    <SolidColorBrush x:Key="LightSwitch.On.ActiveBrush" Color="{StaticResource LightSwitch.On.Active}"/>
+    <SolidColorBrush x:Key="LightSwitch.Off.ActiveBrush" Color="{StaticResource LightSwitch.Off.Active}"/>
+    <SolidColorBrush x:Key="LightSwitch.Text.InactiveBrush" Color="#000000"/>
+
+    <!-- LightSwitch Style -->
+    <ControlTheme x:Key="{x:Type controls:LightSwitch}" TargetType="controls:LightSwitch">
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Height" Value="75"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!-- Outer Container with gradient and shadow -->
+                <Border x:Name="PART_OuterBorder"
+                        Width="150"
+                        Height="75"
+                        CornerRadius="37.5"
+                        Padding="10"
+                        Background="{StaticResource LightSwitch.Outer.Background}"
+                        BoxShadow="0 -1 1 0 #80000000, 0 1 1 0 #FFFFFFFF">
+
+                    <!-- Inner Switch Track -->
+                    <Border x:Name="PART_InnerBorder"
+                            Width="130"
+                            Height="55"
+                            CornerRadius="27.5"
+                            BorderBrush="{StaticResource LightSwitch.Inner.BorderBrush}"
+                            BorderThickness="1"
+                            Background="{StaticResource LightSwitch.Inner.Unchecked.Background}"
+                            BoxShadow="inset 5 0 0 0 #1A000000, inset -5 0 0 0 #1A000000, inset -6 0 0 0 #80FFFFFF, inset -4 6 11 -5 #33000000, inset 1 1 0 0 #FFFFFFFF, -6 4 11 -7 #80000000">
+
+                        <!-- Text Labels Container -->
+                        <Panel>
+                            <!-- "On" Label (Left side) -->
+                            <TextBlock x:Name="PART_UncheckedText"
+                                       Text="{TemplateBinding UncheckedText}"
+                                       FontSize="14"
+                                       FontWeight="Normal"
+                                       Foreground="{StaticResource LightSwitch.Text.InactiveBrush}"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Margin="20,0,0,0"/>
+
+                            <!-- "Off" Label (Right side) -->
+                            <TextBlock x:Name="PART_CheckedText"
+                                       Text="{TemplateBinding CheckedText}"
+                                       FontSize="14"
+                                       FontWeight="Normal"
+                                       Foreground="{StaticResource LightSwitch.Off.ActiveBrush}"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,20,0"/>
+                        </Panel>
+                    </Border>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Unchecked State (Default - "On" is active with green glow, "Off" is red) -->
+        <!-- 기본 상태에서 On 텍스트는 검은색, Off 텍스트는 빨간색 -->
+
+        <!-- Checked State -->
+        <Style Selector="^:checked">
+            <!-- Inner border background changes -->
+            <Style Selector="^ /template/ Border#PART_InnerBorder">
+                <Setter Property="Background" Value="{StaticResource LightSwitch.Inner.Checked.Background}"/>
+                <Setter Property="BoxShadow" Value="inset -5 0 0 0 #1A000000, inset 5 0 0 0 #1A000000, inset 6 0 0 0 #80FFFFFF, inset -4 6 11 -5 #33000000, inset 1 1 0 0 #FFFFFFFF, -6 4 11 -7 #80000000"/>
+            </Style>
+            <!-- On text becomes green with glow effect -->
+            <Style Selector="^ /template/ TextBlock#PART_UncheckedText">
+                <Setter Property="Foreground" Value="{StaticResource LightSwitch.On.ActiveBrush}"/>
+            </Style>
+            <!-- Off text becomes black (inactive) -->
+            <Style Selector="^ /template/ TextBlock#PART_CheckedText">
+                <Setter Property="Foreground" Value="{StaticResource LightSwitch.Text.InactiveBrush}"/>
+            </Style>
+        </Style>
+
+        <!-- Pointer Over State -->
+        <Style Selector="^:pointerover /template/ Border#PART_OuterBorder">
+            <Setter Property="Opacity" Value="0.95"/>
+        </Style>
+
+        <!-- Pressed State -->
+        <Style Selector="^:pressed /template/ Border#PART_OuterBorder">
+            <Setter Property="Opacity" Value="0.9"/>
+        </Style>
+
+        <!-- Disabled State -->
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.5"/>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

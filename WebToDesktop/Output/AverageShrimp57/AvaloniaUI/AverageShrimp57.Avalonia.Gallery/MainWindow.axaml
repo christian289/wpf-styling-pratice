@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:AverageShrimp57.Avalonia.Lib.Controls"
+        x:Class="AverageShrimp57.Avalonia.Gallery.MainWindow"
+        Title="AverageShrimp57 - Light Switch Gallery"
+        Width="400"
+        Height="350"
+        Background="#F0F0F0">
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="30">
+
+        <TextBlock Text="Light Switch Toggle Control"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"/>
+
+        <TextBlock Text="From uiverse.io by JaydipPrajapati1910"
+                   FontSize="12"
+                   Foreground="#666666"
+                   HorizontalAlignment="Center"/>
+
+        <!-- Default Light Switch -->
+        <controls:LightSwitch x:Name="Switch1"/>
+
+        <!-- Light Switch with custom text -->
+        <controls:LightSwitch x:Name="Switch2"
+                              UncheckedText="ON"
+                              CheckedText="OFF"/>
+
+        <!-- Status display -->
+        <TextBlock x:Name="StatusText"
+                   Text="Switch Status: Off"
+                   FontSize="14"
+                   HorizontalAlignment="Center"/>
+
+    </StackPanel>
+
+</Window>
