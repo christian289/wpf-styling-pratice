@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:BitterSkunk14.Avalonia.Lib.Controls"
+        x:Class="BitterSkunk14.Avalonia.Gallery.MainWindow"
+        Title="BitterSkunk14 Tooltip Button Gallery"
+        Width="500"
+        Height="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#F5F5F5">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="30">
+
+            <TextBlock Text="BitterSkunk14 Tooltip Button Demo"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+
+            <TextBlock Text="Hover over the button to see the tooltip"
+                       HorizontalAlignment="Center"
+                       Foreground="Gray"/>
+
+            <!-- 기본 툴팁 버튼 / Default Tooltip Button -->
+            <controls:BitterSkunk14TooltipButton Text="Tooltip"
+                                                   TooltipMessage="This is a test"
+                                                   TooltipButtonText="Got It"
+                                                   Margin="0,50,0,0"/>
+
+            <!-- 커스텀 텍스트 툴팁 버튼 / Custom Text Tooltip Button -->
+            <controls:BitterSkunk14TooltipButton Text="Hover Me"
+                                                   TooltipMessage="Welcome to Avalonia UI! This tooltip appears with animation."
+                                                   TooltipButtonText="OK"
+                                                   Margin="0,30,0,0"/>
+
+        </StackPanel>
+    </Grid>
+
+</Window>

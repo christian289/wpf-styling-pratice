@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="BitterSkunk14.Wpf.Gallery/BitterSkunk14.Wpf.Gallery.csproj" />
+  <Project Path="BitterSkunk14.Wpf.UI/BitterSkunk14.Wpf.UI.csproj" />
+</Solution>

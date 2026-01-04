@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="BitterSkunk14.Avalonia.Lib\BitterSkunk14.Avalonia.Lib.csproj" />
+  <Project Path="BitterSkunk14.Avalonia.Gallery\BitterSkunk14.Avalonia.Gallery.csproj" />
+</Solution>
