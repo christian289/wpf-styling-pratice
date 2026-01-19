@@ -5,7 +5,9 @@
       "Bash(ls:*)",
       "Bash(cat:*)",
       "WebFetch(domain:uiverse.io)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(gh workflow disable:*)",
+      "Bash(gh workflow:*)"
     ],
     "deny": [],
     "ask": []
